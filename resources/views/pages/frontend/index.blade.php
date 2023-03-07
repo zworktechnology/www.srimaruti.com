@@ -19,13 +19,6 @@
                         <h1 class="hero-title mb-0" data-ani="slideindown" data-ani-delay="0.0s">The Iconic Beach Hotel
                         </h1>
                         <h1 class="hero-title" data-ani="slideindown" data-ani-delay="0.0s">In Maldives</h1>
-                        <div class="booking-area style4">
-                            <div class="row align-items-center">
-                                <div class="col-12">
-                                    @include('components.checkinout')
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -40,13 +33,6 @@
                         <h4 class="hero-subtitle" data-ani="slideindown" data-ani-delay="0.1s">Welcome To Hibtel</h4>
                         <h1 class="hero-title mb-0" data-ani="slideindown" data-ani-delay="0.0s">Enjoy Your Holidays </h1>
                         <h1 class="hero-title" data-ani="slideindown" data-ani-delay="0.0s">At Boutique Hotel</h1>
-                        <div class="booking-area style4">
-                            <div class="row align-items-center">
-                                <div class="col-12">
-                                    @include('components.checkinout')
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

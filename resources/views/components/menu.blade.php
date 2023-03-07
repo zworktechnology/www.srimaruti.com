@@ -90,9 +90,6 @@
                         <div class="header-button" style="padding-right: 20px;">
                             <a href="javascript:void(0);" class="as-btn style4 shadow-none">CHAT WITH US</a>
                         </div>
-                        <div class="header-button">
-                            <a href="javascript:void(0);" class="as-btn style4 shadow-none">RESERVATION</a>
-                        </div>
                     </div>
                 </div>
             </div>
