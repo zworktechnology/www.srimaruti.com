@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">Branch</h4>
+                        <h4 class="mb-0">Room</h4>
                         <div class="text-sm-end mt-2 mt-sm-0" hidden>
                             <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Add new
@@ -18,7 +18,7 @@
             </div>
 
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                @include('pages.backend.branch.create')
+                @include('pages.backend.room.create')
             </div>
 
             @if (\Session::has('add'))
@@ -50,7 +50,7 @@
             </div>
             @endif
 
-            <div class="row">
+            <div class="row" style="display: flex">
                 <div class="col-9">
                     <div class="card">
                         <div class="card-body">
@@ -58,8 +58,11 @@
                                 <thead>
                                     <tr>
                                         <th>Sl. No</th>
-                                        <th>Name</th>
-                                        <th>Address</th>
+                                        <th>Branch</th>
+                                        <th>Floor</th>
+                                        <th>Room No</th>
+                                        <th>Room Type</th>
+                                        <th>Booking Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -67,12 +70,19 @@
                                     @foreach ($data as $keydata => $datas)
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
-                                        <td>{{ $datas->name }}</td>
-                                        <td>{{ $datas->address }}</td>
+                                        <td>{{ $datas->branch->name }}</td>
+                                        <td>{{ $datas->room_floor }}</td>
+                                        <td>{{ $datas->room_number }}</td>
+                                        <td>{{ $datas->room_type }}</td>
+                                        @if ($datas->booking_status == 0)
+                                        <td style="color:red">Open</td>
+                                        @else
+                                        <td style="color:green">Booked</td>
+                                        @endif
                                         <td>
                                             <ul class="list-unstyled hstack gap-1 mb-0">
                                                 <li>
-                                                    <a href="{{ route('branch.edit', ['id' => $datas->id]) }}" class="btn btn-sm btn-soft-info">Edit</a>
+                                                    <a href="{{ route('room.edit', ['id' => $datas->id]) }}" class="btn btn-sm btn-soft-info">Edit</a>
                                                 </li>
                                                 <li>
                                                     <a href="#jobDelete{{ $datas->id }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal">Delete</a>
@@ -88,10 +98,10 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record - {{ $datas->name }}.</p>
+                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record - Room No. {{ $datas->room_number }} at {{ $datas->branch->name }}.</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <form autocomplete="off" method="POST" action="{{ route('branch.delete', ['id' => $datas->id]) }}">
+                                                    <form autocomplete="off" method="POST" action="{{ route('room.delete', ['id' => $datas->id]) }}">
                                                         @method('PUT')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger">Yes, Delete</button>
@@ -110,7 +120,7 @@
                 <div class="col-3">
                     <div class="card">
                         <div class="card-body">
-                            @include('pages.backend.branch.create')
+                            @include('pages.backend.room.create')
                         </div>
                     </div>
                 </div>

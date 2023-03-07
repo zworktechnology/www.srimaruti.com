@@ -14,4 +14,9 @@ class Branch extends Model
         'address',
         'soft_delete'
     ];
+
+    public function room()
+    {
+        return $this->hasMany(Room::class, 'branch_id');
+    }
 }

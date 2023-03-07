@@ -13,19 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('branches', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
 
             // Auto-generate ID column
             $table->id();
 
             // Request columns
-            $table->string('name');
-            $table->longText('address');
+            $table->string('room_number');
+            $table->string('room_type');
+            $table->string('room_floor');
+            $table->unsignedBigInteger('branch_id');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->boolean('booking_status')->default(0);
             $table->boolean('soft_delete')->default(0);
 
             // CreatedAt & UpdatedAt columns
             $table->timestamps();
-            
+
         });
     }
 
@@ -36,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branches');
+        Schema::dropIfExists('rooms');
     }
 };

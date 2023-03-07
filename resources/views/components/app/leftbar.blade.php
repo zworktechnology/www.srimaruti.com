@@ -44,6 +44,12 @@
                         <span>Branch</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('room.index','room.create','room.edit') ? 'mm-active' : '' }}">
+                    <a href="{{ route('room.index') }}" class="waves-effect">
+                        <i class="uil-key-skeleton-alt"></i>
+                        <span>Room</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

@@ -14,21 +14,10 @@
 
         <div class="p-4">
 
-            <h6 class="mt-4 mb-3 pt-2">Layout Mode</h6>
-
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout-mode" id="layout-mode-light" value="light">
-                <label class="form-check-label" for="layout-mode-light">Light</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout-mode" id="layout-mode-dark" value="dark">
-                <label class="form-check-label" for="layout-mode-dark">Dark</label>
-            </div>
-
             <h6 class="mt-4 mb-3 pt-2">Layout Width</h6>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout-width" id="layout-width-fuild" value="fuild" onchange="document.body.setAttribute('data-layout-size', 'fluid')">
+                <input class="form-check-input" type="radio" name="layout-width" id="layout-width-fuild" value="fuild" onchange="document.body.setAttribute('data-layout-size', 'fluid')" checked>
                 <label class="form-check-label" for="layout-width-fuild">Fluid</label>
             </div>
             <div class="form-check form-check-inline">
@@ -39,7 +28,7 @@
             <h6 class="mt-4 mb-3 pt-2">Topbar Color</h6>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-light" value="light" onchange="document.body.setAttribute('data-topbar', 'light')">
+                <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-light" value="light" onchange="document.body.setAttribute('data-topbar', 'light')" checked>
                 <label class="form-check-label" for="topbar-color-light">Light</label>
             </div>
             <div class="form-check form-check-inline">
@@ -50,7 +39,7 @@
             <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Size</h6>
 
             <div class="form-check sidebar-setting">
-                <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-default" value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')">
+                <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-default" value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')" checked>
                 <label class="form-check-label" for="sidebar-size-default">Default</label>
             </div>
             <div class="form-check sidebar-setting">
@@ -65,16 +54,12 @@
             <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Color</h6>
 
             <div class="form-check sidebar-setting">
-                <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-light" value="light" onchange="document.body.setAttribute('data-sidebar', 'light')">
+                <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-light" value="light" onchange="document.body.setAttribute('data-sidebar', 'light')" checked>
                 <label class="form-check-label" for="sidebar-color-light">Light</label>
             </div>
             <div class="form-check sidebar-setting">
                 <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-dark" value="dark" onchange="document.body.setAttribute('data-sidebar', 'dark')">
                 <label class="form-check-label" for="sidebar-color-dark">Dark</label>
-            </div>
-            <div class="form-check sidebar-setting">
-                <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-colored" value="colored" onchange="document.body.setAttribute('data-sidebar', 'colored')">
-                <label class="form-check-label" for="sidebar-color-colored">Colored</label>
             </div>
 
         </div>
