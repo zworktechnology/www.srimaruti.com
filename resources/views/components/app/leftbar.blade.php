@@ -32,14 +32,18 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
-
-                <li class="mm-active">
-                    <a href="{{ route('home') }}" class="waves-effect active">
+                <li class="{{ Route::is('home') ? 'mm-active' : '' }}">
+                    <a href="{{ route('home') }}" class="waves-effect">
                         <i class="uil-tachometer-fast"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-
+                <li class="{{ Route::is('branch.index','branch.create','branch.edit') ? 'mm-active' : '' }}">
+                    <a href="{{ route('branch.index') }}" class="waves-effect">
+                        <i class="uil-map-pin-alt"></i>
+                        <span>Branch</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->
