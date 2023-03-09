@@ -29,4 +29,9 @@ class Branch extends Model
     {
         return $this->hasMany(Expense::class, 'branch_id');
     }
+
+    public function openaccount()
+    {
+        return $this->hasMany(OpenAccount::class, 'branch_id');
+    }
 }

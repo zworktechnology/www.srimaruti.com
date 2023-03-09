@@ -75,6 +75,12 @@
                         <span>Expense</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('openaccount.index','openaccount.create','openaccount.edit') ? 'mm-active' : '' }}">
+                    <a href="{{ route('openaccount.index') }}" class="waves-effect">
+                        <i class="uil-lock-open-alt"></i>
+                        <span>Open Account</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

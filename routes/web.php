@@ -6,6 +6,7 @@ use App\Http\Controllers\ChangeProfileController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\NamelistController;
+use App\Http\Controllers\OpenAccountController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
@@ -156,5 +157,23 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/expense/delete/{id}', [ExpenseController::class, 'delete'])->name('expense.delete');
         // DESTROY
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/expense/destroy/{id}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
+    });
+
+    // OPEN ACCOUNT CONTROLLER
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+        // INDEX
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/openaccount', [OpenAccountController::class, 'index'])->name('openaccount.index');
+        // CREATE
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/openaccount/create', [OpenAccountController::class, 'create'])->name('openaccount.create');
+        // STORE
+        Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/openaccount/store', [OpenAccountController::class, 'store'])->name('openaccount.store');
+        // EDIT
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/openaccount/edit/{id}', [OpenAccountController::class, 'edit'])->name('openaccount.edit');
+        // UPDATE
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/openaccount/update/{id}', [OpenAccountController::class, 'update'])->name('openaccount.update');
+        // DELETE
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/openaccount/delete/{id}', [OpenAccountController::class, 'delete'])->name('openaccount.delete');
+        // DESTROY
+        Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/openaccount/destroy/{id}', [OpenAccountController::class, 'destroy'])->name('openaccount.destroy');
     });
 });
