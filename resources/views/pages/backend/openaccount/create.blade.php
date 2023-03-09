@@ -12,7 +12,7 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         Date </label>
                     <div class="col-sm-12">
-                        <input type="date" class="form-control" name="date" placeholder="Enter floor ">
+                        <input type="date" class="form-control" name="date" placeholder="Enter floor " value="{{ $today }}">
                     </div>
                 </div>
                 <div class="row mb-4">

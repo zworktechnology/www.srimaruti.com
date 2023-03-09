@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Branch;
 use App\Models\OpenAccount;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class OpenAccountController extends Controller
 {
     public function index()
     {
+        $today = Carbon::now()->format('Y-m-d');
         $data = OpenAccount::where('soft_delete', '!=', 1)->get();
         $branch = Branch::where('soft_delete', '!=', 1)->get();
 
-        return view('pages.backend.openaccount.index', compact('data', 'branch'));
+        return view('pages.backend.openaccount.index', compact('today', 'data', 'branch'));
     }
 
     public function store(Request $request)

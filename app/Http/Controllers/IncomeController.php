@@ -6,16 +6,18 @@ use App\Models\Branch;
 use App\Models\Income;
 use App\Models\Namelist;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class IncomeController extends Controller
 {
     public function index()
     {
+        $today = Carbon::now()->format('Y-m-d');
         $data = Income::where('soft_delete', '!=', 1)->get();
         $namelist = Namelist::where('soft_delete', '!=', 1)->get();
         $branch = Branch::where('soft_delete', '!=', 1)->get();
 
-        return view('pages.backend.income.index', compact('data', 'namelist', 'branch'));
+        return view('pages.backend.income.index', compact('data', 'namelist', 'branch', 'today'));
     }
 
     public function store(Request $request)
