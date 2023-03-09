@@ -68,6 +68,12 @@
                         <span>Income</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('expense.index','expense.create','expense.edit') ? 'mm-active' : '' }}">
+                    <a href="{{ route('expense.index') }}" class="waves-effect">
+                        <i class="uil-money-insert"></i>
+                        <span>Expense</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

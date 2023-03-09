@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ChangeProfileController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\NamelistController;
 use App\Http\Controllers\RoomController;
@@ -137,5 +138,23 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/income/delete/{id}', [IncomeController::class, 'delete'])->name('income.delete');
         // DESTROY
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/income/destroy/{id}', [IncomeController::class, 'destroy'])->name('income.destroy');
+    });
+
+    // EXPENSE CONTROLLER
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+        // INDEX
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/expense', [ExpenseController::class, 'index'])->name('expense.index');
+        // CREATE
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/expense/create', [ExpenseController::class, 'create'])->name('expense.create');
+        // STORE
+        Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/expense/store', [ExpenseController::class, 'store'])->name('expense.store');
+        // EDIT
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/expense/edit/{id}', [ExpenseController::class, 'edit'])->name('expense.edit');
+        // UPDATE
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/expense/update/{id}', [ExpenseController::class, 'update'])->name('expense.update');
+        // DELETE
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/expense/delete/{id}', [ExpenseController::class, 'delete'])->name('expense.delete');
+        // DESTROY
+        Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/expense/destroy/{id}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
     });
 });

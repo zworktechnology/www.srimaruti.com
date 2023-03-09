@@ -18,4 +18,9 @@ class Namelist extends Model
     {
         return $this->hasMany(Income::class, 'namelist_id');
     }
+
+    public function expense()
+    {
+        return $this->hasMany(Expense::class, 'namelist_id');
+    }
 }
