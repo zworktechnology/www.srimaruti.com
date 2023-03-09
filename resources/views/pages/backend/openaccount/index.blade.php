@@ -68,7 +68,7 @@
                                     @foreach ($data as $keydata => $datas)
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
-                                        <td>{{ $datas->date }}</td>
+                                        <td>{{ date('d M, Y', strtotime($datas->date)) }}</td>
                                         <td>{{ $datas->branch->name }}</td>
                                         <td>₹ {{ $datas->amount }}</td>
                                         <td>
