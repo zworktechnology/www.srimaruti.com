@@ -21,6 +21,7 @@ return new class extends Migration
             // Request columns
             $table->string('room_number');
             $table->string('room_type');
+            $table->string('room_category');
             $table->string('room_floor');
             $table->unsignedBigInteger('branch_id');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');

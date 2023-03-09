@@ -60,8 +60,7 @@
                                         <th>Sl. No</th>
                                         <th>Branch</th>
                                         <th>Floor</th>
-                                        <th>Room No</th>
-                                        <th>Room Type</th>
+                                        <th>Room Details</th>
                                         <th>Price</th>
                                         <th>Booking Status</th>
                                         <th>Action</th>
@@ -73,8 +72,7 @@
                                         <td>{{ ++$keydata }}</td>
                                         <td>{{ $datas->branch->name }}</td>
                                         <td>{{ $datas->room_floor }}</td>
-                                        <td>{{ $datas->room_number }}</td>
-                                        <td>{{ $datas->room_type }}</td>
+                                        <td>Room No. {{ $datas->room_number }} - {{ $datas->room_type }} - {{ $datas->room_category }}</td>
                                         <td>₹ {{ $datas->price_per_day }}</td>
                                         @if ($datas->booking_status == 0)
                                         <td style="color:red">Open</td>

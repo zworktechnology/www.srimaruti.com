@@ -66,6 +66,22 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Category </label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control js-example-basic-single" name="room_category" required>
+                                                    <option value="" disabled selected hidden class="text-muted">Select Category</option>
+                                                    <option value="Single" class="text-muted" {{ $data->room_category == "Single" ? 'selected' : '' }}>Single</option>
+                                                    <option value="Double" class="text-muted" {{ $data->room_category == "Double" ? 'selected' : '' }}>Double</option>
+                                                    <option value="Triple" class="text-muted" {{ $data->room_category == "Triple" ? 'selected' : '' }}>Triple</option>
+                                                    <option value="Quad" class="text-muted" {{ $data->room_category == "Quad" ? 'selected' : '' }}>Quad</option>
+                                                    <option value="Service Apartment" class="text-muted" {{ $data->room_category == "Service Apartment" ? 'selected' : '' }}>Service Apartment</option>
+                                                    <option value="Suite" class="text-muted" {{ $data->room_category == "Suite" ? 'selected' : '' }}>Suite</option>
+                                                    <option value="Family" class="text-muted" {{ $data->room_category == "Family" ? 'selected' : '' }}>Family</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
