@@ -24,24 +24,8 @@ class BookingController extends Controller
         return view('pages.backend.booking.create', compact('branch', 'room'));
     }
 
-    public function store(Request $request)
+    public function store()
     {
-        $data = new Booking();
-
-        $data->booking_customer_name = $request->get('booking_customer_name');
-        $data->proof_type = $request->get('proof_type');
-        $data->proof_image = $request->get('proof_image');
-        $data->customer_photo = $request->get('customer_photo');
-        $data->booking_date = $request->get('booking_date');
-        $data->chick_in_date = $request->get('chick_in_date');
-        $data->chick_in_time = $request->get('chick_in_time');
-        $data->phone_number = $request->get('phone_number');
-        $data->whats_app_number = $request->get('whats_app_number');
-        $data->email_id = $request->get('email_id');
-        $data->status = $request->get('status');
-
-        $data->save();
-
         return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
     }
 
@@ -52,27 +36,9 @@ class BookingController extends Controller
         return view('pages.backend.booking.edit', compact('data'));
     }
 
-    public function update(Request $request, $id)
+    public function update()
     {
-        $data = Booking::findOrFail($id);
-
-        $data->booking_customer_name = $request->get('booking_customer_name');
-        $data->proof_type = $request->get('proof_type');
-        $data->proof_image = $request->get('proof_image');
-        $data->customer_photo = $request->get('customer_photo');
-        $data->booking_date = $request->get('booking_date');
-        $data->chick_in_date = $request->get('chick_in_date');
-        $data->chick_in_time = $request->get('chick_in_time');
-        $data->chick_out_date = $request->get('chick_out_date');
-        $data->chick_out_time = $request->get('chick_out_time');
-        $data->phone_number = $request->get('phone_number');
-        $data->whats_app_number = $request->get('whats_app_number');
-        $data->email_id = $request->get('email_id');
-        $data->status = $request->get('status');
-
-        $data->update();
-
-        return redirect()->route('booking.index')->with('update', 'Booking record detail successfully changed !');
+       return redirect()->route('booking.index')->with('update', 'Booking record detail successfully changed !');
     }
 
     public function delete($id)

@@ -124,7 +124,7 @@
                                                         <label for="horizontal-firstname-input" class="col-form-label">
                                                             Room Count Number - 01</label>
                                                     </div>
-                                                    <div class="col-md-7 col-5">
+                                                    <div class="col-md-8 col-5">
                                                         <select class="form-control js-example-basic-single" name="branch_id" required>
                                                             <option value="" disabled selected hidden class="text-muted">
                                                                 Select Room</option>
@@ -132,11 +132,6 @@
                                                             <option value="{{ $rooms->id }}">Room No. {{ $rooms->room_number }} - {{ $rooms->room_floor }} Floor - {{ $rooms->room_type }}</option>
                                                             @endforeach
                                                         </select>
-                                                    </div>
-                                                    <div class="col-md-1 col-4">
-                                                        <div class="d-grid">
-                                                            <input data-repeater-delete type="button" class="btn btn-primary inner" value="Delete" />
-                                                        </div>
                                                     </div>
                                                     <div class="col-md-1 col-4">
                                                         <div class="d-grid">

@@ -56,6 +56,18 @@
                         <span>Booking</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('namelist.index','namelist.create','namelist.edit') ? 'mm-active' : '' }}">
+                    <a href="{{ route('namelist.index') }}" class="waves-effect">
+                        <i class="uil-users-alt"></i>
+                        <span>Name List</span>
+                    </a>
+                </li>
+                <li class="{{ Route::is('income.index','income.create','income.edit') ? 'mm-active' : '' }}">
+                    <a href="{{ route('income.index') }}" class="waves-effect">
+                        <i class="uil-money-withdraw"></i>
+                        <span>Income</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->
