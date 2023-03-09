@@ -59,6 +59,7 @@
                                     <tr>
                                         <th>Sl. No</th>
                                         <th>Date</th>
+                                        <th>Branch</th>
                                         <th>Name</th>
                                         <th>Amount</th>
                                         <th>Note</th>
@@ -70,6 +71,7 @@
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
                                         <td>{{ $datas->date }}</td>
+                                        <td>{{ $datas->branch->name }}</td>
                                         <td>{{ $datas->namelist->name }}</td>
                                         <td>₹ {{ $datas->amount }}</td>
                                         <td>{{ $datas->note }}</td>

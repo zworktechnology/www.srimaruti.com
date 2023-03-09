@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Expense;
 use App\Models\Namelist;
 use Illuminate\Http\Request;
@@ -12,8 +13,9 @@ class ExpenseController extends Controller
     {
         $data = Expense::where('soft_delete', '!=', 1)->get();
         $namelist = Namelist::where('soft_delete', '!=', 1)->get();
+        $branch = Branch::where('soft_delete', '!=', 1)->get();
 
-        return view('pages.backend.expense.index', compact('data', 'namelist'));
+        return view('pages.backend.expense.index', compact('data', 'namelist', 'branch'));
     }
 
     public function store(Request $request)
@@ -24,6 +26,7 @@ class ExpenseController extends Controller
         $data->amount = $request->get('amount');
         $data->note = $request->get('note');
         $data->namelist_id = $request->get('namelist_id');
+        $data->branch_id = $request->get('branch_id');
 
         $data->save();
 
@@ -34,8 +37,9 @@ class ExpenseController extends Controller
     {
         $data = Expense::findOrFail($id);
         $namelist = Namelist::where('soft_delete', '!=', 1)->get();
+        $branch = Branch::where('soft_delete', '!=', 1)->get();
 
-        return view('pages.backend.expense.edit', compact('data', 'namelist'));
+        return view('pages.backend.expense.edit', compact('data', 'namelist', 'branch'));
     }
 
     public function update(Request $request, $id)
@@ -46,6 +50,7 @@ class ExpenseController extends Controller
         $data->amount = $request->get('amount');
         $data->note = $request->get('note');
         $data->namelist_id = $request->get('namelist_id');
+        $data->branch_id = $request->get('branch_id');
 
         $data->update();
 

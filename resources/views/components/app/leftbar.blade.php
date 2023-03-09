@@ -50,16 +50,17 @@
                         <span>Room</span>
                     </a>
                 </li>
-                <li class="{{ Route::is('booking.index','booking.create','booking.edit') ? 'mm-active' : '' }}">
-                    <a href="{{ route('booking.index') }}" class="waves-effect">
-                        <i class="uil-book-open"></i>
-                        <span>Booking</span>
-                    </a>
-                </li>
                 <li class="{{ Route::is('namelist.index','namelist.create','namelist.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('namelist.index') }}" class="waves-effect">
                         <i class="uil-users-alt"></i>
                         <span>Name List</span>
+                    </a>
+                </li>
+                <li class="menu-title">Account</li>
+                <li class="{{ Route::is('booking.index','booking.create','booking.edit') ? 'mm-active' : '' }}">
+                    <a href="{{ route('booking.index') }}" class="waves-effect">
+                        <i class="uil-book-open"></i>
+                        <span>Booking</span>
                     </a>
                 </li>
                 <li class="{{ Route::is('income.index','income.create','income.edit') ? 'mm-active' : '' }}">

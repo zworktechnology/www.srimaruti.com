@@ -14,11 +14,17 @@ class Income extends Model
         'amount',
         'note',
         'namelist_id',
+        'branch_id',
         'soft_delete'
     ];
 
     public function namelist()
     {
         return $this->belongsTo(Namelist::class, 'namelist_id');
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class, 'branch_id');
     }
 }

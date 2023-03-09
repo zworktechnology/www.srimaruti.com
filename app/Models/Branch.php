@@ -19,4 +19,14 @@ class Branch extends Model
     {
         return $this->hasMany(Room::class, 'branch_id');
     }
+
+    public function income()
+    {
+        return $this->hasMany(Income::class, 'branch_id');
+    }
+
+    public function expense()
+    {
+        return $this->hasMany(Expense::class, 'branch_id');
+    }
 }
