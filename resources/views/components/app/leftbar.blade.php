@@ -50,6 +50,12 @@
                         <span>Room</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('booking.index','booking.create','booking.edit') ? 'mm-active' : '' }}">
+                    <a href="{{ route('booking.index') }}" class="waves-effect">
+                        <i class="uil-book-open"></i>
+                        <span>Booking</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

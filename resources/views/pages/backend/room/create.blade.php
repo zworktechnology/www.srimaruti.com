@@ -37,6 +37,13 @@
                 </div>
                 <div class="row mb-4">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
+                        Price Per Day </label>
+                    <div class="col-sm-12">
+                        <input type="number" class="form-control" name="price_per_day" placeholder="Enter room price per day ">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         Type </label>
                     <div class="col-sm-12">
                         <select class="form-control js-example-basic-single" name="room_type" required>

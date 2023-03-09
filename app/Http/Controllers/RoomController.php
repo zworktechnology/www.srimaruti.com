@@ -24,6 +24,7 @@ class RoomController extends Controller
         $data->room_type = $request->get('room_type');
         $data->room_floor = $request->get('room_floor');
         $data->branch_id = $request->get('branch_id');
+        $data->price_per_day = $request->get('price_per_day');
 
         $data->save();
 
@@ -46,6 +47,7 @@ class RoomController extends Controller
         $data->room_type = $request->get('room_type');
         $data->room_floor = $request->get('room_floor');
         $data->branch_id = $request->get('branch_id');
+        $data->price_per_day = $request->get('price_per_day');
 
         $data->update();
 

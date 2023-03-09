@@ -7,18 +7,16 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">Room</h4>
-                        <div class="text-sm-end mt-2 mt-sm-0" hidden>
-                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                Add new
-                            </button>
+                        <h4 class="mb-0">Booking</h4>
+                        <div class="text-sm-end mt-2 mt-sm-0">
+                            <a href="{{ route('booking.create') }}">
+                                <button type="button" class="btn btn-primary waves-effect waves-light">
+                                    New Booking
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                @include('pages.backend.room.create')
             </div>
 
             @if (\Session::has('add'))
@@ -51,46 +49,46 @@
             @endif
 
             <div class="row" style="display: flex">
-                <div class="col-9">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Sl. No</th>
+                                        <th>Customer</th>
                                         <th>Branch</th>
-                                        <th>Floor</th>
-                                        <th>Room No</th>
-                                        <th>Room Type</th>
-                                        <th>Price</th>
+                                        <th>Room Details</th>
+                                        <th>Booking Date</th>
+                                        <th>Check-In Date</th>
+                                        <th>Check-Out Date</th>
                                         <th>Booking Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $keydata => $datas)
+                                    {{-- @foreach ($data as $keydata => $datas)
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
-                                        <td>{{ $datas->branch->name }}</td>
-                                        <td>{{ $datas->room_floor }}</td>
-                                        <td>{{ $datas->room_number }}</td>
-                                        <td>{{ $datas->room_type }}</td>
-                                        <td>₹ {{ $datas->price_per_day }}</td>
-                                        @if ($datas->booking_status == 0)
-                                        <td style="color:red">Open</td>
-                                        @else
-                                        <td style="color:green">Booked</td>
-                                        @endif
-                                        <td>
-                                            <ul class="list-unstyled hstack gap-1 mb-0">
-                                                <li>
-                                                    <a href="{{ route('room.edit', ['id' => $datas->id]) }}" class="btn btn-sm btn-soft-info">Edit</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#jobDelete{{ $datas->id }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal">Delete</a>
-                                                </li>
-                                            </ul>
-                                        </td>
+                                    <td>{{ $datas->branch->name }}</td>
+                                    <td>{{ $datas->room_floor }}</td>
+                                    <td>{{ $datas->room_number }}</td>
+                                    <td>{{ $datas->room_type }}</td>
+                                    @if ($datas->booking_status == 0)
+                                    <td style="color:red">Open</td>
+                                    @else
+                                    <td style="color:green">Booked</td>
+                                    @endif
+                                    <td>
+                                        <ul class="list-unstyled hstack gap-1 mb-0">
+                                            <li>
+                                                <a href="{{ route('room.edit', ['id' => $datas->id]) }}" class="btn btn-sm btn-soft-info">Edit</a>
+                                            </li>
+                                            <li>
+                                                <a href="#jobDelete{{ $datas->id }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal">Delete</a>
+                                            </li>
+                                        </ul>
+                                    </td>
                                     </tr>
                                     <div class="modal fade" id="firstmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -113,16 +111,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card">
-                        <div class="card-body">
-                            @include('pages.backend.room.create')
                         </div>
                     </div>
                 </div>

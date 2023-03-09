@@ -44,5 +44,8 @@
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
     });
-
 </script>
+
+!-- form repeater js -->
+<script src="{{ asset('assets/backend/libs/jquery.repeater/jquery.repeater.min.js') }}"></script>
+<script src="{{ asset('assets/backend/js/pages/form-repeater.int.js') }}"></script>

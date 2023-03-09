@@ -50,6 +50,13 @@
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Price Per Day </label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" name="price_per_day" placeholder="Enter room price per day " value="{{ $data->price_per_day }}">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Type </label>
                                             <div class="col-sm-9">
                                                 <select class="form-control js-example-basic-single" name="room_type" required>
