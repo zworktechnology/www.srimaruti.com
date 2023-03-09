@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ChangeProfileController;
+use App\Http\Controllers\CloseAccountController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\NamelistController;
@@ -175,5 +176,23 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/openaccount/delete/{id}', [OpenAccountController::class, 'delete'])->name('openaccount.delete');
         // DESTROY
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/openaccount/destroy/{id}', [OpenAccountController::class, 'destroy'])->name('openaccount.destroy');
+    });
+
+    // CLOSE ACCOUNT CONTROLLER
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+        // INDEX
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/closeaccount', [CloseAccountController::class, 'index'])->name('closeaccount.index');
+        // CREATE
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/closeaccount/create', [CloseAccountController::class, 'create'])->name('closeaccount.create');
+        // STORE
+        Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/closeaccount/store', [CloseAccountController::class, 'store'])->name('closeaccount.store');
+        // EDIT
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/closeaccount/edit/{id}', [CloseAccountController::class, 'edit'])->name('closeaccount.edit');
+        // UPDATE
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/closeaccount/update/{id}', [CloseAccountController::class, 'update'])->name('closeaccount.update');
+        // DELETE
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/closeaccount/delete/{id}', [CloseAccountController::class, 'delete'])->name('closeaccount.delete');
+        // DESTROY
+        Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/closeaccount/destroy/{id}', [CloseAccountController::class, 'destroy'])->name('closeaccount.destroy');
     });
 });

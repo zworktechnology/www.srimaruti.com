@@ -81,6 +81,12 @@
                         <span>Open Account</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('closeaccount.index','closeaccount.create','closeaccount.edit') ? 'mm-active' : '' }}">
+                    <a href="{{ route('closeaccount.index') }}" class="waves-effect">
+                        <i class="uil-lock-alt"></i>
+                        <span>Close Account</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->
