@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
+use App\Models\CloseAccount;
+use App\Models\Expense;
+use App\Models\Income;
+use App\Models\OpenAccount;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -23,6 +29,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $today = Carbon::now()->format('Y-m-d');
+        $branch = Branch::where('soft_delete', '!=', 1)->get();
+        $income = Income::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('amount');
+        $expense = Expense::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('amount');
+        $openaccount = OpenAccount::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('amount');
+
+        return view('home', compact('today', 'branch', 'income', 'expense', 'openaccount'));
     }
 }

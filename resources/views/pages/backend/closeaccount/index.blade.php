@@ -60,16 +60,7 @@
                                         <th>Sl. No</th>
                                         <th>Date</th>
                                         <th>Branch</th>
-                                        <th>2000</th>
-                                        <th>500</th>
-                                        <th>200</th>
-                                        <th>100</th>
-                                        <th>50</th>
-                                        <th>20</th>
-                                        <th>10</th>
-                                        <th>5</th>
-                                        <th>2</th>
-                                        <th>1</th>
+                                        <th>Total</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -79,18 +70,12 @@
                                         <td>{{ ++$keydata }}</td>
                                         <td>{{ date('d M, Y', strtotime($datas->date)) }}</td>
                                         <td>{{ $datas->branch->name }}</td>
-                                        <td>{{ $datas->count_2000 }} = {{ 2000 * $datas->count_2000 }}</td>
-                                        <td>{{ $datas->count_500 }} = {{ 500 * $datas->count_500 }}</td>
-                                        <td>{{ $datas->count_200 }} = {{ 200 * $datas->count_200 }}</td>
-                                        <td>{{ $datas->count_100 }} = {{ 100 * $datas->count_100 }}</td>
-                                        <td>{{ $datas->count_50 }} = {{ 50 * $datas->count_50 }}</td>
-                                        <td>{{ $datas->count_20 }} = {{ 20 * $datas->count_20 }}</td>
-                                        <td>{{ $datas->count_10 }} = {{ 10 * $datas->count_10 }}</td>
-                                        <td>{{ $datas->count_5 }} = {{ 5 * $datas->count_5 }}</td>
-                                        <td>{{ $datas->count_2 }} = {{ 2 * $datas->count_2 }}</td>
-                                        <td>{{ $datas->count_1 }} = {{ 1 * $datas->count_1 }}</td>
+                                        <td>₹ {{ 2000 * $datas->count_2000 + 500 * $datas->count_500 + 200 * $datas->count_200 + 100 * $datas->count_100 + 20 * $datas->count_20 + 10 * $datas->count_10 + 5 * $datas->count_5 + 2 * $datas->count_2 + 1 * $datas->count_1 }}</td>
                                         <td>
                                             <ul class="list-unstyled hstack gap-1 mb-0">
+                                                <li>
+                                                    <a href="#jobDelete{{ $datas->id }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-warning" data-bs-target="#firstmodalview{{ $datas->id }}">View</a>
+                                                </li>
                                                 <li>
                                                     <a href="{{ route('closeaccount.edit', ['id' => $datas->id]) }}" class="btn btn-sm btn-soft-info">Edit</a>
                                                 </li>
@@ -100,6 +85,9 @@
                                             </ul>
                                         </td>
                                     </tr>
+                                    <div class="modal fade" id="firstmodalview{{ $datas->id }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+                                        @include('pages.backend.closeaccount.view')
+                                    </div>
                                     <div class="modal fade" id="firstmodal{{ $datas->id }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -108,7 +96,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record - Amount of ₹ {{ $datas->amount }}.</p>
+                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record.</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form autocomplete="off" method="POST" action="{{ route('closeaccount.delete', ['id' => $datas->id]) }}">
