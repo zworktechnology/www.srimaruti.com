@@ -13,8 +13,13 @@
                 <li>
                     <a href="{{ route('about') }}">About us</a>
                 </li>
-                <li>
-                    <a href="{{ route('room') }}">Rooms</a>
+                <li class="menu-item-has-children">
+                    <a href="{{ route('room.samyapuram') }}">Rooms</a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('room.samyapuram') }}">Samayapuram</a></li>
+                        <li><a href="{{ route('room.gunaseelam') }}">Gunaseelam</a></li>
+                        <li><a href="{{ route('room.srirangam') }}">Srirangam</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{{ route('masstrust') }}">Sri Mass Trust</a>
@@ -74,9 +79,9 @@
                                     <i class="fa-regular fa-angle-down"></i>
                                 </div>
                                 <ul class="dropdown-menu d-none d-lg-block">
-                                    <li><a href=""><span>Samayapuram, Tiruchirappalli</span></a></li>
-                                    <li><a href=""><span>Gunaseelam, Tiruchirappalli</span></a></li>
-                                    <li><a href=""><span>Srirangam, Tiruchirappalli</span></a></li>
+                                    <li><a href="{{ route('room.samyapuram') }}"><span>Samayapuram, Tiruchirappalli</span></a></li>
+                                    <li><a href="{{ route('room.gunaseelam') }}"><span>Gunaseelam, Tiruchirappalli</span></a></li>
+                                    <li><a href="{{ route('room.srirangam') }}"><span>Srirangam, Tiruchirappalli</span></a></li>
                                 </ul>
                             </div>
                         </div>

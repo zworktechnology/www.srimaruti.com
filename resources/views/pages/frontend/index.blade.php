@@ -60,11 +60,10 @@
                 <div class=" col-xl-7">
                     <nav class="tablist">
                         <div class="filter-menu nav nav-tabs mb-45" id="nav-tab" role="tablist">
-                            <button class="active" id="nav-dexury1-tab" data-bs-toggle="tab" data-bs-target="#nav-dexury1-one" type="button" role="tab">DELUXE</button>
-                            <button class="" id="nav-luxury1-tab" data-bs-toggle="tab" data-bs-target="#nav-luxury1-two" type="button" role="tab">LUXURY</button>
-                            <button class="" id="nav-queen1-tab" data-bs-toggle="tab" data-bs-target="#nav-queen1-three" type="button" role="tab">QUEEN</button>
-                            <button class="" id="nav-single1-tab" data-bs-toggle="tab" data-bs-target="#nav-single1-four" type="button" role="tab">SINGLE</button>
-                            <button class="" id="nav-suites1-tab" data-bs-toggle="tab" data-bs-target="#nav-suites1-five" type="button" role="tab">SUITES</button>
+                            <button class="active" id="nav-dexury1-tab" data-bs-toggle="tab" data-bs-target="#nav-dexury1-one" type="button" role="tab">Double</button>
+                            <button class="" id="nav-luxury1-tab" data-bs-toggle="tab" data-bs-target="#nav-luxury1-two" type="button" role="tab">Triple</button>
+                            <button class="" id="nav-queen1-tab" data-bs-toggle="tab" data-bs-target="#nav-queen1-three" type="button" role="tab">Quad</button>
+                            <button class="" id="nav-single1-tab" data-bs-toggle="tab" data-bs-target="#nav-single1-four" type="button" role="tab">Guest House & Soot</button>
                         </div>
                     </nav>
                 </div>
@@ -77,112 +76,29 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_1.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
+                                            <span class="service-card_subtitle">₹ 1200 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment dexury Room</a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Samayapuram</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
+                                            <span class="ser-title">2 Bed</span>
                                         </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_2.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment luxury Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
+                                            <span class="ser-title">1 Extra Bed</span>
                                         </div>
                                     </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_3.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment queen Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
                                         <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
                                     </div>
                                 </div>
@@ -196,31 +112,24 @@
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
+                                            <span class="service-card_subtitle">₹ 1100 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment single Room</a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
+                                            <span class="ser-title">2 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
+                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <span class="ser-title">1 Extra Bed</span>
                                         </div>
                                     </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 700</a>
                                         <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
                                     </div>
                                 </div>
@@ -229,36 +138,29 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_5.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
+                                            <span class="service-card_subtitle">₹ 1200 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment suites Room</a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Gunaseelam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
+                                            <span class="ser-title">2 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
+                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <span class="ser-title">1 Extra Bed</span>
                                         </div>
                                     </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
                                         <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
                                     </div>
                                 </div>
@@ -266,117 +168,35 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="tab-pane slider-shadow fade" id="nav-luxury1-two" role="tabpanel">
                     <div class="row as-carousel" id="blogSlide1" data-slide-show="2" data-xl-slide-show="2" data-lg-slide-show="2" data-md-slide-show="1" data-sm-slide-show="1" data-arrows="true">
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_1.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
+                                            <span class="service-card_subtitle">₹ 1500 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment dexury Room</a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Samayapuram</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
+                                            <span class="ser-title">3 Bed</span>
                                         </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_2.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment luxury Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
+                                            <span class="ser-title">2 Extra Bed</span>
                                         </div>
                                     </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_3.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment queen Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
                                         <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
                                     </div>
                                 </div>
@@ -390,31 +210,24 @@
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
+                                            <span class="service-card_subtitle">₹ 1300 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment single Room</a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
+                                            <span class="ser-title">3 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
+                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <span class="ser-title">1 Extra Bed</span>
                                         </div>
                                     </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
                                         <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
                                     </div>
                                 </div>
@@ -423,36 +236,29 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_5.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
+                                            <span class="service-card_subtitle">₹ 1500 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment suites Room</a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Gunaseelam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
+                                            <span class="ser-title">3 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
+                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <span class="ser-title">2 Extra Bed</span>
                                         </div>
                                     </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
                                         <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
                                     </div>
                                 </div>
@@ -460,117 +266,35 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="tab-pane slider-shadow fade" id="nav-queen1-three" role="tabpanel">
                     <div class="row as-carousel" id="blogSlide1" data-slide-show="2" data-xl-slide-show="2" data-lg-slide-show="2" data-md-slide-show="1" data-sm-slide-show="1" data-arrows="true">
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_1.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
+                                            <span class="service-card_subtitle">₹ 1500 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment dexury Room</a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
+                                            <span class="ser-title">4 Bed</span>
                                         </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_2.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment luxury Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
+                                            <span class="ser-title">1 Extra Bed</span>
                                         </div>
                                     </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_3.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment queen Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
                                         <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
                                     </div>
                                 </div>
@@ -584,69 +308,24 @@
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
+                                            <span class="service-card_subtitle">₹ 1800 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment single Room</a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Gunaseelam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
+                                            <span class="ser-title">4 Bed</span>
                                         </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_5.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment suites Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
+                                            <span class="ser-title">2 Extra Bed</span>
                                         </div>
                                     </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1500</a>
                                         <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
                                     </div>
                                 </div>
@@ -654,117 +333,31 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="tab-pane slider-shadow fade" id="nav-single1-four" role="tabpanel">
                     <div class="row as-carousel" id="blogSlide1" data-slide-show="2" data-xl-slide-show="2" data-lg-slide-show="2" data-md-slide-show="1" data-sm-slide-show="1" data-arrows="true">
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_1.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
+                                            <span class="service-card_subtitle">₹ 1700 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment dexury Room</a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Soot Room at <span style="color: #da3c3c">Samayapuram</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
+                                            <span class="ser-title">4 Bed</span>
                                         </div>
                                     </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_2.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment luxury Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_3.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment queen Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1700</a>
                                         <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
                                     </div>
                                 </div>
@@ -778,69 +371,24 @@
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
+                                            <span class="service-card_subtitle">₹ 2200 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment single Room</a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Guest House at <span style="color: #da3c3c">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
+                                            <span class="ser-title">7 Bed</span>
                                         </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_5.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment suites Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
                                         <div class="service-icon">
                                             <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
+                                            <span class="ser-title">7 Extra Bed</span>
                                         </div>
                                     </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 2200</a>
                                         <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
                                     </div>
                                 </div>
@@ -848,200 +396,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane slider-shadow fade" id="nav-suites1-five" role="tabpanel">
-                    <div class="row as-carousel" id="blogSlide1" data-slide-show="2" data-xl-slide-show="2" data-lg-slide-show="2" data-md-slide-show="1" data-sm-slide-show="1" data-arrows="true">
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_1.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment dexury Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_2.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment luxury Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_3.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment queen Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment single Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_5.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
-                                            <span class="service-card_subtitle">PRICE $120.00 NIGHT</span>
-                                            <div class="service-star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Apartment suites Room</a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Double Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}" alt="">
-                                            <span class="ser-title">3 Guest</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">Phosphorescently incubate equity invested customer service.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">VIEW DETAILS</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -1091,7 +446,7 @@
                             <img src="{{ asset('assets/frontend/img/icon/resturant.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
-                            <h3 class="service-box_title">Resturant</h3>
+                            <h3 class="service-box_title">RO Drinking Water</h3>
                             <p class="service-box_desc">Authoritatively parallel task multifunctional communities before cross functional.</p>
                         </div>
                     </div>
@@ -1102,7 +457,7 @@
                             <img src="{{ asset('assets/frontend/img/icon/spa.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
-                            <h3 class="service-box_title">Spa Salon</h3>
+                            <h3 class="service-box_title">24/7 Hot Water</h3>
                             <p class="service-box_desc">Authoritatively parallel task multifunctional communities before cross functional.</p>
                         </div>
                     </div>
@@ -1113,7 +468,7 @@
                             <img src="{{ asset('assets/frontend/img/icon/swimming.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
-                            <h3 class="service-box_title">Swimming Pool</h3>
+                            <h3 class="service-box_title">Television</h3>
                             <p class="service-box_desc">Authoritatively parallel task multifunctional communities before cross functional.</p>
                         </div>
                     </div>
@@ -1124,7 +479,7 @@
                             <img src="{{ asset('assets/frontend/img/icon/wifi.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
-                            <h3 class="service-box_title">High Speed Wifi</h3>
+                            <h3 class="service-box_title">Wifi & Intercom</h3>
                             <p class="service-box_desc">Authoritatively parallel task multifunctional communities before cross functional.</p>
                         </div>
                     </div>
@@ -1168,7 +523,7 @@
                             <img src="{{ asset('assets/frontend/img/icon/shower.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
-                            <h3 class="service-box_title">Shower Bathtub</h3>
+                            <h3 class="service-box_title">Laundry</h3>
                             <p class="service-box_desc">Authoritatively parallel task multifunctional communities before cross functional.</p>
                         </div>
                     </div>
@@ -1223,7 +578,7 @@
                                     <img src="{{ asset('assets/frontend/img/shape/bed.svg') }}" alt="">
                                 </div>
                                 <div class="choose-box_content">
-                                    <h3 class="choose-box_title text-white">Room Upgrade</h3>
+                                    <h3 class="choose-box_title text-white">Luxury Room</h3>
                                     <p class="choose-box_desc">Dynamically facilitate best of breed benefits.</p>
                                 </div>
                             </div>
@@ -1375,85 +730,8 @@
         </div>
     </section>
 
-    <!-- Facality -->
-    <div class="space facality-area">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-xl-12">
-                    <div class="title-area mb-30 mt-n1 text-center">
-                        <span class="sub-title">Apartment Facility</span>
-                        <h2 class="sec-title">Our Amazing Apartment Facility</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class=" col-xl-8">
-                    <div class="hotel-box-wrapper style3">
-                        <div class="hotel-image">
-                            <img src="{{ asset('assets/frontend/img/normal/breakfast.jpg') }}" alt="">
-                        </div>
-                        <div class="hotel-card-content">
-                            <span class="hotel-card_subtitle">Breakfast</span>
-                            <h3 class="hotel-card_title"><a href="javascript:void(0);" tabindex="-1">Eat Foods And Drinks</a></h3>
-                            <p class="hotel-card_text">Conveniently customize economically sound catalysts for change before multidisciplinary partnerships. Rapaciously pursue.</p>
-                            <span class="hotel-date">Open Daily : 7.30 am - 9.00am</span>
-                            <div class="hotel-content-btn mt-30">
-                                <a href="javascript:void(0);" class="as-btn shadow-none" tabindex="-1">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hotel-box-wrapper style3">
-                        <div class="hotel-image style2">
-                            <img src="{{ asset('assets/frontend/img/normal/bar.jpg') }}" alt="">
-                        </div>
-                        <div class="hotel-card-content">
-                            <span class="hotel-card_subtitle">Bar & Pub</span>
-                            <h3 class="hotel-card_title"><a href="service.html.htm" tabindex="-1">Join Party Of Drinks</a></h3>
-                            <p class="hotel-card_text">Collaboratively fashion distributed data with 2.0 resources. Enthusiastically scale client.</p>
-                            <div class="hotel-wrapper">
-                                <div class="about-icon-list">
-                                    <ul>
-                                        <li><i class="fa-solid fa-circle-check"></i>Maecenas convi</li>
-                                        <li><i class="fa-solid fa-circle-check"></i>Curabitur pul</li>
-                                    </ul>
-                                </div>
-                                <div class="about-icon-list">
-                                    <ul>
-                                        <li><i class="fa-solid fa-circle-check"></i>Condime</li>
-                                        <li><i class="fa-solid fa-circle-check"></i>Volutpat eni</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="hotel-content-btn mt-30">
-                                <a href="javascript:void(0);" class="as-btn shadow-none" tabindex="-1">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4">
-                    <div class="hotel-box-content style3">
-                        <div class="hotel-image">
-                            <img src="{{ asset('assets/frontend/img/normal/casino.jpg') }}" alt="">
-                        </div>
-                        <div class="hotel-card-content">
-                            <span class="hotel-card_subtitle">Casino</span>
-                            <h3 class="hotel-card_title"><a href="javascript:void(0);" tabindex="-1">Play The Royal Casino</a></h3>
-                            <p class="hotel-card_text">Collaboratively fashion distributed data with 2.0 resources. Enthusiastically scale client-centered scenario rather. Uniquely engineer goal-oriented customer.</p>
-                            <span class="hotel-date">Open Daily : 7.30 am - 11.00pm</span>
-                            <div class="hotel-content-btn mt-30">
-                                <a href="javascript:void(0);" class="as-btn shadow-none" tabindex="-1">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Cta Area -->
-    <div class="cta-banner">
+    <div class="cta-banner" style="margin-top: 90px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">

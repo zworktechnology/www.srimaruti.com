@@ -28,7 +28,9 @@ Auth::routes();
 Route::get('/', function () {return view('welcome');})->name('index');
 
 Route::get('/about', function () {return view('pages.frontend.about');})->name('about');
-Route::get('/room', function () {return view('pages.frontend.room');})->name('room');
+Route::get('/room/samyapuram', function () {return view('pages.frontend.room-samyapuram');})->name('room.samyapuram');
+Route::get('/room/gunaseelam', function () {return view('pages.frontend.room-gunaseelam');})->name('room.gunaseelam');
+Route::get('/room/srirangam', function () {return view('pages.frontend.room-srirangam');})->name('room.srirangam');
 Route::get('/mass-trust', function () {return view('pages.frontend.masstrust');})->name('masstrust');
 Route::get('/kosaalai', function () {return view('pages.frontend.kosaalai');})->name('kosaalai');
 Route::get('/contact', function () {return view('pages.frontend.contact');})->name('contact');

@@ -77,7 +77,7 @@
                                     <i class="fa-solid fa-location-dot"></i>
                                 </div>
                                 <p class="info-box_text">
-                                    No. 122, South Chitra Street
+                                    No. 122, South Chitra Street, Near Second Entrance
                                 </p>
                             </div>
                             <div class="info-box">
