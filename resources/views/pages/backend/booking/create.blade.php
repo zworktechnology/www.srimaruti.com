@@ -85,12 +85,12 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Photo </label>
                                             <div class="col-sm-9">
-                                                <div id="my_camera"></div>
-                                                <br/>
-                                                <input type=button value="Take Snapshot" class="btn btn-success" style="background: #418763;" onClick="take_snapshot()">
+                                                <div style="display: flex;">
+                                                    <div id="my_camera"></div>
+                                                    <div id="captured_image" style="border:1px #584f72; background:#f6f6f6;">Your captured image will appear here...</div>
+                                                </div>
+                                                <input style="margin-top: 10px; margin-left: 40px;" type=button value="Take Snapshot" class="btn btn-success" onClick="take_snapshot()">
                                                 <input type="hidden" name="customer_photo" class="image-tag">
-                                                <div class="col-md-3" id="captured_image" style="padding:20px; border:1px #584f72; background:#f6f6f6;">Your captured image will appear here...</div>
-                                                
                                             </div>
                                         </div>
                                         <hr>
@@ -111,7 +111,7 @@
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 People </label>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-5">
                                                 <input type="number" class="form-control" name="adult_count" placeholder="Adult - Enter here ">
                                             </div>
                                             <div class="col-sm-4">
@@ -125,31 +125,26 @@
                                         <div class="inner-repeater mb-4">
                                             <div data-repeater-list="inner-group" class="inner form-group">
                                                 <div data-repeater-item class="inner mb-3 row">
-                                                    <div class="col-md-3 col-8">
+                                                    <div class="col-sm-3">
                                                         <label for="horizontal-firstname-input" class="col-form-label">
-                                                            Room Count Number - 01</label>
+                                                            Room Number</label>
                                                     </div>
-                                                    <div class="dynamic_field col-md-9 col-5">
-                                                   
-                                                            <table class="table-fixed " id="">
-                                                                <tbody  id="roomfields">
-                                                                    <tr>
-                                                                        <td class="col-sm-3 px-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
-                                                                        <input type="hidden" id="room_auto_id"name="room_auto_id[]" />
+                                                    <div class="dynamic_field col-sm-9">
+                                                        <table class="table-fixed col-12 " id="">
+                                                            <tbody id="roomfields">
+                                                                <tr>
+                                                                    <td class="col-9 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
+                                                                        <input type="hidden" id="room_auto_id" name="room_auto_id[]" />
                                                                         <select class="form-control room_id" name="room_id[]" id="" required>
                                                                             <option value="" disabled selected hidden class="text-muted">
                                                                                 Select Room</option>
                                                                         </select></td>
-                                                                        <td class="col-sm-2"><button
-                                                                            class="text-white font-medium rounded-lg text-sm  text-center btn btn-success"
-                                                                            type="button" id="addfloorfields" value="Add">Add</button>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        
+                                                                    <td class="col-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addfloorfields" value="Add">Add Another Room</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
                                                     </div>
-                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -157,7 +152,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <input type="submit" class="btn btn-primary" style="margin-right: 10px;" name="booknow" value="booknow">
-                                    <input type="submit" class="btn btn-primary" name="bookandcheckin" value="bookandcheckin"/>
+                                    <input type="submit" class="btn btn-primary" name="bookandcheckin" value="bookandcheckin" />
                                 </div>
                             </form>
                         </div>
@@ -168,131 +163,105 @@
     </div>
 </div>
 
-
-
-
-
 <script language="JavaScript">
+    $(document).ready(function() {
 
-
-
-$(document).ready(function() {
-             
         $('.whatsapp_check').click(function() {
             if ($(this).is(':checked')) {
                 var phone_number = $('#phone_number').val();
-                $('.whats_app_number').val(phone_number);          
+                $('.whats_app_number').val(phone_number);
             } else {
-                $('.whats_app_number').val('');            
+                $('.whats_app_number').val('');
             }
-        });  
-    
-    
-        $('#branch_id').on('change', function(){
-                var branch_id = this.value;
-
-                $.ajax({
-                    url: '/getBranchwiseRoom/' + branch_id,
-                    type: 'get',
-                    dataType: 'json',
-                    success: function(response) {
-                        console.log(response['data']);
-                        var len = response['data'].length;
-                        $('.room_id').html('');
-
-
-                        var $select = $(".room_id").append(
-                            $('<option>', {
-                                value: '0',
-                                text: 'Select'
-                            }));
-                        $(".room_id").append($select);
-
-                        for (var i = 0; i < len; i++) {
-                            $(".room_id").append($('<option>', {
-                                value: response['data'][i].id,
-                                text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type,
-                            }));
-                        }
-                    }
-                });
         });
 
-        
-});  
+        $('#branch_id').on('change', function() {
+            var branch_id = this.value;
 
+            $.ajax({
+                url: '/getBranchwiseRoom/' + branch_id
+                , type: 'get'
+                , dataType: 'json'
+                , success: function(response) {
+                    console.log(response['data']);
+                    var len = response['data'].length;
+                    $('.room_id').html('');
 
+                    var $select = $(".room_id").append(
+                        $('<option>', {
+                            value: '0'
+                            , text: 'Select'
+                        }));
+                    $(".room_id").append($select);
 
-
-        var i = 0;
-        $(document).ready(function() {
-            $("#addfloorfields").click(function() {
-
-                ++i;
-
-                $("#roomfields").append(
-                    '<tr><td class="col-sm-3 px-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="" required><option value="" disabled selected hidden class="text-muted">Select Room</option></select></td><td class="col-sm-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
-                );
-
-
-                var branch_id = $('.branch_id').val();
-                //alert('branch_id');
-                $.ajax({
-                    url: '/getBranchwiseRoom/' + branch_id,
-                    type: 'get',
-                    dataType: 'json',
-                    success: function(response) {
-                        console.log(response['data']);
-                        var len = response['data'].length;
-                        
-                        $('.room_id').html('');
-
-                        var $select = $(".room_id").append(
-                            $('<option>', {
-                                value: '0',
-                                text: 'Select'
-                            }));
-                        $(".room_id").append($select);
-                        if(len > 0){
-                            for (var i = 0; i < len; i++) {
-                                var id = response['data'][i].id;
-                                var name = 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type;
-                                var option = "<option value='"+id+"'>"+name+"</option>"; 
-                                $(".room_id").append(option); 
-                            }
-                        }
+                    for (var i = 0; i < len; i++) {
+                        $(".room_id").append($('<option>', {
+                            value: response['data'][i].id
+                            , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type
+                        , }));
                     }
-                });
-
-
+                }
             });
         });
-        $(document).on('click', '.remove-tr', function() {
-            $(this).parents('tr').remove();
+    });
+
+    var i = 0;
+    $(document).ready(function() {
+        $("#addfloorfields").click(function() {
+            ++i;
+            $("#roomfields").append(
+                '<tr><td class="col-sm-3 px-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="" required><option value="" disabled selected hidden class="text-muted">Select Room</option></select></td><td class="col-sm-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+            );
+
+            var branch_id = $('.branch_id').val();
+            //alert('branch_id');
+            $.ajax({
+                url: '/getBranchwiseRoom/' + branch_id
+                , type: 'get'
+                , dataType: 'json'
+                , success: function(response) {
+                    console.log(response['data']);
+                    var len = response['data'].length;
+
+                    $('.room_id').html('');
+
+                    var $select = $(".room_id").append(
+                        $('<option>', {
+                            value: '0'
+                            , text: 'Select'
+                        }));
+                    $(".room_id").append($select);
+                    if (len > 0) {
+                        for (var i = 0; i < len; i++) {
+                            var id = response['data'][i].id;
+                            var name = 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type;
+                            var option = "<option value='" + id + "'>" + name + "</option>";
+                            $(".room_id").append(option);
+                        }
+                    }
+                }
+            });
         });
+    });
+    $(document).on('click', '.remove-tr', function() {
+        $(this).parents('tr').remove();
+    });
 
+    Webcam.set({
+        width: 350
+        , height: 200
+        , image_format: 'jpeg'
+        , jpeg_quality: 90
+    });
 
-        Webcam.set({
-            width: 490,
-            height: 350,
-            image_format: 'jpeg',
-            jpeg_quality: 90
+    Webcam.attach('#my_camera');
+
+    function take_snapshot() {
+        Webcam.snap(function(data_uri) {
+            $(".image-tag").val(data_uri);
+            document.getElementById('captured_image').innerHTML = '<img src="' + data_uri + '"/>';
         });
-        
-        Webcam.attach( '#my_camera' );
-        
-        function take_snapshot() {
-            Webcam.snap( function(data_uri) {
-                $(".image-tag").val(data_uri);
-                document.getElementById('captured_image').innerHTML = '<img src="'+data_uri+'"/>';
-            } );
-        }
+    }
 
-
-    
-    
-   
- 
 </script>
 @endsection
-
