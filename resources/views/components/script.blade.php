@@ -18,3 +18,5 @@
 <script src="{{ asset('assets/frontend/js/datetimepicker.min.js') }}"></script>
 <!-- Main Js File -->
 <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+

@@ -198,3 +198,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/closeaccount/destroy/{id}', [CloseAccountController::class, 'destroy'])->name('closeaccount.destroy');
     });
 });
+
+
+
+Route::get('getBranchwiseRoom/{id}', [RoomController::class, 'getBranchwiseRoom']);

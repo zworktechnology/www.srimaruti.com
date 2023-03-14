@@ -75,4 +75,13 @@ class RoomController extends Controller
 
         return redirect()->route('room.index')->with('destroy', 'Successfully erased the room record !');
     }
+
+
+
+    public function getBranchwiseRoom($branch_id)
+    {
+        $GetBranch = Room::where('branch_id', '=', $branch_id)->get();
+        $userData['data'] = $GetBranch;
+        echo json_encode($userData);
+    }
 }

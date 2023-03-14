@@ -31,9 +31,9 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Contact Number </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="phone_number" placeholder="Enter here ">
+                                                <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Enter here ">
                                                 <div class="form-check mt-2">
-                                                    <input type="checkbox" class="form-check-input" id="formrow-customCheck">
+                                                    <input type="checkbox" class="form-check-input whatsapp_check" id="formrow-customCheck">
                                                     <label class="form-check-label" for="formrow-customCheck">Same number</label>
                                                 </div>
                                             </div>
@@ -42,7 +42,7 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Whatsapp Number </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="whats_app_number" placeholder="Enter here ">
+                                                <input type="number" class="form-control whats_app_number" name="whats_app_number" placeholder="Enter here ">
                                             </div>
                                         </div>
                                         <div class="row mb-4">
@@ -56,7 +56,7 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Address </label>
                                             <div class="col-sm-9">
-                                                <textarea type="text" class="form-control" name="email_id" placeholder="Enter here "></textarea>
+                                                <textarea type="text" class="form-control" name="address" placeholder="Enter here "></textarea>
                                             </div>
                                         </div>
                                         <hr>
@@ -85,7 +85,12 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Photo </label>
                                             <div class="col-sm-9">
-                                                <input type="file" class="form-control" name="customer_photo">
+                                                <div id="my_camera"></div>
+                                                <br/>
+                                                <input type=button value="Take Snapshot" class="btn btn-success" style="background: #418763;" onClick="take_snapshot()">
+                                                <input type="hidden" name="customer_photo" class="image-tag">
+                                                <div class="col-md-3" id="captured_image" style="padding:20px; border:1px #584f72; background:#f6f6f6;">Your captured image will appear here...</div>
+                                                
                                             </div>
                                         </div>
                                         <hr>
@@ -94,7 +99,7 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Branch </label>
                                             <div class="col-sm-9">
-                                                <select class="form-control js-example-basic-single" name="branch_id" required>
+                                                <select class="form-control js-example-basic-single branch_id" name="branch_id" id="branch_id" required>
                                                     <option value="" disabled selected hidden class="text-muted">
                                                         Select Branch</option>
                                                     @foreach ($branch as $branchs)
@@ -107,10 +112,10 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 People </label>
                                             <div class="col-sm-4">
-                                                <input type="number" class="form-control" name="email_id" placeholder="Adult - Enter here ">
+                                                <input type="number" class="form-control" name="adult_count" placeholder="Adult - Enter here ">
                                             </div>
-                                            <div class="col-sm-5">
-                                                <input type="number" class="form-control" name="email_id" placeholder="Child - Enter here ">
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" name="child_count" placeholder="Child - Enter here ">
                                             </div>
                                         </div>
                                     </div>
@@ -124,28 +129,35 @@
                                                         <label for="horizontal-firstname-input" class="col-form-label">
                                                             Room Count Number - 01</label>
                                                     </div>
-                                                    <div class="col-md-8 col-5">
-                                                        <select class="form-control js-example-basic-single" name="branch_id" required>
-                                                            <option value="" disabled selected hidden class="text-muted">
-                                                                Select Room</option>
-                                                            @foreach ($room as $rooms)
-                                                            <option value="{{ $rooms->id }}">Room No. {{ $rooms->room_number }} - {{ $rooms->room_floor }} Floor - {{ $rooms->room_type }}</option>
-                                                            @endforeach
-                                                        </select>
+                                                    <div class="dynamic_field col-md-9 col-5">
+                                                   
+                                                            <table class="table-fixed " id="">
+                                                                <tbody  id="roomfields">
+                                                                    <tr>
+                                                                        <td class="col-sm-3 px-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
+                                                                        <input type="hidden" id="room_auto_id"name="room_auto_id[]" />
+                                                                        <select class="form-control room_id" name="room_id[]" id="" required>
+                                                                            <option value="" disabled selected hidden class="text-muted">
+                                                                                Select Room</option>
+                                                                        </select></td>
+                                                                        <td class="col-sm-2"><button
+                                                                            class="text-white font-medium rounded-lg text-sm  text-center btn btn-success"
+                                                                            type="button" id="addfloorfields" value="Add">Add</button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        
                                                     </div>
-                                                    <div class="col-md-1 col-4">
-                                                        <div class="d-grid">
-                                                            <input data-repeater-create type="button" class="btn btn-success inner" value="Add" />
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Book Now</button>
-                                    <button type="submit" class="btn btn-primary">Book & Check In</button>
+                                    <input type="submit" class="btn btn-primary" style="margin-right: 10px;" name="booknow" value="booknow">
+                                    <input type="submit" class="btn btn-primary" name="bookandcheckin" value="bookandcheckin"/>
                                 </div>
                             </form>
                         </div>
@@ -155,4 +167,132 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<script language="JavaScript">
+
+
+
+$(document).ready(function() {
+             
+        $('.whatsapp_check').click(function() {
+            if ($(this).is(':checked')) {
+                var phone_number = $('#phone_number').val();
+                $('.whats_app_number').val(phone_number);          
+            } else {
+                $('.whats_app_number').val('');            
+            }
+        });  
+    
+    
+        $('#branch_id').on('change', function(){
+                var branch_id = this.value;
+
+                $.ajax({
+                    url: '/getBranchwiseRoom/' + branch_id,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log(response['data']);
+                        var len = response['data'].length;
+                        $('.room_id').html('');
+
+
+                        var $select = $(".room_id").append(
+                            $('<option>', {
+                                value: '0',
+                                text: 'Select'
+                            }));
+                        $(".room_id").append($select);
+
+                        for (var i = 0; i < len; i++) {
+                            $(".room_id").append($('<option>', {
+                                value: response['data'][i].id,
+                                text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type,
+                            }));
+                        }
+                    }
+                });
+        });
+
+        
+});  
+
+
+
+
+        var i = 0;
+        $(document).ready(function() {
+            $("#addfloorfields").click(function() {
+
+                ++i;
+
+                $("#roomfields").append(
+                    '<tr><td class="col-sm-3 px-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="" required><option value="" disabled selected hidden class="text-muted">Select Room</option></select></td><td class="col-sm-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                );
+
+
+                var branch_id = $('.branch_id').val();
+                //alert('branch_id');
+                $.ajax({
+                    url: '/getBranchwiseRoom/' + branch_id,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log(response['data']);
+                        var len = response['data'].length;
+                        
+                        $('.room_id').html('');
+
+                        var $select = $(".room_id").append(
+                            $('<option>', {
+                                value: '0',
+                                text: 'Select'
+                            }));
+                        $(".room_id").append($select);
+                        if(len > 0){
+                            for (var i = 0; i < len; i++) {
+                                var id = response['data'][i].id;
+                                var name = 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type;
+                                var option = "<option value='"+id+"'>"+name+"</option>"; 
+                                $(".room_id").append(option); 
+                            }
+                        }
+                    }
+                });
+
+
+            });
+        });
+        $(document).on('click', '.remove-tr', function() {
+            $(this).parents('tr').remove();
+        });
+
+
+        Webcam.set({
+            width: 490,
+            height: 350,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+        
+        Webcam.attach( '#my_camera' );
+        
+        function take_snapshot() {
+            Webcam.snap( function(data_uri) {
+                $(".image-tag").val(data_uri);
+                document.getElementById('captured_image').innerHTML = '<img src="'+data_uri+'"/>';
+            } );
+        }
+
+
+    
+    
+   
+ 
+</script>
 @endsection
+
