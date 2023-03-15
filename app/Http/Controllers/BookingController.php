@@ -6,6 +6,8 @@ use App\Models\Booking;
 use App\Models\Branch;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class BookingController extends Controller
 {
@@ -28,12 +30,10 @@ class BookingController extends Controller
     {
 
         $data = new Booking();
+        $random_no =   rand(100,999);
 
         $booknow = $request->get('booknow');
         if($booknow == 'booknow'){
-
-
-        
 
         $data->customer_name = $request->get('booking_customer_name');
         $data->phone_number = $request->get('phone_number');
@@ -42,26 +42,24 @@ class BookingController extends Controller
         $data->address = $request->get('address');
         $data->proof_type = $request->get('proof_type');
 
-
         if ($request->proof_image != "") {
             $proof_image = $request->proof_image;
-            $filename =
-                $data->customer_name . '_ProofType' . '.' . $proof_image->getClientOriginalExtension();
+            $filename = $data->customer_name . $random_no . ' Proof ' . $data->proof_type . '.' . $proof_image->getClientOriginalExtension();
             $request->proof_image->move('assets', $filename);
             $data->proof_image = $filename;
         }
 
         $customer_photo = $request->customer_photo;
-        $folderPath = "assets/";
+        $folderPath = "assets/webcam";
 
         $image_parts = explode(";base64,", $customer_photo);
         $image_type_aux = explode("image/", $image_parts[0]);
         $image_type = $image_type_aux[1];
         $image_base64 = base64_decode($image_parts[1]);
         $fileName = $data->customer_name . '.png';
-        $customerimgfile = $folderPath . $fileName;
-        $data->customer_photo = $customerimgfile;
-
+        $customerimgfile = $folderPath . $random_no . $fileName;
+        file_put_contents($customerimgfile, $image_base64);
+        $data->customer_photo = $fileName;
 
         $data->branch_id = $request->get('branch_id');
         $data->adult_count = $request->get('adult_count');
@@ -71,14 +69,11 @@ class BookingController extends Controller
 
         //$checkindate = date('Y-m-d');
         //$checkintime = date('H:i:s');
-        
 
         $data->save();
-        
-        //dd($data);
         }
 
-        return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
+        //return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
     }
 
     public function edit($id)
