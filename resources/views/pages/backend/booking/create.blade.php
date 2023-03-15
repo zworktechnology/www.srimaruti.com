@@ -151,8 +151,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="submit" class="btn btn-primary" style="margin-right: 10px;" name="booknow" value="Book Now">
-                                    <input type="submit" class="btn btn-primary" name="bookandcheckin" value="Book & Check IN" />
+                                    <input type="submit" class="btn btn-primary" style="margin-right: 10px;" name="booknow" value="booknow">
+                                    <input type="submit" class="btn btn-primary" name="bookandcheckin" value="bookandcheckin" />
                                 </div>
                             </form>
                         </div>

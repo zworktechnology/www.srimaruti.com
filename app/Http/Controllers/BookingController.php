@@ -71,6 +71,8 @@ class BookingController extends Controller
         //$checkintime = date('H:i:s');
 
         $data->save();
+
+        dd($data);
         }
 
         //return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
