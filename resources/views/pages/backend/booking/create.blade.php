@@ -136,10 +136,10 @@
                                                                     <td class="col-9 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
                                                                         <input type="hidden" id="room_auto_id" name="room_auto_id[]" />
                                                                         <select class="form-control room_id" name="room_id[]" id="" required>
-                                                                            <option value="" disabled selected hidden class="text-muted">
+                                                                            <option value="" selected hidden class="text-muted">
                                                                                 Select Room</option>
                                                                         </select></td>
-                                                                    <td class="col-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addfloorfields" value="Add">Add Another Room</button>
+                                                                    <td class="col-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add Another Room</button>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -195,10 +195,18 @@
                     $(".room_id").append($select);
 
                     for (var i = 0; i < len; i++) {
-                        $(".room_id").append($('<option>', {
+
+                        if(response['data'][i].booking_status != 1){
+
+                            $(".room_id").append($('<option>', {
                             value: response['data'][i].id
                             , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type
                         , }));
+
+                        }
+                        
+
+
                     }
                 }
             });
@@ -206,11 +214,12 @@
     });
 
     var i = 0;
+    var j = 0;
     $(document).ready(function() {
-        $("#addfloorfields").click(function() {
+        $("#addroomfields").click(function() {
             ++i;
             $("#roomfields").append(
-                '<tr><td class="col-sm-3 px-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="" required><option value="" disabled selected hidden class="text-muted">Select Room</option></select></td><td class="col-sm-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                '<tr><td class="col-sm-3 px-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id'+ i +'" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-sm-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
             );
 
             var branch_id = $('.branch_id').val();
@@ -223,26 +232,34 @@
                     console.log(response['data']);
                     var len = response['data'].length;
 
-                    $('.room_id').html('');
+                    //$('.room_id').html('');
 
-                    var $select = $(".room_id").append(
-                        $('<option>', {
-                            value: '0'
-                            , text: 'Select'
-                        }));
-                    $(".room_id").append($select);
+                    
+                    var selectedValues = new Array();
                     if (len > 0) {
                         for (var i = 0; i < len; i++) {
-                            var id = response['data'][i].id;
-                            var name = 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type;
-                            var option = "<option value='" + id + "'>" + name + "</option>";
-                            $(".room_id").append(option);
+                            if(response['data'][i].booking_status != 1){
+
+                                var id = response['data'][i].id;
+                                var name = 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type;
+                                var option = "<option value='" + id + "'>" + name + "</option>";
+                                selectedValues.push(option);
+                                
+                            }
+                            
+                            
                         }
                     }
+                        
+                        ++j;
+                        $('#room_id'+j ).append(selectedValues);
+
+                    
                 }
             });
         });
     });
+    
     $(document).on('click', '.remove-tr', function() {
         $(this).parents('tr').remove();
     });

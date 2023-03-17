@@ -52,45 +52,63 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="booking_datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Sl. No</th>
-                                        <th>Customer</th>
-                                        <th>Branch</th>
-                                        <th>Room Details</th>
-                                        <th>Booking Date</th>
-                                        <th>Check-In Date</th>
-                                        <th>Check-Out Date</th>
-                                        <th>Booking Status</th>
-                                        <th>Action</th>
+                                        <th style="width:5%;">Sl. No</th>
+                                        <th style="width:15%;">Customer</th>
+                                        <th style="width:10%;">Branch</th>
+                                        <th style="width:25%;">Room Details</th>
+                                        <th style="width:10%;">Booking Date</th>
+                                        <th style="width:10%;">Check-In Date</th>
+                                        <th style="width:10%;">Check-Out Date</th>
+                                        <th style="width:15%;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($data as $keydata => $datas)
+                                     @foreach ($bookingData as $keydata => $bookingDatas)
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
-                                    <td>{{ $datas->branch->name }}</td>
-                                    <td>{{ $datas->room_floor }}</td>
-                                    <td>{{ $datas->room_number }}</td>
-                                    <td>{{ $datas->room_type }}</td>
-                                    @if ($datas->booking_status == 0)
-                                    <td style="color:red">Open</td>
+                                    <td>{{ $bookingDatas['customer_name'] }}</td>
+                                    <td style="color:Blue;" class="text-bold">{{ $bookingDatas['branch'] }}</td>
+                                    <td>
+                                        <table class="table table-bordered dt-responsive nowrap">
+                                            <tbody id="bookingroomsrow{{ $bookingDatas['id'] }}">
+
+                                            </tbody>
+                                        </table>
+                                    
+                                    
+                                    
+                                    </td>
+                                    <td><input type="hidden" name="booking_id" id="booking_id" value="{{ $bookingDatas['id'] }}"/>
+                                        {{ $bookingDatas['booking_date'] }}</td>
+
+                                    @if ($bookingDatas['chick_in_date'] == NULL)
+                                    <td>
+                                        <input type="button" class="btn btn-sm btn-success clicktocheckin" name="clicktocheckin" value="ClicktoCheckin" /></td>
                                     @else
-                                    <td style="color:green">Booked</td>
+                                    <td>{{ $bookingDatas['chick_in_date'] }}</td>
                                     @endif
+
+
+                                    
+                                    <td><input type="button" class="btn btn-sm text-white" style="background-color:#f46a6a" name="" value="Click to Checkout" /></td></td>
+                                    
+                                    
+                                    
                                     <td>
                                         <ul class="list-unstyled hstack gap-1 mb-0">
                                             <li>
-                                                <a href="{{ route('room.edit', ['id' => $datas->id]) }}" class="btn btn-sm btn-soft-info">Edit</a>
+                                                <a href="{{ route('room.edit', ['id' => $bookingDatas['id']]) }}" class="btn btn-sm btn-soft-info">Edit</a>
                                             </li>
                                             <li>
-                                                <a href="#jobDelete{{ $datas->id }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal{{ $datas->id }}">Delete</a>
+                                                <a href="#jobDelete{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal{{ $bookingDatas['id'] }}">Delete</a>
                                             </li>
                                         </ul>
                                     </td>
                                     </tr>
-                                    <div class="modal fade" id="firstmodal{{ $datas->id }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+                                    <div class="modal fade" id="firstmodal{{ $bookingDatas['id'] }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -98,10 +116,10 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record - Room No. {{ $datas->room_number }} at {{ $datas->branch->name }}.</p>
+                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record {{ $bookingDatas['branch'] }}.</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <form autocomplete="off" method="POST" action="{{ route('room.delete', ['id' => $datas->id]) }}">
+                                                    <form autocomplete="off" method="POST" action="{{ route('room.delete', ['id' => $bookingDatas['id']]) }}">
                                                         @method('PUT')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger">Yes, Delete</button>
@@ -111,7 +129,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -121,4 +139,40 @@
         </div>
     </div>
 </div>
+
+<script>
+    
+            $(document).ready(function() {
+                $('#booking_datatable').DataTable();
+            });
+            
+$(document).ready(function() {
+    $(".clicktocheckin").click(function() {
+        //alert('');
+        var clicktocheckin = this.value;
+        var booking_id = $('#booking_id').val();
+        console.log(booking_id);
+
+                $.ajax({
+                    url: '/AddCheckin/',
+                    type: 'get',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        clicktocheckin: clicktocheckin,
+                        booking_id: booking_id
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        //console.log(response);
+                        if (response.status == 'success') {
+                            
+                            alert('Checkin record detail successfully added');
+                            location.reload();
+                        }
+                    
+                    }
+                });
+    });
+});
+        </script>
 @endsection

@@ -202,3 +202,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 
 Route::get('getBranchwiseRoom/{id}', [RoomController::class, 'getBranchwiseRoom']);
+Route::get('/AddCheckin', [BookingController::class, 'AddCheckin']);
+
