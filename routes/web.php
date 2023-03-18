@@ -106,7 +106,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/delete/{id}', [BookingController::class, 'delete'])->name('booking.delete');
         // DESTROY
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/booking/destroy/{id}', [BookingController::class, 'destroy'])->name('booking.destroy');
+        // CHECKIN
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/checkin/{id}', [BookingController::class, 'checkin'])->name('booking.checkin');
+        // CHECK OUT
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/checkout/{id}', [BookingController::class, 'checkout'])->name('booking.checkout');
+        // PRICING
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/pricing/{id}', [BookingController::class, 'pricing'])->name('booking.pricing');
     });
 
     // NAME LIST CONTROLLER

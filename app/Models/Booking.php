@@ -31,6 +31,8 @@ class Booking extends Model
         'chick_in_minute_ampm',
         'chick_out_date',
         'chick_out_time',
+        'check_out_minute',
+        'checkout_minute_ampm',
         'days',
         'total',
         'gst_per',

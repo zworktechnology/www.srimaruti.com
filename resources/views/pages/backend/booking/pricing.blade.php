@@ -3,6 +3,9 @@
     <div data-repeater-item class="row">
         <div class="inner-repeater mb-4">
             <div data-repeater-list="inner-group" class="inner form-group">
+
+            <form autocomplete="off" method="POST" action="{{ route('booking.pricing', ['id' => $data->id]) }}" enctype="multipart/form-data">
+            @csrf
                 <div data-repeater-item class="inner mb-3 row">
                     <div class="col-md-3 col-8">
                         <label for="horizontal-firstname-input" class="col-form-label">
@@ -71,6 +74,9 @@
                         </select>
                     </div>
                 </div>
+
+            </form>
+
             </div>
         </div>
     </div>

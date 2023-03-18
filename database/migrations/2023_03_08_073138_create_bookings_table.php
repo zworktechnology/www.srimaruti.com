@@ -44,6 +44,8 @@ return new class extends Migration
             $table->string('chick_in_minute_ampm')->nullable();
             $table->string('chick_out_date')->nullable();
             $table->string('chick_out_time')->nullable();
+            $table->string('check_out_minute')->nullable();
+            $table->string('checkout_minute_ampm')->nullable();
             $table->string('days')->nullable();
 
             $table->string('total')->nullable();
