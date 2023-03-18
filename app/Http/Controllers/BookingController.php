@@ -20,8 +20,8 @@ class BookingController extends Controller
         foreach ($data as $key => $datas) {
             $branch = Branch::findOrFail($datas->branch_id);
 
-            $roomsbooked = BookingRoom::where('booking_id', '=', $datas->id)->where('soft_delete', '!=', 1)->get();
-            
+            $roomsbooked = BookingRoom::where('booking_id', '=', $datas->id)->get();
+
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
                 $room_list[] = array(
@@ -147,17 +147,17 @@ class BookingController extends Controller
             $data->proof_image = $filename;
         }
 
-        //$customer_photo = $request->customer_photo;
-        //$folderPath = "assets/webcam";
+        $customer_photo = $request->customer_photo;
+        $folderPath = "assets/webcam";
 
-        //$image_parts = explode(";base64,", $customer_photo);
-        //$image_type_aux = explode("image/", $image_parts[0]);
-        //$image_type = $image_type_aux[1];
-        //$image_base64 = base64_decode($image_parts[1]);
-        //$fileName = $data->customer_name . '.png';
-        //$customerimgfile = $folderPath . $random_no . $fileName;
-        //file_put_contents($customerimgfile, $image_base64);
-        //$data->customer_photo = $fileName;
+        $image_parts = explode(";base64,", $customer_photo);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = $data->customer_name . '.png';
+        $customerimgfile = $folderPath . $random_no . $fileName;
+        file_put_contents($customerimgfile, $image_base64);
+        $data->customer_photo = $fileName;
 
         $data->branch_id = $request->get('branch_id');
         $data->adult_count = $request->get('adult_count');
@@ -329,5 +329,5 @@ class BookingController extends Controller
                         //echo json_encode($output); 
    // }
 
-    
+
 }
