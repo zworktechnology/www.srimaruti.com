@@ -25,34 +25,101 @@ class BookingController extends Controller
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
                 $room_list[] = array(
-                    'room' => 'Room No '. $Rooms->room_number .' - Floor ' . $Rooms->room_floor . ' - Room Type ' . $Rooms->room_type
+                    'room' => 'Room No . '. $Rooms->room_number .' - Floor . ' . $Rooms->room_floor . ' - ' . $Rooms->room_type,
+                    'booking_id' => $datas->id
                 );
             }
-            $booking_status = $datas->status;
-            if($booking_status == 1){
-                $Status = 'Booked';
-            }
+            
+           $monthOfdate = date("m",strtotime($datas->booking_date));
+           if($monthOfdate == 1){
+                $Month = 'January';
+           }else if($monthOfdate == 2){
+                $Month = 'February';
+           }else if($monthOfdate == 3){
+                $Month = 'March';
+           }else if($monthOfdate == 4){
+                $Month = 'April';
+           }else if($monthOfdate == 5){
+                $Month = 'May';
+           }else if($monthOfdate == 6){
+                $Month = 'June';
+           }else if($monthOfdate == 7){
+                $Month = 'July';
+           }else if($monthOfdate == 8){
+                $Month = 'August';
+           }else if($monthOfdate == 9){
+                $Month = 'September';
+           }else if($monthOfdate == 10){
+                $Month = 'October';
+           }else if($monthOfdate == 11){
+                $Month = 'November';
+           }else if($monthOfdate == 12){
+                $Month = 'December';
+           }
 
+
+
+           $checkinmonthOfdate = date("m",strtotime($datas->chick_in_date));
+           if($checkinmonthOfdate == 1){
+                $checkinMonth = 'January';
+           }else if($checkinmonthOfdate == 2){
+                $checkinMonth = 'February';
+           }else if($checkinmonthOfdate == 3){
+                $checkinMonth = 'March';
+           }else if($checkinmonthOfdate == 4){
+                $checkinMonth = 'April';
+           }else if($checkinmonthOfdate == 5){
+                $checkinMonth = 'May';
+           }else if($checkinmonthOfdate == 6){
+                $checkinMonth = 'June';
+           }else if($checkinmonthOfdate == 7){
+                $checkinMonth = 'July';
+           }else if($checkinmonthOfdate == 8){
+                $checkinMonth = 'August';
+           }else if($checkinmonthOfdate == 9){
+                $checkinMonth = 'September';
+           }else if($checkinmonthOfdate == 10){
+                $checkinMonth = 'October';
+           }else if($checkinmonthOfdate == 11){
+                $checkinMonth = 'November';
+           }else if($checkinmonthOfdate == 12){
+                $checkinMonth = 'December';
+           }
+
+
+           $checkinDate = $datas->chick_in_date;
+           if($checkinDate != NULL){
+                $chekin = date("d",strtotime($datas->chick_in_date)). ', ' . $checkinMonth . ' ' . date("Y",strtotime($datas->chick_in_date));
+                $chekin_time = $datas->chick_in_time . ' : ' . $datas->chick_in_minute . ' ' . $datas->chick_in_minute_ampm;
+           }else{
+                $chekin = '';
+                $chekin_time = '';
+           }
 
             $bookingData[] = array(
                 'customer_name' => $datas->customer_name,
                 'branch' => $branch->name,
-                'booking_date' => date('d-m-Y', strtotime($datas->booking_date)),
-                'booking_status' => $booking_status,
-                'chick_in_date' => $datas->chick_in_date,
+                'booking_date' => date("d",strtotime($datas->booking_date)). ', ' . $Month . ' ' . date("Y",strtotime($datas->booking_date)),
+                'booking_time' => $datas->booking_time . ' : ' . $datas->booking_minute . ' ' . $datas->booking_minute_ampm,
+                'chick_in_date' => $chekin,
+                'checkin_time' => $chekin_time,
                 'id' => $datas->id,
+                'room_list' => $room_list
             );
         }
+        $today = date('Y-m-d');
+        $today_time = date('H:i:s');
 
-        return view('pages.backend.booking.index', compact('bookingData', 'room_list'));
+        return view('pages.backend.booking.index', compact('bookingData', 'today', 'today_time'));
     }
 
     public function create()
     {
         $branch = Branch::where('soft_delete', '!=', 1)->get();
         $room = Room::where('soft_delete', '!=', 1)->get();
+        $today = date('Y-m-d');
 
-        return view('pages.backend.booking.create', compact('branch', 'room'));
+        return view('pages.backend.booking.create', compact('branch', 'room', 'today'));
     }
 
     public function store(Request $request)
@@ -95,12 +162,19 @@ class BookingController extends Controller
         $data->branch_id = $request->get('branch_id');
         $data->adult_count = $request->get('adult_count');
         $data->child_count = $request->get('child_count');
-        $booking_date = date('Y-m-d');
-        $data->booking_date = $booking_date;
+
+        if(function_exists('date_default_timezone_set')) {
+            date_default_timezone_set("Asia/Kolkata");
+        }
+        
+        $data->booking_date = $request->get('booking_date');
+        $data->booking_time = $request->get('booking_time');
+        $data->booking_minute = $request->get('booking_minute');
+        $data->booking_minute_ampm = $request->get('booking_minute_ampm');
+
         $status = 1;
         $data->status = $status;
-        //$checkindate = date('Y-m-d');
-        //$checkintime = date('H:i:s');
+
 
         $data->save();
         //dd($data);
@@ -153,16 +227,19 @@ class BookingController extends Controller
         $data->branch_id = $request->get('branch_id');
         $data->adult_count = $request->get('adult_count');
         $data->child_count = $request->get('child_count');
-        $booking_date = date('Y-m-d');
-        $data->booking_date = $booking_date;
+
+        $data->booking_date = $request->get('booking_date');
+        $data->booking_time = $request->get('booking_time');
+        $data->booking_minute = $request->get('booking_minute');
+        $data->booking_minute_ampm = $request->get('booking_minute_ampm');
+
+        $data->chick_in_date = $request->get('booking_date');
+        $data->chick_in_time = $request->get('booking_time');
+        $data->chick_in_minute = $request->get('booking_minute');
+        $data->chick_in_minute_ampm = $request->get('booking_minute_ampm');
+
         $status = 1;
         $data->status = $status;
-
-        $checkindate = date('Y-m-d');
-        $checkintime = date('H:i:s');
-        $data->chick_in_date = $checkindate;
-        $data->chick_in_time = $checkintime;
-
         $data->save();
         //dd($data);
 
@@ -186,8 +263,11 @@ class BookingController extends Controller
     public function edit($id)
     {
         $data = Booking::findOrFail($id);
+        $branch = Branch::where('soft_delete', '!=', 1)->get();
+        $room = Room::where('soft_delete', '!=', 1)->get();
+        $BookingRooms = BookingRoom::where('booking_id', '=', $id)->get();
 
-        return view('pages.backend.booking.edit', compact('data'));
+        return view('pages.backend.booking.edit', compact('data', 'branch', 'BookingRooms', 'room'));
     }
 
     public function update()
@@ -216,24 +296,38 @@ class BookingController extends Controller
     }
 
 
-
-    public function AddCheckin()
+    public function checkin(Request $request, $id)
     {
-        $clicktocheckin = request()->get('clicktocheckin');
-        $booking_id = request()->get('booking_id');
-        $GetTodayCheckinDate = date('Y-m-d');
-        $GetTodayCheckinTime = date('H:i:s');
+        $data = Booking::findOrFail($id);
+        $data->chick_in_date = $request->get('checkindate');
+        $data->chick_in_time = $request->get('checkin_time');
+        $data->chick_in_minute = $request->get('checkin_minute');
+        $data->chick_in_minute_ampm = $request->get('checkin_minute_ampm');
+
+        $data->update();
+
+        return redirect()->route('booking.index')->with('checkin', 'Checkin record detail successfully added');
+    }
 
 
-        DB::table('bookings')->where('id', $booking_id)
-                        ->update(['chick_in_date' => $GetTodayCheckinDate,  'chick_in_time' => $GetTodayCheckinTime]);
+
+    //public function AddCheckin()
+  //  {
+   //     $clicktocheckin = request()->get('clicktocheckin');
+    //    $booking_id = request()->get('booking_id');
+    //    $GetTodayCheckinDate = date('Y-m-d');
+    //    $GetTodayCheckinTime = date('H:i:s');
+
+
+   //     DB::table('bookings')->where('id', $booking_id)
+    //                    ->update(['chick_in_date' => $GetTodayCheckinDate,  'chick_in_time' => $GetTodayCheckinTime]);
         
-                        echo json_encode(
-                                array('status' => 'success')
-                            );
+    //                    echo json_encode(
+    //                            array('status' => 'success')
+    //                        );
                         
                         //echo json_encode($output); 
-    }
+   // }
 
     
 }

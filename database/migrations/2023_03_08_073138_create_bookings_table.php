@@ -35,8 +35,13 @@ return new class extends Migration
             $table->string('child_count');
 
             $table->string('booking_date');
+            $table->string('booking_time');
+            $table->string('booking_minute');
+            $table->string('booking_minute_ampm');
             $table->string('chick_in_date')->nullable();
             $table->string('chick_in_time')->nullable();
+            $table->string('chick_in_minute')->nullable();
+            $table->string('chick_in_minute_ampm')->nullable();
             $table->string('chick_out_date')->nullable();
             $table->string('chick_out_time')->nullable();
             $table->string('days')->nullable();
