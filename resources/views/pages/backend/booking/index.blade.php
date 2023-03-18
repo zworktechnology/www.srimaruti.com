@@ -57,7 +57,6 @@
                                     <tr>
                                         <th style="width:5%;">Sl. No</th>
                                         <th style="width:15%;">Customer</th>
-                                        <th style="width:10%;">Branch</th>
                                         <th style="width:25%;">Room Details</th>
                                         <th style="width:10%;">Booking Date</th>
                                         <th style="width:10%;">Check-In Date</th>
@@ -66,344 +65,127 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     @foreach ($bookingData as $keydata => $bookingDatas)
+                                    @foreach ($bookingData as $keydata => $bookingDatas)
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
-                                    <td>{{ $bookingDatas['customer_name'] }}</td>
-                                    <td style="color:Blue;" class="text-bold">{{ $bookingDatas['branch'] }}</td>
-                                    <td>
-                                        
+                                        <td>{{ $bookingDatas['customer_name'] }}</td>
+                                        <td>
                                             @foreach ($bookingDatas['room_list'] as $index => $room_lists)
-                                                @if ($room_lists['booking_id'] == $bookingDatas['id'])
-                                                    {{ $room_lists['room'] }}<br/>
-                                                   
-                                                @endif
+                                            @if ($room_lists['booking_id'] == $bookingDatas['id'])
+                                            {{ $bookingDatas['branch'] }} - {{ $room_lists['room'] }}<br />
+                                            @endif
                                             @endforeach
-                                            
-                                    
-                                    
-                                    </td>
-                                    <td><input type="hidden" name="booking_id" id="booking_id" value="{{ $bookingDatas['id'] }}"/>
-                                        {{ $bookingDatas['booking_date'] }}
-                                    <br/>{{ $bookingDatas['booking_time'] }}</td>
+                                        </td>
+                                        <td>
+                                            {{ date('d M Y', strtotime($bookingDatas['booking_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['booking_time'])) }} )
+                                        </td>
+                                        @if ($bookingDatas['chick_in_date'] != '')
+                                        <td>{{ date('d M Y', strtotime($bookingDatas['chick_in_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_in_time'])) }} )</td>
+                                        @else
+                                        <td><a href="#jobcheckin{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-success" data-bs-target="#checkinmodal{{ $bookingDatas['id'] }}">Click to Checkin</a></td>
+                                        @endif
 
-                                    @if ($bookingDatas['chick_in_date'] != '')
-                                    <td>{{ $bookingDatas['chick_in_date'] }}
-                                    <br/>{{ $bookingDatas['checkin_time'] }}
-                                    </td>
-                                    @else
-                                    <td><a href="#jobcheckin{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-success" data-bs-target="#checkinmodal{{ $bookingDatas['id'] }}">Click to Checkin</a></td>
-                                    @endif
-                                    
-                                        
-                                    
-                                    
+                                        @if ($bookingDatas['chick_out_date'] == '')
+                                        <td><a href="#jobcheckout{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#checkoutmodal{{ $bookingDatas['id'] }}">Click to Checkout</a></td>
+                                        @else
+                                        <td>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }} )</td>
+                                        @endif
 
-
-                                    @if ($bookingDatas['chick_out_date'] == '')
-                                    <td><a href="#jobcheckout{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#checkoutmodal{{ $bookingDatas['id'] }}">Click to Checkout</a></td>
-                                    @else
-                                    <td>
-                                        {{ $bookingDatas['chekout_date'] }}
-                                    <br/>{{ $bookingDatas['chekout_time'] }}
-                                    </td>
-                                    @endif
-                                    
-                                    
-                                    <td>
-                                        <ul class="list-unstyled hstack gap-1 mb-0">
-                                            <li>
-                                                <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}" class="btn btn-sm btn-soft-info">Edit</a>
-                                            </li>
-                                            <li>
-                                                <a href="#jobDelete{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal{{ $bookingDatas['id'] }}">Delete</a>
-                                            </li>
-                                        </ul>
-                                    </td>
+                                        <td>
+                                            <ul class="list-unstyled hstack gap-1 mb-0">
+                                                <li>
+                                                    <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}" class="btn btn-sm btn-soft-info">Edit</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#jobDelete{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal{{ $bookingDatas['id'] }}">Delete</a>
+                                                </li>
+                                            </ul>
+                                        </td>
                                     </tr>
 
                                     <div class="modal fade" id="checkinmodal{{ $bookingDatas['id'] }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
-                                                <div class="modal-header" style="background: #b3efb3;">
+                                                <div class="modal-header">
                                                     <h5 class="modal-title">Checkin</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                <form autocomplete="off" method="POST" action="{{ route('booking.checkin', ['id' => $bookingDatas['id']]) }}">
+                                                    <form autocomplete="off" method="POST" action="{{ route('booking.checkin', ['id' => $bookingDatas['id']]) }}">
                                                         @method('PUT')
                                                         @csrf
-                                                    <div class="row  col-12  py-2">
-                                                        <label for="date" class="col-md-4 col-form-label">
-                                                            Customer Name</label>
-                                                        <div class=" col-md-6">
-                                                            <input class="form-control" name="" disabled required value="{{ $bookingDatas['customer_name'] }}">
+                                                        <div class="row mb-4" hidden>
+                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                Date </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="date" class="form-control" name="chick_in_date" required value="{{ $today }}">
+                                                            </div>
                                                         </div>
-                                                    </div> 
-                                                    <div class="row  col-12  py-2">
-                                                        <label for="date" class="col-md-4 col-form-label">
-                                                            Branch</label>
-                                                        <div class=" col-md-6">
-                                                            <input class="form-control" name="" disabled required value="{{ $bookingDatas['branch'] }}">
+                                                        <div class="row mb-4" hidden>
+                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                Time </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="time" class="form-control" name="chick_in_time" required value="{{ $timenow }}">
+                                                            </div>
                                                         </div>
-                                                    </div>  
-                                                     
-                                                    <div class="row  col-12  py-2">
-                                                        <label for="date" class="col-md-4 col-form-label">
-                                                            Date</label>
-                                                        <div class=" col-md-6">
-                                                            <input type="date" class="form-control" name="checkindate"  required value="{{ $today }}">
+                                                        <div class="modal-body">
+                                                            <p class="text-muted font-size-16 mb-4">Please confirm that you wish to check in the customer {{ $bookingDatas['customer_name'] }} - on Room No @foreach ($bookingDatas['room_list'] as $index => $room_lists)
+                                                                @if ($room_lists['booking_id'] == $bookingDatas['id'])
+                                                                {{ $room_lists['room'] }} on branch {{ $bookingDatas['branch'] }}
+                                                                @endif
+                                                                @endforeach.</p>
                                                         </div>
-                                                    </div>
-                                                    <div class="row col-12 py-2">
-                                                        <label for="date" class="col-md-4 col-form-label">
-                                                            Time</label>
-                                                        <div class=" col-md-2">
-                                                            <select class="form-control" name="checkin_time" required>
-                                                                <option value="" disabled selected hidden class="text-muted">Time</option>
-                                                                <option value="1" class="text-muted">1</option>
-                                                                <option value="2" class="text-muted">2</option>
-                                                                <option value="3" class="text-muted">3</option>
-                                                                <option value="4" class="text-muted">4</option>
-                                                                <option value="5" class="text-muted">5</option>
-                                                                <option value="6" class="text-muted">6</option>
-                                                                <option value="7" class="text-muted">7</option>
-                                                                <option value="8" class="text-muted">8</option>
-                                                                <option value="9" class="text-muted">9</option>
-                                                                <option value="10" class="text-muted">10</option>
-                                                                <option value="11" class="text-muted">11</option>
-                                                                <option value="12" class="text-muted">12</option>
-                                                            </select>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-success">Yes, Check In</button>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, Get Back</button>
                                                         </div>
-                                                        <div class=" col-md-2">
-                                                            <select class="form-control" name="checkin_minute" required>
-                                                                <option value="" disabled selected hidden class="text-muted">Minute</option>
-                                                                <option value="00" class="text-muted">00</option>
-                                                                <option value="01" class="text-muted">01</option>
-                                                                <option value="02" class="text-muted">02</option>
-                                                                <option value="03" class="text-muted">03</option>
-                                                                <option value="04" class="text-muted">04</option>
-                                                                <option value="05" class="text-muted">05</option>
-                                                                <option value="06" class="text-muted">06</option>
-                                                                <option value="07" class="text-muted">07</option>
-                                                                <option value="08" class="text-muted">08</option>
-                                                                <option value="09" class="text-muted">09</option>
-                                                                <option value="10" class="text-muted">10</option>
-                                                                <option value="11" class="text-muted">11</option>
-                                                                <option value="12" class="text-muted">12</option>
-                                                                <option value="13" class="text-muted">13</option>
-                                                                <option value="14" class="text-muted">14</option>
-                                                                <option value="15" class="text-muted">15</option>
-                                                                <option value="16" class="text-muted">16</option>
-                                                                <option value="17" class="text-muted">17</option>
-                                                                <option value="18" class="text-muted">18</option>
-                                                                <option value="19" class="text-muted">19</option>
-                                                                <option value="20" class="text-muted">20</option>
-                                                                <option value="21" class="text-muted">21</option>
-                                                                <option value="22" class="text-muted">22</option>
-                                                                <option value="23" class="text-muted">23</option>
-                                                                <option value="24" class="text-muted">24</option>
-                                                                <option value="25" class="text-muted">25</option>
-                                                                <option value="26" class="text-muted">26</option>
-                                                                <option value="27" class="text-muted">27</option>
-                                                                <option value="28" class="text-muted">28</option>
-                                                                <option value="29" class="text-muted">29</option>
-                                                                <option value="30" class="text-muted">30</option>
-                                                                <option value="31" class="text-muted">31</option>
-                                                                <option value="32" class="text-muted">32</option>
-                                                                <option value="33" class="text-muted">33</option>
-                                                                <option value="34" class="text-muted">34</option>
-                                                                <option value="35" class="text-muted">35</option>
-                                                                <option value="36" class="text-muted">36</option>
-                                                                <option value="37" class="text-muted">37</option>
-                                                                <option value="38" class="text-muted">38</option>
-                                                                <option value="39" class="text-muted">39</option>
-                                                                <option value="40" class="text-muted">40</option>
-                                                                <option value="41" class="text-muted">41</option>
-                                                                <option value="42" class="text-muted">42</option>
-                                                                <option value="43" class="text-muted">43</option>
-                                                                <option value="44" class="text-muted">44</option>
-                                                                <option value="45" class="text-muted">45</option>
-                                                                <option value="46" class="text-muted">46</option>
-                                                                <option value="47" class="text-muted">47</option>
-                                                                <option value="48" class="text-muted">48</option>
-                                                                <option value="49" class="text-muted">49</option>
-                                                                <option value="50" class="text-muted">50</option>
-                                                                <option value="51" class="text-muted">51</option>
-                                                                <option value="52" class="text-muted">52</option>
-                                                                <option value="53" class="text-muted">53</option>
-                                                                <option value="54" class="text-muted">54</option>
-                                                                <option value="55" class="text-muted">55</option>
-                                                                <option value="56" class="text-muted">56</option>
-                                                                <option value="57" class="text-muted">57</option>
-                                                                <option value="58" class="text-muted">58</option>
-                                                                <option value="59" class="text-muted">59</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class=" col-md-2">
-                                                            <select class="form-control" name="checkin_minute_ampm" required>
-                                                                <option value="" disabled selected hidden class="text-muted">AM/PM</option>
-                                                                <option value="AM" class="text-muted">AM</option>
-                                                                <option value="PM" class="text-muted">PM</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    
+                                                    </form>
                                                 </div>
-                                                <div class="modal-footer" style="background: #b3efb3;">
-                                                    
-                                                        <button type="submit" class="btn btn-success">Submit</button>
-                                                    
-                                                    
-                                                </div>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
-
-
-
 
                                     <div class="modal fade" id="checkoutmodal{{ $bookingDatas['id'] }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
-                                                <div class="modal-header" style="background: #e7c695;">
+                                                <div class="modal-header">
                                                     <h5 class="modal-title">Check Out</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                <form autocomplete="off" method="POST" action="{{ route('booking.checkout', ['id' => $bookingDatas['id']]) }}">
+                                                    <form autocomplete="off" method="POST" action="{{ route('booking.checkout', ['id' => $bookingDatas['id']]) }}">
                                                         @method('PUT')
                                                         @csrf
-                                                    <div class="row  col-12  py-2">
-                                                        <label for="date" class="col-md-4 col-form-label">
-                                                            Customer Name</label>
-                                                        <div class=" col-md-6">
-                                                            <input class="form-control" name="" disabled required value="{{ $bookingDatas['customer_name'] }}">
+                                                        <div class="row mb-4" hidden>
+                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                Date </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="date" class="form-control" name="chick_out_date" required value="{{ $today }}">
+                                                            </div>
                                                         </div>
-                                                    </div> 
-                                                    <div class="row  col-12  py-2">
-                                                        <label for="date" class="col-md-4 col-form-label">
-                                                            Branch</label>
-                                                        <div class=" col-md-6">
-                                                            <input class="form-control" name="" disabled required value="{{ $bookingDatas['branch'] }}">
+                                                        <div class="row mb-4" hidden>
+                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                Time </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="time" class="form-control" name="chick_out_time" required value="{{ $timenow }}">
+                                                            </div>
                                                         </div>
-                                                    </div>  
-                                                     
-                                                    <div class="row  col-12  py-2">
-                                                        <label for="date" class="col-md-4 col-form-label">
-                                                            Date</label>
-                                                        <div class=" col-md-6">
-                                                            <input type="date" class="form-control" name="checkout_date"  required value="{{ $today }}">
+                                                        <div class="modal-body">
+                                                            <p class="text-muted font-size-16 mb-4">Please confirm that you wish to check out the customer {{ $bookingDatas['customer_name'] }} - on Room No @foreach ($bookingDatas['room_list'] as $index => $room_lists)
+                                                                @if ($room_lists['booking_id'] == $bookingDatas['id'])
+                                                                {{ $room_lists['room'] }} on branch {{ $bookingDatas['branch'] }}
+                                                                @endif
+                                                                @endforeach.</p>
                                                         </div>
-                                                    </div>
-                                                    <div class="row col-12 py-2">
-                                                        <label for="date" class="col-md-4 col-form-label">
-                                                            Time</label>
-                                                        <div class=" col-md-2">
-                                                            <select class="form-control" name="checkout_time" required>
-                                                                <option value="" disabled selected hidden class="text-muted">Time</option>
-                                                                <option value="1" class="text-muted">1</option>
-                                                                <option value="2" class="text-muted">2</option>
-                                                                <option value="3" class="text-muted">3</option>
-                                                                <option value="4" class="text-muted">4</option>
-                                                                <option value="5" class="text-muted">5</option>
-                                                                <option value="6" class="text-muted">6</option>
-                                                                <option value="7" class="text-muted">7</option>
-                                                                <option value="8" class="text-muted">8</option>
-                                                                <option value="9" class="text-muted">9</option>
-                                                                <option value="10" class="text-muted">10</option>
-                                                                <option value="11" class="text-muted">11</option>
-                                                                <option value="12" class="text-muted">12</option>
-                                                            </select>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-success">Yes, Check Out</button>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, Get Back</button>
                                                         </div>
-                                                        <div class=" col-md-2">
-                                                            <select class="form-control" name="checkout_minute" required>
-                                                                <option value="" disabled selected hidden class="text-muted">Minute</option>
-                                                                <option value="00" class="text-muted">00</option>
-                                                                <option value="01" class="text-muted">01</option>
-                                                                <option value="02" class="text-muted">02</option>
-                                                                <option value="03" class="text-muted">03</option>
-                                                                <option value="04" class="text-muted">04</option>
-                                                                <option value="05" class="text-muted">05</option>
-                                                                <option value="06" class="text-muted">06</option>
-                                                                <option value="07" class="text-muted">07</option>
-                                                                <option value="08" class="text-muted">08</option>
-                                                                <option value="09" class="text-muted">09</option>
-                                                                <option value="10" class="text-muted">10</option>
-                                                                <option value="11" class="text-muted">11</option>
-                                                                <option value="12" class="text-muted">12</option>
-                                                                <option value="13" class="text-muted">13</option>
-                                                                <option value="14" class="text-muted">14</option>
-                                                                <option value="15" class="text-muted">15</option>
-                                                                <option value="16" class="text-muted">16</option>
-                                                                <option value="17" class="text-muted">17</option>
-                                                                <option value="18" class="text-muted">18</option>
-                                                                <option value="19" class="text-muted">19</option>
-                                                                <option value="20" class="text-muted">20</option>
-                                                                <option value="21" class="text-muted">21</option>
-                                                                <option value="22" class="text-muted">22</option>
-                                                                <option value="23" class="text-muted">23</option>
-                                                                <option value="24" class="text-muted">24</option>
-                                                                <option value="25" class="text-muted">25</option>
-                                                                <option value="26" class="text-muted">26</option>
-                                                                <option value="27" class="text-muted">27</option>
-                                                                <option value="28" class="text-muted">28</option>
-                                                                <option value="29" class="text-muted">29</option>
-                                                                <option value="30" class="text-muted">30</option>
-                                                                <option value="31" class="text-muted">31</option>
-                                                                <option value="32" class="text-muted">32</option>
-                                                                <option value="33" class="text-muted">33</option>
-                                                                <option value="34" class="text-muted">34</option>
-                                                                <option value="35" class="text-muted">35</option>
-                                                                <option value="36" class="text-muted">36</option>
-                                                                <option value="37" class="text-muted">37</option>
-                                                                <option value="38" class="text-muted">38</option>
-                                                                <option value="39" class="text-muted">39</option>
-                                                                <option value="40" class="text-muted">40</option>
-                                                                <option value="41" class="text-muted">41</option>
-                                                                <option value="42" class="text-muted">42</option>
-                                                                <option value="43" class="text-muted">43</option>
-                                                                <option value="44" class="text-muted">44</option>
-                                                                <option value="45" class="text-muted">45</option>
-                                                                <option value="46" class="text-muted">46</option>
-                                                                <option value="47" class="text-muted">47</option>
-                                                                <option value="48" class="text-muted">48</option>
-                                                                <option value="49" class="text-muted">49</option>
-                                                                <option value="50" class="text-muted">50</option>
-                                                                <option value="51" class="text-muted">51</option>
-                                                                <option value="52" class="text-muted">52</option>
-                                                                <option value="53" class="text-muted">53</option>
-                                                                <option value="54" class="text-muted">54</option>
-                                                                <option value="55" class="text-muted">55</option>
-                                                                <option value="56" class="text-muted">56</option>
-                                                                <option value="57" class="text-muted">57</option>
-                                                                <option value="58" class="text-muted">58</option>
-                                                                <option value="59" class="text-muted">59</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class=" col-md-2">
-                                                            <select class="form-control" name="checkout_minute_ampm" required>
-                                                                <option value="" disabled selected hidden class="text-muted">AM/PM</option>
-                                                                <option value="AM" class="text-muted">AM</option>
-                                                                <option value="PM" class="text-muted">PM</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    
+                                                    </form>
                                                 </div>
-                                                <div class="modal-footer" style="background: #e7c695;">
-                                                    
-                                                        <button type="submit" class="btn btn-success">Submit</button>
-                                                    
-                                                    
-                                                </div>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
-
-
 
                                     <div class="modal fade" id="firstmodal{{ $bookingDatas['id'] }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -413,7 +195,11 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record {{ $bookingDatas['branch'] }}.</p>
+                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record {{ $bookingDatas['customer_name'] }} - on Room No @foreach ($bookingDatas['room_list'] as $index => $room_lists)
+                                                        @if ($room_lists['booking_id'] == $bookingDatas['id'])
+                                                        {{ $room_lists['room'] }} on branch {{ $bookingDatas['branch'] }}
+                                                        @endif
+                                                        @endforeach.</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form autocomplete="off" method="POST" action="{{ route('booking.delete', ['id' => $bookingDatas['id']]) }}">
@@ -438,38 +224,38 @@
 </div>
 
 <script>
-    
-            $(document).ready(function() {
-                $('#booking_datatable').DataTable();
-            });
-            
-//$(document).ready(function() {
-  //  $(".clicktocheckin").click(function() {
-        //alert('');
-   //     var clicktocheckin = this.value;
-   //     var booking_id = $('#booking_id').val();
-   //     console.log(booking_id);
+    $(document).ready(function() {
+        $('#booking_datatable').DataTable();
+    });
 
-   //             $.ajax({
+    //$(document).ready(function() {
+    //  $(".clicktocheckin").click(function() {
+    //alert('');
+    //     var clicktocheckin = this.value;
+    //     var booking_id = $('#booking_id').val();
+    //     console.log(booking_id);
+
+    //             $.ajax({
     //                url: '/AddCheckin/',
-   //                 type: 'get',
-  //                  data: {
-   //                     _token: "{{ csrf_token() }}",
-   //                     clicktocheckin: clicktocheckin,
-   //                     booking_id: booking_id
-   //                 },
+    //                 type: 'get',
+    //                  data: {
+    //                     _token: "{{ csrf_token() }}",
+    //                     clicktocheckin: clicktocheckin,
+    //                     booking_id: booking_id
+    //                 },
     //                dataType: 'json',
-   //                 success: function(response) {
-   //                     //console.log(response);
-   //                     if (response.status == 'success') {
-    //                        
-   //                         alert('Checkin record detail successfully added');
-   //                         location.reload();
-  //                      }
-   //                 
-   //                 }
-   //             });
-  //  });
-//});
-        </script>
+    //                 success: function(response) {
+    //                     //console.log(response);
+    //                     if (response.status == 'success') {
+    //
+    //                         alert('Checkin record detail successfully added');
+    //                         location.reload();
+    //                      }
+    //
+    //                 }
+    //             });
+    //  });
+    //});
+
+</script>
 @endsection

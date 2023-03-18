@@ -27,110 +27,16 @@
                                                 <input type="name" class="form-control" name="booking_customer_name" placeholder="Enter here ">
                                             </div>
                                         </div>
-
-
-                                        <div class="row mb-4">
+                                        <div class="row mb-4" hidden>
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Booking Date </label>
-                                            <div class="col-sm-4">
+                                                Booking Date & Time </label>
+                                            <div class="col-sm-5">
                                                 <input type="date" class="form-control" name="booking_date" placeholder="Enter here " value="{{ $today }}">
                                             </div>
+                                            <div class="col-sm-4">
+                                                <input type="time" class="form-control" name="booking_time" placeholder="Enter here " value="{{ $timenow }}">
+                                            </div>
                                         </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Booking Time </label>
-                                                <div class="col-sm-1">
-                                                    <select class="form-control" name="booking_time" required>
-                                                        <option value="" disabled selected hidden class="text-muted">Time</option>
-                                                        <option value="1" class="text-muted">1</option>
-                                                        <option value="2" class="text-muted">2</option>
-                                                        <option value="3" class="text-muted">3</option>
-                                                        <option value="4" class="text-muted">4</option>
-                                                        <option value="5" class="text-muted">5</option>
-                                                        <option value="6" class="text-muted">6</option>
-                                                        <option value="7" class="text-muted">7</option>
-                                                        <option value="8" class="text-muted">8</option>
-                                                        <option value="9" class="text-muted">9</option>
-                                                        <option value="10" class="text-muted">10</option>
-                                                        <option value="11" class="text-muted">11</option>
-                                                        <option value="12" class="text-muted">12</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-1">
-                                                    <select class="form-control" name="booking_minute" required>
-                                                        <option value="" disabled selected hidden class="text-muted">Minute</option>
-                                                        <option value="00" class="text-muted">00</option>
-                                                        <option value="01" class="text-muted">01</option>
-                                                        <option value="02" class="text-muted">02</option>
-                                                        <option value="03" class="text-muted">03</option>
-                                                        <option value="04" class="text-muted">04</option>
-                                                        <option value="05" class="text-muted">05</option>
-                                                        <option value="06" class="text-muted">06</option>
-                                                        <option value="07" class="text-muted">07</option>
-                                                        <option value="08" class="text-muted">08</option>
-                                                        <option value="09" class="text-muted">09</option>
-                                                        <option value="10" class="text-muted">10</option>
-                                                        <option value="11" class="text-muted">11</option>
-                                                        <option value="12" class="text-muted">12</option>
-                                                        <option value="13" class="text-muted">13</option>
-                                                        <option value="14" class="text-muted">14</option>
-                                                        <option value="15" class="text-muted">15</option>
-                                                        <option value="16" class="text-muted">16</option>
-                                                        <option value="17" class="text-muted">17</option>
-                                                        <option value="18" class="text-muted">18</option>
-                                                        <option value="19" class="text-muted">19</option>
-                                                        <option value="20" class="text-muted">20</option>
-                                                        <option value="21" class="text-muted">21</option>
-                                                        <option value="22" class="text-muted">22</option>
-                                                        <option value="23" class="text-muted">23</option>
-                                                        <option value="24" class="text-muted">24</option>
-                                                        <option value="25" class="text-muted">25</option>
-                                                        <option value="26" class="text-muted">26</option>
-                                                        <option value="27" class="text-muted">27</option>
-                                                        <option value="28" class="text-muted">28</option>
-                                                        <option value="29" class="text-muted">29</option>
-                                                        <option value="30" class="text-muted">30</option>
-                                                        <option value="31" class="text-muted">31</option>
-                                                        <option value="32" class="text-muted">32</option>
-                                                        <option value="33" class="text-muted">33</option>
-                                                        <option value="34" class="text-muted">34</option>
-                                                        <option value="35" class="text-muted">35</option>
-                                                        <option value="36" class="text-muted">36</option>
-                                                        <option value="37" class="text-muted">37</option>
-                                                        <option value="38" class="text-muted">38</option>
-                                                        <option value="39" class="text-muted">39</option>
-                                                        <option value="40" class="text-muted">40</option>
-                                                        <option value="41" class="text-muted">41</option>
-                                                        <option value="42" class="text-muted">42</option>
-                                                        <option value="43" class="text-muted">43</option>
-                                                        <option value="44" class="text-muted">44</option>
-                                                        <option value="45" class="text-muted">45</option>
-                                                        <option value="46" class="text-muted">46</option>
-                                                        <option value="47" class="text-muted">47</option>
-                                                        <option value="48" class="text-muted">48</option>
-                                                        <option value="49" class="text-muted">49</option>
-                                                        <option value="50" class="text-muted">50</option>
-                                                        <option value="51" class="text-muted">51</option>
-                                                        <option value="52" class="text-muted">52</option>
-                                                        <option value="53" class="text-muted">53</option>
-                                                        <option value="54" class="text-muted">54</option>
-                                                        <option value="55" class="text-muted">55</option>
-                                                        <option value="56" class="text-muted">56</option>
-                                                        <option value="57" class="text-muted">57</option>
-                                                        <option value="58" class="text-muted">58</option>
-                                                        <option value="59" class="text-muted">59</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-1">
-                                                    <select class="form-control" name="booking_minute_ampm" required>
-                                                        <option value="" disabled selected hidden class="text-muted">AM/PM</option>
-                                                        <option value="AM" class="text-muted">AM</option>
-                                                        <option value="PM" class="text-muted">PM</option>
-                                                    </select>
-                                                </div>
-                                        </div>
-
-
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Contact Number </label>
@@ -243,7 +149,7 @@
                                                                             <option value="" selected hidden class="text-muted">
                                                                                 Select Room</option>
                                                                         </select></td>
-                                                                    <td class="col-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add Another Room</button>
+                                                                    <td class="col-2"><button style="width: 200px;" class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add Another Room</button>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -300,15 +206,15 @@
 
                     for (var i = 0; i < len; i++) {
 
-                        if(response['data'][i].booking_status != 1){
+                        if (response['data'][i].booking_status != 1) {
 
                             $(".room_id").append($('<option>', {
-                            value: response['data'][i].id
-                            , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type
-                        , }));
+                                value: response['data'][i].id
+                                , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type
+                            , }));
 
                         }
-                        
+
 
 
                     }
@@ -323,7 +229,7 @@
         $("#addroomfields").click(function() {
             ++i;
             $("#roomfields").append(
-                '<tr><td class="col-sm-3 px-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id'+ i +'" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-sm-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                '<tr><td class="col-sm-3 py-2 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-sm-2"><button style="width: 200px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
             );
 
             var branch_id = $('.branch_id').val();
@@ -338,11 +244,11 @@
 
                     //$('.room_id').html('');
 
-                    
+
                     var selectedValues = new Array();
                     if (len > 0) {
                         for (var i = 0; i < len; i++) {
-                            if(response['data'][i].booking_status != 1){
+                            if (response['data'][i].booking_status != 1) {
 
                                 var id = response['data'][i].id;
                                 var name = 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type;
@@ -350,20 +256,20 @@
                                 selectedValues.push(option);
 
                             }
-                            
-                            
+
+
                         }
                     }
-                        
-                        ++j;
-                        $('#room_id'+j ).append(selectedValues);
 
-                    
+                    ++j;
+                    $('#room_id' + j).append(selectedValues);
+
+
                 }
             });
         });
     });
-    
+
     $(document).on('click', '.remove-tr', function() {
         $(this).parents('tr').remove();
     });
