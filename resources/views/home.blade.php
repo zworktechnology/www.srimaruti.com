@@ -49,8 +49,8 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th>Branch</th>
-                                            <th>Income</th>
                                             <th>Open Account</th>
+                                            <th>Income</th>
                                             <th>Expence</th>
                                             <th>Calculation</th>
                                             <th>Close Account</th>
