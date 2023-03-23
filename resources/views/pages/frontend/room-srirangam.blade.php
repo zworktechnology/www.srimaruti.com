@@ -34,9 +34,9 @@
         <div class="container">
             <nav class="tablist">
                 <div class="filter-menu nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="active" id="nav-queen-tab" data-bs-toggle="tab" data-bs-target="#nav-queen-three" type="button" role="tab">Srirangam</button>
                     <button class="" id="nav-dexury-tab" data-bs-toggle="tab" data-bs-target="#nav-dexury-one" type="button" role="tab">Samayapuram</button>
                     <button class="" id="nav-luxury-tab" data-bs-toggle="tab" data-bs-target="#nav-luxury-two" type="button" role="tab">Gunaseelam</button>
-                    <button class="active" id="nav-queen-tab" data-bs-toggle="tab" data-bs-target="#nav-queen-three" type="button" role="tab">Srirangam</button>
                 </div>
             </nav>
             <div class="tab-content " id="nav-tabContent">

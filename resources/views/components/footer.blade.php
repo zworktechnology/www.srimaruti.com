@@ -4,6 +4,39 @@
             <div class="row justify-content-between">
                 <div class="col-md-6 col-xl-auto">
                     <div class="widget footer-widget">
+                        <h3 class="widget_title">Srirangam</h3>
+                        <div class="as-widget-contact">
+                            <div class="info-box">
+                                <div class="info-box_icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <p class="info-box_text">
+                                    No. 122, South Chitra Street, Near Second Entrance
+                                </p>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-box_icon">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <p class="info-box_text">
+                                    <a href="mailto:srirangam@srimaruti.com" class="info-box_link">srirangam@srimaruti.com
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-box_icon">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <p class="info-box_text">
+                                    <a href="tel:+919659464543" class="info-box_link">+91 96594 64543</a>
+                                    <a href="tel:04312435749" class="info-box_link">(0431) 2435 749</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-auto">
+                    <div class="widget footer-widget">
                         <h3 class="widget_title">Samayapuram</h3>
                         <div class="as-widget-contact">
                             <div class="info-box">
@@ -69,41 +102,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-auto">
-                    <div class="widget footer-widget">
-                        <h3 class="widget_title">Srirangam</h3>
-                        <div class="as-widget-contact">
-                            <div class="info-box">
-                                <div class="info-box_icon">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <p class="info-box_text">
-                                    No. 122, South Chitra Street, Near Second Entrance
-                                </p>
-                            </div>
-                            <div class="info-box">
-                                <div class="info-box_icon">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </div>
-                                <p class="info-box_text">
-                                    <a href="mailto:srirangam@srimaruti.com" class="info-box_link">srirangam@srimaruti.com
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="info-box">
-                                <div class="info-box_icon">
-                                    <i class="fa-solid fa-phone"></i>
-                                </div>
-                                <p class="info-box_text">
-                                    <a href="tel:+919659464543" class="info-box_link">+91 96594 64543</a>
-                                    <a href="tel:04312435749" class="info-box_link">(0431) 2435 749</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-auto">
                     <div class="widget widget_nav_menu footer-widget">
-                        <h3 class="widget_title">Usefull Links</h3>
+                        <h3 class="widget_title">Quick Links</h3>
                         <div class="menu-all-pages-container">
                             <ul class="menu">
                                 <li><a href="javascript:void(0);">About Us</a></li>
@@ -136,8 +136,8 @@
                 <div class="col-lg-6">
                     <div class="footer-copyright-right">
                         <ul>
-                            <li><a href="javascript:void(0);">Terms of use </a></li>
-                            <li><a href="javascript:void(0);">Privacy Environmental Policy</a></li>
+                            <li><a href="javascript:void(0);">Terms & Conditions</a></li>
+                            <li><a href="javascript:void(0);">Cancellation & Refund Policy</a></li>
                         </ul>
                     </div>
                 </div>
