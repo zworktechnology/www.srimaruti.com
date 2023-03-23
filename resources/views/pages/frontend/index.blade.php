@@ -83,7 +83,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1100 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Srirangam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -114,7 +114,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1200 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Samayapuram</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Samayapuram</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -145,7 +145,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1200 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Gunaseelam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Gunaseelam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -181,7 +181,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1300 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Srirangam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -212,7 +212,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1500 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Samayapuram</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Samayapuram</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -243,7 +243,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1500 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Gunaseelam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Gunaseelam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -279,7 +279,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1500 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Srirangam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -310,7 +310,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1800 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Gunaseelam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Gunaseelam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -346,7 +346,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 2200 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Guest House at <span style="color: #da3c3c">Srirangam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Guest House at <span style="color: #ea5c0b">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -377,7 +377,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1700 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Soot Room at <span style="color: #da3c3c">Samayapuram</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Soot Room at <span style="color: #ea5c0b">Samayapuram</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
