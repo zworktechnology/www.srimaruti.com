@@ -99,7 +99,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 700</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +197,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -228,7 +228,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -259,7 +259,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -295,7 +295,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -326,7 +326,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1500</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -362,7 +362,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 2200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -389,7 +389,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1700</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>

@@ -31,6 +31,19 @@
                                 <i class="fat fa-location-dot"></i>
                             </div>
                             <div class="media-body">
+                                <h4 class="contact-info_title">Srirangam</h4>
+                                <span class="contact-info_text">No. 122, South Chitra Street, Srirangam, Tiruchirappalli.<br><br><a href="mailto:samayapuram@srimaruti.com" class="info-box_link">samayapuram@srimaruti.com
+                                    </a><a href="tel:+919659464543" class="info-box_link">+91 96594 64543</a>
+                                    <a href="tel:04312435749" class="info-box_link">(0431) 2435 749</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="contact-info">
+                            <div class="contact-info_icon">
+                                <i class="fat fa-location-dot"></i>
+                            </div>
+                            <div class="media-body">
                                 <h4 class="contact-info_title">Samayapuram</h4>
                                 <span class="contact-info_text">No. 1, Sakthi Avenue, Koil Marriage Hall Opp, Samayapuram, Tiruchirappalli.<br><br><a href="mailto:samayapuram@srimaruti.com" class="info-box_link">samayapuram@srimaruti.com
                                     </a><a href="tel:+919659464249" class="info-box_link">+91 96594 64249</a>
@@ -48,19 +61,6 @@
                                 <span class="contact-info_text">No. 4, Mass Garden, Salem Main Road, Gunaseelam, Tiruchirappalli.<br><br><a href="mailto:gunaseelam@srimaruti.com" class="info-box_link">gunaseelam@srimaruti.com
                                     </a><a href="tel:+919025343955" class="info-box_link">+91 90253 43955</a>
                                     <a href="tel:04316275275" class="info-box_link">(0431) 6275 275</a></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="contact-info">
-                            <div class="contact-info_icon">
-                                <i class="fat fa-location-dot"></i>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="contact-info_title">Srirangam</h4>
-                                <span class="contact-info_text">No. 122, South Chitra Street, Srirangam, Tiruchirappalli.<br><br><a href="mailto:samayapuram@srimaruti.com" class="info-box_link">samayapuram@srimaruti.com
-                                    </a><a href="tel:+919659464543" class="info-box_link">+91 96594 64543</a>
-                                    <a href="tel:04312435749" class="info-box_link">(0431) 2435 749</a></span>
                             </div>
                         </div>
                     </div>
