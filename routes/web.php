@@ -6,6 +6,7 @@ use App\Http\Controllers\ChangeProfileController;
 use App\Http\Controllers\CloseAccountController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\NamelistController;
 use App\Http\Controllers\OpenAccountController;
@@ -35,6 +36,7 @@ Route::get('/room/srirangam', function () {return view('pages.frontend.room-srir
 Route::get('/mass-trust', function () {return view('pages.frontend.masstrust');})->name('masstrust');
 Route::get('/kosaalai', function () {return view('pages.frontend.kosaalai');})->name('kosaalai');
 Route::get('/contact', function () {return view('pages.frontend.contact');})->name('contact');
+Route::get('/feedback', function () {return view('pages.frontend.feedback');})->name('feedback');
 
 // Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -212,6 +214,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // ACTIVE
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/contact/reach_out/{id}', [ContactController::class, 'reachout'])->name('contact.reach_out');
     });
+
+    // FEEDBACK CONTROLLER
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+        // INDEX
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
+    });
 });
 
 Route::get('getBranchwiseRoom/{id}', [RoomController::class, 'getBranchwiseRoom']);
@@ -219,3 +227,5 @@ Route::get('getBranchwiseRoom/{id}', [RoomController::class, 'getBranchwiseRoom'
 
 // CONTACT CONTROLLER // STORE
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
+// FEEDBACK CONTROLLER // STORE
+Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');

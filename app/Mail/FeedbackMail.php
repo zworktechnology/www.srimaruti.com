@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ContactMail extends Mailable
+class FeedbackMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,7 +20,7 @@ class ContactMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Contact Us Mail - Sri Maruthi Inn - A/C & Non A/C Rooms at Tiruchirappalli')
-        ->view('mail.contact');
+        return $this->subject('Feed Back Mail - Sri Maruthi Inn - A/C & Non A/C Rooms at Tiruchirappalli')
+        ->view('mail.feedback');
     }
 }

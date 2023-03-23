@@ -93,6 +93,12 @@
                         <span>Contact Us</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('feedback.index') ? 'mm-active' : '' }}">
+                    <a href="{{ route('feedback.index') }}" class="waves-effect">
+                        <i class="uil-feedback"></i>
+                        <span>Feed Back</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->
