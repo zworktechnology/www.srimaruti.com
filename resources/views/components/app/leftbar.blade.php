@@ -87,6 +87,12 @@
                         <span>Close Account</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('contact.index') ? 'mm-active' : '' }}">
+                    <a href="{{ route('contact.index') }}" class="waves-effect">
+                        <i class="uil-mailbox"></i>
+                        <span>Contact Us</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

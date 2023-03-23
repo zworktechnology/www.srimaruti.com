@@ -4,6 +4,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ChangeProfileController;
 use App\Http\Controllers\CloseAccountController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\NamelistController;
@@ -203,10 +204,18 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // DESTROY
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/closeaccount/destroy/{id}', [CloseAccountController::class, 'destroy'])->name('closeaccount.destroy');
     });
+
+    // CONTACT CONTROLLER
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+        // INDEX
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/contact', [ContactController::class, 'index'])->name('contact.index');
+        // ACTIVE
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/contact/reach_out/{id}', [ContactController::class, 'reachout'])->name('contact.reach_out');
+    });
 });
-
-
 
 Route::get('getBranchwiseRoom/{id}', [RoomController::class, 'getBranchwiseRoom']);
 //Route::get('/AddCheckin', [BookingController::class, 'AddCheckin']);
 
+// CONTACT CONTROLLER // STORE
+Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
