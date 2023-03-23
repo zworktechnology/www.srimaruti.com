@@ -30,7 +30,7 @@
                 <li>
                     <a href="{{ route('contact') }}">Contact Us</a>
                 </li>
-                <li>
+                <li hidden>
                     <a href="{{ route('feedback') }}">Feed Back</a>
                 </li>
             </ul>
