@@ -36,10 +36,8 @@ return new class extends Migration
             $table->string('proofs');
             $table->string('proof_type')->nullable();
             $table->longText('proof_image')->nullable();
-            $table->string('dprooftype_one')->nullable();
-            $table->longText('dproofimage_one')->nullable();
-            $table->string('dprooftype_two')->nullable();
-            $table->longText('dproofimage_two')->nullable();
+            $table->string('d_prooftype')->nullable();
+            $table->longText('d_proofimage')->nullable();
             $table->longText('customer_photo')->nullable();
 
             

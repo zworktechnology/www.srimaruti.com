@@ -194,7 +194,7 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Proof Type </label>
                                                     <div class="col-sm-7">
-                                                        <select class="form-control" name="dprooftype_one" >
+                                                        <select class="form-control" name="d_prooftype" >
                                                             <option value="" disabled selected hidden class="text-muted">Select Type</option>
                                                             <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
                                                             <option value="Pan Card" class="text-muted">Pan Card</option>
@@ -207,29 +207,10 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Proof Document </label>
                                                 <div class="col-sm-7">
-                                                        <input type="file" class="form-control" name="dproofimage_one">
+                                                        <input type="file" class="form-control" name="d_proofimage">
                                                 </div>
                                             </div>
-                                            <br/><div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Type </label>
-                                                    <div class="col-sm-7">
-                                                        <select class="form-control" name="dprooftype_two">
-                                                            <option value="" disabled selected hidden class="text-muted">Select Type</option>
-                                                            <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
-                                                            <option value="Pan Card" class="text-muted">Pan Card</option>
-                                                            <option value="Voter ID" class="text-muted">Voter ID</option>
-                                                            <option value="Driving Licence" class="text-muted">Driving Licence</option>
-                                                        </select>
-                                                    </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Document </label>
-                                                <div class="col-sm-7">
-                                                        <input type="file" class="form-control" name="dproofimage_two">
-                                                </div>
-                                            </div>
+                                            
 
 
                                             
@@ -436,7 +417,7 @@
                             $("#proof_photo").show();
                         }else if(proofs_value == '2'){
                             $("#doubleproof").show();
-                            $("#singleproof").hide();
+                            $("#singleproof").show();
                             $("#proof_photo").show();
                         }
 

@@ -25,10 +25,8 @@ class Booking extends Model
         'proofs',
         'proof_type',
         'proof_image',
-        'dprooftype_one',
-        'dproofimage_one',
-        'dprooftype_two',
-        'dproofimage_two',
+        'd_prooftype',
+        'd_proofimage',
         'customer_photo',
 
         'chick_in_date',
