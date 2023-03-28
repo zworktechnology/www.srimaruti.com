@@ -24,81 +24,93 @@
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Customer Name </label>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-9">
                                                 <input type="name" class="form-control" name="booking_customer_name" placeholder="Enter here ">
                                             </div>
                                         </div>
-                                        
+
                                         <div class="row mb-4">
-                                            
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Contact Number </label>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-4">
                                                 <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Enter here ">
                                                 <div class="form-check mt-2">
                                                     <input type="checkbox" class="form-check-input whatsapp_check" id="formrow-customCheck">
                                                     <label class="form-check-label" for="formrow-customCheck">Same as Whatsapp number</label>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-1"></div>
-                                            <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">
-                                                Whatsapp Number </label>
-                                            <div class="col-sm-3">
+                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                Whatsapp </label>
+                                            <div class="col-sm-4">
                                                 <input type="number" class="form-control whats_app_number" name="whats_app_number" placeholder="Enter here ">
                                             </div>
                                         </div>
-                                      
+
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Email ID </label>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-4">
                                                 <input type="email" class="form-control" name="email_id" placeholder="Enter here ">
                                             </div>
-                                            <div class="col-sm-1"></div>
-                                            <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">
+                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                 Address </label>
-                                            <div class="col-sm-3">
-                                                <textarea type="text" class="form-control" name="address" placeholder="Enter here "></textarea>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" name="address" placeholder="Enter here ">
                                             </div>
                                         </div>
 
 
                                         <hr>
-                                        <h4 class="card-title mb-4" style="color: #5b73e8">Rooms</h4>
+                                        <h4 class="card-title mb-4" style="color: #5b73e8">Head Rooms</h4>
 
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Male </label>
+                                                Count </label>
                                             <div class="col-sm-3">
                                                 <input type="number" class="form-control" name="male_count" placeholder="Male Count - Enter here ">
                                             </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Female </label>
                                             <div class="col-sm-3">
                                                 <input type="number" class="form-control" name="female_count" placeholder="Female Count- Enter here ">
                                             </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Child </label>
                                             <div class="col-sm-3">
                                                 <input type="number" class="form-control" name="child_count" placeholder="Child Count - Enter here ">
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Check In Date </label>
+                                            <div class="col-sm-4">
+                                                <input type="date" class="form-control" name="check_in_date" placeholder="Enter here " value="{{ $today }}">
+                                            </div>
+                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                Time </label>
+                                            <div class="col-sm-4">
+                                                <input type="time" class="form-control" name="check_in_time" placeholder="Enter here " value="{{ $timenow }}">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Check Out Date </label>
+                                            <div class="col-sm-4">
+                                                <input type="date" class="form-control" name="check_out_date" placeholder="Enter here ">
+                                            </div>
+                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                Time </label>
+                                            <div class="col-sm-4">
+                                                <input type="time" class="form-control" name="check_out_time" placeholder="Enter here ">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Days</label>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-9">
                                                 <input type="number" class="form-control days" style="background-color:#eee" id="days" name="days" placeholder="Enter here " value="">
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Branch </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-sm-9">
                                                 <select class="form-control js-example-basic-single branch_id" name="branch_id" id="branch_id" required>
                                                     <option value="" disabled selected hidden class="text-muted">
                                                         Select Branch</option>
@@ -108,7 +120,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        
+
 
                                         <div data-repeater-list="group-a">
                                             <div data-repeater-item class="row">
@@ -120,7 +132,7 @@
                                                                     Room Number</label>
                                                             </div>
                                                             <div class="dynamic_field col-sm-9">
-                                                                <table class="table-fixed col-10 " id="">
+                                                                <table class="table-fixed col-12 " id="">
                                                                     <tbody id="roomfields">
                                                                         <tr>
                                                                             <td class="col-6 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
@@ -129,8 +141,8 @@
                                                                                     <option value="" selected hidden class="text-muted">
                                                                                         Select Room</option>
                                                                                 </select></td>
-                                                                            <td class="col-2"><input type="number" class="form-control" id="room_price1" name="room_price[]" placeholder="Price Per Day" value=""/></td>
-                                                                            <td class="col-2"><input type="number" class="form-control room_cal_price" id="room_cal_price1" name="room_cal_price[]" placeholder="Price" value=""/></td>
+                                                                            <td class="col-3"><input type="number" class="form-control" id="room_price1" name="room_price[]" placeholder="Price Per Day" value="" /></td>
+                                                                            <td class="col-3"><input type="number" class="form-control room_cal_price" id="room_cal_price1" name="room_cal_price[]" placeholder="Price" value="" /></td>
                                                                             <td class="col-2"><button style="width: 100px;" class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add</button>
                                                                             </td>
                                                                         </tr>
@@ -140,25 +152,21 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>  
+                                            </div>
                                         </div>
 
-
-
-
-
-
-
                                         <hr>
-                                        <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
+
                                         <div class="row mb-4">
-                                            <div class="col-sm-3"></div>
+                                            <div class="col-sm-3">
+                                                <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
+                                            </div>
                                             <div class="col-sm-2">
-                                            <input id="default-radio-1" type="radio" value="1" name="proofs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <input id="default-radio-1" type="radio" value="1" name="proofs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                 <label for="default-radio-1" class="ml-2" style="font-weight:900">Single Proof</label>
                                             </div>
                                             <div class="col-sm-2">
-                                            <input id="default-radio-1" type="radio" value="2" name="proofs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <input id="default-radio-1" type="radio" value="2" name="proofs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                 <label for="default-radio-1" class="ml-2" style="font-weight:900">Double Proof</label>
                                             </div>
                                         </div>
@@ -167,9 +175,9 @@
                                         <div id="singleproof" style="display:none">
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Type </label>
-                                                <div class="col-sm-7">
-                                                    <select class="form-control" name="proof_type">
+                                                    Proof </label>
+                                                <div class="col-sm-4">
+                                                    <select class="form-control js-example-basic-single" name="dprooftype_one" style="width: 100%;">
                                                         <option value="" disabled selected hidden class="text-muted">Select Type</option>
                                                         <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
                                                         <option value="Pan Card" class="text-muted">Pan Card</option>
@@ -177,83 +185,63 @@
                                                         <option value="Driving Licence" class="text-muted">Driving Licence</option>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Document </label>
-                                                <div class="col-sm-7">
-                                                    <input type="file" class="form-control" name="proof_image">
+                                                <div class="col-sm-5">
+                                                    <input type="file" class="form-control" name="dproofimage_one">
                                                 </div>
                                             </div>
-                                            
                                         </div>
 
                                         <div id="doubleproof" style="display:none">
-                                    
+
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Type </label>
-                                                    <div class="col-sm-7">
-                                                        <select class="form-control" name="dprooftype_one" >
-                                                            <option value="" disabled selected hidden class="text-muted">Select Type</option>
-                                                            <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
-                                                            <option value="Pan Card" class="text-muted">Pan Card</option>
-                                                            <option value="Voter ID" class="text-muted">Voter ID</option>
-                                                            <option value="Driving Licence" class="text-muted">Driving Licence</option>
-                                                        </select>
-                                                    </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Document </label>
-                                                <div class="col-sm-7">
-                                                        <input type="file" class="form-control" name="dproofimage_one">
+                                                    Proof 01 </label>
+                                                <div class="col-sm-4">
+                                                    <select class="form-control js-example-basic-single" name="dprooftype_one" style="width: 100%;">
+                                                        <option value="" disabled selected hidden class="text-muted">Select Type</option>
+                                                        <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
+                                                        <option value="Pan Card" class="text-muted">Pan Card</option>
+                                                        <option value="Voter ID" class="text-muted">Voter ID</option>
+                                                        <option value="Driving Licence" class="text-muted">Driving Licence</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="file" class="form-control" name="dproofimage_one">
                                                 </div>
                                             </div>
-                                            <br/><div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Type </label>
-                                                    <div class="col-sm-7">
-                                                        <select class="form-control" name="dprooftype_two">
-                                                            <option value="" disabled selected hidden class="text-muted">Select Type</option>
-                                                            <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
-                                                            <option value="Pan Card" class="text-muted">Pan Card</option>
-                                                            <option value="Voter ID" class="text-muted">Voter ID</option>
-                                                            <option value="Driving Licence" class="text-muted">Driving Licence</option>
-                                                        </select>
-                                                    </div>
-                                            </div>
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Document </label>
-                                                <div class="col-sm-7">
-                                                        <input type="file" class="form-control" name="dproofimage_two">
+                                                    Proof 02 </label>
+                                                <div class="col-sm-4">
+                                                    <select class="form-control js-example-basic-single" name="dprooftype_two" style="width: 100%;">
+                                                        <option value="" disabled selected hidden class="text-muted">Select Type</option>
+                                                        <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
+                                                        <option value="Pan Card" class="text-muted">Pan Card</option>
+                                                        <option value="Voter ID" class="text-muted">Voter ID</option>
+                                                        <option value="Driving Licence" class="text-muted">Driving Licence</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="file" class="form-control" name="dproofimage_two">
                                                 </div>
                                             </div>
-
-
-                                            
                                         </div>
-                                        <div class="row mb-4"style="display:none" id="proof_photo">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Photo </label>
-                                                <div class="col-sm-7">
-                                                    <div style="display: flex;">
-                                                        <div id="my_camera"></div>
-                                                        <div id="captured_image" style="border:1px #584f72; background:#f6f6f6;">Your captured image will appear here...</div>
-                                                    </div>
-                                                    <input style="margin-top: 10px; margin-left: 40px;" type=button value="Take Snapshot" class="btn btn-success" onClick="take_snapshot()">
-                                                    <input type="hidden" name="customer_photo" class="image-tag">
+                                        <div class="row mb-4" style="display:none" id="proof_photo">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Photo </label>
+                                            <div class="col-sm-7">
+                                                <div style="display: flex;">
+                                                    <div id="my_camera"></div>
+                                                    <div id="captured_image" style="border:1px #584f72; background:#f6f6f6;">Your captured image will appear here...</div>
                                                 </div>
+                                                <input style="margin-top: 10px; margin-left: 40px;" type=button value="Take Snapshot" class="btn btn-success" onClick="take_snapshot()">
+                                                <input type="hidden" name="customer_photo" class="image-tag">
+                                            </div>
                                         </div>
-
-
-
-
                                         <hr>
                                         <h4 class="card-title mb-4" style="color: #5b73e8">Pricing Calculation</h4>
 
-                                        
+
 
                                         <div data-repeater-list="group-a">
                                             <div data-repeater-item class="row">
@@ -264,45 +252,43 @@
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
                                                                     Total - Room Price </label>
                                                             </div>
-                                                            <div class="col-md-8 col-3">
+                                                            <div class="col-md-9 col-3">
                                                                 <input type="text" class="form-control total_calc_price" style="background-color:#babcc5ad" name="total_calc_price" id="total_calc_price" value="0" placeholder="Enter here ">
                                                             </div>
                                                         </div>
-                                                        <div data-repeater-item class="inner mb-3 row">
-                                                            <div class="col-md-3 col-8">
-                                                                <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    GST </label>
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                GST Amount </label>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control gst_amount" name="gst_amount" placeholder="GST Amount - Enter here " value="0">
                                                             </div>
-                                                            <div class="col-md-4 col-5">
-                                                                <input type="number" class="form-control gst_amount"  name="gst_amount" placeholder="GST Amount - Enter here " value="0">
+                                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                                GST % </label>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control gst_percentage" name="gst_percentage" placeholder="Gst % - Enter here " value="0">
                                                             </div>
-                                                            <div class="col-md-4 col-3">
-                                                                <input type="number" class="form-control gst_percentage"  name="gst_percentage" placeholder="Gst % - Enter here " value="0">
-                                                            </div>
-                                                            <div class="col-md-1 col-3"><span>%</span></div>
                                                         </div>
-                                                        <div data-repeater-item class="inner mb-3 row">
-                                                            <div class="col-md-3 col-8">
-                                                                <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Discount </label>
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                Discount Amount </label>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control discount_amount" name="discount_amount" value="0" placeholder="Discount Amount - Enter here ">
                                                             </div>
-                                                            <div class="col-md-4 col-5">
-                                                                <input type="number" class="form-control discount_amount"  name="discount_amount" value="0"  placeholder="Discount Amount - Enter here ">
+                                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                                Discount % </label>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control discount_percentage" name="discount_percentage" value="0" placeholder="Discount % - Enter here ">
                                                             </div>
-                                                            <div class="col-md-4 col-3">
-                                                                <input type="number" class="form-control discount_percentage"   name="discount_percentage" value="0"  placeholder="Discount % - Enter here ">
-                                                            </div>
-                                                            <div class="col-md-1 col-3"><span>%</span></div>
                                                         </div>
-                                                        <div data-repeater-item class="inner mb-3 row">
-                                                            <div class="col-md-3 col-8">
-                                                                <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Additional Charge </label>
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                Additional Charge </label>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control additional_charge" name="additional_charge" value="0" placeholder="Additional Amount - Enter here ">
                                                             </div>
-                                                            <div class="col-md-4 col-5">
-                                                                <input type="number" class="form-control additional_charge"  name="additional_charge" value="0" placeholder="Additional Amount - Enter here ">
-                                                            </div>
-                                                            <div class="col-md-4 col-3">
+                                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                                Note </label>
+                                                            <div class="col-sm-4">
                                                                 <input type="text" class="form-control additional_charge_notes" name="additional_charge_notes" placeholder="Note - Enter here ">
                                                             </div>
                                                         </div>
@@ -311,8 +297,8 @@
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
                                                                     Grand Total - To Pay </label>
                                                             </div>
-                                                            <div class="col-md-8 col-3">
-                                                                <input type="number" class="form-control grand_total" style="background-color:#70ddb0" name="grand_total" value="0" placeholder="Enter here ">
+                                                            <div class="col-md-9 col-3">
+                                                                <input type="number" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="0" placeholder="Enter here ">
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
@@ -335,12 +321,12 @@
                                         </div>
 
 
-                                       
+
                                     </div>
                                 </div>
-                                
+
                                 <div class="modal-footer">
-                                   
+
                                     <input type="submit" class="btn btn-primary" name="checkin" value="checkin" />
                                 </div>
                             </form>
@@ -355,113 +341,113 @@
 <script language="JavaScript">
     $(document).ready(function() {
 
-                $('.whatsapp_check').click(function() {
-                    if ($(this).is(':checked')) {
-                        var phone_number = $('#phone_number').val();
-                        $('.whats_app_number').val(phone_number);
-                    } else {
-                        $('.whats_app_number').val('');
+        $('.whatsapp_check').click(function() {
+            if ($(this).is(':checked')) {
+                var phone_number = $('#phone_number').val();
+                $('.whats_app_number').val(phone_number);
+            } else {
+                $('.whats_app_number').val('');
+            }
+        });
+
+
+        $('#branch_id').on('change', function() {
+            var branch_id = this.value;
+
+            $.ajax({
+                url: '/getBranchwiseRoom/' + branch_id
+                , type: 'get'
+                , dataType: 'json'
+                , success: function(response) {
+                    //console.log(response['data']);
+                    var len = response['data'].length;
+                    $('.room_id').html('');
+
+                    var $select = $(".room_id").append(
+                        $('<option>', {
+                            value: '0'
+                            , text: 'Select'
+                        }));
+                    $(".room_id").append($select);
+
+                    for (var i = 0; i < len; i++) {
+
+                        if (response['data'][i].booking_status != 1) {
+
+                            $(".room_id").append($('<option>', {
+                                value: response['data'][i].id
+                                , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type
+                            , }));
+
+                        }
                     }
-                });
+                }
+            });
+        });
+
+        // Room onchange function
+
+        var k = 1;
+        $('#room_id' + k).on('change', function() {
+            //alert(this.value);
+            var room_id_s = this.value;
+
+            $.ajax({
+                url: '/getPriceforRooms/' + room_id_s
+                , type: 'get'
+                , dataType: 'json'
+                , success: function(response) {
+
+                    $("#room_price1").val('');
+                    var price = response['data'];
+
+                    $("#room_price1").val(price);
+
+                    var days = $(".days").val();
+                    var Amount = days * price;
+                    $("#room_cal_price1").val(Amount);
+                }
+            });
+        });
 
 
-                $('#branch_id').on('change', function() {
-                    var branch_id = this.value;
+        // Radion button onchange Function
 
-                    $.ajax({
-                        url: '/getBranchwiseRoom/' + branch_id
-                        , type: 'get'
-                        , dataType: 'json'
-                        , success: function(response) {
-                            //console.log(response['data']);
-                            var len = response['data'].length;
-                            $('.room_id').html('');
-
-                            var $select = $(".room_id").append(
-                                $('<option>', {
-                                    value: '0'
-                                    , text: 'Select'
-                                }));
-                            $(".room_id").append($select);
-
-                            for (var i = 0; i < len; i++) {
-
-                                if (response['data'][i].booking_status != 1) {
-
-                                    $(".room_id").append($('<option>', {
-                                        value: response['data'][i].id
-                                        , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type
-                                    , }));
-
-                                }
-                            }
-                        }
-                    });
-                });
-
-                // Room onchange function
-
-                var k = 1;
-                $('#room_id' + k).on('change', function() {
-                    //alert(this.value);
-                    var room_id_s = this.value;
-           
-                    $.ajax({
-                        url: '/getPriceforRooms/' + room_id_s
-                        , type: 'get'
-                        , dataType: 'json'
-                        , success: function(response) {
-                        
-                            $("#room_price1").val('');
-                            var price = response['data'];
-                        
-                        $("#room_price1").val(price);
-
-                        var days = $(".days").val();
-                        var Amount = days * price;
-                        $("#room_cal_price1").val(Amount);
-                        }
-                    });
-                });
+        $("input[name$='proofs']").click(function() {
+            var proofs_value = $(this).val();
+            //alert(proofs_value);
+            if (proofs_value == '1') {
+                $("#singleproof").show();
+                $("#doubleproof").hide();
+                $("#proof_photo").show();
+            } else if (proofs_value == '2') {
+                $("#doubleproof").show();
+                $("#singleproof").hide();
+                $("#proof_photo").show();
+            }
 
 
-                // Radion button onchange Function
+            var totalAmount = 0;
+            var days = $(".days").val();
 
-                    $("input[name$='proofs']").click(function() {
-                        var proofs_value = $(this).val();
-                        //alert(proofs_value);
-                        if(proofs_value == '1'){
-                            $("#singleproof").show();
-                            $("#doubleproof").hide();
-                            $("#proof_photo").show();
-                        }else if(proofs_value == '2'){
-                            $("#doubleproof").show();
-                            $("#singleproof").hide();
-                            $("#proof_photo").show();
-                        }
-
-
-                            var totalAmount = 0;
-                            var days = $(".days").val();
-                   
-                            $("input[name='room_cal_price[]']").each(function() {
-                                //alert($(this).val());
-                                totalAmount = Number(totalAmount) + Number($(this).val());
-                                $('.total_calc_price').val(totalAmount);
-                            });
-                    });
+            $("input[name='room_cal_price[]']").each(function() {
+                //alert($(this).val());
+                totalAmount = Number(totalAmount) + Number($(this).val());
+                $('.total_calc_price').val(totalAmount);
+            });
+        });
 
     });
 
 
- // Add Another Room Script   
+    // Add Another Room Script
 
     var i = 1;
     var j = 1;
     var l = 1;
     //var add_count = [];
     //console.log(add_count);
-    
+
 
     $(document).ready(function() {
         $("#addroomfields").click(function() {
@@ -480,10 +466,10 @@
                     //console.log(response['data']);
                     var len = response['data'].length;
 
-                   
+
                     var selectedValues = new Array();
-                    
-                    
+
+
                     if (len > 0) {
                         for (var i = 0; i < len; i++) {
                             if (response['data'][i].booking_status != 1) {
@@ -498,11 +484,11 @@
 
                         }
                     }
-                    
+
 
                     ++j;
                     $('#room_id' + j).append(selectedValues);
-                    
+
                     //add_count.push(Object.keys(selectedValues).length);
 
                 }
@@ -510,40 +496,40 @@
 
 
 
-                // Room Onchange Function     
-                    ++l;
-                    $('#room_id' + l).on('change', function() {
-                    
-                        //alert(this.value);
-                        var room_id_s = this.value;
-                
-                        $.ajax({
-                            url: '/getPriceforRooms/' + room_id_s
-                            , type: 'get'
-                            , dataType: 'json'
-                            , success: function(response) {
-                            
-                                $('#room_price' + l).val('');
-                                var price = response['data'];
-                            
-                            $('#room_price' + l).val(price);
+            // Room Onchange Function
+            ++l;
+            $('#room_id' + l).on('change', function() {
 
-                            var days = $(".days").val();
-                            var Amount = days * price;
-                            $('#room_cal_price' + l).val(Amount);
-                            
-                            }
-                        });
-                    });
+                //alert(this.value);
+                var room_id_s = this.value;
+
+                $.ajax({
+                    url: '/getPriceforRooms/' + room_id_s
+                    , type: 'get'
+                    , dataType: 'json'
+                    , success: function(response) {
+
+                        $('#room_price' + l).val('');
+                        var price = response['data'];
+
+                        $('#room_price' + l).val(price);
+
+                        var days = $(".days").val();
+                        var Amount = days * price;
+                        $('#room_cal_price' + l).val(Amount);
+
+                    }
+                });
+            });
 
 
         });
-        
+
 
     });
 
 
-// GST Calculation
+    // GST Calculation
     $(document).on("keyup", 'input.gst_amount', function() {
         var gstamount = $(this).val();
         var total_calc_price = $(".total_calc_price").val();
@@ -559,7 +545,7 @@
     });
 
 
-//Discount Calculation
+    //Discount Calculation
 
     $(document).on("keyup", 'input.discount_amount', function() {
         var discount_amount = $(this).val();
@@ -577,24 +563,24 @@
     });
 
 
-// Grand Total Calculation
+    // Grand Total Calculation
 
-$(document).on("keyup", 'input.additional_charge', function() {
-    var additional_charge = $(this).val();
-    var total_calc_price = $(".total_calc_price").val();
-    var discount_amount = $(".discount_amount").val();
-    var gst_amount = $(".gst_amount").val();
+    $(document).on("keyup", 'input.additional_charge', function() {
+        var additional_charge = $(this).val();
+        var total_calc_price = $(".total_calc_price").val();
+        var discount_amount = $(".discount_amount").val();
+        var gst_amount = $(".gst_amount").val();
 
-    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-    $('.grand_total').val(grand_total);
+        var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+        $('.grand_total').val(grand_total);
 
-});
+    });
 
 
-    
-    
 
-// Web Camera Script
+
+
+    // Web Camera Script
 
     $(document).on('click', '.remove-tr', function() {
         $(this).parents('tr').remove();

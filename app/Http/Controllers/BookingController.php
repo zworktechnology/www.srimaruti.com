@@ -61,44 +61,36 @@ class BookingController extends Controller
     }
 
 
-
-
     public function store(Request $request)
     {
 
         $data = new Booking();
         $random_no =   rand(100,999);
 
-        
         $checkin = $request->get('checkin');
         if($checkin == 'checkin')
         {
+
         $data->customer_name = $request->get('booking_customer_name');
         $data->phone_number = $request->get('phone_number');
         $data->whats_app_number = $request->get('whats_app_number');
         $data->email_id = $request->get('email_id');
         $data->address = $request->get('address');
+
+        $data->check_in_date = $request->get('check_in_date');
+        $data->check_in_time = $request->get('check_in_time');
+        $data->check_out_date = $request->get('check_out_date');
+        $data->check_out_time = $request->get('check_out_time');
         $data->male_count = $request->get('male_count');
         $data->female_count = $request->get('female_count');
         $data->child_count = $request->get('child_count');
         $data->days = $request->get('days');
+
         $data->branch_id = $request->get('branch_id');
         $data->proofs = $request->get('proofs');
 
         $proof = $request->get('proofs');
-
         if($proof == 1){
-
-            $data->proof_type = $request->get('proof_type');
-            if ($request->proof_image != "") {
-                $proof_image = $request->proof_image;
-                $filename = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->proof_type . '_'  . '.' . $proof_image->getClientOriginalExtension();
-                $request->proof_image->move('assets/customer_details/proof', $filename);
-                $data->proof_image = $filename;
-            }
-
-        }else if($proof == 2){
-            
             $data->dprooftype_one = $request->get('dprooftype_one');
             if ($request->dproofimage_one != "") {
                 $dproofimage_one = $request->dproofimage_one;
@@ -106,7 +98,14 @@ class BookingController extends Controller
                 $request->dproofimage_one->move('assets/customer_details/proof', $filename_one);
                 $data->dproofimage_one = $filename_one;
             }
-    
+        }else if($proof == 2){
+            $data->dprooftype_one = $request->get('dprooftype_one');
+            if ($request->dproofimage_one != "") {
+                $dproofimage_one = $request->dproofimage_one;
+                $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->dprooftype_one . '_'  . '.' . $dproofimage_one->getClientOriginalExtension();
+                $request->dproofimage_one->move('assets/customer_details/proof', $filename_one);
+                $data->dproofimage_one = $filename_one;
+            }
             $data->dprooftype_two = $request->get('dprooftype_two');
             if ($request->dproofimage_two != "") {
                 $dproofimage_two = $request->dproofimage_two;
@@ -114,13 +113,7 @@ class BookingController extends Controller
                 $request->dproofimage_two->move('assets/customer_details/proof', $filename_two);
                 $data->dproofimage_two = $filename_two;
             }
-
         }
-
-
-        
-
-        
 
         //$customer_photo = $request->customer_photo;
         //$folderPath = "assets/customer_details/profile";
@@ -133,7 +126,6 @@ class BookingController extends Controller
         //file_put_contents($customerimgfile, $image_base64);
         //$data->customer_photo = $fileName;
 
-
         $data->total = $request->get('total_calc_price');
         $data->gst_per = $request->get('gst_percentage');
         $data->gst_amount = $request->get('gst_amount');
@@ -143,12 +135,11 @@ class BookingController extends Controller
         $data->additional_notes = $request->get('additional_charge_notes');
         $data->grand_total = $request->get('grand_total');
         $data->payment_method = $request->get('payment_method');
+
         $status = 1;
         $data->status = $status;
+
         $data->save();
-
-
-
 
         $insertedId = $data->id;
             foreach ($request->get('room_id') as $key => $room_id) {
@@ -167,8 +158,6 @@ class BookingController extends Controller
                 DB::table('rooms')->where('id', $room_id)->update(['booking_status' => 1]);
             }
         }
-
-        
 
         return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
     }
