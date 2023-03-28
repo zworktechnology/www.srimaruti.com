@@ -91,28 +91,33 @@ class BookingController extends Controller
 
         $proof = $request->get('proofs');
         if($proof == 1){
-            $data->dprooftype_one = $request->get('dprooftype_one');
-            if ($request->dproofimage_one != "") {
-                $dproofimage_one = $request->dproofimage_one;
-                $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->dprooftype_one . '_'  . '.' . $dproofimage_one->getClientOriginalExtension();
-                $request->dproofimage_one->move('assets/customer_details/proof', $filename_one);
-                $data->dproofimage_one = $filename_one;
+
+            $data->proof_type = $request->get('proof_type');
+            if ($request->proof_image != "") {
+                $proof_image = $request->proof_image;
+                $filename = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->proof_type . '_'  . '.' . $proof_image->getClientOriginalExtension();
+                $request->proof_image->move('assets/customer_details/proof', $filename);
+                $data->proof_image = $filename;
             }
+
         }else if($proof == 2){
-            $data->dprooftype_one = $request->get('dprooftype_one');
-            if ($request->dproofimage_one != "") {
-                $dproofimage_one = $request->dproofimage_one;
-                $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->dprooftype_one . '_'  . '.' . $dproofimage_one->getClientOriginalExtension();
-                $request->dproofimage_one->move('assets/customer_details/proof', $filename_one);
-                $data->dproofimage_one = $filename_one;
+
+            $data->proof_type = $request->get('proof_type');
+            if ($request->proof_image != "") {
+                $proof_image = $request->proof_image;
+                $filename = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->proof_type . '_'  . '.' . $proof_image->getClientOriginalExtension();
+                $request->proof_image->move('assets/customer_details/proof', $filename);
+                $data->proof_image = $filename;
             }
-            $data->dprooftype_two = $request->get('dprooftype_two');
-            if ($request->dproofimage_two != "") {
-                $dproofimage_two = $request->dproofimage_two;
-                $filename_two = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->dprooftype_two . '_'  . '.' . $dproofimage_two->getClientOriginalExtension();
-                $request->dproofimage_two->move('assets/customer_details/proof', $filename_two);
-                $data->dproofimage_two = $filename_two;
+
+            $data->d_prooftype = $request->get('d_prooftype');
+            if ($request->d_proofimage != "") {
+                $d_proofimage = $request->d_proofimage;
+                $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->d_prooftype . '_'  . '.' . $d_proofimage->getClientOriginalExtension();
+                $request->d_proofimage->move('assets/customer_details/proof', $filename);
+                $data->d_proofimage = $filename_one;
             }
+    
         }
 
         //$customer_photo = $request->customer_photo;
