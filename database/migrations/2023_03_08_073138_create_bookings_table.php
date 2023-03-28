@@ -25,29 +25,37 @@ return new class extends Migration
             $table->string('email_id')->nullable();
             $table->longText('address')->nullable();
 
-            $table->string('proof_type');
-            $table->longText('proof_image');
-            $table->longText('customer_photo')->nullable();
-
+            $table->string('male_count');
+            $table->string('female_count');
+            $table->string('child_count')->nullable();
+            $table->string('days')->nullable();
             $table->unsignedBigInteger('branch_id');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
-            $table->string('adult_count');
-            $table->string('child_count');
 
-            $table->string('booking_date');
-            $table->string('booking_time');
+            
+            $table->string('proofs');
+            $table->string('proof_type')->nullable();
+            $table->longText('proof_image')->nullable();
+            $table->string('dprooftype_one')->nullable();
+            $table->longText('dproofimage_one')->nullable();
+            $table->string('dprooftype_two')->nullable();
+            $table->longText('dproofimage_two')->nullable();
+            $table->longText('customer_photo')->nullable();
+
+            
+
+            
             $table->string('chick_in_date')->nullable();
             $table->string('chick_in_time')->nullable();
-            $table->string('chick_out_date')->nullable();
-            $table->string('chick_out_time')->nullable();
-            $table->string('days')->nullable();
+            
 
             $table->string('total')->nullable();
             $table->string('gst_per')->nullable();
             $table->string('gst_amount')->nullable();
             $table->string('disc_per')->nullable();
             $table->string('disc_amount')->nullable();
-            $table->string('add_amount')->nullable();
+            $table->string('additional_amount')->nullable();
+            $table->string('additional_notes')->nullable();
             $table->string('grand_total')->nullable();
             $table->string('payment_method')->nullable();
 

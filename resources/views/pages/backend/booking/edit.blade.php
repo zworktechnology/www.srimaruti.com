@@ -40,95 +40,10 @@
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Booking Time </label>
-                                                <div class="col-sm-1">
-                                                    <select class="form-control" name="booking_time" required>
-                                                        <option value="" disabled selected hidden class="text-muted">Time</option>
-                                                        <option value="1"{{ $data->booking_time == '1' ? 'selected' : '' }} class="text-muted">1</option>
-                                                        <option value="2"{{ $data->booking_time == '2' ? 'selected' : '' }} class="text-muted">2</option>
-                                                        <option value="3"{{ $data->booking_time == '3' ? 'selected' : '' }} class="text-muted">3</option>
-                                                        <option value="4"{{ $data->booking_time == '4' ? 'selected' : '' }} class="text-muted">4</option>
-                                                        <option value="5"{{ $data->booking_time == '5' ? 'selected' : '' }} class="text-muted">5</option>
-                                                        <option value="6"{{ $data->booking_time == '6' ? 'selected' : '' }} class="text-muted">6</option>
-                                                        <option value="7"{{ $data->booking_time == '7' ? 'selected' : '' }} class="text-muted">7</option>
-                                                        <option value="8"{{ $data->booking_time == '8' ? 'selected' : '' }} class="text-muted">8</option>
-                                                        <option value="9"{{ $data->booking_time == '9' ? 'selected' : '' }} class="text-muted">9</option>
-                                                        <option value="10"{{ $data->booking_time == '10' ? 'selected' : '' }} class="text-muted">10</option>
-                                                        <option value="11"{{ $data->booking_time == '11' ? 'selected' : '' }} class="text-muted">11</option>
-                                                        <option value="12"{{ $data->booking_time == '12' ? 'selected' : '' }} class="text-muted">12</option>
-                                                    </select>
+                                                <div class="col-sm-4">
+                                                <input type="time" class="form-control" name="booking_time" placeholder="Enter here " value="{{ $data->booking_time }}">
                                                 </div>
-                                                <div class="col-sm-1">
-                                                    <select class="form-control" name="booking_minute" required>
-                                                        <option value="" disabled selected hidden class="text-muted">Minute</option>
-                                                        <option value="00"{{ $data->booking_minute == '00' ? 'selected' : '' }} class="text-muted">00</option>
-                                                        <option value="01"{{ $data->booking_minute == '01' ? 'selected' : '' }} class="text-muted">01</option>
-                                                        <option value="02"{{ $data->booking_minute == '02' ? 'selected' : '' }} class="text-muted">02</option>
-                                                        <option value="03"{{ $data->booking_minute == '03' ? 'selected' : '' }} class="text-muted">03</option>
-                                                        <option value="04"{{ $data->booking_minute == '04' ? 'selected' : '' }} class="text-muted">04</option>
-                                                        <option value="05"{{ $data->booking_minute == '05' ? 'selected' : '' }} class="text-muted">05</option>
-                                                        <option value="06"{{ $data->booking_minute == '06' ? 'selected' : '' }} class="text-muted">06</option>
-                                                        <option value="07"{{ $data->booking_minute == '07' ? 'selected' : '' }} class="text-muted">07</option>
-                                                        <option value="08"{{ $data->booking_minute == '08' ? 'selected' : '' }} class="text-muted">08</option>
-                                                        <option value="09"{{ $data->booking_minute == '09' ? 'selected' : '' }} class="text-muted">09</option>
-                                                        <option value="10"{{ $data->booking_minute == '10' ? 'selected' : '' }} class="text-muted">10</option>
-                                                        <option value="11"{{ $data->booking_minute == '11' ? 'selected' : '' }} class="text-muted">11</option>
-                                                        <option value="12"{{ $data->booking_minute == '12' ? 'selected' : '' }} class="text-muted">12</option>
-                                                        <option value="13"{{ $data->booking_minute == '13' ? 'selected' : '' }} class="text-muted">13</option>
-                                                        <option value="14"{{ $data->booking_minute == '14' ? 'selected' : '' }} class="text-muted">14</option>
-                                                        <option value="15"{{ $data->booking_minute == '15' ? 'selected' : '' }} class="text-muted">15</option>
-                                                        <option value="16"{{ $data->booking_minute == '16' ? 'selected' : '' }} class="text-muted">16</option>
-                                                        <option value="17"{{ $data->booking_minute == '17' ? 'selected' : '' }} class="text-muted">17</option>
-                                                        <option value="18"{{ $data->booking_minute == '18' ? 'selected' : '' }} class="text-muted">18</option>
-                                                        <option value="19"{{ $data->booking_minute == '19' ? 'selected' : '' }} class="text-muted">19</option>
-                                                        <option value="20"{{ $data->booking_minute == '20' ? 'selected' : '' }} class="text-muted">20</option>
-                                                        <option value="21"{{ $data->booking_minute == '21' ? 'selected' : '' }} class="text-muted">21</option>
-                                                        <option value="22"{{ $data->booking_minute == '22' ? 'selected' : '' }} class="text-muted">22</option>
-                                                        <option value="23"{{ $data->booking_minute == '23' ? 'selected' : '' }} class="text-muted">23</option>
-                                                        <option value="24"{{ $data->booking_minute == '24' ? 'selected' : '' }} class="text-muted">24</option>
-                                                        <option value="25"{{ $data->booking_minute == '25' ? 'selected' : '' }} class="text-muted">25</option>
-                                                        <option value="26"{{ $data->booking_minute == '26' ? 'selected' : '' }} class="text-muted">26</option>
-                                                        <option value="27"{{ $data->booking_minute == '27' ? 'selected' : '' }} class="text-muted">27</option>
-                                                        <option value="28"{{ $data->booking_minute == '28' ? 'selected' : '' }} class="text-muted">28</option>
-                                                        <option value="29"{{ $data->booking_minute == '29' ? 'selected' : '' }} class="text-muted">29</option>
-                                                        <option value="30"{{ $data->booking_minute == '30' ? 'selected' : '' }} class="text-muted">30</option>
-                                                        <option value="31"{{ $data->booking_minute == '31' ? 'selected' : '' }} class="text-muted">31</option>
-                                                        <option value="32"{{ $data->booking_minute == '32' ? 'selected' : '' }} class="text-muted">32</option>
-                                                        <option value="33"{{ $data->booking_minute == '33' ? 'selected' : '' }} class="text-muted">33</option>
-                                                        <option value="34"{{ $data->booking_minute == '34' ? 'selected' : '' }} class="text-muted">34</option>
-                                                        <option value="35"{{ $data->booking_minute == '35' ? 'selected' : '' }} class="text-muted">35</option>
-                                                        <option value="36"{{ $data->booking_minute == '36' ? 'selected' : '' }} class="text-muted">36</option>
-                                                        <option value="37"{{ $data->booking_minute == '37' ? 'selected' : '' }} class="text-muted">37</option>
-                                                        <option value="38"{{ $data->booking_minute == '38' ? 'selected' : '' }} class="text-muted">38</option>
-                                                        <option value="39"{{ $data->booking_minute == '39' ? 'selected' : '' }} class="text-muted">39</option>
-                                                        <option value="40"{{ $data->booking_minute == '40' ? 'selected' : '' }} class="text-muted">40</option>
-                                                        <option value="41"{{ $data->booking_minute == '41' ? 'selected' : '' }} class="text-muted">41</option>
-                                                        <option value="42"{{ $data->booking_minute == '42' ? 'selected' : '' }} class="text-muted">42</option>
-                                                        <option value="43"{{ $data->booking_minute == '43' ? 'selected' : '' }} class="text-muted">43</option>
-                                                        <option value="44"{{ $data->booking_minute == '44' ? 'selected' : '' }} class="text-muted">44</option>
-                                                        <option value="45"{{ $data->booking_minute == '45' ? 'selected' : '' }} class="text-muted">45</option>
-                                                        <option value="46"{{ $data->booking_minute == '46' ? 'selected' : '' }} class="text-muted">46</option>
-                                                        <option value="47"{{ $data->booking_minute == '47' ? 'selected' : '' }} class="text-muted">47</option>
-                                                        <option value="48"{{ $data->booking_minute == '48' ? 'selected' : '' }} class="text-muted">48</option>
-                                                        <option value="49"{{ $data->booking_minute == '49' ? 'selected' : '' }} class="text-muted">49</option>
-                                                        <option value="50"{{ $data->booking_minute == '50' ? 'selected' : '' }} class="text-muted">50</option>
-                                                        <option value="51"{{ $data->booking_minute == '51' ? 'selected' : '' }} class="text-muted">51</option>
-                                                        <option value="52"{{ $data->booking_minute == '52' ? 'selected' : '' }} class="text-muted">52</option>
-                                                        <option value="53"{{ $data->booking_minute == '53' ? 'selected' : '' }} class="text-muted">53</option>
-                                                        <option value="54"{{ $data->booking_minute == '54' ? 'selected' : '' }} class="text-muted">54</option>
-                                                        <option value="55"{{ $data->booking_minute == '55' ? 'selected' : '' }} class="text-muted">55</option>
-                                                        <option value="56"{{ $data->booking_minute == '56' ? 'selected' : '' }} class="text-muted">56</option>
-                                                        <option value="57"{{ $data->booking_minute == '57' ? 'selected' : '' }} class="text-muted">57</option>
-                                                        <option value="58"{{ $data->booking_minute == '58' ? 'selected' : '' }} class="text-muted">58</option>
-                                                        <option value="59"{{ $data->booking_minute == '59' ? 'selected' : '' }} class="text-muted">59</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-1">
-                                                    <select class="form-control" name="booking_minute_ampm" required>
-                                                        <option value="" disabled selected hidden class="text-muted">AM/PM</option>
-                                                        <option value="AM"{{ $data->booking_minute_ampm == 'AM' ? 'selected' : '' }} class="text-muted">AM</option>
-                                                        <option value="PM"{{ $data->booking_minute_ampm == 'PM' ? 'selected' : '' }} class="text-muted">PM</option>
-                                                    </select>
-                                                </div>
+                                                
                                         </div>
 
 
@@ -289,95 +204,10 @@
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Check In Time </label>
-                                                <div class="col-sm-1">
-                                                    <select class="form-control" name="checkin_time" required>
-                                                        <option value="" disabled selected hidden class="text-muted">Time</option>
-                                                        <option value="1"{{ $data->chick_in_time == '1' ? 'selected' : '' }} class="text-muted">1</option>
-                                                        <option value="2"{{ $data->chick_in_time == '2' ? 'selected' : '' }} class="text-muted">2</option>
-                                                        <option value="3"{{ $data->chick_in_time == '3' ? 'selected' : '' }} class="text-muted">3</option>
-                                                        <option value="4"{{ $data->chick_in_time == '4' ? 'selected' : '' }} class="text-muted">4</option>
-                                                        <option value="5"{{ $data->chick_in_time == '5' ? 'selected' : '' }} class="text-muted">5</option>
-                                                        <option value="6"{{ $data->chick_in_time == '6' ? 'selected' : '' }} class="text-muted">6</option>
-                                                        <option value="7"{{ $data->chick_in_time == '7' ? 'selected' : '' }} class="text-muted">7</option>
-                                                        <option value="8"{{ $data->chick_in_time == '8' ? 'selected' : '' }} class="text-muted">8</option>
-                                                        <option value="9"{{ $data->chick_in_time == '9' ? 'selected' : '' }} class="text-muted">9</option>
-                                                        <option value="10"{{ $data->chick_in_time == '10' ? 'selected' : '' }} class="text-muted">10</option>
-                                                        <option value="11"{{ $data->chick_in_time == '11' ? 'selected' : '' }} class="text-muted">11</option>
-                                                        <option value="12"{{ $data->chick_in_time == '12' ? 'selected' : '' }} class="text-muted">12</option>
-                                                    </select>
+                                                <div class="col-sm-4">
+                                                <input type="time" class="form-control" name="chick_in_time" placeholder="Enter here " value="{{ $data->chick_in_time }}">
                                                 </div>
-                                                <div class="col-sm-1">
-                                                    <select class="form-control" name="checkin_minute" required>
-                                                        <option value="" disabled selected hidden class="text-muted">Minute</option>
-                                                        <option value="00"{{ $data->chick_in_minute == '00' ? 'selected' : '' }} class="text-muted">00</option>
-                                                        <option value="01"{{ $data->chick_in_minute == '01' ? 'selected' : '' }} class="text-muted">01</option>
-                                                        <option value="02"{{ $data->chick_in_minute == '02' ? 'selected' : '' }} class="text-muted">02</option>
-                                                        <option value="03"{{ $data->chick_in_minute == '03' ? 'selected' : '' }} class="text-muted">03</option>
-                                                        <option value="04"{{ $data->chick_in_minute == '04' ? 'selected' : '' }} class="text-muted">04</option>
-                                                        <option value="05"{{ $data->chick_in_minute == '05' ? 'selected' : '' }} class="text-muted">05</option>
-                                                        <option value="06"{{ $data->chick_in_minute == '06' ? 'selected' : '' }} class="text-muted">06</option>
-                                                        <option value="07"{{ $data->chick_in_minute == '07' ? 'selected' : '' }} class="text-muted">07</option>
-                                                        <option value="08"{{ $data->chick_in_minute == '08' ? 'selected' : '' }} class="text-muted">08</option>
-                                                        <option value="09"{{ $data->chick_in_minute == '09' ? 'selected' : '' }} class="text-muted">09</option>
-                                                        <option value="10"{{ $data->chick_in_minute == '10' ? 'selected' : '' }} class="text-muted">10</option>
-                                                        <option value="11"{{ $data->chick_in_minute == '11' ? 'selected' : '' }} class="text-muted">11</option>
-                                                        <option value="12"{{ $data->chick_in_minute == '12' ? 'selected' : '' }} class="text-muted">12</option>
-                                                        <option value="13"{{ $data->chick_in_minute == '13' ? 'selected' : '' }} class="text-muted">13</option>
-                                                        <option value="14"{{ $data->chick_in_minute == '14' ? 'selected' : '' }} class="text-muted">14</option>
-                                                        <option value="15"{{ $data->chick_in_minute == '15' ? 'selected' : '' }} class="text-muted">15</option>
-                                                        <option value="16"{{ $data->chick_in_minute == '16' ? 'selected' : '' }} class="text-muted">16</option>
-                                                        <option value="17"{{ $data->chick_in_minute == '17' ? 'selected' : '' }} class="text-muted">17</option>
-                                                        <option value="18"{{ $data->chick_in_minute == '18' ? 'selected' : '' }} class="text-muted">18</option>
-                                                        <option value="19"{{ $data->chick_in_minute == '19' ? 'selected' : '' }} class="text-muted">19</option>
-                                                        <option value="20"{{ $data->chick_in_minute == '20' ? 'selected' : '' }} class="text-muted">20</option>
-                                                        <option value="21"{{ $data->chick_in_minute == '21' ? 'selected' : '' }} class="text-muted">21</option>
-                                                        <option value="22"{{ $data->chick_in_minute == '22' ? 'selected' : '' }} class="text-muted">22</option>
-                                                        <option value="23"{{ $data->chick_in_minute == '23' ? 'selected' : '' }} class="text-muted">23</option>
-                                                        <option value="24"{{ $data->chick_in_minute == '24' ? 'selected' : '' }} class="text-muted">24</option>
-                                                        <option value="25"{{ $data->chick_in_minute == '25' ? 'selected' : '' }} class="text-muted">25</option>
-                                                        <option value="26"{{ $data->chick_in_minute == '26' ? 'selected' : '' }} class="text-muted">26</option>
-                                                        <option value="27"{{ $data->chick_in_minute == '27' ? 'selected' : '' }} class="text-muted">27</option>
-                                                        <option value="28"{{ $data->chick_in_minute == '28' ? 'selected' : '' }} class="text-muted">28</option>
-                                                        <option value="29"{{ $data->chick_in_minute == '29' ? 'selected' : '' }} class="text-muted">29</option>
-                                                        <option value="30"{{ $data->chick_in_minute == '30' ? 'selected' : '' }} class="text-muted">30</option>
-                                                        <option value="31"{{ $data->chick_in_minute == '31' ? 'selected' : '' }} class="text-muted">31</option>
-                                                        <option value="32"{{ $data->chick_in_minute == '32' ? 'selected' : '' }} class="text-muted">32</option>
-                                                        <option value="33"{{ $data->chick_in_minute == '33' ? 'selected' : '' }} class="text-muted">33</option>
-                                                        <option value="34"{{ $data->chick_in_minute == '34' ? 'selected' : '' }} class="text-muted">34</option>
-                                                        <option value="35"{{ $data->chick_in_minute == '35' ? 'selected' : '' }} class="text-muted">35</option>
-                                                        <option value="36"{{ $data->chick_in_minute == '36' ? 'selected' : '' }} class="text-muted">36</option>
-                                                        <option value="37"{{ $data->chick_in_minute == '37' ? 'selected' : '' }} class="text-muted">37</option>
-                                                        <option value="38"{{ $data->chick_in_minute == '38' ? 'selected' : '' }} class="text-muted">38</option>
-                                                        <option value="39"{{ $data->chick_in_minute == '39' ? 'selected' : '' }} class="text-muted">39</option>
-                                                        <option value="40"{{ $data->chick_in_minute == '40' ? 'selected' : '' }} class="text-muted">40</option>
-                                                        <option value="41"{{ $data->chick_in_minute == '41' ? 'selected' : '' }} class="text-muted">41</option>
-                                                        <option value="42"{{ $data->chick_in_minute == '42' ? 'selected' : '' }} class="text-muted">42</option>
-                                                        <option value="43"{{ $data->chick_in_minute == '43' ? 'selected' : '' }} class="text-muted">43</option>
-                                                        <option value="44"{{ $data->chick_in_minute == '44' ? 'selected' : '' }} class="text-muted">44</option>
-                                                        <option value="45"{{ $data->chick_in_minute == '45' ? 'selected' : '' }} class="text-muted">45</option>
-                                                        <option value="46"{{ $data->chick_in_minute == '46' ? 'selected' : '' }} class="text-muted">46</option>
-                                                        <option value="47"{{ $data->chick_in_minute == '47' ? 'selected' : '' }} class="text-muted">47</option>
-                                                        <option value="48"{{ $data->chick_in_minute == '48' ? 'selected' : '' }} class="text-muted">48</option>
-                                                        <option value="49"{{ $data->chick_in_minute == '49' ? 'selected' : '' }} class="text-muted">49</option>
-                                                        <option value="50"{{ $data->chick_in_minute == '50' ? 'selected' : '' }} class="text-muted">50</option>
-                                                        <option value="51"{{ $data->chick_in_minute == '51' ? 'selected' : '' }} class="text-muted">51</option>
-                                                        <option value="52"{{ $data->chick_in_minute == '52' ? 'selected' : '' }} class="text-muted">52</option>
-                                                        <option value="53"{{ $data->chick_in_minute == '53' ? 'selected' : '' }} class="text-muted">53</option>
-                                                        <option value="54"{{ $data->chick_in_minute == '54' ? 'selected' : '' }} class="text-muted">54</option>
-                                                        <option value="55"{{ $data->chick_in_minute == '55' ? 'selected' : '' }} class="text-muted">55</option>
-                                                        <option value="56"{{ $data->chick_in_minute == '56' ? 'selected' : '' }} class="text-muted">56</option>
-                                                        <option value="57"{{ $data->chick_in_minute == '57' ? 'selected' : '' }} class="text-muted">57</option>
-                                                        <option value="58"{{ $data->chick_in_minute == '58' ? 'selected' : '' }} class="text-muted">58</option>
-                                                        <option value="59"{{ $data->chick_in_minute == '59' ? 'selected' : '' }} class="text-muted">59</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-1">
-                                                    <select class="form-control" name="checkin_minute_ampm" required>
-                                                        <option value="" disabled selected hidden class="text-muted">AM/PM</option>
-                                                        <option value="AM"{{ $data->chick_in_minute_ampm == 'AM' ? 'selected' : '' }} class="text-muted">AM</option>
-                                                        <option value="PM"{{ $data->chick_in_minute_ampm == 'PM' ? 'selected' : '' }} class="text-muted">PM</option>
-                                                    </select>
-                                                </div>
+                                                
                                         </div>
                                         @endif 
                                 <div class="modal-footer">

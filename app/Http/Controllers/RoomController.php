@@ -84,4 +84,12 @@ class RoomController extends Controller
         $userData['data'] = $GetBranch;
         echo json_encode($userData);
     }
+
+    public function getPriceforRooms($room_id)
+    {
+        //$GetRoom = Room::where('id', '=', $room_id)->first();
+        $GetRoom = Room::findOrFail($room_id);
+        $userData['data'] = $GetRoom->price_per_day;
+        echo json_encode($userData);
+    }
 }

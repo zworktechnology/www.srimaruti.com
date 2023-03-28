@@ -12,6 +12,10 @@ class BookingRoom extends Model
     protected $fillable = [
         'booking_id',
         'room_id',
+        'room_type',
+        'room_floor',
+        'room_price',
+        'room_cal_price',
         'soft_delete'
     ];
 
