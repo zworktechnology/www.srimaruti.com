@@ -32,7 +32,7 @@ return new class extends Migration
             $table->unsignedBigInteger('branch_id');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
 
-            
+
             $table->string('proofs');
             $table->string('proof_type')->nullable();
             $table->longText('proof_image')->nullable();
@@ -40,12 +40,12 @@ return new class extends Migration
             $table->longText('d_proofimage')->nullable();
             $table->longText('customer_photo')->nullable();
 
-            
+            $table->string('check_in_date')->nullable();
+            $table->string('check_in_time')->nullable();
 
-            
-            $table->string('chick_in_date')->nullable();
-            $table->string('chick_in_time')->nullable();
-            
+            $table->string('check_out_date')->nullable();
+            $table->string('check_out_time')->nullable();
+
 
             $table->string('total')->nullable();
             $table->string('gst_per')->nullable();
