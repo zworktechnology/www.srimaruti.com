@@ -14,11 +14,11 @@
                     <a href="{{ route('about') }}">About us</a>
                 </li>
                 <li class="menu-item-has-children">
-                    <a href="{{ route('room.samyapuram') }}">Rooms</a>
+                    <a href="{{ route('room.srirangam') }}">Branch</a>
                     <ul class="sub-menu">
+                        <li><a href="{{ route('room.srirangam') }}">Srirangam</a></li>
                         <li><a href="{{ route('room.samyapuram') }}">Samayapuram</a></li>
                         <li><a href="{{ route('room.gunaseelam') }}">Gunaseelam</a></li>
-                        <li><a href="{{ route('room.srirangam') }}">Srirangam</a></li>
                     </ul>
                 </li>
                 <li>
@@ -29,6 +29,9 @@
                 </li>
                 <li>
                     <a href="{{ route('contact') }}">Contact Us</a>
+                </li>
+                <li hidden>
+                    <a href="{{ route('feedback') }}">Feed Back</a>
                 </li>
             </ul>
         </div>
@@ -56,8 +59,8 @@
                             <div class="header-social">
                                 <span class="social-title">Follow Us: </span>
                                 <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.skype.com/"><i class="fa-brands fa-skype"></i></a>
-                                <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.linkedin.com/"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.instagram.com/"><i class="fab fa-twitter"></i></a>
                                 <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
@@ -79,9 +82,9 @@
                                     <i class="fa-regular fa-angle-down"></i>
                                 </div>
                                 <ul class="dropdown-menu d-none d-lg-block">
+                                    <li><a href="{{ route('room.srirangam') }}"><span>Srirangam, Tiruchirappalli</span></a></li>
                                     <li><a href="{{ route('room.samyapuram') }}"><span>Samayapuram, Tiruchirappalli</span></a></li>
                                     <li><a href="{{ route('room.gunaseelam') }}"><span>Gunaseelam, Tiruchirappalli</span></a></li>
-                                    <li><a href="{{ route('room.srirangam') }}"><span>Srirangam, Tiruchirappalli</span></a></li>
                                 </ul>
                             </div>
                         </div>

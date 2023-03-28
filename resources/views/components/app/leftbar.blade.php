@@ -87,6 +87,18 @@
                         <span>Close Account</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('contact.index') ? 'mm-active' : '' }}">
+                    <a href="{{ route('contact.index') }}" class="waves-effect">
+                        <i class="uil-mailbox"></i>
+                        <span>Contact Us</span>
+                    </a>
+                </li>
+                <li class="{{ Route::is('feedback.index') ? 'mm-active' : '' }}">
+                    <a href="{{ route('feedback.index') }}" class="waves-effect">
+                        <i class="uil-feedback"></i>
+                        <span>Feed Back</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

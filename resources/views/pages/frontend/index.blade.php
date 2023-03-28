@@ -81,40 +81,9 @@
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">₹ 1200 PER NIGHT (AC)</span>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Samayapuram</span></a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">2 Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">1 Extra Bed</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">The cost of the room is GST excluding.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1100 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Srirangam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -130,7 +99,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 700</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +114,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1200 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Gunaseelam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Samayapuram</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -161,7 +130,38 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-auto">
+                            <div class="service-card-two style4 extra">
+                                <div class="service-card_img">
+                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
+                                </div>
+                                <div class="service-card_content-two">
+                                    <div>
+                                        <div class="service-price">
+                                            <span class="service-card_subtitle">₹ 1200 PER NIGHT (AC)</span>
+                                        </div>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Gunaseelam</span></a>
+                                        </h3>
+                                    </div>
+                                    <div class="service-card-wrapper">
+                                        <div class="service-icon">
+                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <span class="ser-title">2 Bed</span>
+                                        </div>
+                                        <div class="service-icon">
+                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <span class="ser-title">1 Extra Bed</span>
+                                        </div>
+                                    </div>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
+                                    <div class="service-wrapper">
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -179,40 +179,9 @@
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">₹ 1500 PER NIGHT (AC)</span>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Samayapuram</span></a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">3 Bed</span>
-                                        </div>
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">2 Extra Bed</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">The cost of the room is GST excluding.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1300 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Srirangam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -228,7 +197,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -243,7 +212,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1500 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Gunaseelam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Samayapuram</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -259,7 +228,38 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-auto">
+                            <div class="service-card-two style4 extra">
+                                <div class="service-card_img">
+                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
+                                </div>
+                                <div class="service-card_content-two">
+                                    <div>
+                                        <div class="service-price">
+                                            <span class="service-card_subtitle">₹ 1500 PER NIGHT (AC)</span>
+                                        </div>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Gunaseelam</span></a>
+                                        </h3>
+                                    </div>
+                                    <div class="service-card-wrapper">
+                                        <div class="service-icon">
+                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <span class="ser-title">3 Bed</span>
+                                        </div>
+                                        <div class="service-icon">
+                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <span class="ser-title">2 Extra Bed</span>
+                                        </div>
+                                    </div>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
+                                    <div class="service-wrapper">
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +279,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1500 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Srirangam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -295,7 +295,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -310,7 +310,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1800 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #da3c3c">Gunaseelam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Room at <span style="color: #ea5c0b">Gunaseelam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -326,7 +326,7 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1500</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -344,36 +344,9 @@
                                 <div class="service-card_content-two">
                                     <div>
                                         <div class="service-price">
-                                            <span class="service-card_subtitle">₹ 1700 PER NIGHT (AC)</span>
-                                        </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Soot Room at <span style="color: #da3c3c">Samayapuram</span></a>
-                                        </h3>
-                                    </div>
-                                    <div class="service-card-wrapper">
-                                        <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
-                                            <span class="ser-title">4 Bed</span>
-                                        </div>
-                                    </div>
-                                    <p class="ser-text">The cost of the room is GST excluding.</p>
-                                    <div class="service-wrapper">
-                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1700</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-auto">
-                            <div class="service-card-two style4 extra">
-                                <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
-                                </div>
-                                <div class="service-card_content-two">
-                                    <div>
-                                        <div class="service-price">
                                             <span class="service-card_subtitle">₹ 2200 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Guest House at <span style="color: #da3c3c">Srirangam</span></a>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Guest House at <span style="color: #ea5c0b">Srirangam</span></a>
                                         </h3>
                                     </div>
                                     <div class="service-card-wrapper">
@@ -389,14 +362,40 @@
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 2200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-auto">
+                            <div class="service-card-two style4 extra">
+                                <div class="service-card_img">
+                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
+                                </div>
+                                <div class="service-card_content-two">
+                                    <div>
+                                        <div class="service-price">
+                                            <span class="service-card_subtitle">₹ 1700 PER NIGHT (AC)</span>
+                                        </div>
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Soot Room at <span style="color: #ea5c0b">Samayapuram</span></a>
+                                        </h3>
+                                    </div>
+                                    <div class="service-card-wrapper">
+                                        <div class="service-icon">
+                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <span class="ser-title">4 Bed</span>
+                                        </div>
+                                    </div>
+                                    <p class="ser-text">The cost of the room is GST excluding.</p>
+                                    <div class="service-wrapper">
+                                        <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1700</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

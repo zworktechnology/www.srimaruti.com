@@ -34,9 +34,9 @@
         <div class="container">
             <nav class="tablist">
                 <div class="filter-menu nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="active" id="nav-queen-tab" data-bs-toggle="tab" data-bs-target="#nav-queen-three" type="button" role="tab">Srirangam</button>
                     <button class="" id="nav-dexury-tab" data-bs-toggle="tab" data-bs-target="#nav-dexury-one" type="button" role="tab">Samayapuram</button>
                     <button class="" id="nav-luxury-tab" data-bs-toggle="tab" data-bs-target="#nav-luxury-two" type="button" role="tab">Gunaseelam</button>
-                    <button class="active" id="nav-queen-tab" data-bs-toggle="tab" data-bs-target="#nav-queen-three" type="button" role="tab">Srirangam</button>
                 </div>
             </nav>
             <div class="tab-content " id="nav-tabContent">
@@ -68,7 +68,7 @@
 
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
 
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
 
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1700</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
 
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +197,7 @@
 
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -228,7 +228,7 @@
 
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1500</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -264,7 +264,7 @@
 
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 700</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -295,7 +295,7 @@
 
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 900</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -326,7 +326,7 @@
 
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 1200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -357,7 +357,7 @@
 
                                     <div class="service-wrapper">
                                         <a href="javascript:void(0);" class="line-btn style3">Starts From ₹ 2200</a>
-                                        <a href="javascript:void(0);" class="line-btn">BOOK NOW</a>
+                                        <a href="{{ route('contact') }}" class="line-btn">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
