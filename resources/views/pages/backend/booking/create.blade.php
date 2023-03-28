@@ -195,47 +195,36 @@
 
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Type </label>
-                                                    <div class="col-sm-7">
-                                                        <select class="form-control" name="dprooftype_one" >
-                                                            <option value="" disabled selected hidden class="text-muted">Select Type</option>
-                                                            <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
-                                                            <option value="Pan Card" class="text-muted">Pan Card</option>
-                                                            <option value="Voter ID" class="text-muted">Voter ID</option>
-                                                            <option value="Driving Licence" class="text-muted">Driving Licence</option>
-                                                        </select>
-                                                    </div>
+                                                    Proof </label>
+                                                <div class="col-sm-4">
+                                                    <select class="form-control js-example-basic-single" name="dprooftype_one" style="width: 100%;">
+                                                        <option value="" disabled selected hidden class="text-muted">Select Type</option>
+                                                        <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
+                                                        <option value="Pan Card" class="text-muted">Pan Card</option>
+                                                        <option value="Voter ID" class="text-muted">Voter ID</option>
+                                                        <option value="Driving Licence" class="text-muted">Driving Licence</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="file" class="form-control" name="dproofimage_one">
+                                                </div>
                                             </div>
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Document </label>
-                                                <div class="col-sm-7">
-                                                        <input type="file" class="form-control" name="dproofimage_one">
+                                                    Proof </label>
+                                                <div class="col-sm-4">
+                                                    <select class="form-control js-example-basic-single" name="dprooftype_two" style="width: 100%;">
+                                                        <option value="" disabled selected hidden class="text-muted">Select Type</option>
+                                                        <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
+                                                        <option value="Pan Card" class="text-muted">Pan Card</option>
+                                                        <option value="Voter ID" class="text-muted">Voter ID</option>
+                                                        <option value="Driving Licence" class="text-muted">Driving Licence</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="file" class="form-control" name="dproofimage_two">
                                                 </div>
                                             </div>
-                                            <br/><div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Type </label>
-                                                    <div class="col-sm-7">
-                                                        <select class="form-control" name="dprooftype_two">
-                                                            <option value="" disabled selected hidden class="text-muted">Select Type</option>
-                                                            <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
-                                                            <option value="Pan Card" class="text-muted">Pan Card</option>
-                                                            <option value="Voter ID" class="text-muted">Voter ID</option>
-                                                            <option value="Driving Licence" class="text-muted">Driving Licence</option>
-                                                        </select>
-                                                    </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof Document </label>
-                                                <div class="col-sm-7">
-                                                        <input type="file" class="form-control" name="dproofimage_two">
-                                                </div>
-                                            </div>
-
-
-                                            
                                         </div>
                                         <div class="row mb-4" style="display:none" id="proof_photo">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
@@ -424,18 +413,18 @@
 
         // Radion button onchange Function
 
-                    $("input[name$='proofs']").click(function() {
-                        var proofs_value = $(this).val();
-                        //alert(proofs_value);
-                        if(proofs_value == '1'){
-                            $("#singleproof").show();
-                            $("#doubleproof").hide();
-                            $("#proof_photo").show();
-                        }else if(proofs_value == '2'){
-                            $("#doubleproof").show();
-                            $("#singleproof").hide();
-                            $("#proof_photo").show();
-                        }
+        $("input[name$='proofs']").click(function() {
+            var proofs_value = $(this).val();
+            //alert(proofs_value);
+            if (proofs_value == '1') {
+                $("#singleproof").show();
+                $("#doubleproof").hide();
+                $("#proof_photo").show();
+            } else if (proofs_value == '2') {
+                $("#doubleproof").show();
+                $("#singleproof").hide();
+                $("#proof_photo").show();
+            }
 
 
             var totalAmount = 0;
