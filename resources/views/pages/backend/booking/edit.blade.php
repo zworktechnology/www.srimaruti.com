@@ -21,6 +21,7 @@
                                 @csrf
                                 <div class="modal-body">
                                     <div class="modal-body">
+                                        <h4 class="card-title mb-4" style="color: #5b73e8">Profile</h4>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Customer Name </label>
@@ -28,80 +29,233 @@
                                                 <input type="name" class="form-control" name="booking_customer_name" placeholder="Enter here " value="{{ $data->customer_name }}">
                                             </div>
                                         </div>
-
-
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Booking Date </label>
-                                            <div class="col-sm-4">
-                                                <input type="date" class="form-control" name="booking_date" placeholder="Enter here " value="{{ $data->booking_date }}">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Booking Time </label>
-                                                <div class="col-sm-4">
-                                                <input type="time" class="form-control" name="booking_time" placeholder="Enter here " value="{{ $data->booking_time }}">
-                                                </div>
-                                                
-                                        </div>
-
-
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Contact Number </label>
-                                            <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="phone_number" id="phone_number" value="{{ $data->phone_number }}" placeholder="Enter here ">
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Enter here " value="{{ $data->phone_number }}">
                                                 <div class="form-check mt-2">
                                                     <input type="checkbox" class="form-check-input whatsapp_check" id="formrow-customCheck">
-                                                    <label class="form-check-label" for="formrow-customCheck">Same number</label>
+                                                    <label class="form-check-label" for="formrow-customCheck">Same as Whatsapp number</label>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Whatsapp Number </label>
-                                            <div class="col-sm-9">
-                                                <input type="number" class="form-control whats_app_number" value="{{ $data->whats_app_number }}" name="whats_app_number" placeholder="Enter here ">
+                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                Whatsapp </label>
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control whats_app_number" name="whats_app_number" value="{{ $data->whats_app_number }}" placeholder="Enter here ">
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Email ID </label>
-                                            <div class="col-sm-9">
-                                                <input type="email" class="form-control" name="email_id" placeholder="Enter here " value="{{ $data->email_id }}">
+                                            <div class="col-sm-4">
+                                                <input type="email" class="form-control" name="email_id" value="{{ $data->email_id }}" placeholder="Enter here ">
                                             </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                 Address </label>
-                                            <div class="col-sm-9">
-                                                <textarea type="text" class="form-control" name="address" placeholder="Enter here ">{{ $data->address }}</textarea>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" name="address" value="{{ $data->address }}" placeholder="Enter here ">
                                             </div>
                                         </div>
+
+
+
+                                        
                                         <hr>
-                                        <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
+                                        <h4 class="card-title mb-4" style="color: #5b73e8">Head Rooms</h4>
+
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Proof Type </label>
+                                                Count </label>
+                                            <div class="col-sm-3">
+                                                <input type="number" class="form-control" name="male_count" value="{{ $data->male_count }}" placeholder="Male Count - Enter here ">
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input type="number" class="form-control" name="female_count" value="{{ $data->female_count }}"  placeholder="Female Count- Enter here ">
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input type="number" class="form-control" name="child_count" value="{{ $data->child_count }}"  placeholder="Child Count - Enter here ">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Check In Date </label>
+                                            <div class="col-sm-4">
+                                                <input type="date" class="form-control" name="check_in_date" placeholder="Enter here " value="{{ $data->check_in_date }}">
+                                            </div>
+                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                Time </label>
+                                            <div class="col-sm-4">
+                                                <input type="time" class="form-control" name="check_in_time" placeholder="Enter here " value="{{ $data->check_in_time }}">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Check Out Date </label>
+                                            <div class="col-sm-4">
+                                                <input type="date" class="form-control" name="check_out_date" placeholder="Enter here "value="{{ $data->check_out_date }}">
+                                            </div>
+                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                Time </label>
+                                            <div class="col-sm-4">
+                                                <input type="time" class="form-control" name="check_out_time" placeholder="Enter here " value="{{ $data->check_out_time }}">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Days</label>
                                             <div class="col-sm-9">
-                                                <select class="form-control js-example-basic-single" name="proof_type" required>
-                                                    <option value="" disabled selected hidden class="text-muted">Select Type</option>
-                                                    <option value="Aadhaar Card"{{ $data->proof_type == 'Aadhaar Card' ? 'selected' : '' }} class="text-muted">Aadhaar Card</option>
-                                                    <option value="Pan Card"{{ $data->proof_type == 'Pan Card' ? 'selected' : '' }} class="text-muted">Pan Card</option>
-                                                    <option value="Voter ID"{{ $data->proof_type == 'Voter ID' ? 'selected' : '' }} class="text-muted">Voter ID</option>
-                                                    <option value="Driving Licence"{{ $data->proof_type == 'Driving Licence' ? 'selected' : '' }} class="text-muted">Driving Licence</option>
+                                                <input type="number" class="form-control days" style="background-color:#eee" id="days" value="{{ $data->days }}" name="days" placeholder="Enter here " value="">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Branch </label>
+                                            <div class="col-sm-9">
+                                            <select class="form-control js-example-basic-single branch_id" name="branch_id" id="branch_id" required>
+                                                    <option value="" disabled selected hidden class="text-muted">
+                                                        Select Branch</option>
+                                                    @foreach ($branch as $branchs)
+                                                    <option value="{{ $branchs->id }}"
+                                                    @if ($branchs->id === $data->branch_id) selected='selected' @endif>{{ $branchs->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Proof Document </label>
-                                            <div class="col-sm-9">
-                                            <a href="asset/{{$data->proof_image}}">{{ $data->proof_image }}</a>
-                                                <input type="file" class="form-control" name="proof_image" >
+                                        <div data-repeater-list="group-a">
+                                            <div data-repeater-item class="row">
+                                                <div class="inner-repeater mb-4">
+                                                    <div data-repeater-list="inner-group" class="inner form-group">
+                                                        <div data-repeater-item class="inner mb-3 row">
+                                                            <div class="col-sm-3">
+                                                                <label for="horizontal-firstname-input" class="col-form-label">
+                                                                    Room Number</label>
+                                                            </div>
+                                                            <div class="dynamic_field col-sm-9">
+                                                                <table class="table-fixed col-12 " id=""><button style="width: 100px;" class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add</button>
+                                                                    <tbody>
+                                                                    @foreach ($BookingRooms as $index => $BookingRoomss)
+                                                                        <tr>
+                                                                            <td class="col-6 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
+                                                                                <input type="hidden" id="room_auto_id" name="room_auto_id[]" value="{{ $BookingRoomss->id }}"/>
+                                                                                
+                                                                                
+                                                                                        @foreach ($room as $rooms)
+                                                                                        @if ($rooms['id'] == $BookingRoomss['room_id'])
+                                                                                        <input type="text" class="form-control customer_booked_room" disabled name="customer_booked_room[]" placeholder="" value="Room No{{ $rooms->room_number }} - Floor {{ $rooms->room_floor }} - {{ $rooms->room_type }}">
+                                                                                        <input type="hidden" id="room_id" name="room_id[]" value="{{ $rooms->id }}"/>
+                                                                                        @endif 
+                                                                                        @endforeach
+                                                                                </select></td>
+                                                                            <td class="col-3"><input type="number" class="form-control" id="room_price" disabled name="room_price[]" placeholder="Price Per Day" value="{{ $BookingRoomss->room_price }}" /></td>
+                                                                            <td class="col-3"><input type="number" class="form-control room_cal_price"  id="room_cal_price" name="room_cal_price[]" placeholder="Price" value="{{ $BookingRoomss->room_cal_price }}" /></td>
+                                                                            <td class="col-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button>
+                                                                            </td>
+                                                                        </tr>
+                                                                        @endforeach
+                                                                    </tbody>
+                                                                    <tbody id="roomfields">
+                                                                    
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+
+
+
+                                        <hr>
+
+                                        <div class="row mb-4">
+                                            <div class="col-sm-3">
+                                                <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input id="default-radio-1" type="radio" value="1" {{ $data->proofs == '1' ? 'checked' : ''}} name="proofs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="default-radio-1" class="ml-2" style="font-weight:900">Single Proof</label>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input id="default-radio-1" type="radio" value="2" {{ $data->proofs == '2' ? 'checked' : ''}} name="proofs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="default-radio-1" class="ml-2" style="font-weight:900">Double Proof</label>
+                                            </div>
+                                        </div>
+
+                                        @if ($data->proofs == '1')
+                                        <div id="singleproof" >
+                                            <div class="row mb-4">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    Proof </label>
+                                                <div class="col-sm-5">
+                                                    <select class="form-control " name="prooftype_one" style="width: 100%;">
+                                                    <option value="" disabled selected hidden class="text-muted">Select Type</option>
+                                                    <option value="Aadhaar Card"{{ $data->prooftype_one == 'Aadhaar Card' ? 'selected' : '' }} class="text-muted">Aadhaar Card</option>
+                                                    <option value="Pan Card"{{ $data->prooftype_one == 'Pan Card' ? 'selected' : '' }} class="text-muted">Pan Card</option>
+                                                    <option value="Voter ID"{{ $data->prooftype_one == 'Voter ID' ? 'selected' : '' }} class="text-muted">Voter ID</option>
+                                                    <option value="Driving Licence"{{ $data->prooftype_one == 'Driving Licence' ? 'selected' : '' }} class="text-muted">Driving Licence</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Proof Document </label>
+                                                <div class="col-sm-5">
+                                                <a href="asset/{{$data->proofimage_one}}">{{ $data->proofimage_one }}</a>
+                                                    <input type="file" class="form-control" name="proofimage_one">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
+
+
+                                        @if ($data->proofs == '2')
+                                        <div class="row mb-4">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    Proof </label>
+                                                <div class="col-sm-5">
+                                                    <select class="form-control " name="prooftype_one" style="width: 100%;">
+                                                    <option value="" disabled selected hidden class="text-muted">Select Type</option>
+                                                    <option value="Aadhaar Card"{{ $data->prooftype_one == 'Aadhaar Card' ? 'selected' : '' }} class="text-muted">Aadhaar Card</option>
+                                                    <option value="Pan Card"{{ $data->prooftype_one == 'Pan Card' ? 'selected' : '' }} class="text-muted">Pan Card</option>
+                                                    <option value="Voter ID"{{ $data->prooftype_one == 'Voter ID' ? 'selected' : '' }} class="text-muted">Voter ID</option>
+                                                    <option value="Driving Licence"{{ $data->prooftype_one == 'Driving Licence' ? 'selected' : '' }} class="text-muted">Driving Licence</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Proof Document </label>
+                                                <div class="col-sm-5">
+                                                <a href="asset/{{$data->proofimage_one}}">{{ $data->proofimage_one }}</a>
+                                                    <input type="file" class="form-control" name="proofimage_one">
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    Proof </label>
+                                                <div class="col-sm-5">
+                                                    <select class="form-control " name="prooftype_two" style="width: 100%;">
+                                                    <option value="" disabled selected hidden class="text-muted">Select Type</option>
+                                                    <option value="Aadhaar Card"{{ $data->prooftype_two == 'Aadhaar Card' ? 'selected' : '' }} class="text-muted">Aadhaar Card</option>
+                                                    <option value="Pan Card"{{ $data->prooftype_two == 'Pan Card' ? 'selected' : '' }} class="text-muted">Pan Card</option>
+                                                    <option value="Voter ID"{{ $data->prooftype_two == 'Voter ID' ? 'selected' : '' }} class="text-muted">Voter ID</option>
+                                                    <option value="Driving Licence"{{ $data->prooftype_two == 'Driving Licence' ? 'selected' : '' }} class="text-muted">Driving Licence</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Proof Document </label>
+                                                <div class="col-sm-5">
+                                                <a href="asset/{{$data->proofimage_two}}">{{ $data->proofimage_two }}</a>
+                                                    <input type="file" class="form-control" name="proofimage_two">
+                                                </div>
+                                            </div>
+                                        @endif
+
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Photo </label>
@@ -114,105 +268,101 @@
                                                 <input type="hidden" name="customer_photo" class="image-tag">
                                             </div>
                                         </div>
+
+
+                                        
+
                                         <hr>
-                                        <h4 class="card-title mb-4" style="color: #5b73e8">Rooms</h4>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Branch </label>
-                                            <div class="col-sm-9">
-                                                <select class="form-control js-example-basic-single branch_id" name="branch_id" id="branch_id" required>
-                                                    <option value="" disabled selected hidden class="text-muted">
-                                                        Select Branch</option>
-                                                    @foreach ($branch as $branchs)
-                                                    <option value="{{ $branchs->id }}"
-                                                    @if ($branchs->id === $data->branch_id) selected='selected' @endif>{{ $branchs->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                People </label>
-                                            <div class="col-sm-5">
-                                                <input type="number" class="form-control" name="adult_count" placeholder="Adult - Enter here " value="{{ $data->adult_count }}">
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="number" class="form-control" name="child_count" placeholder="Child - Enter here " value="{{ $data->child_count }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div data-repeater-list="group-a">
-                                    <div data-repeater-item class="row">
-                                        <div class="inner-repeater mb-4">
-                                            <div data-repeater-list="inner-group" class="inner form-group">
-                                                <div data-repeater-item class="inner mb-3 row">
-                                                    <div class="col-sm-3">
-                                                        <label for="horizontal-firstname-input" class="col-form-label">
-                                                            Room Number</label>
-                                                    </div>
-                                                    <div class="dynamic_field col-sm-9">
-                                                        <table class="table-fixed col-12 " id="">
-                                                            <tbody>
-                                                            @foreach ($BookingRooms as $index => $BookingRoomss)
-                                                                <tr>
-                                                                    <td class="col-9 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
-                                                                        <input type="hidden" id="room_auto_id" name="room_auto_id[]" value="{{ $BookingRoomss->id }}"/>
-                                                                        
-                                                                        
-                                                                                @foreach ($room as $rooms)
-                                                                                @if ($rooms['id'] == $BookingRoomss['room_id'])
-                                                                                <input type="text" class="form-control customer_booked_room" disabled name="customer_booked_room[]" placeholder="" value="Room No{{ $rooms->room_number }} - Floor {{ $rooms->room_floor }} - {{ $rooms->room_type }}">
-                                                                                <input type="hidden" id="room_id" name="room_id[]" value="{{ $rooms->id }}"/>
-                                                                                @endif 
-                                                                                @endforeach
-                                                                        </select></td>
-                                                                    <td class="col-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button">Remove</button>
-                                                                    </td>
-                                                                </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                            <tbody id="roomfields">
-                                                                <tr>
-                                                                    <td class="col-9 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
-                                                                        <input type="hidden" id="room_auto_id" name="room_auto_id[]" />
-                                                                        <select class="form-control room_id" name="room_id[]" id="" required>
-                                                                            <option value="" selected hidden class="text-muted">
-                                                                                Select Room</option>
-                                                                        </select></td>
-                                                                    <td class="col-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add</button>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                        <h4 class="card-title mb-4" style="color: #5b73e8">Pricing Calculation</h4>
+
+                                        <div data-repeater-list="group-a">
+                                            <div data-repeater-item class="row">
+                                                <div class="inner-repeater mb-4">
+                                                    <div data-repeater-list="inner-group" class="inner form-group">
+                                                        <div data-repeater-item class="inner mb-3 row">
+                                                            <div class="col-md-3 col-8">
+                                                                <label for="horizontal-firstname-input" class="col-form-label">
+                                                                    Total - Room Price </label>
+                                                            </div>
+                                                            <div class="col-md-9 col-3">
+                                                                <input type="text" class="form-control total_calc_price" style="background-color:#babcc5ad" name="total_calc_price" id="total_calc_price" value="{{ $data->total }}" placeholder="Enter here ">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                GST Amount </label>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control gst_amount" name="gst_amount" placeholder="GST Amount - Enter here " value="{{ $data->gst_amount }}">
+                                                            </div>
+                                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                                GST % </label>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control gst_percentage" name="gst_percentage" placeholder="Gst % - Enter here " value="{{ $data->gst_per }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                Discount Amount </label>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control discount_amount" name="discount_amount"  placeholder="Discount Amount - Enter here " value="{{ $data->disc_amount }}">
+                                                            </div>
+                                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                                Discount % </label>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control discount_percentage" name="discount_percentage"  placeholder="Discount % - Enter here " value="{{ $data->disc_per }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                Additional Charge </label>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control additional_charge" name="additional_charge"  placeholder="Additional Amount - Enter here " value="{{ $data->additional_amount }}">
+                                                            </div>
+                                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                                Note </label>
+                                                            <div class="col-sm-4">
+                                                                <input type="text" class="form-control additional_charge_notes" name="additional_charge_notes" placeholder="Note - Enter here " value="{{ $data->additional_notes }}">
+                                                            </div>
+                                                        </div>
+                                                        <div data-repeater-item class="inner mb-3 row">
+                                                            <div class="col-md-3 col-8">
+                                                                <label for="horizontal-firstname-input" class="col-form-label">
+                                                                    Grand Total - To Pay </label>
+                                                            </div>
+                                                            <div class="col-md-9 col-3">
+                                                                <input type="number" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="{{ $data->grand_total }}" placeholder="Enter here ">
+                                                            </div>
+                                                        </div>
+                                                        <div data-repeater-item class="inner mb-3 row">
+                                                            <div class="col-md-3 col-8">
+                                                                <label for="horizontal-firstname-input" class="col-form-label">
+                                                                    Payment Method </label>
+                                                            </div>
+                                                            <div class="col-md-9 col-5">
+                                                                <select class="form-control js-example-basic-single" name="payment_method" required>
+                                                                    <option value="" disabled selected hidden class="text-muted">Select Payment Via</option>
+                                                                    <option value="Cash"{{ $data->payment_method == 'Cash' ? 'selected' : '' }} class="text-muted">Cash</option>
+                                                                    <option value="Card"{{ $data->payment_method == 'Card' ? 'selected' : '' }} class="text-muted">Card</option>
+                                                                    <option value="Online Payment"{{ $data->payment_method == 'Online Payment' ? 'selected' : '' }} class="text-muted">Online Payment</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        
+                                       
                                     </div>
                                 </div>
+                               
 
-                                @if ($data['chick_in_date'] != NULL)
-
-                                    <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Check In Date </label>
-                                            <div class="col-sm-4">
-                                                <input type="date" class="form-control" name="checkindate" placeholder="Enter here " value="{{ $data->chick_in_date }}">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Check In Time </label>
-                                                <div class="col-sm-4">
-                                                <input type="time" class="form-control" name="chick_in_time" placeholder="Enter here " value="{{ $data->chick_in_time }}">
-                                                </div>
-                                                
-                                        </div>
-                                        @endif 
+   
                                 <div class="modal-footer">
                                     
-                                    <button type="submit" class="btn btn-primary" name="bookandcheckin" style="margin-right: 10%;" >Update</button>
+                                    <button type="submit" class="btn btn-primary" name="checkin" style="margin-right: 10%;" >Update</button>
                                 </div>
                             </form>
                         </div>
@@ -246,133 +396,383 @@
 
 
 
-        var branch_id = $('#branch_id').val();
-        $.ajax({
-                url: '/getBranchwiseRoom/' + branch_id
-                , type: 'get'
-                , dataType: 'json'
-                , success: function(response) {
-                    console.log(response['data']);
-                    var len = response['data'].length;
-                    $('.room_id').html('');
+                var branch_id = $('#branch_id').val();
+                $.ajax({
+                    url: '/getBranchwiseRoom/' + branch_id
+                    , type: 'get'
+                    , dataType: 'json'
+                    , success: function(response) {
+                        console.log(response['data']);
+                        var len = response['data'].length;
+                        $('.room_id').html('');
 
-                    var $select = $(".room_id").append(
-                        $('<option>', {
-                            value: '0'
-                            , text: 'Select'
-                        }));
-                    $(".room_id").append($select);
+                        var $select = $(".room_id").append(
+                            $('<option>', {
+                                value: '0'
+                                , text: 'Select'
+                            }));
+                        $(".room_id").append($select);
 
-                    for (var i = 0; i < len; i++) {
+                        for (var i = 0; i < len; i++) {
 
-                        if(response['data'][i].booking_status != 1){
+                            if(response['data'][i].booking_status != 1){
 
-                            $(".room_id").append($('<option>', {
-                            value: response['data'][i].id
-                            , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type
-                        , }));
+                                $(".room_id").append($('<option>', {
+                                value: response['data'][i].id
+                                , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type
+                            , }));
 
+                            }
                         }
-                        
-
-
                     }
-                }
-            });
+                });
 
 
 
 
-        $('#branch_id').on('change', function() {
-            var branch_id = this.value;
+                    $('#branch_id').on('change', function() {
+                    var branch_id = this.value;
 
-            $.ajax({
-                url: '/getBranchwiseRoom/' + branch_id
-                , type: 'get'
-                , dataType: 'json'
-                , success: function(response) {
-                    console.log(response['data']);
-                    var len = response['data'].length;
-                    $('.room_id').html('');
+                        $.ajax({
+                            url: '/getBranchwiseRoom/' + branch_id
+                            , type: 'get'
+                            , dataType: 'json'
+                            , success: function(response) {
+                                //console.log(response['data']);
+                                var len = response['data'].length;
+                                $('.room_id').html('');
+                                $('.room_price').html('');
+                                $('.room_cal_price').html('');
 
-                    var $select = $(".room_id").append(
-                        $('<option>', {
-                            value: '0'
-                            , text: 'Select'
-                        }));
-                    $(".room_id").append($select);
+                                var $select = $(".room_id").append(
+                                    $('<option>', {
+                                        value: '0'
+                                        , text: 'Select'
+                                    }));
+                                $(".room_id").append($select);
 
-                    for (var i = 0; i < len; i++) {
+                                for (var i = 0; i < len; i++) {
 
-                        if(response['data'][i].booking_status != 1){
+                                    if (response['data'][i].booking_status != 1) {
 
-                            $(".room_id").append($('<option>', {
-                            value: response['data'][i].id
-                            , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type
-                        , }));
+                                        $(".room_id").append($('<option>', {
+                                            value: response['data'][i].id
+                                            , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type
+                                        , }));
 
+                                    }
+                                }
+                            }
+                        });
+
+
+                    });
+
+
+
+
+                // Room onchange function
+
+                var k = 1;
+                $('#room_id' + k).on('change', function() {
+                    alert(this.value);
+                    var room_id_s = this.value;
+
+                    $.ajax({
+                        url: '/getPriceforRooms/' + room_id_s
+                        , type: 'get'
+                        , dataType: 'json'
+                        , success: function(response) {
+
+                            $("#room_price1").val('');
+                            var price = response['data'];
+
+                            $("#room_price1").val(price);
+
+                            var days = $(".days").val();
+                            var Amount = days * price;
+                            $("#room_cal_price1").val(Amount);
+
+
+                                var totalAmount = 0;
+                                var days = $(".days").val();
+
+                                $("input[name='room_cal_price[]']").each(function() {
+                                    //alert($(this).val());
+                                    totalAmount = Number(totalAmount) + Number($(this).val());
+                                    $('.total_calc_price').val(totalAmount);
+                                });
+
+                                var additional_charge = $(".additional_charge").val();
+                                var total_calc_price = $(".total_calc_price").val();
+                                var discount_amount = $(".discount_amount").val();
+                                var gst_amount = $(".gst_amount").val();
+
+                                var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                                $('.grand_total').val(grand_total);
                         }
-                        
+                    });
+
+                    
 
 
+                });
+
+
+
+                    // Radion button onchange Function
+
+                $("input[name$='proofs']").click(function() {
+                    var proofs_value = $(this).val();
+                    //alert(proofs_value);
+                    if (proofs_value == '1') {
+                        $("#singleproof").show();
+                        $("#doubleproof").hide();
+                        $("#proof_photo").show();
+                    } else if (proofs_value == '2') {
+                        $("#doubleproof").show();
+                        $("#singleproof").show();
+                        $("#proof_photo").show();
                     }
-                }
-            });
-        });
+
+
+                    var totalAmount = 0;
+                    var days = $(".days").val();
+
+                    $("input[name='room_cal_price[]']").each(function() {
+                        //alert($(this).val());
+                        totalAmount = Number(totalAmount) + Number($(this).val());
+                        $('.total_calc_price').val(totalAmount);
+                    });
+
+                    var additional_charge = $(".additional_charge").val();
+                    var total_calc_price = $(".total_calc_price").val();
+                    var discount_amount = $(".discount_amount").val();
+                    var gst_amount = $(".gst_amount").val();
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    $('.grand_total').val(grand_total);
+
+
+                });
 
 
     });
 
-    var i = 0;
-    var j = 0;
+
+
+
+
+    var i = 1;
+    var j = 1;
+    var l = 1;
+    var h = 1;
+
+
     $(document).ready(function() {
         $("#addroomfields").click(function() {
-            ++i;
-            $("#roomfields").append(
-                '<tr><td class="col-sm-3 px-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id'+ i +'" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-sm-2"><button class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
-            );
+                ++i;
+                $("#roomfields").append(
+                    '<tr><td class="col-sm-6 py-2 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-2"><input type="number" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value=""/></td><td class="col-2"><input type="number" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value=""/></td><td class="col-sm-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                );
 
-            var branch_id = $('.branch_id').val();
-            //alert('branch_id');
-            $.ajax({
-                url: '/getBranchwiseRoom/' + branch_id
-                , type: 'get'
-                , dataType: 'json'
-                , success: function(response) {
-                    console.log(response['data']);
-                    var len = response['data'].length;
+                    var branch_id = $('.branch_id').val();
+                    //alert('branch_id');
+                    $.ajax({
+                        url: '/getBranchwiseRoom/' + branch_id
+                        , type: 'get'
+                        , dataType: 'json'
+                        , success: function(response) {
+                            console.log(response['data']);
+                            var len = response['data'].length;
 
-                    //$('.room_id').html('');
+                            var selectedValues = new Array();
+                            if (len > 0) {
+                                for (var i = 0; i < len; i++) {
+                                    if(response['data'][i].booking_status != 1){
 
-                    
-                    var selectedValues = new Array();
-                    if (len > 0) {
-                        for (var i = 0; i < len; i++) {
-                            if(response['data'][i].booking_status != 1){
+                                        var id = response['data'][i].id;
+                                        var name = 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type;
+                                        var option = "<option value='" + id + "'>" + name + "</option>";
+                                        selectedValues.push(option);
 
-                                var id = response['data'][i].id;
-                                var name = 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type;
-                                var option = "<option value='" + id + "'>" + name + "</option>";
-                                selectedValues.push(option);
+                                    }
+                                }
+                            }
+                                
+                                ++j;
+                                $('#room_id'+j ).append(selectedValues);
+                        }
+                    });
+
+
+
+                    // Room Onchange Function
+                    ++l;
+                    ++h;
+                    $('#room_id' + l).on('change', function() {
+
+                        //alert(l);
+                        var room_id_s = this.value;
+
+                        $.ajax({
+                            url: '/getPriceforRooms/' + room_id_s
+                            , type: 'get'
+                            , dataType: 'json'
+                            , success: function(response) {
+
+                                $('#room_price' + h).val('');
+                                var price = response['data'];
+
+                                $('#room_price' + h).val(price);
+
+                                var days = $(".days").val();
+                                var Amount = days * price;
+                                $('#room_cal_price' + h).val(Amount);
+
+
+                                var totalAmount = 0;
+                                var days = $(".days").val();
+
+                                $("input[name='room_cal_price[]']").each(function() {
+                                    //alert($(this).val());
+                                    totalAmount = Number(totalAmount) + Number($(this).val());
+                                    $('.total_calc_price').val(totalAmount);
+                                });
+
+                                var additional_charge = $(".additional_charge").val();
+                                var total_calc_price = $(".total_calc_price").val();
+                                var discount_amount = $(".discount_amount").val();
+                                var gst_amount = $(".gst_amount").val();
+
+                                var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                                $('.grand_total').val(grand_total);
 
                             }
-                            
-                            
-                        }
-                    }
+                        });
+
                         
-                        ++j;
-                        $('#room_id'+j ).append(selectedValues);
+
+
+
+                    });
+
 
                     
-                }
-            });
+
+
         });
     });
     
     $(document).on('click', '.remove-tr', function() {
         $(this).parents('tr').remove();
+
+                    var totalAmount = 0;
+                    var days = $(".days").val();
+
+                    $("input[name='room_cal_price[]']").each(function() {
+                        //alert($(this).val());
+                        totalAmount = Number(totalAmount) + Number($(this).val());
+                        $('.total_calc_price').val(totalAmount);
+                    });
+
+                    
+
+                    var additional_charge = $(".additional_charge").val();
+                    var total_calc_price = $(".total_calc_price").val();
+                    var discount_amount = $(".discount_amount").val();
+                    var gst_amount = $(".gst_amount").val();
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    $('.grand_total').val(grand_total);
     });
+
+
+
+    // GST Calculation
+    $(document).on("keyup", 'input.gst_amount', function() {
+        var gstamount = $(this).val();
+        var total_calc_price = $(".total_calc_price").val();
+        var gst_in_percentage = (gstamount * 100) / total_calc_price;
+        $('.gst_percentage').val(gst_in_percentage);
+
+                    var additional_charge = $(".additional_charge").val();
+                    var total_calc_price = $(".total_calc_price").val();
+                    var discount_amount = $(".discount_amount").val();
+                    var gst_amount = $(".gst_amount").val();
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    $('.grand_total').val(grand_total);
+    });
+
+    $(document).on("keyup", 'input.gst_percentage', function() {
+        var gst_percentage = $(this).val();
+        var total_calc_price = $(".total_calc_price").val();
+        var gst_in_amount = (gst_percentage / 100) * total_calc_price;
+        $('.gst_amount').val(gst_in_amount);
+
+                    var additional_charge = $(".additional_charge").val();
+                    var total_calc_price = $(".total_calc_price").val();
+                    var discount_amount = $(".discount_amount").val();
+                    var gst_amount = $(".gst_amount").val();
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    $('.grand_total').val(grand_total);
+    });
+
+
+
+    //Discount Calculation
+
+    $(document).on("keyup", 'input.discount_amount', function() {
+        var discount_amount = $(this).val();
+        var total_calc_price = $(".total_calc_price").val();
+        var discount_in_percentage = (discount_amount * 100) / total_calc_price;
+        $('.discount_percentage').val(discount_in_percentage);
+
+                    var additional_charge = $(".additional_charge").val();
+                    var total_calc_price = $(".total_calc_price").val();
+                    var discount_amount = $(".discount_amount").val();
+                    var gst_amount = $(".gst_amount").val();
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    $('.grand_total').val(grand_total);
+    });
+
+
+    $(document).on("keyup", 'input.discount_percentage', function() {
+        var discount_percentage = $(this).val();
+        var total_calc_price = $(".total_calc_price").val();
+        var discount_in_amount = (discount_percentage / 100) * total_calc_price;
+        $('.discount_amount').val(discount_in_amount);
+
+                    var additional_charge = $(".additional_charge").val();
+                    var total_calc_price = $(".total_calc_price").val();
+                    var discount_amount = $(".discount_amount").val();
+                    var gst_amount = $(".gst_amount").val();
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    $('.grand_total').val(grand_total);
+    });
+
+
+
+    // Grand Total Calculation
+
+    $(document).on("keyup", 'input.additional_charge', function() {
+        var additional_charge = $(this).val();
+        var total_calc_price = $(".total_calc_price").val();
+        var discount_amount = $(".discount_amount").val();
+        var gst_amount = $(".gst_amount").val();
+
+        var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+        $('.grand_total').val(grand_total);
+
+    });
+
+
+
+    // Web Camera Script
 
     Webcam.set({
         width: 350

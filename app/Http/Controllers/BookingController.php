@@ -26,7 +26,7 @@ class BookingController extends Controller
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
                 $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor ' . ' - ' . $Rooms->room_type . ' - ' . $Rooms->room_category,
+                    'room' => 'No. '. $rooms_booked->room_number . ' - ' . $rooms_booked->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type . ' - ' . $Rooms->room_category,
                     'booking_id' => $datas->id
                 );
             }
@@ -34,14 +34,14 @@ class BookingController extends Controller
             $bookingData[] = array(
                 'customer_name' => $datas->customer_name,
                 'branch' => $branch->name,
-                'booking_date' => $datas->booking_date,
-                'booking_time' => $datas->booking_time,
-                'chick_in_date' => $datas->chick_in_date,
-                'chick_in_time' => $datas->chick_in_time,
+                'chick_in_date' => $datas->check_in_date,
+                'chick_in_time' => $datas->check_in_time,
                 'id' => $datas->id,
                 'room_list' => $room_list,
-                'chick_out_date' => $datas->chick_out_date,
-                'chick_out_time' => $datas->chick_out_time,
+                'chick_out_date' => $datas->check_out_date,
+                'chick_out_time' => $datas->check_out_time,
+                'phone_number' => $datas->phone_number,
+                'grand_total' => $datas->grand_total,
             );
         }
         $today = Carbon::now()->format('Y-m-d');
@@ -77,45 +77,45 @@ class BookingController extends Controller
         $data->email_id = $request->get('email_id');
         $data->address = $request->get('address');
 
+        
+        $data->male_count = $request->get('male_count');
+        $data->female_count = $request->get('female_count');
+        $data->child_count = $request->get('child_count');
         $data->check_in_date = $request->get('check_in_date');
         $data->check_in_time = $request->get('check_in_time');
         $data->check_out_date = $request->get('check_out_date');
         $data->check_out_time = $request->get('check_out_time');
-        $data->male_count = $request->get('male_count');
-        $data->female_count = $request->get('female_count');
-        $data->child_count = $request->get('child_count');
         $data->days = $request->get('days');
-
         $data->branch_id = $request->get('branch_id');
         $data->proofs = $request->get('proofs');
 
         $proof = $request->get('proofs');
         if($proof == 1){
 
-            $data->proof_type = $request->get('proof_type');
-            if ($request->proof_image != "") {
-                $proof_image = $request->proof_image;
-                $filename = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->proof_type . '_'  . '.' . $proof_image->getClientOriginalExtension();
-                $request->proof_image->move('assets/customer_details/proof', $filename);
-                $data->proof_image = $filename;
+            $data->prooftype_one = $request->get('prooftype_one');
+            if ($request->proofimage_one != "") {
+                $proofimage_one = $request->proofimage_one;
+                $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_one . '_'  . '.' . $proofimage_one->getClientOriginalExtension();
+                $request->proofimage_one->move('assets/customer_details/proof', $filename_one);
+                $data->proofimage_one = $filename_one;
             }
 
         }else if($proof == 2){
 
-            $data->proof_type = $request->get('proof_type');
-            if ($request->proof_image != "") {
-                $proof_image = $request->proof_image;
-                $filename = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->proof_type . '_'  . '.' . $proof_image->getClientOriginalExtension();
-                $request->proof_image->move('assets/customer_details/proof', $filename);
-                $data->proof_image = $filename;
+            $data->prooftype_one = $request->get('prooftype_one');
+            if ($request->proofimage_one != "") {
+                $proofimage_one = $request->proofimage_one;
+                $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_one . '_'  . '.' . $proofimage_one->getClientOriginalExtension();
+                $request->proofimage_one->move('assets/customer_details/proof', $filename_one);
+                $data->proofimage_one = $filename_one;
             }
 
-            $data->d_prooftype = $request->get('d_prooftype');
-            if ($request->d_proofimage != "") {
-                $d_proofimage = $request->d_proofimage;
-                $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->d_prooftype . '_'  . '.' . $d_proofimage->getClientOriginalExtension();
-                $request->d_proofimage->move('assets/customer_details/proof', $filename);
-                $data->d_proofimage = $filename_one;
+            $data->prooftype_two = $request->get('prooftype_two');
+            if ($request->proofimage_two != "") {
+                $proofimage_two = $request->proofimage_two;
+                $filename_two = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_two . '_'  . '.' . $proofimage_two->getClientOriginalExtension();
+                $request->proofimage_two->move('assets/customer_details/proof', $filename_two);
+                $data->proofimage_two = $filename_two;
             }
     
         }
@@ -187,17 +187,61 @@ class BookingController extends Controller
         $BookingData->whats_app_number = $request->get('whats_app_number');
         $BookingData->email_id = $request->get('email_id');
         $BookingData->address = $request->get('address');
-        $BookingData->proof_type = $request->get('proof_type');
 
-        if ($request->proof_image != "") {
-            $proof_image = $request->proof_image;
-            $filename = $BookingData->customer_name . $random_no . ' Proof ' . $BookingData->proof_type . '.' . $proof_image->getClientOriginalExtension();
-            $request->proof_image->move('assets', $filename);
-            $BookingData->proof_image = $filename;
-        } else {
-            $Insertedproof_image = $BookingData->proof_image;
-            $BookingData->proof_image = $Insertedproof_image;
+        
+        $BookingData->male_count = $request->get('male_count');
+        $BookingData->female_count = $request->get('female_count');
+        $BookingData->child_count = $request->get('child_count');
+        $BookingData->check_in_date = $request->get('check_in_date');
+        $BookingData->check_in_time = $request->get('check_in_time');
+        $BookingData->check_out_date = $request->get('check_out_date');
+        $BookingData->check_out_time = $request->get('check_out_time');
+        $BookingData->days = $request->get('days');
+        $BookingData->branch_id = $request->get('branch_id');
+        $BookingData->proofs = $request->get('proofs');
+
+        $proof = $request->get('proofs');
+        if($proof == 1){
+
+            $BookingData->prooftype_one = $request->get('prooftype_one');
+            if ($request->proofimage_one != "") {
+                $proofimage_one = $request->proofimage_one;
+                $filename_one = $BookingData->customer_name . $random_no . ' Proof ' . $BookingData->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
+                $request->proofimage_one->move('assets', $filename_one);
+                $BookingData->proofimage_one = $filename_one;
+            } else {
+                $Insertedproof_image_one = $BookingData->proofimage_one;
+                $BookingData->proofimage_one = $Insertedproof_image_one;
+            }
+
+        }else if($proof == 2){
+
+            $BookingData->prooftype_one = $request->get('prooftype_one');
+            if ($request->proofimage_one != "") {
+                $proofimage_one = $request->proofimage_one;
+                $filename_one = $BookingData->customer_name . $random_no . ' Proof ' . $BookingData->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
+                $request->proofimage_one->move('assets', $filename_one);
+                $BookingData->proofimage_one = $filename_one;
+            } else {
+                $Insertedproof_image_one = $BookingData->proofimage_one;
+                $BookingData->proofimage_one = $Insertedproof_image_one;
+            }
+
+
+            $BookingData->prooftype_two = $request->get('prooftype_two');
+            if ($request->proofimage_two != "") {
+                $proofimage_two = $request->proofimage_two;
+                $filename_two = $BookingData->customer_name . $random_no . ' Proof ' . $BookingData->prooftype_two . '.' . $proofimage_two->getClientOriginalExtension();
+                $request->proofimage_two->move('assets', $filename_two);
+                $BookingData->proofimage_two = $filename_two;
+            } else {
+                $Insertedproof_image_two = $BookingData->proofimage_two;
+                $BookingData->proofimage_two = $Insertedproof_image_two;
+            }
+
         }
+
+    
 
         //if ($request->customer_photo != "") {
         //$customer_photo = $request->customer_photo;
@@ -215,18 +259,18 @@ class BookingController extends Controller
         //   $BookingData->customer_photo = $Insertedcustomer_photo;
         //}
 
-        $BookingData->branch_id = $request->get('branch_id');
-        $BookingData->adult_count = $request->get('adult_count');
-        $BookingData->child_count = $request->get('child_count');
-
-        $BookingData->booking_date = $request->get('booking_date');
-        $BookingData->booking_time = $request->get('booking_time');
-
-        if($BookingData->chick_in_date != NULL){
-            $BookingData->chick_in_date = $request->get('checkindate');
-            $BookingData->chick_in_time = $request->get('chick_in_time');
-        }
+        $BookingData->total = $request->get('total_calc_price');
+        $BookingData->gst_per = $request->get('gst_percentage');
+        $BookingData->gst_amount = $request->get('gst_amount');
+        $BookingData->disc_per = $request->get('discount_percentage');
+        $BookingData->disc_amount = $request->get('discount_amount');
+        $BookingData->additional_amount = $request->get('additional_charge');
+        $BookingData->additional_notes = $request->get('additional_charge_notes');
+        $BookingData->grand_total = $request->get('grand_total');
+        $BookingData->payment_method = $request->get('payment_method');
         $BookingData->update();
+
+
 
         $booking_id = $id;
         $getinsertedBookingRooms = BookingRoom::where('booking_id', '=', $booking_id)->get();
@@ -271,12 +315,15 @@ class BookingController extends Controller
                     $GetroomDetails = Room::findOrFail($room_id);
 
                     $new_room_id =  $request->room_id[$key];
+                    $room_cal_price =  $request->room_cal_price[$key];
+
                     $BookingRoom = new BookingRoom;
                     $BookingRoom->booking_id = $booking_id;
                     $BookingRoom->room_id = $new_room_id;
                     $BookingRoom->room_type = $GetroomDetails->room_type;
                     $BookingRoom->room_floor = $GetroomDetails->room_floor;
                     $BookingRoom->room_price = $GetroomDetails->price_per_day;
+                    $BookingRoom->room_cal_price = $room_cal_price;
                     $BookingRoom->save();
 
                     DB::table('rooms')->where('id', $new_room_id)

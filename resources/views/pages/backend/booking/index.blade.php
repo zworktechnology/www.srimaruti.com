@@ -55,12 +55,13 @@
                             <table id="booking_datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th style="width:5%;">Sl. No</th>
-                                        <th style="width:15%;">Customer</th>
+                                        <th style="width:10%;">Sl. No</th>
+                                        <th style="width:20%;">Customer</th>
+                                        <th style="width:10%;">Contact.No</th>
                                         <th style="width:25%;">Room Details</th>
-                                        <th style="width:10%;">Booking Date</th>
                                         <th style="width:10%;">Check-In Date</th>
                                         <th style="width:10%;">Check-Out Date</th>
+                                        
                                         <th style="width:15%;">Action</th>
                                     </tr>
                                 </thead>
@@ -69,6 +70,7 @@
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
                                         <td>{{ $bookingDatas['customer_name'] }}</td>
+                                        <td>{{ $bookingDatas['phone_number'] }}</td>
                                         <td>
                                             @foreach ($bookingDatas['room_list'] as $index => $room_lists)
                                             @if ($room_lists['booking_id'] == $bookingDatas['id'])
@@ -76,20 +78,17 @@
                                             @endif
                                             @endforeach
                                         </td>
-                                        <td>
-                                            {{ date('d M Y', strtotime($bookingDatas['booking_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['booking_time'])) }} )
-                                        </td>
-                                        @if ($bookingDatas['chick_in_date'] != '')
+                                        
+                                        
                                         <td>{{ date('d M Y', strtotime($bookingDatas['chick_in_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_in_time'])) }} )</td>
-                                        @else
-                                        <td><a href="#jobcheckin{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-success" data-bs-target="#checkinmodal{{ $bookingDatas['id'] }}">Click to Checkin</a></td>
-                                        @endif
+                                        
 
-                                        @if ($bookingDatas['chick_out_date'] == '')
-                                        <td><a href="#jobcheckout{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#checkoutmodal{{ $bookingDatas['id'] }}">Click to Checkout</a></td>
-                                        @else
+                                        @if ($bookingDatas['chick_out_date'] != '')
                                         <td>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }} )</td>
+                                        @else
+                                        <td></td>
                                         @endif
+                                       
 
                                         <td>
                                             <ul class="list-unstyled hstack gap-1 mb-0">

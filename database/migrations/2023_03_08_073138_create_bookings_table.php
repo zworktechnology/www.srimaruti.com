@@ -28,25 +28,23 @@ return new class extends Migration
             $table->string('male_count');
             $table->string('female_count');
             $table->string('child_count')->nullable();
+            $table->string('check_in_date')->nullable();
+            $table->string('check_in_time')->nullable();
+            $table->string('check_out_date')->nullable();
+            $table->string('check_out_time')->nullable();
             $table->string('days')->nullable();
             $table->unsignedBigInteger('branch_id');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
 
 
             $table->string('proofs');
-            $table->string('proof_type')->nullable();
-            $table->longText('proof_image')->nullable();
-            $table->string('d_prooftype')->nullable();
-            $table->longText('d_proofimage')->nullable();
+            $table->string('prooftype_one')->nullable();
+            $table->longText('proofimage_one')->nullable();
+            $table->string('prooftype_two')->nullable();
+            $table->longText('proofimage_two')->nullable();
             $table->longText('customer_photo')->nullable();
 
-            $table->string('check_in_date')->nullable();
-            $table->string('check_in_time')->nullable();
-
-            $table->string('check_out_date')->nullable();
-            $table->string('check_out_time')->nullable();
-
-
+          
             $table->string('total')->nullable();
             $table->string('gst_per')->nullable();
             $table->string('gst_amount')->nullable();
@@ -57,6 +55,7 @@ return new class extends Migration
             $table->string('grand_total')->nullable();
             $table->string('payment_method')->nullable();
 
+            
             $table->string('status');
             $table->boolean('soft_delete')->default(0);
 

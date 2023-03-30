@@ -177,7 +177,7 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Proof </label>
                                                 <div class="col-sm-4">
-                                                    <select class="form-control js-example-basic-single" name="dprooftype_one" style="width: 100%;">
+                                                    <select class="form-control js-example-basic-single" name="prooftype_one" style="width: 100%;">
                                                         <option value="" disabled selected hidden class="text-muted">Select Type</option>
                                                         <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
                                                         <option value="Pan Card" class="text-muted">Pan Card</option>
@@ -186,7 +186,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-5">
-                                                    <input type="file" class="form-control" name="dproofimage_one">
+                                                    <input type="file" class="form-control" name="proofimage_one">
                                                 </div>
                                             </div>
                                         </div>
@@ -197,7 +197,7 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Proof </label>
                                                 <div class="col-sm-4">
-                                                    <select class="form-control js-example-basic-single" name="dprooftype_one" style="width: 100%;">
+                                                    <select class="form-control js-example-basic-single" name="prooftype_two" style="width: 100%;">
                                                         <option value="" disabled selected hidden class="text-muted">Select Type</option>
                                                         <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
                                                         <option value="Pan Card" class="text-muted">Pan Card</option>
@@ -206,25 +206,10 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-5">
-                                                    <input type="file" class="form-control" name="dproofimage_one">
+                                                    <input type="file" class="form-control" name="proofimage_two">
                                                 </div>
                                             </div>
-                                            <div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof </label>
-                                                <div class="col-sm-4">
-                                                    <select class="form-control js-example-basic-single" name="dprooftype_two" style="width: 100%;">
-                                                        <option value="" disabled selected hidden class="text-muted">Select Type</option>
-                                                        <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
-                                                        <option value="Pan Card" class="text-muted">Pan Card</option>
-                                                        <option value="Voter ID" class="text-muted">Voter ID</option>
-                                                        <option value="Driving Licence" class="text-muted">Driving Licence</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-5">
-                                                    <input type="file" class="form-control" name="dproofimage_two">
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                         <div class="row mb-4" style="display:none" id="proof_photo">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
@@ -327,7 +312,7 @@
 
                                 <div class="modal-footer">
 
-                                    <input type="submit" class="btn btn-primary" name="checkin" value="checkin" />
+                                    <input type="submit" class="btn btn-primary" name="checkin" value="checkin" style="margin-right: 10%;" />
                                 </div>
                             </form>
                         </div>
@@ -362,6 +347,8 @@
                     //console.log(response['data']);
                     var len = response['data'].length;
                     $('.room_id').html('');
+                    $('.room_price').html('');
+                    $('.room_cal_price').html('');
 
                     var $select = $(".room_id").append(
                         $('<option>', {
@@ -411,31 +398,31 @@
         });
 
 
-        // Radion button onchange Function
+                // Radion button onchange Function
 
-        $("input[name$='proofs']").click(function() {
-            var proofs_value = $(this).val();
-            //alert(proofs_value);
-            if (proofs_value == '1') {
-                $("#singleproof").show();
-                $("#doubleproof").hide();
-                $("#proof_photo").show();
-            } else if (proofs_value == '2') {
-                $("#doubleproof").show();
-                $("#singleproof").hide();
-                $("#proof_photo").show();
-            }
+                $("input[name$='proofs']").click(function() {
+                    var proofs_value = $(this).val();
+                    //alert(proofs_value);
+                    if (proofs_value == '1') {
+                        $("#singleproof").show();
+                        $("#doubleproof").hide();
+                        $("#proof_photo").show();
+                    } else if (proofs_value == '2') {
+                        $("#doubleproof").show();
+                        $("#singleproof").show();
+                        $("#proof_photo").show();
+                    }
 
 
-            var totalAmount = 0;
-            var days = $(".days").val();
+                    var totalAmount = 0;
+                    var days = $(".days").val();
 
-            $("input[name='room_cal_price[]']").each(function() {
-                //alert($(this).val());
-                totalAmount = Number(totalAmount) + Number($(this).val());
-                $('.total_calc_price').val(totalAmount);
-            });
-        });
+                    $("input[name='room_cal_price[]']").each(function() {
+                        //alert($(this).val());
+                        totalAmount = Number(totalAmount) + Number($(this).val());
+                        $('.total_calc_price').val(totalAmount);
+                    });
+                });
 
     });
 
@@ -445,6 +432,7 @@
     var i = 1;
     var j = 1;
     var l = 1;
+    var h = 1;
     //var add_count = [];
     //console.log(add_count);
 
@@ -498,9 +486,10 @@
 
             // Room Onchange Function
             ++l;
+            ++h;
             $('#room_id' + l).on('change', function() {
 
-                //alert(this.value);
+                //alert(l);
                 var room_id_s = this.value;
 
                 $.ajax({
@@ -509,18 +498,20 @@
                     , dataType: 'json'
                     , success: function(response) {
 
-                        $('#room_price' + l).val('');
+                        $('#room_price' + h).val('');
                         var price = response['data'];
 
-                        $('#room_price' + l).val(price);
+                        $('#room_price' + h).val(price);
 
                         var days = $(".days").val();
                         var Amount = days * price;
-                        $('#room_cal_price' + l).val(Amount);
+                        $('#room_cal_price' + h).val(Amount);
 
                     }
                 });
             });
+
+
 
 
         });
@@ -535,6 +526,14 @@
         var total_calc_price = $(".total_calc_price").val();
         var gst_in_percentage = (gstamount * 100) / total_calc_price;
         $('.gst_percentage').val(gst_in_percentage);
+
+                    var additional_charge = $(".additional_charge").val();
+                    var total_calc_price = $(".total_calc_price").val();
+                    var discount_amount = $(".discount_amount").val();
+                    var gst_amount = $(".gst_amount").val();
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    $('.grand_total').val(grand_total);
     });
 
     $(document).on("keyup", 'input.gst_percentage', function() {
@@ -542,6 +541,14 @@
         var total_calc_price = $(".total_calc_price").val();
         var gst_in_amount = (gst_percentage / 100) * total_calc_price;
         $('.gst_amount').val(gst_in_amount);
+
+                    var additional_charge = $(".additional_charge").val();
+                    var total_calc_price = $(".total_calc_price").val();
+                    var discount_amount = $(".discount_amount").val();
+                    var gst_amount = $(".gst_amount").val();
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    $('.grand_total').val(grand_total);
     });
 
 
@@ -552,6 +559,14 @@
         var total_calc_price = $(".total_calc_price").val();
         var discount_in_percentage = (discount_amount * 100) / total_calc_price;
         $('.discount_percentage').val(discount_in_percentage);
+
+                    var additional_charge = $(".additional_charge").val();
+                    var total_calc_price = $(".total_calc_price").val();
+                    var discount_amount = $(".discount_amount").val();
+                    var gst_amount = $(".gst_amount").val();
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    $('.grand_total').val(grand_total);
     });
 
 
@@ -560,6 +575,14 @@
         var total_calc_price = $(".total_calc_price").val();
         var discount_in_amount = (discount_percentage / 100) * total_calc_price;
         $('.discount_amount').val(discount_in_amount);
+
+                    var additional_charge = $(".additional_charge").val();
+                    var total_calc_price = $(".total_calc_price").val();
+                    var discount_amount = $(".discount_amount").val();
+                    var gst_amount = $(".gst_amount").val();
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    $('.grand_total').val(grand_total);
     });
 
 
@@ -584,6 +607,26 @@
 
     $(document).on('click', '.remove-tr', function() {
         $(this).parents('tr').remove();
+
+
+                    var totalAmount = 0;
+                    var days = $(".days").val();
+
+                    $("input[name='room_cal_price[]']").each(function() {
+                        //alert($(this).val());
+                        totalAmount = Number(totalAmount) + Number($(this).val());
+                        $('.total_calc_price').val(totalAmount);
+                    });
+
+                    
+
+                    var additional_charge = $(".additional_charge").val();
+                    var total_calc_price = $(".total_calc_price").val();
+                    var discount_amount = $(".discount_amount").val();
+                    var gst_amount = $(".gst_amount").val();
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    $('.grand_total').val(grand_total);
     });
 
     Webcam.set({
