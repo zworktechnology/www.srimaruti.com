@@ -26,7 +26,7 @@ class BookingController extends Controller
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
                 $room_list[] = array(
-                    'room' => 'No. '. $rooms_booked->room_number . ' - ' . $rooms_booked->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type . ' - ' . $Rooms->room_category,
+                    'room' => 'No. '. $rooms_booked->room_number . ' - ' . $rooms_booked->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type,
                     'booking_id' => $datas->id
                 );
             }
