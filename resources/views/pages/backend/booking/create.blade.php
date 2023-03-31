@@ -315,7 +315,7 @@
                                                             </div>
                                                             <div class="col-md-9 col-5">
                                                                 <select class="form-control js-example-basic-single" name="payment_method" required>
-                                                                    <option value="" disabled selected hidden class="text-muted">Select Payment Via</option>
+                                                                    <option value=""  selected hidden class="text-muted">Select Payment Via</option>
                                                                     <option value="Cash" class="text-muted">Cash</option>
                                                                     <option value="Card" class="text-muted">Card</option>
                                                                     <option value="Online Payment" class="text-muted">Online Payment</option>
