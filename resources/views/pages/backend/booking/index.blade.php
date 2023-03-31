@@ -57,11 +57,11 @@
                                     <tr>
                                         <th style="width:10%;">Sl. No</th>
                                         <th style="width:20%;">Customer</th>
-                                        <th style="width:10%;">Contact.No</th>
-                                        <th style="width:25%;">Room Details</th>
-                                        <th style="width:10%;">Check-In Date</th>
-                                        <th style="width:10%;">Check-Out Date</th>
                                         
+                                        <th style="width:25%;">Room Details</th>
+                                        <th style="width:10%;">Check In/Out Date</th>
+                                        <th style="width:10%;">Paid</th>
+                                        <th style="width:10%;">Balance</th>
                                         <th style="width:15%;">Action</th>
                                     </tr>
                                 </thead>
@@ -69,26 +69,34 @@
                                     @foreach ($bookingData as $keydata => $bookingDatas)
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
-                                        <td>{{ $bookingDatas['customer_name'] }}</td>
-                                        <td>{{ $bookingDatas['phone_number'] }}</td>
+                                        <td>{{ $bookingDatas['customer_name'] }} - {{ $bookingDatas['phone_number'] }}</td>
+                                        
                                         <td>
                                             @foreach ($bookingDatas['room_list'] as $index => $room_lists)
                                             @if ($room_lists['booking_id'] == $bookingDatas['id'])
-                                            {{ $bookingDatas['branch'] }} - {{ $room_lists['room'] }}<br />
+                                           {{ $bookingDatas['branch'] }} - {{ $room_lists['room'] }}<br />
                                             @endif
                                             @endforeach
                                         </td>
                                         
                                         
-                                        <td>{{ date('d M Y', strtotime($bookingDatas['chick_in_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_in_time'])) }} )</td>
+                                        <td>CheckIn - {{ date('d M Y', strtotime($bookingDatas['chick_in_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_in_time'])) }} )
+                                            <br/>
+                                            CheckOut - {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }} )
+                                        </td>
                                         
 
-                                        @if ($bookingDatas['chick_out_date'] != '')
-                                        <td>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }} )</td>
-                                        @else
-                                        <td></td>
-                                        @endif
+                                        
+                                 
                                        
+                                        <td>₹{{ $bookingDatas['payable_amount'] }}</td>
+                                        @if ($bookingDatas['balance_amount'] > 0)
+                                        <td>₹{{ $bookingDatas['balance_amount'] }}<br/>
+                                        <a href="#jobpaybalance{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#paybalance{{ $bookingDatas['id'] }}">Pay</a>
+                                            </td>
+                                        @else
+                                        <td>₹{{ $bookingDatas['balance_amount'] }}
+                                        @endif
 
                                         <td>
                                             <ul class="list-unstyled hstack gap-1 mb-0">
@@ -102,40 +110,61 @@
                                         </td>
                                     </tr>
 
-                                    <div class="modal fade" id="checkinmodal{{ $bookingDatas['id'] }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+                                    <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Checkin</h5>
+                                                    <h5 class="modal-title">Pay Balance Amount</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form autocomplete="off" method="POST" action="{{ route('booking.checkin', ['id' => $bookingDatas['id']]) }}">
+                                                    <form autocomplete="off" method="POST" action="{{ route('booking.pay_balance', ['id' => $bookingDatas['id']]) }}">
                                                         @method('PUT')
                                                         @csrf
-                                                        <div class="row mb-4" hidden>
-                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                                Date </label>
-                                                            <div class="col-sm-9">
-                                                                <input type="date" class="form-control" name="chick_in_date" required value="{{ $today }}">
+                                                        <div class="row mb-4" >
+                                                            <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">
+                                                                Customer Name </label>
+                                                            <div class="col-sm-8">
+                                                                <span class="form-control">{{ $bookingDatas['customer_name'] }}</span>
                                                             </div>
                                                         </div>
-                                                        <div class="row mb-4" hidden>
-                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                                Time </label>
-                                                            <div class="col-sm-9">
-                                                                <input type="time" class="form-control" name="chick_in_time" required value="{{ $timenow }}">
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p class="text-muted font-size-16 mb-4">Please confirm that you wish to check in the customer {{ $bookingDatas['customer_name'] }} - on Room No @foreach ($bookingDatas['room_list'] as $index => $room_lists)
+                                                        <div class="row mb-4" >
+                                                            <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">
+                                                                Room Details </label>
+                                                            <div class="col-sm-8">
+                                                                <span class="form-control">
+                                                                @foreach ($bookingDatas['room_list'] as $index => $room_lists)
                                                                 @if ($room_lists['booking_id'] == $bookingDatas['id'])
-                                                                {{ $room_lists['room'] }} on branch {{ $bookingDatas['branch'] }}
+                                                                {{ $bookingDatas['branch'] }} - {{ $room_lists['room'] }} <br/>
                                                                 @endif
-                                                                @endforeach.</p>
+                                                                @endforeach</span>
+                                                               
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-4" >
+                                                            <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">
+                                                                Total </label>
+                                                            <div class="col-sm-8">
+                                                                <span class="form-control">₹{{ $bookingDatas['grand_total'] }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-4" >
+                                                            <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">
+                                                                Paid Amount </label>
+                                                            <div class="col-sm-8">
+                                                                <span class="form-control">₹{{ $bookingDatas['payable_amount'] }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-4" >
+                                                            <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">
+                                                                Balance Amount </label>
+                                                            <div class="col-sm-8">
+                                                                
+                                                                <input type="number" class="form-control balance_amount" style="background-color:#991212;color: white;" id="balance_amount" name="balance_amount" placeholder="Enter here " value="{{ $bookingDatas['balance_amount'] }}">
+                                                            </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-success">Yes, Check In</button>
+                                                            <button type="submit" class="btn btn-success">Pay</button>
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, Get Back</button>
                                                         </div>
                                                     </form>

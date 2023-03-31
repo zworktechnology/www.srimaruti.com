@@ -286,6 +286,28 @@
                                                                 <input type="number" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="0" placeholder="Enter here ">
                                                             </div>
                                                         </div>
+
+
+                                                        <div data-repeater-item class="inner mb-3 row">
+                                                            <div class="col-md-3 col-8">
+                                                                <label for="horizontal-firstname-input" class="col-form-label">
+                                                                    Payable Amount </label>
+                                                            </div>
+                                                            <div class="col-md-9 col-3">
+                                                                <input type="number" class="form-control payable_amount" value="0"  name="payable_amount"  placeholder="Enter here ">
+                                                            </div>
+                                                        </div>
+                                                        <div data-repeater-item class="inner mb-3 row">
+                                                            <div class="col-md-3 col-8">
+                                                                <label for="horizontal-firstname-input" class="col-form-label">
+                                                                    Balance Amount </label>
+                                                            </div>
+                                                            <div class="col-md-9 col-3">
+                                                                <input type="number" class="form-control balance_amount" style="background-color:#c7c21dad" value="0"  name="balance_amount"  placeholder="Enter here ">
+                                                            </div>
+                                                        </div>
+
+
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
@@ -507,6 +529,27 @@
                         var Amount = days * price;
                         $('#room_cal_price' + h).val(Amount);
 
+
+                                var totalAmount = 0;
+                                var days = $(".days").val();
+
+                                $("input[name='room_cal_price[]']").each(function() {
+                                    //alert($(this).val());
+                                    totalAmount = Number(totalAmount) + Number($(this).val());
+                                    $('.total_calc_price').val(totalAmount);
+                                });
+
+                                var additional_charge = $(".additional_charge").val();
+                                var total_calc_price = $(".total_calc_price").val();
+                                var discount_amount = $(".discount_amount").val();
+                                var gst_amount = $(".gst_amount").val();
+
+                                var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                                $('.grand_total').val(grand_total);
+                                var payable_amount = $(".payable_amount").val();
+                                var balance = Number(grand_total) - Number(payable_amount);
+                                $('.balance_amount').val(balance);  
+
                     }
                 });
             });
@@ -531,9 +574,13 @@
                     var total_calc_price = $(".total_calc_price").val();
                     var discount_amount = $(".discount_amount").val();
                     var gst_amount = $(".gst_amount").val();
-
+                    
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
+                    var payable_amount = $(".payable_amount").val();
+                    var balance = Number(grand_total) - Number(payable_amount);
+                    $('.balance_amount').val(balance);
+                    
     });
 
     $(document).on("keyup", 'input.gst_percentage', function() {
@@ -549,6 +596,10 @@
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
+                    var payable_amount = $(".payable_amount").val();
+                    var balance = Number(grand_total) - Number(payable_amount);
+                    $('.balance_amount').val(balance);
+                    
     });
 
 
@@ -567,6 +618,10 @@
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
+                    var payable_amount = $(".payable_amount").val();
+                    var balance = Number(grand_total) - Number(payable_amount);
+                    $('.balance_amount').val(balance);
+                    
     });
 
 
@@ -583,6 +638,10 @@
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
+                    var payable_amount = $(".payable_amount").val();
+                    var balance = Number(grand_total) - Number(payable_amount);
+                    $('.balance_amount').val(balance);
+                    
     });
 
 
@@ -596,7 +655,28 @@
 
         var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
         $('.grand_total').val(grand_total);
+        
+        var payable_amount = $(".payable_amount").val();
+        var balance = Number(grand_total) - Number(payable_amount);
+        $('.balance_amount').val(balance);
+        
 
+    });
+
+
+
+    $(document).on("keyup", 'input.payable_amount', function() {
+        var payable_amount = $(this).val();
+
+        var additional_charge = $(".additional_charge").val();
+        var total_calc_price = $(".total_calc_price").val();
+        var discount_amount = $(".discount_amount").val();
+        var gst_amount = $(".gst_amount").val();
+
+        var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+        $('.grand_total').val(grand_total);
+        var balance = Number(grand_total) - Number(payable_amount);
+        $('.balance_amount').val(balance);
     });
 
 
@@ -627,6 +707,10 @@
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
+                    var payable_amount = $(".payable_amount").val();
+                    var balance = Number(grand_total) - Number(payable_amount);
+                    $('.balance_amount').val(balance);
+
     });
 
     Webcam.set({

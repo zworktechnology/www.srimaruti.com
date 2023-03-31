@@ -336,6 +336,24 @@
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
+                                                                    Payable Amount </label>
+                                                            </div>
+                                                            <div class="col-md-9 col-3">
+                                                                <input type="number" class="form-control payable_amount"  value="{{ $data->payable_amount }}" name="payable_amount"  placeholder="Enter here ">
+                                                            </div>
+                                                        </div>
+                                                        <div data-repeater-item class="inner mb-3 row">
+                                                            <div class="col-md-3 col-8">
+                                                                <label for="horizontal-firstname-input" class="col-form-label">
+                                                                    Balance Amount </label>
+                                                            </div>
+                                                            <div class="col-md-9 col-3">
+                                                                <input type="number" class="form-control balance_amount" style="background-color:#c7c21dad" value="{{ $data->balance_amount }}"  name="balance_amount"  placeholder="Enter here ">
+                                                            </div>
+                                                        </div>
+                                                        <div data-repeater-item class="inner mb-3 row">
+                                                            <div class="col-md-3 col-8">
+                                                                <label for="horizontal-firstname-input" class="col-form-label">
                                                                     Payment Method </label>
                                                             </div>
                                                             <div class="col-md-9 col-5">
@@ -510,6 +528,9 @@
 
                                 var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                                 $('.grand_total').val(grand_total);
+                                var payable_amount = $(".payable_amount").val();
+                                var balance = Number(grand_total) - Number(payable_amount);
+                                $('.balance_amount').val(balance);  
                         }
                     });
 
@@ -552,6 +573,9 @@
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
+                    var payable_amount = $(".payable_amount").val();
+                    var balance = Number(grand_total) - Number(payable_amount);
+                    $('.balance_amount').val(balance);  
 
 
                 });
@@ -647,6 +671,9 @@
 
                                 var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                                 $('.grand_total').val(grand_total);
+                                var payable_amount = $(".payable_amount").val();
+                                var balance = Number(grand_total) - Number(payable_amount);
+                                $('.balance_amount').val(balance);  
 
                             }
                         });
@@ -685,6 +712,9 @@
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
+                    var payable_amount = $(".payable_amount").val();
+                    var balance = Number(grand_total) - Number(payable_amount);
+                    $('.balance_amount').val(balance);  
     });
 
 
@@ -703,6 +733,9 @@
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
+                    var payable_amount = $(".payable_amount").val();
+                    var balance = Number(grand_total) - Number(payable_amount);
+                    $('.balance_amount').val(balance);  
     });
 
     $(document).on("keyup", 'input.gst_percentage', function() {
@@ -718,6 +751,9 @@
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
+                    var payable_amount = $(".payable_amount").val();
+                    var balance = Number(grand_total) - Number(payable_amount);
+                    $('.balance_amount').val(balance);  
     });
 
 
@@ -737,6 +773,9 @@
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
+                    var payable_amount = $(".payable_amount").val();
+                    var balance = Number(grand_total) - Number(payable_amount);
+                    $('.balance_amount').val(balance);  
     });
 
 
@@ -753,6 +792,9 @@
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
+                    var payable_amount = $(".payable_amount").val();
+                    var balance = Number(grand_total) - Number(payable_amount);
+                    $('.balance_amount').val(balance);  
     });
 
 
@@ -767,6 +809,9 @@
 
         var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
         $('.grand_total').val(grand_total);
+        var payable_amount = $(".payable_amount").val();
+        var balance = Number(grand_total) - Number(payable_amount);
+        $('.balance_amount').val(balance);  
 
     });
 
