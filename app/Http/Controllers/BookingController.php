@@ -27,7 +27,8 @@ class BookingController extends Controller
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
                 $room_list[] = array(
                     'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type,
-                    'booking_id' => $datas->id
+                    'booking_id' => $datas->id,
+                    'booking_room_price' => $rooms_booked->room_price,
                 );
             }
             
@@ -45,6 +46,7 @@ class BookingController extends Controller
                 'grand_total' => $datas->grand_total,
                 'payable_amount' => $datas->payable_amount,
                 'balance_amount' => $datas->balance_amount,
+                'days' => $datas->days,
             );
         }
         $today = Carbon::now()->format('Y-m-d');
