@@ -29,6 +29,13 @@
 
         <div class="d-flex">
             <div class="dropdown d-none d-lg-inline-block ms-1">
+                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="d-none d-xl-inline-block ms-1 fw-medium font-size-15">{{ date('d M Y - H : i') }}</span>
+                </button>
+            </div>
+
+
+            <div class="dropdown d-none d-lg-inline-block ms-1">
                 <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
                     <i class="uil-minus-path"></i>
                 </button>

@@ -38,7 +38,7 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="{{ Route::is('branch.index','branch.create','branch.edit') ? 'mm-active' : '' }}">
+                <li class="{{ Route::is('branch.index','branch.create','branch.edit','branch.view') ? 'mm-active' : '' }}">
                     <a href="{{ route('branch.index') }}" class="waves-effect">
                         <i class="uil-map-pin-alt"></i>
                         <span>Branch</span>

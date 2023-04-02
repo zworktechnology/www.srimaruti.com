@@ -67,6 +67,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/branch/store', [BranchController::class, 'store'])->name('branch.store');
         // EDIT
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/branch/edit/{id}', [BranchController::class, 'edit'])->name('branch.edit');
+        // VIEW
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/branch/view/{id}', [BranchController::class, 'view'])->name('branch.view');
         // UPDATE
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/branch/update/{id}', [BranchController::class, 'update'])->name('branch.update');
         // DELETE

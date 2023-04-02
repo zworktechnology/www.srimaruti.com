@@ -72,6 +72,9 @@
                                         <td>
                                             <ul class="list-unstyled hstack gap-1 mb-0">
                                                 <li>
+                                                    <a href="{{ route('branch.view', ['id' => $datas->id]) }}" class="btn btn-sm btn-soft-secondary">View</a>
+                                                </li>
+                                                <li>
                                                     <a href="{{ route('branch.edit', ['id' => $datas->id]) }}" class="btn btn-sm btn-soft-info">Edit</a>
                                                 </li>
                                                 <li>
