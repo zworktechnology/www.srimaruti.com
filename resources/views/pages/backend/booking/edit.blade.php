@@ -105,7 +105,7 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Days</label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control days" style="background-color:#eee" id="days" value="{{ $data->days }}" name="days" placeholder="Enter here " value="">
+                                                <input type="text" class="form-control days" style="background-color:#eee" id="days" value="{{ $data->days }}" name="days" placeholder="Enter here " value="">
                                             </div>
                                         </div>
                                         <div class="row mb-4">
@@ -147,8 +147,8 @@
                                                                                         @endif 
                                                                                         @endforeach
                                                                                 </select></td>
-                                                                            <td class="col-3"><input type="number" class="form-control" id="room_price" disabled name="room_price[]" placeholder="Price Per Day" value="{{ $BookingRoomss->room_price }}" /></td>
-                                                                            <td class="col-3"><input type="number" class="form-control room_cal_price"  id="room_cal_price" name="room_cal_price[]" placeholder="Price" value="{{ $BookingRoomss->room_cal_price }}" /></td>
+                                                                            <td class="col-3"><input type="text" class="form-control" id="room_price"  name="room_price[]" placeholder="Price Per Day" value="{{ $BookingRoomss->room_price }}" /></td>
+                                                                            <td class="col-3"><input type="text" class="form-control room_cal_price"  id="room_cal_price" name="room_cal_price[]" placeholder="Price" value="{{ $BookingRoomss->room_cal_price }}" /></td>
                                                                             <td class="col-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button>
                                                                             </td>
                                                                         </tr>
@@ -238,7 +238,7 @@
                                                     Proof </label>
                                                 <div class="col-sm-5">
                                                     <select class="form-control " name="prooftype_two" style="width: 100%;">
-                                                    <option value="" disabled selected hidden class="text-muted">Select Type</option>
+                                                    <option value=""  selected hidden class="text-muted">Select Type</option>
                                                     <option value="Aadhaar Card"{{ $data->prooftype_two == 'Aadhaar Card' ? 'selected' : '' }} class="text-muted">Aadhaar Card</option>
                                                     <option value="Pan Card"{{ $data->prooftype_two == 'Pan Card' ? 'selected' : '' }} class="text-muted">Pan Card</option>
                                                     <option value="Voter ID"{{ $data->prooftype_two == 'Voter ID' ? 'selected' : '' }} class="text-muted">Voter ID</option>
@@ -292,31 +292,31 @@
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                                 GST Amount </label>
                                                             <div class="col-sm-4">
-                                                                <input type="number" class="form-control gst_amount" name="gst_amount" placeholder="GST Amount - Enter here " value="{{ $data->gst_amount }}">
+                                                                <input type="text" class="form-control gst_amount" name="gst_amount" placeholder="GST Amount - Enter here " value="{{ $data->gst_amount }}">
                                                             </div>
                                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                                 GST % </label>
                                                             <div class="col-sm-4">
-                                                                <input type="number" class="form-control gst_percentage" name="gst_percentage" placeholder="Gst % - Enter here " value="{{ $data->gst_per }}">
+                                                                <input type="text" class="form-control gst_percentage" name="gst_percentage" placeholder="Gst % - Enter here " value="{{ $data->gst_per }}">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                                 Discount Amount </label>
                                                             <div class="col-sm-4">
-                                                                <input type="number" class="form-control discount_amount" name="discount_amount"  placeholder="Discount Amount - Enter here " value="{{ $data->disc_amount }}">
+                                                                <input type="text" class="form-control discount_amount" name="discount_amount"  placeholder="Discount Amount - Enter here " value="{{ $data->disc_amount }}">
                                                             </div>
                                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                                 Discount % </label>
                                                             <div class="col-sm-4">
-                                                                <input type="number" class="form-control discount_percentage" name="discount_percentage"  placeholder="Discount % - Enter here " value="{{ $data->disc_per }}">
+                                                                <input type="text" class="form-control discount_percentage" name="discount_percentage"  placeholder="Discount % - Enter here " value="{{ $data->disc_per }}">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                                 Additional Charge </label>
                                                             <div class="col-sm-4">
-                                                                <input type="number" class="form-control additional_charge" name="additional_charge"  placeholder="Additional Amount - Enter here " value="{{ $data->additional_amount }}">
+                                                                <input type="text" class="form-control additional_charge" name="additional_charge"  placeholder="Additional Amount - Enter here " value="{{ $data->additional_amount }}">
                                                             </div>
                                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                                 Note </label>
@@ -330,7 +330,7 @@
                                                                     Grand Total - To Pay </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="number" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="{{ $data->grand_total }}" placeholder="Enter here ">
+                                                                <input type="text" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="{{ $data->grand_total }}" placeholder="Enter here ">
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
@@ -339,7 +339,7 @@
                                                                     Payable Amount </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="number" class="form-control payable_amount"  value="{{ $data->payable_amount }}" name="payable_amount"  placeholder="Enter here ">
+                                                                <input type="text" class="form-control payable_amount"  value="{{ $data->payable_amount }}" name="payable_amount"  placeholder="Enter here ">
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
@@ -348,7 +348,7 @@
                                                                     Balance Amount </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="number" class="form-control balance_amount" style="background-color:#c7c21dad" value="{{ $data->balance_amount }}"  name="balance_amount"  placeholder="Enter here ">
+                                                                <input type="text" class="form-control balance_amount" style="background-color:#c7c21dad" value="{{ $data->balance_amount }}"  name="balance_amount"  placeholder="Enter here ">
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
@@ -505,13 +505,20 @@
                             $("#room_price1").val('');
                             var price = response['data'];
 
-                            $("#room_price1").val(price);
+                            //$("#room_price1").val(price);
 
-                            var days = $(".days").val();
-                            var Amount = days * price;
-                            $("#room_cal_price1").val(Amount);
+                            //var days = $(".days").val();
+                            //var Amount = days * price;
+                            //$("#room_cal_price1").val(Amount);
 
+                            $(document).on("keyup", '#room_price1', function() {
 
+                                var price = $(this).val();
+                                var days = $(".days").val();
+                                var Amount = days * price;
+                                $("#room_cal_price1").val(Amount);     
+                                
+                                
                                 var totalAmount = 0;
                                 var days = $(".days").val();
 
@@ -523,14 +530,26 @@
 
                                 var additional_charge = $(".additional_charge").val();
                                 var total_calc_price = $(".total_calc_price").val();
-                                var discount_amount = $(".discount_amount").val();
-                                var gst_amount = $(".gst_amount").val();
+                                
 
-                                var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                                var discount_percentage = $(".discount_percentage").val();
+                                var discount_in_amount = (discount_percentage / 100) * total_calc_price;
+                                $('.discount_amount').val(discount_in_amount);
+
+                                var gst_percentage = $(".gst_percentage").val();
+                                var gst_in_amount = (gst_percentage / 100) * total_calc_price;
+                                $('.gst_amount').val(gst_in_amount);
+
+                                var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
                                 $('.grand_total').val(grand_total);
                                 var payable_amount = $(".payable_amount").val();
                                 var balance = Number(grand_total) - Number(payable_amount);
-                                $('.balance_amount').val(balance);  
+                                $('.balance_amount').val(balance);
+
+                            });
+
+
+                                  
                         }
                     });
 
@@ -557,25 +576,25 @@
                     }
 
 
-                    var totalAmount = 0;
-                    var days = $(".days").val();
+                    //var totalAmount = 0;
+                    //var days = $(".days").val();
 
-                    $("input[name='room_cal_price[]']").each(function() {
+                    //$("input[name='room_cal_price[]']").each(function() {
                         //alert($(this).val());
-                        totalAmount = Number(totalAmount) + Number($(this).val());
-                        $('.total_calc_price').val(totalAmount);
-                    });
+                     //   totalAmount = Number(totalAmount) + Number($(this).val());
+                    //    $('.total_calc_price').val(totalAmount);
+                    //});
 
-                    var additional_charge = $(".additional_charge").val();
-                    var total_calc_price = $(".total_calc_price").val();
-                    var discount_amount = $(".discount_amount").val();
-                    var gst_amount = $(".gst_amount").val();
+                    //var additional_charge = $(".additional_charge").val();
+                    //var total_calc_price = $(".total_calc_price").val();
+                    //var discount_amount = $(".discount_amount").val();
+                    //var gst_amount = $(".gst_amount").val();
 
-                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                    $('.grand_total').val(grand_total);
-                    var payable_amount = $(".payable_amount").val();
-                    var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);  
+                   // var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                   // $('.grand_total').val(grand_total);
+                   // var payable_amount = $(".payable_amount").val();
+                   // var balance = Number(grand_total) - Number(payable_amount);
+                   // $('.balance_amount').val(balance);  
 
 
                 });
@@ -597,7 +616,7 @@
         $("#addroomfields").click(function() {
                 ++i;
                 $("#roomfields").append(
-                    '<tr><td class="col-sm-6 py-2 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-2"><input type="number" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value=""/></td><td class="col-2"><input type="number" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value=""/></td><td class="col-sm-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                    '<tr><td class="col-sm-6 py-2 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-2"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value=""/></td><td class="col-2"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value=""/></td><td class="col-sm-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
                 );
 
                     var branch_id = $('.branch_id').val();
@@ -648,38 +667,50 @@
                                 $('#room_price' + h).val('');
                                 var price = response['data'];
 
-                                $('#room_price' + h).val(price);
+                                //$('#room_price' + h).val(price);
 
-                                var days = $(".days").val();
-                                var Amount = days * price;
-                                $('#room_cal_price' + h).val(Amount);
+                                //var days = $(".days").val();
+                               // var Amount = days * price;
+                               // $('#room_cal_price' + h).val(Amount);
+
+                               $(document).on("keyup", '#room_price' + h, function() {
+                                    var price = $(this).val();
+                                    //alert(price);
+                                    var days = $(".days").val();
+                                    var Amount = days * price;
+                                    $('#room_cal_price' + h).val(Amount);
 
 
-                                var totalAmount = 0;
-                                var days = $(".days").val();
+                                    var totalAmount = 0;
+                                    var days = $(".days").val();
 
-                                $("input[name='room_cal_price[]']").each(function() {
-                                    //alert($(this).val());
-                                    totalAmount = Number(totalAmount) + Number($(this).val());
-                                    $('.total_calc_price').val(totalAmount);
+                                    $("input[name='room_cal_price[]']").each(function() {
+                                        //alert($(this).val());
+                                        totalAmount = Number(totalAmount) + Number($(this).val());
+                                        $('.total_calc_price').val(totalAmount);
+                                    });
+
+                                    var additional_charge = $(".additional_charge").val();
+                                    var total_calc_price = $(".total_calc_price").val();
+
+                                    var discount_percentage = $(".discount_percentage").val();
+                                    var discount_in_amount = (discount_percentage / 100) * total_calc_price;
+                                    $('.discount_amount').val(discount_in_amount);
+
+                                    var gst_percentage = $(".gst_percentage").val();
+                                    var gst_in_amount = (gst_percentage / 100) * total_calc_price;
+                                    $('.gst_amount').val(gst_in_amount);
+
+                                    var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
+                                    $('.grand_total').val(grand_total);
+                                    var payable_amount = $(".payable_amount").val();
+                                    var balance = Number(grand_total) - Number(payable_amount);
+                                    $('.balance_amount').val(balance); 
                                 });
 
-                                var additional_charge = $(".additional_charge").val();
-                                var total_calc_price = $(".total_calc_price").val();
-                                var discount_amount = $(".discount_amount").val();
-                                var gst_amount = $(".gst_amount").val();
-
-                                var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                                $('.grand_total').val(grand_total);
-                                var payable_amount = $(".payable_amount").val();
-                                var balance = Number(grand_total) - Number(payable_amount);
-                                $('.balance_amount').val(balance);  
 
                             }
                         });
-
-                        
-
 
 
                     });
@@ -707,10 +738,16 @@
 
                     var additional_charge = $(".additional_charge").val();
                     var total_calc_price = $(".total_calc_price").val();
-                    var discount_amount = $(".discount_amount").val();
-                    var gst_amount = $(".gst_amount").val();
 
-                    var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                    var discount_percentage = $(".discount_percentage").val();
+                    var discount_in_amount = (discount_percentage / 100) * total_calc_price;
+                    $('.discount_amount').val(discount_in_amount);
+
+                    var gst_percentage = $(".gst_percentage").val();
+                    var gst_in_amount = (gst_percentage / 100) * total_calc_price;
+                    $('.gst_amount').val(gst_in_amount);
+
+                    var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
                     $('.grand_total').val(grand_total);
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
@@ -813,6 +850,21 @@
         var balance = Number(grand_total) - Number(payable_amount);
         $('.balance_amount').val(balance);  
 
+    });
+
+
+    $(document).on("keyup", 'input.payable_amount', function() {
+        var payable_amount = $(this).val();
+
+        var additional_charge = $(".additional_charge").val();
+        var total_calc_price = $(".total_calc_price").val();
+        var discount_amount = $(".discount_amount").val();
+        var gst_amount = $(".gst_amount").val();
+
+        var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+        $('.grand_total').val(grand_total);
+        var balance = Number(grand_total) - Number(payable_amount);
+        $('.balance_amount').val(balance);
     });
 
 
