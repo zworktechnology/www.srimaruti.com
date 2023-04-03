@@ -37,6 +37,7 @@ Route::get('/mass-trust', function () {return view('pages.frontend.masstrust');}
 Route::get('/kosaalai', function () {return view('pages.frontend.kosaalai');})->name('kosaalai');
 Route::get('/contact', function () {return view('pages.frontend.contact');})->name('contact');
 Route::get('/feedback', function () {return view('pages.frontend.feedback');})->name('feedback');
+Route::get('/privacy-and-policy', function () {return view('pages.frontend.privacy_and_policy');})->name('privacy.policy');
 
 // Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -67,6 +68,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/branch/store', [BranchController::class, 'store'])->name('branch.store');
         // EDIT
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/branch/edit/{id}', [BranchController::class, 'edit'])->name('branch.edit');
+        // VIEW
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/branch/view/{id}', [BranchController::class, 'view'])->name('branch.view');
         // UPDATE
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/branch/update/{id}', [BranchController::class, 'update'])->name('branch.update');
         // DELETE

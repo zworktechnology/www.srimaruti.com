@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class BranchController extends Controller
@@ -31,6 +32,17 @@ class BranchController extends Controller
         $data = Branch::findOrFail($id);
 
         return view('pages.backend.branch.edit', compact('data'));
+    }
+
+    public function view($id)
+    {
+        $branch = Branch::findOrFail($id);
+        $data = Room::where('branch_id', '=', $branch->id)->where('soft_delete', '!=', 1)->get();
+        $totalrooms = Room::where('branch_id', '=', $branch->id)->where('soft_delete', '!=', 1)->count();
+        $bookedrooms = Room::where('branch_id', '=', $branch->id)->where('soft_delete', '!=', 1)->where('booking_status', '=', 1)->count();
+        $openingrooms = Room::where('branch_id', '=', $branch->id)->where('soft_delete', '!=', 1)->where('booking_status', '=', 0)->count();
+
+        return view('pages.backend.branch.view', compact('data', 'branch', 'totalrooms', 'bookedrooms', 'openingrooms'));
     }
 
     public function update(Request $request, $id)

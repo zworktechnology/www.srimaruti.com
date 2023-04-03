@@ -12,7 +12,7 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         Name </label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" name="name" placeholder="Enter name ">
+                        <input type="text" class="form-control" name="name" placeholder="Enter name *">
                     </div>
                 </div>
                 <div class="row mb-4">

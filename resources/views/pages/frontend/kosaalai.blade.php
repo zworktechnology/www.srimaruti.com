@@ -26,48 +26,33 @@
                 <div class="col-lg-12">
                     <div class="restaurent-box-wrapper">
                         <div class="resaturant-img as-carousel" data-arrows="true" data-slide-show="1" data-fade="true">
-                            <a href="javascript:void(0);"><img src="{{ asset('assets/frontend/img/gallery/gallery_6_1.jpg') }}" alt="Restaurant Image"></a>
-                            <a href="javascript:void(0);"><img src="{{ asset('assets/frontend/img/gallery/gallery_6_2.jpg') }}" alt="Restaurant Image"></a>
-                            <a href="javascript:void(0);"><img src="{{ asset('assets/frontend/img/gallery/gallery_6_3.jpg') }}" alt="Restaurant Image"></a>
+                            <a href="javascript:void(0);"><img
+                                    src="{{ asset('assets/frontend/img/gallery/gallery_6_1.jpg') }}"
+                                    alt="Restaurant Image"></a>
+                            <a href="javascript:void(0);"><img
+                                    src="{{ asset('assets/frontend/img/gallery/gallery_6_2.jpg') }}"
+                                    alt="Restaurant Image"></a>
+                            <a href="javascript:void(0);"><img
+                                    src="{{ asset('assets/frontend/img/gallery/gallery_6_3.jpg') }}"
+                                    alt="Restaurant Image"></a>
                         </div>
                         <div class="resta-card-wrapp">
-                            <span class="resta-card_subtitle mt-n1">restaurant</span>
-                            <h2 class="resta-card_title"><a href="javascript:void(0);" tabindex="-1">The Rich Tradition Of
-                                    Personal Service</a>
+                            <span class="resta-card_subtitle mt-n1">Kamadenu Kosaalai</span>
+                            <h2 class="resta-card_title"><a href="javascript:void(0);" tabindex="-1">A Sanctuary for
+                                    Cows and a Celebration of Tradition</a>
                             </h2>
-                            <p class="resta-card_text">Compellingly utilize client-centric initiatives with competitive
-                                idea. Competent target trunk application through future-proof market. Credibly orchestrate
-                                scalable quality vectors without wireless platforms. Appropriately pontificate performance
-                                based networks through vertical catalysts for change.</p>
+                            <p class="resta-card_text">Kamadenu Kosaalai, founded by Sri Mass Trust, is dedicated to
+                                preserving and promoting the welfare of cows while upholding our cultural heritage. We
+                                rescue cows from harm and provide them with a safe and loving environment. Our Kosaalai
+                                is a sanctuary where we perform daily poojas and rituals to honor and protect these
+                                sacred animals. Our mission is to inspire a culture of kindness and respect towards all
+                                animals, and promote a more sustainable and ethical way of life. Join us in protecting
+                                the welfare of cows and creating a more compassionate world.</p>
                             <div class="restaurent-menu-wrapp">
                                 <h3 class="resta-title">Open Days<span class="resta-desc"> Monday - Saturday</span></h3>
-                                <h3 class="resta-title">Open Daily<span class="resta-desc"> 7.30 am - 11.00pm</span></h3>
+                                <h3 class="resta-title">Open Daily<span class="resta-desc"> 7.30 am - 11.00pm</span>
+                                </h3>
                                 <h3 class="resta-title">Price Range <span class="resta-desc">$40 - $500</span></h3>
-                            </div>
-                            <div class="resta-content-btn mt-35">
-
-                                <div class="resta-wrapp">
-                                    <div class="restaurant-author">
-                                        <div class="resta-box_avater">
-                                            <img src="{{ asset('assets/frontend/img/shape/chef.png') }}" alt="restaurant">
-                                        </div>
-                                        <div class="restaurant-author">
-                                            <div class="resta-box_profile">
-                                                <div class="media-body">
-                                                    <h3 class="resta-box_name h6">Richal Vitons</h3>
-                                                    <span class="resta-box_desig">Head Chef</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="about-info">
-                                        <div class="media-body">
-                                            <p class="about-info_link">
-                                                <span class="about-info_label">call us:</span><a href="tel:+163 2356 5436">+163 2356 5436</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -82,11 +67,11 @@
                             </div>
                             <div class="menu-item_content">
                                 <a href="javascript:void(0);">
-                                    <h3 class="menu-item_title">Gravy Veg Dish</h3>
+                                    <h3 class="menu-item_title">Tradition and Compassion</h3>
                                 </a>
-                                <p class="menu-item_desc">Seamlessly generate top-line intellectual capital through covalent
-                                    platforms. Energetically grow transparent networks after front-end interfaces.
-                                    Objectively maintain compelling outsourcing.</p>
+                                <p class="menu-item_desc">Explore our commitment to upholding cultural traditions and
+                                    promoting a more sustainable and ethical way of life, including our weekly cow pooja
+                                    and yearly children's education program, as we work to save and care for cows.</p>
                             </div>
                         </div>
                     </div>
@@ -97,11 +82,11 @@
                             </div>
                             <div class="menu-item_content">
                                 <a href="javascript:void(0);">
-                                    <h3 class="menu-item_title">Chicken Kofta</h3>
+                                    <h3 class="menu-item_title">Cow Care, Community Love</h3>
                                 </a>
-                                <p class="menu-item_desc">Seamlessly generate top-line intellectual capital through covalent
-                                    platforms. Energetically grow transparent networks after front-end interfaces.
-                                    Objectively maintain compelling outsourcing.</p>
+                                <p class="menu-item_desc">Discover how we prioritize the welfare of cows and promote a
+                                    culture of kindness towards all beings, while also providing free milk for children
+                                    and engaging in community outreach through various events.</p>
                             </div>
                         </div>
                     </div>
@@ -112,11 +97,11 @@
                             </div>
                             <div class="menu-item_content">
                                 <a href="javascript:void(0);">
-                                    <h3 class="menu-item_title">Special Thali</h3>
+                                    <h3 class="menu-item_title">Cows, Children, and Community</h3>
                                 </a>
-                                <p class="menu-item_desc">Seamlessly generate top-line intellectual capital through covalent
-                                    platforms. Energetically grow transparent networks after front-end interfaces.
-                                    Objectively maintain compelling outsourcing.</p>
+                                <p class="menu-item_desc">Learn about our dedication to saving and not killing cows,
+                                    providing free milk to young children, and supporting the community through various
+                                    events, including weekly poojas and annadhananam.</p>
                             </div>
                         </div>
                     </div>

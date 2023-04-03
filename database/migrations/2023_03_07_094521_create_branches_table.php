@@ -20,12 +20,12 @@ return new class extends Migration
 
             // Request columns
             $table->string('name');
-            $table->longText('address');
+            $table->longText('address')->nullable();
             $table->boolean('soft_delete')->default(0);
 
             // CreatedAt & UpdatedAt columns
             $table->timestamps();
-            
+
         });
     }
 

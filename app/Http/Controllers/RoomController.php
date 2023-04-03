@@ -12,8 +12,11 @@ class RoomController extends Controller
     {
         $data = Room::where('soft_delete', '!=', 1)->get();
         $branch = Branch::where('soft_delete', '!=', 1)->get();
+        $totalrooms = Room::where('soft_delete', '!=', 1)->count();
+        $bookedrooms = Room::where('soft_delete', '!=', 1)->where('booking_status', '=', 1)->count();
+        $openingrooms = Room::where('soft_delete', '!=', 1)->where('booking_status', '=', 0)->count();
 
-        return view('pages.backend.room.index', compact('data', 'branch'));
+        return view('pages.backend.room.index', compact('data', 'branch', 'totalrooms', 'bookedrooms', 'openingrooms'));
     }
 
     public function store(Request $request)

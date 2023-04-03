@@ -21,6 +21,39 @@
                 @include('pages.backend.room.create')
             </div>
 
+            <div class="row">
+                <div class="col-md-6 col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <h4 class="mb-1 mt-1">{{ $totalrooms }}</h4>
+                                <p class="text-muted mb-0">Total Rooms</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <h4 class="mb-1 mt-1">{{ $bookedrooms }}</h4>
+                                <p class="text-muted mb-0">Currently Booked</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <h4 class="mb-1 mt-1">{{ $openingrooms }}</h4>
+                                <p class="text-muted mb-0">Currently Open</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             @if (\Session::has('add'))
             <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                 <i class="uil uil-pen me-2"></i>
