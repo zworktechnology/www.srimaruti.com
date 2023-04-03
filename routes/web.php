@@ -37,6 +37,7 @@ Route::get('/mass-trust', function () {return view('pages.frontend.masstrust');}
 Route::get('/kosaalai', function () {return view('pages.frontend.kosaalai');})->name('kosaalai');
 Route::get('/contact', function () {return view('pages.frontend.contact');})->name('contact');
 Route::get('/feedback', function () {return view('pages.frontend.feedback');})->name('feedback');
+Route::get('/privacy-and-policy', function () {return view('pages.frontend.privacy_and_policy');})->name('privacy.policy');
 
 // Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

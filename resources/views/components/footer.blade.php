@@ -136,8 +136,7 @@
                 <div class="col-lg-6">
                     <div class="footer-copyright-right">
                         <ul>
-                            <li><a href="javascript:void(0);">Terms & Conditions</a></li>
-                            <li><a href="javascript:void(0);">Cancellation & Refund Policy</a></li>
+                            <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
