@@ -124,7 +124,7 @@
                                                 </li>
                                                 @endif
 
-                                                @if ($today == $bookingDatas['chick_out_date'])
+                                                
                                                     @if ($bookingDatas['balance_amount'] == 0)
                                                     <li>
                                                         <a href="#checkout{{ $bookingDatas['id'] }}" data-bs-toggle="modal" data-id="{{ $bookingDatas['id'] }}" class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}" data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
@@ -133,7 +133,7 @@
                                                         </div>  
                                                     </li>
                                                     @endif
-                                                @endif
+                                              
                                             </ul>
                                         </td>
                                     </tr>
