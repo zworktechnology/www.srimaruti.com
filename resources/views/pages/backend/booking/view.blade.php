@@ -173,7 +173,7 @@
                                                         <div class="card-body">
                                                             <h4 class="card-title mb-4 text-dark font-size-16">{{$branch->name}} - Rooms</h4>
 
-                                                            <div data-simplebar style="max-height: 500px;">
+                                                            <div data-simplebar style="max-height: 400px;">
                                                                 <div class="table-responsive">
                                                                     <table class="table table-borderless table-centered table-nowrap">
                                                                         <thead>

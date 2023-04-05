@@ -64,12 +64,13 @@
                                 <thead>
                                     <tr>
                                         <th style="width:10%;">Sl. No</th>
-                                        <th style="width:15%;">Customer</th>
+                                        <th style="width:10%;">Customer</th>
                                         
                                         <th style="width:20%;">Room Details</th>
                                         <th style="width:20%;">Check In/Out Date</th>
                                         <th style="width:10%;">Amount Paid</th>
-                                        <th style="width:25%;">Action</th>
+                                        <th style="width:10%;">Checkout</th>
+                                        <th style="width:20%;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -109,20 +110,13 @@
                                                 @endforeach
                                             </span>
                                         </td>
-
                                         <td>
                                             <ul class="list-unstyled hstack gap-1 mb-0">
-                                                <li>
-                                                    <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}" class="btn btn-sm btn-soft-info">Edit</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#jobDelete{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal{{ $bookingDatas['id'] }}">Delete</a>
-                                                </li>
-                                                @if ($bookingDatas['balance_amount'] != 0)
-                                                <li>
-                                                    <a href="#paybalance{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-warning" data-bs-target="#paybalance{{ $bookingDatas['id'] }}">Pay Balance</a>
-                                                </li>
-                                                @endif
+                                                    @if ($bookingDatas['balance_amount'] != 0)
+                                                    <li>
+                                                        <a href="#paybalance{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-warning" data-bs-target="#paybalance{{ $bookingDatas['id'] }}">Pay Balance</a>
+                                                    </li>
+                                                    @endif
 
                                                 
                                                     @if ($bookingDatas['balance_amount'] == 0)
@@ -133,6 +127,18 @@
                                                         </div>  
                                                     </li>
                                                     @endif
+                                            </ul>
+                                        </td>
+
+                                        <td>
+                                            <ul class="list-unstyled hstack gap-1 mb-0">
+                                                <li>
+                                                    <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}" class="btn btn-sm btn-soft-info">Edit</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#jobDelete{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal{{ $bookingDatas['id'] }}">Delete</a>
+                                                </li>
+                                               
                                               
                                             </ul>
                                         </td>
