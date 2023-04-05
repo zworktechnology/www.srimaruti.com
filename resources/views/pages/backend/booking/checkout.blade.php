@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">Check Out</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="checkoutclose btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form autocomplete="off" method="POST" action="{{ route('booking.checkout', ['id' => $bookingDatas['id']]) }}">
@@ -58,7 +58,7 @@
 
 <script>
 $(document).ready(function() {
-    $('.paybalance' + {{$bookingDatas['id']}}).each(function () {
+    $('.checkout' + {{$bookingDatas['id']}}).each(function () {
         $(this).on('click', function (e) {
             e.preventDefault();
             var $this = $(this),
@@ -102,6 +102,10 @@ $(document).ready(function() {
                 var payable_amount = $('#payable_amount' + {{ $bookingDatas['id'] }}).val();
                 var balance = Number(grand_total) - Number(payable_amount);
                 $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance); 
+
+
+                $('.dayextra' + {{ $bookingDatas['id'] }}).show();
+                
 
             });
 
@@ -297,24 +301,42 @@ $(document).ready(function() {
                 <div class="row mb-4" >
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Paid Amount </label>
                         <div class="col-sm-9">
-                        <input type="text" class="form-control payable_amount" id="payable_amount{{ $bookingDatas['id'] }}" value="{{ $bookingDatas['payable_amount'] }}"  name="payable_amount"  placeholder="Enter here ">
+                        <input type="text" class="form-control payable_amount" style="background-color:#a1efb2;color: black;" id="payable_amount{{ $bookingDatas['id'] }}" value="{{ $bookingDatas['total_paid'] }}"  name="payable_amount"  placeholder="Enter here ">
                         </div>
                 </div>
+               
+                <div class="row mb-4 dayextra{{ $bookingDatas['id'] }}" style="display:none">
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Term </label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="payment_term">
+                            <option value=""  selected  class="text-muted">Select</option>
+                            <option value="Term II" class="text-muted">Term II</option>
+                            <option value="Term III" class="text-muted">Term III</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-4 dayextra{{ $bookingDatas['id'] }}" style="display:none">
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Payment Method </label>
+                    <div class="col-sm-9">
+                    <select class="form-control" name="payment_method">
+                        <option value=""  selected  class="text-muted">Select Payment Via</option>
+                        <option value="Cash" class="text-muted">Cash</option>
+                        <option value="Card" class="text-muted">Card</option>
+                        <option value="Online Payment" class="text-muted">Online Payment</option>
+                    </select>
+                    </div>
+                </div>
+                
                 <div class="row mb-4" >
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Balance Amount </label>
                         <div class="col-sm-9">
-                            
-                            @if ($bookingDatas['balance_amount'] == 0)
-                            <input type="number" class="form-control balance_amount"  style="background-color:#a1efb2;color: black;" id="balance_amount{{ $bookingDatas['id'] }}" name="balance_amount" placeholder="Enter here " value="{{ $bookingDatas['balance_amount'] }}"> 
-                            @else
-                            <input type="number" class="form-control balance_amount"  style="background-color:#991212;color: white;" id="balance_amount{{ $bookingDatas['id'] }}" name="balance_amount" placeholder="Enter here " value="{{ $bookingDatas['balance_amount'] }}">
-                            @endif
-                            
+                           <input type="number" class="form-control balance_amount" style="background: #e3e361;"  id="balance_amount{{ $bookingDatas['id'] }}" name="balance_amount" placeholder="Enter here " value="{{ $bookingDatas['balance_amount'] }}"> 
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Pay & Checkout</button>
-                    <button type="button" class="btn btn-secondary closebutton" data-bs-dismiss="modal">No, Get Back</button>
+                    <button type="submit" class="btn btn-success">Checkout</button>
+                    <button type="button" class="btn btn-secondary checkoutclosebutton" data-bs-dismiss="modal">No, Get Back</button>
                 </div>
             </form>
         </div>
@@ -324,10 +346,10 @@ $(document).ready(function() {
 
 <script>
 
-$(".btn-close").click(function() {
+$(".checkoutclose").click(function() {
     window.location.reload();
 });
-$(".closebutton").click(function() {
+$(".checkoutclosebutton").click(function() {
     window.location.reload();
 });
 //$(document).ready(function() {

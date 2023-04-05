@@ -286,7 +286,18 @@
                                                                 <input type="text" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="0" placeholder="Enter here ">
                                                             </div>
                                                         </div>
-
+                                                        <div data-repeater-item class="inner mb-3 row">
+                                                            <div class="col-md-3 col-8">
+                                                                <label for="horizontal-firstname-input" class="col-form-label">
+                                                                    Term </label>
+                                                            </div>
+                                                            <div class="col-md-9 col-5">
+                                                                <select class="form-control" name="payment_term" required>
+                                                                    <option value=""  selected  class="text-muted">Select</option>
+                                                                    <option value="Term I" class="text-muted">Term I</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
 
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">

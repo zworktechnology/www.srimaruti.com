@@ -41,9 +41,10 @@ class Booking extends Model
         'additional_amount',
         'additional_notes',
         'grand_total',
-        'payable_amount',
+        'total_paid',
         'balance_amount',
-        'payment_method',
+        'out_date',
+        'out_time',
         'status',
         'soft_delete'
     ];

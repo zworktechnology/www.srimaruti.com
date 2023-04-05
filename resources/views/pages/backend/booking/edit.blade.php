@@ -336,10 +336,23 @@
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
+                                                                    Term </label>
+                                                            </div>
+                                                            <div class="col-md-9 col-5">
+                                                                <select class="form-control" name="payment_term" required>
+                                                                    <option value=""  selected hidden class="text-muted">Select</option>
+                                                                    <option value="Term I"{{ $paymentdata->term == 'Term I' ? 'selected' : '' }} class="text-muted">Term I</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div data-repeater-item class="inner mb-3 row">
+                                                            <div class="col-md-3 col-8">
+                                                                <label for="horizontal-firstname-input" class="col-form-label">
                                                                     Payable Amount </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control payable_amount"  value="{{ $data->payable_amount }}" name="payable_amount"  placeholder="Enter here ">
+                                                                <input type="text" class="form-control payable_amount"  value="{{ $paymentdata->payable_amount }}" name="payable_amount"  placeholder="Enter here ">
+                                                                <input type="hidden" class="form-control booking_payment_id"  value="{{ $paymentdata->id }}" name="booking_payment_id"  placeholder="Enter here ">
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
@@ -359,9 +372,9 @@
                                                             <div class="col-md-9 col-5">
                                                                 <select class="form-control js-example-basic-single" name="payment_method" required>
                                                                     <option value=""  selected hidden class="text-muted">Select Payment Via</option>
-                                                                    <option value="Cash"{{ $data->payment_method == 'Cash' ? 'selected' : '' }} class="text-muted">Cash</option>
-                                                                    <option value="Card"{{ $data->payment_method == 'Card' ? 'selected' : '' }} class="text-muted">Card</option>
-                                                                    <option value="Online Payment"{{ $data->payment_method == 'Online Payment' ? 'selected' : '' }} class="text-muted">Online Payment</option>
+                                                                    <option value="Cash"{{ $paymentdata->payment_method == 'Cash' ? 'selected' : '' }} class="text-muted">Cash</option>
+                                                                    <option value="Card"{{ $paymentdata->payment_method == 'Card' ? 'selected' : '' }} class="text-muted">Card</option>
+                                                                    <option value="Online Payment"{{ $paymentdata->payment_method == 'Online Payment' ? 'selected' : '' }} class="text-muted">Online Payment</option>
                                                                 </select>
                                                             </div>
                                                         </div>

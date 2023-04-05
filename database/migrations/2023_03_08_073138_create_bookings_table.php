@@ -53,9 +53,12 @@ return new class extends Migration
             $table->string('additional_amount')->nullable();
             $table->string('additional_notes')->nullable();
             $table->string('grand_total')->nullable();
-            $table->string('payable_amount')->nullable();
+            $table->string('total_paid')->nullable();
             $table->string('balance_amount')->nullable();
-            $table->string('payment_method')->nullable();
+
+            $table->string('out_date')->nullable();
+            $table->string('out_time')->nullable();
+            
 
             
             $table->string('status');

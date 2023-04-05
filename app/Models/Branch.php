@@ -20,6 +20,11 @@ class Branch extends Model
         return $this->hasMany(Room::class, 'branch_id');
     }
 
+    public function booking()
+    {
+        return $this->hasMany(Booking::class, 'branch_id');
+    }
+
     public function income()
     {
         return $this->hasMany(Income::class, 'branch_id');
