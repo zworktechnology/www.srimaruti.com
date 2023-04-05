@@ -243,6 +243,7 @@ $(document).ready(function() {
                                         <tr>
                                             <td><input type="text" disabled class="form-control" name="booking_rooms[]" id="booking_rooms" value="{{ $room_lists['room'] }}" />
                                                 <input type="hidden"  class="form-control" name="room_auto_id[]" id="room_auto_id" value="{{ $room_lists['id'] }}" />
+                                                <input type="hidden"  class="form-control" name="room_id[]" id="room_id" value="{{ $room_lists['room_id'] }}" />
                                             </td>
                                             <td><input type="text"  class="form-control not-allowed booking_room_price{{ $bookingDatas['id'] }}{{ $room_lists['id'] }}" style="background: #e77e7e;" name="booking_room_price[]" id="booking_room_price{{ $bookingDatas['id'] }}" value="{{ $room_lists['booking_room_price'] }}" /></td>
                                             <td><input type="text"  class="form-control not-allowed booking_room_cal_price{{ $bookingDatas['id'] }}" name="booking_room_cal_price[]" style="background: #e77e7e;" id="booking_room_cal_price{{ $bookingDatas['id'] }}{{ $room_lists['id'] }}" value="{{ $room_lists['room_cal_price'] }}" /></td>

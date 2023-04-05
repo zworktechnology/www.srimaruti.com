@@ -33,6 +33,8 @@ class BookingController extends Controller
                     'booking_room_price' => $rooms_booked->room_price,
                     'room_cal_price' => $rooms_booked->room_cal_price,
                     'id' => $rooms_booked->id,
+                    'room_id' => $rooms_booked->room_id,
+
                 );
             }
 
@@ -480,6 +482,7 @@ class BookingController extends Controller
                 $bookingID = $request->get('booking_id');
                 $booking_room_price = $request->booking_room_price[$key];
                 $booking_room_cal_price = $request->booking_room_cal_price[$key];
+                $room_id = $request->room_id[$key];
                 DB::table('booking_rooms')->where('id', $ids)
                         ->update([
                             'room_price' => $booking_room_price,  'room_cal_price' => $booking_room_cal_price
