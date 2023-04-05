@@ -65,10 +65,10 @@
                                     <tr>
                                         <th style="width:10%;">Sl. No</th>
                                         <th style="width:10%;">Customer</th>
-                                        
+
                                         <th style="width:20%;">Room Details</th>
                                         <th style="width:20%;">Check In/Out Date</th>
-                                        <th style="width:10%;">Amount Paid</th>
+                                        <th style="width:10%;">Accounting</th>
                                         <th style="width:10%;">Checkout</th>
                                         <th style="width:20%;">Action</th>
                                     </tr>
@@ -78,11 +78,8 @@
                                     @if ($bookingDatas['status'] == '1')
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
-                                        <td>
+                                        <td>{{ $bookingDatas['customer_name'] }}</td>
 
-                                            <a href="{{ route('booking.view', ['id' => $bookingDatas['id']]) }}" style="color:#bf24c9; font-weight:600"class="btn btn-sm btn-soft-info"><i class="mdi mdi-card-account-details-star-outline"></i> {{ $bookingDatas['customer_name'] }}</a>
-                                        </td>
-                                        
                                         <td>
                                             @foreach ($bookingDatas['room_list'] as $index => $room_lists)
                                             @if ($room_lists['booking_id'] == $bookingDatas['id'])
@@ -90,11 +87,11 @@
                                             @endif
                                             @endforeach
                                         </td>
-                                        
-                                        
+
+
                                         <td>CheckIn - {{ date('d M Y', strtotime($bookingDatas['chick_in_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_in_time'])) }} )
                                             <br/>
-                                            CheckOut - 
+                                            CheckOut -
                                             @if ($bookingDatas['chick_out_date'] != "")
                                             {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }} )
                                             @endif
@@ -102,7 +99,7 @@
                                         <td>
                                             <span style="color:green">Total : {{ $bookingDatas['grand_total'] }}</span><br/>
                                             <span style="color:#cb540f">
-                                                
+
                                                 @foreach ($bookingDatas['terms'] as $index => $terms)
                                                 @if ($terms['booking_id'] == $bookingDatas['id'])
                                             {{ $terms['term'] }} - {{ $terms['payable_amount'] }}<br />
@@ -118,13 +115,13 @@
                                                     </li>
                                                     @endif
 
-                                                
+
                                                     @if ($bookingDatas['balance_amount'] == 0)
                                                     <li>
                                                         <a href="#checkout{{ $bookingDatas['id'] }}" data-bs-toggle="modal" data-id="{{ $bookingDatas['id'] }}" class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}" data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
                                                         <div class="modal fade" id="checkout{{ $bookingDatas['id'] }}" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                                             @include('pages.backend.booking.checkout')
-                                                        </div>  
+                                                        </div>
                                                     </li>
                                                     @endif
                                             </ul>
@@ -133,13 +130,16 @@
                                         <td>
                                             <ul class="list-unstyled hstack gap-1 mb-0">
                                                 <li>
+                                                    <a href="{{ route('booking.view', ['id' => $bookingDatas['id']]) }}" class="btn btn-sm btn-soft-secondary">View</a>
+                                                </li>
+                                                <li>
                                                     <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}" class="btn btn-sm btn-soft-info">Edit</a>
                                                 </li>
                                                 <li>
                                                     <a href="#jobDelete{{ $bookingDatas['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal{{ $bookingDatas['id'] }}">Delete</a>
                                                 </li>
-                                               
-                                              
+
+
                                             </ul>
                                         </td>
                                     </tr>
@@ -186,18 +186,18 @@
                                                                 <div class="col-sm-8">
                                                                     <input type="text" class="form-control balance_amount" style="background: #e99e9e" id="balance_amount" disabled value="{{ $bookingDatas['balance_amount'] }}"  name="balance_amount"  placeholder="Enter here ">
                                                                 </div>
-                                                        </div>  
+                                                        </div>
                                                         <div class="row mb-4" >
                                                             <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">Term <span style="color: red;">*</span></label>
                                                                 <div class="col-sm-8">
                                                                     <select class="form-control" name="payment_term" required>
                                                                         <option value=""  selected  class="text-muted">Select</option>
-                                                                        
+
                                                                         <option value="Term II" class="text-muted">Term II</option>
                                                                         <option value="Term III" class="text-muted">Term III</option>
                                                                     </select>
                                                                 </div>
-                                                        </div>  
+                                                        </div>
                                                         <div class="row mb-4" >
                                                             <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">Payment Method <span style="color: red;">*</span></label>
                                                                 <div class="col-sm-8">
@@ -208,18 +208,18 @@
                                                                         <option value="Online Payment" class="text-muted">Online Payment</option>
                                                                     </select>
                                                                 </div>
-                                                        </div> 
+                                                        </div>
                                                         <div class="row mb-4" >
                                                             <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">Payable Amount <span style="color: red;">*</span></label>
                                                                 <div class="col-sm-8">
                                                                     <input type="text" class="form-control payable_amount" id="payable_amount" value=""  name="payable_amount"  placeholder="Enter here ">
                                                                 </div>
                                                         </div>
-                                                          
+
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-success">Pay</button>
                                                             <button type="button" class="btn btn-secondary paybalanceclosebutton" data-bs-dismiss="modal">No, Get Back</button>
-                                                        </div>                                                           
+                                                        </div>
                                                     </form>
                                                 </div>
                                             </div>
@@ -227,7 +227,7 @@
                                     </div>
                                     @endif
 
-                                   
+
 
                                     <div class="modal fade" id="firstmodal{{ $bookingDatas['id'] }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -279,8 +279,8 @@
 
 
     // Calculate Days
-    
-         
+
+
 
     //$(document).ready(function() {
     //  $(".clicktocheckin").click(function() {

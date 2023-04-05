@@ -16,7 +16,6 @@ class Room extends Model
         'room_floor',
         'branch_id',
         'booking_status',
-        'price_per_day',
         'soft_delete'
     ];
 

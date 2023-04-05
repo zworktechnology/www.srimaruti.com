@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('room_floor');
             $table->unsignedBigInteger('branch_id');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
-            $table->integer('price_per_day');
             $table->boolean('booking_status')->default(0);
             $table->boolean('soft_delete')->default(0);
 

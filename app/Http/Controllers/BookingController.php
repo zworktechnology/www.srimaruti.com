@@ -17,7 +17,6 @@ class BookingController extends Controller
     public function index()
     {
         $data = Booking::where('soft_delete', '!=', 1)->get();
-        
 
         $bookingData = [];
         $room_list = [];
@@ -45,7 +44,6 @@ class BookingController extends Controller
                     'payable_amount' => $payment_datas->payable_amount,
                 );
             }
-            
 
             $bookingData[] = array(
                 'customer_name' => $datas->customer_name,
@@ -72,10 +70,11 @@ class BookingController extends Controller
                 'status' => $datas->status,
             );
         }
+
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow', 'payment_data'));
+        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow'));
     }
 
     public function create()
@@ -105,7 +104,7 @@ class BookingController extends Controller
         $data->email_id = $request->get('email_id');
         $data->address = $request->get('address');
 
-        
+
         $data->male_count = $request->get('male_count');
         $data->female_count = $request->get('female_count');
         $data->child_count = $request->get('child_count');
@@ -145,7 +144,7 @@ class BookingController extends Controller
                 $request->proofimage_two->move('assets/customer_details/proof', $filename_two);
                 $data->proofimage_two = $filename_two;
             }
-    
+
         }
 
         //$customer_photo = $request->customer_photo;
@@ -170,7 +169,7 @@ class BookingController extends Controller
         $data->grand_total = $request->get('grand_total');
         $data->total_paid = $request->get('payable_amount');
         $data->balance_amount = $request->get('balance_amount');
-        
+
 
         $status = 1;
         $data->status = $status;
@@ -236,7 +235,7 @@ class BookingController extends Controller
         $BookingData->email_id = $request->get('email_id');
         $BookingData->address = $request->get('address');
 
-        
+
         $BookingData->male_count = $request->get('male_count');
         $BookingData->female_count = $request->get('female_count');
         $BookingData->child_count = $request->get('child_count');
@@ -289,7 +288,7 @@ class BookingController extends Controller
 
         }
 
-    
+
 
         //if ($request->customer_photo != "") {
         //$customer_photo = $request->customer_photo;
@@ -334,7 +333,7 @@ class BookingController extends Controller
         $BookingPayment->payment_method = $request->get('payment_method');
         $BookingPayment->update();
 
-        
+
 
         // Booking Rooms
 
@@ -437,7 +436,7 @@ class BookingController extends Controller
         $checkout_date = Carbon::now()->format('Y-m-d');
         $checkout_time = Carbon::now()->format('H:i');
 
-        
+
         $data = Booking::findOrFail($id);
 
 
@@ -472,11 +471,11 @@ class BookingController extends Controller
             $BookingPayment->paid_date = $checkout_date;
             $BookingPayment->payment_method = $request->get('payment_method');
             $BookingPayment->save();
-            
-            
+
+
             foreach ($request->get('room_auto_id') as $key => $room_auto_id) {
 
-            
+
                 $ids = $room_auto_id;
                 $bookingID = $request->get('booking_id');
                 $booking_room_price = $request->booking_room_price[$key];
@@ -485,10 +484,10 @@ class BookingController extends Controller
                         ->update([
                             'room_price' => $booking_room_price,  'room_cal_price' => $booking_room_cal_price
                         ]);
-            
+
             }
-            
-            
+
+
         }
 
 
@@ -498,7 +497,7 @@ class BookingController extends Controller
 
     public function pay_balance(Request $request, $id)
     {
-        
+
 
         $paid_date = Carbon::now()->format('Y-m-d');
         $payableAmount = $request->get('payable_amount');
@@ -522,14 +521,14 @@ class BookingController extends Controller
         $data->balance_amount = $balance;
         $data->update();
 
-        
+
 
         return redirect()->route('booking.index')->with('paybalance', 'Balance Amount successfully added !');
     }
 
     public function view($id){
         $data = Booking::findOrFail($id);
-      
+
             $roomsbooked = BookingRoom::where('booking_id', '=', $id)->get();
             $room_list = [];
             foreach ($roomsbooked as $key => $rooms_booked) {
@@ -541,7 +540,7 @@ class BookingController extends Controller
                     'room_cal_price' => $rooms_booked->room_cal_price,
                 );
             }
-       
+
 
         $branch = Branch::findOrFail($data->branch_id);
 
