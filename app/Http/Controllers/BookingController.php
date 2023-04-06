@@ -34,6 +34,8 @@ class BookingController extends Controller
                     'booking_room_price' => $rooms_booked->room_price,
                     'room_cal_price' => $rooms_booked->room_cal_price,
                     'id' => $rooms_booked->id,
+                    'room_id' => $rooms_booked->room_id,
+                    
                 );
             }
 
@@ -75,7 +77,7 @@ class BookingController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow', 'payment_data'));
+        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow'));
     }
 
     public function create()
@@ -481,14 +483,21 @@ class BookingController extends Controller
                 $bookingID = $request->get('booking_id');
                 $booking_room_price = $request->booking_room_price[$key];
                 $booking_room_cal_price = $request->booking_room_cal_price[$key];
+                $room_id = $request->room_id[$key];
                 DB::table('booking_rooms')->where('id', $ids)
                         ->update([
                             'room_price' => $booking_room_price,  'room_cal_price' => $booking_room_cal_price
                         ]);
-            
             }
-            
-            
+
+        }
+
+        foreach ($request->get('room_id') as $key => $room_id) {
+            $roomid = $room_id;
+
+            $room_data = Room::findOrFail($roomid);
+            $room_data->booking_status = 0;
+            $room_data->update();
         }
 
 
