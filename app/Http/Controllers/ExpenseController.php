@@ -78,4 +78,34 @@ class ExpenseController extends Controller
 
         return redirect()->route('expense.index')->with('destroy', 'Successfully erased the expense record !');
     }
+
+
+    public function datefilter(Request $request)
+    {
+        $date = $request->get('date');
+
+        $expense_data = Expense::where('soft_delete', '!=', 1)->where('date', '=', $date)->get();
+
+        $expense_arr = [];
+        foreach ($expense_data as $key => $expense_datas) {
+
+            $branch = Branch::findOrFail($expense_datas->branch_id);
+            $namelist = Namelist::findOrFail($expense_datas->namelist_id);
+
+            $expense_arr[] = array(
+                'date' => date('d M, Y', strtotime($expense_datas->date)),
+                'branch' => $branch->name,
+                'namelist' => $namelist->name,
+                'amount' => $expense_datas->amount,
+                'note' => $expense_datas->note,
+                'id' => $expense_datas->id,
+            );
+        }
+        $today = Carbon::now()->format('Y-m-d');
+
+        return view('pages.backend.expense.datefilter', compact('expense_arr', 'date'));
+    }
+
+
+
 }

@@ -119,6 +119,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // PRICING
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/pricing/{id}', [BookingController::class, 'pricing'])->name('booking.pricing');
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/view/{id}', [BookingController::class, 'view'])->name('booking.view');
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/datefilter', [BookingController::class, 'datefilter'])->name('booking.datefilter');
     });
 
     // NAME LIST CONTROLLER
@@ -155,6 +156,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/income/delete/{id}', [IncomeController::class, 'delete'])->name('income.delete');
         // DESTROY
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/income/destroy/{id}', [IncomeController::class, 'destroy'])->name('income.destroy');
+        // DATE FILTER
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/income/datefilter', [IncomeController::class, 'datefilter'])->name('income.datefilter');
     });
 
     // EXPENSE CONTROLLER
@@ -173,6 +176,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/expense/delete/{id}', [ExpenseController::class, 'delete'])->name('expense.delete');
         // DESTROY
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/expense/destroy/{id}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
+        // DATE FILTER
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/expense/datefilter', [ExpenseController::class, 'datefilter'])->name('expense.datefilter');
     });
 
     // OPEN ACCOUNT CONTROLLER
@@ -228,6 +233,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 Route::get('getBranchwiseRoom/{id}', [RoomController::class, 'getBranchwiseRoom']);
 Route::get('getPriceforRooms/{id}', [RoomController::class, 'getPriceforRooms']);
+
+Route::get('getBranchwiseList/{date}', [App\Http\Controllers\HomeController::class, 'getBranchwiseList']);
 
 // CONTACT CONTROLLER // STORE
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');

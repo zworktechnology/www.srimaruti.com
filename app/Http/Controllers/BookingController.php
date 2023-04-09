@@ -550,6 +550,152 @@ class BookingController extends Controller
         return view('pages.backend.booking.view', compact('data', 'branch', 'room_list'));
     }
 
+
+    public function datefilter(Request $request)
+    {
+        $booking_dropdown_list = $request->get('booking_dropdown_list');
+        $from_date = $request->get('from_date');
+        $to_date = $request->get('to_date');
+        
+        if($booking_dropdown_list == 'checkout'){
+            $checkin_Array = [];
+            $room_list = [];
+            $terms = [];
+
+            $checkout_Data = Booking::whereBetween('check_out_date', [$from_date, $to_date])
+                                    ->where('soft_delete', '!=', 1)
+                                    ->where('status', '=', 2)
+                                    ->get();
+
+                foreach ($checkout_Data as $key => $checkout_Datas) {
+
+                    $branch = Branch::findOrFail($checkout_Datas->branch_id);
+                    $roomsbooked = BookingRoom::where('booking_id', '=', $checkout_Datas->id)->get();
+                                
+                    foreach ($roomsbooked as $key => $rooms_booked) {
+                        $Rooms = Room::findOrFail($rooms_booked->room_id);
+                        $room_list[] = array(
+                            'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type,
+                            'booking_id' => $checkout_Datas->id,
+                            'booking_room_price' => $rooms_booked->room_price,
+                            'room_cal_price' => $rooms_booked->room_cal_price,
+                            'id' => $rooms_booked->id,
+                            'room_id' => $rooms_booked->room_id,
+                                
+                        );
+                    }
+                                
+                    $payment_data = BookingPayment::where('booking_id', '=', $checkout_Datas->id)->get();
+                    foreach ($payment_data as $key => $payment_datas) {
+                        $terms[] = array(
+                            'booking_id' => $checkout_Datas->id,
+                            'term' => $payment_datas->term,
+                            'payable_amount' => $payment_datas->payable_amount,
+                        );
+                    }
+                                
+                                
+                                  
+                        $checkin_Array[] = array(
+                            'customer_name' => $checkout_Datas->customer_name,
+                            'room_list' => $room_list,
+                            'branch' => $branch->name,
+                            'chick_in_date' => $checkout_Datas->check_in_date,
+                            'chick_in_time' => $checkout_Datas->check_in_time,
+                            'id' => $checkout_Datas->id,
+                            'chick_out_date' => $checkout_Datas->check_out_date,
+                            'chick_out_time' => $checkout_Datas->check_out_time,
+                            'phone_number' => $checkout_Datas->phone_number,
+                            'grand_total' => $checkout_Datas->grand_total,
+                            'total_paid' => $checkout_Datas->total_paid,
+                            'balance_amount' => $checkout_Datas->balance_amount,
+                            'days' => $checkout_Datas->days,
+                            'gst_per' => $checkout_Datas->gst_per,
+                            'gst_amount' => $checkout_Datas->gst_amount,
+                            'disc_per' => $checkout_Datas->disc_per,
+                            'disc_amount' => $checkout_Datas->disc_amount,
+                            'additional_amount' => $checkout_Datas->additional_amount,
+                            'additional_notes' => $checkout_Datas->additional_notes,
+                            'total' => $checkout_Datas->total,
+                            'terms' => $terms,
+                            'status' => $checkout_Datas->status,
+                        );
+                }
+                return view('pages.backend.booking.datefilter', compact('checkin_Array', 'booking_dropdown_list', 'from_date', 'to_date'));
+        }else{
+            $checkin_Array = [];
+            $room_list = [];
+            $terms = [];
+
+            $checkin_Data = Booking::whereBetween('check_in_date', [$from_date, $to_date])
+                                            ->where('soft_delete', '!=', 1)
+                                            ->get();
+
+                foreach ($checkin_Data as $key => $checkin_Datas) {
+
+                    $branch = Branch::findOrFail($checkin_Datas->branch_id);
+                    $roomsbooked = BookingRoom::where('booking_id', '=', $checkin_Datas->id)->get();
+
+                    foreach ($roomsbooked as $key => $rooms_booked) {
+                        $Rooms = Room::findOrFail($rooms_booked->room_id);
+                        $room_list[] = array(
+                            'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type,
+                            'booking_id' => $checkin_Datas->id,
+                            'booking_room_price' => $rooms_booked->room_price,
+                            'room_cal_price' => $rooms_booked->room_cal_price,
+                            'id' => $rooms_booked->id,
+                            'room_id' => $rooms_booked->room_id,
+
+                        );
+                    }
+
+                    $payment_data = BookingPayment::where('booking_id', '=', $checkin_Datas->id)->get();
+                    foreach ($payment_data as $key => $payment_datas) {
+                        $terms[] = array(
+                            'booking_id' => $checkin_Datas->id,
+                            'term' => $payment_datas->term,
+                            'payable_amount' => $payment_datas->payable_amount,
+                        );
+                    }
+
+
+
+
+                    $checkin_Array[] = array(
+                        'customer_name' => $checkin_Datas->customer_name,
+                        'room_list' => $room_list,
+                        'branch' => $branch->name,
+                        'chick_in_date' => $checkin_Datas->check_in_date,
+                        'chick_in_time' => $checkin_Datas->check_in_time,
+                        'id' => $checkin_Datas->id,
+                        'chick_out_date' => $checkin_Datas->check_out_date,
+                        'chick_out_time' => $checkin_Datas->check_out_time,
+                        'phone_number' => $checkin_Datas->phone_number,
+                        'grand_total' => $checkin_Datas->grand_total,
+                        'total_paid' => $checkin_Datas->total_paid,
+                        'balance_amount' => $checkin_Datas->balance_amount,
+                        'days' => $checkin_Datas->days,
+                        'gst_per' => $checkin_Datas->gst_per,
+                        'gst_amount' => $checkin_Datas->gst_amount,
+                        'disc_per' => $checkin_Datas->disc_per,
+                        'disc_amount' => $checkin_Datas->disc_amount,
+                        'additional_amount' => $checkin_Datas->additional_amount,
+                        'additional_notes' => $checkin_Datas->additional_notes,
+                        'total' => $checkin_Datas->total,
+                        'terms' => $terms,
+                        'status' => $checkin_Datas->status,
+                    );
+                }
+
+
+            return view('pages.backend.booking.datefilter', compact('checkin_Array', 'booking_dropdown_list', 'from_date', 'to_date'));
+        }
+      
+
+        
+    }
+
+
     public function pricing($id){
 
         $data = Booking::findOrFail($id);

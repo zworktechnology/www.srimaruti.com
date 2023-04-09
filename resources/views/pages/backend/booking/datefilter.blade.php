@@ -9,6 +9,7 @@
                     <div class="page-title-box d-flex align-items-center justify-content-between">
                         <h4 class="mb-0">Booking</h4>
                         <div class="page-title-right">
+                        <div class="page-title-right">
                         
                             <ol class="breadcrumb m-0">
                             <form autocomplete="off" method="POST" action="{{ route('booking.datefilter') }}" style="display: flex;">
@@ -17,23 +18,25 @@
                                 <li  style="margin-left: 10px;">
                                   <select class="form-control " name="booking_dropdown_list" style="width: 100%;" required>
                                                         <option value="" selected class="text-muted">Select</option>
-                                                        <option value="checkout" class="text-muted">Checkout</option>
-                                                        <option value="view_all" class="text-muted">View All</option>
+                                                        <option value="checkout"{{ $booking_dropdown_list == 'checkout' ? 'selected' : '' }} class="text-muted">Checkout</option>
+                                                        <option value="view_all"{{ $booking_dropdown_list == 'view_all' ? 'selected' : '' }} class="text-muted">View All</option>
                                                     </select>
                                 </li>
-                                <li  style="margin-left: 10px;"><input type="date" name="from_date" required class="form-control from_date" value="{{ $today }}"></li>
-                                <li  style="margin-left: 10px;"><input type="date" name="to_date" required class="form-control to_date" value="{{ $today }}"></li>
+                                <li  style="margin-left: 10px;"><input type="date" name="from_date" required class="form-control from_date" value="{{ $from_date }}"></li>
+                                <li  style="margin-left: 10px;"><input type="date" name="to_date" required class="form-control to_date" value="{{ $to_date }}"></li>
                                 <li style="margin-left: 10px;"><button type="submit" class="btn btn-primary home_search">Search</button></li>
                                 </form>
+                            
                                 <li style="margin-left: 10px;">
-                                    <a href="{{ route('booking.create') }}">
-                                        <button type="button" class="btn btn-primary waves-effect waves-light">
-                                            New Booking
+                                    <a href="{{ route('booking.index') }}">
+                                        <button type="button" class="btn btn-info waves-effect waves-light">
+                                            Back
                                         </button>
                                     </a>
                                 </li>
                             </ol>
                             
+                        </div>
                         </div>
                         
                       
@@ -41,13 +44,7 @@
                 </div>
             </div>
 
-            @if (\Session::has('add'))
-            <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                <i class="uil uil-pen me-2"></i>
-                {!! \Session::get('add') !!}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endif
+          
             @if (\Session::has('update'))
             <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                 <i class="uil uil-pen me-2"></i>
@@ -82,7 +79,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <table id="booking_datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="bookingdatefilter_datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th style="width:10%;">Sl. No</th>
@@ -96,8 +93,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($bookingData as $keydata => $bookingDatas)
-                                    @if ($bookingDatas['status'] == '1')
+                                    @foreach ($checkin_Array as $keydata => $bookingDatas)
+                                  
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
                                         <td>{{ $bookingDatas['customer_name'] }}</td>
@@ -137,14 +134,18 @@
                                                     </li>
                                                     @endif
 
+                                                    @if ($bookingDatas['balance_amount'] == 0)  
+                                                        @if ($bookingDatas['status'] == 2)
+                                                        <li><button class="btn btn-sm btn-danger ">Vocated</button></li>
+                                                        @elseif($bookingDatas['status'] == 1)
 
-                                                    @if ($bookingDatas['balance_amount'] == 0)
-                                                    <li>
-                                                        <a href="#checkout{{ $bookingDatas['id'] }}" data-bs-toggle="modal" data-id="{{ $bookingDatas['id'] }}" class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}" data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
-                                                        <div class="modal fade" id="checkout{{ $bookingDatas['id'] }}" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-                                                            @include('pages.backend.booking.checkout')
-                                                        </div>
-                                                    </li>
+                                                        <li>
+                                                            <a href="#checkout{{ $bookingDatas['id'] }}" data-bs-toggle="modal" data-id="{{ $bookingDatas['id'] }}" class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}" data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
+                                                            <div class="modal fade" id="checkout{{ $bookingDatas['id'] }}" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+                                                                @include('pages.backend.booking.checkout')
+                                                            </div>
+                                                        </li>
+                                                        @endif
                                                     @endif
                                             </ul>
                                         </td>
@@ -165,14 +166,14 @@
                                             </ul>
                                         </td>
                                     </tr>
-                                    @endif
+                                   
                                     @if ($bookingDatas['balance_amount'] != 0)
                                     <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">Pay Balance Amount</h5>
-                                                    <button type="button" class="paybalanceclose btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <button type="button" class="d_paybalanceclose btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form autocomplete="off" method="POST" action="{{ route('booking.pay_balance', ['id' => $bookingDatas['id']]) }}">
@@ -240,7 +241,7 @@
 
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-success">Pay</button>
-                                                            <button type="button" class="btn btn-secondary paybalanceclosebutton" data-bs-dismiss="modal">No, Get Back</button>
+                                                            <button type="button" class="btn btn-secondary d_paybalanceclosebutton" data-bs-dismiss="modal">No, Get Back</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -289,12 +290,12 @@
 
 <script>
     $(document).ready(function() {
-        $('#booking_datatable').DataTable();
+        $('#bookingdatefilter_datatable').DataTable();
     });
-    $(".paybalanceclose").click(function() {
+    $(".d_paybalanceclose").click(function() {
         window.location.reload();
     });
-    $(".paybalanceclosebutton").click(function() {
+    $(".d_paybalanceclosebutton").click(function() {
         window.location.reload();
     });
 

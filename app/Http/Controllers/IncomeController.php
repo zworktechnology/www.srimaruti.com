@@ -78,5 +78,31 @@ class IncomeController extends Controller
 
         return redirect()->route('income.index')->with('destroy', 'Successfully erased the income record !');
     }
+
+    public function datefilter(Request $request)
+    {
+        $date = $request->get('date');
+
+        $income_data = Income::where('soft_delete', '!=', 1)->where('date', '=', $date)->get();
+
+        $income_arr = [];
+        foreach ($income_data as $key => $income_datas) {
+
+            $branch = Branch::findOrFail($income_datas->branch_id);
+            $namelist = Namelist::findOrFail($income_datas->namelist_id);
+
+            $income_arr[] = array(
+                'date' => date('d M, Y', strtotime($income_datas->date)),
+                'branch' => $branch->name,
+                'namelist' => $namelist->name,
+                'amount' => $income_datas->amount,
+                'note' => $income_datas->note,
+                'id' => $income_datas->id,
+            );
+        }
+        $today = Carbon::now()->format('Y-m-d');
+
+        return view('pages.backend.income.datefilter', compact('income_arr', 'date'));
+    }
 }
 

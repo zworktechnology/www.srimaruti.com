@@ -7,27 +7,36 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">Close Account</h4>
-                        <div class="text-sm-end mt-2 mt-sm-0" hidden>
-                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                Add new
-                            </button>
+                        <h4 class="mb-0">Expense</h4>
+                        <div class="page-title-right">
+                        
+                            <ol class="breadcrumb m-0">
+                            <form autocomplete="off" method="POST" action="{{ route('expense.datefilter') }}" style="display: flex;">
+                            @method('PUT')
+                            @csrf
+                                
+                                <li  style="margin-left: 10px;"><input type="date" name="date" required class="form-control date" value="{{ $date }}"></li>
+                                <li style="margin-left: 10px;"><button type="submit" class="btn btn-primary home_search">Search</button></li>
+                                </form>
+                                <li style="margin-left: 10px;">
+                                    <a href="{{ route('expense.index') }}">
+                                        <button type="button" class="btn btn-info waves-effect waves-light">
+                                            Back
+                                        </button>
+                                    </a>
+                                </li>
+
+                            </ol>
+                        
                         </div>
+                        
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                @include('pages.backend.closeaccount.create')
-            </div>
+           
 
-            @if (\Session::has('add'))
-            <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                <i class="uil uil-pen me-2"></i>
-                {!! \Session::get('add') !!}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endif
+          
             @if (\Session::has('update'))
             <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                 <i class="uil uil-pen me-2"></i>
@@ -51,44 +60,42 @@
             @endif
 
             <div class="row" style="display: flex">
-                <div class="col-9">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="expensedatatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Sl. No</th>
                                         <th>Date</th>
                                         <th>Branch</th>
-                                        <th>Total</th>
+                                        <th>Name</th>
+                                        <th>Amount</th>
+                                        <th>Note</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $keydata => $datas)
+                                    @foreach ($expense_arr as $keydata => $expense_array)
                                     <tr>
-                                        <td>{{ ++$keydata }}</td>
-                                        <td>{{ date('d M, Y', strtotime($datas->date)) }}</td>
-                                        <td>{{ $datas->branch->name }}</td>
-                                        <td>₹ {{  $datas->total }}</td>
+                                    <td>{{ ++$keydata }}</td>
+                                        <td>{{ $expense_array['date'] }}</td>
+                                        <td>{{ $expense_array['branch'] }}</td>
+                                        <td>{{ $expense_array['namelist'] }}</td>
+                                        <td>₹ {{ $expense_array['amount'] }}</td>
+                                        <td>{{ $expense_array['note'] }}</td>
                                         <td>
                                             <ul class="list-unstyled hstack gap-1 mb-0">
                                                 <li>
-                                                    <a href="#jobDelete{{ $datas->id }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-warning" data-bs-target="#firstmodalview{{ $datas->id }}">View</a>
+                                                    <a href="{{ route('expense.edit', ['id' => $expense_array['id']]) }}" class="btn btn-sm btn-soft-info">Edit</a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('closeaccount.edit', ['id' => $datas->id]) }}" class="btn btn-sm btn-soft-info">Edit</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#jobDelete{{ $datas->id }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal{{ $datas->id }}">Delete</a>
+                                                    <a href="#jobDelete{{ $expense_array['id'] }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal{{ $expense_array['id'] }}">Delete</a>
                                                 </li>
                                             </ul>
                                         </td>
                                     </tr>
-                                    <div class="modal fade" id="firstmodalview{{ $datas->id }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-                                        @include('pages.backend.closeaccount.view')
-                                    </div>
-                                    <div class="modal fade" id="firstmodal{{ $datas->id }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+                                    <div class="modal fade" id="firstmodal{{ $expense_array['id'] }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -96,10 +103,10 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record.</p>
+                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record - Amount of ₹ {{ $expense_array['id'] }}.</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <form autocomplete="off" method="POST" action="{{ route('closeaccount.delete', ['id' => $datas->id]) }}">
+                                                    <form autocomplete="off" method="POST" action="{{ route('expense.delete', ['id' => $expense_array['id']]) }}">
                                                         @method('PUT')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger">Yes, Delete</button>
@@ -115,15 +122,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="card">
-                        <div class="card-body">
-                            @include('pages.backend.closeaccount.create')
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#expensedatatable').DataTable();
+    });
+</script>
 @endsection

@@ -22,17 +22,18 @@ return new class extends Migration
             $table->string('date');
             $table->unsignedBigInteger('branch_id');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
-            $table->integer('count_2000');
-            $table->integer('count_500');
-            $table->integer('count_200');
-            $table->integer('count_100');
-            $table->integer('count_50');
-            $table->integer('count_20');
-            $table->integer('count_10');
-            $table->integer('count_5');
-            $table->integer('count_2');
-            $table->integer('count_1');
-            $table->boolean('soft_delete')->default(0);
+            $table->integer('count_2000')->nullable();
+            $table->integer('count_500')->nullable();
+            $table->integer('count_200')->nullable();
+            $table->integer('count_100')->nullable();
+            $table->integer('count_50')->nullable();
+            $table->integer('count_20')->nullable();
+            $table->integer('count_10')->nullable();
+            $table->integer('count_5')->nullable();
+            $table->integer('count_2')->nullable();
+            $table->integer('count_1')->nullable();
+            $table->string('total')->nullable();
+            $table->boolean('soft_delete')->nullable();
 
             // CreatedAt & UpdatedAt columns
             $table->timestamps();

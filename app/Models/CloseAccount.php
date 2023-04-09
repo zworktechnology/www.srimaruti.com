@@ -22,6 +22,7 @@ class CloseAccount extends Model
         'count_5',
         'count_2',
         'count_1',
+        'total',
         'soft_delete'
     ];
 
