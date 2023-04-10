@@ -149,16 +149,16 @@ class BookingController extends Controller
 
         }
 
-        //$customer_photo = $request->customer_photo;
-        //$folderPath = "assets/customer_details/profile";
-        //$image_parts = explode(";base64,", $customer_photo);
-        //$image_type_aux = explode("image/", $image_parts[0]);
-        //$image_type = $image_type_aux[1];
-        //$image_base64 = base64_decode($image_parts[1]);
-        //$fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-        //$customerimgfile = $folderPath . $fileName;
-        //file_put_contents($customerimgfile, $image_base64);
-        //$data->customer_photo = $fileName;
+        $customer_photo = $request->customer_photo;
+        $folderPath = "assets/customer_details/profile";
+        $image_parts = explode(";base64,", $customer_photo);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+        $customerimgfile = $folderPath . $fileName;
+        file_put_contents($customerimgfile, $image_base64);
+        $data->customer_photo = $fileName;
 
         $data->total = $request->get('total_calc_price');
         $data->gst_per = $request->get('gst_percentage');
@@ -290,23 +290,21 @@ class BookingController extends Controller
 
         }
 
-
-
-        //if ($request->customer_photo != "") {
-        //$customer_photo = $request->customer_photo;
-        //$folderPath = "assets/webcam";
-        //$image_parts = explode(";base64,", $customer_photo);
-        //$image_type_aux = explode("image/", $image_parts[0]);
-        //$image_type = $image_type_aux[1];
-        //$image_base64 = base64_decode($image_parts[1]);
-        //$fileName = $BookingData->customer_name . '.png';
-        //$customerimgfile = $folderPath . $random_no . $fileName;
-        //file_put_contents($customerimgfile, $image_base64);
-        //$BookingData->customer_photo = $fileName;
-        //}else{
-        //   $Insertedcustomer_photo = $BookingData->customer_photo;
-        //   $BookingData->customer_photo = $Insertedcustomer_photo;
-        //}
+        if ($request->customer_photo != "") {
+        $customer_photo = $request->customer_photo;
+        $folderPath = "assets/webcam";
+        $image_parts = explode(";base64,", $customer_photo);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = $BookingData->customer_name . '.png';
+        $customerimgfile = $folderPath . $random_no . $fileName;
+        file_put_contents($customerimgfile, $image_base64);
+        $BookingData->customer_photo = $fileName;
+        }else{
+          $Insertedcustomer_photo = $BookingData->customer_photo;
+          $BookingData->customer_photo = $Insertedcustomer_photo;
+        }
 
         $BookingData->total = $request->get('total_calc_price');
         $BookingData->gst_per = $request->get('gst_percentage');
@@ -319,8 +317,6 @@ class BookingController extends Controller
         $BookingData->total_paid = $request->get('payable_amount');
         $BookingData->balance_amount = $request->get('balance_amount');
         $BookingData->update();
-
-
 
         $booking_id = $id;
 
@@ -556,7 +552,7 @@ class BookingController extends Controller
         $booking_dropdown_list = $request->get('booking_dropdown_list');
         $from_date = $request->get('from_date');
         $to_date = $request->get('to_date');
-        
+
         if($booking_dropdown_list == 'checkout'){
             $checkin_Array = [];
             $room_list = [];
@@ -571,7 +567,7 @@ class BookingController extends Controller
 
                     $branch = Branch::findOrFail($checkout_Datas->branch_id);
                     $roomsbooked = BookingRoom::where('booking_id', '=', $checkout_Datas->id)->get();
-                                
+
                     foreach ($roomsbooked as $key => $rooms_booked) {
                         $Rooms = Room::findOrFail($rooms_booked->room_id);
                         $room_list[] = array(
@@ -581,10 +577,10 @@ class BookingController extends Controller
                             'room_cal_price' => $rooms_booked->room_cal_price,
                             'id' => $rooms_booked->id,
                             'room_id' => $rooms_booked->room_id,
-                                
+
                         );
                     }
-                                
+
                     $payment_data = BookingPayment::where('booking_id', '=', $checkout_Datas->id)->get();
                     foreach ($payment_data as $key => $payment_datas) {
                         $terms[] = array(
@@ -593,9 +589,9 @@ class BookingController extends Controller
                             'payable_amount' => $payment_datas->payable_amount,
                         );
                     }
-                                
-                                
-                                  
+
+
+
                         $checkin_Array[] = array(
                             'customer_name' => $checkout_Datas->customer_name,
                             'room_list' => $room_list,
@@ -690,9 +686,9 @@ class BookingController extends Controller
 
             return view('pages.backend.booking.datefilter', compact('checkin_Array', 'booking_dropdown_list', 'from_date', 'to_date'));
         }
-      
 
-        
+
+
     }
 
 
