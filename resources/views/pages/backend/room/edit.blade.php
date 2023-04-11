@@ -23,7 +23,7 @@
                                     <div class="modal-body">
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Branch </label>
+                                                Branch <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
                                                 <select class="form-control js-example-basic-single" name="branch_id" required>
                                                     <option value="" disabled selected hidden class="text-muted">
@@ -36,21 +36,21 @@
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Floor </label>
+                                                Floor <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="room_floor" placeholder="Enter floor " value="{{ $data->room_floor }}">
+                                                <input type="number" class="form-control" name="room_floor" placeholder="Enter floor " value="{{ $data->room_floor }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Number </label>
+                                                Room Number <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="room_number" placeholder="Enter room number " value="{{ $data->room_number }}">
+                                                <input type="number" class="form-control" name="room_number" placeholder="Enter room number " value="{{ $data->room_number }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Type </label>
+                                                Type <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
                                                 <select class="form-control js-example-basic-single" name="room_type" required>
                                                     <option value="" disabled selected hidden class="text-muted">Select Type</option>
@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Category </label>
+                                                Category <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
                                                 <select class="form-control js-example-basic-single" name="room_category" required>
                                                     <option value="" disabled selected hidden class="text-muted">Select Category</option>

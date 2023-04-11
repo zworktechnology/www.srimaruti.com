@@ -25,14 +25,14 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         Floor </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="room_floor" placeholder="Enter floor ">
+                        <input type="number" class="form-control" name="room_floor" placeholder="Enter floor " required>
                     </div>
                 </div>
                 <div class="row mb-4">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         Number </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="room_number" placeholder="Enter room number ">
+                        <input type="number" class="form-control" name="room_number" placeholder="Enter room number " required>
                     </div>
                 </div>
                 <div class="row mb-4">

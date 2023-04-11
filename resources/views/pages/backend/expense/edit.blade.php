@@ -23,14 +23,14 @@
                                     <div class="modal-body">
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Date </label>
+                                                Date <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="date" class="form-control" name="date" placeholder="Enter floor " value="{{ $data->date }}">
+                                                <input type="date" class="form-control" name="date" placeholder="Enter floor " value="{{ $data->date }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Branch </label>
+                                                Branch <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
                                                 <select class="form-control js-example-basic-single" name="branch_id" required>
                                                     <option value="" disabled selected hidden class="text-muted">
@@ -43,7 +43,7 @@
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Name </label>
+                                                Name <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
                                                 <select class="form-control js-example-basic-single" name="namelist_id" required>
                                                     <option value="" disabled selected hidden class="text-muted">
@@ -56,9 +56,9 @@
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Amount </label>
+                                                Amount <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="amount" placeholder="Enter amount " value="{{ $data->amount }}">
+                                                <input type="number" class="form-control" name="amount" placeholder="Enter amount " value="{{ $data->amount }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">

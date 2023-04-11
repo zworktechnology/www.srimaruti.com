@@ -23,26 +23,26 @@
                                         <h4 class="card-title mb-4" style="color: #5b73e8">Profile</h4>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Customer Name </label>
+                                                Customer Name <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="name" class="form-control" name="booking_customer_name" placeholder="Enter here ">
+                                                <input type="name" class="form-control" name="booking_customer_name" placeholder="Enter here " required>
                                             </div>
                                         </div>
 
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Contact Number </label>
+                                                Contact Number <span style="color: red;">*</span> </label>
                                             <div class="col-sm-4">
                                                 <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Enter here ">
                                                 <div class="form-check mt-2">
-                                                    <input type="checkbox" class="form-check-input whatsapp_check" id="formrow-customCheck">
+                                                    <input type="checkbox" class="form-check-input whatsapp_check" id="formrow-customCheck" required>
                                                     <label class="form-check-label" for="formrow-customCheck">Same as Whatsapp number</label>
                                                 </div>
                                             </div>
                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
-                                                Whatsapp </label>
+                                                Whatsapp <span style="color: red;">*</span> </label>
                                             <div class="col-sm-4">
-                                                <input type="number" class="form-control whats_app_number" name="whats_app_number" placeholder="Enter here ">
+                                                <input type="number" class="form-control whats_app_number" name="whats_app_number" placeholder="Enter here " required>
                                             </div>
                                         </div>
 
@@ -65,51 +65,51 @@
 
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Count </label>
+                                                Count <span style="color: red;">*</span> </label>
                                             <div class="col-sm-3">
-                                                <input type="number" class="form-control" name="male_count" placeholder="Male Count - Enter here ">
+                                                <input type="number" class="form-control" name="male_count" placeholder="Male Count - Enter here " required>
                                             </div>
                                             <div class="col-sm-3">
-                                                <input type="number" class="form-control" name="female_count" placeholder="Female Count- Enter here ">
+                                                <input type="number" class="form-control" name="female_count" placeholder="Female Count- Enter here " required>
                                             </div>
                                             <div class="col-sm-3">
-                                                <input type="number" class="form-control" name="child_count" placeholder="Child Count - Enter here ">
+                                                <input type="number" class="form-control" name="child_count" placeholder="Child Count - Enter here " required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Check In Date </label>
+                                                Check In Date <span style="color: red;">*</span> </label>
                                             <div class="col-sm-4">
-                                                <input type="date" class="form-control" name="check_in_date" placeholder="Enter here " value="{{ $today }}">
+                                                <input type="date" class="form-control" name="check_in_date" placeholder="Enter here " value="{{ $today }}" required>
                                             </div>
                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
-                                                Time </label>
+                                                Time <span style="color: red;">*</span> </label>
                                             <div class="col-sm-4">
-                                                <input type="time" class="form-control" name="check_in_time" placeholder="Enter here " value="{{ $timenow }}">
+                                                <input type="time" class="form-control" name="check_in_time" placeholder="Enter here " value="{{ $timenow }}" required>
                                             </div>
                                         </div>
-                                        <div class="row mb-4">
+                                        <div class="row mb-4" hidden>
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Check Out Date </label>
                                             <div class="col-sm-4">
-                                                <input type="date" class="form-control" name="check_out_date" placeholder="Enter here ">
+                                                <input type="date" class="form-control" name="check_out_date" placeholder="Enter here " value="2023-01-01">
                                             </div>
                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                 Time </label>
                                             <div class="col-sm-4">
-                                                <input type="time" class="form-control" name="check_out_time" placeholder="Enter here ">
+                                                <input type="time" class="form-control" name="check_out_time" placeholder="Enter here " value="00:00">
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Days</label>
+                                                Days <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control days" style="background-color:#eee" id="days" name="days" placeholder="Enter here " value="">
+                                                <input type="text" class="form-control days" id="days" name="days" placeholder="Enter here " required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Branch </label>
+                                                Branch <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
                                                 <select class="form-control js-example-basic-single branch_id" name="branch_id" id="branch_id" required>
                                                     <option value="" disabled selected hidden class="text-muted">
@@ -129,7 +129,7 @@
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-sm-3">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Room Number</label>
+                                                                    Room Number <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="dynamic_field col-sm-9">
                                                                 <table class="table-fixed col-12 " id="">
@@ -141,8 +141,8 @@
                                                                                     <option value="" selected hidden class="text-muted">
                                                                                         Select Room</option>
                                                                                 </select></td>
-                                                                            <td class="col-3"><input type="text" class="form-control" id="room_price1" name="room_price[]" placeholder="Price Per Day" value="" /></td>
-                                                                            <td class="col-3"><input type="text" class="form-control room_cal_price" id="room_cal_price1" name="room_cal_price[]" placeholder="Price" value="" /></td>
+                                                                            <td class="col-3"><input type="text" class="form-control" id="room_price1" name="room_price[]" placeholder="Price Per Day" value="" required /></td>
+                                                                            <td class="col-3"><input type="text" class="form-control room_cal_price" id="room_cal_price1" name="room_cal_price[]" placeholder="Price" value="" required /></td>
                                                                             <td class="col-2"><button style="width: 100px;" class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add</button>
                                                                             </td>
                                                                         </tr>
@@ -175,9 +175,9 @@
                                         <div id="singleproof" style="display:none">
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof </label>
+                                                    Proof 1 <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-4">
-                                                    <select class="form-control js-example-basic-single" name="prooftype_one" style="width: 100%;">
+                                                    <select class="form-control js-example-basic-single" name="prooftype_one" style="width: 100%;" required>
                                                         <option value="" disabled selected hidden class="text-muted">Select Type</option>
                                                         <option value="Aadhaar Card" class="text-muted">Aadhaar Card</option>
                                                         <option value="Pan Card" class="text-muted">Pan Card</option>
@@ -186,16 +186,15 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-5">
-                                                    <input type="file" class="form-control" name="proofimage_one">
+                                                    <input type="file" class="form-control" name="proofimage_one" required>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div id="doubleproof" style="display:none">
-
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof </label>
+                                                    Proof 2 </label>
                                                 <div class="col-sm-4">
                                                     <select class="form-control js-example-basic-single" name="prooftype_two" style="width: 100%;">
                                                         <option value="" disabled selected hidden class="text-muted">Select Type</option>
@@ -209,17 +208,17 @@
                                                     <input type="file" class="form-control" name="proofimage_two">
                                                 </div>
                                             </div>
-                                            
                                         </div>
+
                                         <div class="row mb-4" style="display:none" id="proof_photo">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Photo </label>
+                                                Photo <span style="color: red;">*</span> </label>
                                             <div class="col-sm-7">
                                                 <div style="display: flex;">
                                                     <div id="my_camera"></div>
                                                     <div id="captured_image" style="border:1px #584f72; background:#f6f6f6;">Your captured image will appear here...</div>
                                                 </div>
-                                                <input style="margin-top: 10px; margin-left: 40px;" type=button value="Take Snapshot" class="btn btn-success" onClick="take_snapshot()">
+                                                <input style="margin-top: 10px; margin-left: 40px;" type=button value="Take Snapshot" class="btn btn-success" onClick="take_snapshot()" required>
                                                 <input type="hidden" name="customer_photo" class="image-tag">
                                             </div>
                                         </div>
@@ -235,66 +234,66 @@
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Total - Room Price </label>
+                                                                    Total - Room Price <span style="color: red;">*</span>  </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control total_calc_price" style="background-color:#babcc5ad" name="total_calc_price" id="total_calc_price" value="0" placeholder="Enter here ">
+                                                                <input type="text" class="form-control total_calc_price" style="background-color:#babcc5ad" name="total_calc_price" id="total_calc_price" value="0" placeholder="Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                                GST Amount </label>
+                                                                GST Amount <span style="color: red;">*</span>  </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control gst_amount" name="gst_amount" placeholder="GST Amount - Enter here " value="0">
+                                                                <input type="text" class="form-control gst_amount" name="gst_amount" placeholder="GST Amount - Enter here " value="0" required>
                                                             </div>
                                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
-                                                                GST % </label>
+                                                                GST % <span style="color: red;">*</span>  </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control gst_percentage" name="gst_percentage" placeholder="Gst % - Enter here " value="0">
+                                                                <input type="text" class="form-control gst_percentage" name="gst_percentage" placeholder="Gst % - Enter here " value="0" required>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                                Discount Amount </label>
+                                                                Discount Amount <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control discount_amount" name="discount_amount" value="0" placeholder="Discount Amount - Enter here ">
+                                                                <input type="text" class="form-control discount_amount" name="discount_amount" value="0" placeholder="Discount Amount - Enter here " required>
                                                             </div>
                                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
-                                                                Discount % </label>
+                                                                Dis % <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control discount_percentage" name="discount_percentage" value="0" placeholder="Discount % - Enter here ">
+                                                                <input type="text" class="form-control discount_percentage" name="discount_percentage" value="0" placeholder="Discount % - Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                                Additional Charge </label>
+                                                                Additional Charge <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control additional_charge" name="additional_charge" value="0" placeholder="Additional Amount - Enter here ">
+                                                                <input type="text" class="form-control additional_charge" name="additional_charge" value="0" placeholder="Additional Amount - Enter here " required>
                                                             </div>
                                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
-                                                                Note </label>
+                                                                Note <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control additional_charge_notes" name="additional_charge_notes" placeholder="Note - Enter here ">
+                                                                <input type="text" class="form-control additional_charge_notes" name="additional_charge_notes" placeholder="Note - Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Grand Total - To Pay </label>
+                                                                    Grand Total - To Pay <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="0" placeholder="Enter here ">
+                                                                <input type="text" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="0" placeholder="Enter here " required>
                                                             </div>
                                                         </div>
-                                                        <div data-repeater-item class="inner mb-3 row">
+                                                        <div data-repeater-item class="inner mb-3 row" hidden>
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Term </label>
+                                                                    Term <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="col-md-9 col-5">
                                                                 <select class="form-control" name="payment_term" required>
-                                                                    <option value=""  selected  class="text-muted">Select</option>
-                                                                    <option value="Term I" class="text-muted">Term I</option>
+                                                                    <option value=""  class="text-muted">Select</option>
+                                                                    <option value="Term I" class="text-muted" selected>Term I</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -302,19 +301,19 @@
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Payable Amount </label>
+                                                                    Payable Amount <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control payable_amount" value="0"  name="payable_amount"  placeholder="Enter here ">
+                                                                <input type="text" class="form-control payable_amount" value="0"  name="payable_amount"  placeholder="Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Balance Amount </label>
+                                                                    Balance Amount <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control balance_amount" style="background-color:#c7c21dad" value="0"  name="balance_amount"  placeholder="Enter here ">
+                                                                <input type="text" class="form-control balance_amount" style="background-color:#c7c21dad" value="0"  name="balance_amount"  placeholder="Enter here " required>
                                                             </div>
                                                         </div>
 
@@ -322,7 +321,7 @@
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Payment Method </label>
+                                                                    Payment Method <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="col-md-9 col-5">
                                                                 <select class="form-control js-example-basic-single" name="payment_method" required>
@@ -458,7 +457,7 @@
                                 $('.grand_total').val(grand_total);
                                 var payable_amount = $(".payable_amount").val();
                                 var balance = Number(grand_total) - Number(payable_amount);
-                                $('.balance_amount').val(balance); 
+                                $('.balance_amount').val(balance);
                     });
 
                 }
@@ -509,7 +508,7 @@
         $("#addroomfields").click(function() {
             ++i;
             $("#roomfields").append(
-                '<tr><td class="col-sm-6 py-2 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-2"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value=""/></td><td class="col-2"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value=""/></td><td class="col-sm-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                '<tr><td class="col-sm-6 py-2 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-2"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-2"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-sm-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
             );
 
             var branch_id = $('.branch_id').val();
@@ -607,13 +606,13 @@
                                 $('.grand_total').val(grand_total);
                                 var payable_amount = $(".payable_amount").val();
                                 var balance = Number(grand_total) - Number(payable_amount);
-                                $('.balance_amount').val(balance); 
+                                $('.balance_amount').val(balance);
 
 
                         });
 
 
-                                 
+
 
                     }
                 });
@@ -639,13 +638,13 @@
                     var total_calc_price = $(".total_calc_price").val();
                     var discount_amount = $(".discount_amount").val();
                     var gst_amount = $(".gst_amount").val();
-                    
+
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total);
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
                     $('.balance_amount').val(balance);
-                    
+
     });
 
     $(document).on("keyup", 'input.gst_percentage', function() {
@@ -664,7 +663,7 @@
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
                     $('.balance_amount').val(balance);
-                    
+
     });
 
 
@@ -686,7 +685,7 @@
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
                     $('.balance_amount').val(balance);
-                    
+
     });
 
 
@@ -706,7 +705,7 @@
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
                     $('.balance_amount').val(balance);
-                    
+
     });
 
 
@@ -720,11 +719,11 @@
 
         var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
         $('.grand_total').val(grand_total);
-        
+
         var payable_amount = $(".payable_amount").val();
         var balance = Number(grand_total) - Number(payable_amount);
         $('.balance_amount').val(balance);
-        
+
 
     });
 
@@ -763,7 +762,7 @@
                         $('.total_calc_price').val(totalAmount);
                     });
 
-                    
+
 
                     var additional_charge = $(".additional_charge").val();
                     var total_calc_price = $(".total_calc_price").val();

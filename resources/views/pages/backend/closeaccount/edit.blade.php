@@ -23,14 +23,14 @@
                                     <div class="modal-body">
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Date </label>
+                                                Date <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="date" class="form-control" name="date" placeholder="Enter floor " value="{{ $data->date }}">
+                                                <input type="date" class="form-control" name="date" placeholder="Enter floor " value="{{ $data->date }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Branch </label>
+                                                Branch <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
                                                 <select class="form-control js-example-basic-single" name="branch_id" required>
                                                     <option value="" disabled selected hidden class="text-muted">
@@ -43,72 +43,72 @@
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                2000 </label>
+                                                2000 <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="count_2000" placeholder="Enter 2000 " value="{{ $data->count_2000 }}">
+                                                <input type="number" class="form-control" name="count_2000" placeholder="Enter 2000 " value="{{ $data->count_2000 }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                500 </label>
+                                                500 <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="count_500" placeholder="Enter 500 " value="{{ $data->count_500 }}">
+                                                <input type="number" class="form-control" name="count_500" placeholder="Enter 500 " value="{{ $data->count_500 }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                200 </label>
+                                                200 <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="count_200" placeholder="Enter 200 " value="{{ $data->count_200 }}">
+                                                <input type="number" class="form-control" name="count_200" placeholder="Enter 200 " value="{{ $data->count_200 }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                100 </label>
+                                                100 <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="count_100" placeholder="Enter 100 " value="{{ $data->count_100 }}">
+                                                <input type="number" class="form-control" name="count_100" placeholder="Enter 100 " value="{{ $data->count_100 }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                50 </label>
+                                                50 <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="count_50" placeholder="Enter 50 " value="{{ $data->count_50 }}">
+                                                <input type="number" class="form-control" name="count_50" placeholder="Enter 50 " value="{{ $data->count_50 }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                20 </label>
+                                                20 <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="count_20" placeholder="Enter 20 " value="{{ $data->count_20 }}">
+                                                <input type="number" class="form-control" name="count_20" placeholder="Enter 20 " value="{{ $data->count_20 }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                10 </label>
+                                                10 <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="count_10" placeholder="Enter 10 " value="{{ $data->count_10 }}">
+                                                <input type="number" class="form-control" name="count_10" placeholder="Enter 10 " value="{{ $data->count_10 }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                5 </label>
+                                                5 <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="count_5" placeholder="Enter 5 " value="{{ $data->count_5 }}">
+                                                <input type="number" class="form-control" name="count_5" placeholder="Enter 5 " value="{{ $data->count_5 }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                2 </label>
+                                                2 <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="count_2" placeholder="Enter 2 " value="{{ $data->count_2 }}">
+                                                <input type="number" class="form-control" name="count_2" placeholder="Enter 2 " value="{{ $data->count_2 }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                1 </label>
+                                                1 <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="count_1" placeholder="Enter 1 " value="{{ $data->count_1 }}">
+                                                <input type="number" class="form-control" name="count_1" placeholder="Enter 1 " value="{{ $data->count_1 }}" required>
                                             </div>
                                         </div>
                                     </div>
