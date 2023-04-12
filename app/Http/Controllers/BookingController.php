@@ -70,6 +70,8 @@ class BookingController extends Controller
                 'total' => $datas->total,
                 'terms' => $terms,
                 'status' => $datas->status,
+                'extended_date' => $datas->extended_date,
+                'extended_time' => $datas->extended_time,
             );
         }
 
@@ -77,6 +79,115 @@ class BookingController extends Controller
         $timenow = Carbon::now()->format('H:i');
 
         return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow'));
+    }
+
+
+    public function dailycheckout()
+    {
+        
+        $data = Booking::where('soft_delete', '!=', 1)->get();
+
+        foreach ($data as $key => $datas) {
+            
+            $today = Carbon::now()->format('Y-m-d');
+
+                
+            
+         
+            $Extend_data = [];
+            $checkout_data = [];
+
+                $extendcheckout_date = Booking::where('soft_delete', '!=', 1)->where('extended_date', '=', $today)->get();
+                foreach ($extendcheckout_date as $key => $extend_checkout_date) {
+                    $Extend_data[] = $extend_checkout_date;
+                }
+                $checkout_date = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '=', $today)->get();
+                foreach ($checkout_date as $key => $checkout_date_arr) {
+                    $checkout_data[] = $checkout_date_arr;
+                }
+
+                $Array = array_merge($Extend_data , $checkout_data);
+                $bookingData = [];
+                $room_list = [];
+                $terms = [];
+                foreach ($Array as $key => $Array_data) {
+
+                    $branch = Branch::findOrFail($Array_data->branch_id);
+
+                    $roomsbooked = BookingRoom::where('booking_id', '=', $Array_data->id)->get();
+                    foreach ($roomsbooked as $key => $rooms_booked) {
+                        $Rooms = Room::findOrFail($rooms_booked->room_id);
+                        $room_list[] = array(
+                            'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type,
+                            'booking_id' => $Array_data->id,
+                            'booking_room_price' => $rooms_booked->room_price,
+                            'room_cal_price' => $rooms_booked->room_cal_price,
+                            'id' => $rooms_booked->id,
+                            'room_id' => $rooms_booked->room_id,
+        
+                        );
+                    }
+
+
+                    $payment_data = BookingPayment::where('booking_id', '=', $Array_data->id)->get();
+                    foreach ($payment_data as $key => $payment_datas) {
+                        $terms[] = array(
+                            'booking_id' => $Array_data->id,
+                            'term' => $payment_datas->term,
+                            'payable_amount' => $payment_datas->payable_amount,
+                        );
+                    }
+
+
+                    $bookingData[] = array(
+                        'customer_name' => $Array_data->customer_name,
+                        'branch' => $branch->name,
+                        'chick_in_date' => $Array_data->check_in_date,
+                        'chick_in_time' => $Array_data->check_in_time,
+                        'id' => $Array_data->id,
+                        'room_list' => $room_list,
+                        'phone_number' => $Array_data->phone_number,
+                        'grand_total' => $Array_data->grand_total,
+                        'total_paid' => $Array_data->total_paid,
+                        'balance_amount' => $Array_data->balance_amount,
+                        'days' => $Array_data->days,
+                        'gst_per' => $Array_data->gst_per,
+                        'gst_amount' => $Array_data->gst_amount,
+                        'disc_per' => $Array_data->disc_per,
+                        'disc_amount' => $Array_data->disc_amount,
+                        'additional_amount' => $Array_data->additional_amount,
+                        'additional_notes' => $Array_data->additional_notes,
+                        'total' => $Array_data->total,
+                        'terms' => $terms,
+                        'status' => $Array_data->status,
+                        'chick_out_date' => $Array_data->check_out_date,
+                        'chick_out_time' => $Array_data->check_out_time,
+                        'extended_date' => $Array_data->extended_date,
+                        'extended_time' => $Array_data->extended_time,
+                    );
+
+
+
+
+
+                }
+                
+                $timenow = Carbon::now()->format('H:i');
+
+                return view('pages.backend.booking.dailycheckout', compact('bookingData', 'today', 'timenow'));
+           
+                
+
+            
+
+
+            
+
+
+            
+        }
+
+
     }
 
     public function create()
@@ -221,7 +332,7 @@ class BookingController extends Controller
         $branch = Branch::where('soft_delete', '!=', 1)->where('soft_delete', '!=', 1)->get();
         $room = Room::where('soft_delete', '!=', 1)->where('soft_delete', '!=', 1)->get();
         $BookingRooms = BookingRoom::where('booking_id', '=', $id)->get();
-        $paymentdata = BookingPayment::where('booking_id', '=', $id)->first();
+        $paymentdata = BookingPayment::where('booking_id', '=', $id)->get();
 
         return view('pages.backend.booking.edit', compact('data', 'branch', 'BookingRooms', 'room', 'paymentdata'));
     }
@@ -247,6 +358,12 @@ class BookingController extends Controller
         $BookingData->check_out_time = $request->get('check_out_time');
         $BookingData->days = $request->get('days');
         $BookingData->branch_id = $request->get('branch_id');
+        if($request->get('proofs') == 1){
+            if($BookingData->proofs == 2){
+                $BookingData->prooftype_two = 'NULL';
+                $BookingData->proofimage_two = 'NULL';
+            }
+        }
         $BookingData->proofs = $request->get('proofs');
 
         $proof = $request->get('proofs');
@@ -262,6 +379,10 @@ class BookingController extends Controller
                 $Insertedproof_image_one = $BookingData->proofimage_one;
                 $BookingData->proofimage_one = $Insertedproof_image_one;
             }
+
+            
+
+            
 
         }else if($proof == 2){
 
@@ -316,7 +437,7 @@ class BookingController extends Controller
         $BookingData->additional_amount = $request->get('additional_charge');
         $BookingData->additional_notes = $request->get('additional_charge_notes');
         $BookingData->grand_total = $request->get('grand_total');
-        $BookingData->total_paid = $request->get('payable_amount');
+        
         $BookingData->balance_amount = $request->get('balance_amount');
         $BookingData->update();
 
@@ -325,16 +446,30 @@ class BookingController extends Controller
         $booking_id = $id;
 
         // Booking Payments
+        $total_paid = 0;
+        foreach ($request->get('booking_payment_id') as $key => $booking_payment_id) {
 
-        $booking_payment_id = $request->get('booking_payment_id');
+            
 
-        $BookingPayment = BookingPayment::findOrFail($booking_payment_id);
-        $BookingPayment->booking_id = $booking_id;
-        $BookingPayment->term = $request->get('payment_term');
-        $BookingPayment->payable_amount = $request->get('payable_amount');
-        $BookingPayment->payment_method = $request->get('payment_method');
-        $BookingPayment->update();
+            $ids = $booking_payment_id;
+            $bookingID = $booking_id;
+            $payment_term = $request->payment_term[$key];
+            $payable_amount = $request->payable_amount[$key];
+            $payment_method = $request->payment_method[$key];
 
+            $total_paid += $payable_amount;
+
+            
+
+            DB::table('booking_payments')->where('id', $ids)
+                    ->update([
+                        'booking_id' => $bookingID,  'term' => $payment_term,  'payable_amount' => $payable_amount,  'payment_method' => $payment_method
+                    ]);
+        }
+            $Booking_Data = Booking::findOrFail($id);
+            $Booking_Data->total_paid = $total_paid;
+            $Booking_Data->update();
+        
 
 
         // Booking Rooms
@@ -442,21 +577,7 @@ class BookingController extends Controller
         $data = Booking::findOrFail($id);
 
 
-        $data->check_in_date = $request->get('checkin_date');
-        $data->check_in_time = $request->get('checkin_time');
-        $data->check_out_date = $request->get('checkout_date');
-        $data->check_out_time = $request->get('checkout_time');
-        $data->days = $request->get('no_of_days');
-        $data->total = $request->get('total_calc_price');
-        $data->gst_amount = $request->get('gst_amount');
-        $data->gst_per = $request->get('gst_percentage');
-        $data->disc_amount = $request->get('discount_amount');
-        $data->disc_per = $request->get('discount_percentage');
-        $data->additional_amount = $request->get('additional_charge');
-        $data->additional_notes = $request->get('additional_charge_notes');
-        $data->grand_total = $request->get('grand_total');
-        $data->total_paid = $request->get('payable_amount');
-        $data->balance_amount = $request->get('balance_amount');
+        
         $data->out_date = $checkout_date;
         $data->out_time = $checkout_time;
         $status = 2;
@@ -464,37 +585,10 @@ class BookingController extends Controller
         $data->update();
 
 
-        if($request->get('balance_amount') > 0){
-
-            $BookingPayment = new BookingPayment;
-            $BookingPayment->booking_id = $request->get('booking_id');
-            $BookingPayment->term = $request->get('payment_term');
-            $BookingPayment->payable_amount = $request->get('payable_amount');
-            $BookingPayment->paid_date = $checkout_date;
-            $BookingPayment->payment_method = $request->get('payment_method');
-            $BookingPayment->save();
+        
 
 
-            foreach ($request->get('room_auto_id') as $key => $room_auto_id) {
-
-
-                $ids = $room_auto_id;
-                $bookingID = $request->get('booking_id');
-                $booking_room_price = $request->booking_room_price[$key];
-                $booking_room_cal_price = $request->booking_room_cal_price[$key];
-                $room_id = $request->room_id[$key];
-                DB::table('booking_rooms')->where('id', $ids)
-                        ->update([
-                            'room_price' => $booking_room_price,  'room_cal_price' => $booking_room_cal_price
-                        ]);
-
-            }
-
-
-        }
-
-
-        return redirect()->route('booking.index')->with('pay_balance', 'Balance Amount successfully added');
+        return redirect()->route('booking.dailycheckout')->with('checkout', 'Successfully Updated');
     }
 
 
@@ -516,13 +610,14 @@ class BookingController extends Controller
 
 
         $data = Booking::findOrFail($id);
-
         $total_paid_amount = $data->total_paid + $payableAmount;
-        $balance = $data->grand_total - $total_paid_amount;
+            $balance = $data->grand_total - $total_paid_amount;
 
-        $data->total_paid = $total_paid_amount;
-        $data->balance_amount = $balance;
-        $data->update();
+            $data->total_paid = $total_paid_amount;
+            $data->balance_amount = $balance;
+            $data->update();
+
+        
 
 
 
@@ -619,6 +714,8 @@ class BookingController extends Controller
                             'total' => $checkout_Datas->total,
                             'terms' => $terms,
                             'status' => $checkout_Datas->status,
+                            'extended_date' => $checkout_Datas->extended_date,
+                            'extended_time' => $checkout_Datas->extended_time,
                         );
                 }
                 return view('pages.backend.booking.datefilter', compact('checkin_Array', 'booking_dropdown_list', 'from_date', 'to_date'));
@@ -684,6 +781,8 @@ class BookingController extends Controller
                         'total' => $checkin_Datas->total,
                         'terms' => $terms,
                         'status' => $checkin_Datas->status,
+                        'extended_date' => $checkin_Datas->extended_date,
+                        'extended_time' => $checkin_Datas->extended_time,
                     );
                 }
 
@@ -693,6 +792,116 @@ class BookingController extends Controller
       
 
         
+    }
+
+
+
+    public function autocomplete(Request $request)
+    {
+
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+            $data = Booking::select("phone_number", "customer_name", "whats_app_number", "email_id", "address")
+                    ->where('phone_number', 'LIKE', "%{$query}%")
+                    ->get();
+            $output = '<ul class="dropdown-menu form-control" style="display:block; position:relative; padding: 9px;background: #9ddbdb2e;">';
+            foreach($data as $row)
+            {
+             $output .= '
+            <li><a href="#" style="color:black;padding:5px;">'.$row->phone_number.'</a></li>
+            ';
+            }
+            $output .= '</ul>';
+            echo $output;
+            
+        }
+    }
+
+
+    public function getoldCustomers($phone_no)
+    {
+        $GetCustomer = Booking::select('*')->where('phone_number', $phone_no)->get();
+        $userData['data'] = $GetCustomer;
+        echo json_encode($userData);
+    }
+
+
+    public function extend(Request $request, $id)
+    {
+        $checkout_date = Carbon::now()->format('Y-m-d');
+        $checkout_time = Carbon::now()->format('H:i');
+
+
+        $data = Booking::findOrFail($id);
+
+
+        
+        $data->extended_date = $request->get('extended_date');
+        $data->extended_time = $request->get('extended_time');
+        $data->days = $request->get('no_of_days');
+        $data->total = $request->get('total_calc_price');
+        $data->gst_amount = $request->get('gst_amount');
+        $data->gst_per = $request->get('gst_percentage');
+        $data->disc_amount = $request->get('discount_amount');
+        $data->disc_per = $request->get('discount_percentage');
+        $data->additional_amount = $request->get('additional_charge');
+        $data->additional_notes = $request->get('additional_charge_notes');
+        $data->grand_total = $request->get('grand_total');
+        $data->total_paid = $request->get('payable_amount');
+        $data->balance_amount = $request->get('balance_amount');
+        $data->out_date = $checkout_date;
+        $data->out_time = $checkout_time;
+        $status = 1;
+        $data->status = $status;
+        $data->update();
+
+
+        
+
+
+        if($request->get('balance_amount') > 0){
+
+            $BookingPayment = new BookingPayment;
+            $BookingPayment->booking_id = $request->get('booking_id');
+            $BookingPayment->term = $request->get('payment_term');
+            $BookingPayment->payable_amount = $request->get('balance_amount');
+            $BookingPayment->paid_date = $checkout_date;
+            $BookingPayment->payment_method = $request->get('payment_method');
+            $BookingPayment->save();
+
+
+            $payableAmount = $request->get('balance_amount');
+
+            $booking_data = Booking::findOrFail($id);
+            $total_paid_amount = $booking_data->total_paid + $payableAmount;
+            $balance = $booking_data->grand_total - $total_paid_amount;
+
+            $booking_data->total_paid = $total_paid_amount;
+            $booking_data->balance_amount = $balance;
+            $booking_data->update();
+
+
+            foreach ($request->get('room_auto_id') as $key => $room_auto_id) {
+
+
+                $ids = $room_auto_id;
+                $bookingID = $request->get('booking_id');
+                $booking_room_price = $request->booking_room_price[$key];
+                $booking_room_cal_price = $request->booking_room_cal_price[$key];
+                $room_id = $request->room_id[$key];
+                DB::table('booking_rooms')->where('id', $ids)
+                        ->update([
+                            'room_price' => $booking_room_price,  'room_cal_price' => $booking_room_cal_price
+                        ]);
+
+            }
+
+
+        }
+
+
+        return redirect()->route('booking.index')->with('extend', 'Room Extended successfully');
     }
 
 

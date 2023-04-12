@@ -32,6 +32,10 @@ return new class extends Migration
             $table->string('check_in_time')->nullable();
             $table->string('check_out_date')->nullable();
             $table->string('check_out_time')->nullable();
+
+            $table->string('extended_date')->nullable();
+            $table->string('extended_time')->nullable();
+
             $table->string('days')->nullable();
             $table->unsignedBigInteger('branch_id');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');

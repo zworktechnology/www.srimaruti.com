@@ -183,8 +183,10 @@
                                             </div>
                                         </div>
 
-                                        @if ($data->proofs == '1')
-                                        <div id="singleproof" >
+                                        
+
+                                        
+                                        <div id="singleproof" style="display:none">
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Proof </label>
@@ -207,11 +209,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endif
+                                        
 
 
-                                        @if ($data->proofs == '2')
-                                        <div class="row mb-4">
+                                        <div id="doubleproof" style="display:none">
+                                            <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Proof </label>
                                                 <div class="col-sm-5">
@@ -254,7 +256,8 @@
                                                     <input type="file" class="form-control" name="proofimage_two">
                                                 </div>
                                             </div>
-                                        @endif
+                                        </div>
+                                        
 
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
@@ -333,28 +336,52 @@
                                                                 <input type="text" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="{{ $data->grand_total }}" placeholder="Enter here ">
                                                             </div>
                                                         </div>
-                                                        <div data-repeater-item class="inner mb-3 row">
-                                                            <div class="col-md-3 col-8">
-                                                                <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Term </label>
-                                                            </div>
-                                                            <div class="col-md-9 col-5">
-                                                                <select class="form-control" name="payment_term" required>
-                                                                    <option value=""  selected hidden class="text-muted">Select</option>
-                                                                    <option value="Term I"{{ $paymentdata->term == 'Term I' ? 'selected' : '' }} class="text-muted">Term I</option>
-                                                                </select>
-                                                            </div>
+
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                Paid Amounts </label>
+                                                                <div class="col-sm-9">
+                                                                <table class="table-fixed col-12 " id="">
+                                                                    <tr>
+                                                                        <th>Terms</th>
+                                                                        <th>Amount</th>
+                                                                        <th>Payment Method</th>
+                                                                    </tr>
+                                                                    @foreach ($paymentdata as $index => $paymentdatas)
+                                                                    <tr>
+                                                                        <td class="col-sm-3">
+                                                                            <select class="form-control" name="payment_term[]">
+                                                                                <option value=""  selected  class="text-muted">Terms</option>
+                                                                                <option value="Term I"{{ $paymentdatas->term == 'Term I' ? 'selected' : '' }} class="text-muted">Term I</option>
+                                                                                <option value="Term II"{{ $paymentdatas->term == 'Term II' ? 'selected' : '' }} class="text-muted">Term II</option>
+                                                                                <option value="Term III"{{ $paymentdatas->term == 'Term III' ? 'selected' : '' }} class="text-muted">Term III</option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="col-sm-3">
+                                                                            <input type="text" class="form-control payable_amount"  value="{{ $paymentdatas->payable_amount }}"
+                                                                             name="payable_amount[]"  placeholder="Enter here ">
+                                                                            <input type="hidden" class="form-control booking_payment_id"  value="{{ $paymentdatas->id }}" 
+                                                                            name="booking_payment_id[]"  placeholder="Enter here ">
+                                                                        </td>
+                                                                        <td class="col-sm-3">
+                                                                            <select class="form-control " name="payment_method[]">
+                                                                                <option value=""  selected  class="text-muted">Select Payment Via</option>
+                                                                                <option value="Cash"{{ $paymentdatas->payment_method == 'Cash' ? 'selected' : '' }} class="text-muted">Cash</option>
+                                                                                <option value="Card"{{ $paymentdatas->payment_method == 'Card' ? 'selected' : '' }} class="text-muted">Card</option>
+                                                                                <option value="Online Payment"{{ $paymentdatas->payment_method == 'Online Payment' ? 'selected' : '' }} class="text-muted">Online Payment</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    @endforeach
+                                                                    
+                                                                </table>
+                                                                </div>
+                                                                
+
                                                         </div>
-                                                        <div data-repeater-item class="inner mb-3 row">
-                                                            <div class="col-md-3 col-8">
-                                                                <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Payable Amount </label>
-                                                            </div>
-                                                            <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control payable_amount"  value="{{ $paymentdata->payable_amount }}" name="payable_amount"  placeholder="Enter here ">
-                                                                <input type="hidden" class="form-control booking_payment_id"  value="{{ $paymentdata->id }}" name="booking_payment_id"  placeholder="Enter here ">
-                                                            </div>
-                                                        </div>
+
+                                                        
+                                                       
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
@@ -364,20 +391,7 @@
                                                                 <input type="text" class="form-control balance_amount" style="background-color:#c7c21dad" value="{{ $data->balance_amount }}"  name="balance_amount"  placeholder="Enter here ">
                                                             </div>
                                                         </div>
-                                                        <div data-repeater-item class="inner mb-3 row">
-                                                            <div class="col-md-3 col-8">
-                                                                <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Payment Method </label>
-                                                            </div>
-                                                            <div class="col-md-9 col-5">
-                                                                <select class="form-control js-example-basic-single" name="payment_method" required>
-                                                                    <option value=""  selected hidden class="text-muted">Select Payment Via</option>
-                                                                    <option value="Cash"{{ $paymentdata->payment_method == 'Cash' ? 'selected' : '' }} class="text-muted">Cash</option>
-                                                                    <option value="Card"{{ $paymentdata->payment_method == 'Card' ? 'selected' : '' }} class="text-muted">Card</option>
-                                                                    <option value="Online Payment"{{ $paymentdata->payment_method == 'Online Payment' ? 'selected' : '' }} class="text-muted">Online Payment</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -405,6 +419,15 @@
 </div>
 
 <script language="JavaScript">
+$proofs = {{ $data->proofs}}
+    if($proofs == 1){
+        $("#singleproof").show();
+        $("#doubleproof").hide();
+    }else if($proofs == 2){
+        $("#doubleproof").show();
+        $("#singleproof").hide();
+    }
+
     $(document).ready(function() {
 
         $('.whatsapp_check').click(function() {
@@ -584,7 +607,7 @@
                         $("#proof_photo").show();
                     } else if (proofs_value == '2') {
                         $("#doubleproof").show();
-                        $("#singleproof").show();
+                        $("#singleproof").hide();
                         $("#proof_photo").show();
                     }
 
@@ -867,7 +890,11 @@
 
 
     $(document).on("keyup", 'input.payable_amount', function() {
-        var payable_amount = $(this).val();
+        var totalAmount = 0;
+        $("input[name='payable_amount[]']").each(function() {
+            //alert($(this).val());
+            totalAmount = Number(totalAmount) + Number($(this).val());
+            var payable_amount = totalAmount;
 
         var additional_charge = $(".additional_charge").val();
         var total_calc_price = $(".total_calc_price").val();
@@ -878,6 +905,10 @@
         $('.grand_total').val(grand_total);
         var balance = Number(grand_total) - Number(payable_amount);
         $('.balance_amount').val(balance);
+                    });
+        
+
+        
     });
 
 

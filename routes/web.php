@@ -118,8 +118,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/checkout/{id}', [BookingController::class, 'checkout'])->name('booking.checkout');
         // PRICING
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/pricing/{id}', [BookingController::class, 'pricing'])->name('booking.pricing');
+        // VIEW
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/view/{id}', [BookingController::class, 'view'])->name('booking.view');
+        // DATE FILTER
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/datefilter', [BookingController::class, 'datefilter'])->name('booking.datefilter');
+        // AUTO COMPLETE
+        Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/booking/autocomplete', [BookingController::class, 'autocomplete'])->name('booking.autocomplete');
+        // EXTEND
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/extend/{id}', [BookingController::class, 'extend'])->name('booking.extend');
+        // DAILY CHECKOUT
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/dailycheckout', [BookingController::class, 'dailycheckout'])->name('booking.dailycheckout');
     });
 
     // NAME LIST CONTROLLER
@@ -233,6 +241,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 Route::get('getBranchwiseRoom/{id}', [RoomController::class, 'getBranchwiseRoom']);
 Route::get('getPriceforRooms/{id}', [RoomController::class, 'getPriceforRooms']);
+Route::get('/getoldCustomers/{phone_no}', [BookingController::class, 'getoldCustomers']);
 
 Route::get('getBranchwiseList/{date}', [App\Http\Controllers\HomeController::class, 'getBranchwiseList']);
 

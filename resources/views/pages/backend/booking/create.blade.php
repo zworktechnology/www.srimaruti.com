@@ -25,7 +25,7 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Customer Name </label>
                                             <div class="col-sm-9">
-                                                <input type="name" class="form-control" name="booking_customer_name" placeholder="Enter here ">
+                                                <input type="name" class="form-control booking_customer_name" name="booking_customer_name" placeholder="Enter here ">
                                             </div>
                                         </div>
 
@@ -33,12 +33,14 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Contact Number </label>
                                             <div class="col-sm-4">
-                                                <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Enter here ">
+                                                <input type="number" class="form-control phone_number"   name="phone_number" id="phone_number" placeholder="Enter here ">
+                                                <div class="phonenumber_list" style="display:none"></div>  
                                                 <div class="form-check mt-2">
                                                     <input type="checkbox" class="form-check-input whatsapp_check" id="formrow-customCheck">
                                                     <label class="form-check-label" for="formrow-customCheck">Same as Whatsapp number</label>
                                                 </div>
                                             </div>
+                                            {{ csrf_field() }}
                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                 Whatsapp </label>
                                             <div class="col-sm-4">
@@ -50,12 +52,12 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Email ID </label>
                                             <div class="col-sm-4">
-                                                <input type="email" class="form-control" name="email_id" placeholder="Enter here ">
+                                                <input type="email" class="form-control email_id" name="email_id" placeholder="Enter here ">
                                             </div>
                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                 Address </label>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="address" placeholder="Enter here ">
+                                                <input type="text" class="form-control address" name="address" placeholder="Enter here ">
                                             </div>
                                         </div>
 
@@ -357,6 +359,68 @@
 </div>
 
 <script language="JavaScript">
+
+
+
+// AJAX call for autocomplete 
+$(document).ready(function() {
+
+
+   
+	$(".phone_number").keyup(function() {
+
+        var query = $(this).val();
+        if(query != ''){
+            var _token = $('input[name="_token"]').val();
+
+            $.ajax({
+			    type: 'POST',
+			    url: "{{ route('booking.autocomplete') }}",
+                data:{query:query, _token:_token},
+			
+	            success:function(data){
+                    $('.phonenumber_list').fadeIn();  
+                    $('.phonenumber_list').html(data);
+                }
+		    });
+     }
+		
+	});
+
+    $(document).on('click', 'li', function(){  
+        $('#phone_number').val($(this).text());  
+        $('.phonenumber_list').fadeOut(); 
+        
+        
+
+
+        $.ajax({
+                url: '/getoldCustomers/' + $(this).text()
+                , type: 'get'
+                , dataType: 'json'
+                , success: function(response) {
+                    console.log(response['data']);
+                    var output = response['data'].length;
+
+                    for (var i = 0; i < output; i++) {
+                        //console.log(response[i].customer_name);
+                        $('.booking_customer_name').val(response['data'][i].customer_name);
+                        $('.whats_app_number').val(response['data'][i].whats_app_number);
+                        $('.email_id').val(response['data'][i].email_id);
+                        $('.address').val(response['data'][i].address);
+                    }
+                    
+                }
+            });
+
+
+    }); 
+
+
+
+
+});
+
     $(document).ready(function() {
 
         $('.whatsapp_check').click(function() {
@@ -455,10 +519,10 @@
                                 $('.gst_amount').val(gst_in_amount);
 
                                 var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
-                                $('.grand_total').val(grand_total);
+                                $('.grand_total').val(grand_total.toFixed(2));
                                 var payable_amount = $(".payable_amount").val();
                                 var balance = Number(grand_total) - Number(payable_amount);
-                                $('.balance_amount').val(balance); 
+                                $('.balance_amount').val(balance.toFixed(2)); 
                     });
 
                 }
@@ -604,10 +668,10 @@
                                 $('.gst_amount').val(gst_in_amount);
 
                                 var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
-                                $('.grand_total').val(grand_total);
+                                $('.grand_total').val(grand_total.toFixed(2));
                                 var payable_amount = $(".payable_amount").val();
                                 var balance = Number(grand_total) - Number(payable_amount);
-                                $('.balance_amount').val(balance); 
+                                $('.balance_amount').val(balance.toFixed(2)); 
 
 
                         });
@@ -641,10 +705,10 @@
                     var gst_amount = $(".gst_amount").val();
                     
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                    $('.grand_total').val(grand_total);
+                    $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);
+                    $('.balance_amount').val(balance.toFixed(2));
                     
     });
 
@@ -660,10 +724,10 @@
                     var gst_amount = $(".gst_amount").val();
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                    $('.grand_total').val(grand_total);
+                    $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);
+                    $('.balance_amount').val(balance.toFixed(2));
                     
     });
 
@@ -682,10 +746,10 @@
                     var gst_amount = $(".gst_amount").val();
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                    $('.grand_total').val(grand_total);
+                    $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);
+                    $('.balance_amount').val(balance.toFixed(2));
                     
     });
 
@@ -702,10 +766,10 @@
                     var gst_amount = $(".gst_amount").val();
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                    $('.grand_total').val(grand_total);
+                    $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);
+                    $('.balance_amount').val(balance.toFixed(2));
                     
     });
 
@@ -719,11 +783,11 @@
         var gst_amount = $(".gst_amount").val();
 
         var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-        $('.grand_total').val(grand_total);
+        $('.grand_total').val(grand_total.toFixed(2));
         
         var payable_amount = $(".payable_amount").val();
         var balance = Number(grand_total) - Number(payable_amount);
-        $('.balance_amount').val(balance);
+        $('.balance_amount').val(balance.toFixed(2));
         
 
     });
@@ -739,9 +803,9 @@
         var gst_amount = $(".gst_amount").val();
 
         var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-        $('.grand_total').val(grand_total);
+        $('.grand_total').val(grand_total.toFixed(2));
         var balance = Number(grand_total) - Number(payable_amount);
-        $('.balance_amount').val(balance);
+        $('.balance_amount').val(balance.toFixed(2));
     });
 
 
@@ -771,10 +835,10 @@
                     var gst_amount = $(".gst_amount").val();
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                    $('.grand_total').val(grand_total);
+                    $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);
+                    $('.balance_amount').val(balance.toFixed(2));
 
     });
 

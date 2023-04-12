@@ -23,6 +23,8 @@ class Booking extends Model
         'check_in_time',
         'check_out_date',
         'check_out_time',
+        'extended_date',
+        'extended_time',
         'days',
         'branch_id',
 

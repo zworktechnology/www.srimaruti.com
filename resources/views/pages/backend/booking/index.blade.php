@@ -78,6 +78,14 @@
             </div>
             @endif
 
+            @if (\Session::has('extend'))
+            <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                <i class="uil uil-pen me-2"></i>
+                {!! \Session::get('extend') !!}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+
             <div class="row" style="display: flex">
                 <div class="col-12">
                     <div class="card">
@@ -117,6 +125,12 @@
                                             @if ($bookingDatas['chick_out_date'] != "")
                                             {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }} )
                                             @endif
+                                            <br/>
+                                            @if ($bookingDatas['extended_date'] != "")
+                                            Exteded Date - 
+                                            
+                                            {{ date('d M Y', strtotime($bookingDatas['extended_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['extended_date'])) }} )
+                                            @endif
                                         </td>
                                         <td>
                                             <span style="color:green">Total : ₹{{ $bookingDatas['grand_total'] }}</span><br/>
@@ -139,12 +153,37 @@
 
 
                                                     @if ($bookingDatas['balance_amount'] == 0)
+                                                        @if ($bookingDatas['extended_date'] != "")
+                                                            @if ($bookingDatas['extended_date'] == $today)
                                                     <li>
                                                         <a href="#checkout{{ $bookingDatas['id'] }}" data-bs-toggle="modal" data-id="{{ $bookingDatas['id'] }}" class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}" data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
                                                         <div class="modal fade" id="checkout{{ $bookingDatas['id'] }}" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                                             @include('pages.backend.booking.checkout')
                                                         </div>
                                                     </li>
+                                                            @endif
+                                                        @else 
+                                                            @if ($bookingDatas['chick_out_date'] == $today)
+                                                        <li>
+                                                            <a href="#checkout{{ $bookingDatas['id'] }}" data-bs-toggle="modal" data-id="{{ $bookingDatas['id'] }}" class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}" data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
+                                                            <div class="modal fade" id="checkout{{ $bookingDatas['id'] }}" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+                                                                @include('pages.backend.booking.checkout')
+                                                            </div>
+                                                        </li>
+                                                            @endif
+                                                        @endif
+                                                    @endif
+
+                                                    @if ($bookingDatas['extended_date'] == "")
+                                                    <li>
+                                                    <a href="#extend{{ $bookingDatas['id'] }}" data-bs-toggle="modal" 
+                                                        data-id="{{ $bookingDatas['id'] }}" class="btn btn-sm btn-soft-primary extend{{ $bookingDatas['id'] }}"
+                                                        data-bs-target="#extend{{ $bookingDatas['id'] }}">Extend</a>
+                                                            <div class="modal fade" id="extend{{ $bookingDatas['id'] }}" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+                                                                @include('pages.backend.booking.extend')
+                                                            </div>
+                                                    </li>
+                                                    
                                                     @endif
                                             </ul>
                                         </td>

@@ -62,6 +62,14 @@
                         <i class="uil-book-open"></i>
                         <span>Booking</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                                    <li>
+                                    <a href="{{ route('booking.dailycheckout') }}" class="waves-effect">
+                                        <i class="uil-user-circle"></i>
+                                        <span>Daily Checkout</span>
+                                    </a>
+                                    </li>
+                                </ul>
                 </li>
                 <li class="{{ Route::is('income.index','income.create','income.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('income.index') }}" class="waves-effect">
