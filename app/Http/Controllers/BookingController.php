@@ -580,6 +580,10 @@ class BookingController extends Controller
         $data->update();
 
 
+        foreach ($request->get('room_id') as $key => $room_id) {
+            DB::table('rooms')->where('id', $room_id)
+            ->update(['booking_status' => 0]);
+        }
         
 
 
@@ -592,7 +596,7 @@ class BookingController extends Controller
 
 
         $paid_date = Carbon::now()->format('Y-m-d');
-        $payableAmount = $request->get('payable_amount');
+        
 
         $BookingPayment = new BookingPayment;
         $BookingPayment->booking_id = $id;
@@ -603,7 +607,7 @@ class BookingController extends Controller
         $BookingPayment->save();
 
 
-
+        $payableAmount = $request->get('payable_amount');
         $data = Booking::findOrFail($id);
         $total_paid_amount = $data->total_paid + $payableAmount;
             $balance = $data->grand_total - $total_paid_amount;
