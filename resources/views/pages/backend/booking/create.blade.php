@@ -99,7 +99,7 @@
                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                 Time </label>
                                             <div class="col-sm-4">
-                                                <input type="time" class="form-control" name="check_out_time" placeholder="Enter here " value="">
+                                                <input type="time" class="form-control" name="check_out_time" placeholder="Enter here " value="{{ $timenow }}">
                                             </div>
                                         </div>
                                         <div class="row mb-4">

@@ -16,9 +16,8 @@
                             @csrf
                                 <li  style="margin-left: 10px;">
                                   <select class="form-control " name="booking_dropdown_list" style="width: 100%;" required>
-                                                        <option value="" selected class="text-muted">Select</option>
                                                         <option value="checkout" class="text-muted">Checkout</option>
-                                                        <option value="view_all" class="text-muted">View All</option>
+                                                        <option value="view_all" class="text-muted" selected>View All</option>
                                                     </select>
                                 </li>
                                 <li  style="margin-left: 10px;"><input type="date" name="from_date" required class="form-control from_date" value="{{ $today }}"></li>
