@@ -23,9 +23,9 @@
                                     <div class="modal-body">
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Name </label>
+                                                Name <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="name" placeholder="Enter name " value="{{ $data->name }}">
+                                                <input type="text" class="form-control" name="name" placeholder="Enter name " value="{{ $data->name }}" required>
                                             </div>
                                         </div>
                                     </div>

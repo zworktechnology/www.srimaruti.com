@@ -24,25 +24,25 @@
                                         <h4 class="card-title mb-4" style="color: #5b73e8">Profile</h4>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Customer Name </label>
+                                                Customer Name <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="name" class="form-control" name="booking_customer_name" placeholder="Enter here " value="{{ $data->customer_name }}">
+                                                <input type="name" class="form-control" name="booking_customer_name" placeholder="Enter here " value="{{ $data->customer_name }}" required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Contact Number </label>
+                                                Contact Number <span style="color: red;">*</span> </label>
                                             <div class="col-sm-4">
-                                                <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Enter here " value="{{ $data->phone_number }}">
+                                                <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Enter here " value="{{ $data->phone_number }}" required>
                                                 <div class="form-check mt-2">
                                                     <input type="checkbox" class="form-check-input whatsapp_check" id="formrow-customCheck">
                                                     <label class="form-check-label" for="formrow-customCheck">Same as Whatsapp number</label>
                                                 </div>
                                             </div>
                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
-                                                Whatsapp </label>
+                                                Whatsapp <span style="color: red;">*</span> </label>
                                             <div class="col-sm-4">
-                                                <input type="number" class="form-control whats_app_number" name="whats_app_number" value="{{ $data->whats_app_number }}" placeholder="Enter here ">
+                                                <input type="number" class="form-control whats_app_number" name="whats_app_number" value="{{ $data->whats_app_number }}" placeholder="Enter here " required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
@@ -60,36 +60,36 @@
 
 
 
-                                        
+
                                         <hr>
                                         <h4 class="card-title mb-4" style="color: #5b73e8">Head Rooms</h4>
 
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Count </label>
+                                                Count <span style="color: red;">*</span> </label>
                                             <div class="col-sm-3">
-                                                <input type="number" class="form-control" name="male_count" value="{{ $data->male_count }}" placeholder="Male Count - Enter here ">
+                                                <input type="number" class="form-control" name="male_count" value="{{ $data->male_count }}" placeholder="Male Count - Enter here " required>
                                             </div>
                                             <div class="col-sm-3">
-                                                <input type="number" class="form-control" name="female_count" value="{{ $data->female_count }}"  placeholder="Female Count- Enter here ">
+                                                <input type="number" class="form-control" name="female_count" value="{{ $data->female_count }}"  placeholder="Female Count- Enter here " required>
                                             </div>
                                             <div class="col-sm-3">
-                                                <input type="number" class="form-control" name="child_count" value="{{ $data->child_count }}"  placeholder="Child Count - Enter here ">
+                                                <input type="number" class="form-control" name="child_count" value="{{ $data->child_count }}"  placeholder="Child Count - Enter here " required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Check In Date </label>
+                                                Check In Date <span style="color: red;">*</span> </label>
                                             <div class="col-sm-4">
-                                                <input type="date" class="form-control" name="check_in_date" placeholder="Enter here " value="{{ $data->check_in_date }}">
+                                                <input type="date" class="form-control" name="check_in_date" placeholder="Enter here " value="{{ $data->check_in_date }}" required>
                                             </div>
                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
-                                                Time </label>
+                                                Time <span style="color: red;">*</span> </label>
                                             <div class="col-sm-4">
-                                                <input type="time" class="form-control" name="check_in_time" placeholder="Enter here " value="{{ $data->check_in_time }}">
+                                                <input type="time" class="form-control" name="check_in_time" placeholder="Enter here " value="{{ $data->check_in_time }}" required>
                                             </div>
                                         </div>
-                                        <div class="row mb-4">
+                                        <div class="row mb-4" hidden>
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Check Out Date </label>
                                             <div class="col-sm-4">
@@ -103,14 +103,14 @@
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Days</label>
+                                                Days <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control days" style="background-color:#eee" id="days" value="{{ $data->days }}" name="days" placeholder="Enter here " value="">
+                                                <input type="text" class="form-control days" id="days" value="{{ $data->days }}" name="days" placeholder="Enter here " required>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Branch </label>
+                                                Branch <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
                                             <select class="form-control js-example-basic-single branch_id" name="branch_id" id="branch_id" required>
                                                     <option value="" disabled selected hidden class="text-muted">
@@ -129,7 +129,7 @@
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-sm-3">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Room Number</label>
+                                                                    Room Number <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="dynamic_field col-sm-9">
                                                                 <table class="table-fixed col-12 " id=""><button style="width: 100px;" class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add</button>
@@ -138,13 +138,13 @@
                                                                         <tr>
                                                                             <td class="col-6 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
                                                                                 <input type="hidden" id="room_auto_id" name="room_auto_id[]" value="{{ $BookingRoomss->id }}"/>
-                                                                                
-                                                                                
+
+
                                                                                         @foreach ($room as $rooms)
                                                                                         @if ($rooms['id'] == $BookingRoomss['room_id'])
                                                                                         <input type="text" class="form-control customer_booked_room" disabled name="customer_booked_room[]" placeholder="" value="Room No{{ $rooms->room_number }} - Floor {{ $rooms->room_floor }} - {{ $rooms->room_type }}">
                                                                                         <input type="hidden" id="room_id" name="room_id[]" value="{{ $rooms->id }}"/>
-                                                                                        @endif 
+                                                                                        @endif
                                                                                         @endforeach
                                                                                 </select></td>
                                                                             <td class="col-3"><input type="text" class="form-control" id="room_price"  name="room_price[]" placeholder="Price Per Day" value="{{ $BookingRoomss->room_price }}" /></td>
@@ -155,7 +155,7 @@
                                                                         @endforeach
                                                                     </tbody>
                                                                     <tbody id="roomfields">
-                                                                    
+
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -189,23 +189,29 @@
                                         <div id="singleproof" style="display:none">
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof </label>
-                                                <div class="col-sm-5">
-                                                    <select class="form-control " name="prooftype_one" style="width: 100%;">
-                                                    <option value="" disabled selected hidden class="text-muted">Select Type</option>
-                                                    <option value="Aadhaar Card"{{ $data->prooftype_one == 'Aadhaar Card' ? 'selected' : '' }} class="text-muted">Aadhaar Card</option>
-                                                    <option value="Pan Card"{{ $data->prooftype_one == 'Pan Card' ? 'selected' : '' }} class="text-muted">Pan Card</option>
-                                                    <option value="Voter ID"{{ $data->prooftype_one == 'Voter ID' ? 'selected' : '' }} class="text-muted">Voter ID</option>
-                                                    <option value="Driving Licence"{{ $data->prooftype_one == 'Driving Licence' ? 'selected' : '' }} class="text-muted">Driving Licence</option>
-                                                    </select>
+                                                    Proof 1 <span style="color: red;">*</span> </label>
+                                                    <div class="col-sm-5">
+                                                        <select class="form-control " name="prooftype_one" style="width: 100%;">
+                                                        <option value="" disabled selected hidden class="text-muted">Select Type</option>
+                                                        <option value="Aadhaar Card"{{ $data->prooftype_one == 'Aadhaar Card' ? 'selected' : '' }} class="text-muted">Aadhaar Card</option>
+                                                        <option value="Pan Card"{{ $data->prooftype_one == 'Pan Card' ? 'selected' : '' }} class="text-muted">Pan Card</option>
+                                                        <option value="Voter ID"{{ $data->prooftype_one == 'Voter ID' ? 'selected' : '' }} class="text-muted">Voter ID</option>
+                                                        <option value="Driving Licence"{{ $data->prooftype_one == 'Driving Licence' ? 'selected' : '' }} class="text-muted">Driving Licence</option>
+                                                        </select>
+                                                    </div>
+                                                <div class="col-sm-4">
+                                                    <input type="file" class="form-control" name="proofimage_one">
+                                                </div>
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Proof Document </label>
-                                                <div class="col-sm-5">
-                                                <a href="asset/{{$data->proofimage_one}}">{{ $data->proofimage_one }}</a>
-                                                    <input type="file" class="form-control" name="proofimage_one">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    Proof 1 - View </label>
+                                                    <div class="col-sm-5">
+                                                    </div>
+                                                <div class="col-sm-4">
+                                                    <a href="asset/{{$data->proofimage_one}}">{{ $data->proofimage_one }}</a>
+                                                </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -215,7 +221,7 @@
                                         <div id="doubleproof" style="display:none">
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof </label>
+                                                    Proof 2 <span style="color: red;">*</span></label>
                                                 <div class="col-sm-5">
                                                     <select class="form-control " name="prooftype_one" style="width: 100%;">
                                                     <option value="" disabled selected hidden class="text-muted">Select Type</option>
@@ -261,7 +267,7 @@
 
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Photo </label>
+                                                Photo <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
                                                 <div style="display: flex;">
                                                     <div id="my_camera"></div>
@@ -271,9 +277,6 @@
                                                 <input type="hidden" name="customer_photo" class="image-tag">
                                             </div>
                                         </div>
-
-
-                                        
 
                                         <hr>
                                         <h4 class="card-title mb-4" style="color: #5b73e8">Pricing Calculation</h4>
@@ -285,55 +288,55 @@
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Total - Room Price </label>
+                                                                    Total - Room Price <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control total_calc_price" style="background-color:#babcc5ad" name="total_calc_price" id="total_calc_price" value="{{ $data->total }}" placeholder="Enter here ">
+                                                                <input type="text" class="form-control total_calc_price" style="background-color:#babcc5ad" name="total_calc_price" id="total_calc_price" value="{{ $data->total }}" placeholder="Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                                GST Amount </label>
+                                                                GST Amount <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control gst_amount" name="gst_amount" placeholder="GST Amount - Enter here " value="{{ $data->gst_amount }}">
+                                                                <input type="text" class="form-control gst_amount" name="gst_amount" placeholder="GST Amount - Enter here " value="{{ $data->gst_amount }}" required>
                                                             </div>
                                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
-                                                                GST % </label>
+                                                                GST % <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control gst_percentage" name="gst_percentage" placeholder="Gst % - Enter here " value="{{ $data->gst_per }}">
+                                                                <input type="text" class="form-control gst_percentage" name="gst_percentage" placeholder="Gst % - Enter here " value="{{ $data->gst_per }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                                Discount Amount </label>
+                                                                Discount Amount <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control discount_amount" name="discount_amount"  placeholder="Discount Amount - Enter here " value="{{ $data->disc_amount }}">
+                                                                <input type="text" class="form-control discount_amount" name="discount_amount"  placeholder="Discount Amount - Enter here " value="{{ $data->disc_amount }}" required>
                                                             </div>
                                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
-                                                                Discount % </label>
+                                                                Dis % <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control discount_percentage" name="discount_percentage"  placeholder="Discount % - Enter here " value="{{ $data->disc_per }}">
+                                                                <input type="text" class="form-control discount_percentage" name="discount_percentage"  placeholder="Discount % - Enter here " value="{{ $data->disc_per }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                                Additional Charge </label>
+                                                                Additional Charge <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control additional_charge" name="additional_charge"  placeholder="Additional Amount - Enter here " value="{{ $data->additional_amount }}">
+                                                                <input type="text" class="form-control additional_charge" name="additional_charge"  placeholder="Additional Amount - Enter here " value="{{ $data->additional_amount }}" required>
                                                             </div>
                                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
-                                                                Note </label>
+                                                                Note <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control additional_charge_notes" name="additional_charge_notes" placeholder="Note - Enter here " value="{{ $data->additional_notes }}">
+                                                                <input type="text" class="form-control additional_charge_notes" name="additional_charge_notes" placeholder="Note - Enter here " value="{{ $data->additional_notes }}" required>
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Grand Total - To Pay </label>
+                                                                    Grand Total - To Pay <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="{{ $data->grand_total }}" placeholder="Enter here ">
+                                                                <input type="text" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="{{ $data->grand_total }}" placeholder="Enter here " required>
                                                             </div>
                                                         </div>
 
@@ -398,15 +401,15 @@
                                         </div>
 
 
-                                        
-                                       
+
+
                                     </div>
                                 </div>
-                               
 
-   
+
+
                                 <div class="modal-footer">
-                                    
+
                                     <button type="submit" class="btn btn-primary" name="checkin" style="margin-right: 10%;" >Update</button>
                                 </div>
                             </form>
@@ -552,9 +555,9 @@ $proofs = {{ $data->proofs}}
                                 var price = $(this).val();
                                 var days = $(".days").val();
                                 var Amount = days * price;
-                                $("#room_cal_price1").val(Amount);     
-                                
-                                
+                                $("#room_cal_price1").val(Amount);
+
+
                                 var totalAmount = 0;
                                 var days = $(".days").val();
 
@@ -566,7 +569,7 @@ $proofs = {{ $data->proofs}}
 
                                 var additional_charge = $(".additional_charge").val();
                                 var total_calc_price = $(".total_calc_price").val();
-                                
+
 
                                 var discount_percentage = $(".discount_percentage").val();
                                 var discount_in_amount = (discount_percentage / 100) * total_calc_price;
@@ -585,11 +588,11 @@ $proofs = {{ $data->proofs}}
                             });
 
 
-                                  
+
                         }
                     });
 
-                    
+
 
 
                 });
@@ -630,7 +633,7 @@ $proofs = {{ $data->proofs}}
                    // $('.grand_total').val(grand_total);
                    // var payable_amount = $(".payable_amount").val();
                    // var balance = Number(grand_total) - Number(payable_amount);
-                   // $('.balance_amount').val(balance);  
+                   // $('.balance_amount').val(balance);
 
 
                 });
@@ -678,7 +681,7 @@ $proofs = {{ $data->proofs}}
                                     }
                                 }
                             }
-                                
+
                                 ++j;
                                 $('#room_id'+j ).append(selectedValues);
                         }
@@ -741,7 +744,7 @@ $proofs = {{ $data->proofs}}
                                     $('.grand_total').val(grand_total);
                                     var payable_amount = $(".payable_amount").val();
                                     var balance = Number(grand_total) - Number(payable_amount);
-                                    $('.balance_amount').val(balance); 
+                                    $('.balance_amount').val(balance);
                                 });
 
 
@@ -752,12 +755,12 @@ $proofs = {{ $data->proofs}}
                     });
 
 
-                    
+
 
 
         });
     });
-    
+
     $(document).on('click', '.remove-tr', function() {
         $(this).parents('tr').remove();
 
@@ -770,7 +773,7 @@ $proofs = {{ $data->proofs}}
                         $('.total_calc_price').val(totalAmount);
                     });
 
-                    
+
 
                     var additional_charge = $(".additional_charge").val();
                     var total_calc_price = $(".total_calc_price").val();
@@ -787,7 +790,7 @@ $proofs = {{ $data->proofs}}
                     $('.grand_total').val(grand_total);
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);  
+                    $('.balance_amount').val(balance);
     });
 
 
@@ -808,7 +811,7 @@ $proofs = {{ $data->proofs}}
                     $('.grand_total').val(grand_total);
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);  
+                    $('.balance_amount').val(balance);
     });
 
     $(document).on("keyup", 'input.gst_percentage', function() {
@@ -826,7 +829,7 @@ $proofs = {{ $data->proofs}}
                     $('.grand_total').val(grand_total);
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);  
+                    $('.balance_amount').val(balance);
     });
 
 
@@ -848,7 +851,7 @@ $proofs = {{ $data->proofs}}
                     $('.grand_total').val(grand_total);
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);  
+                    $('.balance_amount').val(balance);
     });
 
 
@@ -867,7 +870,7 @@ $proofs = {{ $data->proofs}}
                     $('.grand_total').val(grand_total);
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);  
+                    $('.balance_amount').val(balance);
     });
 
 
@@ -884,7 +887,7 @@ $proofs = {{ $data->proofs}}
         $('.grand_total').val(grand_total);
         var payable_amount = $(".payable_amount").val();
         var balance = Number(grand_total) - Number(payable_amount);
-        $('.balance_amount').val(balance);  
+        $('.balance_amount').val(balance);
 
     });
 
