@@ -715,6 +715,49 @@ $(document).ready(function() {
     });
 
 
+
+
+    $(document).on("keyup", 'input.days', function() {
+        var days = $(this).val();
+     
+              for (var i = 0; i < 100; i++) {
+                var room_price = $('#room_price' + i).val(); 
+
+                var total = room_price * days;
+                console.log(total);
+                $('#room_cal_price' + i).val(total);
+              }
+
+              var totalAmount = 0;
+                $("input[name='room_cal_price[]']").each(function() {
+                    //alert($(this).val());
+                totalAmount = Number(totalAmount) + Number($(this).val());
+                $('.total_calc_price').val(totalAmount);
+                });
+
+                var additional_charge = $(".additional_charge").val();
+                var total_calc_price = $(".total_calc_price").val();
+
+                var discount_percentage = $(".discount_percentage").val();
+                var discount_in_amount = (discount_percentage / 100) * total_calc_price;
+                $('.discount_amount').val(discount_in_amount.toFixed(2));
+
+                var gst_percentage = $(".gst_percentage").val();
+                var gst_in_amount = (gst_percentage / 100) * total_calc_price;
+                $('.gst_amount').val(gst_in_amount.toFixed(2));
+
+                var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
+                $('.grand_total').val(grand_total.toFixed(2));
+                var payable_amount = $(".payable_amount").val();
+                var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                $('.balance_amount').val(balance.toFixed(2)); 
+    });
+
+
+
+
+
+
     // GST Calculation
     $(document).on("keyup", 'input.gst_amount', function() {
         var gstamount = $(this).val();

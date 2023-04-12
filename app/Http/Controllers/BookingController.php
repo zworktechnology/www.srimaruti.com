@@ -97,6 +97,8 @@ class BookingController extends Controller
             $Extend_data = [];
             $checkout_data = [];
 
+            
+
                 $extendcheckout_date = Booking::where('soft_delete', '!=', 1)->where('extended_date', '=', $today)->get();
                 foreach ($extendcheckout_date as $key => $extend_checkout_date) {
                     $Extend_data[] = $extend_checkout_date;
@@ -502,9 +504,11 @@ class BookingController extends Controller
                 $ids = $room_auto_id;
                 $bookingID = $booking_id;
                 $room_id = $request->room_id[$key];
+                $room_price = $request->room_price[$key];
+                $room_cal_price = $request->room_cal_price[$key];
                 DB::table('booking_rooms')->where('id', $ids)
                         ->update([
-                            'booking_id' => $bookingID,  'room_id' => $room_id
+                            'booking_id' => $bookingID,  'room_id' => $room_id,  'room_price' => $room_price,  'room_cal_price' => $room_cal_price
                         ]);
             } else if ($room_auto_id == '') {
                 if ($request->room_id[$key] > 0) {

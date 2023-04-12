@@ -245,25 +245,22 @@
                                                             </li>
 
 
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                            @if ($bookingDatas['balance_amount'] != 0)
-                                                <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}"
-                                                    aria-hidden="true" aria-labelledby="..." tabindex="-1">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title">Pay Balance Amount</h5>
-                                                                <button type="button" class="paybalanceclose btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form autocomplete="off" method="POST"
-                                                                    action="{{ route('booking.pay_balance', ['id' => $bookingDatas['id']]) }}">
-                                                                    @method('PUT')
-                                                                    @csrf
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    @endif
+                                    @if ($bookingDatas['balance_amount'] != 0)
+                                    <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Pay Balance Amount</h5>
+                                                    <button type="button" class="paybalanceclose btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form autocomplete="off" method="POST" action="{{ route('booking.pay_balance', ['id' => $bookingDatas['id']]) }}">
+                                                        @method('PUT')
+                                                        @csrf
 
                                                                     <div class="row mb-4">
                                                                         <label for="horizontal-firstname-input"
@@ -445,6 +442,16 @@
             window.location.reload();
         });
 
+
+    $(document).on("keyup", 'input.payable_amount', function() {
+        var payable_amount = $(this).val();
+        var balance_amount = $(".balance_amount").val();
+
+        if(Number(payable_amount) > Number(balance_amount)){
+            alert('You are entering Maximum Amount of Balance');
+            $(".payable_amount").val('');
+        }
+    });
 
 
         // Calculate Days
