@@ -9,34 +9,34 @@
                     <div class="page-title-box d-flex align-items-center justify-content-between">
                         <h4 class="mb-0">Expense</h4>
                         <div class="page-title-right">
-                        
+
                             <ol class="breadcrumb m-0">
                             <form autocomplete="off" method="POST" action="{{ route('expense.datefilter') }}" style="display: flex;">
                             @method('PUT')
                             @csrf
-                                
+
                                 <li  style="margin-left: 10px;"><input type="date" name="date" required class="form-control date" value="{{ $date }}"></li>
                                 <li style="margin-left: 10px;"><button type="submit" class="btn btn-primary home_search">Search</button></li>
                                 </form>
                                 <li style="margin-left: 10px;">
                                     <a href="{{ route('expense.index') }}">
-                                        <button type="button" class="btn btn-info waves-effect waves-light">
+                                        <button type="button" class="btn btn-primary waves-effect waves-light">
                                             Back
                                         </button>
                                     </a>
                                 </li>
 
                             </ol>
-                        
+
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
 
-           
 
-          
+
+
             @if (\Session::has('update'))
             <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                 <i class="uil uil-pen me-2"></i>

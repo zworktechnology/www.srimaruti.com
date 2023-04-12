@@ -33,7 +33,7 @@ return new class extends Migration
             $table->integer('count_2')->nullable();
             $table->integer('count_1')->nullable();
             $table->string('total')->nullable();
-            $table->boolean('soft_delete')->nullable();
+            $table->boolean('soft_delete')->nullable()->default(0);
 
             // CreatedAt & UpdatedAt columns
             $table->timestamps();
