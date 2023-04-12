@@ -82,7 +82,7 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Check In Date <span style="color: red;">*</span> </label>
                                             <div class="col-sm-4">
-                                                <input type="date" class="form-control" name="check_in_date" placeholder="Enter here " value="{{ $today }}" required>
+                                                <input type="date" class="form-control check_in_date" name="check_in_date" placeholder="Enter here " value="{{ $today }}" required>
                                             </div>
                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                 Time <span style="color: red;">*</span> </label>
@@ -90,16 +90,16 @@
                                                 <input type="time" class="form-control" name="check_in_time" placeholder="Enter here " value="{{ $timenow }}" required>
                                             </div>
                                         </div>
-                                        <div class="row mb-4" hidden>
+                                        <div class="row mb-4" >
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Check Out Date </label>
                                             <div class="col-sm-4">
-                                                <input type="date" class="form-control" name="check_out_date" placeholder="Enter here " value="2023-01-01">
+                                                <input type="date" class="form-control check_out_date" name="check_out_date" placeholder="Enter here " value="">
                                             </div>
                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                 Time </label>
                                             <div class="col-sm-4">
-                                                <input type="time" class="form-control" name="check_out_time" placeholder="Enter here " value="00:00">
+                                                <input type="time" class="form-control" name="check_out_time" placeholder="Enter here " value="">
                                             </div>
                                         </div>
                                         <div class="row mb-4">
@@ -360,6 +360,30 @@
 <script language="JavaScript">
 
 
+;(function($, window, document, undefined){
+    $("#days").on("change", function(){
+       var date = new Date($(".check_in_date").val()),
+           days = parseInt($("#days").val(), 10);
+
+        if(!isNaN(date.getTime())){
+            date.setDate(date.getDate() + days + 1);
+
+            $(".check_out_date").val(date.toInputFormat());
+        } else {
+            alert("Invalid Date");  
+        }
+    });
+
+
+    //From: http://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
+    Date.prototype.toInputFormat = function() {
+       var yyyy = this.getFullYear().toString();
+       var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+       var dd  = this.getDate().toString();
+       return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]); // padding
+    };
+})(jQuery, this, document);
+
 
 // AJAX call for autocomplete 
 $(document).ready(function() {
@@ -511,16 +535,16 @@ $(document).ready(function() {
 
                                 var discount_percentage = $(".discount_percentage").val();
                                 var discount_in_amount = (discount_percentage / 100) * total_calc_price;
-                                $('.discount_amount').val(discount_in_amount);
+                                $('.discount_amount').val(discount_in_amount.toFixed(2));
 
                                 var gst_percentage = $(".gst_percentage").val();
                                 var gst_in_amount = (gst_percentage / 100) * total_calc_price;
-                                $('.gst_amount').val(gst_in_amount);
+                                $('.gst_amount').val(gst_in_amount.toFixed(2));
 
                                 var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
                                 $('.grand_total').val(grand_total.toFixed(2));
                                 var payable_amount = $(".payable_amount").val();
-                                var balance = Number(grand_total) - Number(payable_amount);
+                                var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                                 $('.balance_amount').val(balance.toFixed(2)); 
                     });
 
@@ -660,16 +684,16 @@ $(document).ready(function() {
 
                                 var discount_percentage = $(".discount_percentage").val();
                                 var discount_in_amount = (discount_percentage / 100) * total_calc_price;
-                                $('.discount_amount').val(discount_in_amount);
+                                $('.discount_amount').val(discount_in_amount.toFixed(2));
 
                                 var gst_percentage = $(".gst_percentage").val();
                                 var gst_in_amount = (gst_percentage / 100) * total_calc_price;
-                                $('.gst_amount').val(gst_in_amount);
+                                $('.gst_amount').val(gst_in_amount.toFixed(2));
 
                                 var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
                                 $('.grand_total').val(grand_total.toFixed(2));
                                 var payable_amount = $(".payable_amount").val();
-                                var balance = Number(grand_total) - Number(payable_amount);
+                                var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                                 $('.balance_amount').val(balance.toFixed(2)); 
 
 
@@ -696,7 +720,7 @@ $(document).ready(function() {
         var gstamount = $(this).val();
         var total_calc_price = $(".total_calc_price").val();
         var gst_in_percentage = (gstamount * 100) / total_calc_price;
-        $('.gst_percentage').val(gst_in_percentage);
+        $('.gst_percentage').val(gst_in_percentage.toFixed(2));
 
                     var additional_charge = $(".additional_charge").val();
                     var total_calc_price = $(".total_calc_price").val();
@@ -706,7 +730,7 @@ $(document).ready(function() {
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
-                    var balance = Number(grand_total) - Number(payable_amount);
+                    var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
                     
     });
@@ -715,7 +739,7 @@ $(document).ready(function() {
         var gst_percentage = $(this).val();
         var total_calc_price = $(".total_calc_price").val();
         var gst_in_amount = (gst_percentage / 100) * total_calc_price;
-        $('.gst_amount').val(gst_in_amount);
+        $('.gst_amount').val(gst_in_amount.toFixed(2));
 
                     var additional_charge = $(".additional_charge").val();
                     var total_calc_price = $(".total_calc_price").val();
@@ -725,7 +749,7 @@ $(document).ready(function() {
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
-                    var balance = Number(grand_total) - Number(payable_amount);
+                    var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
                     
     });
@@ -737,7 +761,7 @@ $(document).ready(function() {
         var discount_amount = $(this).val();
         var total_calc_price = $(".total_calc_price").val();
         var discount_in_percentage = (discount_amount * 100) / total_calc_price;
-        $('.discount_percentage').val(discount_in_percentage);
+        $('.discount_percentage').val(discount_in_percentage.toFixed(2));
 
                     var additional_charge = $(".additional_charge").val();
                     var total_calc_price = $(".total_calc_price").val();
@@ -747,7 +771,7 @@ $(document).ready(function() {
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
-                    var balance = Number(grand_total) - Number(payable_amount);
+                    var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
                     
     });
@@ -757,7 +781,7 @@ $(document).ready(function() {
         var discount_percentage = $(this).val();
         var total_calc_price = $(".total_calc_price").val();
         var discount_in_amount = (discount_percentage / 100) * total_calc_price;
-        $('.discount_amount').val(discount_in_amount);
+        $('.discount_amount').val(discount_in_amount.toFixed(2));
 
                     var additional_charge = $(".additional_charge").val();
                     var total_calc_price = $(".total_calc_price").val();
@@ -767,7 +791,7 @@ $(document).ready(function() {
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
-                    var balance = Number(grand_total) - Number(payable_amount);
+                    var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
                     
     });
@@ -785,7 +809,7 @@ $(document).ready(function() {
         $('.grand_total').val(grand_total.toFixed(2));
         
         var payable_amount = $(".payable_amount").val();
-        var balance = Number(grand_total) - Number(payable_amount);
+        var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
         $('.balance_amount').val(balance.toFixed(2));
         
 
@@ -803,7 +827,7 @@ $(document).ready(function() {
 
         var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
         $('.grand_total').val(grand_total.toFixed(2));
-        var balance = Number(grand_total) - Number(payable_amount);
+        var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
         $('.balance_amount').val(balance.toFixed(2));
     });
 
@@ -836,7 +860,7 @@ $(document).ready(function() {
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
-                    var balance = Number(grand_total) - Number(payable_amount);
+                    var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
 
     });

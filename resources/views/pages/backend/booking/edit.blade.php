@@ -573,17 +573,17 @@ $proofs = {{ $data->proofs}}
 
                                 var discount_percentage = $(".discount_percentage").val();
                                 var discount_in_amount = (discount_percentage / 100) * total_calc_price;
-                                $('.discount_amount').val(discount_in_amount);
+                                $('.discount_amount').val(discount_in_amount.toFixed(2));
 
                                 var gst_percentage = $(".gst_percentage").val();
                                 var gst_in_amount = (gst_percentage / 100) * total_calc_price;
-                                $('.gst_amount').val(gst_in_amount);
+                                $('.gst_amount').val(gst_in_amount.toFixed(2));
 
                                 var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
-                                $('.grand_total').val(grand_total);
+                                $('.grand_total').val(grand_total.toFixed(2));
                                 var payable_amount = $(".payable_amount").val();
                                 var balance = Number(grand_total) - Number(payable_amount);
-                                $('.balance_amount').val(balance);
+                                $('.balance_amount').val(balance.toFixed(2));
 
                             });
 
@@ -734,17 +734,17 @@ $proofs = {{ $data->proofs}}
 
                                     var discount_percentage = $(".discount_percentage").val();
                                     var discount_in_amount = (discount_percentage / 100) * total_calc_price;
-                                    $('.discount_amount').val(discount_in_amount);
+                                    $('.discount_amount').val(discount_in_amount.toFixed(2));
 
                                     var gst_percentage = $(".gst_percentage").val();
                                     var gst_in_amount = (gst_percentage / 100) * total_calc_price;
-                                    $('.gst_amount').val(gst_in_amount);
+                                    $('.gst_amount').val(gst_in_amount.toFixed(2));
 
                                     var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
-                                    $('.grand_total').val(grand_total);
+                                    $('.grand_total').val(grand_total.toFixed(2));
                                     var payable_amount = $(".payable_amount").val();
                                     var balance = Number(grand_total) - Number(payable_amount);
-                                    $('.balance_amount').val(balance);
+                                    $('.balance_amount').val(balance.toFixed(2));
                                 });
 
 
@@ -780,17 +780,17 @@ $proofs = {{ $data->proofs}}
 
                     var discount_percentage = $(".discount_percentage").val();
                     var discount_in_amount = (discount_percentage / 100) * total_calc_price;
-                    $('.discount_amount').val(discount_in_amount);
+                    $('.discount_amount').val(discount_in_amount.toFixed(2));
 
                     var gst_percentage = $(".gst_percentage").val();
                     var gst_in_amount = (gst_percentage / 100) * total_calc_price;
-                    $('.gst_amount').val(gst_in_amount);
+                    $('.gst_amount').val(gst_in_amount.toFixed(2));
 
                     var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
-                    $('.grand_total').val(grand_total);
+                    $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);
+                    $('.balance_amount').val(balance.toFixed(2));
     });
 
 
@@ -800,7 +800,7 @@ $proofs = {{ $data->proofs}}
         var gstamount = $(this).val();
         var total_calc_price = $(".total_calc_price").val();
         var gst_in_percentage = (gstamount * 100) / total_calc_price;
-        $('.gst_percentage').val(gst_in_percentage);
+        $('.gst_percentage').val(gst_in_percentage.toFixed(2));
 
                     var additional_charge = $(".additional_charge").val();
                     var total_calc_price = $(".total_calc_price").val();
@@ -808,17 +808,17 @@ $proofs = {{ $data->proofs}}
                     var gst_amount = $(".gst_amount").val();
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                    $('.grand_total').val(grand_total);
+                    $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
-                    var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);
+                    var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                    $('.balance_amount').val(balance.toFixed(2));
     });
 
     $(document).on("keyup", 'input.gst_percentage', function() {
         var gst_percentage = $(this).val();
         var total_calc_price = $(".total_calc_price").val();
         var gst_in_amount = (gst_percentage / 100) * total_calc_price;
-        $('.gst_amount').val(gst_in_amount);
+        $('.gst_amount').val(gst_in_amount.toFixed(2));
 
                     var additional_charge = $(".additional_charge").val();
                     var total_calc_price = $(".total_calc_price").val();
@@ -826,10 +826,10 @@ $proofs = {{ $data->proofs}}
                     var gst_amount = $(".gst_amount").val();
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                    $('.grand_total').val(grand_total);
+                    $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
-                    var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);
+                    var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                    $('.balance_amount').val(balance.toFixed(2));
     });
 
 
@@ -840,7 +840,7 @@ $proofs = {{ $data->proofs}}
         var discount_amount = $(this).val();
         var total_calc_price = $(".total_calc_price").val();
         var discount_in_percentage = (discount_amount * 100) / total_calc_price;
-        $('.discount_percentage').val(discount_in_percentage);
+        $('.discount_percentage').val(discount_in_percentage.toFixed(2));
 
                     var additional_charge = $(".additional_charge").val();
                     var total_calc_price = $(".total_calc_price").val();
@@ -848,10 +848,10 @@ $proofs = {{ $data->proofs}}
                     var gst_amount = $(".gst_amount").val();
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                    $('.grand_total').val(grand_total);
+                    $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
-                    var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);
+                    var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                    $('.balance_amount').val(balance.toFixed(2));
     });
 
 
@@ -859,7 +859,7 @@ $proofs = {{ $data->proofs}}
         var discount_percentage = $(this).val();
         var total_calc_price = $(".total_calc_price").val();
         var discount_in_amount = (discount_percentage / 100) * total_calc_price;
-        $('.discount_amount').val(discount_in_amount);
+        $('.discount_amount').val(discount_in_amount.toFixed(2));
 
                     var additional_charge = $(".additional_charge").val();
                     var total_calc_price = $(".total_calc_price").val();
@@ -867,10 +867,10 @@ $proofs = {{ $data->proofs}}
                     var gst_amount = $(".gst_amount").val();
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                    $('.grand_total').val(grand_total);
+                    $('.grand_total').val(grand_total.toFixed(2));
                     var payable_amount = $(".payable_amount").val();
-                    var balance = Number(grand_total) - Number(payable_amount);
-                    $('.balance_amount').val(balance);
+                    var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                    $('.balance_amount').val(balance.toFixed(2));
     });
 
 
@@ -884,10 +884,10 @@ $proofs = {{ $data->proofs}}
         var gst_amount = $(".gst_amount").val();
 
         var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-        $('.grand_total').val(grand_total);
+        $('.grand_total').val(grand_total.toFixed(2));
         var payable_amount = $(".payable_amount").val();
-        var balance = Number(grand_total) - Number(payable_amount);
-        $('.balance_amount').val(balance);
+        var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+        $('.balance_amount').val(balance.toFixed(2));
 
     });
 
@@ -905,9 +905,9 @@ $proofs = {{ $data->proofs}}
         var gst_amount = $(".gst_amount").val();
 
         var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-        $('.grand_total').val(grand_total);
+        $('.grand_total').val(grand_total.toFixed(2));
         var balance = Number(grand_total) - Number(payable_amount);
-        $('.balance_amount').val(balance);
+        $('.balance_amount').val(balance.toFixed(2));
                     });
         
 

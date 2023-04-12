@@ -18,10 +18,10 @@
                 <div class="row mb-4" >
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Check-in Date </label>
                         <div class="col-sm-5">
-                            <input type="date" class="form-control" disabled id="checkin_date" name="checkin_date" placeholder="Enter here " value="{{ $bookingDatas['chick_in_date'] }}">
+                            <input type="date" class="form-control checkin_date"  id="checkin_date{{$bookingDatas['id']}}" name="checkin_date" placeholder="Enter here " value="{{ $bookingDatas['chick_in_date'] }}">
                         </div>
                         <div class="col-sm-4">
-                            <input type="time" class="form-control" disabled id="checkin_time" name="checkin_time" placeholder="Enter here " value="{{ $bookingDatas['chick_in_time'] }}">
+                            <input type="time" class="form-control" id="checkin_time" name="checkin_time" placeholder="Enter here " value="{{ $bookingDatas['chick_in_time'] }}">
                         </div>
                 </div>
                 <div class="row mb-4" >
@@ -39,7 +39,7 @@
                 <div class="row mb-4" >
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Extended Date Upto <span style="color: red;">*</span></label>
                         <div class="col-sm-5">
-                            <input type="date"  class="form-control" id="extended_date" name="extended_date" placeholder="Enter here ">
+                            <input type="date"  class="form-control extended_date" id="extended_date{{$bookingDatas['id']}}" name="extended_date" placeholder="Enter here ">
                         </div>
                         <div class="col-sm-4">
                             <input type="time" class="form-control" id="extended_time" name="extended_time" placeholder="Enter here " >
@@ -73,6 +73,35 @@
                                     @if ($room_lists['booking_id'] == $bookingDatas['id'])
 
 <script>
+
+;(function($, window, document, undefined){
+    $('#no_of_days' + {{$bookingDatas['id']}}).on("change", function(){
+       var date = new Date($('#checkin_date' + {{$bookingDatas['id']}}).val()),
+           days = parseInt($('#no_of_days' + {{$bookingDatas['id']}}).val(), 10);
+
+        if(!isNaN(date.getTime())){
+            date.setDate(date.getDate() + days + 1);
+
+            $('#extended_date' + {{$bookingDatas['id']}}).val(date.toInputFormat());
+        } else {
+            alert("Invalid Date");  
+        }
+    });
+
+
+    //From: http://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
+    Date.prototype.toInputFormat = function() {
+       var yyyy = this.getFullYear().toString();
+       var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+       var dd  = this.getDate().toString();
+       return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]); // padding
+    };
+})(jQuery, this, document);
+
+
+
+
+
 $(document).ready(function() {
     $('.extend' + {{$bookingDatas['id']}}).each(function () {
         $(this).on('click', function (e) {
@@ -105,19 +134,19 @@ $(document).ready(function() {
 
                 var discount_percentage = $('#discount_percentage' + {{ $bookingDatas['id'] }}).val();
                 var discount_in_amount = (discount_percentage / 100) * total_calc_price;
-                $('#discount_amount' + {{ $bookingDatas['id'] }}).val(discount_in_amount);
+                $('#discount_amount' + {{ $bookingDatas['id'] }}).val(discount_in_amount.toFixed(2));
 
 
                 var gst_percentage = $('#gst_percentage' + {{ $bookingDatas['id'] }}).val();
                 var gst_in_amount = (gst_percentage / 100) * total_calc_price;
-                $('#gst_amount' + {{ $bookingDatas['id'] }}).val(gst_in_amount);
+                $('#gst_amount' + {{ $bookingDatas['id'] }}).val(gst_in_amount.toFixed(2));
 
 
                 var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
-                $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total);
+                $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total.toFixed(2));
                 var payable_amount = $('#payable_amount' + {{ $bookingDatas['id'] }}).val();
-                var balance = Number(grand_total) - Number(payable_amount);
-                $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance); 
+                var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance.toFixed(2)); 
 
 
                 $('.dayextra' + {{ $bookingDatas['id'] }}).show();
@@ -130,7 +159,7 @@ $(document).ready(function() {
                 var gstamount = $(this).val();
                 var total_calc_price = $('#total_calc_price' + {{ $bookingDatas['id'] }}).val();
                 var gst_in_percentage = (gstamount * 100) / total_calc_price;
-                $('#gst_percentage' + {{ $bookingDatas['id'] }}).val(gst_in_percentage);
+                $('#gst_percentage' + {{ $bookingDatas['id'] }}).val(gst_in_percentage.toFixed(2));
 
                             var additional_charge = $('#additional_charge' + {{ $bookingDatas['id'] }}).val();
                             var total_calc_price = $('#total_calc_price' + {{ $bookingDatas['id'] }}).val();
@@ -138,10 +167,10 @@ $(document).ready(function() {
                             var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }}).val();
                             
                             var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                            $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total);
+                            $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total.toFixed(2));
                             var payable_amount = $('#payable_amount' + {{ $bookingDatas['id'] }}).val();
-                            var balance = Number(grand_total) - Number(payable_amount);
-                            $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance);
+                            var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                            $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance.toFixed(2));
                             
             });
 
@@ -150,7 +179,7 @@ $(document).ready(function() {
                 var gst_percentage = $(this).val();
                 var total_calc_price = $('#total_calc_price' + {{ $bookingDatas['id'] }}).val();
                 var gst_in_amount = (gst_percentage / 100) * total_calc_price;
-                $('#gst_amount' + {{ $bookingDatas['id'] }}).val(gst_in_amount);
+                $('#gst_amount' + {{ $bookingDatas['id'] }}).val(gst_in_amount.toFixed(2));
 
                             var additional_charge = $('#additional_charge' + {{ $bookingDatas['id'] }}).val();
                             var total_calc_price = $('#total_calc_price' + {{ $bookingDatas['id'] }}).val();
@@ -158,10 +187,10 @@ $(document).ready(function() {
                             var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }}).val();
                             
                             var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                            $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total);
+                            $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total.toFixed(2));
                             var payable_amount = $('#payable_amount' + {{ $bookingDatas['id'] }}).val();
-                            var balance = Number(grand_total) - Number(payable_amount);
-                            $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance);
+                            var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                            $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance.toFixed(2));
                             
             });
 
@@ -171,7 +200,7 @@ $(document).ready(function() {
                 var discount_amount = $(this).val();
                 var total_calc_price = $('#total_calc_price' + {{ $bookingDatas['id'] }}).val();
                 var discount_in_percentage = (discount_amount * 100) / total_calc_price;
-                $('#discount_percentage' + {{ $bookingDatas['id'] }}).val(discount_in_percentage);
+                $('#discount_percentage' + {{ $bookingDatas['id'] }}).val(discount_in_percentage.toFixed(2));
 
                             var additional_charge = $('#additional_charge' + {{ $bookingDatas['id'] }}).val();
                             var total_calc_price = $('#total_calc_price' + {{ $bookingDatas['id'] }}).val();
@@ -179,10 +208,10 @@ $(document).ready(function() {
                             var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }}).val();
                             
                             var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                            $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total);
+                            $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total.toFixed(2));
                             var payable_amount = $('#payable_amount' + {{ $bookingDatas['id'] }}).val();
-                            var balance = Number(grand_total) - Number(payable_amount);
-                            $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance);
+                            var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                            $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance.toFixed(2));
                     
             });
 
@@ -193,7 +222,7 @@ $(document).ready(function() {
                 var discount_percentage = $(this).val();
                 var total_calc_price = $('#total_calc_price' + {{ $bookingDatas['id'] }}).val();
                 var discount_in_amount = (discount_percentage / 100) * total_calc_price;
-                $('#discount_amount' + {{ $bookingDatas['id'] }}).val(discount_in_amount);
+                $('#discount_amount' + {{ $bookingDatas['id'] }}).val(discount_in_amount.toFixed(2));
 
                             var additional_charge = $('#additional_charge' + {{ $bookingDatas['id'] }}).val();
                             var total_calc_price = $('#total_calc_price' + {{ $bookingDatas['id'] }}).val();
@@ -201,10 +230,10 @@ $(document).ready(function() {
                             var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }}).val();
                             
                             var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                            $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total);
+                            $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total.toFixed(2));
                             var payable_amount = $('#payable_amount' + {{ $bookingDatas['id'] }}).val();
-                            var balance = Number(grand_total) - Number(payable_amount);
-                            $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance);
+                            var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                            $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance.toFixed(2));
                             
             });
 
@@ -218,11 +247,11 @@ $(document).ready(function() {
                 var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }}).val();
 
                 var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total);
+                $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total.toFixed(2));
                 
                 var payable_amount = $('#payable_amount' + {{ $bookingDatas['id'] }}).val();
-                var balance = Number(grand_total) - Number(payable_amount);
-                $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance);
+                var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance.toFixed(2));
                 
 
             });
@@ -237,9 +266,9 @@ $(document).ready(function() {
                     var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }}).val();
 
                 var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total);
-                var balance = Number(grand_total) - Number(payable_amount);
-                $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance);
+                $('#grand_total' + {{ $bookingDatas['id'] }}).val(grand_total.toFixed(2));
+                var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                $('#balance_amount' + {{ $bookingDatas['id'] }}).val(balance.toFixed(2));
             });
 
 
@@ -362,6 +391,8 @@ $(document).ready(function() {
 
 
 <script>
+
+
 
 $(".extendclose").click(function() {
     window.location.reload();

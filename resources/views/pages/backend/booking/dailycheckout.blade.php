@@ -64,15 +64,9 @@
                                             
                                         </td>
                                         <td>
-                                            <span style="color:green">Total : ₹{{ $bookingDatas['grand_total'] }}</span><br/>
-                                            <span style="color:#cb540f">
-
-                                                @foreach ($bookingDatas['terms'] as $index => $terms)
-                                                @if ($terms['booking_id'] == $bookingDatas['id'])
-                                                {{ $terms['term'] }} - ₹{{ $terms['payable_amount'] }}<br />
-                                                @endif
-                                                @endforeach
-                                            </span>
+                                        <span style="color:green;">Total : ₹{{ $bookingDatas['grand_total'] }}</span><br/>
+                                            <span style="color:#6f42c1;">Paid : ₹{{ $bookingDatas['total_paid'] }}</span><br/>
+                                            <span style="color:#e83e8c;">Balance : ₹{{ $bookingDatas['balance_amount'] }}</span><br/>
                                         </td>
                                         <td>
                                             <ul class="list-unstyled hstack gap-1 mb-0">
