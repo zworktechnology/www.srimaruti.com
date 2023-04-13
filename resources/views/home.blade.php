@@ -52,7 +52,9 @@
                                             <th>Room Income</th>
                                             <th>Income</th>
                                             <th>Expence</th>
-                                            <th>Balance</th>
+                                            <th>Required Balance</th>
+                                            <th>Close Account</th>
+                                            <th>Difference</th>
                                         </tr>
                                     </thead>
                                     <tbody id="branchwise_list">
@@ -60,10 +62,17 @@
                                         @foreach ($branchwise_list as $branchwise_lists)
                                         <tr>
                                             <td>{{ $branchwise_lists['branch_name'] }}</td>
-                                            <td>₹{{ $branchwise_lists['Room_income'] }}</td>
-                                            <td>₹{{ $branchwise_lists['branchwise_income'] }}</td>
-                                            <td>₹{{ $branchwise_lists['branchwise_expense'] }}</td>
-                                            <td>₹{{ $branchwise_lists['branchwise_closeaccount'] }}</td>
+                                            <td>₹ {{ $branchwise_lists['Room_income'] }}</td>
+                                            <td>₹ {{ $branchwise_lists['branchwise_income'] }}</td>
+                                            <td>₹ {{ $branchwise_lists['branchwise_expense'] }}</td>
+                                            <td>₹ {{ $branchwise_lists['requred_balance'] }}</td>
+                                            <td>₹ {{ $branchwise_lists['branchwise_closeaccount'] }}</td>
+                                            @if ($branchwise_lists['difference'] > 0)
+                                            <td style="color: Green">₹ {{ $branchwise_lists['difference'] }}</td>
+                                            @else
+                                            <td style="color: Red">₹ {{ $branchwise_lists['difference'] }}</td>
+                                            @endif
+
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -91,14 +100,14 @@
                     $('#branchwise_list').html('');
                     $('.income').html('');
                     $('.expense').html('');
-                    
+
                     var len = response.length;
                     console.log(len);
 
                     if (len > 0) {
                         for (var i = 0; i < len; i++) {
-                            
-                               
+
+
 
 
                                 var column_0 = $('<td/>', {
@@ -125,7 +134,7 @@
 
                                 $('.income').html(response[i].income);
                                 $('.expense').html(response[i].expense);
-                            
+
                         }
                     }
                     //        if (response['data'][i].booking_status != 1) {
@@ -138,8 +147,8 @@
                     //            selectedValues.push(option);
                     //        }
 
-                    
-                    
+
+
                 }
             });
         });

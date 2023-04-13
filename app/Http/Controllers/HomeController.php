@@ -32,10 +32,10 @@ class HomeController extends Controller
     public function index()
     {
         $today = Carbon::now()->format('Y-m-d');
-        
+
         $income = Income::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('amount');
         $expense = Expense::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('amount');
-        
+
 
         $branchwise_list = [];
         $branch = Branch::where('soft_delete', '!=', 1)->get();
@@ -46,7 +46,7 @@ class HomeController extends Controller
             $booking_id = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $branchs->id)->get();
             foreach ($booking_id as $key => $booking_ids) {
                 $BookingPayment = BookingPayment::where('booking_id', '=', $booking_ids->id)->where('paid_date', '=', $today)->get();
-                
+
                 foreach ($BookingPayment as $key => $BookingPayments) {
                     $Room_income += $BookingPayments->payable_amount;
                 }
@@ -70,6 +70,8 @@ class HomeController extends Controller
 
             $total_expense = $branchwise_expense + $total_onlinepayment;
             $balance = $Room_income + $branchwise_income - $total_expense;
+            $requred_balance = ($branchwise_income + $Room_income) - $total_expense;
+            $difference = $branchwise_closeaccount - $requred_balance;
 
             $branchwise_list[] = array(
                 'branch_name' => $branchs->name,
@@ -78,10 +80,12 @@ class HomeController extends Controller
                 'branchwise_expense' => $total_expense,
                 'branchwise_closeaccount' => $branchwise_closeaccount,
                 'Room_income' => $Room_income,
+                'requred_balance' => $requred_balance,
+                'difference' => $difference,
                 'balance' => $balance,
             );
         }
-        
+
 
         return view('home', compact('today', 'branchwise_list', 'income', 'expense'));
     }
@@ -102,7 +106,7 @@ class HomeController extends Controller
             $booking_id = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $branchs->id)->get();
             foreach ($booking_id as $key => $booking_ids) {
                 $BookingPayment = BookingPayment::where('booking_id', '=', $booking_ids->id)->where('paid_date', '=', $today)->get();
-                
+
                 foreach ($BookingPayment as $key => $BookingPayments) {
                     $Room_income += $BookingPayments->payable_amount;
                 }
@@ -143,8 +147,8 @@ class HomeController extends Controller
         }
 
 
-        
-        
+
+
         echo json_encode($branchwise_list);
     }
 }

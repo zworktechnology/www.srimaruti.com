@@ -164,7 +164,7 @@
                                                 <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
                                             </div>
                                             <div class="col-sm-2">
-                                                <input id="default-radio-1" type="radio" value="1" name="proofs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <input id="default-radio-1" type="radio" checked value="1" name="proofs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                 <label for="default-radio-1" class="ml-2" style="font-weight:900">Single Proof</label>
                                             </div>
                                             <div class="col-sm-2">
@@ -174,7 +174,7 @@
                                         </div>
 
 
-                                        <div id="singleproof" style="display:none">
+                                        <div id="singleproof">
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Proof 1 <span style="color: red;">*</span> </label>
@@ -268,14 +268,14 @@
                                                         </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                                Additional Charge <span style="color: red;">*</span> </label>
-                                                            <div class="col-sm-4">
+                                                                CC Charge <span style="color: red;">*</span> </label>
+                                                            <div class="col-sm-9">
                                                                 <input type="text" class="form-control additional_charge" name="additional_charge" value="0" placeholder="Additional Amount - Enter here " required>
                                                             </div>
-                                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
+                                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label" hidden>
                                                                 Note <span style="color: red;">*</span> </label>
-                                                            <div class="col-sm-4">
-                                                                <input type="text" class="form-control additional_charge_notes" name="additional_charge_notes" placeholder="Note - Enter here " required>
+                                                            <div class="col-sm-4" hidden>
+                                                                <input type="text" class="form-control additional_charge_notes" name="additional_charge_notes" placeholder="Note - Enter here " required value="CC">
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
@@ -329,7 +329,6 @@
                                                                 <select class="form-control js-example-basic-single" name="payment_method" required>
                                                                     <option value=""  selected hidden class="text-muted">Select Payment Via</option>
                                                                     <option value="Cash" class="text-muted">Cash</option>
-                                                                    <option value="Card" class="text-muted">Card</option>
                                                                     <option value="Online Payment" class="text-muted">Online Payment</option>
                                                                 </select>
                                                             </div>
@@ -366,7 +365,7 @@
            days = parseInt($("#days").val(), 10);
 
         if(!isNaN(date.getTime())){
-            date.setDate(date.getDate() + days + 1);
+            date.setDate(date.getDate() + days);
 
             $(".check_out_date").val(date.toInputFormat());
         } else {

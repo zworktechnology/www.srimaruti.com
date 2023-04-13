@@ -188,17 +188,8 @@ class BookingController extends Controller
                 $timenow = Carbon::now()->format('H:i');
 
                 return view('pages.backend.booking.dailycheckout', compact('bookingData', 'today', 'timenow'));
-
-
-
-
-
-
-
-
-
-
         }
+    }
 
     public function create()
     {
@@ -270,16 +261,16 @@ class BookingController extends Controller
 
         }
 
-       // $customer_photo = $request->customer_photo;
-       // $folderPath = "assets/customer_details/profile";
-       // $image_parts = explode(";base64,", $customer_photo);
-       // $image_type_aux = explode("image/", $image_parts[0]);
-       // $image_type = $image_type_aux[1];
-       // $image_base64 = base64_decode($image_parts[1]);
-       // $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-       // $customerimgfile = $folderPath . $fileName;
-       // file_put_contents($customerimgfile, $image_base64);
-       // $data->customer_photo = $customerimgfile;
+       $customer_photo = $request->customer_photo;
+       $folderPath = "assets/customer_details/profile";
+       $image_parts = explode(";base64,", $customer_photo);
+       $image_type_aux = explode("image/", $image_parts[0]);
+       $image_type = $image_type_aux[1];
+       $image_base64 = base64_decode($image_parts[1]);
+       $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+       $customerimgfile = $folderPath . $fileName;
+       file_put_contents($customerimgfile, $image_base64);
+       $data->customer_photo = $customerimgfile;
 
         $data->total = $request->get('total_calc_price');
         $data->gst_per = $request->get('gst_percentage');

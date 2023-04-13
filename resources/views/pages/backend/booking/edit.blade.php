@@ -520,17 +520,17 @@
                                                     <div class="row mb-4">
                                                         <label for="horizontal-firstname-input"
                                                             class="col-sm-3 col-form-label">
-                                                            Additional Charge <span style="color: red;">*</span> </label>
-                                                        <div class="col-sm-4">
+                                                            CC Charge <span style="color: red;">*</span> </label>
+                                                        <div class="col-sm-9">
                                                             <input type="text" class="form-control additional_charge"
                                                                 name="additional_charge"
                                                                 placeholder="Additional Amount - Enter here "
                                                                 value="{{ $data->additional_amount }}" required>
                                                         </div>
                                                         <label for="horizontal-firstname-input"
-                                                            class="col-sm-1 col-form-label">
+                                                            class="col-sm-1 col-form-label" hidden>
                                                             Note <span style="color: red;">*</span> </label>
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-4" hidden>
                                                             <input type="text"
                                                                 class="form-control additional_charge_notes"
                                                                 name="additional_charge_notes"
@@ -698,7 +698,7 @@
            days = parseInt($("#days").val(), 10);
 
         if(!isNaN(date.getTime())){
-            date.setDate(date.getDate() + days + 1);
+            date.setDate(date.getDate() + days);
 
             $(".check_out_date").val(date.toInputFormat());
         } else {
