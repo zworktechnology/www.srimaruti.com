@@ -5,7 +5,7 @@
                 <script>
                     document.write(new Date().getFullYear())
 
-                </script> © Zwork Technology.
+                </script> © <a href="http://zworktechnology.com/"  target="_blank" style="color: #9da1ac;">Zwork Technology.</a>
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">

@@ -262,16 +262,16 @@ class BookingController extends Controller
 
         }
 
-        //$customer_photo = $request->customer_photo;
-        //$folderPath = "assets/customer_details/profile";
-        //$image_parts = explode(";base64,", $customer_photo);
-        //$image_type_aux = explode("image/", $image_parts[0]);
-        //$image_type = $image_type_aux[1];
-        //$image_base64 = base64_decode($image_parts[1]);
-        //$fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-        //$customerimgfile = $folderPath . $fileName;
-        //file_put_contents($customerimgfile, $image_base64);
-        //$data->customer_photo = $fileName;
+        $customer_photo = $request->customer_photo;
+        $folderPath = "assets/customer_details/profile";
+        $image_parts = explode(";base64,", $customer_photo);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+        $customerimgfile = $folderPath . $fileName;
+        file_put_contents($customerimgfile, $image_base64);
+        $data->customer_photo = $customerimgfile;
 
         $data->total = $request->get('total_calc_price');
         $data->gst_per = $request->get('gst_percentage');
@@ -413,21 +413,21 @@ class BookingController extends Controller
 
         }
 
-        //if ($request->customer_photo != "") {
-        //$customer_photo = $request->customer_photo;
-        //$folderPath = "assets/webcam";
-        //$image_parts = explode(";base64,", $customer_photo);
-        //$image_type_aux = explode("image/", $image_parts[0]);
-        //$image_type = $image_type_aux[1];
-        //$image_base64 = base64_decode($image_parts[1]);
-        //$fileName = $BookingData->customer_name . '.png';
-        //$customerimgfile = $folderPath . $random_no . $fileName;
-        //file_put_contents($customerimgfile, $image_base64);
-        //$BookingData->customer_photo = $fileName;
-        //}else{
-          //$Insertedcustomer_photo = $BookingData->customer_photo;
-          //$BookingData->customer_photo = $Insertedcustomer_photo;
-        //}
+        if ($request->customer_photo != "") {
+        $customer_photo = $request->customer_photo;
+        $folderPath = "assets/customer_details/profile";
+        $image_parts = explode(";base64,", $customer_photo);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = $BookingData->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+        $customerimgfile = $folderPath . $random_no . $fileName;
+        file_put_contents($customerimgfile, $image_base64);
+        $BookingData->customer_photo = $customerimgfile;
+        }else{
+          $Insertedcustomer_photo = $BookingData->customer_photo;
+          $BookingData->customer_photo = $Insertedcustomer_photo;
+        }
 
         $BookingData->total = $request->get('total_calc_price');
         $BookingData->gst_per = $request->get('gst_percentage');
@@ -527,7 +527,6 @@ class BookingController extends Controller
                     $BookingRoom->room_price = $room_price;
                     $BookingRoom->room_cal_price = $room_cal_price;
 
-                    //dd($room_price);
                     $BookingRoom->save();
 
                     DB::table('rooms')->where('id', $new_room_id)

@@ -43,8 +43,6 @@ class CloseAccountController extends Controller
         $data->total = $total_amount;
         $data->save();
 
-
-
         $newdate = date("Y-m-d",strtotime ( '+1 day' , strtotime ( $request->get('date') ) )) ;
 
         $openaccount_data = new OpenAccount();

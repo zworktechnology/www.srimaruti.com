@@ -42,7 +42,7 @@
                             <input type="date"  class="form-control extended_date" id="extended_date{{$bookingDatas['id']}}" name="extended_date" placeholder="Enter here ">
                         </div>
                         <div class="col-sm-4">
-                            <input type="time" class="form-control" id="extended_time" name="extended_time" placeholder="Enter here " >
+                            <input type="time" class="form-control" id="extended_time" name="extended_time" placeholder="Enter here " value="{{ $timenow }}">
                         </div>
                 </div>
 
