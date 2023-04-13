@@ -52,6 +52,7 @@ class BookingController extends Controller
                 'branch' => $branch->name,
                 'chick_in_date' => $datas->check_in_date,
                 'chick_in_time' => $datas->check_in_time,
+                'whats_app_number' => $datas->whats_app_number,
                 'id' => $datas->id,
                 'room_list' => $room_list,
                 'chick_out_date' => $datas->check_out_date,
@@ -84,20 +85,20 @@ class BookingController extends Controller
 
     public function dailycheckout()
     {
-        
+
         $data = Booking::where('soft_delete', '!=', 1)->get();
 
         foreach ($data as $key => $datas) {
-            
+
             $today = Carbon::now()->format('Y-m-d');
 
-                
-            
-         
+
+
+
             $Extend_data = [];
             $checkout_data = [];
 
-            
+
 
                 $extendcheckout_date = Booking::where('soft_delete', '!=', 1)->where('extended_date', '=', $today)->get();
                 foreach ($extendcheckout_date as $key => $extend_checkout_date) {
@@ -126,7 +127,7 @@ class BookingController extends Controller
                             'room_cal_price' => $rooms_booked->room_cal_price,
                             'id' => $rooms_booked->id,
                             'room_id' => $rooms_booked->room_id,
-        
+
                         );
                     }
 
@@ -145,7 +146,8 @@ class BookingController extends Controller
                         'customer_name' => $Array_data->customer_name,
                         'branch' => $branch->name,
                         'chick_in_date' => $Array_data->check_in_date,
-                        'chick_in_time' => $Array_data->check_in_time,
+                        'chick_in_date' => $Array_data->check_in_date,
+                        'whats_app_number' => $Array_data->whats_app_number,
                         'id' => $Array_data->id,
                         'room_list' => $room_list,
                         'phone_number' => $Array_data->phone_number,
@@ -168,27 +170,13 @@ class BookingController extends Controller
                         'extended_time' => $Array_data->extended_time,
                     );
 
-
-
-
-
                 }
-                
+
                 $timenow = Carbon::now()->format('H:i');
 
                 return view('pages.backend.booking.dailycheckout', compact('bookingData', 'today', 'timenow'));
-           
-                
 
-            
-
-
-            
-
-
-            
         }
-
 
     }
 
@@ -382,9 +370,9 @@ class BookingController extends Controller
                 $BookingData->proofimage_one = $Insertedproof_image_one;
             }
 
-            
 
-            
+
+
 
         }else if($proof == 2){
 
@@ -437,7 +425,7 @@ class BookingController extends Controller
         $BookingData->additional_amount = $request->get('additional_charge');
         $BookingData->additional_notes = $request->get('additional_charge_notes');
         $BookingData->grand_total = $request->get('grand_total');
-        
+
         $BookingData->balance_amount = $request->get('balance_amount');
         $BookingData->update();
 
@@ -447,7 +435,7 @@ class BookingController extends Controller
         $total_paid = 0;
         foreach ($request->get('booking_payment_id') as $key => $booking_payment_id) {
 
-            
+
 
             $ids = $booking_payment_id;
             $bookingID = $booking_id;
@@ -457,7 +445,7 @@ class BookingController extends Controller
 
             $total_paid += $payable_amount;
 
-            
+
 
             DB::table('booking_payments')->where('id', $ids)
                     ->update([
@@ -467,7 +455,7 @@ class BookingController extends Controller
             $Booking_Data = Booking::findOrFail($id);
             $Booking_Data->total_paid = $total_paid;
             $Booking_Data->update();
-        
+
 
 
         // Booking Rooms
@@ -576,7 +564,7 @@ class BookingController extends Controller
         $data = Booking::findOrFail($id);
 
 
-        
+
         $data->out_date = $checkout_date;
         $data->out_time = $checkout_time;
         $status = 2;
@@ -588,7 +576,7 @@ class BookingController extends Controller
             DB::table('rooms')->where('id', $room_id)
             ->update(['booking_status' => 0]);
         }
-        
+
 
 
         return redirect()->route('booking.dailycheckout')->with('checkout', 'Successfully Updated');
@@ -600,7 +588,7 @@ class BookingController extends Controller
 
 
         $paid_date = Carbon::now()->format('Y-m-d');
-        
+
 
         $BookingPayment = new BookingPayment;
         $BookingPayment->booking_id = $id;
@@ -620,7 +608,7 @@ class BookingController extends Controller
             $data->balance_amount = $balance;
             $data->update();
 
-        
+
 
 
 
@@ -817,7 +805,7 @@ class BookingController extends Controller
             }
             $output .= '</ul>';
             echo $output;
-            
+
         }
     }
 
@@ -839,7 +827,7 @@ class BookingController extends Controller
         $data = Booking::findOrFail($id);
 
 
-        
+
         $data->extended_date = $request->get('extended_date');
         $data->extended_time = $request->get('extended_time');
         $data->days = $request->get('no_of_days');
@@ -860,7 +848,7 @@ class BookingController extends Controller
         $data->update();
 
 
-        
+
 
 
         if($request->get('balance_amount') > 0){

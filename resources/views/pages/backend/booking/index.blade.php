@@ -100,11 +100,13 @@
                                         <tr>
                                             <th style="width:10%;">Sl. No</th>
                                             <th style="width:10%;">Customer</th>
-
                                             <th style="width:20%;">Room Details</th>
-                                            <th style="width:20%;">Check In/Out Date</th>
-                                            <th style="width:10%;">Accounting</th>
-                                            <th style="width:10%;">Checkout</th>
+                                            <th style="width:20%;">Check In Date & Time</th>
+                                            <th style="width:20%;">Check Out Date & Time</th>
+                                            <th style="width:10%;">Total</th>
+                                            <th style="width:10%;">Paid</th>
+                                            <th style="width:10%;">Balance</th>
+                                            <th style="width:10%;">What's App</th>
                                             <th style="width:20%;">Action</th>
                                         </tr>
                                     </thead>
@@ -125,11 +127,11 @@
                                                     </td>
 
 
-                                                    <td>CheckIn -
-                                                        {{ date('d M Y', strtotime($bookingDatas['chick_in_date'])) }} - (
+                                                    <td>{{ date('d M Y', strtotime($bookingDatas['chick_in_date'])) }} - (
                                                         {{ date('h:i A', strtotime($bookingDatas['chick_in_time'])) }} )
-                                                        <br />
-                                                        CheckOut -
+                                                    </td>
+
+                                                    <td>
                                                         @if ($bookingDatas['chick_out_date'] != '')
                                                             {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}
                                                             - (
@@ -147,13 +149,29 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <span style="color:green;">Total :
-                                                            ₹{{ $bookingDatas['grand_total'] }}</span><br />
-                                                        <span style="color:#6f42c1;">Paid :
-                                                            ₹{{ $bookingDatas['total_paid'] }}</span><br />
-                                                        <span style="color:#e83e8c;">Balance :
-                                                            ₹{{ $bookingDatas['balance_amount'] }}</span><br />
+                                                        <span style="color:green;">
+                                                            ₹ {{ $bookingDatas['grand_total'] }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span style="color:#6f42c1;">
+                                                            ₹ {{ $bookingDatas['total_paid'] }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span style="color:#e83e8c;">
+                                                            ₹ {{ $bookingDatas['balance_amount'] }}</span><br />
 
+                                                    </td>
+                                                    <td>
+                                                        <ul class="list-unstyled hstack gap-1 mb-0">
+                                                            <li>
+                                                                <a target="_blank" href="https://api.whatsapp.com/send/?phone=91{{ $bookingDatas['whats_app_number'] }}&text=Hello+there%2C+how+are+you%3F&type=phone_number&app_absent=0"
+                                                                    class="btn btn-sm btn-soft-secondary">Booking</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}"
+                                                                    class="btn btn-sm btn-soft-info">Check Out</a>
+                                                            </li>
+                                                        </ul>
                                                     </td>
                                                     <td>
                                                         <ul class="list-unstyled hstack gap-1 mb-0">
@@ -180,9 +198,8 @@
                                                                             <div class="modal fade"
                                                                                 id="checkout{{ $bookingDatas['id'] }}"
                                                                                 data-bs-backdrop="static"
-                                                                                data-bs-keyboard="false"
-                                                                                aria-hidden="true" aria-labelledby="..."
-                                                                                tabindex="-1">
+                                                                                data-bs-keyboard="false" aria-hidden="true"
+                                                                                aria-labelledby="..." tabindex="-1">
                                                                                 @include('pages.backend.booking.checkout')
                                                                             </div>
                                                                         </li>
@@ -224,11 +241,7 @@
                                                                     </div>
                                                                 </li>
                                                             @endif
-                                                        </ul>
-                                                    </td>
 
-                                                    <td>
-                                                        <ul class="list-unstyled hstack gap-1 mb-0">
                                                             <li>
                                                                 <a href="{{ route('booking.view', ['id' => $bookingDatas['id']]) }}"
                                                                     class="btn btn-sm btn-soft-secondary">View</a>
@@ -243,24 +256,26 @@
                                                                     class="btn btn-sm btn-soft-danger"
                                                                     data-bs-target="#firstmodal{{ $bookingDatas['id'] }}">Delete</a>
                                                             </li>
-
-
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    @endif
-                                    @if ($bookingDatas['balance_amount'] != 0)
-                                    <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Pay Balance Amount</h5>
-                                                    <button type="button" class="paybalanceclose btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form autocomplete="off" method="POST" action="{{ route('booking.pay_balance', ['id' => $bookingDatas['id']]) }}">
-                                                        @method('PUT')
-                                                        @csrf
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                            @if ($bookingDatas['balance_amount'] != 0)
+                                                <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}"
+                                                    data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..."
+                                                    tabindex="-1">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Pay Balance Amount</h5>
+                                                                <button type="button" class="paybalanceclose btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form autocomplete="off" method="POST"
+                                                                    action="{{ route('booking.pay_balance', ['id' => $bookingDatas['id']]) }}">
+                                                                    @method('PUT')
+                                                                    @csrf
 
                                                                     <div class="row mb-4">
                                                                         <label for="horizontal-firstname-input"
@@ -404,7 +419,8 @@
                                                                         {{ $room_lists['room'] }} on branch
                                                                         {{ $bookingDatas['branch'] }}
                                                                     @endif
-                                                                @endforeach.</p>
+                                                                @endforeach.
+                                                            </p>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <form autocomplete="off" method="POST"
@@ -443,15 +459,15 @@
         });
 
 
-    $(document).on("keyup", 'input.payable_amount', function() {
-        var payable_amount = $(this).val();
-        var balance_amount = $(".balance_amount").val();
+        $(document).on("keyup", 'input.payable_amount', function() {
+            var payable_amount = $(this).val();
+            var balance_amount = $(".balance_amount").val();
 
-        if(Number(payable_amount) > Number(balance_amount)){
-            alert('You are entering Maximum Amount of Balance');
-            $(".payable_amount").val('');
-        }
-    });
+            if (Number(payable_amount) > Number(balance_amount)) {
+                alert('You are entering Maximum Amount of Balance');
+                $(".payable_amount").val('');
+            }
+        });
 
 
         // Calculate Days
