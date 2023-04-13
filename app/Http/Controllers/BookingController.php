@@ -44,8 +44,13 @@ class BookingController extends Controller
                     'booking_id' => $datas->id,
                     'term' => $payment_datas->term,
                     'payable_amount' => $payment_datas->payable_amount,
+                    'id' => $payment_datas->id,
+                    'payment_method' => $payment_datas->payment_method,
                 );
             }
+
+
+            
 
             $bookingData[] = array(
                 'customer_name' => $datas->customer_name,
@@ -55,6 +60,7 @@ class BookingController extends Controller
                 'id' => $datas->id,
                 'room_list' => $room_list,
                 'chick_out_date' => $datas->check_out_date,
+                'out_date' => $datas->out_date,
                 'chick_out_time' => $datas->check_out_time,
                 'phone_number' => $datas->phone_number,
                 'grand_total' => $datas->grand_total,
@@ -85,34 +91,17 @@ class BookingController extends Controller
     public function dailycheckout()
     {
         
-        $data = Booking::where('soft_delete', '!=', 1)->get();
-
-        foreach ($data as $key => $datas) {
+    
             
             $today = Carbon::now()->format('Y-m-d');
 
+                $checkout_data_arr = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '=', $today)->get();
                 
-            
-         
-            $Extend_data = [];
-            $checkout_data = [];
 
-            
-
-                $extendcheckout_date = Booking::where('soft_delete', '!=', 1)->where('extended_date', '=', $today)->get();
-                foreach ($extendcheckout_date as $key => $extend_checkout_date) {
-                    $Extend_data[] = $extend_checkout_date;
-                }
-                $checkout_date = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '=', $today)->get();
-                foreach ($checkout_date as $key => $checkout_date_arr) {
-                    $checkout_data[] = $checkout_date_arr;
-                }
-
-                $Array = array_merge($Extend_data , $checkout_data);
                 $bookingData = [];
                 $room_list = [];
                 $terms = [];
-                foreach ($Array as $key => $Array_data) {
+                foreach ($checkout_data_arr as $key => $Array_data) {
 
                     $branch = Branch::findOrFail($Array_data->branch_id);
 
@@ -163,6 +152,7 @@ class BookingController extends Controller
                         'terms' => $terms,
                         'status' => $Array_data->status,
                         'chick_out_date' => $Array_data->check_out_date,
+                        'out_date' => $Array_data->out_date,
                         'chick_out_time' => $Array_data->check_out_time,
                         'extended_date' => $Array_data->extended_date,
                         'extended_time' => $Array_data->extended_time,
@@ -179,17 +169,6 @@ class BookingController extends Controller
                 return view('pages.backend.booking.dailycheckout', compact('bookingData', 'today', 'timenow'));
            
                 
-
-            
-
-
-            
-
-
-            
-        }
-
-
     }
 
     public function create()
@@ -262,16 +241,16 @@ class BookingController extends Controller
 
         }
 
-        $customer_photo = $request->customer_photo;
-        $folderPath = "assets/customer_details/profile";
-        $image_parts = explode(";base64,", $customer_photo);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
-        $image_base64 = base64_decode($image_parts[1]);
-        $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-        $customerimgfile = $folderPath . $fileName;
-        file_put_contents($customerimgfile, $image_base64);
-        $data->customer_photo = $customerimgfile;
+       // $customer_photo = $request->customer_photo;
+       // $folderPath = "assets/customer_details/profile";
+       // $image_parts = explode(";base64,", $customer_photo);
+       // $image_type_aux = explode("image/", $image_parts[0]);
+       // $image_type = $image_type_aux[1];
+       // $image_base64 = base64_decode($image_parts[1]);
+       // $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+       // $customerimgfile = $folderPath . $fileName;
+       // file_put_contents($customerimgfile, $image_base64);
+       // $data->customer_photo = $customerimgfile;
 
         $data->total = $request->get('total_calc_price');
         $data->gst_per = $request->get('gst_percentage');
@@ -284,6 +263,8 @@ class BookingController extends Controller
         $data->grand_total = $request->get('grand_total');
         $data->total_paid = $request->get('payable_amount');
         $data->balance_amount = $request->get('balance_amount');
+        $data->out_date = $request->get('check_out_date');
+        $data->out_time = $request->get('check_out_time');
 
 
         $status = 1;
@@ -439,6 +420,8 @@ class BookingController extends Controller
         $BookingData->grand_total = $request->get('grand_total');
         
         $BookingData->balance_amount = $request->get('balance_amount');
+        $BookingData->out_date = $request->get('check_out_date');
+        $BookingData->out_time = $request->get('check_out_time');
         $BookingData->update();
 
         $booking_id = $id;
@@ -569,16 +552,13 @@ class BookingController extends Controller
 
     public function checkout(Request $request, $id)
     {
-        $checkout_date = Carbon::now()->format('Y-m-d');
-        $checkout_time = Carbon::now()->format('H:i');
+        
 
 
         $data = Booking::findOrFail($id);
 
 
-        
-        $data->out_date = $checkout_date;
-        $data->out_time = $checkout_time;
+        $data->check_out_time = $request->get('checkout_time');
         $status = 2;
         $data->status = $status;
         $data->update();
@@ -591,7 +571,7 @@ class BookingController extends Controller
         
 
 
-        return redirect()->route('booking.dailycheckout')->with('checkout', 'Successfully Updated');
+        return redirect()->route('booking.index')->with('checkout', 'Successfully Updated');
     }
 
 
@@ -702,6 +682,7 @@ class BookingController extends Controller
                             'chick_in_time' => $checkout_Datas->check_in_time,
                             'id' => $checkout_Datas->id,
                             'chick_out_date' => $checkout_Datas->check_out_date,
+                            'out_date' => $checkout_Datas->out_date,
                             'chick_out_time' => $checkout_Datas->check_out_time,
                             'phone_number' => $checkout_Datas->phone_number,
                             'grand_total' => $checkout_Datas->grand_total,
@@ -769,6 +750,7 @@ class BookingController extends Controller
                         'chick_in_time' => $checkin_Datas->check_in_time,
                         'id' => $checkin_Datas->id,
                         'chick_out_date' => $checkin_Datas->check_out_date,
+                        'out_date' => $checkin_Datas->out_date,
                         'chick_out_time' => $checkin_Datas->check_out_time,
                         'phone_number' => $checkin_Datas->phone_number,
                         'grand_total' => $checkin_Datas->grand_total,
@@ -832,8 +814,7 @@ class BookingController extends Controller
 
     public function extend(Request $request, $id)
     {
-        $checkout_date = Carbon::now()->format('Y-m-d');
-        $checkout_time = Carbon::now()->format('H:i');
+        
 
 
         $data = Booking::findOrFail($id);
@@ -841,7 +822,9 @@ class BookingController extends Controller
 
         
         $data->extended_date = $request->get('extended_date');
+        $data->check_out_date = $request->get('extended_date');
         $data->extended_time = $request->get('extended_time');
+        $data->check_out_time = $request->get('extended_time');
         $data->days = $request->get('no_of_days');
         $data->total = $request->get('total_calc_price');
         $data->gst_amount = $request->get('gst_amount');
@@ -853,14 +836,12 @@ class BookingController extends Controller
         $data->grand_total = $request->get('grand_total');
         $data->total_paid = $request->get('payable_amount');
         $data->balance_amount = $request->get('balance_amount');
-        $data->out_date = $checkout_date;
-        $data->out_time = $checkout_time;
         $status = 1;
         $data->status = $status;
         $data->update();
 
 
-        
+        $paiddate = Carbon::now()->format('Y-m-d');
 
 
         if($request->get('balance_amount') > 0){
@@ -869,7 +850,7 @@ class BookingController extends Controller
             $BookingPayment->booking_id = $request->get('booking_id');
             $BookingPayment->term = $request->get('payment_term');
             $BookingPayment->payable_amount = $request->get('balance_amount');
-            $BookingPayment->paid_date = $checkout_date;
+            $BookingPayment->paid_date = $paiddate;
             $BookingPayment->payment_method = $request->get('payment_method');
             $BookingPayment->save();
 

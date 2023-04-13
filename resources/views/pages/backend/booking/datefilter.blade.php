@@ -113,12 +113,22 @@
                                             
                                            
                                            
-                                            CheckOut - 
-                                            @if ($bookingDatas['extended_date'] != "")
-                                            {{ date('d M Y', strtotime($bookingDatas['extended_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['extended_date'])) }} )
-                                            @elseif ($bookingDatas['extended_date'] == "")
-                                            {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ( {{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }} )
-                                            @endif
+                                            CheckOut -
+                                                        @if ($bookingDatas['out_date'] != '')
+                                                            {{ date('d M Y', strtotime($bookingDatas['out_date'])) }}
+                                                            - (
+                                                            {{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }}
+                                                            )
+                                                        @endif
+                                                        <br />
+                                                        @if ($bookingDatas['extended_date'] != '')
+                                                            Extended Date -
+
+                                                            {{ date('d M Y', strtotime($bookingDatas['extended_date'])) }}
+                                                            - (
+                                                            {{ date('h:i A', strtotime($bookingDatas['extended_time'])) }}
+                                                            )
+                                                        @endif
                                         </td>
                                         <td>
                                         <span style="color:green;">Total : ₹{{ $bookingDatas['grand_total'] }}</span><br/>

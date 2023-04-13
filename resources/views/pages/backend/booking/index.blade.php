@@ -130,19 +130,19 @@
                                                         {{ date('h:i A', strtotime($bookingDatas['chick_in_time'])) }} )
                                                         <br />
                                                         CheckOut -
-                                                        @if ($bookingDatas['chick_out_date'] != '')
-                                                            {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}
+                                                        @if ($bookingDatas['out_date'] != '')
+                                                            {{ date('d M Y', strtotime($bookingDatas['out_date'])) }}
                                                             - (
                                                             {{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }}
                                                             )
                                                         @endif
                                                         <br />
                                                         @if ($bookingDatas['extended_date'] != '')
-                                                            Exteded Date -
+                                                            Extended Date -
 
                                                             {{ date('d M Y', strtotime($bookingDatas['extended_date'])) }}
                                                             - (
-                                                            {{ date('h:i A', strtotime($bookingDatas['extended_date'])) }}
+                                                            {{ date('h:i A', strtotime($bookingDatas['extended_time'])) }}
                                                             )
                                                         @endif
                                                     </td>
@@ -169,25 +169,7 @@
 
 
                                                             @if ($bookingDatas['balance_amount'] == 0)
-                                                                @if ($bookingDatas['extended_date'] != '')
-                                                                    @if ($bookingDatas['extended_date'] == $today)
-                                                                        <li>
-                                                                            <a href="#checkout{{ $bookingDatas['id'] }}"
-                                                                                data-bs-toggle="modal"
-                                                                                data-id="{{ $bookingDatas['id'] }}"
-                                                                                class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
-                                                                                data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
-                                                                            <div class="modal fade"
-                                                                                id="checkout{{ $bookingDatas['id'] }}"
-                                                                                data-bs-backdrop="static"
-                                                                                data-bs-keyboard="false"
-                                                                                aria-hidden="true" aria-labelledby="..."
-                                                                                tabindex="-1">
-                                                                                @include('pages.backend.booking.checkout')
-                                                                            </div>
-                                                                        </li>
-                                                                    @endif
-                                                                @else
+                                                                
                                                                     @if ($bookingDatas['chick_out_date'] == $today)
                                                                         <li>
                                                                             <a href="#checkout{{ $bookingDatas['id'] }}"
@@ -204,7 +186,6 @@
                                                                                 @include('pages.backend.booking.checkout')
                                                                             </div>
                                                                         </li>
-                                                                    @endif
                                                                 @endif
                                                             @endif
 
@@ -293,9 +274,50 @@
                                                                                 value="{{ $bookingDatas['grand_total'] }}" />
                                                                         </div>
                                                                     </div>
+                                                                    
+
+                                                    <div class="row mb-4">
+                                                        <label for="horizontal-firstname-input"
+                                                            class="col-sm-4 col-form-label">
+                                                            Paid Amounts </label>
+                                                        <div class="col-sm-8 row">
+                                                           
+                                                                
+                                                                @foreach ($bookingDatas['terms'] as $index => $term_arr)
+                                                                    @if ($term_arr['booking_id'] == $bookingDatas['id'])
+                                                                    
+
+                                                                    
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text"
+                                                                                class="form-control term"
+                                                                                id="term" disabled
+                                                                                value="{{ $term_arr['term'] }}">
+                                                                        </span>
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text"
+                                                                                class="form-control payable_amount"
+                                                                                id="payable_amount" disabled
+                                                                                value="{{ $term_arr['payable_amount'] }}">
+                                                                        </span>
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text" disabled
+                                                                                class="form-control paymentmethod"
+                                                                                id="paymentmethod"
+                                                                                value="{{ $term_arr['payment_method'] }}">
+                                                                        </span>
+                                                                    
+                                                                    @endif
+                                                                @endforeach
+
+                                                            
+                                                        </div>
+                                                    </div>
+
+
                                                                     <div class="row mb-4">
                                                                         <label for="horizontal-firstname-input"
-                                                                            class="col-sm-4 col-form-label">Paid Amount
+                                                                            class="col-sm-4 col-form-label">Total Paid
                                                                         </label>
                                                                         <div class="col-sm-8">
                                                                             <input type="text"
@@ -320,6 +342,10 @@
                                                                                 placeholder="Enter here ">
                                                                         </div>
                                                                     </div>
+
+
+
+
                                                                     <div class="row mb-4">
                                                                         <label for="horizontal-firstname-input"
                                                                             class="col-sm-4 col-form-label">Term <span
