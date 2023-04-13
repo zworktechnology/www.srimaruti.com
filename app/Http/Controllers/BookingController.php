@@ -96,18 +96,10 @@ class BookingController extends Controller
 
         foreach ($data as $key => $datas) {
 
-
-
-
             $today = Carbon::now()->format('Y-m-d');
-
-
-
 
             $Extend_data = [];
             $checkout_data = [];
-
-
 
                 $extendcheckout_date = Booking::where('soft_delete', '!=', 1)->where('extended_date', '=', $today)->get();
                 foreach ($extendcheckout_date as $key => $extend_checkout_date) {
@@ -120,7 +112,6 @@ class BookingController extends Controller
 
                 $Array = array_merge($Extend_data , $checkout_data);
                 $checkout_data_arr = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '=', $today)->get();
-
 
                 $bookingData = [];
                 $room_list = [];
@@ -143,7 +134,6 @@ class BookingController extends Controller
                         );
                     }
 
-
                     $payment_data = BookingPayment::where('booking_id', '=', $Array_data->id)->get();
                     foreach ($payment_data as $key => $payment_datas) {
                         $terms[] = array(
@@ -152,7 +142,6 @@ class BookingController extends Controller
                             'payable_amount' => $payment_datas->payable_amount,
                         );
                     }
-
 
                     $bookingData[] = array(
                         'customer_name' => $Array_data->customer_name,
@@ -572,19 +561,16 @@ class BookingController extends Controller
 
     public function checkout(Request $request, $id)
     {
-
-
-
         $data = Booking::findOrFail($id);
 
+        $today = Carbon::now()->format('Y-m-d');
+        $timenow = Carbon::now()->format('H:i');
 
-
-        $data->out_date = $checkout_date;
-        $data->out_time = $checkout_time;
+        $data->out_date = $today;
+        $data->out_time = $timenow;
         $status = 2;
         $data->status = $status;
         $data->update();
-
 
         foreach ($request->get('room_id') as $key => $room_id) {
             DB::table('rooms')->where('id', $room_id)
