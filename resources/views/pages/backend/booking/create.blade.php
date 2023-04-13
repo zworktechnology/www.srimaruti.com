@@ -212,7 +212,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row mb-4" style="display:none" id="proof_photo">
+                                        <div class="row mb-4" id="proof_photo">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Photo <span style="color: red;">*</span> </label>
                                             <div class="col-sm-7">
@@ -266,15 +266,15 @@
                                                                 <input type="text" class="form-control discount_percentage" name="discount_percentage" value="0" placeholder="Discount % - Enter here " required>
                                                             </div>
                                                         </div>
-                                                        <div class="row mb-4">
+                                                        <div class="row mb-4" hidden>
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                                CC Charge <span style="color: red;">*</span> </label>
+                                                                Additional Charge <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-9">
                                                                 <input type="text" class="form-control additional_charge" name="additional_charge" value="0" placeholder="Additional Amount - Enter here " required>
                                                             </div>
-                                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label" hidden>
+                                                            <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                                 Note <span style="color: red;">*</span> </label>
-                                                            <div class="col-sm-4" hidden>
+                                                            <div class="col-sm-4">
                                                                 <input type="text" class="form-control additional_charge_notes" name="additional_charge_notes" placeholder="Note - Enter here " required value="CC">
                                                             </div>
                                                         </div>

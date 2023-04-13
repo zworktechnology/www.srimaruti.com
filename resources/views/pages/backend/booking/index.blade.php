@@ -111,7 +111,7 @@
                                                 <tr>
                                                     <td>{{ ++$keydata }}</td>
                                                     <td href="#basic{{ $bookingDatas['id'] }}" data-bs-toggle="modal"
-                                                        data-bs-target="#basic{{ $bookingDatas['id'] }}">
+                                                        data-bs-target="#basic{{ $bookingDatas['id'] }}" class="pointer">
                                                         {{ $bookingDatas['customer_name'] }}</td>
                                                     <td>
                                                         @foreach ($bookingDatas['room_list'] as $index => $room_lists)
