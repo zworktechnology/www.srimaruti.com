@@ -97,6 +97,8 @@ class BookingController extends Controller
             $Extend_data = [];
             $checkout_data = [];
 
+            
+
                 $extendcheckout_date = Booking::where('soft_delete', '!=', 1)->where('extended_date', '=', $today)->get();
                 foreach ($extendcheckout_date as $key => $extend_checkout_date) {
                     $Extend_data[] = $extend_checkout_date;
@@ -260,16 +262,16 @@ class BookingController extends Controller
 
         }
 
-        $customer_photo = $request->customer_photo;
-        $folderPath = "assets/customer_details/profile";
-        $image_parts = explode(";base64,", $customer_photo);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
-        $image_base64 = base64_decode($image_parts[1]);
-        $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-        $customerimgfile = $folderPath . $fileName;
-        file_put_contents($customerimgfile, $image_base64);
-        $data->customer_photo = $fileName;
+        //$customer_photo = $request->customer_photo;
+        //$folderPath = "assets/customer_details/profile";
+        //$image_parts = explode(";base64,", $customer_photo);
+        //$image_type_aux = explode("image/", $image_parts[0]);
+        //$image_type = $image_type_aux[1];
+        //$image_base64 = base64_decode($image_parts[1]);
+        //$fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+        //$customerimgfile = $folderPath . $fileName;
+        //file_put_contents($customerimgfile, $image_base64);
+        //$data->customer_photo = $fileName;
 
         $data->total = $request->get('total_calc_price');
         $data->gst_per = $request->get('gst_percentage');
@@ -411,21 +413,21 @@ class BookingController extends Controller
 
         }
 
-        if ($request->customer_photo != "") {
-        $customer_photo = $request->customer_photo;
-        $folderPath = "assets/webcam";
-        $image_parts = explode(";base64,", $customer_photo);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
-        $image_base64 = base64_decode($image_parts[1]);
-        $fileName = $BookingData->customer_name . '.png';
-        $customerimgfile = $folderPath . $random_no . $fileName;
-        file_put_contents($customerimgfile, $image_base64);
-        $BookingData->customer_photo = $fileName;
-        }else{
-          $Insertedcustomer_photo = $BookingData->customer_photo;
-          $BookingData->customer_photo = $Insertedcustomer_photo;
-        }
+        //if ($request->customer_photo != "") {
+        //$customer_photo = $request->customer_photo;
+        //$folderPath = "assets/webcam";
+        //$image_parts = explode(";base64,", $customer_photo);
+        //$image_type_aux = explode("image/", $image_parts[0]);
+        //$image_type = $image_type_aux[1];
+        //$image_base64 = base64_decode($image_parts[1]);
+        //$fileName = $BookingData->customer_name . '.png';
+        //$customerimgfile = $folderPath . $random_no . $fileName;
+        //file_put_contents($customerimgfile, $image_base64);
+        //$BookingData->customer_photo = $fileName;
+        //}else{
+          //$Insertedcustomer_photo = $BookingData->customer_photo;
+          //$BookingData->customer_photo = $Insertedcustomer_photo;
+        //}
 
         $BookingData->total = $request->get('total_calc_price');
         $BookingData->gst_per = $request->get('gst_percentage');
@@ -502,9 +504,11 @@ class BookingController extends Controller
                 $ids = $room_auto_id;
                 $bookingID = $booking_id;
                 $room_id = $request->room_id[$key];
+                $room_price = $request->room_price[$key];
+                $room_cal_price = $request->room_cal_price[$key];
                 DB::table('booking_rooms')->where('id', $ids)
                         ->update([
-                            'booking_id' => $bookingID,  'room_id' => $room_id
+                            'booking_id' => $bookingID,  'room_id' => $room_id,  'room_price' => $room_price,  'room_cal_price' => $room_cal_price
                         ]);
             } else if ($room_auto_id == '') {
                 if ($request->room_id[$key] > 0) {

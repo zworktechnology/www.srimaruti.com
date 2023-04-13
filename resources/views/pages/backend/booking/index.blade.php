@@ -201,7 +201,7 @@
                                     </tr>
                                     @endif
                                     @if ($bookingDatas['balance_amount'] != 0)
-                                    <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+                                    <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..." tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -332,6 +332,16 @@
         window.location.reload();
     });
 
+
+    $(document).on("keyup", 'input.payable_amount', function() {
+        var payable_amount = $(this).val();
+        var balance_amount = $(".balance_amount").val();
+
+        if(Number(payable_amount) > Number(balance_amount)){
+            alert('You are entering Maximum Amount of Balance');
+            $(".payable_amount").val('');
+        }
+    });
 
 
     // Calculate Days

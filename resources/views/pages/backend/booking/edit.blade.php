@@ -1,6 +1,13 @@
 @extends('layouts.auth')
 
 @section('content')
+<style>
+
+        .not-allowed {
+            cursor: not-allowed;
+        }
+
+</style> 
 <div class="main-content">
     <div class="page-content">
         <div class="container-fluid">
@@ -89,7 +96,7 @@
                                                 <input type="time" class="form-control" name="check_in_time" placeholder="Enter here " value="{{ $data->check_in_time }}" required>
                                             </div>
                                         </div>
-                                        <div class="row mb-4" hidden>
+                                        <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Check Out Date </label>
                                             <div class="col-sm-4">
@@ -135,6 +142,7 @@
                                                                 <table class="table-fixed col-12 " id=""><button style="width: 100px;" class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add</button>
                                                                     <tbody>
                                                                     @foreach ($BookingRooms as $index => $BookingRoomss)
+                                                                         
                                                                         <tr>
                                                                             <td class="col-6 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
                                                                                 <input type="hidden" id="room_auto_id" name="room_auto_id[]" value="{{ $BookingRoomss->id }}"/>
@@ -142,13 +150,88 @@
 
                                                                                         @foreach ($room as $rooms)
                                                                                         @if ($rooms['id'] == $BookingRoomss['room_id'])
-                                                                                        <input type="text" class="form-control customer_booked_room" disabled name="customer_booked_room[]" placeholder="" value="Room No{{ $rooms->room_number }} - Floor {{ $rooms->room_floor }} - {{ $rooms->room_type }}">
+                                                    <script>
+                                                        var booking_id = {{ $data->id }};
+
+                                                        $(document).on("keyup", '#room_price' + {{ $data->id }}{{ $index }}, function() {
+
+                                                        var price = $(this).val();
+                                                        var days = $(".days").val();
+                                                        var Amount = days * price;
+                                                        $('#room_cal_price' + {{ $data->id }}{{ $index }}).val(Amount);
+
+
+                                                        var totalAmount = 0;
+                                                        var days = $(".days").val();
+
+                                                        $("input[name='room_cal_price[]']").each(function() {
+                                                            //alert($(this).val());
+                                                            totalAmount = Number(totalAmount) + Number($(this).val());
+                                                            $('.total_calc_price').val(totalAmount);
+                                                        });
+
+                                                        var additional_charge = $(".additional_charge").val();
+                                                        var total_calc_price = $(".total_calc_price").val();
+
+
+                                                        var discount_percentage = $(".discount_percentage").val();
+                                                        var discount_in_amount = (discount_percentage / 100) * total_calc_price;
+                                                        $('.discount_amount').val(discount_in_amount.toFixed(2));
+
+                                                        var gst_percentage = $(".gst_percentage").val();
+                                                        var gst_in_amount = (gst_percentage / 100) * total_calc_price;
+                                                        $('.gst_amount').val(gst_in_amount.toFixed(2));
+
+                                                        var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
+                                                        $('.grand_total').val(grand_total.toFixed(2));
+                                                        var payable_amount = $(".total_paid").val();
+                                                        var balance = Number(grand_total) - Number(payable_amount);
+                                                        $('.balance_amount').val(balance.toFixed(2));
+
+                                                        });
+
+
+
+                                                        $(document).on("keyup", 'input.days', function() {
+                                                            var days = $(this).val();
+                                                            var room_price = $('#room_price' + {{ $data->id }}{{ $index }}).val(); 
+                                                            var total = room_price * days;
+                                                            $('#room_cal_price' + {{ $data->id }}{{ $index }}).val(total);
+
+                                                            var totalAmount = 0;
+                                                                $("input[name='room_cal_price[]']").each(function() {
+                                                                    //alert($(this).val());
+                                                                    totalAmount = Number(totalAmount) + Number($(this).val());
+                                                                    $('.total_calc_price').val(totalAmount);
+                                                                });
+
+                                                                var additional_charge = $(".additional_charge").val();
+                                                                var total_calc_price = $(".total_calc_price").val();
+
+                                                                var discount_percentage = $(".discount_percentage").val();
+                                                                var discount_in_amount = (discount_percentage / 100) * total_calc_price;
+                                                                $('.discount_amount').val(discount_in_amount.toFixed(2));
+
+                                                                var gst_percentage = $(".gst_percentage").val();
+                                                                var gst_in_amount = (gst_percentage / 100) * total_calc_price;
+                                                                $('.gst_amount').val(gst_in_amount.toFixed(2));
+
+                                                                var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
+                                                                $('.grand_total').val(grand_total.toFixed(2));
+                                                                var payable_amount = $(".payable_amount").val();
+                                                                var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                                                                $('.balance_amount').val(balance.toFixed(2)); 
+                                                        });
+                                                    </script>   
+
+
+                                                                                        <input type="text" class="form-control not-allowed customer_booked_room" disabled name="customer_booked_room[]" placeholder="" value="Room No{{ $rooms->room_number }} - Floor {{ $rooms->room_floor }} - {{ $rooms->room_type }}">
                                                                                         <input type="hidden" id="room_id" name="room_id[]" value="{{ $rooms->id }}"/>
                                                                                         @endif
                                                                                         @endforeach
                                                                                 </select></td>
-                                                                            <td class="col-3"><input type="text" class="form-control" id="room_price"  name="room_price[]" placeholder="Price Per Day" value="{{ $BookingRoomss->room_price }}" /></td>
-                                                                            <td class="col-3"><input type="text" class="form-control room_cal_price"  id="room_cal_price" name="room_cal_price[]" placeholder="Price" value="{{ $BookingRoomss->room_cal_price }}" /></td>
+                                                                            <td class="col-3"><input type="text" class="form-control" id="room_price{{ $data->id }}{{$index}}"   name="room_price[]" placeholder="Price Per Day" value="{{ $BookingRoomss->room_price }}" /></td>
+                                                                            <td class="col-3"><input type="text" class="form-control  room_cal_price"  id="room_cal_price{{ $data->id }}{{$index}}" name="room_cal_price[]" placeholder="Price" value="{{ $BookingRoomss->room_cal_price }}" /></td>
                                                                             <td class="col-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button>
                                                                             </td>
                                                                         </tr>
@@ -351,6 +434,19 @@
                                                                         <th>Payment Method</th>
                                                                     </tr>
                                                                     @foreach ($paymentdata as $index => $paymentdatas)
+
+                                                        <script>
+                                                            $(document).on("keyup", '#payable_amount' + {{$paymentdatas->id}}, function() {
+                                                                var payableamount = $(this).val();
+                                                                var totalAmount = 0;
+                                                                $("input[name='payable_amount[]']").each(function() {
+                                                                //alert($(this).val());
+                                                                    totalAmount = Number(totalAmount) + Number($(this).val());
+                                                                    $('.total_paid').val(totalAmount);
+                                                                });
+                                                            });
+                                                        </script>
+
                                                                     <tr>
                                                                         <td class="col-sm-3">
                                                                             <select class="form-control" name="payment_term[]">
@@ -361,7 +457,7 @@
                                                                             </select>
                                                                         </td>
                                                                         <td class="col-sm-3">
-                                                                            <input type="text" class="form-control payable_amount"  value="{{ $paymentdatas->payable_amount }}"
+                                                                            <input type="text" class="form-control payable_amount" id="payable_amount{{$paymentdatas->id}}"  value="{{ $paymentdatas->payable_amount }}"
                                                                              name="payable_amount[]"  placeholder="Enter here ">
                                                                             <input type="hidden" class="form-control booking_payment_id"  value="{{ $paymentdatas->id }}" 
                                                                             name="booking_payment_id[]"  placeholder="Enter here ">
@@ -383,7 +479,15 @@
 
                                                         </div>
 
-                                                        
+                                                        <div data-repeater-item class="inner mb-3 row">
+                                                            <div class="col-md-3 col-8">
+                                                                <label for="horizontal-firstname-input" class="col-form-label">
+                                                                    Total Paid </label>
+                                                            </div>
+                                                            <div class="col-md-9 col-3">
+                                                                <input type="text" class="form-control total_paid"  style="background-color:#1dc72ead" value=""  name="total_paid"  placeholder="Enter here ">
+                                                            </div>
+                                                        </div>
                                                        
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-md-3 col-8">
@@ -391,7 +495,7 @@
                                                                     Balance Amount </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control balance_amount" style="background-color:#c7c21dad" value="{{ $data->balance_amount }}"  name="balance_amount"  placeholder="Enter here ">
+                                                                <input type="text" class="form-control balance_amount" style="background-color:#e53737ad" value="{{ $data->balance_amount }}"  name="balance_amount"  placeholder="Enter here ">
                                                             </div>
                                                         </div>
                                                         
@@ -421,7 +525,7 @@
     </div>
 </div>
 
-<script language="JavaScript">
+<script>
 $proofs = {{ $data->proofs}}
     if($proofs == 1){
         $("#singleproof").show();
@@ -581,7 +685,7 @@ $proofs = {{ $data->proofs}}
 
                                 var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
                                 $('.grand_total').val(grand_total.toFixed(2));
-                                var payable_amount = $(".payable_amount").val();
+                                var payable_amount = $(".total_paid").val();
                                 var balance = Number(grand_total) - Number(payable_amount);
                                 $('.balance_amount').val(balance.toFixed(2));
 
@@ -637,6 +741,21 @@ $proofs = {{ $data->proofs}}
 
 
                 });
+
+
+                                var totalAmount = 0;
+                                
+
+                                $("input[name='payable_amount[]']").each(function() {
+                                    //alert($(this).val());
+                                    totalAmount = Number(totalAmount) + Number($(this).val());
+                                    $('.total_paid').val(totalAmount);
+                                });
+
+
+                                
+
+                               
 
 
     });
@@ -742,7 +861,7 @@ $proofs = {{ $data->proofs}}
 
                                     var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
                                     $('.grand_total').val(grand_total.toFixed(2));
-                                    var payable_amount = $(".payable_amount").val();
+                                    var payable_amount = $(".total_paid").val();
                                     var balance = Number(grand_total) - Number(payable_amount);
                                     $('.balance_amount').val(balance.toFixed(2));
                                 });
@@ -788,9 +907,48 @@ $proofs = {{ $data->proofs}}
 
                     var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
                     $('.grand_total').val(grand_total.toFixed(2));
-                    var payable_amount = $(".payable_amount").val();
+                    var payable_amount = $(".total_paid").val();
                     var balance = Number(grand_total) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
+    });
+
+
+
+
+    $(document).on("keyup", 'input.days', function() {
+        var days = $(this).val();
+     
+              for (var i = 0; i < 100; i++) {
+                var room_price = $('#room_price' + i).val(); 
+
+                var total = room_price * days;
+                console.log(total);
+                $('#room_cal_price' + i).val(total);
+              }
+
+              var totalAmount = 0;
+                $("input[name='room_cal_price[]']").each(function() {
+                    //alert($(this).val());
+                totalAmount = Number(totalAmount) + Number($(this).val());
+                $('.total_calc_price').val(totalAmount);
+                });
+
+                var additional_charge = $(".additional_charge").val();
+                var total_calc_price = $(".total_calc_price").val();
+
+                var discount_percentage = $(".discount_percentage").val();
+                var discount_in_amount = (discount_percentage / 100) * total_calc_price;
+                $('.discount_amount').val(discount_in_amount.toFixed(2));
+
+                var gst_percentage = $(".gst_percentage").val();
+                var gst_in_amount = (gst_percentage / 100) * total_calc_price;
+                $('.gst_amount').val(gst_in_amount.toFixed(2));
+
+                var grand_total = (Number(total_calc_price) + Number(gst_in_amount) + Number(additional_charge)) - Number(discount_in_amount);
+                $('.grand_total').val(grand_total.toFixed(2));
+                var payable_amount = $(".total_paid").val();
+                var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
+                $('.balance_amount').val(balance.toFixed(2)); 
     });
 
 
@@ -809,7 +967,7 @@ $proofs = {{ $data->proofs}}
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total.toFixed(2));
-                    var payable_amount = $(".payable_amount").val();
+                    var payable_amount = $(".total_paid").val();
                     var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
     });
@@ -827,7 +985,7 @@ $proofs = {{ $data->proofs}}
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total.toFixed(2));
-                    var payable_amount = $(".payable_amount").val();
+                    var payable_amount = $(".total_paid").val();
                     var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
     });
@@ -849,7 +1007,7 @@ $proofs = {{ $data->proofs}}
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total.toFixed(2));
-                    var payable_amount = $(".payable_amount").val();
+                    var payable_amount = $(".total_paid").val();
                     var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
     });
@@ -868,7 +1026,7 @@ $proofs = {{ $data->proofs}}
 
                     var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
                     $('.grand_total').val(grand_total.toFixed(2));
-                    var payable_amount = $(".payable_amount").val();
+                    var payable_amount = $(".total_paid").val();
                     var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
     });
@@ -885,7 +1043,7 @@ $proofs = {{ $data->proofs}}
 
         var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
         $('.grand_total').val(grand_total.toFixed(2));
-        var payable_amount = $(".payable_amount").val();
+        var payable_amount = $(".total_paid").val();
         var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
         $('.balance_amount').val(balance.toFixed(2));
 
