@@ -34,9 +34,9 @@
                                                 Contact Number <span style="color: red;">*</span> </label>
                                             <div class="col-sm-4">
                                                 <input type="number" class="form-control phone_number"   name="phone_number" id="phone_number" placeholder="Enter here ">
-                                                <div class="phonenumber_list" style="display:none"></div>  
+                                                <div class="phonenumber_list" style="display:none"></div>
                                                 <div class="form-check mt-2">
-                                                    <input type="checkbox" class="form-check-input whatsapp_check" id="formrow-customCheck" required>
+                                                    <input type="checkbox" class="form-check-input whatsapp_check" id="formrow-customCheck">
                                                     <label class="form-check-label" for="formrow-customCheck">Same as Whatsapp number</label>
                                                 </div>
                                             </div>
@@ -90,7 +90,7 @@
                                                 <input type="time" class="form-control" name="check_in_time" placeholder="Enter here " value="{{ $timenow }}" required>
                                             </div>
                                         </div>
-                                        <div class="row mb-4" >
+                                        <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Check Out Date </label>
                                             <div class="col-sm-4">
@@ -370,11 +370,9 @@
 
             $(".check_out_date").val(date.toInputFormat());
         } else {
-            alert("Invalid Date");  
+            alert("Invalid Date");
         }
     });
-
-
     //From: http://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
     Date.prototype.toInputFormat = function() {
        var yyyy = this.getFullYear().toString();
@@ -385,11 +383,11 @@
 })(jQuery, this, document);
 
 
-// AJAX call for autocomplete 
+// AJAX call for autocomplete
 $(document).ready(function() {
 
 
-   
+
 	$(".phone_number").keyup(function() {
 
         var query = $(this).val();
@@ -400,21 +398,21 @@ $(document).ready(function() {
 			    type: 'POST',
 			    url: "{{ route('booking.autocomplete') }}",
                 data:{query:query, _token:_token},
-			
+
 	            success:function(data){
-                    $('.phonenumber_list').fadeIn();  
+                    $('.phonenumber_list').fadeIn();
                     $('.phonenumber_list').html(data);
                 }
 		    });
      }
-		
+
 	});
 
-    $(document).on('click', 'li', function(){  
-        $('#phone_number').val($(this).text());  
-        $('.phonenumber_list').fadeOut(); 
-        
-        
+    $(document).on('click', 'li', function(){
+        $('#phone_number').val($(this).text());
+        $('.phonenumber_list').fadeOut();
+
+
 
 
         $.ajax({
@@ -432,12 +430,12 @@ $(document).ready(function() {
                         $('.email_id').val(response['data'][i].email_id);
                         $('.address').val(response['data'][i].address);
                     }
-                    
+
                 }
             });
 
 
-    }); 
+    });
 
 
 
@@ -545,7 +543,7 @@ $(document).ready(function() {
                                 $('.grand_total').val(grand_total.toFixed(2));
                                 var payable_amount = $(".payable_amount").val();
                                 var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
-                                $('.balance_amount').val(balance.toFixed(2)); 
+                                $('.balance_amount').val(balance.toFixed(2));
                     });
 
                 }
@@ -694,7 +692,7 @@ $(document).ready(function() {
                                 $('.grand_total').val(grand_total.toFixed(2));
                                 var payable_amount = $(".payable_amount").val();
                                 var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
-                                $('.balance_amount').val(balance.toFixed(2)); 
+                                $('.balance_amount').val(balance.toFixed(2));
 
 
                         });
@@ -719,9 +717,9 @@ $(document).ready(function() {
 
     $(document).on("keyup", 'input.days', function() {
         var days = $(this).val();
-     
+
               for (var i = 0; i < 100; i++) {
-                var room_price = $('#room_price' + i).val(); 
+                var room_price = $('#room_price' + i).val();
 
                 var total = room_price * days;
                 console.log(total);
@@ -750,7 +748,7 @@ $(document).ready(function() {
                 $('.grand_total').val(grand_total.toFixed(2));
                 var payable_amount = $(".payable_amount").val();
                 var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
-                $('.balance_amount').val(balance.toFixed(2)); 
+                $('.balance_amount').val(balance.toFixed(2));
     });
 
 
@@ -775,7 +773,7 @@ $(document).ready(function() {
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
-                    
+
     });
 
     $(document).on("keyup", 'input.gst_percentage', function() {
@@ -794,7 +792,7 @@ $(document).ready(function() {
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
-                    
+
     });
 
 
@@ -816,7 +814,7 @@ $(document).ready(function() {
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
-                    
+
     });
 
 
@@ -836,7 +834,7 @@ $(document).ready(function() {
                     var payable_amount = $(".payable_amount").val();
                     var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
                     $('.balance_amount').val(balance.toFixed(2));
-                    
+
     });
 
 
@@ -850,11 +848,11 @@ $(document).ready(function() {
 
         var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
         $('.grand_total').val(grand_total.toFixed(2));
-        
+
         var payable_amount = $(".payable_amount").val();
         var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
         $('.balance_amount').val(balance.toFixed(2));
-        
+
 
     });
 
