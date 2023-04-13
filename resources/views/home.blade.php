@@ -49,10 +49,10 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th>Branch</th>
-                                            <th>Open Account</th>
+                                            <th>Room Income</th>
                                             <th>Income</th>
                                             <th>Expence</th>
-                                            <th>Close Account</th>
+                                            <th>Balance</th>
                                         </tr>
                                     </thead>
                                     <tbody id="branchwise_list">
@@ -60,7 +60,7 @@
                                         @foreach ($branchwise_list as $branchwise_lists)
                                         <tr>
                                             <td>{{ $branchwise_lists['branch_name'] }}</td>
-                                            <td>₹{{ $branchwise_lists['branchwise_openaccount'] }}</td>
+                                            <td>₹{{ $branchwise_lists['Room_income'] }}</td>
                                             <td>₹{{ $branchwise_lists['branchwise_income'] }}</td>
                                             <td>₹{{ $branchwise_lists['branchwise_expense'] }}</td>
                                             <td>₹{{ $branchwise_lists['branchwise_closeaccount'] }}</td>
@@ -105,7 +105,7 @@
                                     html: response[i].branch_name
                                 });
                                 var column_1 = $('<td/>', {
-                                    html: response[i].branchwise_openaccount
+                                    html: response[i].Room_income
                                 });
                                 var column_2 = $('<td/>', {
                                     html: response[i].branchwise_income
@@ -115,7 +115,7 @@
                                     html: response[i].branchwise_expense
                                 });
                                 var column_4 = $('<td/>', {
-                                    html: response[i].branchwise_closeaccount
+                                    html: response[i].balance
                                 });
 
                                 var row = $('<tr id=stages_tr/>', {}).append(column_0,

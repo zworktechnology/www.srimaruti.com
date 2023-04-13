@@ -100,7 +100,7 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Check In Date <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-4">
-                                                    <input type="date" class="form-control" name="check_in_date"
+                                                    <input type="date" class="form-control check_in_date" name="check_in_date"
                                                         placeholder="Enter here " value="{{ $data->check_in_date }}"
                                                         required>
                                                 </div>
@@ -116,7 +116,7 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Check Out Date </label>
                                                 <div class="col-sm-4">
-                                                    <input type="date" class="form-control" name="check_out_date"
+                                                    <input type="date" class="form-control check_out_date" name="check_out_date"
                                                         placeholder="Enter here "value="{{ $data->check_out_date }}">
                                                 </div>
                                                 <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
@@ -689,6 +689,38 @@
     </div>
 
     <script>
+
+
+
+;(function($, window, document, undefined){
+    $("#days").on("change", function(){
+       var date = new Date($(".check_in_date").val()),
+           days = parseInt($("#days").val(), 10);
+
+        if(!isNaN(date.getTime())){
+            date.setDate(date.getDate() + days + 1);
+
+            $(".check_out_date").val(date.toInputFormat());
+        } else {
+            alert("Invalid Date");
+        }
+    });
+    //From: http://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
+    Date.prototype.toInputFormat = function() {
+       var yyyy = this.getFullYear().toString();
+       var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+       var dd  = this.getDate().toString();
+       return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]); // padding
+    };
+})(jQuery, this, document);
+
+
+
+
+
+
+
+
         $proofs = {{ $data->proofs }}
         if ($proofs == 1) {
             $("#singleproof").show();

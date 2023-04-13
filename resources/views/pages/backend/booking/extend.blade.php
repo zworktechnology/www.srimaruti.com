@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" style="font-weight: 600;color: #e83e8c;">Extend</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close extendclose" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form autocomplete="off" method="POST" action="{{ route('booking.extend', ['id' => $bookingDatas['id']]) }}">
@@ -344,8 +344,46 @@ $(document).ready(function() {
                             <input type="text"  class="form-control" name="grand_total" id="grand_total{{ $bookingDatas['id'] }}" value="{{ $bookingDatas['grand_total'] }}" />
                         </div>
                 </div>
+
+                <div class="row mb-4">
+                                                        <label for="horizontal-firstname-input"
+                                                            class="col-sm-3 col-form-label">
+                                                            Paid Amounts </label>
+                                                        <div class="col-sm-9 row">
+                                                           
+                                                                
+                                                                @foreach ($bookingDatas['terms'] as $index => $term_arr)
+                                                                    @if ($term_arr['booking_id'] == $bookingDatas['id'])
+                                                                    
+
+                                                                    
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text" style="background: #c3b6eb;"
+                                                                                class="form-control term" disabled
+                                                                                id="term"
+                                                                                value="{{ $term_arr['term'] }}">
+                                                                        </span>
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text" disabled style="background: #c3b6eb;"
+                                                                                class="form-control payable_amount"
+                                                                                id="payable_amount"
+                                                                                value="{{ $term_arr['payable_amount'] }}">
+                                                                        </span>
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text" disabled style="background: #c3b6eb;"
+                                                                                class="form-control paymentmethod"
+                                                                                id="paymentmethod"
+                                                                                value="{{ $term_arr['payment_method'] }}">
+                                                                        </span>
+                                                                    
+                                                                    @endif
+                                                                @endforeach
+
+                                                            
+                                                        </div>
+                                                    </div>
                 <div class="row mb-4" >
-                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Paid Amount </label>
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Total Paid </label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control payable_amount" style="background-color:#4ac565;color: black;" id="payable_amount{{ $bookingDatas['id'] }}" value="{{ $bookingDatas['total_paid'] }}"  name="payable_amount"  placeholder="Enter here ">
                         </div>
@@ -382,6 +420,7 @@ $(document).ready(function() {
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-secondary extendclosebutton" data-bs-dismiss="modal">No, Get Back</button>
                     
                 </div>
             </form>
