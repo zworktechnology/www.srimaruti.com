@@ -261,16 +261,16 @@ class BookingController extends Controller
 
         }
 
-       $customer_photo = $request->customer_photo;
-       $folderPath = "assets/customer_details/profile";
-       $image_parts = explode(";base64,", $customer_photo);
-       $image_type_aux = explode("image/", $image_parts[0]);
-       $image_type = $image_type_aux[1];
-       $image_base64 = base64_decode($image_parts[1]);
-       $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-       $customerimgfile = $folderPath . $fileName;
-       file_put_contents($customerimgfile, $image_base64);
-       $data->customer_photo = $customerimgfile;
+       //$customer_photo = $request->customer_photo;
+       //$folderPath = "assets/customer_details/profile";
+       //$image_parts = explode(";base64,", $customer_photo);
+      // $image_type_aux = explode("image/", $image_parts[0]);
+       //$image_type = $image_type_aux[1];
+       //$image_base64 = base64_decode($image_parts[1]);
+       //$fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+      // $customerimgfile = $folderPath . $fileName;
+       //file_put_contents($customerimgfile, $image_base64);
+      // $data->customer_photo = $customerimgfile;
 
         $data->total = $request->get('total_calc_price');
         $data->gst_per = $request->get('gst_percentage');
@@ -809,8 +809,9 @@ class BookingController extends Controller
         if($request->get('query'))
         {
             $query = $request->get('query');
-            $data = Booking::select("phone_number", "customer_name", "whats_app_number", "email_id", "address")
+            $data = Booking::select ("phone_number")
                     ->where('phone_number', 'LIKE', "%{$query}%")
+                    ->distinct()
                     ->get();
             $output = '<ul class="dropdown-menu form-control" style="display:block; position:relative; padding: 9px;background: #9ddbdb2e;">';
             foreach($data as $row)

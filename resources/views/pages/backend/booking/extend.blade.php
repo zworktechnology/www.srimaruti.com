@@ -345,7 +345,7 @@ $(document).ready(function() {
                         </div>
                 </div>
 
-                <div class="row mb-4">
+                                                    <div class="row mb-4">
                                                         <label for="horizontal-firstname-input"
                                                             class="col-sm-3 col-form-label">
                                                             Paid Amounts </label>

@@ -318,7 +318,43 @@
                                                                         </div>
                                                                     </div>
 
+                                                                    <div class="row mb-4">
+                                                        <label for="horizontal-firstname-input"
+                                                            class="col-sm-4 col-form-label">
+                                                            Paid Amounts </label>
+                                                        <div class="col-sm-8 row">
+                                                           
+                                                                
+                                                                @foreach ($bookingDatas['terms'] as $index => $term_arr)
+                                                                    @if ($term_arr['booking_id'] == $bookingDatas['id'])
+                                                                    
 
+                                                                    
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text" style="background: #e0ddeb;"
+                                                                                class="form-control term" disabled
+                                                                                id="term"
+                                                                                value="{{ $term_arr['term'] }}">
+                                                                        </span>
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text" disabled style="background: #e0ddeb;"
+                                                                                class="form-control payable_amount"
+                                                                                id="payable_amount"
+                                                                                value="{{ $term_arr['payable_amount'] }}">
+                                                                        </span>
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text" disabled style="background: #e0ddeb;"
+                                                                                class="form-control paymentmethod"
+                                                                                id="paymentmethod"
+                                                                                value="{{ $term_arr['payment_method'] }}">
+                                                                        </span>
+                                                                    
+                                                                    @endif
+                                                                @endforeach
+
+                                                            
+                                                        </div>
+                                                    </div>
 
 
                                                                     <div class="row mb-4">
