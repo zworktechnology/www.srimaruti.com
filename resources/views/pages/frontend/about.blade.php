@@ -179,7 +179,7 @@
                             </div>
                             <div class="testimonial-author">
                                 <div class="testi-box_avater">
-                                    <img src="{{ asset('assets/frontend/img/testimonial/author_1.png') }}"
+                                    <img src="{{ asset('assets/frontend/image/icon-2.png') }}"
                                         alt="testimonial">
                                 </div>
                                 <div class="testimonial-author">
@@ -211,7 +211,7 @@
                             </div>
                             <div class="testimonial-author">
                                 <div class="testi-box_avater">
-                                    <img src="{{ asset('assets/frontend/img/testimonial/author_2.png') }}"
+                                    <img src="{{ asset('assets/frontend/image/icon-2.png') }}"
                                         alt="testimonial">
                                 </div>
                                 <div class="testimonial-author">
@@ -243,7 +243,7 @@
                             </div>
                             <div class="testimonial-author">
                                 <div class="testi-box_avater">
-                                    <img src="{{ asset('assets/frontend/img/testimonial/author_3.png') }}"
+                                    <img src="{{ asset('assets/frontend/image/icon-2.png') }}"
                                         alt="testimonial">
                                 </div>
                                 <div class="testimonial-author">
@@ -275,7 +275,7 @@
                             </div>
                             <div class="testimonial-author">
                                 <div class="testi-box_avater">
-                                    <img src="{{ asset('assets/frontend/img/testimonial/author_4.png') }}"
+                                    <img src="{{ asset('assets/frontend/image/icon-2.png') }}"
                                         alt="testimonial">
                                 </div>
                                 <div class="testimonial-author">
@@ -307,7 +307,7 @@
                             </div>
                             <div class="testimonial-author">
                                 <div class="testi-box_avater">
-                                    <img src="{{ asset('assets/frontend/img/testimonial/author_4.png') }}"
+                                    <img src="{{ asset('assets/frontend/image/icon-2.png') }}"
                                         alt="testimonial">
                                 </div>
                                 <div class="testimonial-author">

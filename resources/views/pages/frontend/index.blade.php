@@ -709,7 +709,7 @@
                                 <p class="testi-box_text">“The tranquil surroundings and personalized service at Maruthi Resort made for a truly memorable stay. I can't wait to come back!”.</p>
                                 <div class="testi-box_profile">
                                     <div class="testi-box_avater style2">
-                                        <img src="{{ asset('assets/frontend/img/testimonial/testi_1_1.jpg') }}"
+                                        <img src="{{ asset('assets/frontend/image/icon-1.png') }}"
                                             alt="testimonial">
                                     </div>
                                     <div class="media-body">
@@ -732,7 +732,7 @@
 
                                 <div class="testi-box_profile">
                                     <div class="testi-box_avater style2">
-                                        <img src="{{ asset('assets/frontend/img/testimonial/testi_1_2.jpg') }}"
+                                        <img src="{{ asset('assets/frontend/image/icon-1.png') }}"
                                             alt="testimonial">
                                     </div>
                                     <div class="media-body">
@@ -754,7 +754,7 @@
                                 <p class="testi-box_text">“Maruthi Resort was the perfect destination for our family vacation. The serene surroundings and personalized service made it a truly memorable experience.”</p>
                                 <div class="testi-box_profile">
                                     <div class="testi-box_avater style2">
-                                        <img src="{{ asset('assets/frontend/img/testimonial/testi_1_3.jpg') }}"
+                                        <img src="{{ asset('assets/frontend/image/icon-1.png') }}"
                                             alt="testimonial">
                                     </div>
                                     <div class="media-body">
