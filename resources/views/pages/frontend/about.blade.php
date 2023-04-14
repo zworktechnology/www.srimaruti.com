@@ -26,7 +26,7 @@
                 <div class="col-xl-5 col-xxl-6">
                     <div class="img-box1">
                         <div class="img1">
-                            <img class="image_1" src="{{ asset('assets/frontend/img/normal/about_1.png') }}"
+                            <img class="image_1" src="{{ asset('assets/frontend/image/home-about-us.png') }}"
                                 alt="About">
                         </div>
                     </div>

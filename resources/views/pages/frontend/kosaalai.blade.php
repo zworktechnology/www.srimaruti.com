@@ -27,13 +27,13 @@
                     <div class="restaurent-box-wrapper">
                         <div class="resaturant-img as-carousel" data-arrows="true" data-slide-show="1" data-fade="true">
                             <a href="javascript:void(0);"><img
-                                    src="{{ asset('assets/frontend/img/gallery/gallery_6_1.jpg') }}"
+                                    src="{{ asset('assets/frontend/image/kosalai/scrool-1.png') }}"
                                     alt="Restaurant Image"></a>
                             <a href="javascript:void(0);"><img
-                                    src="{{ asset('assets/frontend/img/gallery/gallery_6_2.jpg') }}"
+                                    src="{{ asset('assets/frontend/image/kosalai/scrool-2.png') }}"
                                     alt="Restaurant Image"></a>
                             <a href="javascript:void(0);"><img
-                                    src="{{ asset('assets/frontend/img/gallery/gallery_6_3.jpg') }}"
+                                    src="{{ asset('assets/frontend/image/kosalai/scrool-3.png') }}"
                                     alt="Restaurant Image"></a>
                         </div>
                         <div class="resta-card-wrapp">
@@ -63,7 +63,7 @@
                     <div class="col-lg-6 col-xl-4">
                         <div class="menu-item style2">
                             <div class="menu-item_img">
-                                <img src="{{ asset('assets/frontend/img/menu/menu_1_1.jpg') }}" alt="">
+                                <img src="{{ asset('assets/frontend/image/kosalai/tag-1.png') }}" alt="">
                             </div>
                             <div class="menu-item_content">
                                 <a href="javascript:void(0);">
@@ -78,7 +78,7 @@
                     <div class="col-lg-6 col-xl-4">
                         <div class="menu-item style2">
                             <div class="menu-item_img">
-                                <img src="{{ asset('assets/frontend/img/menu/menu_1_2.jpg') }}" alt="">
+                                <img src="{{ asset('assets/frontend/image/kosalai/tag-2.png') }}" alt="">
                             </div>
                             <div class="menu-item_content">
                                 <a href="javascript:void(0);">
@@ -93,7 +93,7 @@
                     <div class="col-lg-6 col-xl-4">
                         <div class="menu-item style2">
                             <div class="menu-item_img">
-                                <img src="{{ asset('assets/frontend/img/menu/menu_1_3.jpg') }}" alt="">
+                                <img src="{{ asset('assets/frontend/image/kosalai/tag-3.png') }}" alt="">
                             </div>
                             <div class="menu-item_content">
                                 <a href="javascript:void(0);">

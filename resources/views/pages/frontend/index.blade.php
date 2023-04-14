@@ -11,7 +11,7 @@
         <div class="hero-slider-2 as-carousel" id="heroSlide1" data-fade="true" data-slide-show="1" data-md-slide-show="1"
             data-arrows="true" data-xl-arrows="true" data-ml-arrows="true" data-lg-arrows="true">
             <div class="as-hero-slide">
-                <div class="as-hero-bg" data-bg-src="{{ asset('assets/frontend/img/hero/hero_bg_4_1.jpg') }}">
+                <div class="as-hero-bg" data-bg-src="{{ asset('assets/frontend/image/banner/Untitled-2.png') }}">
                 </div>
                 <div class="container">
                     <div class="hero-style4">
@@ -26,7 +26,7 @@
 
 
             <div class="as-hero-slide">
-                <div class="as-hero-bg" data-bg-src="{{ asset('assets/frontend/img/hero/hero_bg_4_2.jpg') }}">
+                <div class="as-hero-bg" data-bg-src="{{ asset('assets/frontend/image/banner/Untitled-3.png') }}">
                 </div>
                 <div class="container">
 
@@ -42,10 +42,10 @@
         </div>
         <div class="icon-box">
             <button data-slick-prev="#heroSlide1" class="slick-arrow default1"><i class="fa-solid fa-angle-left"></i>
-                <img src="{{ asset('assets/frontend/img/hero/prev.jpg') }}" alt="">
+                <img src="{{ asset('assets/frontend/image/banner/icon.png') }}" alt="">
             </button>
             <button data-slick-next="#heroSlide1" class="slick-arrow default2"><i class="fa-solid fa-angle-right"></i>
-                <img src="{{ asset('assets/frontend/img/hero/next.jpg') }}" alt="">
+                <img src="{{ asset('assets/frontend/image/banner/icon-2.png') }}" alt="">
             </button>
         </div>
     </div>
@@ -450,13 +450,13 @@
 
     <!-- About Area -->
     <div class="space about-section" id="about-sec"
-        data-bg-src="{{ asset('assets/frontend/img/bg/about_bg.png') }}">
+        data-bg-src="{{ asset('assets/frontend/image/bg/about_bg.png') }}">
         <div class="container">
             <div class="row">
                 <div class="col-xl-5 col-xxl-6">
                     <div class="img-box1 style4">
                         <div class="img1">
-                            <img class="image_1" src="{{ asset('assets/frontend/img/normal/about_4.png') }}"
+                            <img class="image_1" src="{{ asset('assets/frontend/image/home-about-us.png') }}"
                                 alt="About">
                         </div>
                     </div>
@@ -779,7 +779,7 @@
                     <div class="testi-box_quote">
                         <i class="fa-solid fa-quote-right"></i>
                     </div>
-                    <img src="{{ asset('assets/frontend/img/testimonial/testi_img.png') }}" alt="Testmonial">
+                    <img src="{{ asset('assets/frontend/image/home-review.png') }}" alt="Testmonial">
                 </div>
             </div>
         </div>
@@ -792,7 +792,7 @@
                 <div class="col-lg-6">
                     <div class="cta-card">
                         <div class="cta-card_img">
-                            <img src="{{ asset('assets/frontend/img/normal/cta_1_1.jpg') }}" alt="cta">
+                            <img src="{{ asset('assets/frontend/image/offer-1.png') }}" alt="cta">
                             <div class="cta-card_content">
                                 <span class="cta-card_subtitle">2 Nights & 3 Days</span>
                                 <h3 class="cta-card_title"><a href="javascript:void(0);" tabindex="0"><span
@@ -807,7 +807,7 @@
                 <div class="col-lg-6">
                     <div class="cta-card">
                         <div class="cta-card_img">
-                            <img src="{{ asset('assets/frontend/img/normal/cta_1_2.jpg') }}" alt="cta">
+                            <img src="{{ asset('assets/frontend/image/offer-2.png') }}" alt="cta">
                             <div class="cta-card_content">
                                 <span class="cta-card_subtitle">2 Nights & 3 Days</span>
                                 <h3 class="cta-card_title"><a href="javascript:void(0);" tabindex="0"><span
