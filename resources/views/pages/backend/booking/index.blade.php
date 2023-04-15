@@ -125,7 +125,7 @@
                                                         <ul class="list-unstyled hstack gap-1 mb-0">
                                                             <li>
                                                                 <a target="_blank"
-                                                                    href="https://api.whatsapp.com/send/?phone=91{{ $bookingDatas['whats_app_number'] }}&text=Hello+there%2C+how+are+you%3F&type=phone_number&app_absent=0"
+                                                                    href="https://smstool.in/api/send.php?number=91{{ $bookingDatas['whats_app_number'] }}&type=text&message=test%20message&instance_id=643A4014A7B5C&access_token=1248356a8ddaca555f63a0060bee3a47"
                                                                     class="btn btn-sm btn-soft-secondary">Booking</a>
                                                             </li>
                                                             <li>

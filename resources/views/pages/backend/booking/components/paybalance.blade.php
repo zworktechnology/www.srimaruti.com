@@ -116,8 +116,7 @@
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success">Pay</button>
-                        <button type="button" class="btn btn-secondary paybalanceclosebutton"
-                            data-bs-dismiss="modal">No, Get Back</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, Get Back</button>
                     </div>
                 </form>
             </div>

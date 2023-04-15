@@ -129,7 +129,6 @@ class BookingController extends Controller
                         'customer_name' => $Array_data->customer_name,
                         'branch' => $branch->name,
                         'chick_in_date' => $Array_data->check_in_date,
-                        'chick_in_date' => $Array_data->check_in_date,
                         'whats_app_number' => $Array_data->whats_app_number,
                         'id' => $Array_data->id,
                         'room_list' => $room_list,
@@ -194,6 +193,7 @@ class BookingController extends Controller
             $data->branch_id = $request->get('branch_id');
             $data->proofs = $request->get('proofs');
             $proof = $request->get('proofs');
+
             if($proof == 1)
             {
                 $data->prooftype_one = $request->get('prooftype_one');
@@ -244,8 +244,6 @@ class BookingController extends Controller
         $data->grand_total = $request->get('grand_total');
         $data->total_paid = $request->get('payable_amount');
         $data->balance_amount = $request->get('balance_amount');
-        $data->out_date = $request->get('check_out_date');
-        $data->out_time = $request->get('check_out_time');
         $status = 1;
         $data->status = $status;
 
@@ -313,6 +311,7 @@ class BookingController extends Controller
         $BookingData->check_out_time = $request->get('check_out_time');
         $BookingData->days = $request->get('days');
         $BookingData->branch_id = $request->get('branch_id');
+
         if($request->get('proofs') == 1){
             if($BookingData->proofs == 2){
                 $BookingData->prooftype_two = 'NULL';
@@ -380,8 +379,6 @@ class BookingController extends Controller
         $BookingData->additional_notes = $request->get('additional_charge_notes');
         $BookingData->grand_total = $request->get('grand_total');
         $BookingData->balance_amount = $request->get('balance_amount');
-        $BookingData->out_date = $request->get('check_out_date');
-        $BookingData->out_time = $request->get('check_out_time');
         $BookingData->update();
 
         $booking_id = $id;
@@ -495,6 +492,7 @@ class BookingController extends Controller
 
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
+
         $data->out_date = $today;
         $data->out_time = $timenow;
         $status = 2;
@@ -717,9 +715,7 @@ class BookingController extends Controller
     {
         $data = Booking::findOrFail($id);
 
-        $data->extended_date = $request->get('extended_date');
         $data->check_out_date = $request->get('extended_date');
-        $data->extended_time = $request->get('extended_time');
         $data->check_out_time = $request->get('extended_time');
         $data->days = $request->get('no_of_days');
         $data->total = $request->get('total_calc_price');
@@ -737,6 +733,8 @@ class BookingController extends Controller
         $data->update();
 
         if($request->get('balance_amount') > 0){
+
+            $paiddate = Carbon::now()->format('Y-m-d');
 
             $BookingPayment = new BookingPayment;
             $BookingPayment->booking_id = $request->get('booking_id');

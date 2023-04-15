@@ -19,8 +19,8 @@
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
                     <label for="horizontal-firstname-input" class="col-sm-9 col-form-label">
-                        @if ($bookingDatas['out_date'] != '')
-                            {{ date('d M Y', strtotime($bookingDatas['out_date'])) }}
+                        @if ($bookingDatas['chick_out_date'] != '')
+                            {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}
                             - (
                             {{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }}
                             )

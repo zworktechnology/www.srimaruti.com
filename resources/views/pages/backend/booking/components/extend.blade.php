@@ -468,7 +468,7 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Total Paid </label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control payable_amount"
-                            style="background-color:#4ac565;color: black;"
+                            
                             id="payable_amount{{ $bookingDatas['id'] }}" value="{{ $bookingDatas['total_paid'] }}"
                             name="payable_amount" placeholder="Enter here ">
                     </div>
@@ -491,7 +491,6 @@
                         <select class="form-control" name="payment_method">
                             <option value="" selected class="text-muted">Select Payment Via</option>
                             <option value="Cash" class="text-muted">Cash</option>
-                            <option value="Card" class="text-muted">Card</option>
                             <option value="Online Payment" class="text-muted">Online Payment</option>
                         </select>
                     </div>
@@ -507,7 +506,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Submit</button>
-                    <button type="button" class="btn btn-secondary extendclosebutton" data-bs-dismiss="modal">No,
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No,
                         Get Back</button>
 
                 </div>
