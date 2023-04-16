@@ -25,7 +25,7 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Customer Name <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
-                                                <input type="name" class="form-control booking_customer_name" name="booking_customer_name" placeholder="Enter here ">
+                                                <input type="name" class="form-control booking_customer_name" name="booking_customer_name" placeholder="Enter here " required>
                                             </div>
                                         </div>
 
@@ -33,7 +33,7 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Contact Number <span style="color: red;">*</span> </label>
                                             <div class="col-sm-4">
-                                                <input type="number" class="form-control phone_number"   name="phone_number" id="phone_number" placeholder="Enter here ">
+                                                <input type="number" class="form-control phone_number"   name="phone_number" id="phone_number" placeholder="Enter here " required>
                                                 <div class="phonenumber_list" style="display:none"></div>
                                                 <div class="form-check mt-2">
                                                     <input type="checkbox" class="form-check-input whatsapp_check" id="formrow-customCheck">
@@ -61,6 +61,13 @@
                                             </div>
                                         </div>
 
+                                        <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                GST Number </label>
+                                            <div class="col-sm-9">
+                                                <input type="name" class="form-control" name="gst_number" placeholder="Enter here ">
+                                            </div>
+                                        </div>
 
                                         <hr>
                                         <h4 class="card-title mb-4" style="color: #5b73e8">Head Rooms</h4>
@@ -131,18 +138,19 @@
                                                         <div data-repeater-item class="inner mb-3 row">
                                                             <div class="col-sm-3">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
-                                                                    Room Number <span style="color: red;">*</span> </label>
+                                                                    Room Details <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="dynamic_field col-sm-9">
                                                                 <table class="table-fixed col-12 " id="">
                                                                     <tbody id="roomfields">
                                                                         <tr>
-                                                                            <td class="col-6 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
+                                                                            <td class="col-4 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
                                                                                 <input type="hidden" id="room_auto_id" name="room_auto_id[]" />
                                                                                 <select class="form-control room_id" name="room_id[]" id="room_id1" required>
                                                                                     <option value="" selected hidden class="text-muted">
                                                                                         Select Room</option>
                                                                                 </select></td>
+                                                                            <td class="col-2"><input type="text" class="form-control" name="room_type[]" placeholder="Room type" value="" required /></td>
                                                                             <td class="col-3"><input type="text" class="form-control" id="room_price1" name="room_price[]" placeholder="Price Per Day" value="" required /></td>
                                                                             <td class="col-3"><input type="text" class="form-control room_cal_price" id="room_cal_price1" name="room_cal_price[]" placeholder="Price" value="" required /></td>
                                                                             <td class="col-2"><button style="width: 100px;" class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add</button>
@@ -227,8 +235,6 @@
                                         <hr>
                                         <h4 class="card-title mb-4" style="color: #5b73e8">Pricing Calculation</h4>
 
-
-
                                         <div data-repeater-list="group-a">
                                             <div data-repeater-item class="row">
                                                 <div class="inner-repeater mb-4">
@@ -239,31 +245,31 @@
                                                                     Total - Room Price <span style="color: red;">*</span>  </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control total_calc_price" style="background-color:#babcc5ad" name="total_calc_price" id="total_calc_price" value="0" placeholder="Enter here " required>
+                                                                <input type="text" class="form-control total_calc_price" style="background-color:#babcc5ad" name="total_calc_price" id="total_calc_price" placeholder="Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                                 GST Amount <span style="color: red;">*</span>  </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control gst_amount" name="gst_amount" placeholder="GST Amount - Enter here " value="0" required>
+                                                                <input type="text" class="form-control gst_amount" name="gst_amount" placeholder="GST Amount - Enter here " required>
                                                             </div>
                                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                                 GST % <span style="color: red;">*</span>  </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control gst_percentage" name="gst_percentage" placeholder="Gst % - Enter here " value="0" required>
+                                                                <input type="text" class="form-control gst_percentage" name="gst_percentage" placeholder="Gst % - Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                                 Discount Amount <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control discount_amount" name="discount_amount" value="0" placeholder="Discount Amount - Enter here " required>
+                                                                <input type="text" class="form-control discount_amount" name="discount_amount" placeholder="Discount Amount - Enter here " required>
                                                             </div>
                                                             <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                                 Dis % <span style="color: red;">*</span> </label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control discount_percentage" name="discount_percentage" value="0" placeholder="Discount % - Enter here " required>
+                                                                <input type="text" class="form-control discount_percentage" name="discount_percentage" placeholder="Discount % - Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-4" hidden>
@@ -284,7 +290,7 @@
                                                                     Grand Total - To Pay <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" value="0" placeholder="Enter here " required>
+                                                                <input type="text" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" placeholder="Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row" hidden>
@@ -306,7 +312,7 @@
                                                                     Payable Amount <span style="color: red;">*</span> </label>
                                                             </div>
                                                             <div class="col-md-9 col-3">
-                                                                <input type="text" class="form-control payable_amount" value="0"  name="payable_amount"  placeholder="Enter here " required>
+                                                                <input type="text" class="form-control payable_amount"  name="payable_amount"  placeholder="Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
@@ -337,14 +343,10 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-
                                     </div>
                                 </div>
 
                                 <div class="modal-footer">
-
                                     <input type="submit" class="btn btn-primary" name="checkin" value="checkin" style="margin-right: 10%;" />
                                 </div>
                             </form>
@@ -381,12 +383,8 @@
     };
 })(jQuery, this, document);
 
-
 // AJAX call for autocomplete
 $(document).ready(function() {
-
-
-
 	$(".phone_number").keyup(function() {
 
         var query = $(this).val();
@@ -403,42 +401,29 @@ $(document).ready(function() {
                     $('.phonenumber_list').html(data);
                 }
 		    });
-     }
-
+        }
 	});
 
     $(document).on('click', 'li', function(){
         $('#phone_number').val($(this).text());
         $('.phonenumber_list').fadeOut();
-
-
-
-
         $.ajax({
-                url: '/getoldCustomers/' + $(this).text()
-                , type: 'get'
-                , dataType: 'json'
-                , success: function(response) {
-                    console.log(response['data']);
-                    var output = response['data'].length;
-
-                    for (var i = 0; i < output; i++) {
-                        //console.log(response[i].customer_name);
-                        $('.booking_customer_name').val(response['data'][i].customer_name);
-                        $('.whats_app_number').val(response['data'][i].whats_app_number);
-                        $('.email_id').val(response['data'][i].email_id);
-                        $('.address').val(response['data'][i].address);
-                    }
-
+            url: '/getoldCustomers/' + $(this).text()
+            , type: 'get'
+            , dataType: 'json'
+            , success: function(response) {
+                console.log(response['data']);
+                var output = response['data'].length;
+                for (var i = 0; i < output; i++) {
+                    //console.log(response[i].customer_name);
+                    $('.booking_customer_name').val(response['data'][i].customer_name);
+                    $('.whats_app_number').val(response['data'][i].whats_app_number);
+                    $('.email_id').val(response['data'][i].email_id);
+                    $('.address').val(response['data'][i].address);
                 }
-            });
-
-
+            }
+        });
     });
-
-
-
-
 });
 
     $(document).ready(function() {
@@ -452,10 +437,8 @@ $(document).ready(function() {
             }
         });
 
-
         $('#branch_id').on('change', function() {
             var branch_id = this.value;
-
             $.ajax({
                 url: '/getBranchwiseRoom/' + branch_id
                 , type: 'get'
@@ -480,7 +463,7 @@ $(document).ready(function() {
 
                             $(".room_id").append($('<option>', {
                                 value: response['data'][i].id
-                                , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor - ' + response['data'][i].room_type
+                                , text: 'Room No ' + response['data'][i].room_number + ' - ' + response['data'][i].room_floor + ' Floor'
                             , }));
 
                         }
@@ -593,7 +576,7 @@ $(document).ready(function() {
         $("#addroomfields").click(function() {
             ++i;
             $("#roomfields").append(
-                '<tr><td class="col-sm-6 py-2 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-2"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-2"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-sm-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                '<tr><td class="col-sm-4 py-2 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-2"><input type="text" class="form-control" name="room_type[]" placeholder="Room type" value=""/></td><td class="col-2"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-2"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-sm-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
             );
 
             var branch_id = $('.branch_id').val();

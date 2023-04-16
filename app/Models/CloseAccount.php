@@ -11,6 +11,7 @@ class CloseAccount extends Model
 
     protected $fillable = [
         'date',
+        'closer_name',
         'branch_id',
         'count_2000',
         'count_500',

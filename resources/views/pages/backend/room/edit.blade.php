@@ -48,7 +48,7 @@
                                                 <input type="number" class="form-control" name="room_number" placeholder="Enter room number " value="{{ $data->room_number }}" required>
                                             </div>
                                         </div>
-                                        <div class="row mb-4">
+                                        <div class="row mb-4" hidden>
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Type <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">

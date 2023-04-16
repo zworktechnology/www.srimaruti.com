@@ -12,7 +12,7 @@ class OpenAccountController extends Controller
     public function index()
     {
         $today = Carbon::now()->format('Y-m-d');
-        $data = OpenAccount::where('soft_delete', '!=', 1)->get();
+        $data = OpenAccount::where('soft_delete', '!=', 1)->orderBy('created_at', 'desc')->get();
         $branch = Branch::where('soft_delete', '!=', 1)->get();
 
         return view('pages.backend.openaccount.index', compact('today', 'data', 'branch'));

@@ -74,6 +74,15 @@
                                                         value="{{ $data->address }}" placeholder="Enter here ">
                                                 </div>
                                             </div>
+
+                                            <div class="row mb-4">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    GST Number </label>
+                                                <div class="col-sm-9">
+                                                    <input type="name" class="form-control" name="gst_number"
+                                                        placeholder="Enter here " value="{{ $data->gst_number }}">
+                                                </div>
+                                            </div>
                                             <hr>
                                             <h4 class="card-title mb-4" style="color: #5b73e8">Head Rooms</h4>
 
@@ -100,9 +109,9 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Check In Date <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-4">
-                                                    <input type="date" class="form-control check_in_date" name="check_in_date"
-                                                        placeholder="Enter here " value="{{ $data->check_in_date }}"
-                                                        required>
+                                                    <input type="date" class="form-control check_in_date"
+                                                        name="check_in_date" placeholder="Enter here "
+                                                        value="{{ $data->check_in_date }}" required>
                                                 </div>
                                                 <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                     Time <span style="color: red;">*</span> </label>
@@ -116,7 +125,8 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Check Out Date </label>
                                                 <div class="col-sm-4">
-                                                    <input type="date" class="form-control check_out_date" name="check_out_date"
+                                                    <input type="date" class="form-control check_out_date"
+                                                        name="check_out_date"
                                                         placeholder="Enter here "value="{{ $data->check_out_date }}">
                                                 </div>
                                                 <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
@@ -160,7 +170,7 @@
                                                                 <div class="col-sm-3">
                                                                     <label for="horizontal-firstname-input"
                                                                         class="col-form-label">
-                                                                        Room Number <span style="color: red;">*</span>
+                                                                        Room Details <span style="color: red;">*</span>
                                                                     </label>
                                                                 </div>
                                                                 <div class="dynamic_field col-sm-9">
@@ -173,7 +183,7 @@
                                                                             @foreach ($BookingRooms as $index => $BookingRoomss)
                                                                                 <tr>
                                                                                     <td
-                                                                                        class="col-6 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
+                                                                                        class="col-4 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
                                                                                         <input type="hidden"
                                                                                             id="room_auto_id"
                                                                                             name="room_auto_id[]"
@@ -270,6 +280,14 @@
                                                                                         @endforeach
                                                                                         </select>
                                                                                     </td>
+                                                                                    <td class="col-2"><input
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            id="room_type{{ $data->id }}{{ $index }}"
+                                                                                            name="room_type[]"
+                                                                                            placeholder="Price Per Day"
+                                                                                            value="{{ $BookingRoomss->room_type }}" />
+                                                                                    </td>
                                                                                     <td class="col-3"><input
                                                                                             type="text"
                                                                                             class="form-control"
@@ -362,7 +380,9 @@
                                                         class="col-sm-3 col-form-label">
                                                         Proof 1 - View </label>
                                                     <div class="col-sm-9">
-                                                        <a href="{{ asset("assets/customer_details/proof/" . $data->proofimage_one) }}" target="_blank"><span style="color: black;">View Document: </span>{{ $data->proofimage_one }}</a>
+                                                        <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}"
+                                                            target="_blank"><span style="color: black;">View Document:
+                                                            </span>{{ $data->proofimage_one }}</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -401,7 +421,9 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Proof 1 - View </label>
                                             <div class="col-sm-9">
-                                                <a href="{{ asset("assets/customer_details/proof/" . $data->proofimage_one) }}" target="_blank"><span style="color: black;">View Document: </span>{{ $data->proofimage_one }}</a>
+                                                <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}"
+                                                    target="_blank"><span style="color: black;">View Document:
+                                                    </span>{{ $data->proofimage_one }}</a>
                                             </div>
                                         </div>
 
@@ -434,7 +456,9 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Proof 2 - View </label>
                                             <div class="col-sm-9">
-                                                <a href="{{ asset("assets/customer_details/proof/" . $data->proofimage_two) }}" target="_blank"><span style="color: black;">View Document: </span>{{ $data->proofimage_two }}</a>
+                                                <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_two) }}"
+                                                    target="_blank"><span style="color: black;">View Document:
+                                                    </span>{{ $data->proofimage_two }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -448,7 +472,8 @@
                                                 <div id="my_camera"></div>
                                                 <div id="captured_image" style="border:1px #584f72; background:#f6f6f6;">
                                                     Your captured image will appear here...</div>
-                                                    <img class="rounded m-5" width="100" src="{{ asset($data->customer_photo) }}" >
+                                                <img class="rounded m-5" width="100"
+                                                    src="{{ asset($data->customer_photo) }}">
                                             </div>
 
                                             <input style="margin-top: 10px; margin-left: 40px;" type=button
@@ -528,7 +553,7 @@
                                                                 value="{{ $data->additional_amount }}" required>
                                                         </div>
                                                         <label for="horizontal-firstname-input"
-                                                            class="col-sm-1 col-form-label" >
+                                                            class="col-sm-1 col-form-label">
                                                             Note <span style="color: red;">*</span> </label>
                                                         <div class="col-sm-4">
                                                             <input type="text"
@@ -617,9 +642,6 @@
                                                                                     value="Cash"{{ $paymentdatas->payment_method == 'Cash' ? 'selected' : '' }}
                                                                                     class="text-muted">Cash</option>
                                                                                 <option
-                                                                                    value="Card"{{ $paymentdatas->payment_method == 'Card' ? 'selected' : '' }}
-                                                                                    class="text-muted">Card</option>
-                                                                                <option
                                                                                     value="Online Payment"{{ $paymentdatas->payment_method == 'Online Payment' ? 'selected' : '' }}
                                                                                     class="text-muted">Online Payment
                                                                                 </option>
@@ -689,30 +711,28 @@
     </div>
 
     <script>
+        ;
+        (function($, window, document, undefined) {
+            $("#days").on("change", function() {
+                var date = new Date($(".check_in_date").val()),
+                    days = parseInt($("#days").val(), 10);
 
+                if (!isNaN(date.getTime())) {
+                    date.setDate(date.getDate() + days);
 
-
-;(function($, window, document, undefined){
-    $("#days").on("change", function(){
-       var date = new Date($(".check_in_date").val()),
-           days = parseInt($("#days").val(), 10);
-
-        if(!isNaN(date.getTime())){
-            date.setDate(date.getDate() + days);
-
-            $(".check_out_date").val(date.toInputFormat());
-        } else {
-            alert("Invalid Date");
-        }
-    });
-    //From: http://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
-    Date.prototype.toInputFormat = function() {
-       var yyyy = this.getFullYear().toString();
-       var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
-       var dd  = this.getDate().toString();
-       return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]); // padding
-    };
-})(jQuery, this, document);
+                    $(".check_out_date").val(date.toInputFormat());
+                } else {
+                    alert("Invalid Date");
+                }
+            });
+            //From: http://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
+            Date.prototype.toInputFormat = function() {
+                var yyyy = this.getFullYear().toString();
+                var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+                var dd = this.getDate().toString();
+                return yyyy + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + (dd[1] ? dd : "0" + dd[0]); // padding
+            };
+        })(jQuery, this, document);
 
 
 
@@ -775,9 +795,9 @@
 
                             $(".room_id").append($('<option>', {
                                 value: response['data'][i].id,
-                                text: 'Room No ' + response['data'][i].room_number + ' - ' +
-                                    response['data'][i].room_floor + ' Floor - ' + response[
-                                        'data'][i].room_type,
+                                text: 'Room No  ' + response['data'][i].room_number +
+                                    ' - ' +
+                                    response['data'][i].room_floor + ' Floor',
                             }));
 
                         }

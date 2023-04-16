@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('whats_app_number');
             $table->string('email_id')->nullable();
             $table->longText('address')->nullable();
+            $table->longText('gst_number')->nullable();
 
             $table->string('male_count');
             $table->string('female_count');

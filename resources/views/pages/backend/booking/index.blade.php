@@ -99,9 +99,9 @@
                                     <thead>
                                         <tr>
                                             <th>Sl. No</th>
+                                            <th>Booking ID</th>
                                             <th>Customer</th>
                                             <th>Room Details</th>
-                                            <th>What's App</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -110,6 +110,13 @@
                                             @if ($bookingDatas['status'] == '1')
                                                 <tr>
                                                     <td>{{ ++$keydata }}</td>
+                                                    @if ($bookingDatas['branch_id'] == 1)
+                                                    <td>#SMISRI{{ $bookingDatas['id'] }}</td>
+                                                    @elseif ($bookingDatas['branch_id'] == 2)
+                                                    <td>#SMISAM{{ $bookingDatas['id'] }}</td>
+                                                    @else
+                                                    <td>#SMIGUN{{ $bookingDatas['id'] }}</td>
+                                                    @endif
                                                     <td href="#basic{{ $bookingDatas['id'] }}" data-bs-toggle="modal"
                                                         data-bs-target="#basic{{ $bookingDatas['id'] }}" class="pointer">
                                                         {{ $bookingDatas['customer_name'] }}</td>
@@ -120,20 +127,6 @@
                                                                 {{ $room_lists['room'] }}<br />
                                                             @endif
                                                         @endforeach
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-unstyled hstack gap-1 mb-0">
-                                                            <li>
-                                                                <a target="_blank"
-                                                                    href="https://smstool.in/api/send.php?number=91{{ $bookingDatas['whats_app_number'] }}&type=text&message=test%20message&instance_id=643A4014A7B5C&access_token=1248356a8ddaca555f63a0060bee3a47"
-                                                                    class="btn btn-sm btn-soft-secondary">Booking</a>
-                                                            </li>
-                                                            <li>
-                                                                <a target="_blank"
-                                                                    href="https://api.whatsapp.com/send/?phone=91{{ $bookingDatas['whats_app_number'] }}&text=Hello+there%2C+how+are+you%3F&type=phone_number&app_absent=0"
-                                                                    class="btn btn-sm btn-soft-info">Check Out</a>
-                                                            </li>
-                                                        </ul>
                                                     </td>
                                                     <td>
                                                         <ul class="list-unstyled hstack gap-1 mb-0">
@@ -193,12 +186,12 @@
                                                                     class="btn btn-sm btn-soft-info">Edit</a>
                                                             </li>
 
-                                                            <li>
+                                                            {{-- <li>
                                                                 <a href="#jobDelete{{ $bookingDatas['id'] }}"
                                                                     data-bs-toggle="modal"
                                                                     class="btn btn-sm btn-soft-danger"
                                                                     data-bs-target="#firstmodal{{ $bookingDatas['id'] }}">Delete</a>
-                                                            </li>
+                                                            </li> --}}
                                                         </ul>
                                                     </td>
                                                 </tr>

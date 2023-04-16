@@ -59,6 +59,7 @@
                                     <tr>
                                         <th>Sl. No</th>
                                         <th>Date</th>
+                                        <th>Closer Name</th>
                                         <th>Branch</th>
                                         <th>Total</th>
                                         <th>Action</th>
@@ -69,6 +70,7 @@
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
                                         <td>{{ date('d M, Y', strtotime($datas->date)) }}</td>
+                                        <td>{{  $datas->closer_name }}</td>
                                         <td>{{ $datas->branch->name }}</td>
                                         <td>₹ {{  $datas->total }}</td>
                                         <td>

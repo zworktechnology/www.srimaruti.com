@@ -144,7 +144,7 @@
                 <div class="col-xl-5">
                     <div class="img-box2">
                         <div class="img2">
-                            <img class="image_1" src="{{ asset('assets/frontend/img/normal/about_2.png') }}"
+                            <img class="image_1" src="{{ asset('assets/frontend/image/About us 1.jpg') }}"
                                 alt="About">
                         </div>
                     </div>

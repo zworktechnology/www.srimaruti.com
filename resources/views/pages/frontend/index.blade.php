@@ -56,8 +56,8 @@
             <div class="row justify-content-between align-items-center justify-content-lg-center">
                 <div class="col-xl-5">
                     <div class="title-area mb-50">
-                        <span class="sub-title">Room & suites</span>
-                        <h2 class="sec-title">Hotel Rooms / suites</h2>
+                        <span class="sub-title">Room & Suites</span>
+                        <h2 class="sec-title">Hotel Rooms / Suites</h2>
                     </div>
                 </div>
                 <div class=" col-xl-7">
@@ -71,7 +71,7 @@
                                 data-bs-target="#nav-queen1-three" type="button" role="tab">Quad</button>
                             <button class="" id="nav-single1-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-single1-four" type="button" role="tab">Guest House &
-                                Soot</button>
+                                Suite Rooms</button>
                         </div>
                     </nav>
                 </div>
@@ -423,7 +423,7 @@
                                         <div class="service-price">
                                             <span class="service-card_subtitle">₹ 1700 PER NIGHT (AC)</span>
                                         </div>
-                                        <h3 class="service-card_title"><a href="javascript:void(0);">Soot Room at
+                                        <h3 class="service-card_title"><a href="javascript:void(0);">Suite Room at
                                                 <span style="color: #ea5c0b">Samayapuram</span></a>
                                         </h3>
                                     </div>
@@ -493,7 +493,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/img/icon/resturant.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/image/icon/restrant.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">RO Drinking Water</h3>
@@ -504,7 +504,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/img/icon/spa.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/icon/sp.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">24/7 Hot Water</h3>
@@ -515,7 +515,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/img/icon/swimming.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/icon/tv.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">Television</h3>
@@ -570,7 +570,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/img/icon/shower.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/icon/showe.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">Laundry</h3>
@@ -706,11 +706,11 @@
                                     <a href="javascript:void(0);"><i class="fa-solid fa-star"></i></a>
                                     <a href="javascript:void(0);"><i class="fa-solid fa-star"></i></a>
                                 </div>
-                                <p class="testi-box_text">“The tranquil surroundings and personalized service at Maruthi Resort made for a truly memorable stay. I can't wait to come back!”.</p>
+                                <p class="testi-box_text">“The tranquil surroundings and personalized service at
+                                    Maruthi Resort made for a truly memorable stay. I can't wait to come back!”.</p>
                                 <div class="testi-box_profile">
                                     <div class="testi-box_avater style2">
-                                        <img src="{{ asset('assets/frontend/image/icon-1.png') }}"
-                                            alt="testimonial">
+                                        <img src="{{ asset('assets/frontend/image/icon-1.png') }}" alt="testimonial">
                                     </div>
                                     <div class="media-body">
                                         <h3 class="testi-box_name h6">Balaji</h3>
@@ -728,12 +728,13 @@
                                     <a href="javascript:void(0);"><i class="fa-solid fa-star"></i></a>
                                     <a href="javascript:void(0);"><i class="fa-solid fa-star"></i></a>
                                 </div>
-                                <p class="testi-box_text">“My family and I had a fantastic stay at Maruthi Resort! The staff was so friendly and accommodating, and the amenities were perfect for all ages.”</p>
+                                <p class="testi-box_text">“My family and I had a fantastic stay at Maruthi Resort! The
+                                    staff was so friendly and accommodating, and the amenities were perfect for all
+                                    ages.”</p>
 
                                 <div class="testi-box_profile">
                                     <div class="testi-box_avater style2">
-                                        <img src="{{ asset('assets/frontend/image/icon-1.png') }}"
-                                            alt="testimonial">
+                                        <img src="{{ asset('assets/frontend/image/icon-1.png') }}" alt="testimonial">
                                     </div>
                                     <div class="media-body">
                                         <h3 class="testi-box_name h6">Sugumaran</h3>
@@ -751,11 +752,12 @@
                                     <a href="javascript:void(0);"><i class="fa-solid fa-star"></i></a>
                                     <a href="javascript:void(0);"><i class="fa-solid fa-star"></i></a>
                                 </div>
-                                <p class="testi-box_text">“Maruthi Resort was the perfect destination for our family vacation. The serene surroundings and personalized service made it a truly memorable experience.”</p>
+                                <p class="testi-box_text">“Maruthi Resort was the perfect destination for our family
+                                    vacation. The serene surroundings and personalized service made it a truly memorable
+                                    experience.”</p>
                                 <div class="testi-box_profile">
                                     <div class="testi-box_avater style2">
-                                        <img src="{{ asset('assets/frontend/image/icon-1.png') }}"
-                                            alt="testimonial">
+                                        <img src="{{ asset('assets/frontend/image/icon-1.png') }}" alt="testimonial">
                                     </div>
                                     <div class="media-body">
                                         <h3 class="testi-box_name h6">Dinesh</h3>

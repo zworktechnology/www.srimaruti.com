@@ -104,7 +104,7 @@
                                         <td>{{ ++$keydata }}</td>
                                         <td>{{ $datas->branch->name }}</td>
                                         <td>{{ $datas->room_floor }}</td>
-                                        <td>No. {{ $datas->room_number }} - {{ $datas->room_type }} - {{ $datas->room_category }}</td>
+                                        <td>No. {{ $datas->room_number }} - {{ $datas->room_category }}</td>
                                         @if ($datas->booking_status == 0)
                                         <td style="color:red">Open</td>
                                         @else

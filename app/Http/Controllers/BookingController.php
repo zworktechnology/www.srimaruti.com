@@ -29,7 +29,7 @@ class BookingController extends Controller
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
                 $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
                     'booking_id' => $datas->id,
                     'booking_room_price' => $rooms_booked->room_price,
                     'room_cal_price' => $rooms_booked->room_cal_price,
@@ -60,6 +60,7 @@ class BookingController extends Controller
                 'chick_out_time' => $datas->check_out_time,
                 'phone_number' => $datas->phone_number,
                 'grand_total' => $datas->grand_total,
+                'branch_id' => $datas->branch_id,
                 'total_paid' => $datas->total_paid,
                 'balance_amount' => $datas->balance_amount,
                 'days' => $datas->days,
@@ -79,7 +80,6 @@ class BookingController extends Controller
 
         return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow'));
     }
-
 
     public function dailycheckout()
     {
@@ -168,7 +168,6 @@ class BookingController extends Controller
         return view('pages.backend.booking.create', compact('branch', 'room', 'today', 'timenow'));
     }
 
-
     public function store(Request $request)
     {
         $data = new Booking();
@@ -182,6 +181,7 @@ class BookingController extends Controller
             $data->whats_app_number = $request->get('whats_app_number');
             $data->email_id = $request->get('email_id');
             $data->address = $request->get('address');
+            $data->gst_number = $request->get('gst_number');
             $data->male_count = $request->get('male_count');
             $data->female_count = $request->get('female_count');
             $data->child_count = $request->get('child_count');
@@ -268,7 +268,7 @@ class BookingController extends Controller
             $BookingRoom = new BookingRoom;
             $BookingRoom->booking_id = $insertedId;
             $BookingRoom->room_id = $room_id;
-            $BookingRoom->room_type = $GetroomDetails->room_type;
+            $BookingRoom->room_type = $request->room_type[$key];
             $BookingRoom->room_floor = $GetroomDetails->room_floor;
             $BookingRoom->room_price = $request->room_price[$key];
             $BookingRoom->room_cal_price = $request->room_cal_price[$key];
@@ -302,6 +302,7 @@ class BookingController extends Controller
         $BookingData->whats_app_number = $request->get('whats_app_number');
         $BookingData->email_id = $request->get('email_id');
         $BookingData->address = $request->get('address');
+        $BookingData->gst_number = $request->get('gst_number');
         $BookingData->male_count = $request->get('male_count');
         $BookingData->female_count = $request->get('female_count');
         $BookingData->child_count = $request->get('child_count');
@@ -432,8 +433,10 @@ class BookingController extends Controller
                 $room_id = $request->room_id[$key];
                 $room_price = $request->room_price[$key];
                 $room_cal_price = $request->room_cal_price[$key];
+                $room_type = $request->room_type[$key];
+
                 DB::table('booking_rooms')->where('id', $ids)->update([
-                    'booking_id' => $bookingID,  'room_id' => $room_id,  'room_price' => $room_price,  'room_cal_price' => $room_cal_price
+                    'booking_id' => $bookingID,  'room_id' => $room_id,  'room_price' => $room_price,  'room_cal_price' => $room_cal_price, 'room_type' => $room_type
                 ]);
             } else if ($room_auto_id == '') {
                 if ($request->room_id[$key] > 0) {
@@ -442,10 +445,12 @@ class BookingController extends Controller
                     $new_room_id =  $request->room_id[$key];
                     $room_price =  $request->room_price[$key];
                     $room_cal_price =  $request->room_cal_price[$key];
+                    $room_type = $request->room_type[$key];
+
                     $BookingRoom = new BookingRoom;
                     $BookingRoom->booking_id = $booking_id;
                     $BookingRoom->room_id = $new_room_id;
-                    $BookingRoom->room_type = $GetroomDetails->room_type;
+                    $BookingRoom->room_type = $room_type;
                     $BookingRoom->room_floor = $GetroomDetails->room_floor;
                     $BookingRoom->room_price = $room_price;
                     $BookingRoom->room_cal_price = $room_cal_price;
@@ -507,7 +512,6 @@ class BookingController extends Controller
         return redirect()->route('booking.index')->with('checkout', 'Successfully Updated');
     }
 
-
     public function pay_balance(Request $request, $id)
     {
         $paid_date = Carbon::now()->format('Y-m-d');
@@ -534,7 +538,10 @@ class BookingController extends Controller
     public function view($id)
     {
         $data = Booking::findOrFail($id);
+        $today = Carbon::now()->format('d M Y');
         $roomsbooked = BookingRoom::where('booking_id', '=', $id)->get();
+        $branch = Branch::findOrFail($data->branch_id);
+
         $room_list = [];
         foreach ($roomsbooked as $key => $rooms_booked) {
             $Rooms = Room::findOrFail($rooms_booked->room_id);
@@ -546,11 +553,8 @@ class BookingController extends Controller
             );
         }
 
-        $branch = Branch::findOrFail($data->branch_id);
-
-        return view('pages.backend.booking.view', compact('data', 'branch', 'room_list'));
+        return view('pages.backend.booking.view', compact('data', 'branch', 'room_list', 'today'));
     }
-
 
     public function datefilter(Request $request)
     {
@@ -710,7 +714,6 @@ class BookingController extends Controller
         echo json_encode($userData);
     }
 
-
     public function extend(Request $request, $id)
     {
         $data = Booking::findOrFail($id);
@@ -768,11 +771,9 @@ class BookingController extends Controller
         return redirect()->route('booking.index')->with('extend', 'Room Extended successfully');
     }
 
-
     public function pricing($id)
     {
         $data = Booking::findOrFail($id);
         return view('pages.backend.booking.checkout', compact('data'));
     }
-
 }

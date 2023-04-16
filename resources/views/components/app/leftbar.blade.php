@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="menu-title">Account</li>
-                <li class="{{ Route::is('booking.index','booking.create','booking.edit') ? 'mm-active' : '' }}">
+                <li class="{{ Route::is('booking.index','booking.create','booking.edit', 'booking.view') ? 'mm-active' : '' }}">
                     <a href="{{ route('booking.index') }}" class="waves-effect">
                         <i class="uil-book-open"></i>
                         <span>Booking</span>

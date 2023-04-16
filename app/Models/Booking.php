@@ -15,6 +15,7 @@ class Booking extends Model
         'whats_app_number',
         'email_id',
         'address',
+        'gst_number',
 
         'male_count',
         'female_count',

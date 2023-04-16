@@ -14,7 +14,7 @@ class CloseAccountController extends Controller
     public function index()
     {
         $today = Carbon::now()->format('Y-m-d');
-        $data = CloseAccount::where('soft_delete', '!=', 1)->get();
+        $data = CloseAccount::where('soft_delete', '!=', 1)->orderBy('created_at', 'desc')->get();
         $branch = Branch::where('soft_delete', '!=', 1)->get();
 
         return view('pages.backend.closeaccount.index', compact('today', 'data', 'branch'));
@@ -27,6 +27,7 @@ class CloseAccountController extends Controller
         $data = new CloseAccount();
 
         $data->date = $request->get('date');
+        $data->closer_name = $request->get('closer_name');
         $data->branch_id = $request->get('branch_id');
         $data->count_2000 = $request->get('count_2000');
         $data->count_500 = $request->get('count_500');
@@ -67,6 +68,7 @@ class CloseAccountController extends Controller
         $data = CloseAccount::findOrFail($id);
 
         $data->date = $request->get('date');
+        $data->closer_name = $request->get('closer_name');
         $data->branch_id = $request->get('branch_id');
         $data->count_2000 = $request->get('count_2000');
         $data->count_500 = $request->get('count_500');

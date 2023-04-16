@@ -35,12 +35,12 @@
                         <input type="number" class="form-control" name="room_number" placeholder="Enter room number " required>
                     </div>
                 </div>
-                <div class="row mb-4">
-                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
+                <div class="row mb-4" hidden>
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                         Type </label>
                     <div class="col-sm-12">
                         <select class="form-control js-example-basic-single" name="room_type" required>
-                            <option value="" disabled selected hidden class="text-muted">Select Type</option>
+                            <option value="Select Type" selected class="text-muted">Select Type</option>
                             <option value="A/C" class="text-muted">A/C</option>
                             <option value="Non A/c" class="text-muted">Non A/C</option>
                         </select>

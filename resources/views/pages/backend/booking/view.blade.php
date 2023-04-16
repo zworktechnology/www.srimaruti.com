@@ -28,39 +28,74 @@
                     <div class="col-lg-12">
                         <div class="card" style="-webkit-box-shadow: none; box-shadow: none;">
                             <div class="card-body">
-                                <div class="invoice-title">
-                                    <h4 class="float-end font-size-16">Invoice #SMI{{ $data->id }}</h4>
-                                    <div class="mb-4">
-                                        <img src="{{ asset('assets/frontend/img/logo.png') }}" alt="logo" height="70"
+                                <div class="invoice-title" style="display: flex;">
+                                    <div class="mb-4 col-2">
+                                        <img src="{{ asset('assets/frontend/img/logo.png') }}" alt="logo" height="100"
                                             class="logo-dark" />
-                                        <img src="{{ asset('assets/frontend/img/logo.png') }}" alt="logo" height="70"
+                                        <img src="{{ asset('assets/frontend/img/logo.png') }}" alt="logo" height="100"
                                             class="logo-light" />
+                                    </div>
+                                    <div class="col-10" style="text-align: center;">
+                                        <h1 style="color: #ea5c0b">Sri Maruti Inn</h1>
+                                        @if ($data->branch_id == 1)
+                                        <p style="color: #1e2739; margin-bottom: 0rem;">No. 122, South Chitra Street, Near Second Entrance, Srirangam, Tiruchirappalli - 620006.</p>
+                                        <p style="color: #1e2739">Ph: 0431-2435749 | 96594 64543 | 99447 37705</p>
+                                        @elseif ($data->branch_id == 2)
+                                        <p style="color: #1e2739; margin-bottom: 0rem;">No. 1, Sakthi Avenue, Koil Marriage Hall Opp, Samayapuram, Tiruchirappalli - 621112.</p>
+                                        <p style="color: #1e2739">Ph: 0431-2670060 | 96594 64249 | 99447 37705</p>
+                                        @else
+                                        <p style="color: #1e2739; margin-bottom: 0rem;">No. 4, Mass Garden, Salem Main Road, Gunaseelam, Tiruchirappalli - 621204.</p>
+                                        <p style="color: #1e2739">Ph: 0431-6275275 | 90253 43955 | 99447 37705</p>
+                                        @endif
                                     </div>
                                 </div>
 
-                                <hr class="my-4">
+                                <hr>
 
-                                <div class="row">
-                                    <div class="col-sm-4">
+                                <div class="invoice-title" style="display: flex;">
+                                    <div class="col-6" style="text-align: start;">
+                                        @if ($data->branch_id == 1)
+                                        <h4 class="font-size-16">Invoice : <span style="color: #acafb7;">#SMISRI{{ $data->id }}</span></h4>
+                                        @elseif ($data->branch_id == 2)
+                                        <h4 class="font-size-16">Invoice : <span style="color: #acafb7;">#SMISAM{{ $data->id }}</span></h4>
+                                        @else
+                                        <h4 class="font-size-16">Invoice : <span style="color: #acafb7;">#SMIGUN{{ $data->id }}</span></h4>
+                                        @endif
+                                    </div>
+                                    <div class="col-6" style="text-align: end;">
+                                        <h4 class="float-end font-size-16">Date : <span style="color: #acafb7;">{{ $today }}</span></h4>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row" style="display: flex;">
+                                    <div class="col-sm-4 col-4">
                                         <div class="text-muted">
                                             <h5 class="font-size-16 mb-3">Billed To:</h5>
-                                            <h5 class="font-size-15 mb-2">{{ $data->customer_name }}</h5>
-                                            <p class="mb-1">{{ $data->address }}</p>
-                                            <p class="mb-1">{{ $data->email_id }}</p>
-                                            <p>+91 {{ $data->whats_app_number }}</p>
+                                            <h5 class="font-size-15 mb-2" style="color: #acafb7;">{{ $data->customer_name }}</h5>
+                                            <p class="mb-1" style="color: #acafb7;">+91 {{ $data->whats_app_number }}</p>
+                                            <p class="mb-1" style="color: #acafb7;">{{ $data->gst_number }}</p>
+                                            <p class="mb-1" style="color: #acafb7;">{{ $data->email_id }}</p>
+                                            <p style="color: #acafb7;">{{ $data->address }}</p>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2"></div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-8 col-8" style="text-align: end;">
                                         <div class="text-muted text-sm-end">
                                             <div>
-                                                <h5 class="font-size-16 mb-1">Days: <span style="color: #acafb7; font-size: 0.9rem;">{{ $data->days }}</span></h5>
+                                                <h5 class="font-size-16 mb-1">Days: <span
+                                                        style="color: #acafb7; font-size: 0.9rem;">{{ $data->days }}</span>
+                                                </h5>
                                             </div>
                                             <div class="mt-4">
-                                                <h5 class="font-size-16 mb-1">Check In  Date & Time: <span style="color: #acafb7; font-size: 0.9rem;">{{ date('D - d M Y', strtotime($data->check_in_date)) }} {{ date('h:i A', strtotime($data->check_in_time)) }}</span></h5>
+                                                <h5 class="font-size-16 mb-1">Check In Date & Time: <span
+                                                        style="color: #acafb7; font-size: 0.9rem;">{{ date('D - d M Y', strtotime($data->check_in_date)) }}
+                                                        {{ date('h:i A', strtotime($data->check_in_time)) }}</span></h5>
                                             </div>
                                             <div class="mt-4 mb-4">
-                                                <h5 class="font-size-16 mb-1">Check Out Date & Time: <span style="color: #acafb7; font-size: 0.9rem;">{{ date('D - d M Y', strtotime($data->check_out_date)) }} {{ date('h:i A', strtotime($data->check_out_time)) }}</span></h5>
+                                                <h5 class="font-size-16 mb-1">Check Out Date & Time: <span
+                                                        style="color: #acafb7; font-size: 0.9rem;">{{ date('D - d M Y', strtotime($data->check_out_date)) }}
+                                                        {{ date('h:i A', strtotime($data->check_out_time)) }}</span></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -81,11 +116,11 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($room_list as $index => $room_lists)
-                                                <tr>
-                                                    <th scope="row">{{ $room_lists['room'] }}</th>
-                                                    <td>₹ {{ $room_lists['room_price'] }}</td>
-                                                    <td class="text-end">₹ {{ $room_lists['room_cal_price'] }}</td>
-                                                </tr>
+                                                    <tr>
+                                                        <th scope="row">{{ $room_lists['room'] }}</th>
+                                                        <td>₹ {{ $room_lists['room_price'] }}</td>
+                                                        <td class="text-end">₹ {{ $room_lists['room_cal_price'] }}</td>
+                                                    </tr>
                                                 @endforeach
 
 
@@ -104,12 +139,8 @@
                                                     <td class="border-0 text-end">- ₹ {{ $data->disc_amount }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" colspan="2" class="border-0 text-end">
-                                                        Extra Charge :</th>
-                                                    <td class="border-0 text-end">₹ {{ $data->additional_amount }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" colspan="2" class="border-0 text-end">Grand Total</th>
+                                                    <th scope="row" colspan="2" class="border-0 text-end">Grand Total
+                                                    </th>
                                                     <td class="border-0 text-end">
                                                         <h4 class="m-0">₹ {{ $data->grand_total }}</h4>
                                                     </td>
@@ -119,7 +150,9 @@
                                     </div>
                                     <div class="d-print-none mt-4">
                                         <div class="float-end">
-                                            <a href="javascript:window.print()" class="btn btn-primary w-md waves-effect waves-light"><i class="fa fa-print"></i>&nbsp;&nbsp; Print</a>
+                                            <a href="javascript:window.print()"
+                                                class="btn btn-primary w-md waves-effect waves-light"><i
+                                                    class="fa fa-print"></i>&nbsp;&nbsp; Print</a>
                                         </div>
                                     </div>
                                 </div>

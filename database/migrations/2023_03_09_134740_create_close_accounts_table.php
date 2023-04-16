@@ -20,6 +20,7 @@ return new class extends Migration
 
             // Request columns
             $table->string('date');
+            $table->string('closer_name');
             $table->unsignedBigInteger('branch_id');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->integer('count_2000')->nullable();

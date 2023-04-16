@@ -13,7 +13,7 @@ class ExpenseController extends Controller
     public function index()
     {
         $today = Carbon::now()->format('Y-m-d');
-        $data = Expense::where('soft_delete', '!=', 1)->get();
+        $data = Expense::where('date', '=', $today)->where('soft_delete', '!=', 1)->get();
         $namelist = Namelist::where('soft_delete', '!=', 1)->get();
         $branch = Branch::where('soft_delete', '!=', 1)->get();
 

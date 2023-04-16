@@ -30,6 +30,13 @@
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                Closer Name </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="closer_name" placeholder="Enter closer name *" value="{{ $data->closer_name }}" required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Branch <span style="color: red;">*</span> </label>
                                             <div class="col-sm-9">
                                                 <select class="form-control js-example-basic-single" name="branch_id" required>

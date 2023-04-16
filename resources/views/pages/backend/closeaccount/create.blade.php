@@ -17,6 +17,13 @@
                 </div>
                 <div class="row mb-4">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
+                        Closer Name </label>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" name="closer_name" placeholder="Enter closer name *" required>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         Branch </label>
                     <div class="col-sm-12">
                         <select class="form-control js-example-basic-single" name="branch_id" required>
