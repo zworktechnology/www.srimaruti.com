@@ -229,13 +229,7 @@
         $(document).ready(function() {
             $('#booking_datatable').DataTable();
         });
-        $(".paybalanceclose").click(function() {
-            window.location.reload();
-        });
-        $(".paybalanceclosebutton").click(function() {
-            window.location.reload();
-        });
-
+       
 
         $(document).on("keyup", 'input.payable_amount', function() {
             var payable_amount = $(this).val();

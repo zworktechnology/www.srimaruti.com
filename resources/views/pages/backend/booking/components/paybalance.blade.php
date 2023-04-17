@@ -123,3 +123,13 @@
         </div>
     </div>
 
+    <script>
+         $(".paybalanceclose").click(function() {
+            window.location.reload();
+        });
+        $(".paybalanceclosebutton").click(function() {
+            window.location.reload();
+        });
+
+    </script>
+

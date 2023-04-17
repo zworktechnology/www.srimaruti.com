@@ -222,16 +222,16 @@ class BookingController extends Controller
 
         }
 
-        $customer_photo = $request->customer_photo;
-        $folderPath = "assets/customer_details/profile";
-        $image_parts = explode(";base64,", $customer_photo);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
-        $image_base64 = base64_decode($image_parts[1]);
-        $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-        $customerimgfile = $folderPath . $fileName;
-        file_put_contents($customerimgfile, $image_base64);
-        $data->customer_photo = $customerimgfile;
+        //$customer_photo = $request->customer_photo;
+        //$folderPath = "assets/customer_details/profile";
+        //$image_parts = explode(";base64,", $customer_photo);
+        //$image_type_aux = explode("image/", $image_parts[0]);
+        //$image_type = $image_type_aux[1];
+        //$image_base64 = base64_decode($image_parts[1]);
+        //$fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+        //$customerimgfile = $folderPath . $fileName;
+        //file_put_contents($customerimgfile, $image_base64);
+        //$data->customer_photo = $customerimgfile;
 
         $data->total = $request->get('total_calc_price');
         $data->gst_per = $request->get('gst_percentage');
@@ -244,6 +244,8 @@ class BookingController extends Controller
         $data->grand_total = $request->get('grand_total');
         $data->total_paid = $request->get('payable_amount');
         $data->balance_amount = $request->get('balance_amount');
+        $data->out_date = $request->get('check_out_date');
+        $data->out_time = $request->get('check_out_time');
         $status = 1;
         $data->status = $status;
 
@@ -380,6 +382,8 @@ class BookingController extends Controller
         $BookingData->additional_notes = $request->get('additional_charge_notes');
         $BookingData->grand_total = $request->get('grand_total');
         $BookingData->balance_amount = $request->get('balance_amount');
+        $BookingData->out_date = $request->get('check_out_date');
+        $BookingData->out_time = $request->get('check_out_time');
         $BookingData->update();
 
         $booking_id = $id;
@@ -498,8 +502,7 @@ class BookingController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        $data->out_date = $today;
-        $data->out_time = $timenow;
+        $data->check_out_time = $request->get('checkout_time');
         $status = 2;
         $data->status = $status;
         $data->update();
@@ -720,6 +723,8 @@ class BookingController extends Controller
 
         $data->check_out_date = $request->get('extended_date');
         $data->check_out_time = $request->get('extended_time');
+        $data->extended_date = $request->get('extended_date');
+        $data->extended_time = $request->get('extended_time');
         $data->days = $request->get('no_of_days');
         $data->total = $request->get('total_calc_price');
         $data->gst_amount = $request->get('gst_amount');
