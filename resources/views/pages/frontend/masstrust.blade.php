@@ -46,7 +46,7 @@
     <!-- History Area -->
     <div class=" history-timeline-area">
         <div class="history-timeline">
-            <div class="history-center-line"><img src="{{ asset('assets/frontend/img/shape/line_shape.svg') }}" alt=""></div>
+            <div class="history-center-line"><img src="{{ asset('assets/frontend/image/shape/line_shape.svg') }}" alt=""></div>
             <div class="history-timeline_content">
 
                 <div class="history-timeline_article">

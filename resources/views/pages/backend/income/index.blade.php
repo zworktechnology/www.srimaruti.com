@@ -65,7 +65,7 @@
             @endif
 
             <div class="row" style="display: flex">
-                <div class="col-9">
+                <div class="col-12 col-md-9">
                     <div class="card">
                         <div class="card-body">
                             <table id="incomedatatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -127,7 +127,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-12 col-md-3">
                     <div class="card">
                         <div class="card-body">
                             @include('pages.backend.income.create')

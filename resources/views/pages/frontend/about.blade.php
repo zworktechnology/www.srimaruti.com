@@ -43,7 +43,7 @@
                     <div class="about-wrapp">
                         <div class="about-content-1">
                             <div class="about-icon">
-                                <img src="{{ asset('assets/frontend/img/shape/save-doller.svg') }}">
+                                <img src="{{ asset('assets/frontend/image/shape/save-doller.svg') }}">
                             </div>
                             <div class="about-text-wrapper">
                                 <h2 class="about-title">Best Rate Guarantee</h2>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="about-content-1">
                             <div class="about-icon">
-                                <img src="{{ asset('assets/frontend/img/shape/save-money.svg') }}">
+                                <img src="{{ asset('assets/frontend/image/shape/save-money.svg') }}">
                             </div>
                             <div class="about-text-wrapper">
                                 <h2 class="about-title">No Booking Fee</h2>

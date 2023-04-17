@@ -30,9 +30,9 @@
                             <div class="card-body">
                                 <div class="invoice-title" style="display: flex;">
                                     <div class="mb-4 col-2">
-                                        <img src="{{ asset('assets/frontend/img/logo.png') }}" alt="logo" height="100"
+                                        <img src="{{ asset('assets/frontend/image/logo.png') }}" alt="logo" height="100"
                                             class="logo-dark" />
-                                        <img src="{{ asset('assets/frontend/img/logo.png') }}" alt="logo" height="100"
+                                        <img src="{{ asset('assets/frontend/image/logo.png') }}" alt="logo" height="100"
                                             class="logo-light" />
                                     </div>
                                     <div class="col-10" style="text-align: center;">
