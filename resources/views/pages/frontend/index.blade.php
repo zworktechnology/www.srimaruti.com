@@ -493,7 +493,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/image/icon/restrant.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/image/icon/Vector.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">RO Drinking Water</h3>
@@ -504,7 +504,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/img/icon/sp.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/image/icon/Group 84.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">24/7 Hot Water</h3>
@@ -570,7 +570,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/img/icon/showe.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/image/icon/Group 81.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">Laundry</h3>

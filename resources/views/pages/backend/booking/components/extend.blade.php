@@ -102,7 +102,8 @@
                                                     var dd = this.getDate().toString();
                                                     return yyyy + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + (dd[1] ? dd : "0" + dd[0]); // padding
                                                 };
-                                            })(jQuery, this, document);
+                                            })
+                                            (jQuery, this, document);
 
                                             $(document).ready(function() {
                                                 $('.extend' + {{ $bookingDatas['id'] }}).each(function() {
@@ -127,7 +128,7 @@
                                                                 function() {
 
                                                                     totalAmount = Number(totalAmount) + Number($(this)
-                                                                    .val());
+                                                                        .val());
                                                                     console.log(totalAmount);
                                                                     $('#total_calc_price' + {{ $bookingDatas['id'] }}).val(
                                                                         totalAmount);
@@ -182,7 +183,7 @@
                                                             var discount_amount = $('#discount_amount' +
                                                                 {{ $bookingDatas['id'] }}).val();
                                                             var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }})
-                                                        .val();
+                                                                .val();
 
                                                             var grand_total = (Number(total_calc_price) + Number(gst_amount) +
                                                                 Number(additional_charge)) - Number(discount_amount);
@@ -213,7 +214,7 @@
                                                                 var discount_amount = $('#discount_amount' +
                                                                     {{ $bookingDatas['id'] }}).val();
                                                                 var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }})
-                                                            .val();
+                                                                    .val();
 
                                                                 var grand_total = (Number(total_calc_price) + Number(gst_amount) +
                                                                     Number(additional_charge)) - Number(discount_amount);
@@ -245,7 +246,7 @@
                                                                 var discount_amount = $('#discount_amount' +
                                                                     {{ $bookingDatas['id'] }}).val();
                                                                 var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }})
-                                                            .val();
+                                                                    .val();
 
                                                                 var grand_total = (Number(total_calc_price) + Number(gst_amount) +
                                                                     Number(additional_charge)) - Number(discount_amount);
@@ -277,7 +278,7 @@
                                                                 var discount_amount = $('#discount_amount' +
                                                                     {{ $bookingDatas['id'] }}).val();
                                                                 var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }})
-                                                            .val();
+                                                                    .val();
 
                                                                 var grand_total = (Number(total_calc_price) + Number(gst_amount) +
                                                                     Number(additional_charge)) - Number(discount_amount);
@@ -299,7 +300,7 @@
                                                                 var discount_amount = $('#discount_amount' +
                                                                     {{ $bookingDatas['id'] }}).val();
                                                                 var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }})
-                                                            .val();
+                                                                    .val();
 
                                                                 var grand_total = (Number(total_calc_price) + Number(gst_amount) +
                                                                     Number(additional_charge)) - Number(discount_amount);
@@ -325,7 +326,7 @@
                                                                 var discount_amount = $('#discount_amount' +
                                                                     {{ $bookingDatas['id'] }}).val();
                                                                 var gst_amount = $('#gst_amount' + {{ $bookingDatas['id'] }})
-                                                            .val();
+                                                                    .val();
 
                                                                 var grand_total = (Number(total_calc_price) + Number(gst_amount) +
                                                                     Number(additional_charge)) - Number(discount_amount);
@@ -468,7 +469,7 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Total Paid </label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control payable_amount"
-                            
+                            style="background-color:#4ac565;color: black;"
                             id="payable_amount{{ $bookingDatas['id'] }}" value="{{ $bookingDatas['total_paid'] }}"
                             name="payable_amount" placeholder="Enter here ">
                     </div>
@@ -491,6 +492,7 @@
                         <select class="form-control" name="payment_method">
                             <option value="" selected class="text-muted">Select Payment Via</option>
                             <option value="Cash" class="text-muted">Cash</option>
+                            <option value="Card" class="text-muted">Card</option>
                             <option value="Online Payment" class="text-muted">Online Payment</option>
                         </select>
                     </div>
