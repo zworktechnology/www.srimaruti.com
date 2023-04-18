@@ -75,6 +75,7 @@ class BookingController extends Controller
                 'status' => $datas->status,
                 'extended_date' => $datas->extended_date,
                 'extended_time' => $datas->extended_time,
+                'booking_invoiceno' => $datas->booking_invoiceno,
             );
         }
 
@@ -173,9 +174,52 @@ class BookingController extends Controller
         $data = new Booking();
         $random_no =   rand(100,999);
         $checkin = $request->get('checkin');
-
+        $billno = 1;
         if($checkin == 'checkin')
         {
+            $branchid = $request->get('branch_id');
+            if($request->get('branch_id') == 1){
+                $branch_ids = 1;
+
+                $last_branchid = Booking::where('branch_id', '=', $branch_ids)->latest('id')->first();
+                
+                    
+                    if($last_branchid != ''){
+                        $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
+                        $invoiceno = '#SMISRI' . $added_billno + 1;
+                    }else {
+                        $invoiceno = '#SMISRI'.$billno;
+                    }
+                
+
+            }else if($request->get('branch_id') == 2){
+                $branch_ids = 2;
+
+                $last_branchid = Booking::where('branch_id', '=', $branch_ids)->latest('id')->first();
+                
+                    
+                    if($last_branchid != ''){
+                        $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
+                        $invoiceno = '#SMISAM' . $added_billno + 1;
+                    }else {
+                        $invoiceno = '#SMISAM'.$billno;
+                    }
+            }else {
+                $branch_ids = 3;
+
+                $last_branchid = Booking::where('branch_id', '=', $branch_ids)->latest('id')->first();
+                
+                    
+                    if($last_branchid != ''){
+                        $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
+                        $invoiceno = '#SMIGUN' . $added_billno + 1;
+                    }else {
+                        $invoiceno = '#SMIGUN'.$billno;
+                    }
+            }
+
+
+            $data->booking_invoiceno = $invoiceno;
             $data->customer_name = $request->get('booking_customer_name');
             $data->phone_number = $request->get('phone_number');
             $data->whats_app_number = $request->get('whats_app_number');

@@ -54,13 +54,9 @@
 
                                 <div class="invoice-title" style="display: flex;">
                                     <div class="col-6" style="text-align: start;">
-                                        @if ($data->branch_id == 1)
-                                        <h4 class="font-size-16">Invoice : <span style="color: #acafb7;">#SMISRI{{ $data->id }}</span></h4>
-                                        @elseif ($data->branch_id == 2)
-                                        <h4 class="font-size-16">Invoice : <span style="color: #acafb7;">#SMISAM{{ $data->id }}</span></h4>
-                                        @else
-                                        <h4 class="font-size-16">Invoice : <span style="color: #acafb7;">#SMIGUN{{ $data->id }}</span></h4>
-                                        @endif
+                                        
+                                        <h4 class="font-size-16">Invoice : <span style="color: #acafb7;">{{ $data->booking_invoiceno }}</span></h4>
+                                        
                                     </div>
                                     <div class="col-6" style="text-align: end;">
                                         <h4 class="float-end font-size-16">Date : <span style="color: #acafb7;">{{ $today }}</span></h4>

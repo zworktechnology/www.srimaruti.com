@@ -110,13 +110,9 @@
                                             @if ($bookingDatas['status'] == '1')
                                                 <tr>
                                                     <td>{{ ++$keydata }}</td>
-                                                    @if ($bookingDatas['branch_id'] == 1)
-                                                    <td>#SMISRI{{ $bookingDatas['id'] }}</td>
-                                                    @elseif ($bookingDatas['branch_id'] == 2)
-                                                    <td>#SMISAM{{ $bookingDatas['id'] }}</td>
-                                                    @else
-                                                    <td>#SMIGUN{{ $bookingDatas['id'] }}</td>
-                                                    @endif
+                                                   
+                                                    <td>{{ $bookingDatas['booking_invoiceno'] }}</td>
+                                                   
                                                     <td href="#basic{{ $bookingDatas['id'] }}" data-bs-toggle="modal"
                                                         data-bs-target="#basic{{ $bookingDatas['id'] }}" class="pointer">
                                                         {{ $bookingDatas['customer_name'] }}</td>

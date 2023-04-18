@@ -19,6 +19,7 @@ return new class extends Migration
             $table->id();
 
             // Request columns
+            $table->string('booking_invoiceno')->nullable();
             $table->string('customer_name');
             $table->string('phone_number');
             $table->string('whats_app_number');
