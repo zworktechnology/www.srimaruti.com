@@ -3,7 +3,7 @@
     <div class="as-menu-area text-center">
         <button class="as-menu-toggle"><i class="fal fa-times"></i></button>
         <div class="mobile-logo">
-            <a href="/"><img src="{{ asset('assets/frontend/img/logo.png') }}" alt="" style="height:110px; width:auto;"></a>
+            <a href="/"><img src="{{ asset('assets/frontend/image/logo.png') }}" alt="" style="height:110px; width:auto;"></a>
         </div>
         <div class="as-mobile-menu">
             <ul>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="col-auto">
                         <div class="header-logo">
-                            <a href="javascript:void(0);"><img src="{{ asset('assets/frontend/img/logo.png') }}" alt="" style="height:110px; width:auto;"></a>
+                            <a href="javascript:void(0);"><img src="{{ asset('assets/frontend/image/logo.png') }}" alt="" style="height:110px; width:auto;"></a>
                         </div>
                     </div>
                     <div class="col-auto" style="display: flex;">

@@ -4,14 +4,55 @@
     <div class="main-content">
         <div class="page-content">
             <div class="container-fluid">
+
+                <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
                             <h4 class="mb-0">Booking</h4>
-                            <div class="page-title-right">
 
+                            <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    {{-- <form autocomplete="off" method="POST" action="{{ route('booking.datefilter') }}"
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Room</a></li>
+                                    <li class="breadcrumb-item active">Booking</li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <a href="{{ route('booking.create') }}">
+                                <button type="button" class="btn btn-primary waves-effect waves-light mb-3"><i class="mdi mdi-plus me-1"></i> New Booking</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-8" hidden>
+                        <div class="float-end">
+                            <div class=" mb-3">
+                                <div class="input-daterange input-group" id="datepicker6" data-date-format="dd M, yyyy" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
+                                    <input type="text" class="form-control text-start" placeholder="From" name="From" />
+                                    <input type="text" class="form-control text-start" placeholder="To" name="To" />
+                                    
+                                    <button type="button" class="btn btn-primary"><i class="mdi mdi-filter-variant"></i></button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                {{-- <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-flex align-items-center justify-content-between">
+                            <h4 class="mb-0">Booking</h4>
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <form autocomplete="off" method="POST" action="{{ route('booking.datefilter') }}"
                                         style="display: flex;">
                                         @method('PUT')
                                         @csrf
@@ -28,8 +69,8 @@
                                                 class="form-control to_date" value="{{ $today }}"></li>
                                         <li style="margin-left: 10px;"><button type="submit"
                                                 class="btn btn-primary home_search">Search</button></li>
-                                    </form> --}}
-                                    <li style="margin-left: 10px;">
+                                    </form>
+                                    <li>
                                         <a href="{{ route('booking.create') }}">
                                             <button type="button" class="btn btn-primary waves-effect waves-light">
                                                 New Booking
@@ -37,13 +78,10 @@
                                         </a>
                                     </li>
                                 </ol>
-
                             </div>
-
-
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 @if (\Session::has('add'))
                     <div class="alert alert-secondary alert-dismissible fade show" role="alert">

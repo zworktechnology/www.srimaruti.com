@@ -99,11 +99,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">2 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">1 Extra Bed</span>
                                         </div>
                                     </div>
@@ -132,11 +132,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">2 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">1 Extra Bed</span>
                                         </div>
@@ -166,12 +166,12 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">2 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">1 Extra Bed</span>
                                         </div>
@@ -207,12 +207,12 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">3 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">1 Extra Bed</span>
                                         </div>
@@ -242,12 +242,12 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">3 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">2 Extra Bed</span>
                                         </div>
@@ -277,12 +277,12 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">3 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">2 Extra Bed</span>
                                         </div>
@@ -318,12 +318,12 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">4 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">1 Extra Bed</span>
                                         </div>
@@ -353,12 +353,12 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">4 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">2 Extra Bed</span>
                                         </div>
@@ -394,12 +394,12 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/guest.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/guest.svg') }}"
                                                 alt="">
                                             <span class="ser-title">7 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">7 Extra Bed</span>
                                         </div>
@@ -429,7 +429,7 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">4 Bed</span>
                                         </div>
@@ -515,7 +515,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/img/icon/tv.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/image/icon/tv.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">Television</h3>
@@ -526,7 +526,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/img/icon/wifi.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/image/icon/wifi.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">Wifi & Intercom</h3>
@@ -537,7 +537,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/img/icon/car.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/image/icon/car.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">Pick Up & Drop​</h3>
@@ -548,7 +548,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/img/icon/air.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/image/icon/air.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">Air Conditioner</h3>
@@ -559,7 +559,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="service-box style4">
                         <div class="service-box_icon">
-                            <img src="{{ asset('assets/frontend/img/icon/parking.svg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/image/icon/parking.svg') }}" alt="">
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">Parking Space</h3>
@@ -597,7 +597,7 @@
                         <div class="choose-wrapper">
                             <div class="choose-box style2">
                                 <div class="choose-box_icon">
-                                    <img src="{{ asset('assets/frontend/img/shape/save-doller.svg') }}"
+                                    <img src="{{ asset('assets/frontend/image/shape/save-doller.svg') }}"
                                         alt="">
                                 </div>
                                 <div class="choose-box_content">
@@ -608,7 +608,7 @@
                             </div>
                             <div class="choose-box style2">
                                 <div class="choose-box_icon">
-                                    <img src="{{ asset('assets/frontend/img/shape/balance.svg') }}" alt="">
+                                    <img src="{{ asset('assets/frontend/image/shape/balance.svg') }}" alt="">
                                 </div>
                                 <div class="choose-box_content">
                                     <h3 class="choose-box_title text-white">No Booking Fee</h3>
@@ -618,7 +618,7 @@
                             </div>
                             <div class="choose-box style2">
                                 <div class="choose-box_icon">
-                                    <img src="{{ asset('assets/frontend/img/shape/user.svg') }}" alt="">
+                                    <img src="{{ asset('assets/frontend/image/shape/user.svg') }}" alt="">
                                 </div>
                                 <div class="choose-box_content">
                                     <h3 class="choose-box_title text-white">24/7 Support</h3>
@@ -627,7 +627,7 @@
                             </div>
                             <div class="choose-box style2">
                                 <div class="choose-box_icon">
-                                    <img src="{{ asset('assets/frontend/img/shape/bed.svg') }}" alt="">
+                                    <img src="{{ asset('assets/frontend/image/shape/bed.svg') }}" alt="">
                                 </div>
                                 <div class="choose-box_content">
                                     <h3 class="choose-box_title text-white">Luxury Room</h3>
@@ -774,7 +774,7 @@
                                 class="far fa-arrow-right"></i></button>
                     </div>
                     <div class="tesi-shape">
-                        <img src="{{ asset('assets/frontend/img/testimonial/icon%20shape.png') }}" alt="">
+                        <img src="{{ asset('assets/frontend/image/icon shape.png') }}" alt="">
                     </div>
                 </div>
                 <div class="testi-box-img">

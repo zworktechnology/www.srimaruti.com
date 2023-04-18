@@ -106,19 +106,12 @@
                         <h3 class="widget_title">Quick Links</h3>
                         <div class="menu-all-pages-container">
                             <ul class="menu">
-                                <li><a href="javascript:void(0);">About Us</a></li>
-                                <li><a href="javascript:void(0);">Rooms</a></li>
+                                <li><a href="{{ route('about') }}">About Us</a></li>
+                                <li><a href="{{ route('room.srirangam') }}">Rooms</a></li>
                                 <hr>
-                                <li><a href="javascript:void(0);">Sri Mass Trust</a></li>
-                                <li><a href="javascript:void(0);">Kaamadhenu Kosaalai</a></li>
+                                <li><a href="{{ route('masstrust') }}">Sri Mass Trust</a></li>
+                                <li><a href="{{ route('kosaalai') }}">Kaamadhenu Kosaalai</a></li>
                             </ul>
-                        </div>
-                        <div class="as-social as-widget-social" hidden>
-                            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://www.skype.com"><i class="fab fa-skype"></i></a>
-                            <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>
