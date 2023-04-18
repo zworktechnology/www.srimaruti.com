@@ -175,6 +175,9 @@ class BookingController extends Controller
         $random_no =   rand(100,999);
         $checkin = $request->get('checkin');
         $billno = 1;
+        
+        $whatsapp = $request->get('whats_app_number');
+
         if($checkin == 'checkin')
         {
             $branchid = $request->get('branch_id');
@@ -182,22 +185,22 @@ class BookingController extends Controller
                 $branch_ids = 1;
 
                 $last_branchid = Booking::where('branch_id', '=', $branch_ids)->latest('id')->first();
-                
-                    
+
+
                     if($last_branchid != ''){
                         $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
                         $invoiceno = '#SMISRI' . $added_billno + 1;
                     }else {
                         $invoiceno = '#SMISRI'.$billno;
                     }
-                
+
 
             }else if($request->get('branch_id') == 2){
                 $branch_ids = 2;
 
                 $last_branchid = Booking::where('branch_id', '=', $branch_ids)->latest('id')->first();
-                
-                    
+
+
                     if($last_branchid != ''){
                         $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
                         $invoiceno = '#SMISAM' . $added_billno + 1;
@@ -208,8 +211,8 @@ class BookingController extends Controller
                 $branch_ids = 3;
 
                 $last_branchid = Booking::where('branch_id', '=', $branch_ids)->latest('id')->first();
-                
-                    
+
+
                     if($last_branchid != ''){
                         $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
                         $invoiceno = '#SMIGUN' . $added_billno + 1;
@@ -217,7 +220,6 @@ class BookingController extends Controller
                         $invoiceno = '#SMIGUN'.$billno;
                     }
             }
-
 
             $data->booking_invoiceno = $invoiceno;
             $data->customer_name = $request->get('booking_customer_name');
@@ -241,7 +243,7 @@ class BookingController extends Controller
             if($proof == 1)
             {
                 $data->prooftype_one = $request->get('prooftype_one');
-                if ($request->proofimage_one != "") 
+                if ($request->proofimage_one != "")
                 {
                     $proofimage_one = $request->proofimage_one;
                     $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_one . '_'  . '.' . $proofimage_one->getClientOriginalExtension();
@@ -324,7 +326,7 @@ class BookingController extends Controller
             }
         }
 
-        return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
+        return redirect('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message=test%20message&instance_id=643E0A360AB51&access_token=1f487abc9270b43d2e868af7a019c68e');
     }
 
     public function edit($id)
