@@ -175,7 +175,7 @@ class BookingController extends Controller
         $random_no =   rand(100,999);
         $checkin = $request->get('checkin');
         $billno = 1;
-        
+
         $whatsapp = $request->get('whats_app_number');
 
         if($checkin == 'checkin')
@@ -548,9 +548,11 @@ class BookingController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        $data->check_out_time = $request->get('checkout_time');
+        $data->out_time = $timenow;
+        $data->out_date = $today;
         $status = 2;
         $data->status = $status;
+
         $data->update();
 
         foreach ($request->get('room_id') as $key => $room_id) {

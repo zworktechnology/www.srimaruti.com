@@ -161,12 +161,12 @@
 
                                     <div class="row" style="display: flex;">
                                         <div class="col-sm-6 col-6">
-                                            <br><br>
+                                            <br><br><br>
                                             <h6 class="m-0">Guest Signature</h6>
                                         </div>
                                         <div class="col-sm-6 col-6" style="text-align: end;">
-                                            <br><br>
-                                            <h6 class="m-0">For Sri Maruti Inn</h6>
+                                            <br><br><br>
+                                            <h6 class="m-0">For <span style="font-family: 'Cinzel Decorative', cursive; font-weight: bold;">Sri Maruti Inn</span></h6>
                                         </div>
                                     </div>
 

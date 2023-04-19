@@ -2,21 +2,25 @@
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">Check Out</h5>
-            <button type="button" class="checkoutclose btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+
+            <p>Please confirm that you wish to check out customer Mr. or Ms. <b>{{ $bookingDatas['customer_name'] }}</b> at <b>{{ $timenow }}</b> on <b>{{ date('M d, Y', strtotime($today)) }}</b></p>
+
+
             <form autocomplete="off" method="POST"
                 action="{{ route('booking.checkout', ['id' => $bookingDatas['id']]) }}">
                 @method('PUT')
                 @csrf
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Customer Name </label>
                     <div class="col-sm-9">
                         <span class="form-control">{{ $bookingDatas['customer_name'] }}</span>
                     </div>
                 </div>
 
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Check-in Date </label>
                     <div class="col-sm-5">
                         <input type="date" class="form-control" id="checkin_date" disabled name="checkin_date"
@@ -27,7 +31,7 @@
                             placeholder="Enter here " value="{{ $bookingDatas['chick_in_time'] }}">
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Check-out Date <span
                             style="color: red;">*</span></label>
                     <div class="col-sm-5">
