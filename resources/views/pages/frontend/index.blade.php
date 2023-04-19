@@ -475,7 +475,7 @@
                             hospitality.</p>
                     </div>
                     <div class="btn-group style1">
-                        <a href="about.html.htm" class="as-btn shadow-none">About More</a>
+                        <a href="{{ route('about') }}" class="as-btn shadow-none">About More</a>
                     </div>
                 </div>
             </div>
@@ -798,8 +798,8 @@
                             <div class="cta-card_content">
                                 <span class="cta-card_subtitle">2 Nights & 3 Days</span>
                                 <h3 class="cta-card_title"><a href="javascript:void(0);" tabindex="0"><span
-                                            class="discount">35%</span> OFF Super Deluxe Double Room</a></h3>
-                                <div class="cta-card-btn"><a href="javascript:void(0);"
+                                            class="discount">10%</span> OFF Super Deluxe Double Room</a></h3>
+                                <div class="cta-card-btn"><a href="{{ route('contact') }}"
                                         class="as-btn style4 shadow-none">book now</a>
                                 </div>
                             </div>
@@ -813,8 +813,8 @@
                             <div class="cta-card_content">
                                 <span class="cta-card_subtitle">2 Nights & 3 Days</span>
                                 <h3 class="cta-card_title"><a href="javascript:void(0);" tabindex="0"><span
-                                            class="discount">50%</span> OFF Super Luxury Single Room</a></h3>
-                                <div class="cta-card-btn"><a href="javascript:void(0);"
+                                            class="discount">12%</span> OFF Super Luxury Single Room</a></h3>
+                                <div class="cta-card-btn"><a href="{{ route('contact') }}"
                                         class="as-btn style4  shadow-none">book now</a>
                                 </div>
                             </div>

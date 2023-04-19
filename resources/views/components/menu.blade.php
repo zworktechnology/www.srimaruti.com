@@ -58,10 +58,10 @@
                         <div class="header-right-wrapper">
                             <div class="header-social">
                                 <span class="social-title">Follow Us: </span>
-                                <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.linkedin.com/"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.instagram.com/"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/srimarutiinn" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.youtube.com/@srimarutiinn" target="_blank"><i class="fab fa-youtube"></i></a>
+                                <a href="https://twitter.com/sri_maruti_inn" target="_blank"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.instagram.com/sri_maruti_inn" target="_blank"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                     </div>
                     <div class="col-auto" style="display: flex;">
                         <div class="header-button" style="padding-right: 20px;">
-                            <a href="javascript:void(0);" class="as-btn style4 shadow-none">CHAT WITH US</a>
+                            <a href="https://api.whatsapp.com/send/?phone=%2B919944737705" target="_blank" class="as-btn style4 shadow-none">CHAT WITH US</a>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
             <div class="breadcumb-content">
                 <h1 class="breadcumb-title">Sri Mass Trust</h1>
                 <ul class="breadcumb-menu">
-                    <li><a href="index.html.htm">Home</a></li>
+                    <li><a href="{{ route('index') }}">Home</a></li>
                     <li>Trust</li>
                 </ul>
             </div>

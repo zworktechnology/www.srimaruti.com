@@ -12,7 +12,7 @@
             <div class="breadcumb-content">
                 <h1 class="breadcumb-title">Kaamadhenu Kosaalai</h1>
                 <ul class="breadcumb-menu">
-                    <li><a href="index.html.htm">Home</a></li>
+                    <li><a href="{{ route('index') }}">Home</a></li>
                     <li>Kosaalai</li>
                 </ul>
             </div>
