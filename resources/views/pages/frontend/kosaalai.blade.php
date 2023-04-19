@@ -49,10 +49,10 @@
                                 animals, and promote a more sustainable and ethical way of life. Join us in protecting
                                 the welfare of cows and creating a more compassionate world.</p>
                             <div class="restaurent-menu-wrapp">
-                                <h3 class="resta-title">Open Days<span class="resta-desc"> Monday - Saturday</span></h3>
-                                <h3 class="resta-title">Open Daily<span class="resta-desc"> 7.30 am - 11.00pm</span>
+                                <h3 class="resta-title">Free Milk<span class="resta-desc"> Age under 2</span></h3>
+                                <h3 class="resta-title">Pooja at<span class="resta-desc"> Every Friday- Enter Free</span>
                                 </h3>
-                                <h3 class="resta-title">Price Range <span class="resta-desc">$40 - $500</span></h3>
+                                <h3 class="resta-title">Starts From<span class="resta-desc">2011</span></h3>
                             </div>
                         </div>
                     </div>

@@ -26,7 +26,7 @@
                 <div class="col-xl-5">
                     <div class="img-box1 style5">
                         <div class="img1">
-                            <img class="image_1" src="{{ asset('assets/frontend/img/normal/about_3.png') }}" alt="About">
+                            <img class="image_1" src="{{ asset('assets/frontend/image/Sri mas trust.png') }}" alt="About">
                         </div>
                     </div>
                 </div>

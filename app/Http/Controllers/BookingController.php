@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Http;
 
 class BookingController extends Controller
 {
@@ -327,7 +327,17 @@ class BookingController extends Controller
             }
         }
 
-        return redirect('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message=test%20message&instance_id=643F6B80587D5&access_token=758377d10234b094a82f646ce1dbb728');
+        $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message=hi%20from%20Zwork%20technology&instance_id=643F6B80587D5&access_token=758377d10234b094a82f646ce1dbb728', [
+            'title' => 'This is test from tutsmake.com',
+            'body' => 'This is test from tutsmake.com as body',
+        ]);
+
+        if($response->successful()){
+            return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added, and send notification to customer !');
+        } else {
+            return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
+        }
+
     }
 
     public function edit($id)
