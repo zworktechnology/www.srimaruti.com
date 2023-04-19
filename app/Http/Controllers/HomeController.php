@@ -35,7 +35,8 @@ class HomeController extends Controller
 
         $income = Income::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('amount');
         $expense = Expense::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('amount');
-
+        $closeaccount = CloseAccount::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('total');
+        $total_room_icome = BookingPayment::where('soft_delete', '!=', 1)->where('paid_date', '=', $today)->sum('payable_amount');
 
         $branchwise_list = [];
         $branch = Branch::where('soft_delete', '!=', 1)->get();
@@ -59,8 +60,6 @@ class HomeController extends Controller
                 foreach ($BookingPayment_byonline as $key => $BookingPayment_by_online) {
                     $total_onlinepayment += $BookingPayment_by_online->payable_amount;
                 }
-
-
             }
 
             $branchwise_openaccount = OpenAccount::where('soft_delete', '!=', 1)->where('date', '=', $today)->where('branch_id', '=', $branchs->id)->sum('amount');
@@ -74,6 +73,7 @@ class HomeController extends Controller
             $difference = $branchwise_closeaccount - $requred_balance;
 
             $branchwise_list[] = array(
+                'branch_id' => $branchs->id,
                 'branch_name' => $branchs->name,
                 'branchwise_openaccount' => $branchwise_openaccount,
                 'branchwise_income' => $branchwise_income,
@@ -87,11 +87,8 @@ class HomeController extends Controller
         }
 
 
-        return view('home', compact('today', 'branchwise_list', 'income', 'expense'));
+        return view('home', compact('today', 'branchwise_list', 'income', 'expense', 'closeaccount', 'total_room_icome'));
     }
-
-
-
 
 
     public function getBranchwiseList($date)

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 
 class BookingController extends Controller
 {
@@ -326,7 +327,7 @@ class BookingController extends Controller
             }
         }
 
-        return redirect('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message=test%20message&instance_id=643E0A360AB51&access_token=1f487abc9270b43d2e868af7a019c68e');
+        return redirect('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message=test%20message&instance_id=643F6B80587D5&access_token=758377d10234b094a82f646ce1dbb728');
     }
 
     public function edit($id)

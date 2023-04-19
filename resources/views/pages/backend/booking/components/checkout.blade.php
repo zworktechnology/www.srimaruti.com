@@ -429,7 +429,6 @@
                         <select class="form-control" name="payment_method">
                             <option value="" selected class="text-muted">Select Payment Via</option>
                             <option value="Cash" class="text-muted">Cash</option>
-                            <option value="Card" class="text-muted">Card</option>
                             <option value="Online Payment" class="text-muted">Online Payment</option>
                         </select>
                     </div>
@@ -446,7 +445,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Checkout</button>
-                    <button type="button" class="btn btn-secondary checkoutclosebutton" data-bs-dismiss="modal">No,
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No,
                         Get Back</button>
                 </div>
             </form>
