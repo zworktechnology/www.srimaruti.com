@@ -252,91 +252,93 @@ class BookingController extends Controller
                     $data->proofimage_one = $filename_one;
                 }
             }else if($proof == 2){
-            $data->prooftype_one = $request->get('prooftype_one');
-            if ($request->proofimage_one != "") {
-                $proofimage_one = $request->proofimage_one;
-                $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_one . '_'  . '.' . $proofimage_one->getClientOriginalExtension();
-                $request->proofimage_one->move('assets/customer_details/proof', $filename_one);
-                $data->proofimage_one = $filename_one;
+                $data->prooftype_one = $request->get('prooftype_one');
+                if ($request->proofimage_one != "") {
+                    $proofimage_one = $request->proofimage_one;
+                    $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_one . '_'  . '.' . $proofimage_one->getClientOriginalExtension();
+                    $request->proofimage_one->move('assets/customer_details/proof', $filename_one);
+                    $data->proofimage_one = $filename_one;
+                }
+                $data->prooftype_two = $request->get('prooftype_two');
+                if ($request->proofimage_two != "") {
+                    $proofimage_two = $request->proofimage_two;
+                    $filename_two = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_two . '_'  . '.' . $proofimage_two->getClientOriginalExtension();
+                    $request->proofimage_two->move('assets/customer_details/proof', $filename_two);
+                    $data->proofimage_two = $filename_two;
+                }
+
             }
-            $data->prooftype_two = $request->get('prooftype_two');
-            if ($request->proofimage_two != "") {
-                $proofimage_two = $request->proofimage_two;
-                $filename_two = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_two . '_'  . '.' . $proofimage_two->getClientOriginalExtension();
-                $request->proofimage_two->move('assets/customer_details/proof', $filename_two);
-                $data->proofimage_two = $filename_two;
-            }
 
-        }
+            //$customer_photo = $request->customer_photo;
+            //$folderPath = "assets/customer_details/profile";
+            //$image_parts = explode(";base64,", $customer_photo);
+            //$image_type_aux = explode("image/", $image_parts[0]);
+            //$image_type = $image_type_aux[1];
+            //$image_base64 = base64_decode($image_parts[1]);
+            //$fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+            //$customerimgfile = $folderPath . $fileName;
+            //file_put_contents($customerimgfile, $image_base64);
+            //$data->customer_photo = $customerimgfile;
 
-        //$customer_photo = $request->customer_photo;
-        //$folderPath = "assets/customer_details/profile";
-        //$image_parts = explode(";base64,", $customer_photo);
-        //$image_type_aux = explode("image/", $image_parts[0]);
-        //$image_type = $image_type_aux[1];
-        //$image_base64 = base64_decode($image_parts[1]);
-        //$fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-        //$customerimgfile = $folderPath . $fileName;
-        //file_put_contents($customerimgfile, $image_base64);
-        //$data->customer_photo = $customerimgfile;
+            $data->total = $request->get('total_calc_price');
+            $data->gst_per = $request->get('gst_percentage');
+            $data->gst_amount = $request->get('gst_amount');
+            $data->disc_per = $request->get('discount_percentage');
+            $data->disc_amount = $request->get('discount_amount');
+            $data->additional_amount = $request->get('additional_charge');
+            $data->additional_notes = $request->get('additional_charge_notes');
+            $data->grand_total = $request->get('grand_total');
+            $data->grand_total = $request->get('grand_total');
+            $data->total_paid = $request->get('payable_amount');
+            $data->balance_amount = $request->get('balance_amount');
+            $data->out_date = $request->get('check_out_date');
+            $data->out_time = $request->get('check_out_time');
+            $status = 1;
+            $data->status = $status;
 
-        $data->total = $request->get('total_calc_price');
-        $data->gst_per = $request->get('gst_percentage');
-        $data->gst_amount = $request->get('gst_amount');
-        $data->disc_per = $request->get('discount_percentage');
-        $data->disc_amount = $request->get('discount_amount');
-        $data->additional_amount = $request->get('additional_charge');
-        $data->additional_notes = $request->get('additional_charge_notes');
-        $data->grand_total = $request->get('grand_total');
-        $data->grand_total = $request->get('grand_total');
-        $data->total_paid = $request->get('payable_amount');
-        $data->balance_amount = $request->get('balance_amount');
-        $data->out_date = $request->get('check_out_date');
-        $data->out_time = $request->get('check_out_time');
-        $status = 1;
-        $data->status = $status;
+            $data->save();
 
-        $data->save();
-
-        $insertedId = $data->id;
+            $insertedId = $data->id;
 
         // Booking Payments
-        $paid_date = Carbon::now()->format('Y-m-d');
-        $BookingPayment = new BookingPayment;
-        $BookingPayment->booking_id = $insertedId;
-        $BookingPayment->term = $request->get('payment_term');
-        $BookingPayment->payable_amount = $request->get('payable_amount');
-        $BookingPayment->paid_date = $paid_date;
-        $BookingPayment->payment_method = $request->get('payment_method');
-        $BookingPayment->save();
+            $paid_date = Carbon::now()->format('Y-m-d');
+            $BookingPayment = new BookingPayment;
+            $BookingPayment->booking_id = $insertedId;
+            $BookingPayment->term = $request->get('payment_term');
+            $BookingPayment->payable_amount = $request->get('payable_amount');
+            $BookingPayment->paid_date = $paid_date;
+            $BookingPayment->payment_method = $request->get('payment_method');
+            $BookingPayment->save();
 
         // Booking Rooms
-        foreach ($request->get('room_id') as $key => $room_id) {
-            $GetroomDetails = Room::findOrFail($room_id);
+            foreach ($request->get('room_id') as $key => $room_id) {
+                $GetroomDetails = Room::findOrFail($room_id);
 
-            $BookingRoom = new BookingRoom;
-            $BookingRoom->booking_id = $insertedId;
-            $BookingRoom->room_id = $room_id;
-            $BookingRoom->room_type = $request->room_type[$key];
-            $BookingRoom->room_floor = $GetroomDetails->room_floor;
-            $BookingRoom->room_price = $request->room_price[$key];
-            $BookingRoom->room_cal_price = $request->room_cal_price[$key];
-            $BookingRoom->save();
+                $BookingRoom = new BookingRoom;
+                $BookingRoom->booking_id = $insertedId;
+                $BookingRoom->room_id = $room_id;
+                $BookingRoom->room_type = $request->room_type[$key];
+                $BookingRoom->room_floor = $GetroomDetails->room_floor;
+                $BookingRoom->room_price = $request->room_price[$key];
+                $BookingRoom->room_cal_price = $request->room_cal_price[$key];
+                $BookingRoom->save();
 
-            DB::table('rooms')->where('id', $room_id)->update(['booking_status' => 1]);
+                DB::table('rooms')->where('id', $room_id)->update(['booking_status' => 1]);
             }
-        }
 
-        $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message=hi%20from%20Zwork%20technology&instance_id=643F6B80587D5&access_token=758377d10234b094a82f646ce1dbb728', [
-            'title' => 'This is test from tutsmake.com',
-            'body' => 'This is test from tutsmake.com as body',
-        ]);
-
-        if($response->successful()){
-            return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added, and send notification to customer !');
-        } else {
             return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
         }
+
+        //$response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message=hi%20from%20Zwork%20technology&instance_id=643F6B80587D5&access_token=758377d10234b094a82f646ce1dbb728', [
+         //   'title' => 'This is test from tutsmake.com',
+       //     'body' => 'This is test from tutsmake.com as body',
+        //]);
+
+       // if($response->successful()){
+       //     return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added, and send notification to customer !');
+       // } else {
+       //     return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
+       // }
 
     }
 
@@ -686,7 +688,7 @@ class BookingController extends Controller
                 }
 
                 return view('pages.backend.booking.datefilter', compact('checkin_Array', 'booking_dropdown_list', 'from_date', 'to_date'));
-            }else{
+        }else{
 
             $checkin_Array = [];
             $room_list = [];

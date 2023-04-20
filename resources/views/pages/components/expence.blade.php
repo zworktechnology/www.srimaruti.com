@@ -10,7 +10,7 @@
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">₹
-                        {{ $branchwise_lists['branchwise_expense'] }}</label>
+                        {{ $branchwise_lists['total_onlinepayment'] }}</label>
                 </div>
             </div>
             <div class="row mb-4">
@@ -18,7 +18,7 @@
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">₹
-                        {{ $branchwise_lists['branchwise_expense'] }}</label>
+                        {{ $branchwise_lists['branch_wise_expenses'] }}</label>
                 </div>
             </div>
             <hr>

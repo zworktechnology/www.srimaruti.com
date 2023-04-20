@@ -10,7 +10,7 @@
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">₹
-                        {{ $expense }}</label>
+                        {{ $total_online_payment }}</label>
                 </div>
             </div>
             <div class="row mb-4">
@@ -27,7 +27,7 @@
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">₹
-                        {{ $expense }}</label>
+                        {{ $allbranches_total_expense }}</label>
                 </div>
             </div>
             <hr>

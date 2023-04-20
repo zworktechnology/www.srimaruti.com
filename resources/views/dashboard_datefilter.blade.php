@@ -19,8 +19,16 @@
                                             value="{{ $today }}"></li>
                                     <li style="margin-left: 10px;"><button type="submit"
                                             class="btn btn-primary">Search</button></li>
+                                    <li style="margin-left: 10px;">
+                                    <a href="/home">
+                                        <button type="button" class="btn btn-info waves-effect waves-light">
+                                            Back
+                                        </button>
+                                    </a>
+                                </li>
                                 </ol>
                                 </form>
+
                             </div>
                         </div>
                     </div>

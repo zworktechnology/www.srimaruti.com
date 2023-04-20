@@ -243,7 +243,7 @@ Route::get('getBranchwiseRoom/{id}', [RoomController::class, 'getBranchwiseRoom'
 Route::get('getPriceforRooms/{id}', [RoomController::class, 'getPriceforRooms']);
 Route::get('/getoldCustomers/{phone_no}', [BookingController::class, 'getoldCustomers']);
 
-Route::get('getBranchwiseList/{date}', [App\Http\Controllers\HomeController::class, 'getBranchwiseList']);
+Route::put('/dashboard_datefilter', [App\Http\Controllers\HomeController::class, 'dashboard_datefilter']);
 
 // CONTACT CONTROLLER // STORE
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
