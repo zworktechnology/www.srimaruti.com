@@ -31,7 +31,7 @@ class RoomController extends Controller
 
         $data->save();
 
-        return redirect()->route('room.index')->with('add', 'New Room record detail successfully added !');
+        return redirect()->route('room.index')->with('add', 'New room information has been added to your list.');
     }
 
     public function edit($id)
@@ -54,7 +54,7 @@ class RoomController extends Controller
 
         $data->update();
 
-        return redirect()->route('room.index')->with('update', 'Room record detail successfully changed !');
+        return redirect()->route('room.index')->with('update', 'Updated room information has been added to your list.');
     }
 
     public function delete($id)
@@ -65,7 +65,7 @@ class RoomController extends Controller
 
         $data->update();
 
-        return redirect()->route('room.index')->with('soft_destroy', 'Successfully deleted the room record !');
+        return redirect()->route('room.index')->with('soft_destroy', 'Successful removal of the room record for the list.');
     }
 
     public function destroy($id)

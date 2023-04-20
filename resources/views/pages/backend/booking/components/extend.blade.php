@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" style="font-weight: 600;color: #e83e8c;">Extend</h5>
-            <button type="button" class="btn-close extendclose" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form autocomplete="off" method="POST"
@@ -500,14 +500,14 @@
                 <div class="row mb-4">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Balance Amount </label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control balance_amount" style="background: #f1db3d;"
+                        <input type="number" class="form-control balance_amount"
                             id="balance_amount{{ $bookingDatas['id'] }}" name="balance_amount"
                             placeholder="Enter here " value="{{ $bookingDatas['balance_amount'] }}">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Submit</button>
-                    <button type="button" class="btn btn-secondary extendclosebutton" data-bs-dismiss="modal">No,
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No,
                         Get Back</button>
 
                 </div>

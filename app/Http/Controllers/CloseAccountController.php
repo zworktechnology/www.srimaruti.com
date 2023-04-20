@@ -40,7 +40,7 @@ class CloseAccountController extends Controller
         $data->count_2 = $request->get('count_2');
         $data->count_1 = $request->get('count_1');
 
-        
+
         $data->total = $total_amount;
         $data->save();
 
@@ -52,7 +52,7 @@ class CloseAccountController extends Controller
         $openaccount_data->amount = $total_amount;
         $openaccount_data->save();
 
-        return redirect()->route('closeaccount.index')->with('add', 'New close account record detail successfully added !');
+        return redirect()->route('closeaccount.index')->with('add', 'New close account information has been added to your list.');
     }
 
     public function edit($id)
@@ -86,7 +86,7 @@ class CloseAccountController extends Controller
 
         $data->update();
 
-        return redirect()->route('closeaccount.index')->with('update', 'Close account record detail successfully changed !');
+        return redirect()->route('closeaccount.index')->with('update', 'Updated close account information has been added to your list.');
     }
 
     public function delete($id)
@@ -97,7 +97,7 @@ class CloseAccountController extends Controller
 
         $data->update();
 
-        return redirect()->route('closeaccount.index')->with('soft_destroy', 'Successfully deleted the close account record !');
+        return redirect()->route('closeaccount.index')->with('soft_destroy', 'Successful removal of the close account record for the list.');
     }
 
     public function destroy($id)

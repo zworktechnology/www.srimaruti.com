@@ -24,7 +24,7 @@ class BranchController extends Controller
 
         $data->save();
 
-        return redirect()->route('branch.index')->with('add', 'New Branch record detail successfully added !');
+        return redirect()->route('branch.index')->with('add', 'New branch information has been added to your list.');
     }
 
     public function edit($id)
@@ -54,7 +54,7 @@ class BranchController extends Controller
 
         $data->update();
 
-        return redirect()->route('branch.index')->with('update', 'Branch record detail successfully changed !');
+        return redirect()->route('branch.index')->with('update', 'Updated branch information has been added to your list.');
     }
 
     public function delete($id)
@@ -65,7 +65,7 @@ class BranchController extends Controller
 
         $data->update();
 
-        return redirect()->route('branch.index')->with('soft_destroy', 'Successfully deleted the branch record !');
+        return redirect()->route('branch.index')->with('soft_destroy', 'Successful removal of the branch record for the list.');
     }
 
     public function destroy($id)

@@ -328,15 +328,15 @@ class BookingController extends Controller
             }
 
             $message_key = 'Dear%20'.$customer_name.'%0a%0aWelcome%20to%20Sri%20Maruthi%20Inn!%20We%20are%20thrilled%20to%20have%20you%20stay%20with%20us.%20Our%20team%20is%20dedicated%20to%20ensuring%20you%20have%20a%20comfortable%20and%20memorable%20stay.%20If%20you%20need%20any%20assistance%20during%20your%20stay,%20please%20don%27t%20hesitate%20to%20contact%20our%20front%20desk.%0a%0aWe%20hope%20you%20have%20a%20wonderful%20time%20at%20our%20resort!%20If%20there%27s%20anything%20we%20can%20do%20to%20make%20your%20stay%20even%20more%20enjoyable,%20please%20let%20us%20know.%20We%27re%20here%20to%20help.%0a%0aThank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20stay.';
-            $access_token_key = 'e9621719da47ce9dd311f2a958e09439';
-            $instance_id_key ='6440E5CD87C93';
+            $access_token_key = env('WHATSAPP_ACCESS_TOKEN');
+            $instance_id_key = env('WHATSAPP_INSTANCE_ID');
 
             $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
 
             if($response->successful()){
-                return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added, and send notification to customer !');
+                return redirect()->route('booking.index')->with('add', 'New booking information has been added to your list, and notification send to customer.');
             } else {
-                return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
+                return redirect()->route('booking.index')->with('add', 'New booking information has been added to your list.');
             }
 
         }
@@ -527,7 +527,7 @@ class BookingController extends Controller
             }
         }
 
-       return redirect()->route('booking.index')->with('update', 'Booking record detail successfully changed !');
+       return redirect()->route('booking.index')->with('update', 'Updated booking information has been added to your list.');
     }
 
     public function delete($id)
@@ -578,15 +578,15 @@ class BookingController extends Controller
         }
 
         $message_key = 'Dear%20'.$customer_name.'%0a%0aThank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20recent%20stay.%20We%20hope%20you%20had%20a%20great%20experience%20with%20us.%20We%20would%20love%20to%20hear%20your%20thoughts%20and%20feedback%20on%20your%20stay.%20Please%20take%20a%20moment%20to%20complete%20our%20short%20survey%20using%20the%20link%20below.%20Your%20feedback%20is%20valuable%20to%20us%20and%20will%20help%20us%20improve%20our%20services%20for%20future%20guests.%0a%0aThank%20you%20for%20your%20time,%20and%20we%20look%20forward%20to%20seeing%20you%20again%20soon!%0a%0aFeedback%20link%20:%20https://srimaruti.com/feedback';
-        $access_token_key = 'e9621719da47ce9dd311f2a958e09439';
-        $instance_id_key ='6440E5CD87C93';
+        $access_token_key = env('WHATSAPP_ACCESS_TOKEN');
+        $instance_id_key = env('WHATSAPP_INSTANCE_ID');
 
         $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
 
         if($response->successful()){
-            return redirect()->route('booking.index')->with('checkout', 'Successfully Updated');
+            return redirect()->route('booking.index')->with('checkout', 'Checkout information has been updated to your list, and notification send to customer.');
         } else {
-            return redirect()->route('booking.index')->with('checkout', 'Successfully Updated');
+            return redirect()->route('booking.index')->with('checkout', 'Checkout information has been updated to your list');
         }
     }
 
@@ -610,7 +610,7 @@ class BookingController extends Controller
         $data->balance_amount = $balance;
         $data->update();
 
-        return redirect()->route('booking.index')->with('paybalance', 'Balance Amount successfully added !');
+        return redirect()->route('booking.index')->with('update', 'Updated booking payment information has been added to your list.');
     }
 
     public function view($id)
@@ -848,7 +848,7 @@ class BookingController extends Controller
             }
         }
 
-        return redirect()->route('booking.index')->with('extend', 'Room Extended successfully');
+        return redirect()->route('booking.index')->with('update', 'Updated booking information has been added to your list.');
     }
 
     public function pricing($id)

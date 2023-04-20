@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">Name List</h4>
+                        <h4 class="mb-0">I/E Master</h4>
                         <div class="text-sm-end mt-2 mt-sm-0" hidden>
                             <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Add new
@@ -86,7 +86,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record - of {{ $datas->name }}.</p>
+                                                    <p class="text-muted font-size-16 mb-4">Are you surely want to delete {{ $datas->name }} I/E Master and all of its record?.</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form autocomplete="off" method="POST" action="{{ route('namelist.delete', ['id' => $datas->id]) }}">

@@ -129,7 +129,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record - Room No. {{ $datas->room_number }} at {{ $datas->branch->name }}.</p>
+                                                    <p class="text-muted font-size-16 mb-4">Are you surely want to delete Room No. {{ $datas->room_number }} at {{ $datas->branch->name }} branch and all of its record?</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form autocomplete="off" method="POST" action="{{ route('room.delete', ['id' => $datas->id]) }}">

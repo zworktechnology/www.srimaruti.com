@@ -32,7 +32,7 @@ class ExpenseController extends Controller
 
         $data->save();
 
-        return redirect()->route('expense.index')->with('add', 'New expense record detail successfully added !');
+        return redirect()->route('expense.index')->with('add', 'New expence information has been added to your list.');
     }
 
     public function edit($id)
@@ -56,7 +56,7 @@ class ExpenseController extends Controller
 
         $data->update();
 
-        return redirect()->route('expense.index')->with('update', 'Expense record detail successfully changed !');
+        return redirect()->route('expense.index')->with('update', 'Updated expence information has been added to your list.');
     }
 
     public function delete($id)
@@ -67,7 +67,7 @@ class ExpenseController extends Controller
 
         $data->update();
 
-        return redirect()->route('expense.index')->with('soft_destroy', 'Successfully deleted the expense record !');
+        return redirect()->route('expense.index')->with('soft_destroy', 'Successful removal of the expence record for the list.');
     }
 
     public function destroy($id)

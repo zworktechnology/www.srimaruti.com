@@ -28,7 +28,7 @@ class OpenAccountController extends Controller
 
         $data->save();
 
-        return redirect()->route('openaccount.index')->with('add', 'New open account record detail successfully added !');
+        return redirect()->route('openaccount.index')->with('add', 'New opening account information has been added to your list.');
     }
 
     public function edit($id)
@@ -49,7 +49,7 @@ class OpenAccountController extends Controller
 
         $data->update();
 
-        return redirect()->route('openaccount.index')->with('update', 'Open account record detail successfully changed !');
+        return redirect()->route('openaccount.index')->with('update', 'Updated opening account information has been added to your list.');
     }
 
     public function delete($id)
@@ -60,7 +60,7 @@ class OpenAccountController extends Controller
 
         $data->update();
 
-        return redirect()->route('openaccount.index')->with('soft_destroy', 'Successfully deleted the open account record !');
+        return redirect()->route('openaccount.index')->with('soft_destroy', 'Successful removal of the opening account record for the list.');
     }
 
     public function destroy($id)

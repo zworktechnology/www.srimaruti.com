@@ -173,7 +173,7 @@
 
 
                                                             @if ($bookingDatas['balance_amount'] == 0)
-                                                                @if ($bookingDatas['chick_out_date'] == $today)
+                                                                @if ($bookingDatas['chick_out_date'] == $today && $bookingDatas['extended_date'] == '')
                                                                     <li>
                                                                         <a href="#checkout{{ $bookingDatas['id'] }}"
                                                                             data-bs-toggle="modal"
@@ -188,10 +188,28 @@
                                                                             @include('pages.backend.booking.components.checkout')
                                                                         </div>
                                                                     </li>
+                                                                    @elseif ($bookingDatas['chick_out_date'] == $today && $bookingDatas['extended_date'] != '')
+                                                                    @elseif ($bookingDatas['chick_out_date'] != $today && $bookingDatas['extended_date'] == $today)
+                                                                    <li>
+                                                                        <a href="#checkout{{ $bookingDatas['id'] }}"
+                                                                            data-bs-toggle="modal"
+                                                                            data-id="{{ $bookingDatas['id'] }}"
+                                                                            class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
+                                                                            data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
+                                                                        <div class="modal fade"
+                                                                            id="checkout{{ $bookingDatas['id'] }}"
+                                                                            data-bs-backdrop="static"
+                                                                            data-bs-keyboard="false" aria-hidden="true"
+                                                                            aria-labelledby="..." tabindex="-1">
+                                                                            @include('pages.backend.booking.components.checkout')
+                                                                        </div>
+                                                                    </li>
+                                                                    @else
                                                                 @endif
                                                             @endif
 
                                                             @if ($bookingDatas['extended_date'] == '')
+                                                                @if ($bookingDatas['chick_out_date'] != $today)
                                                                 <li>
                                                                     <a href="#extend{{ $bookingDatas['id'] }}"
                                                                         data-bs-toggle="modal"
@@ -206,6 +224,7 @@
                                                                         @include('pages.backend.booking.components.extend')
                                                                     </div>
                                                                 </li>
+                                                                @endif
                                                             @endif
 
                                                             <li>

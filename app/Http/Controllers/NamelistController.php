@@ -22,7 +22,7 @@ class NamelistController extends Controller
 
         $data->save();
 
-        return redirect()->route('namelist.index')->with('add', 'New namelist record detail successfully added !');
+        return redirect()->route('namelist.index')->with('add', 'New I/E Master information has been added to your list.');
     }
 
     public function edit($id)
@@ -40,7 +40,7 @@ class NamelistController extends Controller
 
         $data->update();
 
-        return redirect()->route('namelist.index')->with('update', 'Namelist record detail successfully changed !');
+        return redirect()->route('namelist.index')->with('update', 'Updated I/E Master information has been added to your list.');
     }
 
     public function delete($id)
@@ -51,7 +51,7 @@ class NamelistController extends Controller
 
         $data->update();
 
-        return redirect()->route('namelist.index')->with('soft_destroy', 'Successfully deleted the namelist record !');
+        return redirect()->route('namelist.index')->with('soft_destroy', 'Successful removal of the I/E Master record for the list.');
     }
 
     public function destroy($id)

@@ -98,7 +98,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-muted font-size-16 mb-4">Please confirm that you wish to remove the record.</p>
+                                                    <p class="text-muted font-size-16 mb-4">Are you surely want to delete ₹ {{ $datas->amount }} close account and all of its record?</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form autocomplete="off" method="POST" action="{{ route('closeaccount.delete', ['id' => $datas->id]) }}">

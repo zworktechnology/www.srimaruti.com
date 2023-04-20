@@ -32,7 +32,7 @@ class IncomeController extends Controller
 
         $data->save();
 
-        return redirect()->route('income.index')->with('add', 'New income record detail successfully added !');
+        return redirect()->route('income.index')->with('add', 'New income information has been added to your list.');
     }
 
     public function edit($id)
@@ -56,7 +56,7 @@ class IncomeController extends Controller
 
         $data->update();
 
-        return redirect()->route('income.index')->with('update', 'Income record detail successfully changed !');
+        return redirect()->route('income.index')->with('update', 'Updated income information has been added to your list.');
     }
 
     public function delete($id)
@@ -67,7 +67,7 @@ class IncomeController extends Controller
 
         $data->update();
 
-        return redirect()->route('income.index')->with('soft_destroy', 'Successfully deleted the income record !');
+        return redirect()->route('income.index')->with('soft_destroy', 'Successful removal of the income record for the list.');
     }
 
     public function destroy($id)

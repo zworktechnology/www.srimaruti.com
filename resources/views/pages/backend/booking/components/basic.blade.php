@@ -19,20 +19,13 @@
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
                     <label for="horizontal-firstname-input" class="col-sm-9 col-form-label">
-                        @if ($bookingDatas['chick_out_date'] != '')
-                            {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}
-                            - (
-                            {{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }}
-                            )
-                        @endif
-                        <br />
-                        @if ($bookingDatas['extended_date'] != '')
-                            Extended Date -
 
-                            {{ date('d M Y', strtotime($bookingDatas['extended_date'])) }}
-                            - (
-                            {{ date('h:i A', strtotime($bookingDatas['extended_time'])) }}
-                            )
+
+                        @if ($bookingDatas['extended_date'] != '' && $bookingDatas['chick_out_date'] != '')
+                            {{ date('d M Y', strtotime($bookingDatas['extended_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['extended_time'])) }})
+                        @elseif($bookingDatas['chick_out_date'] != '')
+                            {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})
+                        @else
                         @endif
                     </label>
                 </div>
