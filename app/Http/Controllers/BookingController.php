@@ -254,80 +254,79 @@ class BookingController extends Controller
                     $data->proofimage_one = $filename_one;
                 }
             }else if($proof == 2){
-            $data->prooftype_one = $request->get('prooftype_one');
-            if ($request->proofimage_one != "") {
-                $proofimage_one = $request->proofimage_one;
-                $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_one . '_'  . '.' . $proofimage_one->getClientOriginalExtension();
-                $request->proofimage_one->move('assets/customer_details/proof', $filename_one);
-                $data->proofimage_one = $filename_one;
+                $data->prooftype_one = $request->get('prooftype_one');
+                if ($request->proofimage_one != "") {
+                    $proofimage_one = $request->proofimage_one;
+                    $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_one . '_'  . '.' . $proofimage_one->getClientOriginalExtension();
+                    $request->proofimage_one->move('assets/customer_details/proof', $filename_one);
+                    $data->proofimage_one = $filename_one;
+                }
+                $data->prooftype_two = $request->get('prooftype_two');
+                if ($request->proofimage_two != "") {
+                    $proofimage_two = $request->proofimage_two;
+                    $filename_two = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_two . '_'  . '.' . $proofimage_two->getClientOriginalExtension();
+                    $request->proofimage_two->move('assets/customer_details/proof', $filename_two);
+                    $data->proofimage_two = $filename_two;
+                }
+
             }
-            $data->prooftype_two = $request->get('prooftype_two');
-            if ($request->proofimage_two != "") {
-                $proofimage_two = $request->proofimage_two;
-                $filename_two = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_two . '_'  . '.' . $proofimage_two->getClientOriginalExtension();
-                $request->proofimage_two->move('assets/customer_details/proof', $filename_two);
-                $data->proofimage_two = $filename_two;
+
+            $customer_photo = $request->customer_photo;
+            $folderPath = "assets/customer_details/profile";
+            $image_parts = explode(";base64,", $customer_photo);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+            $customerimgfile = $folderPath . $fileName;
+            file_put_contents($customerimgfile, $image_base64);
+            $data->customer_photo = $customerimgfile;
+
+            $data->total = $request->get('total_calc_price');
+            $data->gst_per = $request->get('gst_percentage');
+            $data->gst_amount = $request->get('gst_amount');
+            $data->disc_per = $request->get('discount_percentage');
+            $data->disc_amount = $request->get('discount_amount');
+            $data->additional_amount = $request->get('additional_charge');
+            $data->additional_notes = $request->get('additional_charge_notes');
+            $data->grand_total = $request->get('grand_total');
+            $data->grand_total = $request->get('grand_total');
+            $data->total_paid = $request->get('payable_amount');
+            $data->balance_amount = $request->get('balance_amount');
+            $data->out_date = $request->get('check_out_date');
+            $data->out_time = $request->get('check_out_time');
+            $status = 1;
+            $data->status = $status;
+
+            $data->save();
+
+            $insertedId = $data->id;
+
+            // Booking Payments
+            $paid_date = Carbon::now()->format('Y-m-d');
+            $BookingPayment = new BookingPayment;
+            $BookingPayment->booking_id = $insertedId;
+            $BookingPayment->term = $request->get('payment_term');
+            $BookingPayment->payable_amount = $request->get('payable_amount');
+            $BookingPayment->paid_date = $paid_date;
+            $BookingPayment->payment_method = $request->get('payment_method');
+            $BookingPayment->save();
+
+            // Booking Rooms
+            foreach ($request->get('room_id') as $key => $room_id) {
+                $GetroomDetails = Room::findOrFail($room_id);
+
+                $BookingRoom = new BookingRoom;
+                $BookingRoom->booking_id = $insertedId;
+                $BookingRoom->room_id = $room_id;
+                $BookingRoom->room_type = $request->room_type[$key];
+                $BookingRoom->room_floor = $GetroomDetails->room_floor;
+                $BookingRoom->room_price = $request->room_price[$key];
+                $BookingRoom->room_cal_price = $request->room_cal_price[$key];
+                $BookingRoom->save();
+
+                DB::table('rooms')->where('id', $room_id)->update(['booking_status' => 1]);
             }
-
-        }
-
-        $customer_photo = $request->customer_photo;
-        $folderPath = "assets/customer_details/profile";
-        $image_parts = explode(";base64,", $customer_photo);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
-        $image_base64 = base64_decode($image_parts[1]);
-        $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-        $customerimgfile = $folderPath . $fileName;
-        file_put_contents($customerimgfile, $image_base64);
-        $data->customer_photo = $customerimgfile;
-
-        $data->total = $request->get('total_calc_price');
-        $data->gst_per = $request->get('gst_percentage');
-        $data->gst_amount = $request->get('gst_amount');
-        $data->disc_per = $request->get('discount_percentage');
-        $data->disc_amount = $request->get('discount_amount');
-        $data->additional_amount = $request->get('additional_charge');
-        $data->additional_notes = $request->get('additional_charge_notes');
-        $data->grand_total = $request->get('grand_total');
-        $data->grand_total = $request->get('grand_total');
-        $data->total_paid = $request->get('payable_amount');
-        $data->balance_amount = $request->get('balance_amount');
-        $data->out_date = $request->get('check_out_date');
-        $data->out_time = $request->get('check_out_time');
-        $status = 1;
-        $data->status = $status;
-
-        $data->save();
-
-        $insertedId = $data->id;
-
-        // Booking Payments
-        $paid_date = Carbon::now()->format('Y-m-d');
-        $BookingPayment = new BookingPayment;
-        $BookingPayment->booking_id = $insertedId;
-        $BookingPayment->term = $request->get('payment_term');
-        $BookingPayment->payable_amount = $request->get('payable_amount');
-        $BookingPayment->paid_date = $paid_date;
-        $BookingPayment->payment_method = $request->get('payment_method');
-        $BookingPayment->save();
-
-        // Booking Rooms
-        foreach ($request->get('room_id') as $key => $room_id) {
-            $GetroomDetails = Room::findOrFail($room_id);
-
-            $BookingRoom = new BookingRoom;
-            $BookingRoom->booking_id = $insertedId;
-            $BookingRoom->room_id = $room_id;
-            $BookingRoom->room_type = $request->room_type[$key];
-            $BookingRoom->room_floor = $GetroomDetails->room_floor;
-            $BookingRoom->room_price = $request->room_price[$key];
-            $BookingRoom->room_cal_price = $request->room_cal_price[$key];
-            $BookingRoom->save();
-
-            DB::table('rooms')->where('id', $room_id)->update(['booking_status' => 1]);
-            }
-        }
 
         $message_key = 'Dear%20'.$customer_name.'%0aWelcome%20to%20Sri%20Maruthi%20Inn!%20We%20are%20thrilled%20to%20have%20you%20stay%20with%20us.%20Our%20team%20is%20dedicated%20to%20ensuring%20you%20have%20a%20comfortable%20and%20memorable%20stay.%20If%20you%20need%20any%20assistance%20during%20your%20stay,%20please%20don%27t%20hesitate%20to%20contact%20our%20front%20desk.%0aWe%20hope%20you%20have%20a%20wonderful%20time%20at%20our%20resort!%20If%20there%27s%20anything%20we%20can%20do%20to%20make%20your%20stay%20even%20more%20enjoyable,%20please%20let%20us%20know.%20We%27re%20here%20to%20help.%20Thank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20stay';
         $access_token_key = 'e9621719da47ce9dd311f2a958e09439';
@@ -689,7 +688,7 @@ class BookingController extends Controller
                 }
 
                 return view('pages.backend.booking.datefilter', compact('checkin_Array', 'booking_dropdown_list', 'from_date', 'to_date'));
-            }else{
+        }else{
 
             $checkin_Array = [];
             $room_list = [];

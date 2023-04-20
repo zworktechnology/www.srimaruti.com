@@ -18,7 +18,7 @@
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">₹
-                        {{ $total_room_icome }}</label>
+                        {{ $tot_gstamount }}</label>
                 </div>
             </div>
             <hr>
@@ -27,7 +27,7 @@
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">₹
-                        {{ $total_room_icome }}</label>
+                        {{ $balanceamount_from_tot_roomincome }}</label>
                 </div>
             </div>
             <hr>
