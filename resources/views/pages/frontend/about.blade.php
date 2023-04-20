@@ -35,7 +35,7 @@
                     <div class="title-area mb-45">
                         <span class="sub-title">ABOUT US</span>
                         <h2 class="sec-title">Experience Life's Celebrations at Maruti</h2>
-                        <p class="mt-n2">At Maruthi Inn resort, we're more than just hotels. We're a celebration of
+                        <p class="mt-n2">At Maruti Inn resort, we're more than just hotels. We're a celebration of
                             life. Our state-of-the-art resources and expertise in hospitality allow us to offer unique
                             experiences that cater to your needs. We believe that every stay with us should be an
                             opportunity to create memories that will last a lifetime.</p>
@@ -46,7 +46,7 @@
                                 <img src="{{ asset('assets/frontend/image/shape/save-doller.svg') }}">
                             </div>
                             <div class="about-text-wrapper">
-                                <h2 class="about-title">Best Rate Guarantee</h2>
+                                <h2 class="about-title">Rate Guarantee</h2>
                                 <p class="about-text">Book Direct and Save More on Your Stay.</p>
                             </div>
                         </div>
@@ -105,8 +105,8 @@
                 <div class="col-xl-7">
                     <div class="title-area mt-n1 mb-25 mr-50">
                         <span class="sub-title">MORE ABOUT US</span>
-                        <h2 class="sec-title">Serene Environment, Unmatched Hospitality at Maruthi Resort</h2>
-                        <p class="mt-n2 mb-10">At Maruthi Resort, we pride ourselves on creating a welcoming atmosphere
+                        <h2 class="sec-title">Serene Environment, Unmatched Hospitality at Maruti Resort</h2>
+                        <p class="mt-n2 mb-10">At Maruti Resort, we pride ourselves on creating a welcoming atmosphere
                             that fosters relaxation and rejuvenation. Our tranquil and serene surroundings provide the
                             perfect backdrop for meditation, spiritual exploration, and reconnecting with nature. With
                             our warm and friendly staff and modern amenities, we strive to create an unforgettable
@@ -198,7 +198,7 @@
                     <div class="testi-card style3">
                         <div class="testi-content">
                             <p class="testi-box_text">“I was impressed by the modern amenities and attention to detail
-                                at Maruthi Resort. The hotel's prime location and impeccable service make it a top
+                                at Maruti Resort. The hotel's prime location and impeccable service make it a top
                                 choice for travelers.”
                             </p>
                             <div class="star-icon">
@@ -229,7 +229,7 @@
                 <div>
                     <div class="testi-card style3">
                         <div class="testi-content">
-                            <p class="testi-box_text">“From the moment I arrived, the staff at Maruthi Resort went
+                            <p class="testi-box_text">“From the moment I arrived, the staff at Maruti Resort went
                                 above and beyond to make me feel at home. Their commitment to providing a memorable
                                 experience is unmatched.”
                             </p>

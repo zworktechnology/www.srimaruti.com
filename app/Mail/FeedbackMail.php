@@ -20,7 +20,7 @@ class FeedbackMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Feed Back Mail - Sri Maruthi Inn - A/C & Non A/C Rooms at Tiruchirappalli')
+        return $this->subject('Feed Back Mail - Sri Maruti Inn - A/C & Non A/C Rooms at Tiruchirappalli')
         ->view('mail.feedback');
     }
 }
