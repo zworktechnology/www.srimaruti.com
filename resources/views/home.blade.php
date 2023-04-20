@@ -59,6 +59,7 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Branch</th>
+                                                <th>Open Account</th>
                                                 <th>Room Income</th>
                                                 <th>Income</th>
                                                 <th>Expence</th>
@@ -72,6 +73,8 @@
                                             @foreach ($branchwise_list as $branchwise_lists)
                                                 <tr>
                                                     <td>{{ $branchwise_lists['branch_name'] }}</td>
+                                                    
+                                                    <td>₹ {{ $branchwise_lists['branchwise_openaccount'] }}</td>
 
                                                     <td href="#roomincome{{ $branchwise_lists['branch_id'] }}"
                                                         data-bs-toggle="modal"
@@ -113,6 +116,7 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Total</th>
+                                                <th>₹ {{ $openaccount }}</th>
                                                 <th href="#roomincometotal"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#roomincometotal"

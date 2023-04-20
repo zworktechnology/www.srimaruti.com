@@ -36,6 +36,7 @@ class HomeController extends Controller
         $income = Income::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('amount');
         $expense = Expense::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('amount');
         $closeaccount = CloseAccount::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('total');
+        $openaccount = OpenAccount::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('amount');
         $total_room_icome = BookingPayment::where('soft_delete', '!=', 1)->where('paid_date', '=', $today)->sum('payable_amount');
 
         $branchwise_list = [];
@@ -93,9 +94,6 @@ class HomeController extends Controller
             $total_branches_expense = Expense::where('soft_delete', '!=', 1)->where('date', '=', $today)->sum('amount');
             $allbranches_total_expense = $total_branches_expense + $total_online_payment;
 
-
-
-
             $branchwise_openaccount = OpenAccount::where('soft_delete', '!=', 1)->where('date', '=', $today)->where('branch_id', '=', $branchs->id)->sum('amount');
             $branchwise_income = Income::where('soft_delete', '!=', 1)->where('date', '=', $today)->where('branch_id', '=', $branchs->id)->sum('amount');
             $branchwise_expense = Expense::where('soft_delete', '!=', 1)->where('date', '=', $today)->where('branch_id', '=', $branchs->id)->sum('amount');
@@ -103,11 +101,8 @@ class HomeController extends Controller
 
             $total_expense = $branchwise_expense + $total_onlinepayment;
             $balance = $Room_income + $branchwise_income - $total_expense;
-            $requred_balance = ($branchwise_income + $Room_income) - $total_expense;
+            $requred_balance = ($branchwise_income + $Room_income + $branchwise_openaccount) - $total_expense;
             $difference = $branchwise_closeaccount - $requred_balance;
-
-
-
 
             $branchwise_list[] = array(
                 'branch_id' => $branchs->id,
@@ -128,17 +123,11 @@ class HomeController extends Controller
         }
 
 
-        return view('home', compact('today', 'branchwise_list', 'income', 'expense', 'closeaccount', 'total_room_icome', 'tot_gstamount', 'balanceamount_from_tot_roomincome', 'allbranches_total_expense', 'total_online_payment'));
+        return view('home', compact('today', 'branchwise_list', 'income', 'expense', 'closeaccount', 'total_room_icome', 'tot_gstamount', 'balanceamount_from_tot_roomincome', 'allbranches_total_expense', 'total_online_payment', 'openaccount'));
     }
-
-
-
-
-
 
     public function dashboard_datefilter(Request $request)
     {
-
         $today = Carbon::now()->format('Y-m-d');
         $from_date = $request->get('fromdate');
         $to_date = $request->get('todate');
@@ -149,13 +138,14 @@ class HomeController extends Controller
         $expense = Expense::whereBetween('date', [$from_date, $to_date])
             ->where('soft_delete', '!=', 1)->sum('amount');
 
+        $openaccount = openaccount::whereBetween('date', [$from_date, $to_date])
+            ->where('soft_delete', '!=', 1)->sum('amount');
+
         $closeaccount = CloseAccount::whereBetween('date', [$from_date, $to_date])
             ->where('soft_delete', '!=', 1)->sum('total');
 
         $total_room_icome = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])
             ->where('soft_delete', '!=', 1)->sum('payable_amount');
-
-
 
         $branchwise_list = [];
         $branch = Branch::where('soft_delete', '!=', 1)->get();
@@ -167,7 +157,7 @@ class HomeController extends Controller
 
             $booking_id = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $branchs->id)->get();
             foreach ($booking_id as $key => $booking_ids) {
-                
+
                 $BookingPayment = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])
                     ->where('booking_id', '=', $booking_ids->id)->get();
 
@@ -177,12 +167,11 @@ class HomeController extends Controller
                         $gstamount += $booking_gst->gst_amount;
                     }
                     $balanceamount_from_roomincome = $Room_income - $gstamount;
-    
+
                     $BookingPayment_byonline = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])
                                                     ->where('booking_id', '=', $booking_ids->id)
                                                     ->where('payment_method', '=', 'Online Payment')
                                                     ->get();
-    
                     foreach ($BookingPayment_byonline as $key => $BookingPayment_by_online) {
                         $total_onlinepayment += $BookingPayment_by_online->payable_amount;
                     }
@@ -265,7 +254,7 @@ class HomeController extends Controller
         }
 
 
-        return view('dashboard_datefilter', compact('today', 'branchwise_list', 'income', 'expense', 'closeaccount', 'total_room_icome', 'tot_gstamount', 'balanceamount_from_tot_roomincome', 'allbranches_total_expense', 'total_online_payment'));
+        return view('dashboard_datefilter', compact('today', 'branchwise_list', 'income', 'expense', 'closeaccount', 'total_room_icome', 'tot_gstamount', 'balanceamount_from_tot_roomincome', 'allbranches_total_expense', 'total_online_payment', 'openaccount', 'from_date', 'to_date'));
     }
 
 
@@ -320,9 +309,6 @@ class HomeController extends Controller
                 'balance' => $balance,
             );
         }
-
-
-
 
         echo json_encode($branchwise_list);
     }

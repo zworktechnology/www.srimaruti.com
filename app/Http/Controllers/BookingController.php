@@ -184,44 +184,43 @@ class BookingController extends Controller
         if($checkin == 'checkin')
         {
             $branchid = $request->get('branch_id');
-            if($request->get('branch_id') == 1){
+            if($request->get('branch_id') == 1)
+            {
                 $branch_ids = 1;
-
                 $last_branchid = Booking::where('branch_id', '=', $branch_ids)->latest('id')->first();
 
-
-                    if($last_branchid != ''){
+                    if($last_branchid != '')
+                    {
                         $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
                         $invoiceno = '#SMISRI' . $added_billno + 1;
-                    }else {
+                    } else {
                         $invoiceno = '#SMISRI'.$billno;
                     }
 
+            } else if($request->get('branch_id') == 2) {
 
-            }else if($request->get('branch_id') == 2){
                 $branch_ids = 2;
-
                 $last_branchid = Booking::where('branch_id', '=', $branch_ids)->latest('id')->first();
 
-
-                    if($last_branchid != ''){
-                        $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
-                        $invoiceno = '#SMISAM' . $added_billno + 1;
-                    }else {
-                        $invoiceno = '#SMISAM'.$billno;
-                    }
-            }else {
+                if($last_branchid != '')
+                {
+                    $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
+                    $invoiceno = '#SMISAM' . $added_billno + 1;
+                } else {
+                    $invoiceno = '#SMISAM'.$billno;
+                }
+            } else {
                 $branch_ids = 3;
 
                 $last_branchid = Booking::where('branch_id', '=', $branch_ids)->latest('id')->first();
 
-
-                    if($last_branchid != ''){
-                        $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
-                        $invoiceno = '#SMIGUN' . $added_billno + 1;
-                    }else {
-                        $invoiceno = '#SMIGUN'.$billno;
-                    }
+                if($last_branchid != '')
+                {
+                    $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
+                    $invoiceno = '#SMIGUN' . $added_billno + 1;
+                } else {
+                    $invoiceno = '#SMIGUN'.$billno;
+                }
             }
 
             $data->booking_invoiceno = $invoiceno;
@@ -253,7 +252,7 @@ class BookingController extends Controller
                     $request->proofimage_one->move('assets/customer_details/proof', $filename_one);
                     $data->proofimage_one = $filename_one;
                 }
-            }else if($proof == 2){
+            } else if($proof == 2) {
                 $data->prooftype_one = $request->get('prooftype_one');
                 if ($request->proofimage_one != "") {
                     $proofimage_one = $request->proofimage_one;
@@ -328,18 +327,19 @@ class BookingController extends Controller
                 DB::table('rooms')->where('id', $room_id)->update(['booking_status' => 1]);
             }
 
-        $message_key = 'Dear%20'.$customer_name.'%0aWelcome%20to%20Sri%20Maruthi%20Inn!%20We%20are%20thrilled%20to%20have%20you%20stay%20with%20us.%20Our%20team%20is%20dedicated%20to%20ensuring%20you%20have%20a%20comfortable%20and%20memorable%20stay.%20If%20you%20need%20any%20assistance%20during%20your%20stay,%20please%20don%27t%20hesitate%20to%20contact%20our%20front%20desk.%0aWe%20hope%20you%20have%20a%20wonderful%20time%20at%20our%20resort!%20If%20there%27s%20anything%20we%20can%20do%20to%20make%20your%20stay%20even%20more%20enjoyable,%20please%20let%20us%20know.%20We%27re%20here%20to%20help.%20Thank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20stay';
-        $access_token_key = 'e9621719da47ce9dd311f2a958e09439';
-        $instance_id_key ='6440E5CD87C93';
+            $message_key = 'Dear%20'.$customer_name.'%0a%0aWelcome%20to%20Sri%20Maruthi%20Inn!%20We%20are%20thrilled%20to%20have%20you%20stay%20with%20us.%20Our%20team%20is%20dedicated%20to%20ensuring%20you%20have%20a%20comfortable%20and%20memorable%20stay.%20If%20you%20need%20any%20assistance%20during%20your%20stay,%20please%20don%27t%20hesitate%20to%20contact%20our%20front%20desk.%0a%0aWe%20hope%20you%20have%20a%20wonderful%20time%20at%20our%20resort!%20If%20there%27s%20anything%20we%20can%20do%20to%20make%20your%20stay%20even%20more%20enjoyable,%20please%20let%20us%20know.%20We%27re%20here%20to%20help.%0a%0aThank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20stay.';
+            $access_token_key = 'e9621719da47ce9dd311f2a958e09439';
+            $instance_id_key ='6440E5CD87C93';
 
-        $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
+            $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
 
-        if($response->successful()){
-            return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added, and send notification to customer !');
-        } else {
-            return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
+            if($response->successful()){
+                return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added, and send notification to customer !');
+            } else {
+                return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added !');
+            }
+
         }
-
     }
 
     public function edit($id)
@@ -505,6 +505,7 @@ class BookingController extends Controller
                 if ($request->room_id[$key] > 0) {
 
                     $GetroomDetails = Room::findOrFail($room_id);
+
                     $new_room_id =  $request->room_id[$key];
                     $room_price =  $request->room_price[$key];
                     $room_cal_price =  $request->room_cal_price[$key];
@@ -568,12 +569,25 @@ class BookingController extends Controller
 
         $data->update();
 
+        $customer_name = $data->customer_name;
+        $whatsapp = $data->whats_app_number;
+
         foreach ($request->get('room_id') as $key => $room_id) {
             DB::table('rooms')->where('id', $room_id)
             ->update(['booking_status' => 0]);
         }
 
-        return redirect()->route('booking.index')->with('checkout', 'Successfully Updated');
+        $message_key = 'Dear%20'.$customer_name.'%0a%0aThank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20recent%20stay.%20We%20hope%20you%20had%20a%20great%20experience%20with%20us.%20We%20would%20love%20to%20hear%20your%20thoughts%20and%20feedback%20on%20your%20stay.%20Please%20take%20a%20moment%20to%20complete%20our%20short%20survey%20using%20the%20link%20below.%20Your%20feedback%20is%20valuable%20to%20us%20and%20will%20help%20us%20improve%20our%20services%20for%20future%20guests.%0a%0aThank%20you%20for%20your%20time,%20and%20we%20look%20forward%20to%20seeing%20you%20again%20soon!%0a%0aFeedback%20link%20:%20https://srimaruti.com/feedback';
+        $access_token_key = 'e9621719da47ce9dd311f2a958e09439';
+        $instance_id_key ='6440E5CD87C93';
+
+        $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
+
+        if($response->successful()){
+            return redirect()->route('booking.index')->with('checkout', 'Successfully Updated');
+        } else {
+            return redirect()->route('booking.index')->with('checkout', 'Successfully Updated');
+        }
     }
 
     public function pay_balance(Request $request, $id)

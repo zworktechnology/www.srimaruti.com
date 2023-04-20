@@ -32,7 +32,7 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
-                <li class="{{ Route::is('home') ? 'mm-active' : '' }}">
+                <li class="{{ Route::is('home', 'homepage.data.filter') ? 'mm-active' : '' }}">
                     <a href="{{ route('home') }}" class="waves-effect">
                         <i class="uil-tachometer-fast"></i>
                         <span>Dashboard</span>

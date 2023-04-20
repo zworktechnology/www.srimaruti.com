@@ -9,9 +9,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0">Booking</h4>
+                            <a href="{{ route('booking.create') }}"><button type="button" class="btn btn-primary waves-effect waves-light mb-3"><i class="mdi mdi-plus me-1"></i> New Booking</button></a>
 
-                            <div class="page-title-right">
+                            <div class="page-title-right" hidden>
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Room</a></li>
                                     <li class="breadcrumb-item active">Booking</li>
@@ -23,12 +23,10 @@
                 </div>
                 <!-- end page title -->
 
-                <div class="row">
+                <div class="row" hidden>
                     <div class="col-md-4">
                         <div>
-                            <a href="{{ route('booking.create') }}">
-                                <button type="button" class="btn btn-primary waves-effect waves-light mb-3"><i class="mdi mdi-plus me-1"></i> New Booking</button>
-                            </a>
+                            <a href="{{ route('booking.create') }}"><button type="button" class="btn btn-primary waves-effect waves-light mb-3"><i class="mdi mdi-plus me-1"></i> New Booking</button></a>
                         </div>
                     </div>
                     <div class="col-md-8" hidden>
@@ -37,11 +35,11 @@
                                 <div class="input-daterange input-group" id="datepicker6" data-date-format="dd M, yyyy" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
                                     <input type="text" class="form-control text-start" placeholder="From" name="From" />
                                     <input type="text" class="form-control text-start" placeholder="To" name="To" />
-                                    
+
                                     <button type="button" class="btn btn-primary"><i class="mdi mdi-filter-variant"></i></button>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -148,9 +146,9 @@
                                             @if ($bookingDatas['status'] == '1')
                                                 <tr>
                                                     <td>{{ ++$keydata }}</td>
-                                                   
+
                                                     <td>{{ $bookingDatas['booking_invoiceno'] }}</td>
-                                                   
+
                                                     <td href="#basic{{ $bookingDatas['id'] }}" data-bs-toggle="modal"
                                                         data-bs-target="#basic{{ $bookingDatas['id'] }}" class="pointer">
                                                         {{ $bookingDatas['customer_name'] }}</td>
@@ -263,7 +261,7 @@
         $(document).ready(function() {
             $('#booking_datatable').DataTable();
         });
-       
+
 
         $(document).on("keyup", 'input.payable_amount', function() {
             var payable_amount = $(this).val();

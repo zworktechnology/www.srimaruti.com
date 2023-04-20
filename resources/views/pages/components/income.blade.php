@@ -10,7 +10,7 @@
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">₹
-                        {{ $branchwise_lists['Room_income'] }}</label>
+                        {{ $branchwise_lists['balanceamount_from_roomincome'] }}</label>
                 </div>
             </div>
             <div class="row mb-4">
@@ -27,7 +27,7 @@
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">₹
-                        {{ $branchwise_lists['balanceamount_from_roomincome'] }}</label>
+                        {{ $branchwise_lists['Room_income'] }}</label>
                 </div>
             </div>
             <hr>

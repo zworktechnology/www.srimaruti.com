@@ -14,17 +14,12 @@
                                 @csrf
                                 <ol class="breadcrumb m-0">
                                     <li><input type="date" class="form-control date" name="fromdate"
-                                            value="{{ $today }}"></li>
+                                            value="{{ $from_date }}"></li>
                                     <li><input type="date" class="form-control date" name="todate"
-                                            value="{{ $today }}"></li>
+                                            value="{{ $to_date }}"></li>
                                     <li style="margin-left: 10px;"><button type="submit"
                                             class="btn btn-primary">Search</button></li>
                                     <li style="margin-left: 10px;">
-                                    <a href="/home">
-                                        <button type="button" class="btn btn-info waves-effect waves-light">
-                                            Back
-                                        </button>
-                                    </a>
                                 </li>
                                 </ol>
                                 </form>
@@ -67,6 +62,7 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Branch</th>
+                                                <th>Open Account</th>
                                                 <th>Room Income</th>
                                                 <th>Income</th>
                                                 <th>Expence</th>
@@ -80,6 +76,8 @@
                                             @foreach ($branchwise_list as $branchwise_lists)
                                                 <tr>
                                                     <td>{{ $branchwise_lists['branch_name'] }}</td>
+
+                                                    <td>₹ {{ $branchwise_lists['branchwise_openaccount'] }}</td>
 
                                                     <td href="#roomincome{{ $branchwise_lists['branch_id'] }}"
                                                         data-bs-toggle="modal"
@@ -121,6 +119,7 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Total</th>
+                                                <th>₹ {{ $openaccount }}</th>
                                                 <th href="#roomincometotal"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#roomincometotal"
