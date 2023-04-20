@@ -105,7 +105,7 @@
     </div>
     <div class="">
         <div class="map-sec">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.7310056272386!2d89.2286059153658!3d24.00527418490799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fe9b97badc6151%3A0x30b048c9fb2129bc!2sAngfuzsoft!5e0!3m2!1sen!2sbd!4v1651028958211!5m2!1sen!2sbd" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.3654211886833!2d78.68775877470074!3d10.85978625765125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf5f1f36b7701%3A0x534369099cf9ad93!2sSri%20Maruti%20Inn!5e0!3m2!1sen!2sin!4v1681970057368!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 

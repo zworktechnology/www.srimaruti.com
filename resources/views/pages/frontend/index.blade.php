@@ -465,7 +465,7 @@
                     <div class="title-area mt-n1">
                         <span class="sub-title">ABOUT US</span>
                         <h2 class="sec-title">Journey into Tranquility</h2>
-                        <p class="mb-20">At Maruthi Resort, we believe that hospitality is not just about providing
+                        <p class="mb-20">At Maruti Resort, we believe that hospitality is not just about providing
                             comfortable lodging and quality service, but also about offering an unforgettable experience
                             that nurtures the soul. For over two decades, our family-owned retreat has welcomed guests
                             seeking a tranquil and rejuvenating getaway in the heart of a spiritual area. </p>
@@ -590,7 +590,7 @@
                     <div class="choose-content">
                         <div class="title-area mt-n1">
                             <span class="sub-title">Why Choose Us</span>
-                            <h2 class="sec-title text-white">Embrace Tranquility and Serenity at Maruthi Resort</h2>
+                            <h2 class="sec-title text-white">Embrace Tranquility and Serenity at Maruti Resort</h2>
                             <p class="sec-desc">Experience Tranquility: Family Resort with Modern Amenities, Serene
                                 Surroundings, Personalized Service, and 20 Years of Hospitality Expertise.</p>
                         </div>
@@ -707,7 +707,7 @@
                                     <a href="javascript:void(0);"><i class="fa-solid fa-star"></i></a>
                                 </div>
                                 <p class="testi-box_text">“The tranquil surroundings and personalized service at
-                                    Maruthi Resort made for a truly memorable stay. I can't wait to come back!”.</p>
+                                    Maruti Resort made for a truly memorable stay. I can't wait to come back!”.</p>
                                 <div class="testi-box_profile">
                                     <div class="testi-box_avater style2">
                                         <img src="{{ asset('assets/frontend/image/icon-1.png') }}" alt="testimonial">
@@ -728,7 +728,7 @@
                                     <a href="javascript:void(0);"><i class="fa-solid fa-star"></i></a>
                                     <a href="javascript:void(0);"><i class="fa-solid fa-star"></i></a>
                                 </div>
-                                <p class="testi-box_text">“My family and I had a fantastic stay at Maruthi Resort! The
+                                <p class="testi-box_text">“My family and I had a fantastic stay at Maruti Resort! The
                                     staff was so friendly and accommodating, and the amenities were perfect for all
                                     ages.”</p>
 

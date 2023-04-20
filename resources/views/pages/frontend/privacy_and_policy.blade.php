@@ -33,7 +33,7 @@
                                 <div id="collapse-1" class="accordion-collapse collapse show"
                                     aria-labelledby="collapse-item-1" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        <p class="faq-text">At Maruthi Resort, we are committed to protecting the
+                                        <p class="faq-text">At Maruti Resort, we are committed to protecting the
                                             privacy and confidentiality of our guests' personal information. This policy
                                             outlines how we collect, use, and disclose your personal information in
                                             accordance with applicable laws and regulations.</p>

@@ -20,7 +20,7 @@ class ContactMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Contact Us Mail - Sri Maruthi Inn - A/C & Non A/C Rooms at Tiruchirappalli')
+        return $this->subject('Contact Us Mail - Sri Maruti Inn - A/C & Non A/C Rooms at Tiruchirappalli')
         ->view('mail.contact');
     }
 }
