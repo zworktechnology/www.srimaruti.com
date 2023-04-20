@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
 
 class BookingController extends Controller
@@ -178,6 +179,7 @@ class BookingController extends Controller
         $billno = 1;
 
         $whatsapp = $request->get('whats_app_number');
+        $customer_name = $request->get('booking_customer_name');
 
         if($checkin == 'checkin')
         {
@@ -269,16 +271,16 @@ class BookingController extends Controller
 
         }
 
-        //$customer_photo = $request->customer_photo;
-        //$folderPath = "assets/customer_details/profile";
-        //$image_parts = explode(";base64,", $customer_photo);
-        //$image_type_aux = explode("image/", $image_parts[0]);
-        //$image_type = $image_type_aux[1];
-        //$image_base64 = base64_decode($image_parts[1]);
-        //$fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-        //$customerimgfile = $folderPath . $fileName;
-        //file_put_contents($customerimgfile, $image_base64);
-        //$data->customer_photo = $customerimgfile;
+        $customer_photo = $request->customer_photo;
+        $folderPath = "assets/customer_details/profile";
+        $image_parts = explode(";base64,", $customer_photo);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+        $customerimgfile = $folderPath . $fileName;
+        file_put_contents($customerimgfile, $image_base64);
+        $data->customer_photo = $customerimgfile;
 
         $data->total = $request->get('total_calc_price');
         $data->gst_per = $request->get('gst_percentage');
@@ -327,10 +329,11 @@ class BookingController extends Controller
             }
         }
 
-        $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message=hi%20from%20Zwork%20technology&instance_id=643F6B80587D5&access_token=758377d10234b094a82f646ce1dbb728', [
-            'title' => 'This is test from tutsmake.com',
-            'body' => 'This is test from tutsmake.com as body',
-        ]);
+        $message_key = 'Dear%20'.$customer_name.'%0aWelcome%20to%20Sri%20Maruthi%20Inn!%20We%20are%20thrilled%20to%20have%20you%20stay%20with%20us.%20Our%20team%20is%20dedicated%20to%20ensuring%20you%20have%20a%20comfortable%20and%20memorable%20stay.%20If%20you%20need%20any%20assistance%20during%20your%20stay,%20please%20don%27t%20hesitate%20to%20contact%20our%20front%20desk.%0aWe%20hope%20you%20have%20a%20wonderful%20time%20at%20our%20resort!%20If%20there%27s%20anything%20we%20can%20do%20to%20make%20your%20stay%20even%20more%20enjoyable,%20please%20let%20us%20know.%20We%27re%20here%20to%20help.%20Thank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20stay';
+        $access_token_key = 'e9621719da47ce9dd311f2a958e09439';
+        $instance_id_key ='6440E5CD87C93';
+
+        $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
 
         if($response->successful()){
             return redirect()->route('booking.index')->with('add', 'New booking record detail successfully added, and send notification to customer !');
@@ -780,8 +783,8 @@ class BookingController extends Controller
     {
         $data = Booking::findOrFail($id);
 
-        $data->check_out_date = $request->get('extended_date');
-        $data->check_out_time = $request->get('extended_time');
+        // $data->check_out_date = $request->get('extended_date');
+        // $data->check_out_time = $request->get('extended_time');
         $data->extended_date = $request->get('extended_date');
         $data->extended_time = $request->get('extended_time');
         $data->days = $request->get('no_of_days');
