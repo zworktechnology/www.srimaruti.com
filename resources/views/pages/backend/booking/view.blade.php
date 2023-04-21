@@ -96,7 +96,7 @@
                                             </div>
                                             <div class="mt-4">
                                                 <h5 class="font-size-16 mb-1">
-                                                    Date : <span style="color: #acafb7;">{{ date('d M Y', strtotime($today)) }}</span>
+                                                    Date : <span style="color: #acafb7;">{{ date('d M Y', strtotime($data->created_at)) }}</span>
                                                 </h5>
                                             </div>
                                             <div class="mt-4">

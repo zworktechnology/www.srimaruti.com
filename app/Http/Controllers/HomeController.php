@@ -46,6 +46,8 @@ class HomeController extends Controller
             $Room_income = 0;
             $gstamount = 0;
             $total_onlinepayment = 0;
+            $balanceamount_from_roomincome = 0;
+            
             $booking_id = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $branchs->id)->get();
             foreach ($booking_id as $key => $booking_ids) {
 
@@ -154,6 +156,7 @@ class HomeController extends Controller
             $Room_income = 0;
             $gstamount = 0;
             $total_onlinepayment = 0;
+            $balanceamount_from_roomincome = 0;
 
             $booking_id = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $branchs->id)->get();
             foreach ($booking_id as $key => $booking_ids) {
