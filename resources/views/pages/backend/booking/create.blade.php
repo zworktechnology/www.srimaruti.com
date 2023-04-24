@@ -180,7 +180,7 @@
                                                                                             Select Room</option>
                                                                                     </select>
                                                                                 </td>
-                                                                                <td class="col-12 col-md-2"><input
+                                                                                <td class="col-12 col-md-3"><input
                                                                                         type="text"
                                                                                         class="form-control"
                                                                                         name="room_type[]"
@@ -200,7 +200,7 @@
                                                                                         name="room_cal_price[]"
                                                                                         placeholder="Price" value=""
                                                                                         required /></td>
-                                                                                <td class="col-12 col-md-2"><button
+                                                                                <td class="col-12 col-md-1"><button
                                                                                         style="width: 100px;"
                                                                                         class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success"
                                                                                         type="button" id="addroomfields"
@@ -312,13 +312,13 @@
                                                     <div class="inner-repeater mb-4">
                                                         <div data-repeater-list="inner-group" class="inner form-group">
                                                             <div data-repeater-item class="inner mb-3 row">
-                                                                <div class="col-md-3 col-8">
+                                                                <div class="col-md-3 col-12">
                                                                     <label for="horizontal-firstname-input"
                                                                         class="col-form-label">
                                                                         Total - Room Price <span
                                                                             style="color: red;">*</span> </label>
                                                                 </div>
-                                                                <div class="col-md-9 col-3">
+                                                                <div class="col-md-9 col-12">
                                                                     <input type="text"
                                                                         class="form-control total_calc_price"
                                                                         style="background-color:#babcc5ad"
@@ -719,21 +719,7 @@
             $("#addroomfields").click(function() {
                 ++i;
                 $("#roomfields").append(
-                    `<tbody  class="responsive_cls">
-                    <tr>
-                        <td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
-                            <input type="hidden" id="room_auto_id" name="room_auto_id[]" />
-                            <select class="form-control room_id" name="room_id[]" id="room_id1" required>
-                                <option value="" selected hidden class="text-muted">
-                                    Select Room</option>
-                            </select></td>
-                        <td class="col-12 col-md-2"><input type="text" class="form-control" name="room_type[]" placeholder="Room type" value="" required /></td>
-                        <td class="col-12 col-md-2"><input type="text" class="form-control" id="room_price1" name="room_price[]" placeholder="Price Per Day" value="" required /></td>
-                        <td class="col-12 col-md-2"><input type="text" class="form-control room_cal_price" id="room_cal_price1" name="room_cal_price[]" placeholder="Price" value="" required /></td>
-                        <td class="col-12 col-md-2"><button style="width: 100px;" class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add</button>
-                        </td>
-                    </tr>
-                    </tbody>`
+                    '<tr><td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-12 col-md-3" style="margin-left: 3px;"><input type="text" class="form-control" name="room_type[]" placeholder="Room type" value=""/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-12 col-md-1" style="margin-left: 4px;"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
                 );
 
                 var branch_id = $('.branch_id').val();

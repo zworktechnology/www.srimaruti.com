@@ -32,7 +32,7 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         Number </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="room_number" placeholder="Enter room number " required>
+                        <input type="text" class="form-control" name="room_number" placeholder="Enter room number " required>
                     </div>
                 </div>
                 <div class="row mb-4" hidden>
