@@ -7,6 +7,12 @@
         .select2-container {
             width: 100% !important;
         }
+        .responsive_cls tr {
+            display: block;
+        }
+        .responsive_cls tr td {
+            display: inline-block;
+        }
     </style>
 </head>
 
