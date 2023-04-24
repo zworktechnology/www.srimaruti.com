@@ -3,6 +3,11 @@
 
 <head>
     @include('components.app.header')
+    <style>
+        .select2-container {
+            width: 100% !important;
+        }
+    </style>
 </head>
 
 <body>

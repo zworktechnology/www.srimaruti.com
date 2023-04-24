@@ -11,7 +11,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -224,7 +223,7 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Photo <span style="color: red;">*</span> </label>
                                             <div class="col-sm-7">
-                                                <div style="display: flex;">
+                                                <div style="display: flex; flex-wrap: wrap;">
                                                     <div id="my_camera"></div>
                                                     <div id="captured_image" style="border:1px #584f72; background:#f6f6f6;">Your captured image will appear here...</div>
                                                 </div>
@@ -285,20 +284,20 @@
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
-                                                            <div class="col-md-3 col-8">
+                                                            <div class="col-md-3 col-12">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
                                                                     Grand Total - To Pay <span style="color: red;">*</span> </label>
                                                             </div>
-                                                            <div class="col-md-9 col-3">
+                                                            <div class="col-md-9 col-12">
                                                                 <input type="text" class="form-control grand_total" style="background-color:#babcc5ad" name="grand_total" placeholder="Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row" hidden>
-                                                            <div class="col-md-3 col-8">
+                                                            <div class="col-md-3 col-12">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
                                                                     Term <span style="color: red;">*</span> </label>
                                                             </div>
-                                                            <div class="col-md-9 col-5">
+                                                            <div class="col-md-9 col-12">
                                                                 <select class="form-control" name="payment_term" required>
                                                                     <option value=""  class="text-muted">Select</option>
                                                                     <option value="Term I" class="text-muted" selected>Term I</option>
@@ -307,31 +306,31 @@
                                                         </div>
 
                                                         <div data-repeater-item class="inner mb-3 row">
-                                                            <div class="col-md-3 col-8">
+                                                            <div class="col-md-3 col-12">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
                                                                     Payable Amount <span style="color: red;">*</span> </label>
                                                             </div>
-                                                            <div class="col-md-9 col-3">
+                                                            <div class="col-md-9 col-12">
                                                                 <input type="text" class="form-control payable_amount"  name="payable_amount"  placeholder="Enter here " required>
                                                             </div>
                                                         </div>
                                                         <div data-repeater-item class="inner mb-3 row">
-                                                            <div class="col-md-3 col-8">
+                                                            <div class="col-md-3 col-12">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
                                                                     Balance Amount <span style="color: red;">*</span> </label>
                                                             </div>
-                                                            <div class="col-md-9 col-3">
+                                                            <div class="col-md-9 col-12">
                                                                 <input type="text" class="form-control balance_amount" style="background-color:#c7c21dad" value="0"  name="balance_amount"  placeholder="Enter here " required>
                                                             </div>
                                                         </div>
 
 
                                                         <div data-repeater-item class="inner mb-3 row">
-                                                            <div class="col-md-3 col-8">
+                                                            <div class="col-md-3 col-12">
                                                                 <label for="horizontal-firstname-input" class="col-form-label">
                                                                     Payment Method <span style="color: red;">*</span> </label>
                                                             </div>
-                                                            <div class="col-md-9 col-5">
+                                                            <div class="col-md-9 col-12">
                                                                 <select class="form-control js-example-basic-single" name="payment_method" required>
                                                                     <option value=""  selected hidden class="text-muted">Select Payment Via</option>
                                                                     <option value="Cash" class="text-muted">Cash</option>
