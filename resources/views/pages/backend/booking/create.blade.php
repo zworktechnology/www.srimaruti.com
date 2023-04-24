@@ -143,16 +143,16 @@
                                                                 <table class="table-fixed col-12 " id="">
                                                                     <tbody id="roomfields">
                                                                         <tr>
-                                                                            <td class="col-4 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
+                                                                            <td class="col-12 col-md-4 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
                                                                                 <input type="hidden" id="room_auto_id" name="room_auto_id[]" />
                                                                                 <select class="form-control room_id" name="room_id[]" id="room_id1" required>
                                                                                     <option value="" selected hidden class="text-muted">
                                                                                         Select Room</option>
                                                                                 </select></td>
-                                                                            <td class="col-2"><input type="text" class="form-control" name="room_type[]" placeholder="Room type" value="" required /></td>
-                                                                            <td class="col-3"><input type="text" class="form-control" id="room_price1" name="room_price[]" placeholder="Price Per Day" value="" required /></td>
-                                                                            <td class="col-3"><input type="text" class="form-control room_cal_price" id="room_cal_price1" name="room_cal_price[]" placeholder="Price" value="" required /></td>
-                                                                            <td class="col-2"><button style="width: 100px;" class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add</button>
+                                                                            <td class="col-12 col-md-2"><input type="text" class="form-control" name="room_type[]" placeholder="Room type" value="" required /></td>
+                                                                            <td class="col-12 col-md-3"><input type="text" class="form-control" id="room_price1" name="room_price[]" placeholder="Price Per Day" value="" required /></td>
+                                                                            <td class="col-12 col-md-3"><input type="text" class="form-control room_cal_price" id="room_cal_price1" name="room_cal_price[]" placeholder="Price" value="" required /></td>
+                                                                            <td class="col-12 col-md-2"><button style="width: 100px;" class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success" type="button" id="addroomfields" value="Add">Add</button>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
