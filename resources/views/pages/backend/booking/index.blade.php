@@ -9,77 +9,29 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <a href="{{ route('booking.create') }}"><button type="button" class="btn btn-primary waves-effect waves-light mb-3"><i class="mdi mdi-plus me-1"></i> New Booking</button></a>
+                            <a href="{{ route('booking.create', ['pre_select_branch_id' => $user_branch_id]) }}"><button type="button" class="btn btn-primary waves-effect waves-light mb-3"><i class="mdi mdi-plus me-1"></i> New Booking</button></a>
 
-                            <div class="page-title-right" hidden>
-                                <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Room</a></li>
-                                    <li class="breadcrumb-item active">Booking</li>
-                                </ol>
+                            <div class="page-title-right">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <div class="page-title-right">
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary dropdown-toggle waves-effect waves-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                               Filter by <i class="mdi mdi-chevron-down"></i>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(0px, -41.3167px);" data-popper-placement="top-start">
+                                                <a class="dropdown-item {{ Route::is('booking.index') ? 'mm-active' : '' }}" href="{{ route('booking.index', ['user_branch_id' => $user_branch_id]) }}">View All</a>
+                                                <a class="dropdown-item {{ Route::is('booking.today') ? 'mm-active' : '' }}" href="{{ route('booking.today', ['user_branch_id' => $user_branch_id]) }}">Today's</a>
+                                                <a class="dropdown-item {{ Route::is('booking.upcoming',) ? 'mm-active' : '' }}" href="{{ route('booking.upcoming', ['user_branch_id' => $user_branch_id]) }}">Upcoming</a>
+                                                <a class="dropdown-item {{ Route::is('booking.missingout') ? 'mm-active' : '' }}" href="{{ route('booking.missingout', ['user_branch_id' => $user_branch_id]) }}">Missing</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
                 <!-- end page title -->
-
-                <div class="row" hidden>
-                    <div class="col-md-4">
-                        <div>
-                            <a href="{{ route('booking.create') }}"><button type="button" class="btn btn-primary waves-effect waves-light mb-3"><i class="mdi mdi-plus me-1"></i> New Booking</button></a>
-                        </div>
-                    </div>
-                    <div class="col-md-8" hidden>
-                        <div class="float-end">
-                            <div class=" mb-3">
-                                <div class="input-daterange input-group" id="datepicker6" data-date-format="dd M, yyyy" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
-                                    <input type="text" class="form-control text-start" placeholder="From" name="From" />
-                                    <input type="text" class="form-control text-start" placeholder="To" name="To" />
-
-                                    <button type="button" class="btn btn-primary"><i class="mdi mdi-filter-variant"></i></button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                {{-- <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0">Booking</h4>
-                            <div class="page-title-right">
-                                <ol class="breadcrumb m-0">
-                                    <form autocomplete="off" method="POST" action="{{ route('booking.datefilter') }}"
-                                        style="display: flex;">
-                                        @method('PUT')
-                                        @csrf
-                                        <li style="margin-left: 10px;">
-                                            <select class="form-control " name="booking_dropdown_list" style="width: 100%;"
-                                                required>
-                                                <option value="checkout" class="text-muted">Checkout</option>
-                                                <option value="view_all" class="text-muted" selected>View All</option>
-                                            </select>
-                                        </li>
-                                        <li style="margin-left: 10px;"><input type="date" name="from_date" required
-                                                class="form-control from_date" value="{{ $today }}"></li>
-                                        <li style="margin-left: 10px;"><input type="date" name="to_date" required
-                                                class="form-control to_date" value="{{ $today }}"></li>
-                                        <li style="margin-left: 10px;"><button type="submit"
-                                                class="btn btn-primary home_search">Search</button></li>
-                                    </form>
-                                    <li>
-                                        <a href="{{ route('booking.create') }}">
-                                            <button type="button" class="btn btn-primary waves-effect waves-light">
-                                                New Booking
-                                            </button>
-                                        </a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
 
                 @if (\Session::has('add'))
                     <div class="alert alert-secondary alert-dismissible fade show" role="alert">

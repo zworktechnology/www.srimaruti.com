@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Http;
 
 class BookingController extends Controller
 {
-    public function index()
+    public function index($user_branch_id)
     {
-        $data = Booking::where('soft_delete', '!=', 1)->get();
+        $data = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->get();
 
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
@@ -84,15 +84,15 @@ class BookingController extends Controller
             );
         }
 
-        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow'));
+        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow', 'user_branch_id'));
     }
 
-    public function today()
+    public function today($user_branch_id)
     {
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '=', $today)->where('status', '=', 1)->get();
+        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '=', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->get();
 
         $bookingData = [];
         $room_list = [];
@@ -156,15 +156,15 @@ class BookingController extends Controller
             );
         }
 
-        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow'));
+        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow', 'user_branch_id'));
     }
 
-    public function upcoming()
+    public function upcoming($user_branch_id)
     {
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '>', $today)->where('status', '=', 1)->get();
+        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '>', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->get();
 
         $bookingData = [];
         $room_list = [];
@@ -228,15 +228,15 @@ class BookingController extends Controller
             );
         }
 
-        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow'));
+        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow', 'user_branch_id'));
     }
 
-    public function missingout()
+    public function missingout($user_branch_id)
     {
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '<', $today)->where('status', '=', 1)->get();
+        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '<', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->get();
 
         $bookingData = [];
         $room_list = [];
@@ -300,7 +300,7 @@ class BookingController extends Controller
             );
         }
 
-        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow'));
+        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function dailycheckout()
@@ -380,14 +380,14 @@ class BookingController extends Controller
         }
     }
 
-    public function create()
+    public function create($user_branch_id)
     {
-        $branch = Branch::where('soft_delete', '!=', 1)->get();
-        $room = Room::where('soft_delete', '!=', 1)->get();
+        $branch = Branch::where('soft_delete', '!=', 1)->where('id', '=', $user_branch_id)->get();
+        $room = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->get();
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        return view('pages.backend.booking.create', compact('branch', 'room', 'today', 'timenow'));
+        return view('pages.backend.booking.create', compact('branch', 'room', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function store(Request $request)

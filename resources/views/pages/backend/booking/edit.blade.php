@@ -155,9 +155,7 @@
                                                             class="text-muted">
                                                             Select Branch</option>
                                                         @foreach ($branch as $branchs)
-                                                            <option value="{{ $branchs->id }}"
-                                                                @if ($branchs->id === $data->branch_id) selected='selected' @endif>
-                                                                {{ $branchs->name }}</option>
+                                                            <option value="{{ $branchs->id }}" @if ($branchs->id === $data->branch_id) selected='selected' @endif>{{ $branchs->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

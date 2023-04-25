@@ -99,15 +99,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // BOOKING CONTROLLER
     Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // INDEX ALL
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking', [BookingController::class, 'index'])->name('booking.index');
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/{user_branch_id}', [BookingController::class, 'index'])->name('booking.index');
         // INDEX TODAY
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/today', [BookingController::class, 'today'])->name('booking.today');
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/today/{user_branch_id}', [BookingController::class, 'today'])->name('booking.today');
         // INDEX UPCOMING
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/upcoming', [BookingController::class, 'upcoming'])->name('booking.upcoming');
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/upcoming/{user_branch_id}', [BookingController::class, 'upcoming'])->name('booking.upcoming');
         // INDEX MISSING OUT
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/missingout', [BookingController::class, 'missingout'])->name('booking.missingout');
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/missingout/{user_branch_id}', [BookingController::class, 'missingout'])->name('booking.missingout');
         // CREATE
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/create', [BookingController::class, 'create'])->name('booking.create');
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/create/{user_branch_id}', [BookingController::class, 'create'])->name('booking.create');
         // STORE
         Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/booking/store', [BookingController::class, 'store'])->name('booking.store');
         // EDIT

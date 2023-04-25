@@ -180,12 +180,15 @@
                                                                                             Select Room</option>
                                                                                     </select>
                                                                                 </td>
-                                                                                <td class="col-12 col-md-3"><input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        name="room_type[]"
-                                                                                        placeholder="Room type"
-                                                                                        value="" required /></td>
+                                                                                <td class="col-12 col-md-3">
+                                                                                    <select class="form-control room_type"
+                                                                                    name="room_type[]"
+                                                                                    required>
+                                                                                    <option value="" selected hidden class="text-muted">Select Room Type</option>
+                                                                                        <option value="A/C" class="text-muted">A/C</option>
+                                                                                        <option value="Non - A/C" class="text-muted">Non - A/C</option>
+                                                                                    </select>
+                                                                                </td>
                                                                                 <td class="col-12 col-md-2"><input
                                                                                         type="text"
                                                                                         class="form-control"
@@ -244,7 +247,7 @@
                                                     <label for="horizontal-firstname-input"
                                                         class="col-sm-3 col-form-label">
                                                         Proof <span style="color: red;">*</span> </label>
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-7">
                                                         <select class="form-control js-example-basic-single"
                                                             name="prooftype_one" style="width: 100%;" required>
                                                             <option value="" disabled selected hidden
@@ -257,9 +260,15 @@
                                                                 Licence</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-sm-5">
-                                                        <input type="file" class="form-control" name="proofimage_one"
-                                                            required>
+                                                    <div class="col-sm-1">
+                                                        <a href="#fronthref" data-bs-toggle="modal" class="btn btn-success" data-bs-target="#front" style="color:white; padding-right:20px; padding-left:20px;">
+                                                            Front
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <a href="#backhref" data-bs-toggle="modal" class="btn btn-success" data-bs-target="#back" style="color:white; padding-right:20px; padding-left:20px;">
+                                                            Back
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -289,19 +298,11 @@
                                             </div>
 
                                             <div class="row mb-4" id="proof_photo">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Photo <span style="color: red;">*</span> </label>
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-7">
-                                                    <div style="display: flex;">
-                                                        <div id="my_camera"></div>
-                                                        <div id="captured_image"
-                                                            style="border:1px #584f72; background:#f6f6f6;">Your captured
-                                                            image will appear here...</div>
-                                                    </div>
-                                                    <input style="margin-top: 10px; margin-left: 40px;" type=button
-                                                        value="Take Snapshot" class="btn btn-success"
-                                                        onClick="take_snapshot()" required>
-                                                    <input type="hidden" name="customer_photo" class="image-tag">
+                                                    <a href="#profileimagehref" data-bs-toggle="modal" class="btn btn-success" data-bs-target="#profileimage" style="color:white">
+                                                        Profile Image
+                                                    </a>
                                                 </div>
                                             </div>
                                             <hr>
@@ -345,7 +346,7 @@
                                                                         placeholder="Gst % - Enter here " required>
                                                                 </div>
                                                             </div>
-                                                            <div class="row mb-4">
+                                                            <div class="row mb-4" hidden>
                                                                 <label for="horizontal-firstname-input"
                                                                     class="col-sm-3 col-form-label">
                                                                     Discount Amount <span style="color: red;">*</span>
@@ -361,7 +362,7 @@
                                                                     class="col-sm-1 col-form-label">
                                                                     Dis % <span style="color: red;">*</span> </label>
                                                                 <div class="col-sm-4">
-                                                                    <input type="text"
+                                                                    <input type="text" value="0"
                                                                         class="form-control discount_percentage"
                                                                         name="discount_percentage"
                                                                         placeholder="Discount % - Enter here " required>
@@ -439,23 +440,6 @@
                                                                 <div class="col-md-3 col-12">
                                                                     <label for="horizontal-firstname-input"
                                                                         class="col-form-label">
-                                                                        Balance Amount <span style="color: red;">*</span>
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-md-9 col-12">
-                                                                    <input type="text"
-                                                                        class="form-control balance_amount"
-                                                                        style="background-color:#c7c21dad" value="0"
-                                                                        name="balance_amount" placeholder="Enter here "
-                                                                        required>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div data-repeater-item class="inner mb-3 row">
-                                                                <div class="col-md-3 col-12">
-                                                                    <label for="horizontal-firstname-input"
-                                                                        class="col-form-label">
                                                                         Payment Method <span style="color: red;">*</span>
                                                                     </label>
                                                                 </div>
@@ -469,6 +453,21 @@
                                                                         <option value="Online Payment" class="text-muted">
                                                                             Online Payment</option>
                                                                     </select>
+                                                                </div>
+                                                            </div>
+                                                            <div data-repeater-item class="inner mb-3 row">
+                                                                <div class="col-md-3 col-12">
+                                                                    <label for="horizontal-firstname-input"
+                                                                        class="col-form-label">
+                                                                        Balance Amount <span style="color: red;">*</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-9 col-12">
+                                                                    <input type="text"
+                                                                        class="form-control balance_amount"
+                                                                        style="background-color:#c7c21dad" value="0"
+                                                                        name="balance_amount" placeholder="Enter here "
+                                                                        required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -486,6 +485,78 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="profileimage" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Profile Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div style="display: flex;">
+                        <div id="my_camera"></div>
+                        <div id="captured_image"
+                            style="border:1px #584f72; background:#f6f6f6;">Your captured
+                            profile image will appear here...</div>
+                    </div>
+                    <input style="margin-top: 10px; margin-left: 40px;" type=button
+                        value="Take Snapshot" class="btn btn-success"
+                        onClick="take_snapshot()" required>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 10px;">Save & Close</button>
+                    <input type="hidden" name="customer_photo" class="image-tag">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="front" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Front Proof Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div style="display: flex;">
+                        <div id="my_camera_proof_front"></div>
+                        <div id="captured_image_proof_front"
+                            style="border:1px #584f72; background:#f6f6f6;">Your captured
+                            front proof will appear here...</div>
+                    </div>
+                    <input style="margin-top: 10px; margin-left: 40px;" type=button
+                        value="Take Snapshot" class="btn btn-success"
+                        onClick="take_snapshot_proof_front()" required>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 10px;">Save & Close</button>
+                    <input type="hidden" name="customer_photo" class="image-tag-proof-front">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="back" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Back Proof Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div style="display: flex;">
+                        <div id="my_camera_back"></div>
+                        <div id="captured_image_back"
+                            style="border:1px #584f72; background:#f6f6f6;">Your captured
+                            back proof will appear here...</div>
+                    </div>
+                    <input style="margin-top: 10px; margin-left: 40px;" type=button
+                        value="Take Snapshot" class="btn btn-success"
+                        onClick="take_snapshot_back()" required>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 10px;">Save & Close</button>
+                    <input type="hidden" name="customer_photo" class="image-tag-back">
                 </div>
             </div>
         </div>
@@ -719,7 +790,7 @@
             $("#addroomfields").click(function() {
                 ++i;
                 $("#roomfields").append(
-                    '<tr><td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-12 col-md-3" style="margin-left: 3px;"><input type="text" class="form-control" name="room_type[]" placeholder="Room type" value=""/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-12 col-md-1" style="margin-left: 4px;"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                    '<tr><td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-12 col-md-3" style="margin-left: 3px;"><select class="form-control room_type" name="room_type[]" required><option value="" selected hidden class="text-muted">Select Room Type</option><option value="A/C" class="text-muted">A/C</option><option value="Non - A/C" class="text-muted">Non - A/C</option></select></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-12 col-md-1" style="margin-left: 4px;"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
                 );
 
                 var branch_id = $('.branch_id').val();
@@ -1059,15 +1130,32 @@
             width: 350,
             height: 200,
             image_format: 'jpeg',
-            jpeg_quality: 90
+            jpeg_quality: 90,
+            facingMode: 'environment'
         });
 
         Webcam.attach('#my_camera');
+        Webcam.attach('#my_camera_proof_front');
+        Webcam.attach('#my_camera_back');
 
         function take_snapshot() {
             Webcam.snap(function(data_uri) {
                 $(".image-tag").val(data_uri);
                 document.getElementById('captured_image').innerHTML = '<img src="' + data_uri + '"/>';
+            });
+        }
+
+        function take_snapshot_proof_front() {
+            Webcam.snap(function(data_uri) {
+                $(".image-tag-proof-front").val(data_uri);
+                document.getElementById('captured_image_proof_front').innerHTML = '<img src="' + data_uri + '"/>';
+            });
+        }
+
+        function take_snapshot_back() {
+            Webcam.snap(function(data_uri) {
+                $(".image-tag-back").val(data_uri);
+                document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri + '"/>';
             });
         }
     </script>
