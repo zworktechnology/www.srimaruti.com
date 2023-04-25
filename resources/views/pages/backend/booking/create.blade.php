@@ -114,6 +114,14 @@
                                             </div>
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    No of Days - Stay <span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control days" id="days"
+                                                        name="days" placeholder="Enter here " required>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Check Out Date </label>
                                                 <div class="col-sm-4">
                                                     <input type="date" class="form-control check_out_date"
@@ -124,14 +132,6 @@
                                                 <div class="col-sm-4">
                                                     <input type="time" class="form-control" name="check_out_time"
                                                         placeholder="Enter here " value="{{ $timenow }}">
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Days <span style="color: red;">*</span> </label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control days" id="days"
-                                                        name="days" placeholder="Enter here " required>
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
@@ -222,14 +222,14 @@
                                                 <div class="col-sm-3">
                                                     <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-2" hidden>
                                                     <input id="default-radio-1" type="radio" checked value="1"
                                                         name="proofs"
                                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                     <label for="default-radio-1" class="ml-2"
                                                         style="font-weight:900">Single Proof</label>
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-2" hidden>
                                                     <input id="default-radio-1" type="radio" value="2"
                                                         name="proofs"
                                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -243,7 +243,7 @@
                                                 <div class="row mb-4">
                                                     <label for="horizontal-firstname-input"
                                                         class="col-sm-3 col-form-label">
-                                                        Proof 1 <span style="color: red;">*</span> </label>
+                                                        Proof <span style="color: red;">*</span> </label>
                                                     <div class="col-sm-4">
                                                         <select class="form-control js-example-basic-single"
                                                             name="prooftype_one" style="width: 100%;" required>
@@ -292,7 +292,7 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Photo <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-7">
-                                                    <div style="display: flex; flex-wrap: wrap;">
+                                                    <div style="display: flex;">
                                                         <div id="my_camera"></div>
                                                         <div id="captured_image"
                                                             style="border:1px #584f72; background:#f6f6f6;">Your captured

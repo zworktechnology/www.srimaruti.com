@@ -50,11 +50,17 @@
                         <span>Room</span>
                     </a>
                 </li>
-                <li class="{{ Route::is('booking.index','booking.create','booking.edit', 'booking.view') ? 'mm-active' : '' }}">
-                    <a href="{{ route('booking.index') }}" class="waves-effect">
-                        <i class="uil-book-open"></i>
+                <li class="{{ Route::is('booking.index','booking.create','booking.edit', 'booking.view', 'booking.today', 'booking.upcoming', 'booking.missingout') ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);" class="waves-effect {{ Route::is('booking.index','booking.create','booking.edit', 'booking.view') ? 'mm-active' : '' }}">
+                        <i class="uil-store"></i>
                         <span>Booking</span>
                     </a>
+                    <ul class="sub-menu {{ Route::is('booking.create','booking.edit', 'booking.view') ? 'mm-collapse' : '' }} {{ Route::is('booking.index', 'booking.today', 'booking.upcoming', 'booking.missingout') ? 'mm-show' : '' }}" aria-expanded="false">
+                        <li class="{{ Route::is('booking.index') ? 'mm-active' : '' }}"><a href="{{ route('booking.index') }}" class="{{ Route::is('booking.index') ? 'active' : '' }}">All Booking</a></li>
+                        <li class="{{ Route::is('booking.today') ? 'mm-active' : '' }}"><a href="{{ route('booking.today') }}" class="{{ Route::is('booking.today') ? 'active' : '' }}">Today's Out</a></li>
+                        <li class="{{ Route::is('booking.upcoming') ? 'mm-active' : '' }}"><a href="{{ route('booking.upcoming') }}" class="{{ Route::is('booking.upcoming') ? 'active' : '' }}">Upcoming Out</a></li>
+                        <li class="{{ Route::is('booking.missingout') ? 'mm-active' : '' }}"><a href="{{ route('booking.missingout') }}" class="{{ Route::is('booking.missingout') ? 'active' : '' }}">Missing Out</a></li>
+                    </ul>
                 </li>
                 <li class="{{ Route::is('namelist.index','namelist.create','namelist.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('namelist.index') }}" class="waves-effect">
@@ -65,7 +71,7 @@
                 <li class="{{ Route::is('income.index','income.create','income.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('income.index') }}" class="waves-effect">
                         <i class="uil-money-withdraw"></i>
-                        <span>Income</span>
+                        <span>Other Income</span>
                     </a>
                 </li>
                 <li class="{{ Route::is('expense.index','expense.create','expense.edit') ? 'mm-active' : '' }}">

@@ -61,7 +61,7 @@
                                                 <th>Branch</th>
                                                 <th>Open Account</th>
                                                 <th>Room Income</th>
-                                                <th>Income</th>
+                                                <th>Other Income</th>
                                                 <th>Expence</th>
                                                 <th>Required Balance</th>
                                                 <th>Close Account</th>
@@ -73,7 +73,7 @@
                                             @foreach ($branchwise_list as $branchwise_lists)
                                                 <tr>
                                                     <td>{{ $branchwise_lists['branch_name'] }}</td>
-                                                    
+
                                                     <td>₹ {{ $branchwise_lists['branchwise_openaccount'] }}</td>
 
                                                     <td href="#roomincome{{ $branchwise_lists['branch_id'] }}"

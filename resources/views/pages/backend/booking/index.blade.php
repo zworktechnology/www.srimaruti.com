@@ -134,24 +134,33 @@
                                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
-                                            <th>Sl. No</th>
                                             <th>Booking ID</th>
                                             <th>Customer</th>
+                                            <th>Check Out Date & Time</th>
                                             <th>Room Details</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($bookingData as $keydata => $bookingDatas)
-                                            @if ($bookingDatas['status'] == '1')
                                                 <tr>
-                                                    <td>{{ ++$keydata }}</td>
 
                                                     <td>{{ $bookingDatas['booking_invoiceno'] }}</td>
 
                                                     <td href="#basic{{ $bookingDatas['id'] }}" data-bs-toggle="modal"
                                                         data-bs-target="#basic{{ $bookingDatas['id'] }}" class="pointer">
                                                         {{ $bookingDatas['customer_name'] }}</td>
+
+                                                    <td>
+                                                        @if ($bookingDatas['status'] == 2)
+                                                        <span style="color:red">{{ date('d M Y', strtotime($bookingDatas['out_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['out_time'])) }})</span>
+                                                        @elseif ($bookingDatas['chick_out_date'] < $today & $bookingDatas['status'] == 2)
+                                                        <span>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
+                                                        @else
+                                                        <span>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
+                                                        @endif
+                                                    </td>
+
                                                     <td>
                                                         @foreach ($bookingDatas['room_list'] as $index => $room_lists)
                                                             @if ($room_lists['booking_id'] == $bookingDatas['id'])
@@ -173,7 +182,7 @@
 
 
                                                             @if ($bookingDatas['balance_amount'] == 0)
-                                                                @if ($bookingDatas['chick_out_date'] == $today && $bookingDatas['extended_date'] == '')
+                                                                @if ($bookingDatas['status'] != 2)
                                                                     <li>
                                                                         <a href="#checkout{{ $bookingDatas['id'] }}"
                                                                             data-bs-toggle="modal"
@@ -188,28 +197,11 @@
                                                                             @include('pages.backend.booking.components.checkout')
                                                                         </div>
                                                                     </li>
-                                                                    @elseif ($bookingDatas['chick_out_date'] == $today && $bookingDatas['extended_date'] != '')
-                                                                    @elseif ($bookingDatas['chick_out_date'] != $today && $bookingDatas['extended_date'] == $today)
-                                                                    <li>
-                                                                        <a href="#checkout{{ $bookingDatas['id'] }}"
-                                                                            data-bs-toggle="modal"
-                                                                            data-id="{{ $bookingDatas['id'] }}"
-                                                                            class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
-                                                                            data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
-                                                                        <div class="modal fade"
-                                                                            id="checkout{{ $bookingDatas['id'] }}"
-                                                                            data-bs-backdrop="static"
-                                                                            data-bs-keyboard="false" aria-hidden="true"
-                                                                            aria-labelledby="..." tabindex="-1">
-                                                                            @include('pages.backend.booking.components.checkout')
-                                                                        </div>
-                                                                    </li>
-                                                                    @else
                                                                 @endif
                                                             @endif
 
-                                                            @if ($bookingDatas['extended_date'] == '')
-                                                                @if ($bookingDatas['chick_out_date'] != $today)
+                                                            @if ($bookingDatas['chick_out_date'] >= $today)
+                                                                @if ($bookingDatas['status'] != 2)
                                                                 <li>
                                                                     <a href="#extend{{ $bookingDatas['id'] }}"
                                                                         data-bs-toggle="modal"
@@ -246,7 +238,6 @@
                                                         </ul>
                                                     </td>
                                                 </tr>
-                                            @endif
 
                                             @if ($bookingDatas['balance_amount'] != 0)
                                                 <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}"

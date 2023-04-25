@@ -6,13 +6,29 @@
         </div>
         <div class="modal-body">
 
-            <p>Please confirm that you wish to check out customer Mr. or Ms. <b>{{ $bookingDatas['customer_name'] }}</b> at <b>{{ $timenow }}</b> on <b>{{ date('M d, Y', strtotime($today)) }}</b></p>
-
+            <p class="text-muted font-size-16 mb-4">Please confirm that you wish to check out customer Mr. or Ms.
+                {{ $bookingDatas['customer_name'] }}. <br> His Check out data & time is an <span style="color:red"> {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
+            </p>
 
             <form autocomplete="off" method="POST"
                 action="{{ route('booking.checkout', ['id' => $bookingDatas['id']]) }}">
                 @method('PUT')
                 @csrf
+
+                <div class="row mb-4">
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Out Date </label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="out_date"
+                            value="{{ $today }}">
+                    </div>
+                    <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">Out Time </label>
+                    <div class="col-sm-3">
+                        <input type="time" class="form-control" name="out_time"
+                            value="{{ $timenow }}">
+                    </div>
+                </div>
+
+
                 <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Customer Name </label>
                     <div class="col-sm-9">
