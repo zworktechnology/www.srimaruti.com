@@ -145,7 +145,7 @@
                                                         placeholder="Enter here " value="{{ $data->check_out_time }}">
                                                 </div>
                                             </div>
-                                            <div class="row mb-4">
+                                            <div class="row mb-4" hidden>
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Branch <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
@@ -683,7 +683,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div data-repeater-item class="inner mb-3 row">
+                                                    {{-- <div data-repeater-item class="inner mb-3 row">
                                                         <div class="col-md-3 col-12">
                                                             <label for="horizontal-firstname-input"
                                                                 class="col-form-label">
@@ -708,7 +708,7 @@
                                                             <input type="text"
                                                                 class="form-control payable_amount"
                                                                 name="payable_amount" placeholder="Enter here "
-                                                                required>
+                                                                >
                                                         </div>
                                                     </div>
                                                     <div data-repeater-item class="inner mb-3 row">
@@ -720,7 +720,7 @@
                                                         </div>
                                                         <div class="col-md-9 col-12">
                                                             <select class="form-control js-example-basic-single"
-                                                                name="payment_method" required>
+                                                                name="payment_method" >
                                                                 <option value="" selected hidden
                                                                     class="text-muted">Select Payment Via</option>
                                                                 <option value="Cash" class="text-muted">Cash
@@ -729,7 +729,7 @@
                                                                     Online Payment</option>
                                                             </select>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                     <div data-repeater-item class="inner mb-3 row">
                                                         <div class="col-md-3 col-12">
