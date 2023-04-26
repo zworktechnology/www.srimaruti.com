@@ -7,7 +7,7 @@
         <div class="modal-body">
 
             <p class="text-muted font-size-16 mb-4">Please confirm that you wish to check out customer Mr. or Ms.
-                {{ $bookingDatas['customer_name'] }}. <br> His Check out data & time is an <span style="color:red"> {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
+                {{ $bookingDatas['customer_name'] }}. His Check out data & time is an <span style="color:red"> {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
             </p>
 
             <form autocomplete="off" method="POST"

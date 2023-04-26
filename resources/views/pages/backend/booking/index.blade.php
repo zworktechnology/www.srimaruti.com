@@ -165,7 +165,7 @@
                                                             @endif
                                                         @endif
 
-                                                        @if ($bookingDatas['chick_out_date'] >= $today)
+                                                        {{-- @if ($bookingDatas['chick_out_date'] >= $today)
                                                             @if ($bookingDatas['status'] != 2)
                                                                 <li>
                                                                     <a href="#extend{{ $bookingDatas['id'] }}"
@@ -175,17 +175,19 @@
                                                                         data-bs-target="#extend{{ $bookingDatas['id'] }}">Extend</a>
                                                                 </li>
                                                             @endif
-                                                        @endif
+                                                        @endif --}}
 
                                                         <li>
                                                             <a href="{{ route('booking.view', ['id' => $bookingDatas['id']]) }}"
                                                                 class="btn btn-sm btn-soft-secondary">View</a>
                                                         </li>
 
+                                                        @if ($bookingDatas['status'] != 2)
                                                         <li>
                                                             <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}"
                                                                 class="btn btn-sm btn-soft-info">Edit</a>
                                                         </li>
+                                                        @endif
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -208,7 +210,7 @@
                                                 @endif
                                             @endif
 
-                                            @if ($bookingDatas['chick_out_date'] >= $today)
+                                            {{-- @if ($bookingDatas['chick_out_date'] >= $today)
                                                 @if ($bookingDatas['status'] != 2)
                                                     <div class="modal fade" id="extend{{ $bookingDatas['id'] }}"
                                                         data-bs-backdrop="static" aria-hidden="true"
@@ -216,7 +218,7 @@
                                                         @include('pages.backend.booking.components.extend')
                                                     </div>
                                                 @endif
-                                            @endif
+                                            @endif --}}
 
                                             <div class="modal fade" id="basic{{ $bookingDatas['id'] }}"
                                                 aria-hidden="true" aria-labelledby="..." tabindex="-1">

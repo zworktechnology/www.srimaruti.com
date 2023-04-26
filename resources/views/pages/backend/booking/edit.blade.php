@@ -155,7 +155,9 @@
                                                             class="text-muted">
                                                             Select Branch</option>
                                                         @foreach ($branch as $branchs)
-                                                            <option value="{{ $branchs->id }}" @if ($branchs->id === $data->branch_id) selected='selected' @endif>{{ $branchs->name }}</option>
+                                                            <option value="{{ $branchs->id }}"
+                                                                @if ($branchs->id === $data->branch_id) selected='selected' @endif>
+                                                                {{ $branchs->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -177,11 +179,10 @@
                                                                             class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success"
                                                                             type="button" id="addroomfields"
                                                                             value="Add">Add</button>
-                                                                        <tbody>
+                                                                        <tbody id="roomfields" class="responsive_cls">
                                                                             @foreach ($BookingRooms as $index => $BookingRoomss)
                                                                                 <tr>
-                                                                                    <td
-                                                                                        class="col-4 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
+                                                                                    <td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
                                                                                         <input type="hidden"
                                                                                             id="room_auto_id"
                                                                                             name="room_auto_id[]"
@@ -278,15 +279,23 @@
                                                                                         @endforeach
                                                                                         </select>
                                                                                     </td>
-                                                                                    <td class="col-2"><input
-                                                                                            type="text"
-                                                                                            class="form-control"
+                                                                                    <td class="col-12 col-md-3">
+                                                                                        <select
+                                                                                            class="form-control room_type"
                                                                                             id="room_type{{ $data->id }}{{ $index }}"
-                                                                                            name="room_type[]"
-                                                                                            placeholder="Price Per Day"
-                                                                                            value="{{ $BookingRoomss->room_type }}" />
+                                                                                            name="room_type[]" required>
+                                                                                            <option value="" selected
+                                                                                                hidden class="text-muted">
+                                                                                                Select Room Type</option>
+                                                                                            <option value="A/C"{{ $BookingRoomss->room_type == 'A/C' ? 'selected' : '' }}
+                                                                                                class="text-muted">A/C
+                                                                                            </option>
+                                                                                            <option value="Non - A/C"{{ $BookingRoomss->room_type == 'Non - A/C' ? 'selected' : '' }}
+                                                                                                class="text-muted">Non -
+                                                                                                A/C</option>
+                                                                                        </select>
                                                                                     </td>
-                                                                                    <td class="col-3"><input
+                                                                                    <td class="col-12 col-md-2"><input
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             id="room_price{{ $data->id }}{{ $index }}"
@@ -294,7 +303,7 @@
                                                                                             placeholder="Price Per Day"
                                                                                             value="{{ $BookingRoomss->room_price }}" />
                                                                                     </td>
-                                                                                    <td class="col-3"><input
+                                                                                    <td class="col-12 col-md-2"><input
                                                                                             type="text"
                                                                                             class="form-control  room_cal_price"
                                                                                             id="room_cal_price{{ $data->id }}{{ $index }}"
@@ -302,7 +311,7 @@
                                                                                             placeholder="Price"
                                                                                             value="{{ $BookingRoomss->room_cal_price }}" />
                                                                                     </td>
-                                                                                    <td class="col-2"><button
+                                                                                    <td class="col-12 col-md-1"><button
                                                                                             style="width: 100px;"
                                                                                             class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr"
                                                                                             type="button">Remove</button>
@@ -370,18 +379,15 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-3">
-                                                        <input type="file" class="form-control" name="proofimage_one"
-                                                            required>
+                                                        <input type="file" class="form-control" name="proofimage_one" value="{{ $data->proofimage_one }}">
                                                     </div>
                                                     <div class="col-sm-3">
-                                                        <input type="file" class="form-control" name="proofimage_two"
-                                                            required>
+                                                        <input type="file" class="form-control" name="proofimage_two" value="{{ $data->proofimage_two }}">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
-                                                <label for="horizontal-firstname-input"
-                                                    class="col-sm-3 col-form-label">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Proof View </label>
                                                 <div class="col-sm-4">
                                                     <a href="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_one) }}"
@@ -474,16 +480,15 @@
 
 
                                     <div class="row mb-4" id="proof_photo">
-                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
+                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo
+                                            <span style="color: red;">*</span> </label>
                                         <div class="col-sm-9">
-                                            <input type="file" class="form-control" name="customer_photo"
-                                                    required>
+                                            <input type="file" class="form-control" name="customer_photo" value="{{ $data->customer_photo }}">
                                         </div>
                                     </div>
 
                                     <div class="row mb-4">
-                                        <label for="horizontal-firstname-input"
-                                            class="col-sm-3 col-form-label">
+                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                             Proof View </label>
                                         <div class="col-sm-9">
                                             <a href="{{ asset('assets/customer_details/proof/photo/' . $data->customer_photo) }}"
@@ -644,11 +649,11 @@
                                                                         <td class="col-sm-3">
                                                                             <select class="form-control "
                                                                                 name="payment_method[]">
-                                                                                <option value="" selected
+                                                                                <option value="" selected hidden
                                                                                     class="text-muted">Select Payment Via
                                                                                 </option>
                                                                                 <option
-                                                                                    value="Cash"{{ $paymentdatas->payment_method == 'Cash' ? 'selected' : '' }}
+                                                                                    value="Cash" {{ $paymentdatas->payment_method == 'Cash' ? 'selected' : '' }}
                                                                                     class="text-muted">Cash</option>
                                                                                 <option
                                                                                     value="Online Payment"{{ $paymentdatas->payment_method == 'Online Payment' ? 'selected' : '' }}
@@ -682,6 +687,54 @@
                                                         <div class="col-md-3 col-12">
                                                             <label for="horizontal-firstname-input"
                                                                 class="col-form-label">
+                                                                Term <span style="color: red;">*</span> </label>
+                                                        </div>
+                                                        <div class="col-md-9 col-12">
+                                                            <select class="form-control" name="payment_term">
+                                                                <option value="" selected hidden class="text-muted">Select</option>
+                                                                <option value="Term II" class="text-muted">Term II</option>
+                                                                <option value="Term III" class="text-muted">Term III</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div data-repeater-item class="inner mb-3 row">
+                                                        <div class="col-md-3 col-12">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-form-label">
+                                                                Payable Amount <span style="color: red;">*</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-9 col-12">
+                                                            <input type="text"
+                                                                class="form-control payable_amount"
+                                                                name="payable_amount" placeholder="Enter here "
+                                                                required>
+                                                        </div>
+                                                    </div>
+                                                    <div data-repeater-item class="inner mb-3 row">
+                                                        <div class="col-md-3 col-12">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-form-label">
+                                                                Payment Method <span style="color: red;">*</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-9 col-12">
+                                                            <select class="form-control js-example-basic-single"
+                                                                name="payment_method" required>
+                                                                <option value="" selected hidden
+                                                                    class="text-muted">Select Payment Via</option>
+                                                                <option value="Cash" class="text-muted">Cash
+                                                                </option>
+                                                                <option value="Online Payment" class="text-muted">
+                                                                    Online Payment</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div data-repeater-item class="inner mb-3 row">
+                                                        <div class="col-md-3 col-12">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-form-label">
                                                                 Balance Amount </label>
                                                         </div>
                                                         <div class="col-md-9 col-12">
@@ -697,7 +750,12 @@
                                         </div>
                                     </div>
 
+                                    <div class="modal-footer">
 
+                                        <button type="submit" class="btn btn-primary" name="checkin"
+                                            style="margin-right: 10%;">Update</button>
+                                    </div>
+            
 
 
                             </div>
@@ -705,7 +763,7 @@
 
 
 
-                        
+
                         </form>
                     </div>
                 </div>
@@ -942,25 +1000,25 @@
                 }
 
 
-                //var totalAmount = 0;
-                //var days = $(".days").val();
+                var totalAmount = 0;
+                var days = $(".days").val();
 
-                //$("input[name='room_cal_price[]']").each(function() {
-                //alert($(this).val());
-                //   totalAmount = Number(totalAmount) + Number($(this).val());
-                //    $('.total_calc_price').val(totalAmount);
-                //});
+                $("input[name='room_cal_price[]']").each(function() {
+                alert($(this).val());
+                  totalAmount = Number(totalAmount) + Number($(this).val());
+                   $('.total_calc_price').val(totalAmount);
+                });
 
-                //var additional_charge = $(".additional_charge").val();
-                //var total_calc_price = $(".total_calc_price").val();
-                //var discount_amount = $(".discount_amount").val();
-                //var gst_amount = $(".gst_amount").val();
+                var additional_charge = $(".additional_charge").val();
+                var total_calc_price = $(".total_calc_price").val();
+                var discount_amount = $(".discount_amount").val();
+                var gst_amount = $(".gst_amount").val();
 
-                // var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                // $('.grand_total').val(grand_total);
-                // var payable_amount = $(".payable_amount").val();
-                // var balance = Number(grand_total) - Number(payable_amount);
-                // $('.balance_amount').val(balance);
+                var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                $('.grand_total').val(grand_total);
+                var payable_amount = $(".payable_amount").val();
+                var balance = Number(grand_total) - Number(payable_amount);
+                $('.balance_amount').val(balance);
 
 
             });
@@ -997,13 +1055,7 @@
             $("#addroomfields").click(function() {
                 ++i;
                 $("#roomfields").append(
-                    '<tr><td class="col-sm-6 py-2 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' +
-                    i +
-                    '" required><td class="col-2"><input type="text" class="form-control" name="room_type[]" placeholder="Room type" value=""/></td><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-2"><input type="text" class="form-control" id="room_price' +
-                    i +
-                    '" name="room_price[]" placeholder="Price Per Day" value=""/></td><td class="col-2"><input type="text" class="form-control room_cal_price" id="room_cal_price' +
-                    i +
-                    '" name="room_cal_price[]" placeholder="Price" value=""/></td><td class="col-sm-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                    '<tr><td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-12 col-md-3" style="margin-left: 3px;"><select class="form-control room_type" name="room_type[]" required><option value="" selected hidden class="text-muted">Select Room Type</option><option value="A/C" class="text-muted">A/C</option><option value="Non - A/C" class="text-muted">Non - A/C</option></select></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-12 col-md-1" style="margin-left: 4px;"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
                 );
 
                 var branch_id = $('.branch_id').val();
