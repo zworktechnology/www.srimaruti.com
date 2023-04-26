@@ -49,18 +49,6 @@
                         <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create') && request()->route('user_branch_id') == 3 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '3']) }}">Gunaselam</a></li>
                     </ul>
                 </li>
-                <li class="{{ Route::is('branch.index','branch.create','branch.edit','branch.view') ? 'mm-active' : '' }}">
-                    <a href="{{ route('branch.index') }}" class="waves-effect">
-                        <i class="uil-map-pin-alt"></i>
-                        <span>Branch</span>
-                    </a>
-                </li>
-                <li class="{{ Route::is('room.index','room.create','room.edit') ? 'mm-active' : '' }}">
-                    <a href="{{ route('room.index') }}" class="waves-effect">
-                        <i class="uil-key-skeleton-alt"></i>
-                        <span>Room</span>
-                    </a>
-                </li>
                 <li class="{{ Route::is('namelist.index','namelist.create','namelist.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('namelist.index') }}" class="waves-effect">
                         <i class="uil-users-alt"></i>
@@ -89,6 +77,19 @@
                     <a href="{{ route('closeaccount.index') }}" class="waves-effect">
                         <i class="uil-lock-alt"></i>
                         <span>Close Account</span>
+                    </a>
+                </li>
+                
+                <li class="{{ Route::is('branch.index','branch.create','branch.edit','branch.view') ? 'mm-active' : '' }}">
+                    <a href="{{ route('branch.index') }}" class="waves-effect">
+                        <i class="uil-map-pin-alt"></i>
+                        <span>Branch</span>
+                    </a>
+                </li>
+                <li class="{{ Route::is('room.index','room.create','room.edit') ? 'mm-active' : '' }}">
+                    <a href="{{ route('room.index') }}" class="waves-effect">
+                        <i class="uil-key-skeleton-alt"></i>
+                        <span>Room</span>
                     </a>
                 </li>
                 <li class="{{ Route::is('contact.index') ? 'mm-active' : '' }}">
