@@ -247,7 +247,7 @@
                                                     <label for="horizontal-firstname-input"
                                                         class="col-sm-3 col-form-label">
                                                         Proof <span style="color: red;">*</span> </label>
-                                                    <div class="col-sm-7">
+                                                    <div class="col-sm-3">
                                                         <select class="form-control js-example-basic-single"
                                                             name="prooftype_one" style="width: 100%;" required>
                                                             <option value="" disabled selected hidden
@@ -260,52 +260,27 @@
                                                                 Licence</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-sm-1">
-                                                        <a href="#fronthref" data-bs-toggle="modal" class="btn btn-success" data-bs-target="#front" style="color:white; padding-right:20px; padding-left:20px;">
-                                                            Front
-                                                        </a>
+                                                    <div class="col-sm-3">
+                                                        <input type="file" class="form-control" name="proofimage_one"
+                                                            required>
                                                     </div>
-                                                    <div class="col-sm-1">
-                                                        <a href="#backhref" data-bs-toggle="modal" class="btn btn-success" data-bs-target="#back" style="color:white; padding-right:20px; padding-left:20px;">
-                                                            Back
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div id="doubleproof" style="display:none">
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">
-                                                        Proof 2 </label>
-                                                    <div class="col-sm-4">
-                                                        <select class="form-control js-example-basic-single"
-                                                            name="prooftype_two" style="width: 100%;">
-                                                            <option value="" disabled selected hidden
-                                                                class="text-muted">Select Type</option>
-                                                            <option value="Aadhaar Card" class="text-muted">Aadhaar Card
-                                                            </option>
-                                                            <option value="Pan Card" class="text-muted">Pan Card</option>
-                                                            <option value="Voter ID" class="text-muted">Voter ID</option>
-                                                            <option value="Driving Licence" class="text-muted">Driving
-                                                                Licence</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-5">
-                                                        <input type="file" class="form-control" name="proofimage_two">
+                                                    <div class="col-sm-3">
+                                                        <input type="file" class="form-control" name="proofimage_two"
+                                                            required>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="row mb-4" id="proof_photo">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
-                                                <div class="col-sm-7">
-                                                    <a href="#profileimagehref" data-bs-toggle="modal" class="btn btn-success" data-bs-target="#profileimage" style="color:white">
-                                                        Profile Image
-                                                    </a>
+                                                <div class="col-sm-9">
+                                                    <input type="file" class="form-control" name="customer_photo"
+                                                            required>
                                                 </div>
                                             </div>
+
                                             <hr>
+
                                             <h4 class="card-title mb-4" style="color: #5b73e8">Pricing Calculation</h4>
 
                                             <div data-repeater-list="group-a">
@@ -485,78 +460,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="profileimage" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Profile Image</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div style="display: flex;">
-                        <div id="my_camera"></div>
-                        <div id="captured_image"
-                            style="border:1px #584f72; background:#f6f6f6;">Your captured
-                            profile image will appear here...</div>
-                    </div>
-                    <input style="margin-top: 10px; margin-left: 40px;" type=button
-                        value="Take Snapshot" class="btn btn-success"
-                        onClick="take_snapshot()" required>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 10px;">Save & Close</button>
-                    <input type="hidden" name="customer_photo" class="image-tag">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="front" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Front Proof Image</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div style="display: flex;">
-                        <div id="my_camera_proof_front"></div>
-                        <div id="captured_image_proof_front"
-                            style="border:1px #584f72; background:#f6f6f6;">Your captured
-                            front proof will appear here...</div>
-                    </div>
-                    <input style="margin-top: 10px; margin-left: 40px;" type=button
-                        value="Take Snapshot" class="btn btn-success"
-                        onClick="take_snapshot_proof_front()" required>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 10px;">Save & Close</button>
-                    <input type="hidden" name="customer_photo" class="image-tag-proof-front">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="back" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Back Proof Image</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div style="display: flex;">
-                        <div id="my_camera_back"></div>
-                        <div id="captured_image_back"
-                            style="border:1px #584f72; background:#f6f6f6;">Your captured
-                            back proof will appear here...</div>
-                    </div>
-                    <input style="margin-top: 10px; margin-left: 40px;" type=button
-                        value="Take Snapshot" class="btn btn-success"
-                        onClick="take_snapshot_back()" required>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 10px;">Save & Close</button>
-                    <input type="hidden" name="customer_photo" class="image-tag-back">
                 </div>
             </div>
         </div>
@@ -775,9 +678,7 @@
 
         });
 
-
         // Add Another Room Script
-
         var i = 1;
         var j = 1;
         var l = 1;
@@ -803,9 +704,7 @@
                         //console.log(response['data']);
                         var len = response['data'].length;
 
-
                         var selectedValues = new Array();
-
 
                         if (len > 0) {
                             for (var i = 0; i < len; i++) {
@@ -813,28 +712,20 @@
 
                                     var id = response['data'][i].id;
                                     var name = 'Room No ' + response['data'][i].room_number +
-                                        ' - ' + response['data'][i].room_floor + ' Floor - ' +
-                                        response['data'][i].room_type;
+                                        ' - ' + response['data'][i].room_floor + ' Floor';
                                     var option = "<option value='" + id + "'>" + name +
                                         "</option>";
 
                                     var price = response['data'][i].price_per_day;
                                     selectedValues.push(option);
                                 }
-
                             }
                         }
-
-
                         ++j;
                         $('#room_id' + j).append(selectedValues);
-
                         //add_count.push(Object.keys(selectedValues).length);
-
                     }
                 });
-
-
 
                 // Room Onchange Function
                 ++l;
@@ -858,7 +749,6 @@
                             //var days = $(".days").val();
                             //var Amount = days * price;
                             //$('#room_cal_price' + h).val(Amount);
-
 
                             $(document).on("keyup", '#room_price' + h, function() {
                                 var price = $(this).val();
@@ -908,24 +798,11 @@
 
 
                             });
-
-
-
-
                         }
                     });
                 });
-
-
-
-
             });
-
-
         });
-
-
-
 
         $(document).on("keyup", 'input.days', function() {
             var days = $(this).val();
@@ -963,11 +840,6 @@
             var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
             $('.balance_amount').val(balance.toFixed(2));
         });
-
-
-
-
-
 
         // GST Calculation
         $(document).on("keyup", 'input.gst_amount', function() {
@@ -1010,9 +882,7 @@
 
         });
 
-
         //Discount Calculation
-
         $(document).on("keyup", 'input.discount_amount', function() {
             var discount_amount = $(this).val();
             var total_calc_price = $(".total_calc_price").val();
@@ -1032,7 +902,6 @@
             $('.balance_amount').val(balance.toFixed(2));
 
         });
-
 
         $(document).on("keyup", 'input.discount_percentage', function() {
             var discount_percentage = $(this).val();
@@ -1054,9 +923,7 @@
 
         });
 
-
         // Grand Total Calculation
-
         $(document).on("keyup", 'input.additional_charge', function() {
             var additional_charge = $(this).val();
             var total_calc_price = $(".total_calc_price").val();
@@ -1074,8 +941,6 @@
 
         });
 
-
-
         $(document).on("keyup", 'input.payable_amount', function() {
             var payable_amount = $(this).val();
 
@@ -1091,12 +956,7 @@
             $('.balance_amount').val(balance.toFixed(2));
         });
 
-
-
-
-
         // Web Camera Script
-
         $(document).on('click', '.remove-tr', function() {
             $(this).parents('tr').remove();
 
@@ -1126,37 +986,36 @@
 
         });
 
-        Webcam.set({
-            width: 350,
-            height: 200,
-            image_format: 'jpeg',
-            jpeg_quality: 90,
-            facingMode: 'environment'
-        });
+        // Webcam.set({
+        //     width: 350,
+        //     height: 200,
+        //     image_format: 'jpeg',
+        //     jpeg_quality: 90,
+        //     facingMode: 'environment'
+        // });
 
-        Webcam.attach('#my_camera');
-        Webcam.attach('#my_camera_proof_front');
-        Webcam.attach('#my_camera_back');
+        // Webcam.attach('#my_camera');
+        // function take_snapshot() {
+        //     Webcam.snap(function(data_uri) {
+        //         $(".image-tag").val(data_uri);
+        //         document.getElementById('captured_image').innerHTML = '<img src="' + data_uri + '"/>';
+        //     });
+        // }
 
-        function take_snapshot() {
-            Webcam.snap(function(data_uri) {
-                $(".image-tag").val(data_uri);
-                document.getElementById('captured_image').innerHTML = '<img src="' + data_uri + '"/>';
-            });
-        }
+        // Webcam.attach('#my_camera_proof_front');
+        // function take_snapshot_proof_front() {
+        //     Webcam.snap(function(data_uri) {
+        //         $(".image-tag-proof-front").val(data_uri);
+        //         document.getElementById('captured_image_proof_front').innerHTML = '<img src="' + data_uri + '"/>';
+        //     });
+        // }
 
-        function take_snapshot_proof_front() {
-            Webcam.snap(function(data_uri) {
-                $(".image-tag-proof-front").val(data_uri);
-                document.getElementById('captured_image_proof_front').innerHTML = '<img src="' + data_uri + '"/>';
-            });
-        }
-
-        function take_snapshot_back() {
-            Webcam.snap(function(data_uri) {
-                $(".image-tag-back").val(data_uri);
-                document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri + '"/>';
-            });
-        }
+        // Webcam.attach('#my_camera_back');
+        // function take_snapshot_back() {
+        //     Webcam.snap(function(data_uri) {
+        //         $(".image-tag-back").val(data_uri);
+        //         document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri + '"/>';
+        //     });
+        // }
     </script>
 @endsection

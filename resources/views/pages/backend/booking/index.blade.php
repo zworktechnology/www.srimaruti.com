@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <a href="{{ route('booking.create', ['pre_select_branch_id' => $user_branch_id]) }}"><button type="button" class="btn btn-primary waves-effect waves-light mb-3"><i class="mdi mdi-plus me-1"></i> New Booking</button></a>
+                            <a href="{{ route('booking.create', ['user_branch_id' => $user_branch_id]) }}"><button type="button" class="btn btn-primary waves-effect waves-light mb-3"><i class="mdi mdi-plus me-1"></i> New Booking</button></a>
 
                             <div class="page-title-right">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
@@ -21,7 +21,7 @@
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(0px, -41.3167px);" data-popper-placement="top-start">
                                                 <a class="dropdown-item {{ Route::is('booking.index') ? 'mm-active' : '' }}" href="{{ route('booking.index', ['user_branch_id' => $user_branch_id]) }}">View All</a>
                                                 <a class="dropdown-item {{ Route::is('booking.today') ? 'mm-active' : '' }}" href="{{ route('booking.today', ['user_branch_id' => $user_branch_id]) }}">Today's</a>
-                                                <a class="dropdown-item {{ Route::is('booking.upcoming',) ? 'mm-active' : '' }}" href="{{ route('booking.upcoming', ['user_branch_id' => $user_branch_id]) }}">Upcoming</a>
+                                                <a class="dropdown-item {{ Route::is('booking.upcoming') ? 'mm-active' : '' }}" href="{{ route('booking.upcoming', ['user_branch_id' => $user_branch_id]) }}">Upcoming</a>
                                                 <a class="dropdown-item {{ Route::is('booking.missingout') ? 'mm-active' : '' }}" href="{{ route('booking.missingout', ['user_branch_id' => $user_branch_id]) }}">Missing</a>
                                             </div>
                                         </div>

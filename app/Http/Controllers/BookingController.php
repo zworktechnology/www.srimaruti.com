@@ -18,7 +18,7 @@ class BookingController extends Controller
 {
     public function index($user_branch_id)
     {
-        $data = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->get();
+        $data = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
 
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
@@ -92,7 +92,7 @@ class BookingController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '=', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->get();
+        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '=', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
 
         $bookingData = [];
         $room_list = [];
@@ -164,7 +164,7 @@ class BookingController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '>', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->get();
+        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '>', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
 
         $bookingData = [];
         $room_list = [];
@@ -236,7 +236,7 @@ class BookingController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '<', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->get();
+        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '<', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
 
         $bookingData = [];
         $room_list = [];
@@ -456,51 +456,69 @@ class BookingController extends Controller
             $data->check_in_time = $request->get('check_in_time');
             $data->check_out_date = $request->get('check_out_date');
             $data->check_out_time = $request->get('check_out_time');
-            $data->extended_date = $request->get('check_out_date');
-            $data->extended_time = $request->get('check_out_time');
+            // $data->extended_date = $request->get('check_out_date');
+            // $data->extended_time = $request->get('check_out_time');
             $data->days = $request->get('days');
             $data->branch_id = $request->get('branch_id');
             $data->proofs = $request->get('proofs');
-            $proof = $request->get('proofs');
+            $data->prooftype_one = $request->get('prooftype_one');
+            $data->proofimage_two = $request->get('prooftype_one');
 
-            if($proof == 1)
-            {
-                $data->prooftype_one = $request->get('prooftype_one');
-                if ($request->proofimage_one != "")
-                {
-                    $proofimage_one = $request->proofimage_one;
-                    $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_one . '_'  . '.' . $proofimage_one->getClientOriginalExtension();
-                    $request->proofimage_one->move('assets/customer_details/proof', $filename_one);
-                    $data->proofimage_one = $filename_one;
-                }
-            } else if($proof == 2) {
-                $data->prooftype_one = $request->get('prooftype_one');
-                if ($request->proofimage_one != "") {
-                    $proofimage_one = $request->proofimage_one;
-                    $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_one . '_'  . '.' . $proofimage_one->getClientOriginalExtension();
-                    $request->proofimage_one->move('assets/customer_details/proof', $filename_one);
-                    $data->proofimage_one = $filename_one;
-                }
-                $data->prooftype_two = $request->get('prooftype_two');
-                if ($request->proofimage_two != "") {
-                    $proofimage_two = $request->proofimage_two;
-                    $filename_two = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_two . '_'  . '.' . $proofimage_two->getClientOriginalExtension();
-                    $request->proofimage_two->move('assets/customer_details/proof', $filename_two);
-                    $data->proofimage_two = $filename_two;
-                }
+            // $proof = $request->get('proofs');
+            // if($proof == 1)
+            // {
+            //     $data->prooftype_one = $request->get('prooftype_one');
+            //     if ($request->proofimage_one != "")
+            //     {
+            //         $proofimage_one = $request->proofimage_one;
+            //         $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_one . '_'  . '.' . $proofimage_one->getClientOriginalExtension();
+            //         $request->proofimage_one->move('assets/customer_details/proof', $filename_one);
+            //         $data->proofimage_one = $filename_one;
+            //     }
+            // } else if($proof == 2) {
+            //     $data->prooftype_one = $request->get('prooftype_one');
+            //     if ($request->proofimage_one != "") {
+            //         $proofimage_one = $request->proofimage_one;
+            //         $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_one . '_'  . '.' . $proofimage_one->getClientOriginalExtension();
+            //         $request->proofimage_one->move('assets/customer_details/proof', $filename_one);
+            //         $data->proofimage_one = $filename_one;
+            //     }
+            //     $data->prooftype_two = $request->get('prooftype_two');
+            //     if ($request->proofimage_two != "") {
+            //         $proofimage_two = $request->proofimage_two;
+            //         $filename_two = $data->customer_name . '_' . $random_no . '_' . 'proof' . '_' . $data->prooftype_two . '_'  . '.' . $proofimage_two->getClientOriginalExtension();
+            //         $request->proofimage_two->move('assets/customer_details/proof', $filename_two);
+            //         $data->proofimage_two = $filename_two;
+            //     }
 
-            }
+            // }
+
+            // Profile Image
+            // $customer_photo = $request->customer_photo;
+            // $folderPath = "assets/customer_details/profile";
+            // $image_parts = explode(";base64,", $customer_photo);
+            // $image_type_aux = explode("image/", $image_parts[0]);
+            // $image_type = $image_type_aux[1];
+            // $image_base64 = base64_decode($image_parts[1]);
+            // $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+            // $customerimgfile = $folderPath . $fileName;
+            // file_put_contents($customerimgfile, $image_base64);
+            // $data->customer_photo = $customerimgfile;
+
+            $proofimage_one = $request->proofimage_one;
+            $filename_one = $data->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $data->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
+            $request->proofimage_one->move('assets/customer_details/proof/front', $filename_one);
+            $data->proofimage_one = $filename_one;
+
+            $proofimage_two = $request->proofimage_two;
+            $filename_two = $data->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $data->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
+            $request->proofimage_two->move('assets/customer_details/proof/back', $filename_two);
+            $data->proofimage_two = $filename_two;
 
             $customer_photo = $request->customer_photo;
-            $folderPath = "assets/customer_details/profile";
-            $image_parts = explode(";base64,", $customer_photo);
-            $image_type_aux = explode("image/", $image_parts[0]);
-            $image_type = $image_type_aux[1];
-            $image_base64 = base64_decode($image_parts[1]);
-            $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-            $customerimgfile = $folderPath . $fileName;
-            file_put_contents($customerimgfile, $image_base64);
-            $data->customer_photo = $customerimgfile;
+            $filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
+            $request->customer_photo->move('assets/customer_details/proof/photo', $filename_customer_photo);
+            $data->customer_photo = $filename_customer_photo;
 
             $data->total = $request->get('total_calc_price');
             $data->gst_per = $request->get('gst_percentage');
@@ -553,9 +571,9 @@ class BookingController extends Controller
             $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
 
             if($response->successful()){
-                return redirect()->route('booking.index')->with('add', 'New booking information has been added to your list, and notification send to customer.');
+                return redirect()->route('booking.index', ['user_branch_id' => $data->branch_id])->with('add', 'New booking information has been added to your list, and notification send to customer.');
             } else {
-                return redirect()->route('booking.index')->with('add', 'New booking information has been added to your list.');
+                return redirect()->route('booking.index', ['user_branch_id' => $data->branch_id])->with('add', 'New booking information has been added to your list.');
             }
 
         }
@@ -595,62 +613,92 @@ class BookingController extends Controller
         $BookingData->days = $request->get('days');
         $BookingData->branch_id = $request->get('branch_id');
 
-        if($request->get('proofs') == 1){
-            if($BookingData->proofs == 2){
-                $BookingData->prooftype_two = 'NULL';
-                $BookingData->proofimage_two = 'NULL';
-            }
-        }
-        $BookingData->proofs = $request->get('proofs');
-        $proof = $request->get('proofs');
-        if($proof == 1){
-            $BookingData->prooftype_one = $request->get('prooftype_one');
-            if ($request->proofimage_one != "") {
-                $proofimage_one = $request->proofimage_one;
-                $filename_one = $BookingData->customer_name . $random_no . ' Proof ' . $BookingData->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
-                $request->proofimage_one->move('assets', $filename_one);
-                $BookingData->proofimage_one = $filename_one;
-            } else {
-                $Insertedproof_image_one = $BookingData->proofimage_one;
-                $BookingData->proofimage_one = $Insertedproof_image_one;
-            }
-        }else if($proof == 2){
-            $BookingData->prooftype_one = $request->get('prooftype_one');
-            if ($request->proofimage_one != "") {
-                $proofimage_one = $request->proofimage_one;
-                $filename_one = $BookingData->customer_name . $random_no . ' Proof ' . $BookingData->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
-                $request->proofimage_one->move('assets', $filename_one);
-                $BookingData->proofimage_one = $filename_one;
-            } else {
-                $Insertedproof_image_one = $BookingData->proofimage_one;
-                $BookingData->proofimage_one = $Insertedproof_image_one;
-            }
-            $BookingData->prooftype_two = $request->get('prooftype_two');
-            if ($request->proofimage_two != "") {
-                $proofimage_two = $request->proofimage_two;
-                $filename_two = $BookingData->customer_name . $random_no . ' Proof ' . $BookingData->prooftype_two . '.' . $proofimage_two->getClientOriginalExtension();
-                $request->proofimage_two->move('assets', $filename_two);
-                $BookingData->proofimage_two = $filename_two;
-            } else {
-                $Insertedproof_image_two = $BookingData->proofimage_two;
-                $BookingData->proofimage_two = $Insertedproof_image_two;
-            }
+        // if($request->get('proofs') == 1){
+        //     if($BookingData->proofs == 2){
+        //         $BookingData->prooftype_two = 'NULL';
+        //         $BookingData->proofimage_two = 'NULL';
+        //     }
+        // }
+        // $BookingData->proofs = $request->get('proofs');
+        // $proof = $request->get('proofs');
+        // if($proof == 1){
+        //     $BookingData->prooftype_one = $request->get('prooftype_one');
+        //     if ($request->proofimage_one != "") {
+        //         $proofimage_one = $request->proofimage_one;
+        //         $filename_one = $BookingData->customer_name . $random_no . ' Proof ' . $BookingData->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
+        //         $request->proofimage_one->move('assets', $filename_one);
+        //         $BookingData->proofimage_one = $filename_one;
+        //     } else {
+        //         $Insertedproof_image_one = $BookingData->proofimage_one;
+        //         $BookingData->proofimage_one = $Insertedproof_image_one;
+        //     }
+        // }else if($proof == 2){
+        //     $BookingData->prooftype_one = $request->get('prooftype_one');
+        //     if ($request->proofimage_one != "") {
+        //         $proofimage_one = $request->proofimage_one;
+        //         $filename_one = $BookingData->customer_name . $random_no . ' Proof ' . $BookingData->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
+        //         $request->proofimage_one->move('assets', $filename_one);
+        //         $BookingData->proofimage_one = $filename_one;
+        //     } else {
+        //         $Insertedproof_image_one = $BookingData->proofimage_one;
+        //         $BookingData->proofimage_one = $Insertedproof_image_one;
+        //     }
+        //     $BookingData->prooftype_two = $request->get('prooftype_two');
+        //     if ($request->proofimage_two != "") {
+        //         $proofimage_two = $request->proofimage_two;
+        //         $filename_two = $BookingData->customer_name . $random_no . ' Proof ' . $BookingData->prooftype_two . '.' . $proofimage_two->getClientOriginalExtension();
+        //         $request->proofimage_two->move('assets', $filename_two);
+        //         $BookingData->proofimage_two = $filename_two;
+        //     } else {
+        //         $Insertedproof_image_two = $BookingData->proofimage_two;
+        //         $BookingData->proofimage_two = $Insertedproof_image_two;
+        //     }
+        // }
+
+        // if ($request->customer_photo != "") {
+        // $customer_photo = $request->customer_photo;
+        // $folderPath = "assets/customer_details/profile";
+        // $image_parts = explode(";base64,", $customer_photo);
+        // $image_type_aux = explode("image/", $image_parts[0]);
+        // $image_type = $image_type_aux[1];
+        // $image_base64 = base64_decode($image_parts[1]);
+        // $fileName = $BookingData->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+        // $customerimgfile = $folderPath . $random_no . $fileName;
+        // file_put_contents($customerimgfile, $image_base64);
+        // $BookingData->customer_photo = $customerimgfile;
+        // }else{
+        //   $Insertedcustomer_photo = $BookingData->customer_photo;
+        //   $BookingData->customer_photo = $Insertedcustomer_photo;
+        // }
+
+        if ($request->file('proofimage_one') != "") {
+            $proofimage_one = $request->proofimage_one;
+            $filename_one = $BookingData->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $BookingData->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
+            $request->proofimage_one->move('assets/customer_details/proof/front', $filename_one);
+            $BookingData->proofimage_one = $filename_one;
+        } else {
+            $Insertedproof_image_one = $BookingData->proofimage_one;
+            $BookingData->proofimage_one = $Insertedproof_image_one;
         }
 
-        if ($request->customer_photo != "") {
-        $customer_photo = $request->customer_photo;
-        $folderPath = "assets/customer_details/profile";
-        $image_parts = explode(";base64,", $customer_photo);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
-        $image_base64 = base64_decode($image_parts[1]);
-        $fileName = $BookingData->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-        $customerimgfile = $folderPath . $random_no . $fileName;
-        file_put_contents($customerimgfile, $image_base64);
-        $BookingData->customer_photo = $customerimgfile;
-        }else{
-          $Insertedcustomer_photo = $BookingData->customer_photo;
-          $BookingData->customer_photo = $Insertedcustomer_photo;
+        if ($request->file('proofimage_two') != "") {
+            $proofimage_two = $request->proofimage_two;
+            $filename_two = $BookingData->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $BookingData->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
+            $request->proofimage_two->move('assets/customer_details/proof/back', $filename_two);
+            $BookingData->proofimage_two = $filename_two;
+        } else {
+            $Insertedproof_image_two = $BookingData->proofimage_two;
+            $BookingData->proofimage_two = $Insertedproof_image_two;
+        }
+
+        if ($request->file('customer_photo') != "") {
+            $customer_photo = $request->customer_photo;
+            $filename_customer_photo = $BookingData->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
+            $request->customer_photo->move('assets/customer_details/proof/photo', $filename_customer_photo);
+            $BookingData->customer_photo = $filename_customer_photo;
+        } else {
+            $Insertedproof_customer_photo = $BookingData->customer_photo;
+            $BookingData->customer_photo = $Insertedproof_customer_photo;
         }
 
         $BookingData->total = $request->get('total_calc_price');
@@ -746,7 +794,7 @@ class BookingController extends Controller
             }
         }
 
-       return redirect()->route('booking.index')->with('update', 'Updated booking information has been added to your list.');
+       return redirect()->route('booking.index', ['user_branch_id' => $BookingData->branch_id])->with('update', 'Updated booking information has been added to your list.');
     }
 
     public function delete($id)
@@ -781,8 +829,8 @@ class BookingController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        $data->out_time = $timenow;
-        $data->out_date = $today;
+        $data->out_time = $request->get('out_time');
+        $data->out_date = $request->get('out_date');
         $status = 2;
         $data->status = $status;
 
@@ -803,9 +851,9 @@ class BookingController extends Controller
         $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
 
         if($response->successful()){
-            return redirect()->route('booking.index')->with('checkout', 'Checkout information has been updated to your list, and notification send to customer.');
+            return redirect()->back()->with('checkout', 'Checkout information has been updated to your list, and notification send to customer.');
         } else {
-            return redirect()->route('booking.index')->with('checkout', 'Checkout information has been updated to your list');
+            return redirect()->back()->with('checkout', 'Checkout information has been updated to your list');
         }
     }
 
@@ -829,7 +877,7 @@ class BookingController extends Controller
         $data->balance_amount = $balance;
         $data->update();
 
-        return redirect()->route('booking.index')->with('update', 'Updated booking payment information has been added to your list.');
+        return redirect()->back()->with('update', 'Updated booking payment information has been added to your list.');
     }
 
     public function view($id)
@@ -1088,7 +1136,7 @@ class BookingController extends Controller
             }
         }
 
-        return redirect()->route('booking.index')->with('update', 'Updated booking information has been added to your list.');
+        return redirect()->back()->with('update', 'Updated booking information has been added to your list.');
     }
 
     public function pricing($id)

@@ -123,6 +123,15 @@
                                             </div>
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    No of Days - Stay <span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control days" id="days"
+                                                        value="{{ $data->days }}" name="days"
+                                                        placeholder="Enter here " required>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Check Out Date </label>
                                                 <div class="col-sm-4">
                                                     <input type="date" class="form-control check_out_date"
@@ -134,15 +143,6 @@
                                                 <div class="col-sm-4">
                                                     <input type="time" class="form-control" name="check_out_time"
                                                         placeholder="Enter here " value="{{ $data->check_out_time }}">
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Days <span style="color: red;">*</span> </label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control days" id="days"
-                                                        value="{{ $data->days }}" name="days"
-                                                        placeholder="Enter here " required>
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
@@ -329,14 +329,14 @@
                                                 <div class="col-sm-3">
                                                     <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-2" hidden>
                                                     <input id="default-radio-1" type="radio" value="1"
                                                         {{ $data->proofs == '1' ? 'checked' : '' }} name="proofs"
                                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                     <label for="default-radio-1" class="ml-2"
                                                         style="font-weight:900">Single Proof</label>
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-2" hidden>
                                                     <input id="default-radio-1" type="radio" value="2"
                                                         {{ $data->proofs == '2' ? 'checked' : '' }} name="proofs"
                                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -349,8 +349,8 @@
                                                 <div class="row mb-4">
                                                     <label for="horizontal-firstname-input"
                                                         class="col-sm-3 col-form-label">
-                                                        Proof 1 <span style="color: red;">*</span> </label>
-                                                    <div class="col-sm-5">
+                                                        Proof <span style="color: red;">*</span> </label>
+                                                    <div class="col-sm-3">
                                                         <select class="form-control " name="prooftype_one"
                                                             style="width: 100%;">
                                                             <option value="" disabled selected hidden
@@ -369,19 +369,30 @@
                                                                 class="text-muted">Driving Licence</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-sm-4">
-                                                        <input type="file" class="form-control" name="proofimage_one">
+                                                    <div class="col-sm-3">
+                                                        <input type="file" class="form-control" name="proofimage_one"
+                                                            required>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="file" class="form-control" name="proofimage_two"
+                                                            required>
                                                     </div>
                                                 </div>
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">
-                                                        Proof 1 - View </label>
-                                                    <div class="col-sm-9">
-                                                        <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}"
-                                                            target="_blank"><span style="color: black;">View Document:
-                                                            </span>{{ $data->proofimage_one }}</a>
-                                                    </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label for="horizontal-firstname-input"
+                                                    class="col-sm-3 col-form-label">
+                                                    Proof View </label>
+                                                <div class="col-sm-4">
+                                                    <a href="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_one) }}"
+                                                        target="_blank"><span style="color: black;">
+                                                        </span>{{ $data->proofimage_one }}</a>
+                                                </div>
+                                                <div class="col-sm-1">|</div>
+                                                <div class="col-sm-4">
+                                                    <a href="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_two) }}"
+                                                        target="_blank"><span style="color: black;">
+                                                        </span>{{ $data->proofimage_two }}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -462,22 +473,22 @@
                                     </div>
 
 
-                                    <div class="row mb-4">
-                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                            Photo <span style="color: red;">*</span> </label>
+                                    <div class="row mb-4" id="proof_photo">
+                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
                                         <div class="col-sm-9">
-                                            <div style="display: flex;">
-                                                <div id="my_camera"></div>
-                                                <div id="captured_image" style="border:1px #584f72; background:#f6f6f6;">
-                                                    Your captured image will appear here...</div>
-                                                <img class="rounded m-5" width="100"
-                                                    src="{{ asset($data->customer_photo) }}">
-                                            </div>
+                                            <input type="file" class="form-control" name="customer_photo"
+                                                    required>
+                                        </div>
+                                    </div>
 
-                                            <input style="margin-top: 10px; margin-left: 40px;" type=button
-                                                value="Take Snapshot" class="btn btn-success" onClick="take_snapshot()">
-                                            <input type="hidden" name="customer_photo" class="image-tag">
-
+                                    <div class="row mb-4">
+                                        <label for="horizontal-firstname-input"
+                                            class="col-sm-3 col-form-label">
+                                            Proof View </label>
+                                        <div class="col-sm-9">
+                                            <a href="{{ asset('assets/customer_details/proof/photo/' . $data->customer_photo) }}"
+                                                target="_blank"><span style="color: black;">
+                                                </span>{{ $data->customer_photo }}</a>
                                         </div>
                                     </div>
 
@@ -520,7 +531,7 @@
                                                                 value="{{ $data->gst_per }}" required>
                                                         </div>
                                                     </div>
-                                                    <div class="row mb-4">
+                                                    <div class="row mb-4" hidden>
                                                         <label for="horizontal-firstname-input"
                                                             class="col-sm-3 col-form-label">
                                                             Discount Amount <span style="color: red;">*</span> </label>
@@ -731,13 +742,6 @@
                 return yyyy + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + (dd[1] ? dd : "0" + dd[0]); // padding
             };
         })(jQuery, this, document);
-
-
-
-
-
-
-
 
         $proofs = {{ $data->proofs }}
         if ($proofs == 1) {
@@ -1239,10 +1243,7 @@
             $('.balance_amount').val(balance.toFixed(2));
         });
 
-
-
-        //Discount Calculation
-
+        // Discount Calculation
         $(document).on("keyup", 'input.discount_amount', function() {
             var discount_amount = $(this).val();
             var total_calc_price = $(".total_calc_price").val();
@@ -1329,20 +1330,20 @@
 
         // Web Camera Script
 
-        Webcam.set({
-            width: 350,
-            height: 200,
-            image_format: 'jpeg',
-            jpeg_quality: 90
-        });
+        // Webcam.set({
+        //     width: 350,
+        //     height: 200,
+        //     image_format: 'jpeg',
+        //     jpeg_quality: 90
+        // });
 
-        Webcam.attach('#my_camera');
+        // Webcam.attach('#my_camera');
 
-        function take_snapshot() {
-            Webcam.snap(function(data_uri) {
-                $(".image-tag").val(data_uri);
-                document.getElementById('captured_image').innerHTML = '<img src="' + data_uri + '"/>';
-            });
-        }
+        // function take_snapshot() {
+        //     Webcam.snap(function(data_uri) {
+        //         $(".image-tag").val(data_uri);
+        //         document.getElementById('captured_image').innerHTML = '<img src="' + data_uri + '"/>';
+        //     });
+        // }
     </script>
 @endsection
