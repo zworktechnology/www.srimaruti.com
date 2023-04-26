@@ -65,7 +65,7 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Room Details </label>
                     <div class="col-sm-9">
 
-                        <table class="table table-bordered dt-responsive nowrap col-12" id="">
+                        {{-- <table class="table table-bordered dt-responsive nowrap col-12" id="">
                             <thead>
                                 <tr>
                                     <th class="col-6">Room</th>
@@ -371,7 +371,7 @@
                                     @endif
                                 @endforeach
                             </tbody>
-                        </table>
+                        </table> --}}
 
 
                     </div>

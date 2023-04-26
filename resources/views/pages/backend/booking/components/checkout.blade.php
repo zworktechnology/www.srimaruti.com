@@ -1,4 +1,4 @@
-<div class="modal-dialog  modal-lg">
+<div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">Check Out</h5>
@@ -71,15 +71,7 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Room Details </label>
                     <div class="col-sm-9">
 
-                        <table class="table table-bordered dt-responsive nowrap col-12" id="">
-                            <thead>
-                                <tr>
-                                    <th class="col-6">Room</th>
-                                    <th class="col-3">Room Cost / Day</th>
-                                    <th class="col-3">Room Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        
                                 <input type="hidden" class="form-control" name="booking_id" id="booking_id"
                                     value="{{ $bookingDatas['id'] }}" />
                                 @foreach ($bookingDatas['room_list'] as $index => $room_lists)
@@ -328,32 +320,17 @@
                                                 cursor: not-allowed;
                                             }
                                         </style>
-
-                                        <tr>
-                                            <td><input type="text" disabled class="form-control"
+                                        
+                                        <input type="text" disabled class="form-control"
                                                     name="booking_rooms[]" id="booking_rooms"
                                                     value="{{ $room_lists['room'] }}" />
                                                 <input type="hidden" class="form-control" name="room_auto_id[]"
                                                     id="room_auto_id" value="{{ $room_lists['id'] }}" />
                                                 <input type="hidden" class="form-control" name="room_id[]"
                                                     id="room_id" value="{{ $room_lists['room_id'] }}" />
-                                            </td>
-                                            <td><input type="text"
-                                                    class="form-control not-allowed booking_room_price{{ $bookingDatas['id'] }}{{ $room_lists['id'] }}"
-                                                    style="background: #e77e7e;" name="booking_room_price[]"
-                                                    id="booking_room_price{{ $bookingDatas['id'] }}"
-                                                    value="{{ $room_lists['booking_room_price'] }}" /></td>
-                                            <td><input type="text"
-                                                    class="form-control not-allowed booking_room_cal_price{{ $bookingDatas['id'] }}"
-                                                    name="booking_room_cal_price[]" style="background: #e77e7e;"
-                                                    id="booking_room_cal_price{{ $bookingDatas['id'] }}{{ $room_lists['id'] }}"
-                                                    value="{{ $room_lists['room_cal_price'] }}" /></td>
-
-                                        </tr>
+                                            
                                     @endif
                                 @endforeach
-                            </tbody>
-                        </table>
 
 
                     </div>

@@ -500,13 +500,13 @@
                                             <div class="inner-repeater mb-4">
                                                 <div data-repeater-list="inner-group" class="inner form-group">
                                                     <div data-repeater-item class="inner mb-3 row">
-                                                        <div class="col-md-3 col-8">
+                                                        <div class="col-md-3 col-12">
                                                             <label for="horizontal-firstname-input"
                                                                 class="col-form-label">
                                                                 Total - Room Price <span style="color: red;">*</span>
                                                             </label>
                                                         </div>
-                                                        <div class="col-md-9 col-3">
+                                                        <div class="col-md-9 col-12">
                                                             <input type="text" class="form-control total_calc_price"
                                                                 style="background-color:#babcc5ad" name="total_calc_price"
                                                                 id="total_calc_price" value="{{ $data->total }}"
@@ -666,12 +666,12 @@
                                                     </div>
 
                                                     <div data-repeater-item class="inner mb-3 row">
-                                                        <div class="col-md-3 col-8">
+                                                        <div class="col-md-3 col-12">
                                                             <label for="horizontal-firstname-input"
                                                                 class="col-form-label">
                                                                 Total Paid </label>
                                                         </div>
-                                                        <div class="col-md-9 col-3">
+                                                        <div class="col-md-9 col-12">
                                                             <input type="text" class="form-control total_paid"
                                                                 style="background-color:#1dc72ead" value=""
                                                                 name="total_paid" placeholder="Enter here ">
@@ -679,12 +679,12 @@
                                                     </div>
 
                                                     <div data-repeater-item class="inner mb-3 row">
-                                                        <div class="col-md-3 col-8">
+                                                        <div class="col-md-3 col-12">
                                                             <label for="horizontal-firstname-input"
                                                                 class="col-form-label">
                                                                 Balance Amount </label>
                                                         </div>
-                                                        <div class="col-md-9 col-3">
+                                                        <div class="col-md-9 col-12">
                                                             <input type="text" class="form-control balance_amount"
                                                                 style="background-color:#e53737ad"
                                                                 value="{{ $data->balance_amount }}" name="balance_amount"
@@ -705,11 +705,7 @@
 
 
 
-                        <div class="modal-footer">
-
-                            <button type="submit" class="btn btn-primary" name="checkin"
-                                style="margin-right: 10%;">Update</button>
-                        </div>
+                        
                         </form>
                     </div>
                 </div>
