@@ -85,7 +85,7 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}"
+                                    <img src="{{ asset('assets/frontend/image/room/room_index/DSC_3673.jpg') }}"
                                         alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
@@ -118,7 +118,7 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}"
+                                    <img src="{{ asset('assets/frontend/image/room/room_index/DSC_3494.jpg') }}"
                                         alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
@@ -152,7 +152,7 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}"
+                                    <img src="{{ asset('assets/frontend/image/room/room_index/DSC_3895.jpg') }}"
                                         alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
@@ -193,7 +193,7 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}"
+                                    <img src="{{ asset('assets/frontend/image/room/room_index/DSC_3669.jpg') }}"
                                         alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
@@ -228,7 +228,7 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}"
+                                    <img src="{{ asset('assets/frontend/image/room/room_index/DSC_3523.jpg') }}"
                                         alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
@@ -263,7 +263,7 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}"
+                                    <img src="{{ asset('assets/frontend/image/room/room_index/DSC_3917.jpg') }}"
                                         alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
@@ -304,7 +304,7 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}"
+                                    <img src="{{ asset('assets/frontend/image/room/room_index/DSC_3683.jpg') }}"
                                         alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
@@ -339,7 +339,7 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}"
+                                    <img src="{{ asset('assets/frontend/image/room/room_index/DSC_3917.jpg') }}"
                                         alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
@@ -380,7 +380,7 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}"
+                                    <img src="{{ asset('assets/frontend/image/room/room_index/DSC_3561.jpg') }}"
                                         alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
@@ -394,14 +394,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/image/icon/guest.svg') }}"
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
                                                 alt="">
                                             <span class="ser-title">7 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}"
-                                                alt="">
-                                            <span class="ser-title">7 Extra Bed</span>
                                         </div>
                                     </div>
                                     <p class="ser-text">The cost of the room is GST excluding.</p>
@@ -415,7 +412,7 @@
                         <div class="col-md-6 col-xl-auto">
                             <div class="service-card-two style4 extra">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}"
+                                    <img src="{{ asset('assets/frontend/image/room/room_index/DSC_3523.jpg') }}"
                                         alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
