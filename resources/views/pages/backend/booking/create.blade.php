@@ -180,12 +180,15 @@
                                                                                             Select Room</option>
                                                                                     </select>
                                                                                 </td>
-                                                                                <td class="col-12 col-md-3"><input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        name="room_type[]"
-                                                                                        placeholder="Room type"
-                                                                                        value="" required /></td>
+                                                                                <td class="col-12 col-md-3">
+                                                                                    <select class="form-control room_type"
+                                                                                    name="room_type[]"
+                                                                                    required>
+                                                                                    <option value="" selected hidden class="text-muted">Select Room Type</option>
+                                                                                        <option value="A/C" class="text-muted">A/C</option>
+                                                                                        <option value="Non - A/C" class="text-muted">Non - A/C</option>
+                                                                                    </select>
+                                                                                </td>
                                                                                 <td class="col-12 col-md-2"><input
                                                                                         type="text"
                                                                                         class="form-control"
@@ -244,7 +247,7 @@
                                                     <label for="horizontal-firstname-input"
                                                         class="col-sm-3 col-form-label">
                                                         Proof <span style="color: red;">*</span> </label>
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-3">
                                                         <select class="form-control js-example-basic-single"
                                                             name="prooftype_one" style="width: 100%;" required>
                                                             <option value="" disabled selected hidden
@@ -257,54 +260,27 @@
                                                                 Licence</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-sm-5">
+                                                    <div class="col-sm-3">
                                                         <input type="file" class="form-control" name="proofimage_one"
+                                                            required>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="file" class="form-control" name="proofimage_two"
                                                             required>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div id="doubleproof" style="display:none">
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">
-                                                        Proof 2 </label>
-                                                    <div class="col-sm-4">
-                                                        <select class="form-control js-example-basic-single"
-                                                            name="prooftype_two" style="width: 100%;">
-                                                            <option value="" disabled selected hidden
-                                                                class="text-muted">Select Type</option>
-                                                            <option value="Aadhaar Card" class="text-muted">Aadhaar Card
-                                                            </option>
-                                                            <option value="Pan Card" class="text-muted">Pan Card</option>
-                                                            <option value="Voter ID" class="text-muted">Voter ID</option>
-                                                            <option value="Driving Licence" class="text-muted">Driving
-                                                                Licence</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-5">
-                                                        <input type="file" class="form-control" name="proofimage_two">
-                                                    </div>
+                                            <div class="row mb-4" id="proof_photo">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <input type="file" class="form-control" name="customer_photo"
+                                                            required>
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-4" id="proof_photo">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Photo <span style="color: red;">*</span> </label>
-                                                <div class="col-sm-7">
-                                                    <div style="display: flex;">
-                                                        <div id="my_camera"></div>
-                                                        <div id="captured_image"
-                                                            style="border:1px #584f72; background:#f6f6f6;">Your captured
-                                                            image will appear here...</div>
-                                                    </div>
-                                                    <input style="margin-top: 10px; margin-left: 40px;" type=button
-                                                        value="Take Snapshot" class="btn btn-success"
-                                                        onClick="take_snapshot()" required>
-                                                    <input type="hidden" name="customer_photo" class="image-tag">
-                                                </div>
-                                            </div>
                                             <hr>
+
                                             <h4 class="card-title mb-4" style="color: #5b73e8">Pricing Calculation</h4>
 
                                             <div data-repeater-list="group-a">
@@ -345,7 +321,7 @@
                                                                         placeholder="Gst % - Enter here " required>
                                                                 </div>
                                                             </div>
-                                                            <div class="row mb-4">
+                                                            <div class="row mb-4" hidden>
                                                                 <label for="horizontal-firstname-input"
                                                                     class="col-sm-3 col-form-label">
                                                                     Discount Amount <span style="color: red;">*</span>
@@ -361,7 +337,7 @@
                                                                     class="col-sm-1 col-form-label">
                                                                     Dis % <span style="color: red;">*</span> </label>
                                                                 <div class="col-sm-4">
-                                                                    <input type="text"
+                                                                    <input type="text" value="0"
                                                                         class="form-control discount_percentage"
                                                                         name="discount_percentage"
                                                                         placeholder="Discount % - Enter here " required>
@@ -439,23 +415,6 @@
                                                                 <div class="col-md-3 col-12">
                                                                     <label for="horizontal-firstname-input"
                                                                         class="col-form-label">
-                                                                        Balance Amount <span style="color: red;">*</span>
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-md-9 col-12">
-                                                                    <input type="text"
-                                                                        class="form-control balance_amount"
-                                                                        style="background-color:#c7c21dad" value="0"
-                                                                        name="balance_amount" placeholder="Enter here "
-                                                                        required>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div data-repeater-item class="inner mb-3 row">
-                                                                <div class="col-md-3 col-12">
-                                                                    <label for="horizontal-firstname-input"
-                                                                        class="col-form-label">
                                                                         Payment Method <span style="color: red;">*</span>
                                                                     </label>
                                                                 </div>
@@ -469,6 +428,21 @@
                                                                         <option value="Online Payment" class="text-muted">
                                                                             Online Payment</option>
                                                                     </select>
+                                                                </div>
+                                                            </div>
+                                                            <div data-repeater-item class="inner mb-3 row">
+                                                                <div class="col-md-3 col-12">
+                                                                    <label for="horizontal-firstname-input"
+                                                                        class="col-form-label">
+                                                                        Balance Amount <span style="color: red;">*</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-9 col-12">
+                                                                    <input type="text"
+                                                                        class="form-control balance_amount"
+                                                                        style="background-color:#c7c21dad" value="0"
+                                                                        name="balance_amount" placeholder="Enter here "
+                                                                        required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -704,9 +678,7 @@
 
         });
 
-
         // Add Another Room Script
-
         var i = 1;
         var j = 1;
         var l = 1;
@@ -719,7 +691,7 @@
             $("#addroomfields").click(function() {
                 ++i;
                 $("#roomfields").append(
-                    '<tr><td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-12 col-md-3" style="margin-left: 3px;"><input type="text" class="form-control" name="room_type[]" placeholder="Room type" value=""/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-12 col-md-1" style="margin-left: 4px;"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                    '<tr><td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-12 col-md-3" style="margin-left: 3px;"><select class="form-control room_type" name="room_type[]" required><option value="" selected hidden class="text-muted">Select Room Type</option><option value="A/C" class="text-muted">A/C</option><option value="Non - A/C" class="text-muted">Non - A/C</option></select></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-12 col-md-1" style="margin-left: 4px;"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
                 );
 
                 var branch_id = $('.branch_id').val();
@@ -732,9 +704,7 @@
                         //console.log(response['data']);
                         var len = response['data'].length;
 
-
                         var selectedValues = new Array();
-
 
                         if (len > 0) {
                             for (var i = 0; i < len; i++) {
@@ -742,28 +712,20 @@
 
                                     var id = response['data'][i].id;
                                     var name = 'Room No ' + response['data'][i].room_number +
-                                        ' - ' + response['data'][i].room_floor + ' Floor - ' +
-                                        response['data'][i].room_type;
+                                        ' - ' + response['data'][i].room_floor + ' Floor';
                                     var option = "<option value='" + id + "'>" + name +
                                         "</option>";
 
                                     var price = response['data'][i].price_per_day;
                                     selectedValues.push(option);
                                 }
-
                             }
                         }
-
-
                         ++j;
                         $('#room_id' + j).append(selectedValues);
-
                         //add_count.push(Object.keys(selectedValues).length);
-
                     }
                 });
-
-
 
                 // Room Onchange Function
                 ++l;
@@ -787,7 +749,6 @@
                             //var days = $(".days").val();
                             //var Amount = days * price;
                             //$('#room_cal_price' + h).val(Amount);
-
 
                             $(document).on("keyup", '#room_price' + h, function() {
                                 var price = $(this).val();
@@ -837,24 +798,11 @@
 
 
                             });
-
-
-
-
                         }
                     });
                 });
-
-
-
-
             });
-
-
         });
-
-
-
 
         $(document).on("keyup", 'input.days', function() {
             var days = $(this).val();
@@ -892,11 +840,6 @@
             var balance = Number(grand_total.toFixed(2)) - Number(payable_amount);
             $('.balance_amount').val(balance.toFixed(2));
         });
-
-
-
-
-
 
         // GST Calculation
         $(document).on("keyup", 'input.gst_amount', function() {
@@ -939,9 +882,7 @@
 
         });
 
-
         //Discount Calculation
-
         $(document).on("keyup", 'input.discount_amount', function() {
             var discount_amount = $(this).val();
             var total_calc_price = $(".total_calc_price").val();
@@ -961,7 +902,6 @@
             $('.balance_amount').val(balance.toFixed(2));
 
         });
-
 
         $(document).on("keyup", 'input.discount_percentage', function() {
             var discount_percentage = $(this).val();
@@ -983,9 +923,7 @@
 
         });
 
-
         // Grand Total Calculation
-
         $(document).on("keyup", 'input.additional_charge', function() {
             var additional_charge = $(this).val();
             var total_calc_price = $(".total_calc_price").val();
@@ -1003,8 +941,6 @@
 
         });
 
-
-
         $(document).on("keyup", 'input.payable_amount', function() {
             var payable_amount = $(this).val();
 
@@ -1020,12 +956,7 @@
             $('.balance_amount').val(balance.toFixed(2));
         });
 
-
-
-
-
         // Web Camera Script
-
         $(document).on('click', '.remove-tr', function() {
             $(this).parents('tr').remove();
 
@@ -1055,20 +986,36 @@
 
         });
 
-        Webcam.set({
-            width: 350,
-            height: 200,
-            image_format: 'jpeg',
-            jpeg_quality: 90
-        });
+        // Webcam.set({
+        //     width: 350,
+        //     height: 200,
+        //     image_format: 'jpeg',
+        //     jpeg_quality: 90,
+        //     facingMode: 'environment'
+        // });
 
-        Webcam.attach('#my_camera');
+        // Webcam.attach('#my_camera');
+        // function take_snapshot() {
+        //     Webcam.snap(function(data_uri) {
+        //         $(".image-tag").val(data_uri);
+        //         document.getElementById('captured_image').innerHTML = '<img src="' + data_uri + '"/>';
+        //     });
+        // }
 
-        function take_snapshot() {
-            Webcam.snap(function(data_uri) {
-                $(".image-tag").val(data_uri);
-                document.getElementById('captured_image').innerHTML = '<img src="' + data_uri + '"/>';
-            });
-        }
+        // Webcam.attach('#my_camera_proof_front');
+        // function take_snapshot_proof_front() {
+        //     Webcam.snap(function(data_uri) {
+        //         $(".image-tag-proof-front").val(data_uri);
+        //         document.getElementById('captured_image_proof_front').innerHTML = '<img src="' + data_uri + '"/>';
+        //     });
+        // }
+
+        // Webcam.attach('#my_camera_back');
+        // function take_snapshot_back() {
+        //     Webcam.snap(function(data_uri) {
+        //         $(".image-tag-back").val(data_uri);
+        //         document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri + '"/>';
+        //     });
+        // }
     </script>
 @endsection
