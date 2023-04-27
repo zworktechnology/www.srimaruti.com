@@ -564,17 +564,19 @@ class BookingController extends Controller
                 DB::table('rooms')->where('id', $room_id)->update(['booking_status' => 1]);
             }
 
-            $message_key = 'Dear%20'.$customer_name.'%0a%0aWelcome%20to%20Sri%20Maruthi%20Inn!%20We%20are%20thrilled%20to%20have%20you%20stay%20with%20us.%20Our%20team%20is%20dedicated%20to%20ensuring%20you%20have%20a%20comfortable%20and%20memorable%20stay.%20If%20you%20need%20any%20assistance%20during%20your%20stay,%20please%20don%27t%20hesitate%20to%20contact%20our%20front%20desk.%0a%0aWe%20hope%20you%20have%20a%20wonderful%20time%20at%20our%20resort!%20If%20there%27s%20anything%20we%20can%20do%20to%20make%20your%20stay%20even%20more%20enjoyable,%20please%20let%20us%20know.%20We%27re%20here%20to%20help.%0a%0aThank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20stay%0a%0aFind%20your%20ebill%20here:%20https://srimaruti.com/booking/'.$data->id.'/invoice/detail';
-            $access_token_key = env('WHATSAPP_ACCESS_TOKEN');
-            $instance_id_key = env('WHATSAPP_INSTANCE_ID');
+            return redirect()->route('booking.index', ['user_branch_id' => $data->branch_id])->with('add', 'New booking information has been added to your list.');
 
-            $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
+            //$message_key = 'Dear%20'.$customer_name.'%0a%0aWelcome%20to%20Sri%20Maruthi%20Inn!%20We%20are%20thrilled%20to%20have%20you%20stay%20with%20us.%20Our%20team%20is%20dedicated%20to%20ensuring%20you%20have%20a%20comfortable%20and%20memorable%20stay.%20If%20you%20need%20any%20assistance%20during%20your%20stay,%20please%20don%27t%20hesitate%20to%20contact%20our%20front%20desk.%0a%0aWe%20hope%20you%20have%20a%20wonderful%20time%20at%20our%20resort!%20If%20there%27s%20anything%20we%20can%20do%20to%20make%20your%20stay%20even%20more%20enjoyable,%20please%20let%20us%20know.%20We%27re%20here%20to%20help.%0a%0aThank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20stay%0a%0aFind%20your%20ebill%20here:%20https://srimaruti.com/booking/'.$data->id.'/invoice/detail';
+            //$access_token_key = env('WHATSAPP_ACCESS_TOKEN');
+            //$instance_id_key = env('WHATSAPP_INSTANCE_ID');
 
-            if($response->successful()){
-                return redirect()->route('booking.index', ['user_branch_id' => $data->branch_id])->with('add', 'New booking information has been added to your list, and notification send to customer.');
-            } else {
-                return redirect()->route('booking.index', ['user_branch_id' => $data->branch_id])->with('add', 'New booking information has been added to your list.');
-            }
+            //$response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
+
+            //if($response->successful()){
+            //    return redirect()->route('booking.index', ['user_branch_id' => $data->branch_id])->with('add', 'New booking information has been added to your list, and notification send to customer.');
+            //} else {
+            //    return redirect()->route('booking.index', ['user_branch_id' => $data->branch_id])->with('add', 'New booking information has been added to your list.');
+            //}
 
         }
     }
@@ -717,20 +719,53 @@ class BookingController extends Controller
         // Booking Payments
         $total_paid = 0;
         foreach ($request->get('booking_payment_id') as $key => $booking_payment_id) {
-            $ids = $booking_payment_id;
-            $bookingID = $booking_id;
-            $payment_term = $request->payment_term[$key];
-            $payable_amount = $request->payable_amount[$key];
-            $payment_method = $request->payment_method[$key];
-            $total_paid += $payable_amount;
 
-            DB::table('booking_payments')->where('id', $ids)->update([
-                'booking_id' => $bookingID,  'term' => $payment_term,  'payable_amount' => $payable_amount,  'payment_method' => $payment_method
-            ]);
+            if ($booking_payment_id > 0) {
+
+
+                $ids = $booking_payment_id;
+                $bookingID = $booking_id;
+                $payment_term = $request->payment_term[$key];
+                $payable_amount = $request->payable_amount[$key];
+                $payment_method = $request->payment_method[$key];
+                $total_paid += $payable_amount;
+    
+                DB::table('booking_payments')->where('id', $ids)->update([
+                    'booking_id' => $bookingID,  'term' => $payment_term,  'payable_amount' => $payable_amount,  'payment_method' => $payment_method
+                ]);
+
+
+                $Booking_Data = Booking::findOrFail($id);
+                $Booking_Data->total_paid = $total_paid;
+                $Booking_Data->update();
+
+            } else if ($booking_payment_id == '') {
+                if ($request->payment_term[$key] != "") {
+
+                    $payment_term = $request->payment_term[$key];
+                    $payable_amount = $request->payable_amount[$key];
+                    $payment_method = $request->payment_method[$key];
+                    $bookingID = $booking_id;
+
+                    $BookingPayment = new BookingPayment;
+                    $BookingPayment->booking_id = $bookingID;
+                    $BookingPayment->term = $payment_term;
+                    $BookingPayment->payable_amount = $payable_amount;
+                    $BookingPayment->payment_method = $payment_method;
+                    $BookingPayment->save();
+
+                }
+            }
+
+            
+
+
         }
-            $Booking_Data = Booking::findOrFail($id);
-            $Booking_Data->total_paid = $total_paid;
-            $Booking_Data->update();
+            
+
+
+
+
 
         // Booking Rooms
         $getinsertedBookingRooms = BookingRoom::where('booking_id', '=', $booking_id)->get();

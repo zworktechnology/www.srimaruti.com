@@ -727,40 +727,20 @@
                     }
                 });
 
-                // Room Onchange Function
-                ++l;
-                ++h;
-                $('#room_id' + l).on('change', function() {
+               
+            });
+        });
 
-                    //alert(l);
-                    var room_id_s = this.value;
 
-                    $.ajax({
-                        url: '/getPriceforRooms/' + room_id_s,
-                        type: 'get',
-                        dataType: 'json',
-                        success: function(response) {
+        $(document).on("blur", "input[name*=room_price]", function() {
+            var room_price = $(this).val();
+            //alert(room_price);
+            var days = $(".days").val();
+            var subtotal = room_price * days;
+            $(this).parents('tr').find('input.room_cal_price').val(subtotal);
 
-                            $('#room_price' + h).val('');
-                            var price = response['data'];
-
-                            //$('#room_price' + h).val(price);
-
-                            //var days = $(".days").val();
-                            //var Amount = days * price;
-                            //$('#room_cal_price' + h).val(Amount);
-
-                            $(document).on("keyup", '#room_price' + h, function() {
-                                var price = $(this).val();
-                                //alert(price);
-                                var days = $(".days").val();
-                                var Amount = days * price;
-                                $('#room_cal_price' + h).val(Amount);
-
-                                var totalAmount = 0;
-                                var days = $(".days").val();
-
-                                $("input[name='room_cal_price[]']").each(
+            var totalAmount = 0;
+            $("input[name='room_cal_price[]']").each(
                                     function() {
                                         //alert($(this).val());
                                         totalAmount = Number(totalAmount) +
@@ -796,13 +776,9 @@
                                     Number(payable_amount);
                                 $('.balance_amount').val(balance.toFixed(2));
 
-
-                            });
-                        }
-                    });
-                });
-            });
         });
+
+
 
         $(document).on("keyup", 'input.days', function() {
             var days = $(this).val();

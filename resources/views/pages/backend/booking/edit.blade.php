@@ -181,7 +181,7 @@
                                                                             value="Add">Add</button>
                                                                         <tbody id="roomfields" class="responsive_cls">
                                                                             @foreach ($BookingRooms as $index => $BookingRoomss)
-                                                                                <tr>
+                                                                                <tr class="outer">
                                                                                     <td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
                                                                                         <input type="hidden"
                                                                                             id="room_auto_id"
@@ -592,6 +592,20 @@
                                                         </div>
                                                     </div>
 
+                                                    <div data-repeater-item class="inner mb-3 row">
+                                                        <div class="col-md-3 col-12">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-form-label">
+                                                                Total Paid </label>
+                                                        </div>
+                                                        <div class="col-md-9 col-12">
+                                                            <input type="text" class="form-control total_paid"
+                                                                style="background-color:#1dc72ead" value=""
+                                                                name="total_paid" placeholder="Enter here ">
+                                                        </div>
+                                                    </div>
+
+
                                                     <div class="row mb-4">
                                                         <label for="horizontal-firstname-input"
                                                             class="col-sm-3 col-form-label">
@@ -664,73 +678,58 @@
                                                                     </tr>
                                                                 @endforeach
 
+                                                                <tr>
+                                                                        <td class="col-sm-3">
+                                                                            <select class="form-control"
+                                                                                name="payment_term[]">
+                                                                                <option value="" selected
+                                                                                    class="text-muted">Select</option>
+                                                                                <option
+                                                                                    value="Term I"
+                                                                                    class="text-muted">Term I</option>
+                                                                                <option
+                                                                                    value="Term II"
+                                                                                    class="text-muted">Term II</option>
+                                                                                <option
+                                                                                    value="Term III"
+                                                                                    class="text-muted">Term III</option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="col-sm-3">
+                                                                            <input type="text"
+                                                                                class="form-control payable_amount"
+                                                                                id="payable_amount"
+                                                                                name="payable_amount[]"
+                                                                                placeholder="Enter here ">
+                                                                            <input type="hidden"
+                                                                                class="form-control booking_payment_id"
+                                                                                name="booking_payment_id[]"
+                                                                                placeholder="Enter here ">
+                                                                        </td>
+                                                                        <td class="col-sm-3">
+                                                                            <select class="form-control "
+                                                                                name="payment_method[]">
+                                                                                <option value="" selected hidden
+                                                                                    class="text-muted">Select Payment Via
+                                                                                </option>
+                                                                                <option
+                                                                                    value="Cash" 
+                                                                                    class="text-muted">Cash</option>
+                                                                                <option
+                                                                                    value="Online Payment"
+                                                                                    class="text-muted">Online Payment
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+
                                                             </table>
                                                         </div>
 
 
                                                     </div>
 
-                                                    <div data-repeater-item class="inner mb-3 row">
-                                                        <div class="col-md-3 col-12">
-                                                            <label for="horizontal-firstname-input"
-                                                                class="col-form-label">
-                                                                Total Paid </label>
-                                                        </div>
-                                                        <div class="col-md-9 col-12">
-                                                            <input type="text" class="form-control total_paid"
-                                                                style="background-color:#1dc72ead" value=""
-                                                                name="total_paid" placeholder="Enter here ">
-                                                        </div>
-                                                    </div>
-
-                                                    {{-- <div data-repeater-item class="inner mb-3 row">
-                                                        <div class="col-md-3 col-12">
-                                                            <label for="horizontal-firstname-input"
-                                                                class="col-form-label">
-                                                                Term <span style="color: red;">*</span> </label>
-                                                        </div>
-                                                        <div class="col-md-9 col-12">
-                                                            <select class="form-control" name="payment_term">
-                                                                <option value="" selected hidden class="text-muted">Select</option>
-                                                                <option value="Term II" class="text-muted">Term II</option>
-                                                                <option value="Term III" class="text-muted">Term III</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div data-repeater-item class="inner mb-3 row">
-                                                        <div class="col-md-3 col-12">
-                                                            <label for="horizontal-firstname-input"
-                                                                class="col-form-label">
-                                                                Payable Amount <span style="color: red;">*</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-md-9 col-12">
-                                                            <input type="text"
-                                                                class="form-control payable_amount"
-                                                                name="payable_amount" placeholder="Enter here "
-                                                                >
-                                                        </div>
-                                                    </div>
-                                                    <div data-repeater-item class="inner mb-3 row">
-                                                        <div class="col-md-3 col-12">
-                                                            <label for="horizontal-firstname-input"
-                                                                class="col-form-label">
-                                                                Payment Method <span style="color: red;">*</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-md-9 col-12">
-                                                            <select class="form-control js-example-basic-single"
-                                                                name="payment_method" >
-                                                                <option value="" selected hidden
-                                                                    class="text-muted">Select Payment Via</option>
-                                                                <option value="Cash" class="text-muted">Cash
-                                                                </option>
-                                                                <option value="Online Payment" class="text-muted">
-                                                                    Online Payment</option>
-                                                            </select>
-                                                        </div>
-                                                    </div> --}}
-
+                                                   
                                                     <div data-repeater-item class="inner mb-3 row">
                                                         <div class="col-md-3 col-12">
                                                             <label for="horizontal-firstname-input"
@@ -1052,10 +1051,12 @@
 
 
         $(document).ready(function() {
+
+
             $("#addroomfields").click(function() {
                 ++i;
                 $("#roomfields").append(
-                    '<tr><td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-12 col-md-3" style="margin-left: 3px;"><select class="form-control room_type" name="room_type[]" required><option value="" selected hidden class="text-muted">Select Room Type</option><option value="A/C" class="text-muted">A/C</option><option value="Non - A/C" class="text-muted">Non - A/C</option></select></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-12 col-md-1" style="margin-left: 4px;"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                    '<tr class="outer"><td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-12 col-md-3" style="margin-left: 3px;"><select class="form-control room_type" name="room_type[]" required><option value="" selected hidden class="text-muted">Select Room Type</option><option value="A/C" class="text-muted">A/C</option><option value="Non - A/C" class="text-muted">Non - A/C</option></select></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-12 col-md-1" style="margin-left: 4px;"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
                 );
 
                 var branch_id = $('.branch_id').val();
@@ -1092,41 +1093,28 @@
 
 
 
-                // Room Onchange Function
-                ++l;
-                ++h;
-                $('#room_id' + l).on('change', function() {
+              
 
-                    //alert(l);
-                    var room_id_s = this.value;
+            });
 
-                    $.ajax({
-                        url: '/getPriceforRooms/' + room_id_s,
-                        type: 'get',
-                        dataType: 'json',
-                        success: function(response) {
-
-                            $('#room_price' + h).val('');
-                            var price = response['data'];
-
-                            //$('#room_price' + h).val(price);
-
-                            //var days = $(".days").val();
-                            // var Amount = days * price;
-                            // $('#room_cal_price' + h).val(Amount);
-
-                            $(document).on("keyup", '#room_price' + h, function() {
-                                var price = $(this).val();
-                                //alert(price);
-                                var days = $(".days").val();
-                                var Amount = days * price;
-                                $('#room_cal_price' + h).val(Amount);
+            
 
 
-                                var totalAmount = 0;
-                                var days = $(".days").val();
+                               
+        });
 
-                                $("input[name='room_cal_price[]']").each(
+
+
+
+        $(document).on("blur", "input[name*=room_price]", function() {
+            var room_price = $(this).val();
+            //alert(room_price);
+            var days = $(".days").val();
+            var subtotal = room_price * days;
+            $(this).parents('tr').find('input.room_cal_price').val(subtotal);
+
+            var totalAmount = 0;
+            $("input[name='room_cal_price[]']").each(
                                     function() {
                                         //alert($(this).val());
                                         totalAmount = Number(totalAmount) +
@@ -1157,25 +1145,14 @@
                                         additional_charge)) - Number(
                                     discount_in_amount);
                                 $('.grand_total').val(grand_total.toFixed(2));
-                                var payable_amount = $(".total_paid").val();
-                                var balance = Number(grand_total) - Number(
-                                    payable_amount);
+                                var payable_amount = $(".payable_amount").val();
+                                var balance = Number(grand_total.toFixed(2)) -
+                                    Number(payable_amount);
                                 $('.balance_amount').val(balance.toFixed(2));
-                            });
 
-
-                        }
-                    });
-
-
-                });
-
-
-
-
-
-            });
         });
+
+
 
         $(document).on('click', '.remove-tr', function() {
             $(this).parents('tr').remove();
