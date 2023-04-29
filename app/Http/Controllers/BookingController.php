@@ -383,11 +383,11 @@ class BookingController extends Controller
     public function create($user_branch_id)
     {
         $branch = Branch::where('soft_delete', '!=', 1)->where('id', '=', $user_branch_id)->get();
-        $room = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->get();
+        $roomsarr = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->get();
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        return view('pages.backend.booking.create', compact('branch', 'room', 'today', 'timenow', 'user_branch_id'));
+        return view('pages.backend.booking.create', compact('branch', 'roomsarr', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function store(Request $request)

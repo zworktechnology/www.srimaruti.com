@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">Check Out</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close checkoutclose" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
@@ -438,7 +438,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Checkout</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No,
+                    <button type="button" class="btn btn-secondary checkoutclosebutton" data-bs-dismiss="modal">No,
                         Get Back</button>
                 </div>
             </form>
