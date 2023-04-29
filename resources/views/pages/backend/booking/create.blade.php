@@ -134,13 +134,13 @@
                                                         placeholder="Enter here " value="{{ $timenow }}">
                                                 </div>
                                             </div>
-                                            <div class="row mb-4">
+                                            <div class="row mb-4" hidden>
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Branch <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control branch_id"
                                                         name="branch_id" id="branch_id" required>
-                                                        
+
                                                         @foreach ($branch as $branchs)
                                                             <option value="{{ $branchs->id }}">{{ $branchs->name }}
                                                             </option>
@@ -181,7 +181,7 @@
                                                                                                 <option value="{{ $rooms_arr->id }}">Room No {{ $rooms_arr->room_number }} - {{ $rooms_arr->room_floor }} Floor
                                                                                                 </option>
                                                                                             @endif
-                                                                                            @endforeach  
+                                                                                            @endforeach
                                                                                     </select>
                                                                                 </td>
                                                                                 <td class="col-12 col-md-3">
@@ -731,7 +731,7 @@
                     }
                 });
 
-               
+
             });
         });
 
