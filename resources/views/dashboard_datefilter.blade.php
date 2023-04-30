@@ -62,14 +62,14 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Branch</th>
-                                                <th>Previous Day Balance</th>
+                                                {{-- <th>Previous Day Balance</th> --}}
                                                 <th>Room Income</th>
                                                 <th>Other Income</th>
                                                 <th>Online Payment</th>
                                                 <th>Expence</th>
-                                                <th>Available Amount</th>
-                                                <th>Account Closure</th>
-                                                <th>Difference</th>
+                                                {{-- <th>Available Amount</th> --}}
+                                                {{-- <th>Account Closure</th> --}}
+                                                {{-- <th>Difference</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody id="branchwise_list">
@@ -78,7 +78,7 @@
                                                 <tr>
                                                     <td>{{ $branchwise_lists['branch_name'] }}</td>
 
-                                                    <td>₹ {{ $branchwise_lists['branchwise_openaccount'] }}</td>
+                                                    {{-- <td>₹ {{ $branchwise_lists['branchwise_openaccount'] }}</td> --}}
 
                                                     <td href="#roomincome{{ $branchwise_lists['branch_id'] }}"
                                                         data-bs-toggle="modal"
@@ -91,7 +91,7 @@
 
                                                     <td>₹ {{ $branchwise_lists['branch_wise_expenses'] }}</td>
 
-                                                    <td>₹ {{ $branchwise_lists['requred_balance'] }}</td>
+                                                    {{-- <td>₹ {{ $branchwise_lists['requred_balance'] }}</td>
 
                                                     <td>₹ {{ $branchwise_lists['branchwise_closeaccount'] }}</td>
 
@@ -100,7 +100,7 @@
                                                         </td>
                                                     @else
                                                         <td style="color: Red">₹ {{ $branchwise_lists['difference'] }}</td>
-                                                    @endif
+                                                    @endif --}}
 
                                                 </tr>
 

@@ -18,7 +18,7 @@ class BookingController extends Controller
 {
     public function index($user_branch_id)
     {
-        $data = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
+        $data = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 1)->orderBy('created_at', 'desc')->get();
 
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
@@ -92,7 +92,7 @@ class BookingController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '=', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
+        $data = Booking::where('soft_delete', '!=', 1)->where('status', '=', 2)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
 
         $bookingData = [];
         $room_list = [];
@@ -729,7 +729,7 @@ class BookingController extends Controller
                 $payable_amount = $request->payable_amount[$key];
                 $payment_method = $request->payment_method[$key];
                 $total_paid += $payable_amount;
-    
+
                 DB::table('booking_payments')->where('id', $ids)->update([
                     'booking_id' => $bookingID,  'term' => $payment_term,  'payable_amount' => $payable_amount,  'payment_method' => $payment_method
                 ]);
@@ -757,11 +757,11 @@ class BookingController extends Controller
                 }
             }
 
-            
+
 
 
         }
-            
+
 
 
 

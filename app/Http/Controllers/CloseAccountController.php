@@ -22,7 +22,7 @@ class CloseAccountController extends Controller
 
     public function store(Request $request)
     {
-        $total_amount = ($request->get('count_2000') * 2000) + ($request->get('count_500') * 500) + ($request->get('count_200') * 200) + ($request->get('count_100') * 100) + ($request->get('count_50') * 50) + ($request->get('count_20') * 20) + ($request->get('count_10') * 10) + ($request->get('count_5') * 5) + ($request->get('count_2') * 2) + ($request->get('count_1') * 1);
+        // $total_amount = ($request->get('count_2000') * 2000) + ($request->get('count_500') * 500) + ($request->get('count_200') * 200) + ($request->get('count_100') * 100) + ($request->get('count_50') * 50) + ($request->get('count_20') * 20) + ($request->get('count_10') * 10) + ($request->get('count_5') * 5) + ($request->get('count_2') * 2) + ($request->get('count_1') * 1);
 
         $data = new CloseAccount();
 
@@ -39,9 +39,8 @@ class CloseAccountController extends Controller
         $data->count_5 = $request->get('count_5');
         $data->count_2 = $request->get('count_2');
         $data->count_1 = $request->get('count_1');
+        $data->total = $request->get('total');
 
-
-        $data->total = $total_amount;
         $data->save();
 
         $newdate = date("Y-m-d",strtotime ( '+1 day' , strtotime ( $request->get('date') ) )) ;
@@ -49,7 +48,7 @@ class CloseAccountController extends Controller
         $openaccount_data = new OpenAccount();
         $openaccount_data->date = $newdate;
         $openaccount_data->branch_id = $request->get('branch_id');
-        $openaccount_data->amount = $total_amount;
+        $openaccount_data->amount = $request->get('total');
         $openaccount_data->save();
 
         return redirect()->route('closeaccount.index')->with('add', 'New close account information has been added to your list.');
@@ -80,9 +79,7 @@ class CloseAccountController extends Controller
         $data->count_5 = $request->get('count_5');
         $data->count_2 = $request->get('count_2');
         $data->count_1 = $request->get('count_1');
-
-        $total_amount = ($request->get('count_2000') * 2000) + ($request->get('count_500') * 500) + ($request->get('count_200') * 200) + ($request->get('count_100') * 100) + ($request->get('count_50') * 50) + ($request->get('count_20') * 20) + ($request->get('count_10') * 10) + ($request->get('count_5') * 5) + ($request->get('count_2') * 2) + ($request->get('count_1') * 1);
-        $data->total = $total_amount;
+        $data->total = $request->get('total');
 
         $data->update();
 
