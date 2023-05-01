@@ -966,6 +966,18 @@
 
         });
 
+
+
+        $(document).on("keyup", 'input.payable_amount', function() {
+            var payable_amount = $(this).val();
+            var grand_total = $(".grand_total").val();
+
+            if (Number(payable_amount) > Number(grand_total)) {
+                alert('You are entering Maximum Amount of Total');
+                $(".payable_amount").val('');
+            }
+        });
+
         // Webcam.set({
         //     width: 350,
         //     height: 200,
