@@ -638,13 +638,13 @@
                     <div class="choose-img number-dots as-carousel" data-dots="true" data-xl-dots="true"
                         data-ml-dots="true" data-lg-dots="true" data-md-dots="true">
                         <a href="javascript:void(0);"><img
-                                src="{{ asset('assets/frontend/img/normal/choose_1.jpg') }}" alt="Choose Image"></a>
+                                src="{{ asset('assets/frontend/image/image1.jpg') }}" alt="Choose Image"></a>
                         <a href="javascript:void(0);"><img
-                                src="{{ asset('assets/frontend/img/normal/choose_3.jpg') }}" alt="Choose Image"></a>
+                                src="{{ asset('assets/frontend/image/image2.jpg') }}" alt="Choose Image"></a>
                         <a href="javascript:void(0);"><img
-                                src="{{ asset('assets/frontend/img/normal/choose_1.jpg') }}" alt="Choose Image"></a>
+                                src="{{ asset('assets/frontend/image/image3.jpg') }}" alt="Choose Image"></a>
                         <a href="javascript:void(0);"><img
-                                src="{{ asset('assets/frontend/img/normal/choose_3.jpg') }}" alt="Choose Image"></a>
+                                src="{{ asset('assets/frontend/image/image4.jpg') }}" alt="Choose Image"></a>
                     </div>
                 </div>
             </div>

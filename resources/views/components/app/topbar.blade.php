@@ -34,8 +34,7 @@
                 </button>
             </div>
 
-
-            <div class="dropdown d-none d-lg-inline-block ms-1">
+            {{-- <div class="dropdown d-none d-lg-inline-block ms-1">
                 <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
                     <i class="uil-minus-path"></i>
                 </button>
@@ -45,7 +44,7 @@
                 <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
                     <i class="uil-cog"></i>
                 </button>
-            </div>
+            </div> --}}
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
