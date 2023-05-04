@@ -11,6 +11,7 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\NamelistController;
 use App\Http\Controllers\OpenAccountController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -134,6 +135,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/extend/{id}', [BookingController::class, 'extend'])->name('booking.extend');
         // DAILY CHECKOUT
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/dailycheckout', [BookingController::class, 'dailycheckout'])->name('booking.dailycheckout');
+        // EXPORT AS PDF
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/exportaspdf', [BookingController::class, 'exportaspdf'])->name('exportaspdf');
     });
 
     // NAME LIST CONTROLLER
@@ -152,6 +155,24 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/namelist/delete/{id}', [NamelistController::class, 'delete'])->name('namelist.delete');
         // DESTROY
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/namelist/destroy/{id}', [NamelistController::class, 'destroy'])->name('namelist.destroy');
+    });
+
+    // STAFF CONTROLLER
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+        // INDEX
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/staff', [StaffController::class, 'index'])->name('staff.index');
+        // CREATE
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/staff/create', [StaffController::class, 'create'])->name('staff.create');
+        // STORE
+        Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/staff/store', [StaffController::class, 'store'])->name('staff.store');
+        // EDIT
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/staff/edit/{id}', [StaffController::class, 'edit'])->name('staff.edit');
+        // UPDATE
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/staff/update/{id}', [StaffController::class, 'update'])->name('staff.update');
+        // DELETE
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/staff/delete/{id}', [StaffController::class, 'delete'])->name('staff.delete');
+        // DESTROY
+        Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/staff/destroy/{id}', [StaffController::class, 'destroy'])->name('staff.destroy');
     });
 
     // INCOME CONTROLLER

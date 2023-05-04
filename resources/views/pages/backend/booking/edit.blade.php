@@ -713,7 +713,7 @@
                                                                                     class="text-muted">Select Payment Via
                                                                                 </option>
                                                                                 <option
-                                                                                    value="Cash" 
+                                                                                    value="Cash"
                                                                                     class="text-muted">Cash</option>
                                                                                 <option
                                                                                     value="Online Payment"
@@ -729,7 +729,7 @@
 
                                                     </div>
 
-                                                   
+
                                                     <div data-repeater-item class="inner mb-3 row">
                                                         <div class="col-md-3 col-12">
                                                             <label for="horizontal-firstname-input"
@@ -744,6 +744,22 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="row mb-4">
+                                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                            Check In Staff <span style="color: red;">*</span> </label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control"
+                                                                name="check_in_staff" required>
+                                                                <option value="" disabled selected hiddden>Select One</option>
+                                                                @foreach ($staff as $staffs)
+                                                                    <option value="{{ $staffs->id }}"
+                                                                        @if ($staffs->id == $data->check_in_staff) selected='selected' @endif>
+                                                                        {{ $staffs->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -754,7 +770,7 @@
                                         <button type="submit" class="btn btn-primary" name="checkin"
                                             style="margin-right: 10%;">Update</button>
                                     </div>
-            
+
 
 
                             </div>
@@ -1093,14 +1109,14 @@
 
 
 
-              
+
 
             });
 
-            
 
 
-                               
+
+
         });
 
 

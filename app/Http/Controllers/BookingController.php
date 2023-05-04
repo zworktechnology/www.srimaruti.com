@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Branch;
 use App\Models\Room;
 use App\Models\BookingRoom;
+use App\Models\Staff;
 use App\Models\BookingPayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -19,6 +20,7 @@ class BookingController extends Controller
     public function index($user_branch_id)
     {
         $data = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 1)->orderBy('created_at', 'desc')->get();
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
 
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
@@ -84,13 +86,14 @@ class BookingController extends Controller
             );
         }
 
-        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow', 'user_branch_id'));
+        return view('pages.backend.booking.index', compact('staff', 'bookingData', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function today($user_branch_id)
     {
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
 
         $data = Booking::where('soft_delete', '!=', 1)->where('status', '=', 2)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
 
@@ -156,13 +159,14 @@ class BookingController extends Controller
             );
         }
 
-        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow', 'user_branch_id'));
+        return view('pages.backend.booking.index', compact('staff', 'bookingData', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function upcoming($user_branch_id)
     {
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
 
         $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '>', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
 
@@ -228,13 +232,14 @@ class BookingController extends Controller
             );
         }
 
-        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow', 'user_branch_id'));
+        return view('pages.backend.booking.index', compact('staff', 'bookingData', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function missingout($user_branch_id)
     {
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
 
         $data = Booking::where('soft_delete', '!=', 1)->where('check_out_date', '<', $today)->where('status', '=', 1)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
 
@@ -300,7 +305,7 @@ class BookingController extends Controller
             );
         }
 
-        return view('pages.backend.booking.index', compact('bookingData', 'today', 'timenow', 'user_branch_id'));
+        return view('pages.backend.booking.index', compact('staff', 'bookingData', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function dailycheckout()
@@ -386,8 +391,9 @@ class BookingController extends Controller
         $roomsarr = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->get();
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
 
-        return view('pages.backend.booking.create', compact('branch', 'roomsarr', 'today', 'timenow', 'user_branch_id'));
+        return view('pages.backend.booking.create', compact('staff', 'branch', 'roomsarr', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function store(Request $request)
@@ -531,6 +537,7 @@ class BookingController extends Controller
             $data->grand_total = $request->get('grand_total');
             $data->total_paid = $request->get('payable_amount');
             $data->balance_amount = $request->get('balance_amount');
+            $data->check_in_staff = $request->get('check_in_staff');
             $status = 1;
             $data->status = $status;
 
@@ -588,8 +595,9 @@ class BookingController extends Controller
         $room = Room::where('soft_delete', '!=', 1)->where('soft_delete', '!=', 1)->get();
         $BookingRooms = BookingRoom::where('booking_id', '=', $id)->get();
         $paymentdata = BookingPayment::where('booking_id', '=', $id)->get();
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
 
-        return view('pages.backend.booking.edit', compact('data', 'branch', 'BookingRooms', 'room', 'paymentdata'));
+        return view('pages.backend.booking.edit', compact('staff', 'data', 'branch', 'BookingRooms', 'room', 'paymentdata'));
     }
 
     public function update(Request $request, $id)
@@ -712,6 +720,7 @@ class BookingController extends Controller
         $BookingData->additional_notes = $request->get('additional_charge_notes');
         $BookingData->grand_total = $request->get('grand_total');
         $BookingData->balance_amount = $request->get('balance_amount');
+        $BookingData->check_in_staff = $request->get('check_in_staff');
         $BookingData->update();
 
         $booking_id = $id;
@@ -866,6 +875,7 @@ class BookingController extends Controller
 
         $data->out_time = $request->get('out_time');
         $data->out_date = $request->get('out_date');
+        $data->check_out_staff = $request->get('check_out_staff');
         $status = 2;
         $data->status = $status;
 
@@ -1178,5 +1188,13 @@ class BookingController extends Controller
     {
         $data = Booking::findOrFail($id);
         return view('pages.backend.booking.checkout', compact('data'));
+    }
+
+    public function exportaspdf()
+    {
+        $branch = Branch::where('soft_delete', '!=', 1)->get();
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
+
+        return view('pages.backend.booking.components.exportaspdf', compact('branch', 'staff'));
     }
 }

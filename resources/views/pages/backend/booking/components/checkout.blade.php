@@ -28,6 +28,21 @@
                     </div>
                 </div>
 
+                <div class="row mb-4">
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                        Check Out Staff <span style="color: red;">*</span> </label>
+                    <div class="col-sm-9">
+                        <select class="form-control"
+                            name="check_out_staff" required>
+                            <option value="" disabled selected hiddden>Select One</option>
+                            @foreach ($staff as $staffs)
+                                <option value="{{ $staffs->id }}">
+                                    {{ $staffs->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
 
                 <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Customer Name </label>
@@ -71,7 +86,7 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Room Details </label>
                     <div class="col-sm-9">
 
-                        
+
                                 <input type="hidden" class="form-control" name="booking_id" id="booking_id"
                                     value="{{ $bookingDatas['id'] }}" />
                                 @foreach ($bookingDatas['room_list'] as $index => $room_lists)
@@ -320,7 +335,7 @@
                                                 cursor: not-allowed;
                                             }
                                         </style>
-                                        
+
                                         <input type="text" disabled class="form-control"
                                                     name="booking_rooms[]" id="booking_rooms"
                                                     value="{{ $room_lists['room'] }}" />
@@ -328,7 +343,7 @@
                                                     id="room_auto_id" value="{{ $room_lists['id'] }}" />
                                                 <input type="hidden" class="form-control" name="room_id[]"
                                                     id="room_id" value="{{ $room_lists['room_id'] }}" />
-                                            
+
                                     @endif
                                 @endforeach
 

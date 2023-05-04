@@ -47,7 +47,7 @@
                         {{ $bookingDatas['total_paid'] }}</label>
                 </div>
             </div>
-            <div class="row mb-4">
+            <daciv class="row mb-4">
                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Balance</label>
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">

@@ -1,11 +1,11 @@
 <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header" hidden>
-            <h5 class="modal-title" id="staticBackdropLabel">New I/E Master</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">New Staff</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             </button>
         </div>
-        <form method="POST" action="{{ route('namelist.store') }}" autocomplete="off">
+        <form method="POST" action="{{ route('staff.store') }}" autocomplete="off">
             @csrf
             <div class="modal-body">
                 <div class="row mb-4">

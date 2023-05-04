@@ -50,7 +50,7 @@ return new class extends Migration
             $table->longText('proofimage_two')->nullable();
             $table->longText('customer_photo')->nullable();
 
-          
+
             $table->string('total')->nullable();
             $table->string('gst_per')->nullable();
             $table->string('gst_amount')->nullable();
@@ -64,9 +64,10 @@ return new class extends Migration
 
             $table->string('out_date')->nullable();
             $table->string('out_time')->nullable();
-            
 
-            
+            $table->string('check_in_staff')->nullable();
+            $table->string('check_out_staff')->nullable();
+
             $table->string('status');
             $table->boolean('soft_delete')->default(0);
 

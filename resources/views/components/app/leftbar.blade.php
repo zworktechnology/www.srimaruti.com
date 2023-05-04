@@ -79,7 +79,7 @@
                         <span>Close Account</span>
                     </a>
                 </li>
-                
+
                 <li class="{{ Route::is('branch.index','branch.create','branch.edit','branch.view') ? 'mm-active' : '' }}">
                     <a href="{{ route('branch.index') }}" class="waves-effect">
                         <i class="uil-map-pin-alt"></i>
@@ -90,6 +90,18 @@
                     <a href="{{ route('room.index') }}" class="waves-effect">
                         <i class="uil-key-skeleton-alt"></i>
                         <span>Room</span>
+                    </a>
+                </li>
+                <li class="{{ Route::is('staff.index','staff.create','staff.edit') ? 'mm-active' : '' }}">
+                    <a href="{{ route('staff.index') }}" class="waves-effect">
+                        <i class="uil-user-check"></i>
+                        <span>Manager</span>
+                    </a>
+                </li>
+                <li class="{{ Route::is('exportaspdf') ? 'mm-active' : '' }}">
+                    <a href="{{ route('exportaspdf') }}" class="waves-effect">
+                        <i class="uil-cloud-download"></i>
+                        <span>PDF Download</span>
                     </a>
                 </li>
                 <li class="{{ Route::is('contact.index') ? 'mm-active' : '' }}">

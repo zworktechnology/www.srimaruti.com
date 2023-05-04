@@ -449,6 +449,20 @@
                                                                         required>
                                                                 </div>
                                                             </div>
+                                                            <div class="row mb-4">
+                                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                                    Check In Staff <span style="color: red;">*</span> </label>
+                                                                <div class="col-sm-9">
+                                                                    <select class="form-control"
+                                                                        name="check_in_staff" required>
+                                                                        <option value="" disabled selected hiddden>Select One</option>
+                                                                        @foreach ($staff as $staffs)
+                                                                            <option value="{{ $staffs->id }}">{{ $staffs->name }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
