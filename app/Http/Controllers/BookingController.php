@@ -462,8 +462,8 @@ class BookingController extends Controller
             $data->check_in_time = $request->get('check_in_time');
             $data->check_out_date = $request->get('check_out_date');
             $data->check_out_time = $request->get('check_out_time');
-            // $data->extended_date = $request->get('check_out_date');
-            // $data->extended_time = $request->get('check_out_time');
+            $data->extended_date = $request->get('check_out_date');
+            $data->extended_time = $request->get('check_out_time');
             $data->days = $request->get('days');
             $data->branch_id = $request->get('branch_id');
             $data->proofs = $request->get('proofs');
@@ -618,8 +618,8 @@ class BookingController extends Controller
         $BookingData->check_in_time = $request->get('check_in_time');
         $BookingData->check_out_date = $request->get('check_out_date');
         $BookingData->check_out_time = $request->get('check_out_time');
-        $BookingData->extended_date = $request->get('check_out_date');
-        $BookingData->extended_time = $request->get('check_out_time');
+        // $BookingData->extended_date = $request->get('check_out_date');
+        // $BookingData->extended_time = $request->get('check_out_time');
         $BookingData->days = $request->get('days');
         $BookingData->branch_id = $request->get('branch_id');
 
@@ -1202,7 +1202,7 @@ class BookingController extends Controller
     }
 
 
-    public function printexportpdf(Request $request) 
+    public function printexportpdf(Request $request)
     {
 
         $manager_id = $request->get('manager_id');
@@ -1252,11 +1252,11 @@ class BookingController extends Controller
 
 
 
-        $checkout_Data = Booking::whereBetween('check_out_date', [$from_date, $to_date])
+        $checkout_Data = Booking::whereBetween('out_date', [$from_date, $to_date])
                                 ->where('branch_id', '=', $branch_id)
                                 ->where('check_out_staff', '=', $manager_id)
                                 ->where('soft_delete', '!=', 1)
-                                ->orderBy('check_out_date', 'asc')
+                                ->orderBy('out_date', 'asc')
                                 ->get();
         $checkout_Array = [];
         $ch_oroom_list = [];
