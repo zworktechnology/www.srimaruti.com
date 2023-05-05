@@ -37,12 +37,12 @@
                                             <div>
                                                 <h5 class="font-size-16 mb-1">
                                                     Manager : <span
-                                                        style="color: #acafb7;">XXXYYYZZZ</span>
+                                                        style="color: #acafb7;">{{ $manager->name}}</span>
                                                 </h5>
                                             </div>
                                             <div class="mt-4">
                                                 <h5 class="font-size-16 mb-1">
-                                                    Branch : <span style="color: #acafb7;">AAA</span>
+                                                    Branch : <span style="color: #acafb7;">{{ $branch->name}}</span>
                                                 </h5>
                                             </div>
                                         </div>
@@ -52,47 +52,152 @@
                                             <div>
                                                 <h5 class="font-size-16 mb-1">
                                                     From Date : <span
-                                                        style="color: #acafb7;">00-00-0000</span>
+                                                        style="color: #acafb7;">{{ date('d-m-Y', strtotime($from_date)) }}</span>
                                                 </h5>
                                             </div>
                                             <div class="mt-4">
                                                 <h5 class="font-size-16 mb-1">
-                                                    To Date : <span style="color: #acafb7;">00-00-000</span>
+                                                    To Date : <span style="color: #acafb7;">{{ date('d-m-Y', strtotime($to_date)) }}</span>
                                                 </h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
+                                <hr>
+                                <br/>
+                                <div class="row" style="display: flex;">
+                                    <div class="col-sm-8 col-8">
+                                        <div class="text-muted">
+                                            <div>
+                                                <h5 class="font-size-16 mb-1">
+                                                Check In Room Deatails 
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <br/>
                                 <div class="py-2">
                                     <div class="table-responsive">
                                         <table class="table table-nowrap table-centered mb-0">
                                             <thead>
                                                 <tr>
-                                                    <th>Check In Room Deatails</th>
+                                                    <th>Checkin Date</th>
+                                                    <th>Room No - Type</th>
+                                                    <th>Day</th>
+                                                    <th>Price / Day</th>
+                                                    <th>Total</th>
+                                                    <th>Tax</th>
+                                                    <th>Grand Total</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            @foreach ($checkin_Array as $keydata => $checkin_Arrays)
                                                     <tr>
-                                                        <td scope="row">Room No - Room Type - Stay Days * Price Per Day - Total Amout </td>
+                                                        
+                                                        
+                                                            <td>{{ date('d-m-Y', strtotime($checkin_Arrays['check_in_date'])) }}</td>
+                                                                    
+                                                                <td>
+                                                                
+                                                                @foreach ($checkin_Arrays['room_list'] as $index => $room_lists)
+                                                                @if ($room_lists['booking_id'] == $checkin_Arrays['id'])
+                                                                    {{ $room_lists['roomno'] }} - {{ $room_lists['roomtype'] }} <br />
+                                                                     
+                                                                    @endif
+                                                                    @endforeach
+                                                                      
+                                                                </td>
+                                                                
+                                                                
+                                                                
+                                                               
+                                                                <td>{{ $checkin_Arrays['days'] }}</td>
+                                                                <td>
+                                                                @foreach ($checkin_Arrays['room_list'] as $index => $room_lists)
+                                                                @if ($room_lists['booking_id'] == $checkin_Arrays['id'])    
+                                                                    {{ $room_lists['booking_room_price'] }} <br />
+                                                                    @endif
+                                                                    
+                                                                    @endforeach
+                                                                </td>
+                                                                <td>{{ $checkin_Arrays['total'] }}</td>
+                                                                <td>{{ $checkin_Arrays['gst_amount'] }}</td>
+                                                                <td>{{ $checkin_Arrays['grand_total'] }}</td>
+
+
                                                     </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>
 
                                     <hr>
+                                    <br/>
+                                <div class="row" style="display: flex;">
+                                    <div class="col-sm-8 col-8">
+                                        <div class="text-muted">
+                                            <div>
+                                                <h5 class="font-size-16 mb-1">
+                                                Check Out Room Deatails 
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
 
                                     <div class="table-responsive">
                                         <table class="table table-nowrap table-centered mb-0">
                                             <thead>
                                                 <tr>
-                                                    <th>Check Out Room Deatails</th>
+                                                    <th>Checkout Date</th>
+                                                    <th>Room No - Type</th>
+                                                    <th>Day</th>
+                                                    <th>Price / Day</th>
+                                                    <th>Total</th>
+                                                    <th>Tax</th>
+                                                    <th>Grand Total</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            @foreach ($checkout_Array as $keydata => $checkout_Arrays)
                                                     <tr>
-                                                        <td scope="row">Room No - Room Type - Stay Days * Price Per Day - Total Amout </td>
+                                                        
+                                                        
+                                                            <td>{{ date('d-m-Y', strtotime($checkout_Arrays['check_out_date'])) }}</td>
+                                                                    
+                                                                <td>
+                                                                
+                                                                @foreach ($checkout_Arrays['room_list'] as $index => $room_lists)
+                                                                @if ($room_lists['booking_id'] == $checkout_Arrays['id'])
+                                                                    {{ $room_lists['roomno'] }} - {{ $room_lists['roomtype'] }} <br />
+                                                                     
+                                                                    @endif
+                                                                    @endforeach
+                                                                      
+                                                                </td>
+                                                                
+                                                                
+                                                                
+                                                               
+                                                                <td>{{ $checkout_Arrays['days'] }}</td>
+                                                                <td>
+                                                                @foreach ($checkout_Arrays['room_list'] as $index => $room_lists)
+                                                                @if ($room_lists['booking_id'] == $checkout_Arrays['id'])    
+                                                                    {{ $room_lists['booking_room_price'] }} <br />
+                                                                    @endif
+                                                                    
+                                                                    @endforeach
+                                                                </td>
+                                                                <td>{{ $checkout_Arrays['total'] }}</td>
+                                                                <td>{{ $checkout_Arrays['gst_amount'] }}</td>
+                                                                <td>{{ $checkout_Arrays['grand_total'] }}</td>
+
+
                                                     </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>

@@ -889,17 +889,20 @@ class BookingController extends Controller
             ->update(['booking_status' => 0]);
         }
 
-        $message_key = 'Dear%20'.$customer_name.'%0a%0aThank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20recent%20stay.%20We%20hope%20you%20had%20a%20great%20experience%20with%20us.%20We%20would%20love%20to%20hear%20your%20thoughts%20and%20feedback%20on%20your%20stay.%20Please%20take%20a%20moment%20to%20complete%20our%20short%20survey%20using%20the%20link%20below.%20Your%20feedback%20is%20valuable%20to%20us%20and%20will%20help%20us%20improve%20our%20services%20for%20future%20guests.%0a%0aThank%20you%20for%20your%20time,%20and%20we%20look%20forward%20to%20seeing%20you%20again%20soon!%0a%0aFeedback%20link%20:%20https://srimaruti.com/feedback';
-        $access_token_key = env('WHATSAPP_ACCESS_TOKEN');
-        $instance_id_key = env('WHATSAPP_INSTANCE_ID');
 
-        $response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
+        return redirect()->back()->with('checkout', 'Checkout information has been updated to your list');
 
-        if($response->successful()){
-            return redirect()->back()->with('checkout', 'Checkout information has been updated to your list, and notification send to customer.');
-        } else {
-            return redirect()->back()->with('checkout', 'Checkout information has been updated to your list');
-        }
+        //$message_key = 'Dear%20'.$customer_name.'%0a%0aThank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20recent%20stay.%20We%20hope%20you%20had%20a%20great%20experience%20with%20us.%20We%20would%20love%20to%20hear%20your%20thoughts%20and%20feedback%20on%20your%20stay.%20Please%20take%20a%20moment%20to%20complete%20our%20short%20survey%20using%20the%20link%20below.%20Your%20feedback%20is%20valuable%20to%20us%20and%20will%20help%20us%20improve%20our%20services%20for%20future%20guests.%0a%0aThank%20you%20for%20your%20time,%20and%20we%20look%20forward%20to%20seeing%20you%20again%20soon!%0a%0aFeedback%20link%20:%20https://srimaruti.com/feedback';
+        //$access_token_key = env('WHATSAPP_ACCESS_TOKEN');
+        //$instance_id_key = env('WHATSAPP_INSTANCE_ID');
+
+        //$response = Http::post('https://smstool.in/api/send.php?number=91'.$whatsapp.'&type=text&message='.$message_key.'&instance_id='.$instance_id_key.'&access_token='.$access_token_key.'');
+
+        //if($response->successful()){
+        //    return redirect()->back()->with('checkout', 'Checkout information has been updated to your list, and notification send to customer.');
+        //} else {
+        //    return redirect()->back()->with('checkout', 'Checkout information has been updated to your list');
+        //}
     }
 
     public function pay_balance(Request $request, $id)
@@ -1196,5 +1199,94 @@ class BookingController extends Controller
         $staff = Staff::where('soft_delete', '!=', 1)->get();
 
         return view('pages.backend.booking.components.exportaspdf', compact('branch', 'staff'));
+    }
+
+
+    public function printexportpdf(Request $request) 
+    {
+
+        $manager_id = $request->get('manager_id');
+        $branch_id = $request->get('branch_id');
+        $from_date = $request->get('from_date');
+        $to_date = $request->get('to_date');
+
+        $branch = Branch::findOrFail($branch_id);
+        $manager = Staff::findOrFail($manager_id);
+
+
+        $checkin_Data = Booking::whereBetween('check_in_date', [$from_date, $to_date])
+                                ->where('branch_id', '=', $branch_id)
+                                ->where('check_in_staff', '=', $manager_id)
+                                ->where('soft_delete', '!=', 1)
+                                ->orderBy('check_in_date', 'asc')
+                                ->get();
+        $checkin_Array = [];
+        $room_list = [];
+        foreach ($checkin_Data as $key => $checkin_Datas) {
+
+            $roomsbooked = BookingRoom::where('booking_id', '=', $checkin_Datas->id)->get();
+                    foreach ($roomsbooked as $key => $rooms_booked) {
+                        $Rooms = Room::findOrFail($rooms_booked->room_id);
+                        $room_list[] = array(
+                            'roomno' => 'No. '. $Rooms->room_number,
+                            'roomtype' => $rooms_booked->room_type,
+                            'booking_room_price' => $rooms_booked->room_price,
+                            'booking_id' => $checkin_Datas->id,
+                        );
+                    }
+
+
+
+                    $checkin_Array[] = array(
+                        'room_list' => $room_list,
+                        'days' => $checkin_Datas->days,
+                        'grand_total' => $checkin_Datas->grand_total,
+                        'id' => $checkin_Datas->id,
+                        'check_in_date' => $checkin_Datas->check_in_date,
+                        'total' => $checkin_Datas->total,
+                        'gst_amount' => $checkin_Datas->gst_amount,
+                    );
+        }
+
+
+
+
+
+        $checkout_Data = Booking::whereBetween('check_out_date', [$from_date, $to_date])
+                                ->where('branch_id', '=', $branch_id)
+                                ->where('check_out_staff', '=', $manager_id)
+                                ->where('soft_delete', '!=', 1)
+                                ->orderBy('check_out_date', 'asc')
+                                ->get();
+        $checkout_Array = [];
+        $ch_oroom_list = [];
+        foreach ($checkout_Data as $key => $checkout_Datas) {
+
+            $coroomsbooked = BookingRoom::where('booking_id', '=', $checkout_Datas->id)->get();
+                    foreach ($coroomsbooked as $key => $corooms_booked) {
+                        $Rooms = Room::findOrFail($corooms_booked->room_id);
+                        $ch_oroom_list[] = array(
+                            'roomno' => 'No. '. $Rooms->room_number,
+                            'roomtype' => $corooms_booked->room_type,
+                            'booking_room_price' => $corooms_booked->room_price,
+                            'booking_id' => $checkout_Datas->id,
+                        );
+                    }
+
+
+
+                    $checkout_Array[] = array(
+                        'room_list' => $ch_oroom_list,
+                        'days' => $checkout_Datas->days,
+                        'grand_total' => $checkout_Datas->grand_total,
+                        'id' => $checkout_Datas->id,
+                        'check_out_date' => $checkout_Datas->check_out_date,
+                        'total' => $checkout_Datas->total,
+                        'gst_amount' => $checkout_Datas->gst_amount,
+                    );
+        }
+
+
+        return view('pages.backend.booking.components.printexportpdf', compact('branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array'));
     }
 }

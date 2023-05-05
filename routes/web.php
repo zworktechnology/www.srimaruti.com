@@ -137,7 +137,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/dailycheckout', [BookingController::class, 'dailycheckout'])->name('booking.dailycheckout');
         // EXPORT AS PDF
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/exportaspdf', [BookingController::class, 'exportaspdf'])->name('exportaspdf');
+        // EXPORT AS PDF
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/printexportpdf', [BookingController::class, 'printexportpdf'])->name('booking.printexportpdf');
     });
+
 
     // NAME LIST CONTROLLER
     Route::middleware(['auth:sanctum', 'verified'])->group(function () {

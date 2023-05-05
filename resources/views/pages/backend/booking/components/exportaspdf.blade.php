@@ -15,8 +15,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form autocomplete="off" method="POST" action="{{ route('booking.store') }}"
+                                <form autocomplete="off" method="POST" action="{{ route('booking.printexportpdf') }}"
                                     enctype="multipart/form-data">
+                                    @method('PUT')
                                     @csrf
                                     <div class="modal-body">
                                         <div class="modal-body">
@@ -25,7 +26,7 @@
                                                     Manager <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-4">
                                                     <select class="form-control branch_id"
-                                                        name="branch_id" id="branch_id" required>
+                                                        name="manager_id" id="manager_id" required>
                                                         <option value="" selected hiddden>Select One</option>
                                                         @foreach ($staff as $staffs)
                                                             <option value="{{ $staffs->id }}">{{ $staffs->name }}
