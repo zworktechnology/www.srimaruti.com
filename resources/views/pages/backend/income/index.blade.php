@@ -74,7 +74,8 @@
                                         <th>Sl. No</th>
                                         <th>Date</th>
                                         <th>Branch</th>
-                                        <th>Name</th>
+                                        <th>Expence to</th>
+                                        <th>Manager</th>
                                         <th>Amount</th>
                                         <th>Note</th>
                                         <th>Action</th>
@@ -87,6 +88,7 @@
                                         <td>{{ date('d M, Y', strtotime($datas->date)) }}</td>
                                         <td>{{ $datas->branch->name }}</td>
                                         <td>{{ $datas->namelist->name }}</td>
+                                        <td>{{ $datas->staff->name }}</td>
                                         <td>₹ {{ $datas->amount }}</td>
                                         <td>{{ $datas->note }}</td>
                                         <td>

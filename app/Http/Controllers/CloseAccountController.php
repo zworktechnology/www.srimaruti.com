@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Branch;
 use App\Models\CloseAccount;
 use App\Models\OpenAccount;
-
+use App\Models\Staff;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -16,8 +16,9 @@ class CloseAccountController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $data = CloseAccount::where('soft_delete', '!=', 1)->orderBy('created_at', 'desc')->get();
         $branch = Branch::where('soft_delete', '!=', 1)->get();
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
 
-        return view('pages.backend.closeaccount.index', compact('today', 'data', 'branch'));
+        return view('pages.backend.closeaccount.index', compact('staff', 'today', 'data', 'branch'));
     }
 
     public function store(Request $request)
@@ -58,8 +59,9 @@ class CloseAccountController extends Controller
     {
         $data = CloseAccount::findOrFail($id);
         $branch = Branch::where('soft_delete', '!=', 1)->get();
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
 
-        return view('pages.backend.closeaccount.edit', compact('data', 'branch'));
+        return view('pages.backend.closeaccount.edit', compact('staff', 'data', 'branch'));
     }
 
     public function update(Request $request, $id)

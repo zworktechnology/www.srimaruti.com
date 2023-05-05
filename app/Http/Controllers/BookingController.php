@@ -7,7 +7,9 @@ use App\Models\Branch;
 use App\Models\Room;
 use App\Models\BookingRoom;
 use App\Models\Staff;
+use App\Models\Income;
 use App\Models\BookingPayment;
+use App\Models\Expense;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -399,7 +401,7 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $data = new Booking();
-        $random_no =   rand(100,999);
+        $random_no =  rand(100,999);
         $checkin = $request->get('checkin');
         $billno = 1;
 
@@ -436,7 +438,6 @@ class BookingController extends Controller
                 }
             } else {
                 $branch_ids = 3;
-
                 $last_branchid = Booking::where('branch_id', '=', $branch_ids)->latest('id')->first();
 
                 if($last_branchid != '')
@@ -765,16 +766,7 @@ class BookingController extends Controller
 
                 }
             }
-
-
-
-
         }
-
-
-
-
-
 
         // Booking Rooms
         $getinsertedBookingRooms = BookingRoom::where('booking_id', '=', $booking_id)->get();
@@ -1213,7 +1205,6 @@ class BookingController extends Controller
         $branch = Branch::findOrFail($branch_id);
         $manager = Staff::findOrFail($manager_id);
 
-
         $checkin_Data = Booking::whereBetween('check_in_date', [$from_date, $to_date])
                                 ->where('branch_id', '=', $branch_id)
                                 ->where('check_in_staff', '=', $manager_id)
@@ -1223,7 +1214,6 @@ class BookingController extends Controller
         $checkin_Array = [];
         $room_list = [];
         foreach ($checkin_Data as $key => $checkin_Datas) {
-
             $roomsbooked = BookingRoom::where('booking_id', '=', $checkin_Datas->id)->get();
                     foreach ($roomsbooked as $key => $rooms_booked) {
                         $Rooms = Room::findOrFail($rooms_booked->room_id);
@@ -1245,12 +1235,9 @@ class BookingController extends Controller
                         'check_in_date' => $checkin_Datas->check_in_date,
                         'total' => $checkin_Datas->total,
                         'gst_amount' => $checkin_Datas->gst_amount,
+                        'booking_invoiceno' => $checkin_Datas->booking_invoiceno,
                     );
         }
-
-
-
-
 
         $checkout_Data = Booking::whereBetween('out_date', [$from_date, $to_date])
                                 ->where('branch_id', '=', $branch_id)
@@ -1273,8 +1260,6 @@ class BookingController extends Controller
                         );
                     }
 
-
-
                     $checkout_Array[] = array(
                         'room_list' => $ch_oroom_list,
                         'days' => $checkout_Datas->days,
@@ -1283,10 +1268,22 @@ class BookingController extends Controller
                         'check_out_date' => $checkout_Datas->check_out_date,
                         'total' => $checkout_Datas->total,
                         'gst_amount' => $checkout_Datas->gst_amount,
+                        'booking_invoiceno' => $checkin_Datas->booking_invoiceno,
                     );
         }
 
+        $income = Income::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
+                                ->where('staff_id', '=', $manager_id)
+                                ->where('soft_delete', '!=', 1)
+                                ->orderBy('date', 'asc')
+                                ->get();
 
-        return view('pages.backend.booking.components.printexportpdf', compact('branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array'));
+        $expence = Expense::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
+                                ->where('staff_id', '=', $manager_id)
+                                ->where('soft_delete', '!=', 1)
+                                ->orderBy('date', 'asc')
+                                ->get();
+
+        return view('pages.backend.booking.components.printexportpdf', compact('income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array'));
     }
 }

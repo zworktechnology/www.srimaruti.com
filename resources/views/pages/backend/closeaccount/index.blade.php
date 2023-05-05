@@ -70,12 +70,12 @@
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
                                         <td>{{ date('d M, Y', strtotime($datas->date)) }}</td>
-                                        <td>{{  $datas->closer_name }}</td>
+                                        <td>{{  $datas->staff->name }}</td>
                                         <td>{{ $datas->branch->name }}</td>
                                         <td>₹ {{  $datas->total }}</td>
                                         <td>
                                             <ul class="list-unstyled hstack gap-1 mb-0">
-                                                <li>
+                                                <li hidden>
                                                     <a href="#jobDelete{{ $datas->id }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-warning" data-bs-target="#firstmodalview{{ $datas->id }}">View</a>
                                                 </li>
                                                 <li>

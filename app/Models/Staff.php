@@ -13,4 +13,19 @@ class Staff extends Model
         'name',
         'soft_delete'
     ];
+
+    public function income()
+    {
+        return $this->hasMany(Income::class, 'staff_id');
+    }
+
+    public function expense()
+    {
+        return $this->hasMany(Expense::class, 'staff_id');
+    }
+
+    public function closeaccount()
+    {
+        return $this->hasMany(CloseAccount::class, 'closer_name');
+    }
 }

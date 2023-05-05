@@ -31,4 +31,9 @@ class CloseAccount extends Model
     {
         return $this->belongsTo(Branch::class, 'branch_id');
     }
+
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class, 'closer_name');
+    }
 }

@@ -32,7 +32,13 @@
                                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                 Closer Name </label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="closer_name" placeholder="Enter closer name *" value="{{ $data->closer_name }}" required>
+                                                <select class="form-control js-example-basic-single" name="closer_name" required>
+                                                    <option value="" disabled selected hidden class="text-muted">
+                                                        Select manager *</option>
+                                                    @foreach ($staff as $staffs)
+                                                    <option value="{{ $staffs->id }}" @if ($staffs->id === $data->closer_name) selected='selected' @endif>{{ $staffs->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="row mb-4">

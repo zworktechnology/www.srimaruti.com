@@ -69,7 +69,8 @@
                                         <th>Sl. No</th>
                                         <th>Date</th>
                                         <th>Branch</th>
-                                        <th>Name</th>
+                                        <th>Expence to</th>
+                                        <th>Manager</th>
                                         <th>Amount</th>
                                         <th>Note</th>
                                         <th>Action</th>
@@ -82,6 +83,7 @@
                                         <td>{{ $expense_array['date'] }}</td>
                                         <td>{{ $expense_array['branch'] }}</td>
                                         <td>{{ $expense_array['namelist'] }}</td>
+                                        <td>{{ $expense_array['staff'] }}</td>
                                         <td>₹ {{ $expense_array['amount'] }}</td>
                                         <td>{{ $expense_array['note'] }}</td>
                                         <td>

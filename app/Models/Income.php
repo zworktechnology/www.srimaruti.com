@@ -15,7 +15,8 @@ class Income extends Model
         'note',
         'namelist_id',
         'branch_id',
-        'soft_delete'
+        'soft_delete',
+        'staff_id'
     ];
 
     public function namelist()
@@ -26,5 +27,10 @@ class Income extends Model
     public function branch()
     {
         return $this->belongsTo(Branch::class, 'branch_id');
+    }
+
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class, 'staff_id');
     }
 }

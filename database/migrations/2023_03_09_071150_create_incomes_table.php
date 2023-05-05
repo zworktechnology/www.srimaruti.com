@@ -21,6 +21,7 @@ return new class extends Migration
             // Request columns
             $table->string('date');
             $table->string('amount');
+            $table->string('staff_id');
             $table->string('note')->nullable();
             $table->unsignedBigInteger('namelist_id');
             $table->foreign('namelist_id')->references('id')->on('namelists')->onDelete('cascade');
