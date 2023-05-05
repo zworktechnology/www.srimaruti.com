@@ -549,7 +549,7 @@
                         </div>
                         <div class="service-box_content">
                             <h3 class="service-box_title">Air Conditioner</h3>
-                            <p class="service-box_desc">Relax in air-conditioned comfort.</p>
+                            <p class="service-box_desc">Relax in comfortable air conditioning.</p>
                         </div>
                     </div>
                 </div>
