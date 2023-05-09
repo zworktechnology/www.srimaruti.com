@@ -145,7 +145,8 @@
                                                             <li>
                                                                 <a href="#paybalance{{ $bookingDatas['id'] }}"
                                                                     data-bs-toggle="modal"
-                                                                    class="btn btn-sm btn-soft-warning"
+                                                                    data-id="{{ $bookingDatas['id'] }}"
+                                                                    class="btn btn-sm btn-soft-warning paybalance{{ $bookingDatas['id'] }}"
                                                                     data-bs-target="#paybalance{{ $bookingDatas['id'] }}">Pay
                                                                     Balance</a>
                                                             </li>
@@ -193,7 +194,7 @@
 
                                             @if ($bookingDatas['balance_amount'] != 0)
                                                 <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}"
-                                                    data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..."
+                                                    data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..." class="paybalance{{ $bookingDatas['id'] }}"
                                                     tabindex="-1">
                                                     @include('pages.backend.booking.components.paybalance')
                                                 </div>
@@ -240,15 +241,7 @@
         });
 
 
-        $(document).on("keyup", 'input.payable_amount', function() {
-            var payable_amount = $(this).val();
-            var balance_amount = $(".balance_amount").val();
-
-            if (Number(payable_amount) > Number(balance_amount)) {
-                alert('You are entering Maximum Amount of Balance');
-                $(".payable_amount").val('');
-            }
-        });
+        
 
 
         // Calculate Days

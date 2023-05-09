@@ -418,10 +418,11 @@ class BookingController extends Controller
 
                     if($last_branchid != '')
                     {
-                        $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
-                        $invoiceno = '#SMISRI' . $added_billno + 1;
+                        $added_billno = substr ($last_branchid->booking_invoiceno, -5);
+                        //dd($added_billno);
+                        $invoiceno = '#SMISRI0000' . ($added_billno) + 1;
                     } else {
-                        $invoiceno = '#SMISRI'.$billno;
+                        $invoiceno = '#SMISRI0000'.$billno;
                     }
 
             } else if($request->get('branch_id') == 2) {
@@ -431,10 +432,10 @@ class BookingController extends Controller
 
                 if($last_branchid != '')
                 {
-                    $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
-                    $invoiceno = '#SMISAM' . $added_billno + 1;
+                    $added_billno = substr ($last_branchid->booking_invoiceno, -5);
+                    $invoiceno = '#SMISAM0000' . ($added_billno) + 1;
                 } else {
-                    $invoiceno = '#SMISAM'.$billno;
+                    $invoiceno = '#SMISAM0000'.$billno;
                 }
             } else {
                 $branch_ids = 3;
@@ -442,10 +443,10 @@ class BookingController extends Controller
 
                 if($last_branchid != '')
                 {
-                    $added_billno = $last_branchid->booking_invoiceno[strlen($last_branchid->booking_invoiceno)-1];
-                    $invoiceno = '#SMIGUN' . $added_billno + 1;
+                    $added_billno = substr ($last_branchid->booking_invoiceno, -5);
+                    $invoiceno = '#SMIGUN0000' . ($added_billno) + 1;
                 } else {
-                    $invoiceno = '#SMIGUN'.$billno;
+                    $invoiceno = '#SMIGUN0000'.$billno;
                 }
             }
 

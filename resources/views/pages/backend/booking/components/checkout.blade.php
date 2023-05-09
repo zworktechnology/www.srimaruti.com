@@ -469,39 +469,6 @@
     $(".checkoutclosebutton").click(function() {
         window.location.reload();
     });
-    //$(document).ready(function() {
-    //var check_in_date = $("#checkindate").val();
-    //var check_out_date = $("#checkoutdate").val();
 
-
-    //  var checkin_date = new Date (check_in_date);
-    //  console.log(checkin_date);
-    //  var checkout_date = new Date (check_out_date);
-    //  console.log(checkout_date);
-
-
-    //calculate total number of seconds between two dates
-    // var total_seconds = Math.abs(checkin_date - checkout_date) / 1000;
-
-
-    //calculate days difference by dividing total seconds in a day
-    //  var days_difference = Math.floor (total_seconds / (60 * 60 * 24));
-    //console.log(days_difference);
-    //   $('.no_of_days').val(days_difference);
-
-
-    // Get Room Price
-    //   var totalAmount = 0;
-    //   $("input[name='booking_room_price[]']").each(function() {
-    //alert($(this).val());
-    //                      totalAmount = Number(totalAmount) + Number($(this).val());
-    //                      console.log(totalAmount);
-    //                     $('.booking_room_totprice').val(totalAmount);
-    //                 });
-
-    //var booking_room_totprice = $(".booking_room_totprice").val();
-
-    //   var total_room_cost = booking_room_totprice * days_difference;
-    //  $('.total_room_cost').val(total_room_cost);
-    //});
+   
 </script>
