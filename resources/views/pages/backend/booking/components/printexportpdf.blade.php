@@ -75,6 +75,7 @@
                                                     <th>Booking ID</th>
                                                     <th>Date</th>
                                                     <th>Room Details</th>
+                                                    <th>Room Amount (Cost + GST)</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -91,6 +92,7 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
+                                                        <td>{{ $checkin_Arrays['grand_total'] }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -119,6 +121,7 @@
                                                     <th>Booking ID</th>
                                                     <th>Date</th>
                                                     <th>Room Details</th>
+                                                    <th>Room Amount (Cost + GST)</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -135,6 +138,7 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
+                                                        <td>{{ $checkout_Arrays['grand_total'] }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -162,6 +166,7 @@
                                                     <th>Date</th>
                                                     <th>Amount</th>
                                                     <th>Details</th>
+                                                    <th>Note</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -170,6 +175,7 @@
                                                         <td>{{ date('d M,Y', strtotime($incomes->date)) }}</td>
                                                         <td>{{ $incomes->amount }}</td>
                                                         <td>{{ $incomes->namelist->name }}</td>
+                                                        <td>{{ $incomes->note }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -197,6 +203,7 @@
                                                     <th>Date</th>
                                                     <th>Amount</th>
                                                     <th>Details</th>
+                                                    <th>Note</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -205,6 +212,7 @@
                                                         <td>{{ date('d M,Y', strtotime($expences->date)) }}</td>
                                                         <td>{{ $expences->amount }}</td>
                                                         <td>{{ $expences->namelist->name }}</td>
+                                                        <td>{{ $expences->note }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
