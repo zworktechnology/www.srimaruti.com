@@ -1226,8 +1226,6 @@ class BookingController extends Controller
                         );
                     }
 
-
-
                     $checkin_Array[] = array(
                         'room_list' => $room_list,
                         'days' => $checkin_Datas->days,
@@ -1285,6 +1283,16 @@ class BookingController extends Controller
                                 ->orderBy('date', 'asc')
                                 ->get();
 
-        return view('pages.backend.booking.components.printexportpdf', compact('income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array'));
+        $income_total = Income::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
+                                ->where('staff_id', '=', $manager_id)
+                                ->where('soft_delete', '!=', 1)
+                                ->sum('amount');
+
+        $expence_total = Expense::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
+                                ->where('staff_id', '=', $manager_id)
+                                ->where('soft_delete', '!=', 1)
+                                ->sum('amount');
+
+        return view('pages.backend.booking.components.printexportpdf', compact('income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array'));
     }
 }

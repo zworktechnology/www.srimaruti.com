@@ -53,9 +53,35 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
 
-                                <br />
+                                <div class="py-2">
+                                    <div class="table-responsive">
+                                        <table class="table table-nowrap table-centered mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Previous Day Balance</th>
+                                                    <th>Room Income</th>
+                                                    <th>Other Income</th>
+                                                    <th>Online Payment</th>
+                                                    <th>Expence</th>
+                                                    <th>Close Account</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>150</td>
+                                                    <td>{{ $income_total }}</td>
+                                                    <td>250</td>
+                                                    <td>{{ $expence_total }}</td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                </div>
+
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-8 col-8">
                                         <div class="text-muted">
@@ -76,6 +102,7 @@
                                                     <th>Date</th>
                                                     <th>Room Details</th>
                                                     <th>Room Amount (Cost + GST)</th>
+                                                    <th>Payment Details</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -93,6 +120,7 @@
                                                             @endforeach
                                                         </td>
                                                         <td>{{ $checkin_Arrays['grand_total'] }}</td>
+                                                        <td></td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -101,8 +129,9 @@
                                     <hr>
                                 </div>
 
-                                <br />
-                                <div class="row" style="display: flex;">
+                                <br>
+
+                                <div class="row" style="display: flex;" hidden>
                                     <div class="col-sm-8 col-8">
                                         <div class="text-muted">
                                             <div>
@@ -113,7 +142,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="py-2">
+                                <div class="py-2" hidden>
                                     <div class="table-responsive">
                                         <table class="table table-nowrap table-centered mb-0">
                                             <thead>
@@ -146,13 +175,14 @@
                                     </div>
                                 </div>
 
-                                <br />
+                                <br>
+
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-8 col-8">
                                         <div class="text-muted">
                                             <div>
                                                 <h5 class="font-size-16 mb-1" style="color: red;">
-                                                    Income
+                                                    Other Income
                                                 </h5>
                                             </div>
                                         </div>
@@ -164,18 +194,18 @@
                                             <thead>
                                                 <tr>
                                                     <th>Date</th>
-                                                    <th>Amount</th>
                                                     <th>Details</th>
                                                     <th>Note</th>
+                                                    <th>Amount</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($income as $keydata => $incomes)
                                                     <tr>
                                                         <td>{{ date('d M,Y', strtotime($incomes->date)) }}</td>
-                                                        <td>{{ $incomes->amount }}</td>
                                                         <td>{{ $incomes->namelist->name }}</td>
                                                         <td>{{ $incomes->note }}</td>
+                                                        <td>{{ $incomes->amount }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -183,13 +213,14 @@
                                     </div>
                                 </div>
 
-                                <br />
+                                <br>
+
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-8 col-8">
                                         <div class="text-muted">
                                             <div>
                                                 <h5 class="font-size-16 mb-1" style="color: red;">
-                                                    Expence
+                                                    Other Expence
                                                 </h5>
                                             </div>
                                         </div>
@@ -201,24 +232,26 @@
                                             <thead>
                                                 <tr>
                                                     <th>Date</th>
-                                                    <th>Amount</th>
                                                     <th>Details</th>
                                                     <th>Note</th>
+                                                    <th>Amount</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($expence as $keydata => $expences)
                                                     <tr>
                                                         <td>{{ date('d M,Y', strtotime($expences->date)) }}</td>
-                                                        <td>{{ $expences->amount }}</td>
                                                         <td>{{ $expences->namelist->name }}</td>
                                                         <td>{{ $expences->note }}</td>
+                                                        <td>{{ $expences->amount }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+
+                                <br>
 
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-6 col-6">
