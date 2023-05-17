@@ -252,7 +252,7 @@
                                                         class="col-sm-3 col-form-label">
                                                         Proof <span style="color: red;">*</span> </label>
                                                     <div class="col-sm-3">
-                                                        <select class="form-control js-example-basic-single"
+                                                        <select class="form-control prooftype_one"
                                                             name="prooftype_one" style="width: 100%;" required>
                                                             <option value="" disabled selected hidden
                                                                 class="text-muted">Select Type</option>
@@ -265,13 +265,26 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-3">
-                                                        <input type="file" class="form-control" name="proofimage_one"
+                                                        <input type="file" class="form-control proofimage_one" name="proofimage_one"
                                                             required>
                                                     </div>
                                                     <div class="col-sm-3">
-                                                        <input type="file" class="form-control" name="proofimage_two"
+                                                        <input type="file" class="form-control proofimage_two" name="proofimage_two"
                                                             required>
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    Proof View </label>
+                                                <div class="col-sm-4">
+                                                    <a target="_blank" class="proofone"><span style="color: black;">
+                                                        </span></a>
+                                                </div>
+                                                <div class="col-sm-1">|</div>
+                                                <div class="col-sm-4">
+                                                    <a target="_blank" class="prooftwo"><span style="color: black;">
+                                                        </span></a>
                                                 </div>
                                             </div>
 
@@ -547,6 +560,9 @@
                             $('.whats_app_number').val(response['data'][i].whats_app_number);
                             $('.email_id').val(response['data'][i].email_id);
                             $('.address').val(response['data'][i].address);
+                            $('.prooftype_one').val(response['data'][i].prooftype_one);
+                            $('.proofone').html(response['data'][i].proofimage_one);
+                            $('.prooftwo').html(response['data'][i].proofimage_two);
                         }
                     }
                 });

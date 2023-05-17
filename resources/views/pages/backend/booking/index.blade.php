@@ -11,7 +11,7 @@
                         <div class="page-title-box d-flex align-items-center justify-content-between">
                             <a href="{{ route('booking.create', ['user_branch_id' => $user_branch_id]) }}"><button
                                     type="button" class="btn btn-primary waves-effect waves-light mb-3"><i
-                                        class="mdi mdi-plus me-1"></i> New Booking</button></a>
+                                        class="mdi mdi-plus me-1"></i> {{ __('messages.newbooking_title') }}</button></a>
 
                             <div class="page-title-right">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
@@ -26,9 +26,9 @@
                                                 style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(0px, -41.3167px);"
                                                 data-popper-placement="top-start">
                                                 <a class="dropdown-item {{ Route::is('booking.index') ? 'mm-active' : '' }}"
-                                                    href="{{ route('booking.index', ['user_branch_id' => $user_branch_id]) }}">Opened Booking</a>
+                                                    href="{{ route('booking.index', ['user_branch_id' => $user_branch_id]) }}">{{ __('messages.openedbooking_title') }}</a>
                                                 <a class="dropdown-item {{ Route::is('booking.today') ? 'mm-active' : '' }}"
-                                                    href="{{ route('booking.today', ['user_branch_id' => $user_branch_id]) }}">Closed Booking</a>
+                                                    href="{{ route('booking.today', ['user_branch_id' => $user_branch_id]) }}">{{ __('messages.closedbooking_title') }}</a>
                                                 {{-- <a class="dropdown-item {{ Route::is('booking.upcoming') ? 'mm-active' : '' }}"
                                                     href="{{ route('booking.upcoming', ['user_branch_id' => $user_branch_id]) }}">Upcoming</a>
                                                 <a class="dropdown-item {{ Route::is('booking.missingout') ? 'mm-active' : '' }}"
@@ -96,11 +96,11 @@
                                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
-                                            <th>Booking ID</th>
-                                            <th>Customer</th>
+                                            <th>{{ __('messages.billno') }}</th>
+                                            <th>{{ __('messages.customer') }}</th>
                                             <th>Check Out Date & Time</th>
-                                            <th>Room Details</th>
-                                            <th>Action</th>
+                                            <th>{{ __('messages.room_title') }} Details</th>
+                                            <th>{{ __('messages.action_title') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

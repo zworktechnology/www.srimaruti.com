@@ -42,9 +42,11 @@ Route::get('/privacy-and-policy', function () {return view('pages.frontend.priva
 
 // Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('lang/change', [App\Http\Controllers\HomeController::class, 'lang_change'])->name('lang.change');
 
 // Home - Prevent Back Browser Button - After Logout
 Route::middleware(['prevent-back-history'])->get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Change Password - Index
@@ -268,6 +270,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
     });
 });
+
+
+
+
+
+
+
 
 Route::get('getBranchwiseRoom/{id}', [RoomController::class, 'getBranchwiseRoom']);
 Route::get('getPriceforRooms/{id}', [RoomController::class, 'getPriceforRooms']);

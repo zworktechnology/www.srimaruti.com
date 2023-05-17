@@ -57,11 +57,11 @@
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Sl. No</th>
-                                        <th>Date</th>
-                                        <th>Branch</th>
-                                        <th>Amount</th>
-                                        <th>Action</th>
+                                        <th>{{ __('messages.sno_title') }}</th>
+                                        <th>{{ __('messages.date') }}</th>
+                                        <th>{{ __('messages.branch_title') }}</th>
+                                        <th>{{ __('messages.amount_title') }}</th>
+                                        <th>{{ __('messages.action_title') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

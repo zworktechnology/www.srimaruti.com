@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0">Dashboard</h4>
+                            <h4 class="mb-0">{{ __('messages.dashboard_title') }}</h4>
                             <div class="page-title-right">
                                 <form autocomplete="off" method="POST" action="/dashboard_datefilter" style="display: flex;">
                                 @method('PUT')
@@ -58,15 +58,15 @@
                                     <table class="table table-centered table-nowrap mb-0">
                                         <thead class="table-light">
                                             <tr>
-                                                <th>Branch</th>
-                                                <th>Previous Day Balance</th>
-                                                <th>Room Income</th>
-                                                <th>Other Income</th>
-                                                <th>Online Payment</th>
-                                                <th>Expence</th>
-                                                <th>Available Amount</th>
-                                                <th>Account Closure</th>
-                                                <th>Difference</th>
+                                                <th>{{ __('messages.branch_title') }}</th>
+                                                <th>{{ __('messages.previousday_balance') }}</th>
+                                                <th>{{ __('messages.room_income') }}</th>
+                                                <th>{{ __('messages.otherincome_title') }}</th>
+                                                <th>{{ __('messages.online_payment') }}</th>
+                                                <th>{{ __('messages.expense_title') }}</th>
+                                                <th>{{ __('messages.availableamount_title') }}</th>
+                                                <th>{{ __('messages.accountclosure_title') }}</th>
+                                                <th>{{ __('messages.difference_title') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody id="branchwise_list">

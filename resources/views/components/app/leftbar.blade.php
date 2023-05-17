@@ -35,18 +35,18 @@
                 <li class="{{ Route::is('home', 'homepage.data.filter') ? 'mm-active' : '' }}">
                     <a href="{{ route('home') }}" class="waves-effect">
                         <i class="uil-tachometer-fast"></i>
-                        <span>Dashboard</span>
+                        <span>{{ __('messages.dashboard_title') }}</span>
                     </a>
                 </li>
                 <li class="{{ Route::is('booking.index','booking.create','booking.edit','booking.view','booking.today','booking.upcoming','booking.missingout') ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);" class="waves-effect {{ Route::is('booking.index','booking.create','booking.edit', 'booking.view') ? 'mm-active' : '' }}">
                         <i class="uil-store"></i>
-                        <span>Booking</span>
+                        <span>{{ __('messages.booking_title') }}</span>
                     </a>
                     <ul class="sub-menu {{ Route::is('booking.create','booking.edit','booking.view') ? 'mm-collapse' : '' }} {{ Route::is('booking.index', 'booking.today', 'booking.upcoming', 'booking.missingout') ? 'mm-show' : '' }}" aria-expanded="false">
-                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create') && request()->route('user_branch_id') == 1 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '1']) }}">Srirangam</a></li>
-                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create') && request()->route('user_branch_id') == 2 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '2']) }}">Samayapuram</a></li>
-                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create') && request()->route('user_branch_id') == 3 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '3']) }}">Gunaselam</a></li>
+                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create') && request()->route('user_branch_id') == 1 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '1']) }}">{{ __('messages.sreerangam_title') }}</a></li>
+                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create') && request()->route('user_branch_id') == 2 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '2']) }}">{{ __('messages.samayapuram_title') }}</a></li>
+                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create') && request()->route('user_branch_id') == 3 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '3']) }}">{{ __('messages.gunaseelam_title') }}</a></li>
                     </ul>
                 </li>
                 <li class="{{ Route::is('namelist.index','namelist.create','namelist.edit') ? 'mm-active' : '' }}">
@@ -58,44 +58,44 @@
                 <li class="{{ Route::is('income.index','income.create','income.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('income.index') }}" class="waves-effect">
                         <i class="uil-money-withdraw"></i>
-                        <span>Other Income</span>
+                        <span>{{ __('messages.otherincome_title') }}</span>
                     </a>
                 </li>
                 <li class="{{ Route::is('expense.index','expense.create','expense.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('expense.index') }}" class="waves-effect">
                         <i class="uil-money-insert"></i>
-                        <span>Expense</span>
+                        <span>{{ __('messages.expense_title') }}</span>
                     </a>
                 </li>
                 <li class="{{ Route::is('openaccount.index','openaccount.create','openaccount.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('openaccount.index') }}" class="waves-effect">
                         <i class="uil-lock-open-alt"></i>
-                        <span>Open Account</span>
+                        <span>{{ __('messages.openaccount_title') }}</span>
                     </a>
                 </li>
                 <li class="{{ Route::is('closeaccount.index','closeaccount.create','closeaccount.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('closeaccount.index') }}" class="waves-effect">
                         <i class="uil-lock-alt"></i>
-                        <span>Close Account</span>
+                        <span>{{ __('messages.closeaccount_title') }}</span>
                     </a>
                 </li>
 
                 <li class="{{ Route::is('branch.index','branch.create','branch.edit','branch.view') ? 'mm-active' : '' }}">
                     <a href="{{ route('branch.index') }}" class="waves-effect">
                         <i class="uil-map-pin-alt"></i>
-                        <span>Branch</span>
+                        <span>{{ __('messages.branch_title') }}</span>
                     </a>
                 </li>
                 <li class="{{ Route::is('room.index','room.create','room.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('room.index') }}" class="waves-effect">
                         <i class="uil-key-skeleton-alt"></i>
-                        <span>Room</span>
+                        <span>{{ __('messages.room_title') }}</span>
                     </a>
                 </li>
                 <li class="{{ Route::is('staff.index','staff.create','staff.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('staff.index') }}" class="waves-effect">
                         <i class="uil-user-check"></i>
-                        <span>Manager</span>
+                        <span>{{ __('messages.manager_title') }}</span>
                     </a>
                 </li>
                 <li class="{{ Route::is('exportaspdf') ? 'mm-active' : '' }}">
@@ -116,6 +116,7 @@
                         <span>Feed Back</span>
                     </a>
                 </li>
+                
             </ul>
         </div>
         <!-- Sidebar -->

@@ -11,6 +11,7 @@ use App\Models\Booking;
 use App\Models\BookingPayment;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App;
 
 class HomeController extends Controller
 {
@@ -40,6 +41,10 @@ class HomeController extends Controller
         $total_room_icome = BookingPayment::where('soft_delete', '!=', 1)->where('paid_date', '=', $today)->sum('payable_amount');
 
         $branchwise_list = [];
+        $tot_gstamount = 0;
+        $balanceamount_from_tot_roomincome = 0;
+        $allbranches_total_expense = 0;
+        $total_online_payment = 0;
         $branch = Branch::where('soft_delete', '!=', 1)->get();
         foreach ($branch as $key => $branchs) {
 
@@ -47,6 +52,7 @@ class HomeController extends Controller
             $gstamount = 0;
             $total_onlinepayment = 0;
             $balanceamount_from_roomincome = 0;
+            $tot_gstamount = 0;
 
             $booking_id = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $branchs->id)->get();
             foreach ($booking_id as $key => $booking_ids) {
@@ -314,5 +320,14 @@ class HomeController extends Controller
         }
 
         echo json_encode($branchwise_list);
+    }
+
+
+    public function lang_change(Request $request)
+    {
+        App::setLocale($request->lang);
+        session()->put('lang_code', $request->lang); 
+  
+        return redirect()->back();
     }
 }
