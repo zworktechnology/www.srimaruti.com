@@ -155,13 +155,15 @@
 
                                                         @if ($bookingDatas['balance_amount'] == 0)
                                                             @if ($bookingDatas['status'] != 2)
-                                                                <li>
-                                                                    <a href="#checkout{{ $bookingDatas['id'] }}"
-                                                                        data-bs-toggle="modal"
-                                                                        data-id="{{ $bookingDatas['id'] }}"
-                                                                        class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
-                                                                        data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
-                                                                </li>
+                                                                @if ($bookingDatas['chick_out_date'] >= $today)
+                                                                    <li>
+                                                                        <a href="#checkout{{ $bookingDatas['id'] }}"
+                                                                            data-bs-toggle="modal"
+                                                                            data-id="{{ $bookingDatas['id'] }}"
+                                                                            class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
+                                                                            data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
+                                                                    </li>
+                                                                @endif
                                                             @endif
                                                         @endif
 
@@ -241,7 +243,7 @@
         });
 
 
-        
+
 
 
         // Calculate Days

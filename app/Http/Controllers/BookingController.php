@@ -97,7 +97,7 @@ class BookingController extends Controller
         $timenow = Carbon::now()->format('H:i');
         $staff = Staff::where('soft_delete', '!=', 1)->get();
 
-        $data = Booking::where('soft_delete', '!=', 1)->where('status', '=', 2)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
+        $data = Booking::where('soft_delete', '!=', 1)->where('out_date', '=', $today)->where('status', '=', 2)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
 
         $bookingData = [];
         $room_list = [];
