@@ -1164,6 +1164,32 @@ class BookingController extends Controller
                         );
                     }
 
+                    $payment_data_arr = BookingPayment::where('booking_id', '=', $checkin_Datas->id)->get();
+
+                    foreach ($payment_data_arr as $key => $payment_data_array) {
+        
+                        $cash_paymentmethod = $payment_data_array->payment_method;
+                        if($cash_paymentmethod == 'Cash'){
+                            $cash_income = $checkin_Datas->total;
+                            $case_income_gst = $checkin_Datas->gst_amount;
+                        }else{
+                            $cash_income = '-';
+                            $case_income_gst = '-';
+                        }
+                        
+                        
+                        if($cash_paymentmethod == 'Online Payment'){
+                            $online_income = $checkin_Datas->total;
+                            $online_income_gst = $checkin_Datas->gst_amount;
+                        }else{
+                            $online_income = '-';
+                            $online_income_gst = '-';
+                        }
+                    }
+
+
+
+
                     $checkin_Array[] = array(
                         'room_list' => $room_list,
                         'days' => $checkin_Datas->days,
@@ -1175,6 +1201,10 @@ class BookingController extends Controller
                         'booking_invoiceno' => $checkin_Datas->booking_invoiceno,
                         'check_out_date' => $checkin_Datas->out_date,
                         'check_out_time' => $checkin_Datas->out_time,
+                        'cash_income' => $cash_income,
+                        'case_income_gst' => $case_income_gst,
+                        'online_income' => $online_income,
+                        'online_income_gst' => $online_income_gst,
                     );
         }
 
@@ -1188,7 +1218,7 @@ class BookingController extends Controller
         $ch_oroom_list = [];
         foreach ($checkout_Data as $key => $checkout_Datas) {
 
-            $coroomsbooked = BookingRoom::where('booking_id', '=', $checkout_Datas->id)->get();
+                $coroomsbooked = BookingRoom::where('booking_id', '=', $checkout_Datas->id)->get();
                     foreach ($coroomsbooked as $key => $corooms_booked) {
                         $Rooms = Room::findOrFail($corooms_booked->room_id);
                         $ch_oroom_list[] = array(
@@ -1198,6 +1228,9 @@ class BookingController extends Controller
                             'booking_id' => $checkout_Datas->id,
                         );
                     }
+
+
+                    
 
                     $checkout_Array[] = array(
                         'room_list' => $ch_oroom_list,
@@ -1233,6 +1266,29 @@ class BookingController extends Controller
                                 ->where('soft_delete', '!=', 1)
                                 ->sum('amount');
 
-        return view('pages.backend.booking.components.printexportpdf', compact('income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array'));
+
+
+        $Total_room_income = Booking::whereBetween('check_in_date', [$from_date, $to_date])
+                                ->where('branch_id', '=', $branch_id)
+                                ->where('check_in_staff', '=', $manager_id)
+                                ->where('soft_delete', '!=', 1)
+                                ->get();
+
+        foreach ($Total_room_income as $key => $Total_room_income_arr) {
+            $payment_data_arr = BookingPayment::where('booking_id', '=', $Total_room_income_arr->id)->get();
+
+            foreach ($payment_data_arr as $key => $payment_data_array) {
+
+                $cash_paymentmethod = $payment_data_array->payment_method;
+                if($cash_paymentmethod == 'Cash'){
+                    $room_cash_income = $Total_room_income_arr->grand_total;
+                }else if($cash_paymentmethod == 'Online Payment'){
+                    $room_online_income = $Total_room_income_arr->grand_total;
+                }
+            }
+        }
+
+
+        return view('pages.backend.booking.components.printexportpdf', compact('income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income'));
     }
 }

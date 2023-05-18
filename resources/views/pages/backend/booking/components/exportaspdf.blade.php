@@ -23,7 +23,7 @@
                                         <div class="modal-body">
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Manager <span style="color: red;">*</span> </label>
+                                                {{ __('messages.manager_title') }} <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-4">
                                                     <select class="form-control branch_id"
                                                         name="manager_id" id="manager_id" required>
@@ -35,7 +35,7 @@
                                                     </select>
                                                 </div>
                                                 <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
-                                                    Branch <span style="color: red;">*</span> </label>
+                                                {{ __('messages.branch_title') }} <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-4">
                                                     <select class="form-control branch_id"
                                                         name="branch_id" id="branch_id" required>

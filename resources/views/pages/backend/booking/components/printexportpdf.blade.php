@@ -70,9 +70,9 @@
                                             <tbody>
                                                 <tr>
                                                     <td></td>
-                                                    <td>150</td>
+                                                    <td>{{ $room_cash_income }}</td>
                                                     <td>{{ $income_total }}</td>
-                                                    <td>250</td>
+                                                    <td>{{ $room_online_income }}</td>
                                                     <td>{{ $expence_total }}</td>
                                                     <td></td>
                                                 </tr>
@@ -121,10 +121,10 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
-                                                        <td>{{ $checkin_Arrays['total'] }}</td>
-                                                        <td>{{ number_format($checkin_Arrays['gst_amount'], 0) }}</td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <td>{{ $checkin_Arrays['cash_income'] }}</td>
+                                                        <td>{{ $checkin_Arrays['case_income_gst'] }}</td>
+                                                        <td>{{ $checkin_Arrays['online_income'] }}</td>
+                                                        <td>{{ $checkin_Arrays['online_income_gst'] }}</td>
                                                         <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_out_date'])) }}</td>
                                                     </tr>
                                                 @endforeach

@@ -31,6 +31,8 @@ return [
   'openaccount_title' => 'Open Account',
   'closeaccount_title' => 'Close Account',
   'total_title' => 'Total',
+  'name_title' => 'Name',
+  'address_title' => 'Address',
   
 
 

@@ -1008,6 +1008,17 @@
             }
         });
 
+
+        $(document).on("keyup", 'input.gst_percentage', function() {
+            var gst_percentage = $(this).val();
+            if($.isNumeric(gst_percentage)){
+                console.log($.isNumeric(gst_percentage));
+            }else{
+                alert('Add the data in numbers only');
+                $(".gst_percentage").val('');
+            }
+        });
+
         // Webcam.set({
         //     width: 350,
         //     height: 200,

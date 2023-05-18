@@ -57,9 +57,9 @@
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Sl. No</th>
-                                        <th>Name</th>
-                                        <th>Action</th>
+                                    <th>{{ __('messages.sno_title') }}</th>
+                                    <th>{{ __('messages.name_title') }}</th>
+                                        <th>{{ __('messages.action_title') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

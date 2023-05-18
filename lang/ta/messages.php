@@ -31,6 +31,8 @@ return [
   'openaccount_title' => 'ஆரம்ப கணக்கு',
   'closeaccount_title' => 'கணக்கு முடிவு',
   'total_title' => 'மொத்த தொகை',
+  'name_title' => 'பெயர்',
+  'address_title' => 'முகவரி',
 
 
 ];
