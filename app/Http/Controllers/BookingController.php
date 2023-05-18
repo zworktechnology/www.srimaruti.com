@@ -1235,6 +1235,8 @@ class BookingController extends Controller
                         'total' => $checkin_Datas->total,
                         'gst_amount' => $checkin_Datas->gst_amount,
                         'booking_invoiceno' => $checkin_Datas->booking_invoiceno,
+                        'check_out_date' => $checkin_Datas->out_date,
+                        'check_out_time' => $checkin_Datas->out_time,
                     );
         }
 
