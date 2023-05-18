@@ -49,16 +49,17 @@ class HomeController extends Controller
         foreach ($branch as $key => $branchs) {
 
             $Room_income = 0;
-            $gstamount = 0;
+            
             $total_onlinepayment = 0;
             $balanceamount_from_roomincome = 0;
             $tot_gstamount = 0;
+            $gstamount = 0;
 
             $booking_id = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $branchs->id)->get();
             foreach ($booking_id as $key => $booking_ids) {
 
                 $BookingPayment = BookingPayment::where('booking_id', '=', $booking_ids->id)->where('paid_date', '=', $today)->get();
-
+                $gstamount = 0;
                 foreach ($BookingPayment as $key => $BookingPayments) {
                     $Room_income += $BookingPayments->payable_amount;
                     $booking_gst = Booking::findOrFail($BookingPayments->booking_id);
