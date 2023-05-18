@@ -13,8 +13,21 @@
                                     type="button" class="btn btn-primary waves-effect waves-light mb-3"><i
                                         class="mdi mdi-plus me-1"></i> {{ __('messages.newbooking_title') }}</button></a>
 
-                            <div class="page-title-right">
+                            <div class="page-title-right" style="display:flex">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <ol class="breadcrumb m-0">
+                                        <form autocomplete="off" method="POST" action="{{ route('booking.datefilter', ['user_branch_id' => $user_branch_id]) }}"
+                                            style="display: flex;">
+                                            @method('PUT')
+                                            @csrf
+                                            <li style="margin-left: 10px;"><input type="date" name="from_date" required
+                                                    class="form-control from_date" value="{{ $today }}"></li>
+                                            <li style="margin-left: 10px;"><button type="submit"
+                                                    class="btn btn-primary home_search">Search</button></li>
+                                        </form>
+                                    </ol>
+                                </div>
+                                <div class="page-title-box d-flex align-items-center justify-content-between" style="margin-left: 10px;">
                                     <div class="page-title-right">
                                         <div class="dropdown">
                                             <button class="btn btn-primary dropdown-toggle waves-effect waves-light"
@@ -29,10 +42,6 @@
                                                     href="{{ route('booking.index', ['user_branch_id' => $user_branch_id]) }}">{{ __('messages.openedbooking_title') }}</a>
                                                 <a class="dropdown-item {{ Route::is('booking.today') ? 'mm-active' : '' }}"
                                                     href="{{ route('booking.today', ['user_branch_id' => $user_branch_id]) }}">{{ __('messages.closedbooking_title') }}</a>
-                                                {{-- <a class="dropdown-item {{ Route::is('booking.upcoming') ? 'mm-active' : '' }}"
-                                                    href="{{ route('booking.upcoming', ['user_branch_id' => $user_branch_id]) }}">Upcoming</a>
-                                                <a class="dropdown-item {{ Route::is('booking.missingout') ? 'mm-active' : '' }}"
-                                                    href="{{ route('booking.missingout', ['user_branch_id' => $user_branch_id]) }}">Missing</a> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -185,10 +194,10 @@
                                                         </li>
 
                                                         @if ($bookingDatas['status'] != 2)
-                                                        <li>
-                                                            <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}"
-                                                                class="btn btn-sm btn-soft-info">Edit</a>
-                                                        </li>
+                                                            <li>
+                                                                <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}"
+                                                                    class="btn btn-sm btn-soft-info">Edit</a>
+                                                            </li>
                                                         @endif
                                                     </ul>
                                                 </td>
@@ -196,8 +205,8 @@
 
                                             @if ($bookingDatas['balance_amount'] != 0)
                                                 <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}"
-                                                    data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..." class="paybalance{{ $bookingDatas['id'] }}"
-                                                    tabindex="-1">
+                                                    data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..."
+                                                    class="paybalance{{ $bookingDatas['id'] }}" tabindex="-1">
                                                     @include('pages.backend.booking.components.paybalance')
                                                 </div>
                                             @endif

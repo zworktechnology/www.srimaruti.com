@@ -130,7 +130,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // VIEW
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/view/{id}', [BookingController::class, 'view'])->name('booking.view');
         // DATE FILTER
-        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/datefilter', [BookingController::class, 'datefilter'])->name('booking.datefilter');
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/datefilter/{user_branch_id}', [BookingController::class, 'datefilter'])->name('booking.datefilter');
         // AUTO COMPLETE
         Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/booking/autocomplete', [BookingController::class, 'autocomplete'])->name('booking.autocomplete');
         // EXTEND

@@ -963,28 +963,27 @@ class BookingController extends Controller
         return view('pages.backend.booking.bookingbillview', compact('data', 'branch', 'room_list', 'today'));
     }
 
-    public function datefilter(Request $request)
+    public function datefilter(Request $request, $user_branch_id)
     {
-        $booking_dropdown_list = $request->get('booking_dropdown_list');
+        $today = Carbon::now()->format('Y-m-d');
         $from_date = $request->get('from_date');
-        $to_date = $request->get('to_date');
+        $timenow = Carbon::now()->format('H:i');
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
 
-        if($booking_dropdown_list == 'checkout'){
-            $checkin_Array = [];
-            $room_list = [];
-            $terms = [];
+        $checkin_Array = [];
+        $room_list = [];
+        $terms = [];
 
-            $checkout_Data = Booking::whereBetween('check_out_date', [$from_date, $to_date])
-                ->where('soft_delete', '!=', 1)->where('status', '=', 2)->get();
+            $check_in_date = Booking::where('check_in_date', '=', $from_date)->where('branch_id', '=', $user_branch_id)->where('soft_delete', '!=', 1)->get();
 
-                foreach ($checkout_Data as $key => $checkout_Datas) {
-                    $branch = Branch::findOrFail($checkout_Datas->branch_id);
-                    $roomsbooked = BookingRoom::where('booking_id', '=', $checkout_Datas->id)->get();
+                foreach ($check_in_date as $key => $check_in_dates) {
+                    $branch = Branch::findOrFail($check_in_dates->branch_id);
+                    $roomsbooked = BookingRoom::where('booking_id', '=', $check_in_dates->id)->get();
                     foreach ($roomsbooked as $key => $rooms_booked) {
                         $Rooms = Room::findOrFail($rooms_booked->room_id);
                         $room_list[] = array(
                             'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type,
-                            'booking_id' => $checkout_Datas->id,
+                            'booking_id' => $check_in_dates->id,
                             'booking_room_price' => $rooms_booked->room_price,
                             'room_cal_price' => $rooms_booked->room_cal_price,
                             'id' => $rooms_booked->id,
@@ -992,109 +991,48 @@ class BookingController extends Controller
                         );
                     }
 
-                    $payment_data = BookingPayment::where('booking_id', '=', $checkout_Datas->id)->get();
+                    $payment_data = BookingPayment::where('booking_id', '=', $check_in_dates->id)->get();
                     foreach ($payment_data as $key => $payment_datas) {
                         $terms[] = array(
-                            'booking_id' => $checkout_Datas->id,
+                            'booking_id' => $check_in_dates->id,
                             'term' => $payment_datas->term,
                             'payable_amount' => $payment_datas->payable_amount,
                         );
                     }
 
                     $checkin_Array[] = array(
-                        'customer_name' => $checkout_Datas->customer_name,
+                        'customer_name' => $check_in_dates->customer_name,
                         'room_list' => $room_list,
                         'branch' => $branch->name,
-                        'chick_in_date' => $checkout_Datas->check_in_date,
-                        'chick_in_time' => $checkout_Datas->check_in_time,
-                        'id' => $checkout_Datas->id,
-                        'chick_out_date' => $checkout_Datas->check_out_date,
-                        'out_date' => $checkout_Datas->out_date,
-                        'chick_out_time' => $checkout_Datas->check_out_time,
-                        'phone_number' => $checkout_Datas->phone_number,
-                        'grand_total' => $checkout_Datas->grand_total,
-                        'total_paid' => $checkout_Datas->total_paid,
-                        'balance_amount' => $checkout_Datas->balance_amount,
-                        'days' => $checkout_Datas->days,
-                        'gst_per' => $checkout_Datas->gst_per,
-                        'gst_amount' => $checkout_Datas->gst_amount,
-                        'disc_per' => $checkout_Datas->disc_per,
-                        'disc_amount' => $checkout_Datas->disc_amount,
-                        'additional_amount' => $checkout_Datas->additional_amount,
-                        'additional_notes' => $checkout_Datas->additional_notes,
-                        'total' => $checkout_Datas->total,
+                        'chick_in_date' => $check_in_dates->check_in_date,
+                        'chick_in_time' => $check_in_dates->check_in_time,
+                        'id' => $check_in_dates->id,
+                        'chick_out_date' => $check_in_dates->check_out_date,
+                        'out_date' => $check_in_dates->out_date,
+                        'chick_out_time' => $check_in_dates->check_out_time,
+                        'phone_number' => $check_in_dates->phone_number,
+                        'grand_total' => $check_in_dates->grand_total,
+                        'total_paid' => $check_in_dates->total_paid,
+                        'balance_amount' => $check_in_dates->balance_amount,
+                        'days' => $check_in_dates->days,
+                        'gst_per' => $check_in_dates->gst_per,
+                        'gst_amount' => $check_in_dates->gst_amount,
+                        'disc_per' => $check_in_dates->disc_per,
+                        'disc_amount' => $check_in_dates->disc_amount,
+                        'additional_amount' => $check_in_dates->additional_amount,
+                        'additional_notes' => $check_in_dates->additional_notes,
+                        'total' => $check_in_dates->total,
                         'terms' => $terms,
-                        'status' => $checkout_Datas->status,
-                        'extended_date' => $checkout_Datas->extended_date,
-                        'extended_time' => $checkout_Datas->extended_time,
+                        'status' => $check_in_dates->status,
+                        'extended_date' => $check_in_dates->extended_date,
+                        'extended_time' => $check_in_dates->extended_time,
+                        'out_date' => $check_in_dates->out_date,
+                        'out_time' => $check_in_dates->out_time,
+                        'booking_invoiceno' => $check_in_dates->booking_invoiceno,
                     );
                 }
 
-                return view('pages.backend.booking.datefilter', compact('checkin_Array', 'booking_dropdown_list', 'from_date', 'to_date'));
-        }else{
-
-            $checkin_Array = [];
-            $room_list = [];
-            $terms = [];
-
-            $checkin_Data = Booking::whereBetween('check_in_date', [$from_date, $to_date])
-                ->where('soft_delete', '!=', 1)->get();
-
-                foreach ($checkin_Data as $key => $checkin_Datas) {
-                    $branch = Branch::findOrFail($checkin_Datas->branch_id);
-                    $roomsbooked = BookingRoom::where('booking_id', '=', $checkin_Datas->id)->get();
-                    foreach ($roomsbooked as $key => $rooms_booked) {
-                        $Rooms = Room::findOrFail($rooms_booked->room_id);
-                        $room_list[] = array(
-                            'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type,
-                            'booking_id' => $checkin_Datas->id,
-                            'booking_room_price' => $rooms_booked->room_price,
-                            'room_cal_price' => $rooms_booked->room_cal_price,
-                            'id' => $rooms_booked->id,
-                            'room_id' => $rooms_booked->room_id,
-                        );
-                    }
-
-                    $payment_data = BookingPayment::where('booking_id', '=', $checkin_Datas->id)->get();
-                    foreach ($payment_data as $key => $payment_datas) {
-                        $terms[] = array(
-                            'booking_id' => $checkin_Datas->id,
-                            'term' => $payment_datas->term,
-                            'payable_amount' => $payment_datas->payable_amount,
-                        );
-                    }
-
-                    $checkin_Array[] = array(
-                        'customer_name' => $checkin_Datas->customer_name,
-                        'room_list' => $room_list,
-                        'branch' => $branch->name,
-                        'chick_in_date' => $checkin_Datas->check_in_date,
-                        'chick_in_time' => $checkin_Datas->check_in_time,
-                        'id' => $checkin_Datas->id,
-                        'chick_out_date' => $checkin_Datas->check_out_date,
-                        'out_date' => $checkin_Datas->out_date,
-                        'chick_out_time' => $checkin_Datas->check_out_time,
-                        'phone_number' => $checkin_Datas->phone_number,
-                        'grand_total' => $checkin_Datas->grand_total,
-                        'total_paid' => $checkin_Datas->total_paid,
-                        'balance_amount' => $checkin_Datas->balance_amount,
-                        'days' => $checkin_Datas->days,
-                        'gst_per' => $checkin_Datas->gst_per,
-                        'gst_amount' => $checkin_Datas->gst_amount,
-                        'disc_per' => $checkin_Datas->disc_per,
-                        'disc_amount' => $checkin_Datas->disc_amount,
-                        'additional_amount' => $checkin_Datas->additional_amount,
-                        'additional_notes' => $checkin_Datas->additional_notes,
-                        'total' => $checkin_Datas->total,
-                        'terms' => $terms,
-                        'status' => $checkin_Datas->status,
-                        'extended_date' => $checkin_Datas->extended_date,
-                        'extended_time' => $checkin_Datas->extended_time,
-                    );
-                }
-
-            return view('pages.backend.booking.datefilter', compact('checkin_Array', 'booking_dropdown_list', 'from_date', 'to_date'));
-        }
+                return view('pages.backend.booking.datefilter', compact('timenow', 'staff', 'today', 'checkin_Array', 'from_date', 'user_branch_id'));
     }
 
     public function autocomplete(Request $request)
