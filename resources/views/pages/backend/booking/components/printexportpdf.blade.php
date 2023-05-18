@@ -87,7 +87,7 @@
                                         <div class="text-muted">
                                             <div>
                                                 <h5 class="font-size-16 mb-1" style="color: red;">
-                                                    Check In Room Deatails
+                                                    Room Deatails
                                                 </h5>
                                             </div>
                                         </div>
@@ -99,18 +99,20 @@
                                             <thead>
                                                 <tr>
                                                     <th>Booking ID</th>
-                                                    <th>Date</th>
+                                                    <th>Check In Date</th>
                                                     <th>Room Details</th>
-                                                    <th>Room Amount (Cost + GST)</th>
-                                                    <th>Payment Details</th>
+                                                    <th>Cash Payment</th>
+                                                    <th>GST</th>
+                                                    <th>Online Payment</th>
+                                                    <th>GST</th>
+                                                    <th>Check Out Date</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($checkin_Array as $keydata => $checkin_Arrays)
                                                     <tr>
                                                         <td>{{ $checkin_Arrays['booking_invoiceno'] }}</td>
-                                                        <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_in_date'])) }}
-                                                        </td>
+                                                        <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_in_date'])) }}</td>
                                                         <td>
                                                             @foreach ($checkin_Arrays['room_list'] as $index => $room_lists)
                                                                 @if ($room_lists['booking_id'] == $checkin_Arrays['id'])
@@ -119,8 +121,11 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
-                                                        <td>{{ $checkin_Arrays['grand_total'] }}</td>
+                                                        <td>{{ $checkin_Arrays['total'] }}</td>
+                                                        <td>{{ number_format($checkin_Arrays['gst_amount'], 0) }}</td>
                                                         <td></td>
+                                                        <td></td>
+                                                        <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_out_date'])) }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>

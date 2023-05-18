@@ -43,10 +43,10 @@
                         <i class="uil-store"></i>
                         <span>{{ __('messages.booking_title') }}</span>
                     </a>
-                    <ul class="sub-menu {{ Route::is('booking.create','booking.edit','booking.view') ? 'mm-collapse' : '' }} {{ Route::is('booking.index', 'booking.today', 'booking.upcoming', 'booking.missingout') ? 'mm-show' : '' }}" aria-expanded="false">
-                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create') && request()->route('user_branch_id') == 1 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '1']) }}">{{ __('messages.sreerangam_title') }}</a></li>
-                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create') && request()->route('user_branch_id') == 2 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '2']) }}">{{ __('messages.samayapuram_title') }}</a></li>
-                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create') && request()->route('user_branch_id') == 3 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '3']) }}">{{ __('messages.gunaseelam_title') }}</a></li>
+                    <ul class="sub-menu {{ Route::is('booking.create','booking.edit','booking.view', 'booking.datefilter') ? 'mm-collapse' : '' }} {{ Route::is('booking.index', 'booking.today', 'booking.upcoming', 'booking.missingout', 'booking.datefilter') ? 'mm-show' : '' }}" aria-expanded="false">
+                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create', 'booking.datefilter') && request()->route('user_branch_id') == 1 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '1']) }}">{{ __('messages.sreerangam_title') }}</a></li>
+                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create', 'booking.datefilter') && request()->route('user_branch_id') == 2 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '2']) }}">{{ __('messages.samayapuram_title') }}</a></li>
+                        <li class="{{ Route::is('booking.index','booking.today','booking.upcoming','booking.missingout','booking.create', 'booking.datefilter') && request()->route('user_branch_id') == 3 ? 'mm-active' : '' }}"><a href="{{ route('booking.index', ['user_branch_id' => '3']) }}">{{ __('messages.gunaseelam_title') }}</a></li>
                     </ul>
                 </li>
                 <li class="{{ Route::is('namelist.index','namelist.create','namelist.edit') ? 'mm-active' : '' }}">
@@ -116,7 +116,7 @@
                         <span>Feed Back</span>
                     </a>
                 </li>
-                
+
             </ul>
         </div>
         <!-- Sidebar -->
