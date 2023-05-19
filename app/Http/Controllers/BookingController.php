@@ -1282,8 +1282,15 @@ class BookingController extends Controller
                 $cash_paymentmethod = $payment_data_array->payment_method;
                 if($cash_paymentmethod == 'Cash'){
                     $room_cash_income = $Total_room_income_arr->grand_total;
-                }else if($cash_paymentmethod == 'Online Payment'){
+                }else{
+                    $room_cash_income = '-';
+                }
+                
+                
+                if($cash_paymentmethod == 'Online Payment'){
                     $room_online_income = $Total_room_income_arr->grand_total;
+                }else{
+                    $room_online_income = '-';
                 }
             }
         }
