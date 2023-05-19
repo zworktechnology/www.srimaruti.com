@@ -16,7 +16,8 @@
                             <div class="page-title-right" style="display:flex">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
                                     <ol class="breadcrumb m-0">
-                                        <form autocomplete="off" method="POST" action="{{ route('booking.datefilter', ['user_branch_id' => $user_branch_id]) }}"
+                                        <form autocomplete="off" method="POST"
+                                            action="{{ route('booking.datefilter', ['user_branch_id' => $user_branch_id]) }}"
                                             style="display: flex;">
                                             @method('PUT')
                                             @csrf
@@ -27,7 +28,8 @@
                                         </form>
                                     </ol>
                                 </div>
-                                <div class="page-title-box d-flex align-items-center justify-content-between" style="margin-left: 10px;">
+                                <div class="page-title-box d-flex align-items-center justify-content-between"
+                                    style="margin-left: 10px;">
                                     <div class="page-title-right">
                                         <div class="dropdown">
                                             <button class="btn btn-primary dropdown-toggle waves-effect waves-light"
@@ -51,6 +53,52 @@
                     </div>
                 </div>
                 <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{ $totalrooms }}</span></h4>
+                                    <p class="text-muted mb-0">Total Rooms</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end col-->
+
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{ $checkins }}</span></h4>
+                                    <p class="text-muted mb-0">Checkins</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end col-->
+
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{ $checkouts }}</span></h4>
+                                    <p class="text-muted mb-0">Checkouts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end col-->
+
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{ $availablerooms }}</span></h4>
+                                    <p class="text-muted mb-0">Available Rooms</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end row-->
 
                 @if (\Session::has('add'))
                     <div class="alert alert-secondary alert-dismissible fade show" role="alert">

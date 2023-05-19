@@ -21,11 +21,18 @@ class BookingController extends Controller
 {
     public function index($user_branch_id)
     {
-        $data = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 1)->orderBy('created_at', 'desc')->get();
-        $staff = Staff::where('soft_delete', '!=', 1)->get();
-
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
+
+        $data = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 1)->orderBy('created_at', 'desc')->get();
+
+        $checkins = Booking::where('check_in_date', '=', $today)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 1)->count();
+        $checkouts = Booking::where('out_date', '=', $today)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 2)->count();
+        $availablerooms = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('booking_status', '!=', 1)->count();
+        $totalrooms = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->count();
+
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
+
         $bookingData = [];
         $room_list = [];
         $terms = [];
@@ -88,7 +95,7 @@ class BookingController extends Controller
             );
         }
 
-        return view('pages.backend.booking.index', compact('staff', 'bookingData', 'today', 'timenow', 'user_branch_id'));
+        return view('pages.backend.booking.index', compact('totalrooms', 'checkins', 'checkouts', 'availablerooms', 'staff', 'bookingData', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function today($user_branch_id)
@@ -99,6 +106,11 @@ class BookingController extends Controller
 
         $data = Booking::where('soft_delete', '!=', 1)->where('out_date', '=', $today)->where('status', '=', 2)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
 
+        $checkins = Booking::where('check_in_date', '=', $today)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 1)->count();
+        $checkouts = Booking::where('out_date', '=', $today)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 2)->count();
+        $availablerooms = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('booking_status', '!=', 1)->count();
+        $totalrooms = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->count();
+
         $bookingData = [];
         $room_list = [];
         $terms = [];
@@ -161,7 +173,7 @@ class BookingController extends Controller
             );
         }
 
-        return view('pages.backend.booking.index', compact('staff', 'bookingData', 'today', 'timenow', 'user_branch_id'));
+        return view('pages.backend.booking.index', compact('totalrooms', 'checkins', 'checkouts', 'availablerooms', 'staff', 'bookingData', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function upcoming($user_branch_id)
@@ -970,37 +982,42 @@ class BookingController extends Controller
         $timenow = Carbon::now()->format('H:i');
         $staff = Staff::where('soft_delete', '!=', 1)->get();
 
+        $checkins = Booking::where('check_in_date', '=', $from_date)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->count();
+        $checkouts = Booking::where('out_date', '=', $from_date)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->count();
+        $availablerooms = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('booking_status', '!=', 1)->count();
+        $totalrooms = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->count();
+
         $checkin_Array = [];
         $room_list = [];
         $terms = [];
 
-            $check_in_date = Booking::where('check_in_date', '=', $from_date)->where('branch_id', '=', $user_branch_id)->where('soft_delete', '!=', 1)->get();
+        $check_in_date = Booking::where('check_in_date', '=', $from_date)->orwhere('out_date', '=', $from_date)->where('branch_id', '=', $user_branch_id)->where('soft_delete', '!=', 1)->get();
 
-                foreach ($check_in_date as $key => $check_in_dates) {
-                    $branch = Branch::findOrFail($check_in_dates->branch_id);
-                    $roomsbooked = BookingRoom::where('booking_id', '=', $check_in_dates->id)->get();
-                    foreach ($roomsbooked as $key => $rooms_booked) {
-                        $Rooms = Room::findOrFail($rooms_booked->room_id);
-                        $room_list[] = array(
-                            'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type,
-                            'booking_id' => $check_in_dates->id,
-                            'booking_room_price' => $rooms_booked->room_price,
-                            'room_cal_price' => $rooms_booked->room_cal_price,
-                            'id' => $rooms_booked->id,
-                            'room_id' => $rooms_booked->room_id,
-                        );
-                    }
+            foreach ($check_in_date as $key => $check_in_dates) {
+                $branch = Branch::findOrFail($check_in_dates->branch_id);
+                $roomsbooked = BookingRoom::where('booking_id', '=', $check_in_dates->id)->get();
+                foreach ($roomsbooked as $key => $rooms_booked) {
+                    $Rooms = Room::findOrFail($rooms_booked->room_id);
+                    $room_list[] = array(
+                        'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type,
+                        'booking_id' => $check_in_dates->id,
+                        'booking_room_price' => $rooms_booked->room_price,
+                        'room_cal_price' => $rooms_booked->room_cal_price,
+                        'id' => $rooms_booked->id,
+                        'room_id' => $rooms_booked->room_id,
+                    );
+                }
 
-                    $payment_data = BookingPayment::where('booking_id', '=', $check_in_dates->id)->get();
-                    foreach ($payment_data as $key => $payment_datas) {
-                        $terms[] = array(
-                            'booking_id' => $check_in_dates->id,
-                            'term' => $payment_datas->term,
-                            'payable_amount' => $payment_datas->payable_amount,
-                        );
-                    }
+                $payment_data = BookingPayment::where('booking_id', '=', $check_in_dates->id)->get();
+                foreach ($payment_data as $key => $payment_datas) {
+                    $terms[] = array(
+                        'booking_id' => $check_in_dates->id,
+                        'term' => $payment_datas->term,
+                        'payable_amount' => $payment_datas->payable_amount,
+                    );
+                }
 
-                    $checkin_Array[] = array(
+                $checkin_Array[] = array(
                         'customer_name' => $check_in_dates->customer_name,
                         'room_list' => $room_list,
                         'branch' => $branch->name,
@@ -1029,10 +1046,10 @@ class BookingController extends Controller
                         'out_date' => $check_in_dates->out_date,
                         'out_time' => $check_in_dates->out_time,
                         'booking_invoiceno' => $check_in_dates->booking_invoiceno,
-                    );
-                }
+                );
+            }
 
-                return view('pages.backend.booking.datefilter', compact('timenow', 'staff', 'today', 'checkin_Array', 'from_date', 'user_branch_id'));
+        return view('pages.backend.booking.datefilter', compact('totalrooms', 'checkins', 'checkouts', 'availablerooms', 'timenow', 'staff', 'today', 'checkin_Array', 'from_date', 'user_branch_id'));
     }
 
     public function autocomplete(Request $request)
@@ -1132,7 +1149,6 @@ class BookingController extends Controller
         return view('pages.backend.booking.components.exportaspdf', compact('branch', 'staff'));
     }
 
-
     public function printexportpdf(Request $request)
     {
 
@@ -1167,7 +1183,7 @@ class BookingController extends Controller
                     $payment_data_arr = BookingPayment::where('booking_id', '=', $checkin_Datas->id)->get();
 
                     foreach ($payment_data_arr as $key => $payment_data_array) {
-        
+
                         $cash_paymentmethod = $payment_data_array->payment_method;
                         if($cash_paymentmethod == 'Cash'){
                             $cash_income = $checkin_Datas->total;
@@ -1176,8 +1192,8 @@ class BookingController extends Controller
                             $cash_income = '-';
                             $case_income_gst = '-';
                         }
-                        
-                        
+
+
                         if($cash_paymentmethod == 'Online Payment'){
                             $online_income = $checkin_Datas->total;
                             $online_income_gst = $checkin_Datas->gst_amount;
@@ -1230,7 +1246,7 @@ class BookingController extends Controller
                     }
 
 
-                    
+
 
                     $checkout_Array[] = array(
                         'room_list' => $ch_oroom_list,
@@ -1285,8 +1301,8 @@ class BookingController extends Controller
                 }else{
                     $room_cash_income = '-';
                 }
-                
-                
+
+
                 if($cash_paymentmethod == 'Online Payment'){
                     $room_online_income = $Total_room_income_arr->grand_total;
                 }else{
