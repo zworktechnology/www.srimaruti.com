@@ -1289,27 +1289,35 @@ class BookingController extends Controller
                                 ->where('check_in_staff', '=', $manager_id)
                                 ->where('soft_delete', '!=', 1)
                                 ->get();
-
+        $room_cash_income = 0;
         foreach ($Total_room_income as $key => $Total_room_income_arr) {
-            $payment_data_arr = BookingPayment::where('booking_id', '=', $Total_room_income_arr->id)->get();
-
+            $payment_data_arr = BookingPayment::where('booking_id', '=', $Total_room_income_arr->id)
+                                            ->where('payment_method', '=', 'Cash')
+                                            ->get();
+            
             foreach ($payment_data_arr as $key => $payment_data_array) {
 
-                $cash_paymentmethod = $payment_data_array->payment_method;
-                if($cash_paymentmethod == 'Cash'){
-                    $room_cash_income = $Total_room_income_arr->grand_total;
-                }else{
-                    $room_cash_income = '-';
-                }
-
-
-                if($cash_paymentmethod == 'Online Payment'){
-                    $room_online_income = $Total_room_income_arr->grand_total;
-                }else{
-                    $room_online_income = '-';
+                if($payment_data_array->booking_id == $Total_room_income_arr->id){
+                    $room_cash_income += $Total_room_income_arr->grand_total;
                 }
             }
         }
+
+        $room_online_income = 0;
+        foreach ($Total_room_income as $key => $Total_room_income_array) {
+            $payment_onlinedata_arr = BookingPayment::where('booking_id', '=', $Total_room_income_array->id)
+                                            ->where('payment_method', '=', 'Online Payment')
+                                            ->get();
+            
+            foreach ($payment_onlinedata_arr as $key => $payment_onlinedata_array) {
+
+                if($payment_onlinedata_array->booking_id == $Total_room_income_array->id){
+                    $room_online_income += $Total_room_income_array->grand_total;
+                }
+            }
+        }
+
+
 
 
         return view('pages.backend.booking.components.printexportpdf', compact('income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income'));

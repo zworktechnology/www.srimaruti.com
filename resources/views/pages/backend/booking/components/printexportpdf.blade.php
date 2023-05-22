@@ -74,7 +74,7 @@
                                                     <td>{{ $income_total }}</td>
                                                     <td>{{ $room_online_income }}</td>
                                                     <td>{{ $expence_total }}</td>
-                                                    <td></td>
+                                                    <td> </td>
                                                 </tr>
                                             </tbody>
                                         </table>
