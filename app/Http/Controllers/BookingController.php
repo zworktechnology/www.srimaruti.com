@@ -1319,7 +1319,6 @@ class BookingController extends Controller
 
 
 
-
         return view('pages.backend.booking.components.printexportpdf', compact('income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income'));
     }
 }
