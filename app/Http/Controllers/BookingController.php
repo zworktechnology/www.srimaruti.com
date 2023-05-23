@@ -1294,6 +1294,7 @@ class BookingController extends Controller
                                 ->where('soft_delete', '!=', 1)
                                 ->get();
         $room_cash_income = 0;
+        $room_cash_income_tax = 0;
         foreach ($Total_room_income as $key => $Total_room_income_arr) {
             $payment_data_arr = BookingPayment::where('booking_id', '=', $Total_room_income_arr->id)
                                             ->where('payment_method', '=', 'Cash')
@@ -1303,11 +1304,13 @@ class BookingController extends Controller
 
                 if($payment_data_array->booking_id == $Total_room_income_arr->id){
                     $room_cash_income += $Total_room_income_arr->grand_total;
+                    $room_cash_income_tax += $Total_room_income_arr->gst_amount;
                 }
             }
         }
 
         $room_online_income = 0;
+        $room_online_income_tax = 0;
         foreach ($Total_room_income as $key => $Total_room_income_array) {
             $payment_onlinedata_arr = BookingPayment::where('booking_id', '=', $Total_room_income_array->id)
                                             ->where('payment_method', '=', 'Online Payment')
@@ -1317,12 +1320,13 @@ class BookingController extends Controller
 
                 if($payment_onlinedata_array->booking_id == $Total_room_income_array->id){
                     $room_online_income += $Total_room_income_array->grand_total;
+                    $room_online_income_tax += $Total_room_income_array->gst_amount;
                 }
             }
         }
 
 
 
-        return view('pages.backend.booking.components.printexportpdf', compact('income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income'));
+        return view('pages.backend.booking.components.printexportpdf', compact('room_online_income_tax', 'income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income', 'room_cash_income_tax'));
     }
 }

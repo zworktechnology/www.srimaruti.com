@@ -54,34 +54,6 @@
                                     </div>
                                 </div>
 
-                                <div class="py-2">
-                                    <div class="table-responsive">
-                                        <table class="table table-nowrap table-centered mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Previous Day Balance</th>
-                                                    <th>Room Income</th>
-                                                    <th>Other Income</th>
-                                                    <th>Online Payment</th>
-                                                    <th>Expence</th>
-                                                    <th>Close Account</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>{{ $room_cash_income }}</td>
-                                                    <td>{{ $income_total }}</td>
-                                                    <td>{{ $room_online_income }}</td>
-                                                    <td>{{ $expence_total }}</td>
-                                                    <td> </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <hr>
-                                </div>
-
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-8 col-8">
                                         <div class="text-muted">
@@ -112,7 +84,8 @@
                                                 @foreach ($checkin_Array as $keydata => $checkin_Arrays)
                                                     <tr>
                                                         <td>{{ $checkin_Arrays['booking_invoiceno'] }}</td>
-                                                        <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_in_date'])) }}</td>
+                                                        <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_in_date'])) }}
+                                                        </td>
                                                         <td>
                                                             @foreach ($checkin_Arrays['room_list'] as $index => $room_lists)
                                                                 @if ($room_lists['booking_id'] == $checkin_Arrays['id'])
@@ -125,59 +98,30 @@
                                                         <td>{{ $checkin_Arrays['case_income_gst'] }}</td>
                                                         <td>{{ $checkin_Arrays['online_income'] }}</td>
                                                         <td>{{ $checkin_Arrays['online_income_gst'] }}</td>
-                                                        <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_out_date'])) }}</td>
+                                                        @if ($checkin_Arrays['check_out_date'] != '')
+                                                            <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_out_date'])) }}
+                                                            </td>
+                                                        @else
+                                                            <td></td>
+                                                        @endif
                                                     </tr>
                                                 @endforeach
                                             </tbody>
+                                            <thead>
+                                                <tr style="color: darkorange">
+                                                    <th>Total :</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th>{{ $room_cash_income - $room_cash_income_tax }}</th>
+                                                    <th>{{ $room_cash_income_tax }}</th>
+                                                    <th>{{ $room_online_income - $room_online_income_tax }}</th>
+                                                    <th>{{ $room_online_income_tax }}</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
                                         </table>
                                     </div>
                                     <hr>
-                                </div>
-
-                                <br>
-
-                                <div class="row" style="display: flex;" hidden>
-                                    <div class="col-sm-8 col-8">
-                                        <div class="text-muted">
-                                            <div>
-                                                <h5 class="font-size-16 mb-1" style="color: red;">
-                                                    Check Out Room Deatails
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="py-2" hidden>
-                                    <div class="table-responsive">
-                                        <table class="table table-nowrap table-centered mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Booking ID</th>
-                                                    <th>Date</th>
-                                                    <th>Room Details</th>
-                                                    <th>Room Amount (Cost + GST)</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($checkout_Array as $keydata => $checkout_Arrays)
-                                                    <tr>
-                                                        <td>{{ $checkout_Arrays['booking_invoiceno'] }}</td>
-                                                        <td>{{ date('d M,Y', strtotime($checkout_Arrays['check_out_date'])) }}
-                                                        </td>
-                                                        <td>
-                                                            @foreach ($checkout_Arrays['room_list'] as $index => $room_lists)
-                                                                @if ($room_lists['booking_id'] == $checkout_Arrays['id'])
-                                                                    {{ $room_lists['roomno'] }} -
-                                                                    {{ $room_lists['roomtype'] }},
-                                                                @endif
-                                                            @endforeach
-                                                        </td>
-                                                        <td>{{ $checkout_Arrays['grand_total'] }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
                                 </div>
 
                                 <br>
@@ -214,6 +158,14 @@
                                                     </tr>
                                                 @endforeach
                                             </tbody>
+                                            <thead>
+                                                <tr style="color: darkorange">
+                                                    <th>Totel :</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th>{{ $income_total }}</th>
+                                                </tr>
+                                            </thead>
                                         </table>
                                     </div>
                                 </div>
@@ -252,6 +204,14 @@
                                                     </tr>
                                                 @endforeach
                                             </tbody>
+                                            <thead>
+                                                <tr style="color: darkorange">
+                                                    <th>Totel :</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th>{{ $expence_total }}</th>
+                                                </tr>
+                                            </thead>
                                         </table>
                                     </div>
                                 </div>

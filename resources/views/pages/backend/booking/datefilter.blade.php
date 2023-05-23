@@ -90,7 +90,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <table id="booking_datatable" class="table table-bordered dt-responsive nowrap"
+                            <table id="bookingdatefilter_datatable" class="table table-bordered dt-responsive nowrap"
                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
