@@ -54,6 +54,8 @@
                                     </div>
                                 </div>
 
+                                <br><br>
+
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-8 col-8">
                                         <div class="text-muted">
@@ -116,7 +118,7 @@
                                                     <th>{{ $room_cash_income_tax }}</th>
                                                     <th>{{ $room_online_income - $room_online_income_tax }}</th>
                                                     <th>{{ $room_online_income_tax }}</th>
-                                                    <th></th>
+                                                    <th>{{ $room_cash_income + $room_online_income }}</th>
                                                 </tr>
                                             </thead>
                                         </table>
@@ -168,6 +170,7 @@
                                             </thead>
                                         </table>
                                     </div>
+                                    <hr>
                                 </div>
 
                                 <br>
@@ -214,6 +217,48 @@
                                             </thead>
                                         </table>
                                     </div>
+                                    <hr>
+                                </div>
+
+                                <br>
+
+                                <div class="row" style="display: flex;">
+                                    <div class="col-sm-8 col-8">
+                                        <div class="text-muted">
+                                            <div>
+                                                <h5 class="font-size-16 mb-1" style="color: red;">
+                                                    Calculation
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="py-2">
+                                    <div class="table-responsive">
+                                        <table class="table table-nowrap table-centered mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Room Income</th>
+                                                    <th>Other Income</th>
+                                                    <th>Total</th>
+                                                    <th>Expence</th>
+                                                    <th>Online Payment</th>
+                                                    <th>Grand Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{{ $room_cash_income }}</td>
+                                                    <td>{{ $income_total }}</td>
+                                                    <td>{{ $room_cash_income + $income_total }}</td>
+                                                    <td>{{ $expence_total }}</td>
+                                                    <td>{{ $room_online_income }}</td>
+                                                    <td>{{ ($room_cash_income + $income_total) - ($expence_total + $room_online_income) }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <hr>
                                 </div>
 
                                 <br>
