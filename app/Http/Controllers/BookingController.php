@@ -53,6 +53,7 @@ class BookingController extends Controller
             }
             $payment_data = BookingPayment::where('booking_id', '=', $datas->id)->get();
             foreach ($payment_data as $key => $payment_datas) {
+
                 $terms[] = array(
                     'booking_id' => $datas->id,
                     'term' => $payment_datas->term,
@@ -1010,10 +1011,13 @@ class BookingController extends Controller
 
                 $payment_data = BookingPayment::where('booking_id', '=', $check_in_dates->id)->get();
                 foreach ($payment_data as $key => $payment_datas) {
+
                     $terms[] = array(
                         'booking_id' => $check_in_dates->id,
                         'term' => $payment_datas->term,
                         'payable_amount' => $payment_datas->payable_amount,
+                        'id' => $payment_datas->id,
+                        'payment_method' => $payment_datas->payment_method,
                     );
                 }
 
@@ -1294,7 +1298,7 @@ class BookingController extends Controller
             $payment_data_arr = BookingPayment::where('booking_id', '=', $Total_room_income_arr->id)
                                             ->where('payment_method', '=', 'Cash')
                                             ->get();
-            
+
             foreach ($payment_data_arr as $key => $payment_data_array) {
 
                 if($payment_data_array->booking_id == $Total_room_income_arr->id){
@@ -1308,7 +1312,7 @@ class BookingController extends Controller
             $payment_onlinedata_arr = BookingPayment::where('booking_id', '=', $Total_room_income_array->id)
                                             ->where('payment_method', '=', 'Online Payment')
                                             ->get();
-            
+
             foreach ($payment_onlinedata_arr as $key => $payment_onlinedata_array) {
 
                 if($payment_onlinedata_array->booking_id == $Total_room_income_array->id){
