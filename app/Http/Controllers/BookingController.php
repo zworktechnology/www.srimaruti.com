@@ -1329,4 +1329,66 @@ class BookingController extends Controller
 
         return view('pages.backend.booking.components.printexportpdf', compact('room_online_income_tax', 'income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income', 'room_cash_income_tax'));
     }
+
+
+
+
+
+
+    public function export_reportpdf() {
+        $branch = Branch::where('soft_delete', '!=', 1)->get();
+
+        return view('pages.backend.booking.components.export_reportpdf', compact('branch'));
+    }
+
+
+
+    public function print_reportpdf(Request $request)
+    {
+        $branch_id = $request->get('branch_id');
+        $from_date = $request->get('from_date');
+        $to_date = $request->get('to_date');
+        $branch = Branch::findOrFail($branch_id);
+
+
+        $Report_data = Booking::whereBetween('check_in_date', [$from_date, $to_date])
+                                ->where('branch_id', '=', $branch_id)
+                                ->where('soft_delete', '!=', 1)
+                                ->orderBy('check_in_date', 'asc')
+                                ->get();
+
+        $Reportdata_Array = [];
+        foreach ($Report_data as $key => $Report_datas) {
+
+                    $roomsbooked = BookingRoom::where('booking_id', '=', $Report_datas->id)->get();
+                    foreach ($roomsbooked as $key => $rooms_booked) {
+                        $Rooms = Room::findOrFail($rooms_booked->room_id);
+                        $room_list[] = array(
+                            'roomno' => 'No. '. $Rooms->room_number,
+                            'roomtype' => $rooms_booked->room_type,
+                            'booking_id' => $Report_datas->id,
+                        );
+                    }
+
+                    $total_count = $Report_datas->male_count + $Report_datas->female_count + $Report_datas->child_count;
+
+
+
+                    $Reportdata_Array[] = array(
+                        'room_list' => $room_list,
+                        'id' => $Report_datas->id,
+                        'check_in_date' => $Report_datas->check_in_date,
+                        'check_out_date' => $Report_datas->out_date,
+                        'check_out_time' => $Report_datas->out_time,
+                        'total_count' => $total_count,
+                        'customer_name' => $Report_datas->customer_name,
+                        'whats_app_number' => $Report_datas->whats_app_number,
+                        'customer_photo' => $Report_datas->customer_photo,
+                    );
+
+
+        }
+
+        return view('pages.backend.booking.components.print_reportpdf', compact('Reportdata_Array', 'branch','from_date', 'to_date'));
+    }
 }

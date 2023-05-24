@@ -104,6 +104,12 @@
                         <span>PDF Download</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('export_reportpdf') ? 'mm-active' : '' }}">
+                    <a href="{{ route('export_reportpdf') }}" class="waves-effect">
+                        <i class="uil-cloud-download"></i>
+                        <span>Report</span>
+                    </a>
+                </li>
                 <li class="{{ Route::is('contact.index') ? 'mm-active' : '' }}">
                     <a href="{{ route('contact.index') }}" class="waves-effect">
                         <i class="uil-mailbox"></i>
