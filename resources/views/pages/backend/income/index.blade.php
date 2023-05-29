@@ -71,13 +71,14 @@
                             <table id="incomedatatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Sl. No</th>
-                                        <th>Date</th>
-                                        <th>Branch</th>
-                                        <th>Name</th>
-                                        <th>Amount</th>
-                                        <th>Note</th>
-                                        <th>Action</th>
+                                        <th>{{ __('messages.sno_title') }}</th>
+                                        <th>{{ __('messages.date') }}</th>
+                                        <th>{{ __('messages.branch_title') }}</th>
+                                        <th>{{ __('messages.expense_title') }} to</th>
+                                        <th>{{ __('messages.manager_title') }}</th>
+                                        <th>{{ __('messages.amount_title') }}</th>
+                                        <th>{{ __('messages.note_title') }}</th>
+                                        <th>{{ __('messages.action_title') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,6 +88,7 @@
                                         <td>{{ date('d M, Y', strtotime($datas->date)) }}</td>
                                         <td>{{ $datas->branch->name }}</td>
                                         <td>{{ $datas->namelist->name }}</td>
+                                        <td>{{ $datas->staff->name }}</td>
                                         <td>₹ {{ $datas->amount }}</td>
                                         <td>{{ $datas->note }}</td>
                                         <td>

@@ -57,12 +57,12 @@
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Sl. No</th>
-                                        <th>Date</th>
+                                        <th>{{ __('messages.sno_title') }}</th>
+                                        <th>{{ __('messages.date') }}</th>
                                         <th>Closer Name</th>
-                                        <th>Branch</th>
-                                        <th>Total</th>
-                                        <th>Action</th>
+                                        <th>{{ __('messages.branch_title') }}</th>
+                                        <th>{{ __('messages.total_title') }}</th>
+                                        <th>{{ __('messages.action_title') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,12 +70,12 @@
                                     <tr>
                                         <td>{{ ++$keydata }}</td>
                                         <td>{{ date('d M, Y', strtotime($datas->date)) }}</td>
-                                        <td>{{  $datas->closer_name }}</td>
+                                        <td>{{  $datas->staff->name }}</td>
                                         <td>{{ $datas->branch->name }}</td>
                                         <td>₹ {{  $datas->total }}</td>
                                         <td>
                                             <ul class="list-unstyled hstack gap-1 mb-0">
-                                                <li>
+                                                <li hidden>
                                                     <a href="#jobDelete{{ $datas->id }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-warning" data-bs-target="#firstmodalview{{ $datas->id }}">View</a>
                                                 </li>
                                                 <li>
@@ -98,7 +98,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-muted font-size-16 mb-4">Are you surely want to delete ₹ {{ $datas->amount }} close account and all of its record?</p>
+                                                    <p class="text-muted font-size-16 mb-4">Are you surely want to delete ₹ {{ $datas->total }} close account and all of its record?</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form autocomplete="off" method="POST" action="{{ route('closeaccount.delete', ['id' => $datas->id]) }}">

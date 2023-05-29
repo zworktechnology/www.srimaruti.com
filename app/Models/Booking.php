@@ -50,7 +50,10 @@ class Booking extends Model
         'out_date',
         'out_time',
         'status',
-        'soft_delete'
+        'soft_delete',
+
+        'check_in_staff',
+        'check_out_staff',
     ];
 
 

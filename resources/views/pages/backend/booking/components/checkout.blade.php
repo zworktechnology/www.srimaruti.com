@@ -1,18 +1,49 @@
-<div class="modal-dialog  modal-lg">
+<div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">Check Out</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close checkoutclose" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
-            <p>Please confirm that you wish to check out customer Mr. or Ms. <b>{{ $bookingDatas['customer_name'] }}</b> at <b>{{ $timenow }}</b> on <b>{{ date('M d, Y', strtotime($today)) }}</b></p>
-
+            <p class="text-muted font-size-16 mb-4">Please confirm that you wish to check out customer Mr. or Ms.
+                {{ $bookingDatas['customer_name'] }}. His Check out data & time is an <span style="color:red"> {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
+            </p>
 
             <form autocomplete="off" method="POST"
                 action="{{ route('booking.checkout', ['id' => $bookingDatas['id']]) }}">
                 @method('PUT')
                 @csrf
+
+                <div class="row mb-4">
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Out Date </label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="out_date"
+                            value="{{ $today }}">
+                    </div>
+                    <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">Out Time </label>
+                    <div class="col-sm-3">
+                        <input type="time" class="form-control" name="out_time"
+                            value="{{ $timenow }}">
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                        Check Out Staff <span style="color: red;">*</span> </label>
+                    <div class="col-sm-9">
+                        <select class="form-control"
+                            name="check_out_staff" required>
+                            <option value="" disabled selected hiddden>Select One</option>
+                            @foreach ($staff as $staffs)
+                                <option value="{{ $staffs->id }}">
+                                    {{ $staffs->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+
                 <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Customer Name </label>
                     <div class="col-sm-9">
@@ -55,15 +86,7 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Room Details </label>
                     <div class="col-sm-9">
 
-                        <table class="table table-bordered dt-responsive nowrap col-12" id="">
-                            <thead>
-                                <tr>
-                                    <th class="col-6">Room</th>
-                                    <th class="col-3">Room Cost / Day</th>
-                                    <th class="col-3">Room Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+
                                 <input type="hidden" class="form-control" name="booking_id" id="booking_id"
                                     value="{{ $bookingDatas['id'] }}" />
                                 @foreach ($bookingDatas['room_list'] as $index => $room_lists)
@@ -313,31 +336,16 @@
                                             }
                                         </style>
 
-                                        <tr>
-                                            <td><input type="text" disabled class="form-control"
+                                        <input type="text" disabled class="form-control"
                                                     name="booking_rooms[]" id="booking_rooms"
                                                     value="{{ $room_lists['room'] }}" />
                                                 <input type="hidden" class="form-control" name="room_auto_id[]"
                                                     id="room_auto_id" value="{{ $room_lists['id'] }}" />
                                                 <input type="hidden" class="form-control" name="room_id[]"
                                                     id="room_id" value="{{ $room_lists['room_id'] }}" />
-                                            </td>
-                                            <td><input type="text"
-                                                    class="form-control not-allowed booking_room_price{{ $bookingDatas['id'] }}{{ $room_lists['id'] }}"
-                                                    style="background: #e77e7e;" name="booking_room_price[]"
-                                                    id="booking_room_price{{ $bookingDatas['id'] }}"
-                                                    value="{{ $room_lists['booking_room_price'] }}" /></td>
-                                            <td><input type="text"
-                                                    class="form-control not-allowed booking_room_cal_price{{ $bookingDatas['id'] }}"
-                                                    name="booking_room_cal_price[]" style="background: #e77e7e;"
-                                                    id="booking_room_cal_price{{ $bookingDatas['id'] }}{{ $room_lists['id'] }}"
-                                                    value="{{ $room_lists['room_cal_price'] }}" /></td>
 
-                                        </tr>
                                     @endif
                                 @endforeach
-                            </tbody>
-                        </table>
 
 
                     </div>
@@ -445,7 +453,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Checkout</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No,
+                    <button type="button" class="btn btn-secondary checkoutclosebutton" data-bs-dismiss="modal">No,
                         Get Back</button>
                 </div>
             </form>
@@ -461,39 +469,6 @@
     $(".checkoutclosebutton").click(function() {
         window.location.reload();
     });
-    //$(document).ready(function() {
-    //var check_in_date = $("#checkindate").val();
-    //var check_out_date = $("#checkoutdate").val();
 
-
-    //  var checkin_date = new Date (check_in_date);
-    //  console.log(checkin_date);
-    //  var checkout_date = new Date (check_out_date);
-    //  console.log(checkout_date);
-
-
-    //calculate total number of seconds between two dates
-    // var total_seconds = Math.abs(checkin_date - checkout_date) / 1000;
-
-
-    //calculate days difference by dividing total seconds in a day
-    //  var days_difference = Math.floor (total_seconds / (60 * 60 * 24));
-    //console.log(days_difference);
-    //   $('.no_of_days').val(days_difference);
-
-
-    // Get Room Price
-    //   var totalAmount = 0;
-    //   $("input[name='booking_room_price[]']").each(function() {
-    //alert($(this).val());
-    //                      totalAmount = Number(totalAmount) + Number($(this).val());
-    //                      console.log(totalAmount);
-    //                     $('.booking_room_totprice').val(totalAmount);
-    //                 });
-
-    //var booking_room_totprice = $(".booking_room_totprice").val();
-
-    //   var total_room_cost = booking_room_totprice * days_difference;
-    //  $('.total_room_cost').val(total_room_cost);
-    //});
+   
 </script>

@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0">Branch</h4>
+                            <h4 class="mb-0"> {{ $branch->name }} - Branch </h4>
                         </div>
                     </div>
                 </div>
@@ -82,8 +82,6 @@
                                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
-                                            <th>Branch</th>
-                                            <th>Floor</th>
                                             <th>Room Details</th>
                                             <th>Booking Status</th>
                                         </tr>
@@ -91,10 +89,7 @@
                                     <tbody>
                                         @foreach ($data as $keydata => $datas)
                                             <tr>
-                                                <td>{{ $datas->branch->name }}</td>
-                                                <td>{{ $datas->room_floor }}</td>
-                                                <td>No. {{ $datas->room_number }} -
-                                                    {{ $datas->room_category }}</td>
+                                                <td>No. {{ $datas->room_number }}</td>
                                                 @if ($datas->booking_status == 0)
                                                     <td style="color:red">Open</td>
                                                 @else

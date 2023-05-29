@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0">Dashboard</h4>
+                            <h4 class="mb-0">{{ __('messages.dashboard_title') }}</h4>
                             <div class="page-title-right">
                                 <form autocomplete="off" method="POST" action="/dashboard_datefilter" style="display: flex;">
                                 @method('PUT')
@@ -58,14 +58,15 @@
                                     <table class="table table-centered table-nowrap mb-0">
                                         <thead class="table-light">
                                             <tr>
-                                                <th>Branch</th>
-                                                <th>Open Account</th>
-                                                <th>Room Income</th>
-                                                <th>Income</th>
-                                                <th>Expence</th>
-                                                <th>Required Balance</th>
-                                                <th>Close Account</th>
-                                                <th>Difference</th>
+                                                <th>{{ __('messages.branch_title') }}</th>
+                                                <th>{{ __('messages.previousday_balance') }}</th>
+                                                <th>{{ __('messages.room_income') }}</th>
+                                                <th>{{ __('messages.otherincome_title') }}</th>
+                                                <th>{{ __('messages.online_payment') }}</th>
+                                                <th>{{ __('messages.expense_title') }}</th>
+                                                <th>{{ __('messages.availableamount_title') }}</th>
+                                                <th>{{ __('messages.accountclosure_title') }}</th>
+                                                <th>{{ __('messages.difference_title') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody id="branchwise_list">
@@ -73,7 +74,7 @@
                                             @foreach ($branchwise_list as $branchwise_lists)
                                                 <tr>
                                                     <td>{{ $branchwise_lists['branch_name'] }}</td>
-                                                    
+
                                                     <td>₹ {{ $branchwise_lists['branchwise_openaccount'] }}</td>
 
                                                     <td href="#roomincome{{ $branchwise_lists['branch_id'] }}"
@@ -83,11 +84,9 @@
 
                                                     <td>₹ {{ $branchwise_lists['branchwise_income'] }}</td>
 
-                                                    <td href="#expence{{ $branchwise_lists['branch_id'] }}"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#expence{{ $branchwise_lists['branch_id'] }}"
-                                                        class="pointer">₹ {{ $branchwise_lists['branchwise_expense'] }}
-                                                    </td>
+                                                    <td>₹ {{ $branchwise_lists['total_onlinepayment'] }}</td>
+
+                                                    <td>₹ {{ $branchwise_lists['branch_wise_expenses'] }}</td>
 
                                                     <td>₹ {{ $branchwise_lists['requred_balance'] }}</td>
 
@@ -113,7 +112,7 @@
                                                 </div>
                                             @endforeach
                                         </tbody>
-                                        <thead class="table-light">
+                                        {{-- <thead class="table-light">
                                             <tr>
                                                 <th>Total</th>
                                                 <th>₹ {{ $openaccount }}</th>
@@ -130,7 +129,7 @@
                                                 <th>₹ {{ $closeaccount }}</th>
                                                 <th> - </th>
                                             </tr>
-                                        </thead>
+                                        </thead> --}}
                                     </table>
 
                                     <div class="modal fade" id="roomincometotal"

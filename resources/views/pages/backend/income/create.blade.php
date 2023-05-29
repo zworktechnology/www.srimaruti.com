@@ -34,9 +34,22 @@
                     <div class="col-sm-12">
                         <select class="form-control js-example-basic-single" name="namelist_id" required>
                             <option value="" disabled selected hidden class="text-muted">
-                                Select Name *</option>
+                                Select expense to *</option>
                             @foreach ($namelist as $namelists)
                             <option value="{{ $namelists->id }}">{{ $namelists->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
+                        Name </label>
+                    <div class="col-sm-12">
+                        <select class="form-control js-example-basic-single" name="staff_id" required>
+                            <option value="" disabled selected hidden class="text-muted">
+                                Select manager *</option>
+                            @foreach ($staff as $staffs)
+                            <option value="{{ $staffs->id }}">{{ $staffs->name }}</option>
                             @endforeach
                         </select>
                     </div>

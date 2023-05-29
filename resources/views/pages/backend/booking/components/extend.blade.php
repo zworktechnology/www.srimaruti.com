@@ -65,7 +65,7 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Room Details </label>
                     <div class="col-sm-9">
 
-                        <table class="table table-bordered dt-responsive nowrap col-12" id="">
+                        {{-- <table class="table table-bordered dt-responsive nowrap col-12" id="">
                             <thead>
                                 <tr>
                                     <th class="col-6">Room</th>
@@ -95,7 +95,7 @@
                                                 });
 
 
-                                                //From: http://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
+                                                // From: http://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
                                                 Date.prototype.toInputFormat = function() {
                                                     var yyyy = this.getFullYear().toString();
                                                     var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
@@ -371,7 +371,7 @@
                                     @endif
                                 @endforeach
                             </tbody>
-                        </table>
+                        </table> --}}
 
 
                     </div>
@@ -398,7 +398,7 @@
                             placeholder="Gst % - Enter here " value="{{ $bookingDatas['gst_per'] }}">
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Discount Amount </label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control discount_amount"

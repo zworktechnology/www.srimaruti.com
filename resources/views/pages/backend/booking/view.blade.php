@@ -140,7 +140,7 @@
                                                         CGST :</th>
                                                     <td class="border-0 text-end">₹ {{ $data->gst_amount / 2 }}</td>
                                                 </tr>
-                                                <tr>
+                                                <tr hidden>
                                                     <th scope="row" colspan="1" class="border-0 text-end">
                                                         Discount :</th>
                                                     <td class="border-0 text-end">- ₹ {{ $data->disc_amount }}</td>

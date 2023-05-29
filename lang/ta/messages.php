@@ -1,0 +1,38 @@
+<?php
+return [
+  
+  'title' => 'இது ஆங்கில மொழி தலைப்பு.',
+  'dashboard_title' => 'டாஷ்போர்டு',
+  'booking_title' => 'புக்கிங்',
+  'sreerangam_title' => 'ஸ்ரீரங்கம்',
+  'samayapuram_title' => 'சமயபுரம்',
+  'gunaseelam_title' => 'குணசீலம்',
+  'otherincome_title' => 'இதர வரவு',
+  'branch_title' => 'கிளை',
+  'previousday_balance' => 'முன் இருப்பு',
+  'room_income' => 'ரூம் வரவு',
+  'online_payment' => 'Online வரவு',
+  'expense_title' => 'செலவு',
+  'availableamount_title' => 'இருக்க வேண்டிய தொகை',
+  'accountclosure_title' => 'கணக்கு முடிவு',
+  'difference_title' => 'சார்டேஜ்',
+  'newbooking_title' => 'புதிய புக்கிங்',
+  'openedbooking_title' => 'செக் இன் ரூம்ஸ்',
+  'closedbooking_title' => 'செக் அவுட் ரூம்ஸ்',
+  'billno' => 'பில் நம்பர்',
+  'customer' => 'வாடிக்கையாளர்',
+  'room_title' => 'ரூம்',
+  'action_title' => 'செயல்',
+  'sno_title' => 'வரிசை எண்',
+  'date' => 'தேதி',
+  'manager_title' => 'மேனஜர்',
+  'amount_title' => 'தொகை',
+  'note_title' => 'குறிப்பு',
+  'openaccount_title' => 'ஆரம்ப கணக்கு',
+  'closeaccount_title' => 'கணக்கு முடிவு',
+  'total_title' => 'மொத்த தொகை',
+  'name_title' => 'பெயர்',
+  'address_title' => 'முகவரி',
+
+
+];

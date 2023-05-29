@@ -11,6 +11,7 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\NamelistController;
 use App\Http\Controllers\OpenAccountController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,9 +42,11 @@ Route::get('/privacy-and-policy', function () {return view('pages.frontend.priva
 
 // Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('lang/change', [App\Http\Controllers\HomeController::class, 'lang_change'])->name('lang.change');
 
 // Home - Prevent Back Browser Button - After Logout
 Route::middleware(['prevent-back-history'])->get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Change Password - Index
@@ -98,10 +101,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // BOOKING CONTROLLER
     Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-        // INDEX
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking', [BookingController::class, 'index'])->name('booking.index');
+        // INDEX ALL
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/{user_branch_id}', [BookingController::class, 'index'])->name('booking.index');
+        // INDEX TODAY
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/today/{user_branch_id}', [BookingController::class, 'today'])->name('booking.today');
+        // INDEX UPCOMING
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/upcoming/{user_branch_id}', [BookingController::class, 'upcoming'])->name('booking.upcoming');
+        // INDEX MISSING OUT
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/missingout/{user_branch_id}', [BookingController::class, 'missingout'])->name('booking.missingout');
         // CREATE
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/create', [BookingController::class, 'create'])->name('booking.create');
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/create/{user_branch_id}', [BookingController::class, 'create'])->name('booking.create');
         // STORE
         Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/booking/store', [BookingController::class, 'store'])->name('booking.store');
         // EDIT
@@ -121,14 +130,23 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // VIEW
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/view/{id}', [BookingController::class, 'view'])->name('booking.view');
         // DATE FILTER
-        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/datefilter', [BookingController::class, 'datefilter'])->name('booking.datefilter');
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/datefilter/{user_branch_id}', [BookingController::class, 'datefilter'])->name('booking.datefilter');
         // AUTO COMPLETE
         Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/booking/autocomplete', [BookingController::class, 'autocomplete'])->name('booking.autocomplete');
         // EXTEND
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/booking/extend/{id}', [BookingController::class, 'extend'])->name('booking.extend');
         // DAILY CHECKOUT
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/dailycheckout', [BookingController::class, 'dailycheckout'])->name('booking.dailycheckout');
+        // EXPORT AS PDF
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/exportaspdf', [BookingController::class, 'exportaspdf'])->name('exportaspdf');
+        // EXPORT AS PDF
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/printexportpdf', [BookingController::class, 'printexportpdf'])->name('booking.printexportpdf');
+        // REPORT
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/export_reportpdf', [BookingController::class, 'export_reportpdf'])->name('export_reportpdf');
+        // REPORT PDF
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/print_reportpdf', [BookingController::class, 'print_reportpdf'])->name('booking.print_reportpdf');
     });
+
 
     // NAME LIST CONTROLLER
     Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -146,6 +164,24 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/namelist/delete/{id}', [NamelistController::class, 'delete'])->name('namelist.delete');
         // DESTROY
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/namelist/destroy/{id}', [NamelistController::class, 'destroy'])->name('namelist.destroy');
+    });
+
+    // STAFF CONTROLLER
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+        // INDEX
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/staff', [StaffController::class, 'index'])->name('staff.index');
+        // CREATE
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/staff/create', [StaffController::class, 'create'])->name('staff.create');
+        // STORE
+        Route::middleware(['auth:sanctum', 'verified'])->post('/zwork-admin/staff/store', [StaffController::class, 'store'])->name('staff.store');
+        // EDIT
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/staff/edit/{id}', [StaffController::class, 'edit'])->name('staff.edit');
+        // UPDATE
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/staff/update/{id}', [StaffController::class, 'update'])->name('staff.update');
+        // DELETE
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/staff/delete/{id}', [StaffController::class, 'delete'])->name('staff.delete');
+        // DESTROY
+        Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/staff/destroy/{id}', [StaffController::class, 'destroy'])->name('staff.destroy');
     });
 
     // INCOME CONTROLLER
@@ -238,6 +274,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
     });
 });
+
+
+
+
+
+
+
 
 Route::get('getBranchwiseRoom/{id}', [RoomController::class, 'getBranchwiseRoom']);
 Route::get('getPriceforRooms/{id}', [RoomController::class, 'getPriceforRooms']);

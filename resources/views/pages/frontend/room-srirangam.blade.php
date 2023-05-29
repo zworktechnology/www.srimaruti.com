@@ -45,7 +45,7 @@
                         <div class="col-lg-6 col-xl-4">
                             <div class="service-card-two style3 mb-24 mt-0">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_1_1.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/image/room/DSC_3494.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
@@ -57,11 +57,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">2 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">1 Bed Extra</span>
                                         </div>
                                     </div>
@@ -76,7 +76,7 @@
                         <div class="col-lg-6 col-xl-4">
                             <div class="service-card-two style3 mb-24 mt-0">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_1_2.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/image/room/DSC_3523.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
@@ -88,11 +88,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">3 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">2 Bed Extra</span>
                                         </div>
                                     </div>
@@ -107,7 +107,7 @@
                         <div class="col-lg-6 col-xl-4">
                             <div class="service-card-two style3 mb-24 mt-0">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_1_3.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/image/room/DSC_3523.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
@@ -119,11 +119,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">4 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">1 Bed Extra</span>
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@
                         <div class="col-lg-6 col-xl-4">
                             <div class="service-card-two style3 mb-24 mt-0">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_2_1.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/image/room/DSC_3895.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
@@ -155,11 +155,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">2 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">1 Bed Extra</span>
                                         </div>
                                     </div>
@@ -174,7 +174,7 @@
                         <div class="col-lg-6 col-xl-4">
                             <div class="service-card-two style3 mb-24 mt-0">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_2_2.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/image/room/DSC_3917.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
@@ -186,11 +186,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">3 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">2 Bed Extra</span>
                                         </div>
                                     </div>
@@ -205,7 +205,7 @@
                         <div class="col-lg-6 col-xl-4">
                             <div class="service-card-two style3 mb-24 mt-0">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_2_3.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/image/room/DSC_3917.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
@@ -217,11 +217,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">4 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">1 Bed Extra</span>
                                         </div>
                                     </div>
@@ -241,7 +241,7 @@
                         <div class="col-lg-6 col-xl-4">
                             <div class="service-card-two style3 mb-24 mt-0">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_1.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/image/room/DSC_3673.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
@@ -253,11 +253,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">2 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">1 Bed Extra</span>
                                         </div>
                                     </div>
@@ -272,7 +272,7 @@
                         <div class="col-lg-6 col-xl-4">
                             <div class="service-card-two style3 mb-24 mt-0">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_2.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/image/room/DSC_3669.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
@@ -284,11 +284,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">3 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">1 Bed Extra</span>
                                         </div>
                                     </div>
@@ -303,7 +303,7 @@
                         <div class="col-lg-6 col-xl-4">
                             <div class="service-card-two style3 mb-24 mt-0">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_3.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/image/room/DSC_3683.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
@@ -315,11 +315,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">4 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">1 Bed Extra</span>
                                         </div>
                                     </div>
@@ -334,7 +334,7 @@
                         <div class="col-lg-6 col-xl-4">
                             <div class="service-card-two style3 mb-24 mt-0">
                                 <div class="service-card_img">
-                                    <img src="{{ asset('assets/frontend/img/service/service_4_4.jpg') }}" alt="Service">
+                                    <img src="{{ asset('assets/frontend/image/room/DSC_3561.jpg') }}" alt="Service">
                                 </div>
                                 <div class="service-card_content-two">
                                     <div>
@@ -346,11 +346,11 @@
                                     </div>
                                     <div class="service-card-wrapper">
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">7 Bed</span>
                                         </div>
                                         <div class="service-icon">
-                                            <img src="{{ asset('assets/frontend/img/icon/bed.svg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/image/icon/bed.svg') }}" alt="">
                                             <span class="ser-title">1 Bed Extra</span>
                                         </div>
                                     </div>

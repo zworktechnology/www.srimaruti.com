@@ -123,6 +123,15 @@
                                             </div>
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    No of Days - Stay <span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control days" id="days"
+                                                        value="{{ $data->days }}" name="days"
+                                                        placeholder="Enter here " required>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Check Out Date </label>
                                                 <div class="col-sm-4">
                                                     <input type="date" class="form-control check_out_date"
@@ -136,16 +145,7 @@
                                                         placeholder="Enter here " value="{{ $data->check_out_time }}">
                                                 </div>
                                             </div>
-                                            <div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Days <span style="color: red;">*</span> </label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control days" id="days"
-                                                        value="{{ $data->days }}" name="days"
-                                                        placeholder="Enter here " required>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
+                                            <div class="row mb-4" hidden>
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Branch <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
@@ -179,11 +179,10 @@
                                                                             class="py-2 mr-5 text-white font-medium rounded-lg text-sm  text-center btn btn-success"
                                                                             type="button" id="addroomfields"
                                                                             value="Add">Add</button>
-                                                                        <tbody>
+                                                                        <tbody id="roomfields" class="responsive_cls">
                                                                             @foreach ($BookingRooms as $index => $BookingRoomss)
-                                                                                <tr>
-                                                                                    <td
-                                                                                        class="col-4 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
+                                                                                <tr class="outer">
+                                                                                    <td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700  tracking-wider">
                                                                                         <input type="hidden"
                                                                                             id="room_auto_id"
                                                                                             name="room_auto_id[]"
@@ -280,15 +279,23 @@
                                                                                         @endforeach
                                                                                         </select>
                                                                                     </td>
-                                                                                    <td class="col-2"><input
-                                                                                            type="text"
-                                                                                            class="form-control"
+                                                                                    <td class="col-12 col-md-3">
+                                                                                        <select
+                                                                                            class="form-control room_type"
                                                                                             id="room_type{{ $data->id }}{{ $index }}"
-                                                                                            name="room_type[]"
-                                                                                            placeholder="Price Per Day"
-                                                                                            value="{{ $BookingRoomss->room_type }}" />
+                                                                                            name="room_type[]" required>
+                                                                                            <option value="" selected
+                                                                                                hidden class="text-muted">
+                                                                                                Select Room Type</option>
+                                                                                            <option value="A/C"{{ $BookingRoomss->room_type == 'A/C' ? 'selected' : '' }}
+                                                                                                class="text-muted">A/C
+                                                                                            </option>
+                                                                                            <option value="Non - A/C"{{ $BookingRoomss->room_type == 'Non - A/C' ? 'selected' : '' }}
+                                                                                                class="text-muted">Non -
+                                                                                                A/C</option>
+                                                                                        </select>
                                                                                     </td>
-                                                                                    <td class="col-3"><input
+                                                                                    <td class="col-12 col-md-2"><input
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             id="room_price{{ $data->id }}{{ $index }}"
@@ -296,7 +303,7 @@
                                                                                             placeholder="Price Per Day"
                                                                                             value="{{ $BookingRoomss->room_price }}" />
                                                                                     </td>
-                                                                                    <td class="col-3"><input
+                                                                                    <td class="col-12 col-md-2"><input
                                                                                             type="text"
                                                                                             class="form-control  room_cal_price"
                                                                                             id="room_cal_price{{ $data->id }}{{ $index }}"
@@ -304,7 +311,7 @@
                                                                                             placeholder="Price"
                                                                                             value="{{ $BookingRoomss->room_cal_price }}" />
                                                                                     </td>
-                                                                                    <td class="col-2"><button
+                                                                                    <td class="col-12 col-md-1"><button
                                                                                             style="width: 100px;"
                                                                                             class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr"
                                                                                             type="button">Remove</button>
@@ -325,163 +332,7 @@
 
 
 
-                                            <hr>
 
-                                            <div class="row mb-4">
-                                                <div class="col-sm-3">
-                                                    <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <input id="default-radio-1" type="radio" value="1"
-                                                        {{ $data->proofs == '1' ? 'checked' : '' }} name="proofs"
-                                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="default-radio-1" class="ml-2"
-                                                        style="font-weight:900">Single Proof</label>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <input id="default-radio-1" type="radio" value="2"
-                                                        {{ $data->proofs == '2' ? 'checked' : '' }} name="proofs"
-                                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="default-radio-1" class="ml-2"
-                                                        style="font-weight:900">Double Proof</label>
-                                                </div>
-                                            </div>
-
-                                            <div id="singleproof" style="display:none">
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">
-                                                        Proof 1 <span style="color: red;">*</span> </label>
-                                                    <div class="col-sm-5">
-                                                        <select class="form-control " name="prooftype_one"
-                                                            style="width: 100%;">
-                                                            <option value="" disabled selected hidden
-                                                                class="text-muted">Select Type</option>
-                                                            <option
-                                                                value="Aadhaar Card"{{ $data->prooftype_one == 'Aadhaar Card' ? 'selected' : '' }}
-                                                                class="text-muted">Aadhaar Card</option>
-                                                            <option
-                                                                value="Pan Card"{{ $data->prooftype_one == 'Pan Card' ? 'selected' : '' }}
-                                                                class="text-muted">Pan Card</option>
-                                                            <option
-                                                                value="Voter ID"{{ $data->prooftype_one == 'Voter ID' ? 'selected' : '' }}
-                                                                class="text-muted">Voter ID</option>
-                                                            <option
-                                                                value="Driving Licence"{{ $data->prooftype_one == 'Driving Licence' ? 'selected' : '' }}
-                                                                class="text-muted">Driving Licence</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <input type="file" class="form-control" name="proofimage_one">
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">
-                                                        Proof 1 - View </label>
-                                                    <div class="col-sm-9">
-                                                        <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}"
-                                                            target="_blank"><span style="color: black;">View Document:
-                                                            </span>{{ $data->proofimage_one }}</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div id="doubleproof" style="display:none">
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Proof 1 <span style="color: red;">*</span></label>
-                                            <div class="col-sm-5">
-                                                <select class="form-control " name="prooftype_one" style="width: 100%;">
-                                                    <option value="" disabled selected hidden class="text-muted">
-                                                        Select Type</option>
-                                                    <option
-                                                        value="Aadhaar Card"{{ $data->prooftype_one == 'Aadhaar Card' ? 'selected' : '' }}
-                                                        class="text-muted">Aadhaar Card</option>
-                                                    <option
-                                                        value="Pan Card"{{ $data->prooftype_one == 'Pan Card' ? 'selected' : '' }}
-                                                        class="text-muted">Pan Card</option>
-                                                    <option
-                                                        value="Voter ID"{{ $data->prooftype_one == 'Voter ID' ? 'selected' : '' }}
-                                                        class="text-muted">Voter ID</option>
-                                                    <option
-                                                        value="Driving Licence"{{ $data->prooftype_one == 'Driving Licence' ? 'selected' : '' }}
-                                                        class="text-muted">Driving Licence</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="file" class="form-control" name="proofimage_one">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Proof 1 - View </label>
-                                            <div class="col-sm-9">
-                                                <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}"
-                                                    target="_blank"><span style="color: black;">View Document:
-                                                    </span>{{ $data->proofimage_one }}</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Proof 2</label>
-                                            <div class="col-sm-5">
-                                                <select class="form-control " name="prooftype_two" style="width: 100%;">
-                                                    <option value="" selected hidden class="text-muted">Select Type
-                                                    </option>
-                                                    <option
-                                                        value="Aadhaar Card"{{ $data->prooftype_two == 'Aadhaar Card' ? 'selected' : '' }}
-                                                        class="text-muted">Aadhaar Card</option>
-                                                    <option
-                                                        value="Pan Card"{{ $data->prooftype_two == 'Pan Card' ? 'selected' : '' }}
-                                                        class="text-muted">Pan Card</option>
-                                                    <option
-                                                        value="Voter ID"{{ $data->prooftype_two == 'Voter ID' ? 'selected' : '' }}
-                                                        class="text-muted">Voter ID</option>
-                                                    <option
-                                                        value="Driving Licence"{{ $data->prooftype_two == 'Driving Licence' ? 'selected' : '' }}
-                                                        class="text-muted">Driving Licence</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="file" class="form-control" name="proofimage_two">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Proof 2 - View </label>
-                                            <div class="col-sm-9">
-                                                <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_two) }}"
-                                                    target="_blank"><span style="color: black;">View Document:
-                                                    </span>{{ $data->proofimage_two }}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row mb-4">
-                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                            Photo <span style="color: red;">*</span> </label>
-                                        <div class="col-sm-9">
-                                            <div style="display: flex;">
-                                                <div id="my_camera"></div>
-                                                <div id="captured_image" style="border:1px #584f72; background:#f6f6f6;">
-                                                    Your captured image will appear here...</div>
-                                                <img class="rounded m-5" width="100"
-                                                    src="{{ asset($data->customer_photo) }}">
-                                            </div>
-
-                                            <input style="margin-top: 10px; margin-left: 40px;" type=button
-                                                value="Take Snapshot" class="btn btn-success" onClick="take_snapshot()">
-                                            <input type="hidden" name="customer_photo" class="image-tag">
-
-                                        </div>
-                                    </div>
 
                                     <hr>
                                     <h4 class="card-title mb-4" style="color: #5b73e8">Pricing Calculation</h4>
@@ -491,13 +342,13 @@
                                             <div class="inner-repeater mb-4">
                                                 <div data-repeater-list="inner-group" class="inner form-group">
                                                     <div data-repeater-item class="inner mb-3 row">
-                                                        <div class="col-md-3 col-8">
+                                                        <div class="col-md-3 col-12">
                                                             <label for="horizontal-firstname-input"
                                                                 class="col-form-label">
                                                                 Total - Room Price <span style="color: red;">*</span>
                                                             </label>
                                                         </div>
-                                                        <div class="col-md-9 col-3">
+                                                        <div class="col-md-9 col-12">
                                                             <input type="text" class="form-control total_calc_price"
                                                                 style="background-color:#babcc5ad" name="total_calc_price"
                                                                 id="total_calc_price" value="{{ $data->total }}"
@@ -522,7 +373,7 @@
                                                                 value="{{ $data->gst_per }}" required>
                                                         </div>
                                                     </div>
-                                                    <div class="row mb-4">
+                                                    <div class="row mb-4" hidden>
                                                         <label for="horizontal-firstname-input"
                                                             class="col-sm-3 col-form-label">
                                                             Discount Amount <span style="color: red;">*</span> </label>
@@ -577,6 +428,20 @@
                                                                 placeholder="Enter here " required>
                                                         </div>
                                                     </div>
+
+                                                    <div data-repeater-item class="inner mb-3 row">
+                                                        <div class="col-md-3 col-12">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-form-label">
+                                                                Total Paid </label>
+                                                        </div>
+                                                        <div class="col-md-9 col-12">
+                                                            <input type="text" class="form-control total_paid"
+                                                                style="background-color:#1dc72ead" value=""
+                                                                name="total_paid" placeholder="Enter here ">
+                                                        </div>
+                                                    </div>
+
 
                                                     <div class="row mb-4">
                                                         <label for="horizontal-firstname-input"
@@ -635,11 +500,11 @@
                                                                         <td class="col-sm-3">
                                                                             <select class="form-control "
                                                                                 name="payment_method[]">
-                                                                                <option value="" selected
+                                                                                <option value="" selected hidden
                                                                                     class="text-muted">Select Payment Via
                                                                                 </option>
                                                                                 <option
-                                                                                    value="Cash"{{ $paymentdatas->payment_method == 'Cash' ? 'selected' : '' }}
+                                                                                    value="Cash" {{ $paymentdatas->payment_method == 'Cash' ? 'selected' : '' }}
                                                                                     class="text-muted">Cash</option>
                                                                                 <option
                                                                                     value="Online Payment"{{ $paymentdatas->payment_method == 'Online Payment' ? 'selected' : '' }}
@@ -650,36 +515,85 @@
                                                                     </tr>
                                                                 @endforeach
 
+                                                                <tr>
+                                                                        <td class="col-sm-3">
+                                                                            <select class="form-control"
+                                                                                name="payment_term[]">
+                                                                                <option value="" selected
+                                                                                    class="text-muted">Select</option>
+                                                                                <option
+                                                                                    value="Term I"
+                                                                                    class="text-muted">Term I</option>
+                                                                                <option
+                                                                                    value="Term II"
+                                                                                    class="text-muted">Term II</option>
+                                                                                <option
+                                                                                    value="Term III"
+                                                                                    class="text-muted">Term III</option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="col-sm-3">
+                                                                            <input type="text"
+                                                                                class="form-control payable_amount"
+                                                                                id="payable_amount"
+                                                                                name="payable_amount[]"
+                                                                                placeholder="Enter here ">
+                                                                            <input type="hidden"
+                                                                                class="form-control booking_payment_id"
+                                                                                name="booking_payment_id[]"
+                                                                                placeholder="Enter here ">
+                                                                        </td>
+                                                                        <td class="col-sm-3">
+                                                                            <select class="form-control "
+                                                                                name="payment_method[]">
+                                                                                <option value="" selected hidden
+                                                                                    class="text-muted">Select Payment Via
+                                                                                </option>
+                                                                                <option
+                                                                                    value="Cash"
+                                                                                    class="text-muted">Cash</option>
+                                                                                <option
+                                                                                    value="Online Payment"
+                                                                                    class="text-muted">Online Payment
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+
                                                             </table>
                                                         </div>
 
 
                                                     </div>
 
-                                                    <div data-repeater-item class="inner mb-3 row">
-                                                        <div class="col-md-3 col-8">
-                                                            <label for="horizontal-firstname-input"
-                                                                class="col-form-label">
-                                                                Total Paid </label>
-                                                        </div>
-                                                        <div class="col-md-9 col-3">
-                                                            <input type="text" class="form-control total_paid"
-                                                                style="background-color:#1dc72ead" value=""
-                                                                name="total_paid" placeholder="Enter here ">
-                                                        </div>
-                                                    </div>
 
                                                     <div data-repeater-item class="inner mb-3 row">
-                                                        <div class="col-md-3 col-8">
+                                                        <div class="col-md-3 col-12">
                                                             <label for="horizontal-firstname-input"
                                                                 class="col-form-label">
                                                                 Balance Amount </label>
                                                         </div>
-                                                        <div class="col-md-9 col-3">
+                                                        <div class="col-md-9 col-12">
                                                             <input type="text" class="form-control balance_amount"
                                                                 style="background-color:#e53737ad"
                                                                 value="{{ $data->balance_amount }}" name="balance_amount"
                                                                 placeholder="Enter here ">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-4">
+                                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                            Check In Staff <span style="color: red;">*</span> </label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control"
+                                                                name="check_in_staff" required>
+                                                                <option value="" disabled selected hiddden>Select One</option>
+                                                                @foreach ($staff as $staffs)
+                                                                    <option value="{{ $staffs->id }}"
+                                                                        @if ($staffs->id == $data->check_in_staff) selected='selected' @endif>
+                                                                        {{ $staffs->name }}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
 
@@ -688,6 +602,128 @@
                                         </div>
                                     </div>
 
+                                    <hr>
+
+                                            <div class="row mb-4">
+                                                <div class="col-sm-3">
+                                                    <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
+                                                </div>
+                                                
+                                            </div>
+
+                                            <div id="singleproof">
+                                                <div class="row mb-4">
+                                                    <label for="horizontal-firstname-input"
+                                                        class="col-sm-3 col-form-label">
+                                                        Proof <span style="color: red;">*</span> </label>
+                                                    <div class="col-sm-3">
+                                                        <select class="form-control " name="prooftype_one"
+                                                            style="width: 100%;">
+                                                            <option value="" disabled selected hidden
+                                                                class="text-muted">Select Type</option>
+                                                            <option
+                                                                value="Aadhaar Card"{{ $data->prooftype_one == 'Aadhaar Card' ? 'selected' : '' }}
+                                                                class="text-muted">Aadhaar Card</option>
+                                                            <option
+                                                                value="Pan Card"{{ $data->prooftype_one == 'Pan Card' ? 'selected' : '' }}
+                                                                class="text-muted">Pan Card</option>
+                                                            <option
+                                                                value="Voter ID"{{ $data->prooftype_one == 'Voter ID' ? 'selected' : '' }}
+                                                                class="text-muted">Voter ID</option>
+                                                            <option
+                                                                value="Driving Licence"{{ $data->prooftype_one == 'Driving Licence' ? 'selected' : '' }}
+                                                                class="text-muted">Driving Licence</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    Proof View </label>
+                                                <div class="col-sm-4">
+                                                    
+                                                    <a href="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_one) }}"
+                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_one) }}" alt="" width="100" height="100">
+                                                        </a>
+                                                </div>
+                                                <div class="col-sm-1">|</div>
+                                                <div class="col-sm-4">
+                                                    <a href="{{ asset('assets/customer_details/proof/back/' . $data->proofimage_two) }}"
+                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/back/' . $data->proofimage_two) }}" alt="" width="100" height="100"></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4" id="proof1">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof Front<span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <div id="my_camera_front"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Front" onClick="take_snapshot_front()">
+                                                    <input type="hidden" class="form-control image-tagfront" name="proofimage_one"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_image_front"></div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row mb-4" id="proof2">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof  Back<span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <div id="my_camera_back"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Back" onClick="take_snapshot_back()">
+                                                    <input type="hidden" class="form-control image-tagback" name="proofimage_two"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_image_back"></div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row mb-4" id="proof_photo">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <div id="my_camera"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Photo" onClick="takesnapshot()">
+                                                    <input type="hidden" class="form-control image-tagcamera" name="customer_photo"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_cameraimage"></div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+                                    
+
+
+                                    
+
+                                    <div class="row mb-4">
+                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                            Proof View </label>
+                                        <div class="col-sm-9">
+                                            <a href="{{ asset('assets/customer_details/proof/photo/' . $data->customer_photo) }}"
+                                                target="_blank"><img src="{{ asset('assets/customer_details/proof/photo/' . $data->customer_photo) }}" alt="" width="100" height="100"></a>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div class="modal-footer">
+
+                                        <button type="submit" class="btn btn-primary" name="checkin"
+                                            style="margin-right: 10%;">Update</button>
+                                    </div>
 
 
 
@@ -696,11 +732,7 @@
 
 
 
-                        <div class="modal-footer">
 
-                            <button type="submit" class="btn btn-primary" name="checkin"
-                                style="margin-right: 10%;">Update</button>
-                        </div>
                         </form>
                     </div>
                 </div>
@@ -733,13 +765,6 @@
                 return yyyy + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + (dd[1] ? dd : "0" + dd[0]); // padding
             };
         })(jQuery, this, document);
-
-
-
-
-
-
-
 
         $proofs = {{ $data->proofs }}
         if ($proofs == 1) {
@@ -944,25 +969,25 @@
                 }
 
 
-                //var totalAmount = 0;
-                //var days = $(".days").val();
+                var totalAmount = 0;
+                var days = $(".days").val();
 
-                //$("input[name='room_cal_price[]']").each(function() {
-                //alert($(this).val());
-                //   totalAmount = Number(totalAmount) + Number($(this).val());
-                //    $('.total_calc_price').val(totalAmount);
-                //});
+                $("input[name='room_cal_price[]']").each(function() {
+                alert($(this).val());
+                  totalAmount = Number(totalAmount) + Number($(this).val());
+                   $('.total_calc_price').val(totalAmount);
+                });
 
-                //var additional_charge = $(".additional_charge").val();
-                //var total_calc_price = $(".total_calc_price").val();
-                //var discount_amount = $(".discount_amount").val();
-                //var gst_amount = $(".gst_amount").val();
+                var additional_charge = $(".additional_charge").val();
+                var total_calc_price = $(".total_calc_price").val();
+                var discount_amount = $(".discount_amount").val();
+                var gst_amount = $(".gst_amount").val();
 
-                // var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
-                // $('.grand_total').val(grand_total);
-                // var payable_amount = $(".payable_amount").val();
-                // var balance = Number(grand_total) - Number(payable_amount);
-                // $('.balance_amount').val(balance);
+                var grand_total = (Number(total_calc_price) + Number(gst_amount) + Number(additional_charge)) - Number(discount_amount);
+                $('.grand_total').val(grand_total);
+                var payable_amount = $(".payable_amount").val();
+                var balance = Number(grand_total) - Number(payable_amount);
+                $('.balance_amount').val(balance);
 
 
             });
@@ -996,16 +1021,12 @@
 
 
         $(document).ready(function() {
+
+
             $("#addroomfields").click(function() {
                 ++i;
                 $("#roomfields").append(
-                    '<tr><td class="col-sm-6 py-2 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id"name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' +
-                    i +
-                    '" required><td class="col-2"><input type="text" class="form-control" name="room_type[]" placeholder="Room type" value=""/></td><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-2"><input type="text" class="form-control" id="room_price' +
-                    i +
-                    '" name="room_price[]" placeholder="Price Per Day" value=""/></td><td class="col-2"><input type="text" class="form-control room_cal_price" id="room_cal_price' +
-                    i +
-                    '" name="room_cal_price[]" placeholder="Price" value=""/></td><td class="col-sm-2"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                    '<tr class="outer"><td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-12 col-md-3" style="margin-left: 3px;"><select class="form-control room_type" name="room_type[]" required><option value="" selected hidden class="text-muted">Select Room Type</option><option value="A/C" class="text-muted">A/C</option><option value="Non - A/C" class="text-muted">Non - A/C</option></select></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-12 col-md-1" style="margin-left: 4px;"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
                 );
 
                 var branch_id = $('.branch_id').val();
@@ -1042,41 +1063,28 @@
 
 
 
-                // Room Onchange Function
-                ++l;
-                ++h;
-                $('#room_id' + l).on('change', function() {
-
-                    //alert(l);
-                    var room_id_s = this.value;
-
-                    $.ajax({
-                        url: '/getPriceforRooms/' + room_id_s,
-                        type: 'get',
-                        dataType: 'json',
-                        success: function(response) {
-
-                            $('#room_price' + h).val('');
-                            var price = response['data'];
-
-                            //$('#room_price' + h).val(price);
-
-                            //var days = $(".days").val();
-                            // var Amount = days * price;
-                            // $('#room_cal_price' + h).val(Amount);
-
-                            $(document).on("keyup", '#room_price' + h, function() {
-                                var price = $(this).val();
-                                //alert(price);
-                                var days = $(".days").val();
-                                var Amount = days * price;
-                                $('#room_cal_price' + h).val(Amount);
 
 
-                                var totalAmount = 0;
-                                var days = $(".days").val();
+            });
 
-                                $("input[name='room_cal_price[]']").each(
+
+
+
+
+        });
+
+
+
+
+        $(document).on("blur", "input[name*=room_price]", function() {
+            var room_price = $(this).val();
+            //alert(room_price);
+            var days = $(".days").val();
+            var subtotal = room_price * days;
+            $(this).parents('tr').find('input.room_cal_price').val(subtotal);
+
+            var totalAmount = 0;
+            $("input[name='room_cal_price[]']").each(
                                     function() {
                                         //alert($(this).val());
                                         totalAmount = Number(totalAmount) +
@@ -1107,25 +1115,14 @@
                                         additional_charge)) - Number(
                                     discount_in_amount);
                                 $('.grand_total').val(grand_total.toFixed(2));
-                                var payable_amount = $(".total_paid").val();
-                                var balance = Number(grand_total) - Number(
-                                    payable_amount);
+                                var payable_amount = $(".payable_amount").val();
+                                var balance = Number(grand_total.toFixed(2)) -
+                                    Number(payable_amount);
                                 $('.balance_amount').val(balance.toFixed(2));
-                            });
 
-
-                        }
-                    });
-
-
-                });
-
-
-
-
-
-            });
         });
+
+
 
         $(document).on('click', '.remove-tr', function() {
             $(this).parents('tr').remove();
@@ -1241,10 +1238,7 @@
             $('.balance_amount').val(balance.toFixed(2));
         });
 
-
-
-        //Discount Calculation
-
+        // Discount Calculation
         $(document).on("keyup", 'input.discount_amount', function() {
             var discount_amount = $(this).val();
             var total_calc_price = $(".total_calc_price").val();
@@ -1332,19 +1326,35 @@
         // Web Camera Script
 
         Webcam.set({
-            width: 350,
-            height: 200,
-            image_format: 'jpeg',
-            jpeg_quality: 90
-        });
+             width: 200,
+             height: 200,
+             image_format: 'jpeg',
+             jpeg_quality: 90,
+             facingMode: 'environment'
+         });
 
-        Webcam.attach('#my_camera');
+         Webcam.attach('#my_camera_front');
+         function take_snapshot_front() {
+             Webcam.snap(function(data_uri) {
+                 $(".image-tagfront").val(data_uri);
+                 document.getElementById('captured_image_front').innerHTML = '<img src="' + data_uri + '"/>';
+             });
+         }
 
-        function take_snapshot() {
-            Webcam.snap(function(data_uri) {
-                $(".image-tag").val(data_uri);
-                document.getElementById('captured_image').innerHTML = '<img src="' + data_uri + '"/>';
-            });
-        }
+         Webcam.attach('#my_camera_back');
+         function take_snapshot_back() {
+             Webcam.snap(function(data_uri) {
+                 $(".image-tagback").val(data_uri);
+                 document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri + '"/>';
+             });
+         }
+
+         Webcam.attach('#my_camera');
+         function takesnapshot() {
+             Webcam.snap(function(data_uri) {
+                 $(".image-tagcamera").val(data_uri);
+                 document.getElementById('captured_cameraimage').innerHTML = '<img src="' + data_uri + '"/>';
+             });
+         }
     </script>
 @endsection

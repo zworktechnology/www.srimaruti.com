@@ -90,12 +90,12 @@
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Sl. No</th>
-                                        <th>Branch</th>
+                                        <th>{{ __('messages.sno_title') }}</th>
+                                        <th>{{ __('messages.branch_title') }}</th>
                                         <th>Floor</th>
-                                        <th>Room Details</th>
+                                        <th>{{ __('messages.room_title') }} Details</th>
                                         <th>Booking Status</th>
-                                        <th>Action</th>
+                                        <th>{{ __('messages.action_title') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -116,7 +116,7 @@
                                                     <a href="{{ route('room.edit', ['id' => $datas->id]) }}" class="btn btn-sm btn-soft-info">Edit</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#jobDelete{{ $datas->id }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal{{ $datas->id }}">Delete</a>
+                                                    <a href="#jobDelete{{ $datas->id }}" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" data-bs-target="#firstmodal{{ $datas->id }}" hidden>Delete</a>
                                                 </li>
                                             </ul>
                                         </td>

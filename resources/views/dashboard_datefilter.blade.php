@@ -62,13 +62,14 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Branch</th>
-                                                <th>Open Account</th>
+                                                {{-- <th>Previous Day Balance</th> --}}
                                                 <th>Room Income</th>
-                                                <th>Income</th>
+                                                <th>Other Income</th>
+                                                <th>Online Payment</th>
                                                 <th>Expence</th>
-                                                <th>Required Balance</th>
-                                                <th>Close Account</th>
-                                                <th>Difference</th>
+                                                {{-- <th>Available Amount</th> --}}
+                                                {{-- <th>Account Closure</th> --}}
+                                                {{-- <th>Difference</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody id="branchwise_list">
@@ -77,7 +78,7 @@
                                                 <tr>
                                                     <td>{{ $branchwise_lists['branch_name'] }}</td>
 
-                                                    <td>₹ {{ $branchwise_lists['branchwise_openaccount'] }}</td>
+                                                    {{-- <td>₹ {{ $branchwise_lists['branchwise_openaccount'] }}</td> --}}
 
                                                     <td href="#roomincome{{ $branchwise_lists['branch_id'] }}"
                                                         data-bs-toggle="modal"
@@ -86,13 +87,11 @@
 
                                                     <td>₹ {{ $branchwise_lists['branchwise_income'] }}</td>
 
-                                                    <td href="#expence{{ $branchwise_lists['branch_id'] }}"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#expence{{ $branchwise_lists['branch_id'] }}"
-                                                        class="pointer">₹ {{ $branchwise_lists['branchwise_expense'] }}
-                                                    </td>
+                                                    <td>₹ {{ $branchwise_lists['total_onlinepayment'] }}</td>
 
-                                                    <td>₹ {{ $branchwise_lists['requred_balance'] }}</td>
+                                                    <td>₹ {{ $branchwise_lists['branch_wise_expenses'] }}</td>
+
+                                                    {{-- <td>₹ {{ $branchwise_lists['requred_balance'] }}</td>
 
                                                     <td>₹ {{ $branchwise_lists['branchwise_closeaccount'] }}</td>
 
@@ -101,7 +100,7 @@
                                                         </td>
                                                     @else
                                                         <td style="color: Red">₹ {{ $branchwise_lists['difference'] }}</td>
-                                                    @endif
+                                                    @endif --}}
 
                                                 </tr>
 
@@ -116,7 +115,7 @@
                                                 </div>
                                             @endforeach
                                         </tbody>
-                                        <thead class="table-light">
+                                        {{-- <thead class="table-light">
                                             <tr>
                                                 <th>Total</th>
                                                 <th>₹ {{ $openaccount }}</th>
@@ -133,7 +132,7 @@
                                                 <th>₹ {{ $closeaccount }}</th>
                                                 <th> - </th>
                                             </tr>
-                                        </thead>
+                                        </thead> --}}
                                     </table>
 
                                     <div class="modal fade" id="roomincometotal"

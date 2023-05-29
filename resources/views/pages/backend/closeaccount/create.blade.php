@@ -19,7 +19,13 @@
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         Closer Name </label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" name="closer_name" placeholder="Enter closer name *" required>
+                        <select class="form-control js-example-basic-single" name="closer_name" required>
+                            <option value="" disabled selected hidden class="text-muted">
+                                Select manager *</option>
+                            @foreach ($staff as $staffs)
+                            <option value="{{ $staffs->id }}">{{ $staffs->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="row mb-4">
@@ -35,74 +41,81 @@
                         </select>
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         2000 </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="count_2000" placeholder="Enter 2000 *" required>
+                        <input type="number" class="form-control" name="count_2000" placeholder="Enter 2000 *" required value="0">
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         500 </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="count_500" placeholder="Enter 500 *" required>
+                        <input type="number" class="form-control" name="count_500" placeholder="Enter 500 *" required value="0">
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         200 </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="count_200" placeholder="Enter 200 *" required>
+                        <input type="number" class="form-control" name="count_200" placeholder="Enter 200 *" required value="0">
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         100 </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="count_100" placeholder="Enter 100 *" required>
+                        <input type="number" class="form-control" name="count_100" placeholder="Enter 100 *" required value="0">
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         50 </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="count_50" placeholder="Enter 50 *" required>
+                        <input type="number" class="form-control" name="count_50" placeholder="Enter 50 *" required value="0">
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         20 </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="count_20" placeholder="Enter 20 *" required>
+                        <input type="number" class="form-control" name="count_20" placeholder="Enter 20 *" required value="0">
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         10 </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="count_10" placeholder="Enter 10 *" required>
+                        <input type="number" class="form-control" name="count_10" placeholder="Enter 10 *" required value="0">
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         5 </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="count_5" placeholder="Enter 5 *" required>
+                        <input type="number" class="form-control" name="count_5" placeholder="Enter 5 *" required value="0">
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
                         2 </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="count_2" placeholder="Enter 2 *" required>
+                        <input type="number" class="form-control" name="count_2" placeholder="Enter 2 *" required value="0">
+                    </div>
+                </div>
+                <div class="row mb-4" hidden>
+                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
+                        1 </label>
+                    <div class="col-sm-12">
+                        <input type="number" class="form-control" name="count_1" placeholder="Enter 1 *" required value="0">
                     </div>
                 </div>
                 <div class="row mb-4">
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label" hidden>
-                        1 </label>
+                        Total </label>
                     <div class="col-sm-12">
-                        <input type="number" class="form-control" name="count_1" placeholder="Enter 1 *" required>
+                        <input type="number" class="form-control" name="total" placeholder="Enter total *" required>
                     </div>
                 </div>
             </div>

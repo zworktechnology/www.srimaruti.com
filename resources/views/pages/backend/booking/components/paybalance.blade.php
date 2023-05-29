@@ -45,8 +45,8 @@
                     <div class="row mb-4">
                         <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">Balance</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control balance_amount" style="background: #e99e9e"
-                                id="balance_amount" disabled value="{{ $bookingDatas['balance_amount'] }}"
+                            <input type="text" class="form-control balance_amount{{ $bookingDatas['id'] }}" style="background: #e99e9e"
+                                id="balance_amount" value="{{ $bookingDatas['balance_amount'] }}"
                                 name="balance_amount" placeholder="Enter here ">
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                                     </span>
                                     <span class="col-sm-4">
                                         <input type="text" disabled style="background: #e0ddeb;"
-                                            class="form-control payable_amount" id="payable_amount"
+                                            class="form-control " id=""
                                             value="{{ $term_arr['payable_amount'] }}">
                                     </span>
                                     <span class="col-sm-4">
@@ -79,6 +79,34 @@
 
                         </div>
                     </div>
+
+
+                    <script> 
+                    $(document).ready(function() {
+                        $('.paybalance' + {{ $bookingDatas['id'] }}).each(function() {
+                            $(this).on('click', function(e) {
+                                
+                                e.preventDefault();
+                                var $this = $(this),
+                                booking_id = $this.attr('data-id');
+                                //alert(booking_id);
+
+
+                                $(document).on("keyup", '#payable_amount' + {{ $bookingDatas['id'] }}, function() {
+                                    var payable_amount = $(this).val();
+                                    
+                                    var balance_amount = $('.balance_amount' + {{ $bookingDatas['id'] }}).val();
+                                    console.log(balance_amount);
+
+                                    if (Number(payable_amount) > Number(balance_amount)) {
+                                        alert('You are entering Maximum Amount of Balance');
+                                        $('.payable_amount' + {{ $bookingDatas['id'] }}).val('');
+                                    }
+                                });
+                            });
+                        });
+                    });
+                </script>
 
 
                     <div class="row mb-4">
@@ -109,7 +137,7 @@
                         <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">Payable Amount
                             <span style="color: red;">*</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control payable_amount" id="payable_amount"
+                            <input type="text" class="form-control payable_amount" id="payable_amount{{ $bookingDatas['id'] }}"
                                 value="" name="payable_amount" placeholder="Enter here ">
                         </div>
                     </div>
@@ -130,6 +158,8 @@
         $(".paybalanceclosebutton").click(function() {
             window.location.reload();
         });
+
+        
 
     </script>
 

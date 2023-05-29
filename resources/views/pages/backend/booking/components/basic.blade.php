@@ -15,14 +15,18 @@
                 </div>
             </div>
             <div class="row mb-4">
+                @if ($bookingDatas['status'] == 2)
+                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Out Date & Time</label>
+                @else
                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Check Out Date & Time</label>
+                @endif
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
                     <label for="horizontal-firstname-input" class="col-sm-9 col-form-label">
-                        @if ($bookingDatas['extended_date'] != '')
-                            {{ date('d M Y', strtotime($bookingDatas['extended_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['extended_time'])) }})
+                        @if ($bookingDatas['status'] == 2)
+                        <span style="color:red;">{{ date('d M Y', strtotime($bookingDatas['out_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['out_time'])) }})</span>
                         @else
-                            {{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})
+                        <span>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }} - ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
                         @endif
                     </label>
                 </div>
@@ -43,7 +47,7 @@
                         {{ $bookingDatas['total_paid'] }}</label>
                 </div>
             </div>
-            <div class="row mb-4">
+            <daciv class="row mb-4">
                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Balance</label>
                 <label class="col-sm-1">-</label>
                 <div class="col-sm-8">
