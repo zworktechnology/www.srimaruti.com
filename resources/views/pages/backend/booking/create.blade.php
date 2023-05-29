@@ -225,113 +225,11 @@
 
                                             <hr>
 
-                                            <div class="row mb-4">
-                                                <div class="col-sm-3">
-                                                    <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
-                                                </div>
-                                                <div class="col-sm-2" hidden>
-                                                    <input id="default-radio-1" type="radio" checked value="1"
-                                                        name="proofs"
-                                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="default-radio-1" class="ml-2"
-                                                        style="font-weight:900">Single Proof</label>
-                                                </div>
-                                                <div class="col-sm-2" hidden>
-                                                    <input id="default-radio-1" type="radio" value="2"
-                                                        name="proofs"
-                                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="default-radio-1" class="ml-2"
-                                                        style="font-weight:900">Double Proof</label>
-                                                </div>
-                                            </div>
-
-
-                                            <div id="singleproof">
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">
-                                                        Proof <span style="color: red;">*</span> </label>
-                                                    <div class="col-sm-3">
-                                                        <select class="form-control prooftype_one"
-                                                            name="prooftype_one" style="width: 100%;" required>
-                                                            <option value="" disabled selected hidden
-                                                                class="text-muted">Select Type</option>
-                                                            <option value="Aadhaar Card" class="text-muted">Aadhaar Card
-                                                            </option>
-                                                            <option value="Pan Card" class="text-muted">Pan Card</option>
-                                                            <option value="Voter ID" class="text-muted">Voter ID</option>
-                                                            <option value="Driving Licence" class="text-muted">Driving
-                                                                Licence</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-3" hidden>
-                                                        <input type="file" class="form-control" name=""
-                                                            required>
-                                                    </div>
-                                                    <div class="col-sm-3" hidden>
-                                                        <input type="file" class="form-control proofimage_two" name="proofimage_two"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4" hidden>
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof View </label>
-                                                <div class="col-sm-4">
-                                                    <a target="_blank" class="proofone"><span style="color: black;">
-                                                        </span></a>
-                                                </div>
-                                                <div class="col-sm-1">|</div>
-                                                <div class="col-sm-4">
-                                                    <a target="_blank" class="prooftwo"><span style="color: black;">
-                                                        </span></a>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-4" id="proof1">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof Front<span style="color: red;">*</span> </label>
-                                                <div class="col-sm-9">
-                                                    <div id="my_camera_front"></div><br/>
-                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Front" onClick="take_snapshot_front()">
-                                                    <input type="hidden" class="form-control image-tagfront" name="proofimage_one"required>
-                                                        <div class="col-sm-4">
-                                                            <div id="captured_image_front"></div>
-                                                        </div>
-                                                    
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row mb-4" id="proof2">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof  Back<span style="color: red;">*</span> </label>
-                                                <div class="col-sm-9">
-                                                    <div id="my_camera_back"></div><br/>
-                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Back" onClick="take_snapshot_back()">
-                                                    <input type="hidden" class="form-control image-tagback" name="proofimage_two"required>
-                                                        <div class="col-sm-4">
-                                                            <div id="captured_image_back"></div>
-                                                        </div>
-                                                    
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row mb-4" id="proof_photo">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
-                                                <div class="col-sm-9">
-                                                    <div id="my_camera"></div><br/>
-                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Photo" onClick="takesnapshot()">
-                                                    <input type="hidden" class="form-control image-tagcamera" name="customer_photo"required>
-                                                        <div class="col-sm-4">
-                                                            <div id="captured_cameraimage"></div>
-                                                        </div>
-                                                    
-                                                </div>
-                                            </div>
+                                            
 
                                             
 
-                                            <hr>
+                                    
 
                                             <h4 class="card-title mb-4" style="color: #5b73e8">Pricing Calculation</h4>
 
@@ -515,6 +413,107 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <hr>
+
+                                            <div class="row mb-4">
+                                                <div class="col-sm-3">
+                                                    <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
+                                                </div>
+                                                <div class="col-sm-2" hidden>
+                                                    <input id="default-radio-1" type="radio" checked value="1"
+                                                        name="proofs"
+                                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                    <label for="default-radio-1" class="ml-2"
+                                                        style="font-weight:900">Single Proof</label>
+                                                </div>
+                                                <div class="col-sm-2" hidden>
+                                                    <input id="default-radio-1" type="radio" value="2"
+                                                        name="proofs"
+                                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                    <label for="default-radio-1" class="ml-2"
+                                                        style="font-weight:900">Double Proof</label>
+                                                </div>
+                                            </div>
+
+
+                                            <div id="singleproof">
+                                                <div class="row mb-4">
+                                                    <label for="horizontal-firstname-input"
+                                                        class="col-sm-3 col-form-label">
+                                                        Proof <span style="color: red;">*</span> </label>
+                                                    <div class="col-sm-3">
+                                                        <select class="form-control prooftype_one"
+                                                            name="prooftype_one" style="width: 100%;" required>
+                                                            <option value="" disabled selected hidden
+                                                                class="text-muted">Select Type</option>
+                                                            <option value="Aadhaar Card" class="text-muted">Aadhaar Card
+                                                            </option>
+                                                            <option value="Pan Card" class="text-muted">Pan Card</option>
+                                                            <option value="Voter ID" class="text-muted">Voter ID</option>
+                                                            <option value="Driving Licence" class="text-muted">Driving
+                                                                Licence</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4" hidden>
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    Proof View </label>
+                                                <div class="col-sm-4">
+                                                    <a target="_blank" class="proofone"><span style="color: black;">
+                                                        </span></a>
+                                                </div>
+                                                <div class="col-sm-1">|</div>
+                                                <div class="col-sm-4">
+                                                    <a target="_blank" class="prooftwo"><span style="color: black;">
+                                                        </span></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4" id="proof1">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof Front<span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <div id="my_camera_front"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Front" onClick="take_snapshot_front()">
+                                                    <input type="hidden" class="form-control image-tagfront" name="proofimage_one"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_image_front"></div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row mb-4" id="proof2">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof  Back<span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <div id="my_camera_back"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Back" onClick="take_snapshot_back()">
+                                                    <input type="hidden" class="form-control image-tagback" name="proofimage_two"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_image_back"></div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row mb-4" id="proof_photo">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <div id="my_camera"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Photo" onClick="takesnapshot()">
+                                                    <input type="hidden" class="form-control image-tagcamera" name="customer_photo"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_cameraimage"></div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+
+
+
                                         </div>
                                     </div>
 
