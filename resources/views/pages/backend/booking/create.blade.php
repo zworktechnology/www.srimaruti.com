@@ -292,7 +292,7 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Photo <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-7">
-                                                    <div style="display: flex; flex-wrap: wrap;">
+                                                    <div style="" class="capture_div">
                                                         <div id="my_camera"></div>
                                                         <div id="captured_image"
                                                             style="border:1px #584f72; background:#f6f6f6;">Your captured

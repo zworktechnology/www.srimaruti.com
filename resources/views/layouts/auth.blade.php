@@ -13,6 +13,19 @@
         .responsive_cls tr td {
             display: inline-block;
         }
+        .capture_div {
+            display: flex;
+        }
+        @media (max-width: 767px) {
+            .capture_div {
+                flex-wrap: wrap;
+            }
+        }
+        @media (max-width: 500px) {
+            .capture_div #my_camera {
+                width: 500px !important;
+            }
+        }
     </style>
 </head>
 
