@@ -537,7 +537,7 @@ class BookingController extends Controller
              $frontfileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
              $frontimgfile = $front_folderPath . $frontfileName;
              file_put_contents($frontimgfile, $frontimage_base64);
-             $data->customer_photo = $frontimgfile;
+             $data->proofimage_one = $frontimgfile;
 
 
              // Proof Back
@@ -550,7 +550,7 @@ class BookingController extends Controller
              $backfileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
              $backimgfile = $back_folderPath . $backfileName;
              file_put_contents($backimgfile, $backimage_base64);
-             $data->customer_photo = $backimgfile;
+             $data->proofimage_two = $backimgfile;
 
 
             //$proofimage_one = $request->proofimage_one;
@@ -707,51 +707,92 @@ class BookingController extends Controller
         //     }
         // }
 
-        // if ($request->customer_photo != "") {
-        // $customer_photo = $request->customer_photo;
-        // $folderPath = "assets/customer_details/profile";
-        // $image_parts = explode(";base64,", $customer_photo);
-        // $image_type_aux = explode("image/", $image_parts[0]);
-        // $image_type = $image_type_aux[1];
-        // $image_base64 = base64_decode($image_parts[1]);
-        // $fileName = $BookingData->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-        // $customerimgfile = $folderPath . $random_no . $fileName;
-        // file_put_contents($customerimgfile, $image_base64);
-        // $BookingData->customer_photo = $customerimgfile;
-        // }else{
-        //   $Insertedcustomer_photo = $BookingData->customer_photo;
-        //   $BookingData->customer_photo = $Insertedcustomer_photo;
-        // }
 
-        if ($request->file('proofimage_one') != "") {
+        // Camera
+         if ($request->customer_photo != "") {
+         $customer_photo = $request->customer_photo;
+         $folderPath = "assets/customer_details/proof/photo";
+         $image_parts = explode(";base64,", $customer_photo);
+         $image_type_aux = explode("image/", $image_parts[0]);
+         $image_type = $image_type_aux[1];
+         $image_base64 = base64_decode($image_parts[1]);
+         $fileName = $BookingData->customer_name . '_' . $random_no . '_' . 'image' . '.png';
+         $customerimgfile = $folderPath . $random_no . $fileName;
+         file_put_contents($customerimgfile, $image_base64);
+         $BookingData->customer_photo = $customerimgfile;
+         }else{
+           $Insertedcustomer_photo = $BookingData->customer_photo;
+           $BookingData->customer_photo = $Insertedcustomer_photo;
+         }
+
+
+
+         // Proof Front
+         if ($request->proofimage_one != "") {
             $proofimage_one = $request->proofimage_one;
-            $filename_one = $BookingData->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $BookingData->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
-            $request->proofimage_one->move('assets/customer_details/proof/front', $filename_one);
-            $BookingData->proofimage_one = $filename_one;
-        } else {
-            $Insertedproof_image_one = $BookingData->proofimage_one;
-            $BookingData->proofimage_one = $Insertedproof_image_one;
-        }
+            $frontfolderPath = "assets/customer_details/proof/front";
+            $front_image_parts = explode(";base64,", $proofimage_one);
+            $frontimage_type_aux = explode("image/", $front_image_parts[0]);
+            $frontimage_type = $frontimage_type_aux[1];
+            $frontimage_base64 = base64_decode($front_image_parts[1]);
+            $frontfileName = $BookingData->proofimage_one . '_' . $random_no . '_' . 'image' . '.png';
+            $frontcustomerimgfile = $frontfolderPath . $random_no . $frontfileName;
+            file_put_contents($frontcustomerimgfile, $frontimage_base64);
+            $BookingData->proofimage_one = $frontcustomerimgfile;
+            }else{
+              $Insertedproofimage_one = $BookingData->proofimage_one;
+              $BookingData->proofimage_one = $Insertedproofimage_one;
+            }
 
-        if ($request->file('proofimage_two') != "") {
+
+            // Proof Back
+         if ($request->proofimage_two != "") {
             $proofimage_two = $request->proofimage_two;
-            $filename_two = $BookingData->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $BookingData->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
-            $request->proofimage_two->move('assets/customer_details/proof/back', $filename_two);
-            $BookingData->proofimage_two = $filename_two;
-        } else {
-            $Insertedproof_image_two = $BookingData->proofimage_two;
-            $BookingData->proofimage_two = $Insertedproof_image_two;
-        }
+            $backfolderPath = "assets/customer_details/proof/back";
+            $back_image_parts = explode(";base64,", $proofimage_two);
+            $backimage_type_aux = explode("image/", $back_image_parts[0]);
+            $backimage_type = $backimage_type_aux[1];
+            $backimage_base64 = base64_decode($back_image_parts[1]);
+            $backfileName = $BookingData->proofimage_two . '_' . $random_no . '_' . 'image' . '.png';
+            $backcustomerimgfile = $backfolderPath . $random_no . $backfileName;
+            file_put_contents($backcustomerimgfile, $backimage_base64);
+            $BookingData->proofimage_two = $backcustomerimgfile;
+            }else{
+              $Insertedproofimage_two = $BookingData->proofimage_two;
+              $BookingData->proofimage_two = $Insertedproofimage_two;
+            }
 
-        if ($request->file('customer_photo') != "") {
-            $customer_photo = $request->customer_photo;
-            $filename_customer_photo = $BookingData->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
-            $request->customer_photo->move('assets/customer_details/proof/photo', $filename_customer_photo);
-            $BookingData->customer_photo = $filename_customer_photo;
-        } else {
-            $Insertedproof_customer_photo = $BookingData->customer_photo;
-            $BookingData->customer_photo = $Insertedproof_customer_photo;
-        }
+
+
+        //if ($request->file('proofimage_one') != "") {
+         //   $proofimage_one = $request->proofimage_one;
+         //   $filename_one = $BookingData->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $BookingData->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
+         //   $request->proofimage_one->move('assets/customer_details/proof/front', $filename_one);
+         //   $BookingData->proofimage_one = $filename_one;
+        //} else {
+         //   $Insertedproof_image_one = $BookingData->proofimage_one;
+         //   $BookingData->proofimage_one = $Insertedproof_image_one;
+        //}
+
+        //if ($request->file('proofimage_two') != "") {
+         //   $proofimage_two = $request->proofimage_two;
+         //   $filename_two = $BookingData->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $BookingData->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
+        //    $request->proofimage_two->move('assets/customer_details/proof/back', $filename_two);
+         //   $BookingData->proofimage_two = $filename_two;
+        //} else {
+         //   $Insertedproof_image_two = $BookingData->proofimage_two;
+         //   $BookingData->proofimage_two = $Insertedproof_image_two;
+        //}
+
+        //if ($request->file('customer_photo') != "") {
+         //   $customer_photo = $request->customer_photo;
+         //   $filename_customer_photo = $BookingData->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
+         //   $request->customer_photo->move('assets/customer_details/proof/photo', $filename_customer_photo);
+         //   $BookingData->customer_photo = $filename_customer_photo;
+        //} else {
+        //    $Insertedproof_customer_photo = $BookingData->customer_photo;
+         //   $BookingData->customer_photo = $Insertedproof_customer_photo;
+        //}
 
         $BookingData->total = $request->get('total_calc_price');
         $BookingData->gst_per = $request->get('gst_percentage');

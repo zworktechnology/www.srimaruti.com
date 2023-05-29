@@ -332,170 +332,7 @@
 
 
 
-                                            <hr>
 
-                                            <div class="row mb-4">
-                                                <div class="col-sm-3">
-                                                    <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
-                                                </div>
-                                                <div class="col-sm-2" hidden>
-                                                    <input id="default-radio-1" type="radio" value="1"
-                                                        {{ $data->proofs == '1' ? 'checked' : '' }} name="proofs"
-                                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="default-radio-1" class="ml-2"
-                                                        style="font-weight:900">Single Proof</label>
-                                                </div>
-                                                <div class="col-sm-2" hidden>
-                                                    <input id="default-radio-1" type="radio" value="2"
-                                                        {{ $data->proofs == '2' ? 'checked' : '' }} name="proofs"
-                                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="default-radio-1" class="ml-2"
-                                                        style="font-weight:900">Double Proof</label>
-                                                </div>
-                                            </div>
-
-                                            <div id="singleproof" style="display:none">
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">
-                                                        Proof <span style="color: red;">*</span> </label>
-                                                    <div class="col-sm-3">
-                                                        <select class="form-control " name="prooftype_one"
-                                                            style="width: 100%;">
-                                                            <option value="" disabled selected hidden
-                                                                class="text-muted">Select Type</option>
-                                                            <option
-                                                                value="Aadhaar Card"{{ $data->prooftype_one == 'Aadhaar Card' ? 'selected' : '' }}
-                                                                class="text-muted">Aadhaar Card</option>
-                                                            <option
-                                                                value="Pan Card"{{ $data->prooftype_one == 'Pan Card' ? 'selected' : '' }}
-                                                                class="text-muted">Pan Card</option>
-                                                            <option
-                                                                value="Voter ID"{{ $data->prooftype_one == 'Voter ID' ? 'selected' : '' }}
-                                                                class="text-muted">Voter ID</option>
-                                                            <option
-                                                                value="Driving Licence"{{ $data->prooftype_one == 'Driving Licence' ? 'selected' : '' }}
-                                                                class="text-muted">Driving Licence</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <input type="file" class="form-control" name="proofimage_one" value="{{ $data->proofimage_one }}">
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <input type="file" class="form-control" name="proofimage_two" value="{{ $data->proofimage_two }}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof View </label>
-                                                <div class="col-sm-4">
-                                                    <a href="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_one) }}"
-                                                        target="_blank"><span style="color: black;">
-                                                        </span>{{ $data->proofimage_one }}</a>
-                                                </div>
-                                                <div class="col-sm-1">|</div>
-                                                <div class="col-sm-4">
-                                                    <a href="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_two) }}"
-                                                        target="_blank"><span style="color: black;">
-                                                        </span>{{ $data->proofimage_two }}</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div id="doubleproof" style="display:none">
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Proof 1 <span style="color: red;">*</span></label>
-                                            <div class="col-sm-5">
-                                                <select class="form-control " name="prooftype_one" style="width: 100%;">
-                                                    <option value="" disabled selected hidden class="text-muted">
-                                                        Select Type</option>
-                                                    <option
-                                                        value="Aadhaar Card"{{ $data->prooftype_one == 'Aadhaar Card' ? 'selected' : '' }}
-                                                        class="text-muted">Aadhaar Card</option>
-                                                    <option
-                                                        value="Pan Card"{{ $data->prooftype_one == 'Pan Card' ? 'selected' : '' }}
-                                                        class="text-muted">Pan Card</option>
-                                                    <option
-                                                        value="Voter ID"{{ $data->prooftype_one == 'Voter ID' ? 'selected' : '' }}
-                                                        class="text-muted">Voter ID</option>
-                                                    <option
-                                                        value="Driving Licence"{{ $data->prooftype_one == 'Driving Licence' ? 'selected' : '' }}
-                                                        class="text-muted">Driving Licence</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="file" class="form-control" name="proofimage_one">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Proof 1 - View </label>
-                                            <div class="col-sm-9">
-                                                <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}"
-                                                    target="_blank"><span style="color: black;">View Document:
-                                                    </span>{{ $data->proofimage_one }}</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Proof 2</label>
-                                            <div class="col-sm-5">
-                                                <select class="form-control " name="prooftype_two" style="width: 100%;">
-                                                    <option value="" selected hidden class="text-muted">Select Type
-                                                    </option>
-                                                    <option
-                                                        value="Aadhaar Card"{{ $data->prooftype_two == 'Aadhaar Card' ? 'selected' : '' }}
-                                                        class="text-muted">Aadhaar Card</option>
-                                                    <option
-                                                        value="Pan Card"{{ $data->prooftype_two == 'Pan Card' ? 'selected' : '' }}
-                                                        class="text-muted">Pan Card</option>
-                                                    <option
-                                                        value="Voter ID"{{ $data->prooftype_two == 'Voter ID' ? 'selected' : '' }}
-                                                        class="text-muted">Voter ID</option>
-                                                    <option
-                                                        value="Driving Licence"{{ $data->prooftype_two == 'Driving Licence' ? 'selected' : '' }}
-                                                        class="text-muted">Driving Licence</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="file" class="form-control" name="proofimage_two">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                Proof 2 - View </label>
-                                            <div class="col-sm-9">
-                                                <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_two) }}"
-                                                    target="_blank"><span style="color: black;">View Document:
-                                                    </span>{{ $data->proofimage_two }}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row mb-4" id="proof_photo">
-                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo
-                                            <span style="color: red;">*</span> </label>
-                                        <div class="col-sm-9">
-                                            <input type="file" class="form-control" name="customer_photo" value="{{ $data->customer_photo }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-4">
-                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                            Proof View </label>
-                                        <div class="col-sm-9">
-                                            <a href="{{ asset('assets/customer_details/proof/photo/' . $data->customer_photo) }}"
-                                                target="_blank"><span style="color: black;">
-                                                </span>{{ $data->customer_photo }}</a>
-                                        </div>
-                                    </div>
 
                                     <hr>
                                     <h4 class="card-title mb-4" style="color: #5b73e8">Pricing Calculation</h4>
@@ -764,6 +601,123 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <hr>
+
+                                            <div class="row mb-4">
+                                                <div class="col-sm-3">
+                                                    <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
+                                                </div>
+                                                
+                                            </div>
+
+                                            <div id="singleproof">
+                                                <div class="row mb-4">
+                                                    <label for="horizontal-firstname-input"
+                                                        class="col-sm-3 col-form-label">
+                                                        Proof <span style="color: red;">*</span> </label>
+                                                    <div class="col-sm-3">
+                                                        <select class="form-control " name="prooftype_one"
+                                                            style="width: 100%;">
+                                                            <option value="" disabled selected hidden
+                                                                class="text-muted">Select Type</option>
+                                                            <option
+                                                                value="Aadhaar Card"{{ $data->prooftype_one == 'Aadhaar Card' ? 'selected' : '' }}
+                                                                class="text-muted">Aadhaar Card</option>
+                                                            <option
+                                                                value="Pan Card"{{ $data->prooftype_one == 'Pan Card' ? 'selected' : '' }}
+                                                                class="text-muted">Pan Card</option>
+                                                            <option
+                                                                value="Voter ID"{{ $data->prooftype_one == 'Voter ID' ? 'selected' : '' }}
+                                                                class="text-muted">Voter ID</option>
+                                                            <option
+                                                                value="Driving Licence"{{ $data->prooftype_one == 'Driving Licence' ? 'selected' : '' }}
+                                                                class="text-muted">Driving Licence</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                                    Proof View </label>
+                                                <div class="col-sm-4">
+                                                    
+                                                    <a href="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_one) }}"
+                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_one) }}" alt="" width="100" height="100">
+                                                        </a>
+                                                </div>
+                                                <div class="col-sm-1">|</div>
+                                                <div class="col-sm-4">
+                                                    <a href="{{ asset('assets/customer_details/proof/back/' . $data->proofimage_two) }}"
+                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/back/' . $data->proofimage_two) }}" alt="" width="100" height="100"></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4" id="proof1">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof Front<span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <div id="my_camera_front"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Front" onClick="take_snapshot_front()">
+                                                    <input type="hidden" class="form-control image-tagfront" name="proofimage_one"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_image_front"></div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row mb-4" id="proof2">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof  Back<span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <div id="my_camera_back"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Back" onClick="take_snapshot_back()">
+                                                    <input type="hidden" class="form-control image-tagback" name="proofimage_two"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_image_back"></div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row mb-4" id="proof_photo">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <div id="my_camera"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Photo" onClick="takesnapshot()">
+                                                    <input type="hidden" class="form-control image-tagcamera" name="customer_photo"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_cameraimage"></div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+                                    
+
+
+                                    
+
+                                    <div class="row mb-4">
+                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
+                                            Proof View </label>
+                                        <div class="col-sm-9">
+                                            <a href="{{ asset('assets/customer_details/proof/photo/' . $data->customer_photo) }}"
+                                                target="_blank"><img src="{{ asset('assets/customer_details/proof/photo/' . $data->customer_photo) }}" alt="" width="100" height="100"></a>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
 
                                     <div class="modal-footer">
 
@@ -1371,20 +1325,36 @@
 
         // Web Camera Script
 
-        // Webcam.set({
-        //     width: 350,
-        //     height: 200,
-        //     image_format: 'jpeg',
-        //     jpeg_quality: 90
-        // });
+        Webcam.set({
+             width: 200,
+             height: 200,
+             image_format: 'jpeg',
+             jpeg_quality: 90,
+             facingMode: 'environment'
+         });
 
-        // Webcam.attach('#my_camera');
+         Webcam.attach('#my_camera_front');
+         function take_snapshot_front() {
+             Webcam.snap(function(data_uri) {
+                 $(".image-tagfront").val(data_uri);
+                 document.getElementById('captured_image_front').innerHTML = '<img src="' + data_uri + '"/>';
+             });
+         }
 
-        // function take_snapshot() {
-        //     Webcam.snap(function(data_uri) {
-        //         $(".image-tag").val(data_uri);
-        //         document.getElementById('captured_image').innerHTML = '<img src="' + data_uri + '"/>';
-        //     });
-        // }
+         Webcam.attach('#my_camera_back');
+         function take_snapshot_back() {
+             Webcam.snap(function(data_uri) {
+                 $(".image-tagback").val(data_uri);
+                 document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri + '"/>';
+             });
+         }
+
+         Webcam.attach('#my_camera');
+         function takesnapshot() {
+             Webcam.snap(function(data_uri) {
+                 $(".image-tagcamera").val(data_uri);
+                 document.getElementById('captured_cameraimage').innerHTML = '<img src="' + data_uri + '"/>';
+             });
+         }
     </script>
 @endsection
