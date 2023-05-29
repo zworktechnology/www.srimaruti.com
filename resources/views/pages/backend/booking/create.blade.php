@@ -264,17 +264,17 @@
                                                                 Licence</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-sm-3">
-                                                        <input type="file" class="form-control proofimage_one" name="proofimage_one"
+                                                    <div class="col-sm-3" hidden>
+                                                        <input type="file" class="form-control" name=""
                                                             required>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-3" hidden>
                                                         <input type="file" class="form-control proofimage_two" name="proofimage_two"
                                                             required>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row mb-4">
+                                            <div class="row mb-4" hidden>
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Proof View </label>
                                                 <div class="col-sm-4">
@@ -288,13 +288,48 @@
                                                 </div>
                                             </div>
 
+                                            <div class="row mb-4" id="proof1">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof Front<span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <div id="my_camera_front"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Front" onClick="take_snapshot_front()">
+                                                    <input type="hidden" class="form-control image-tagfront" name="proofimage_one"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_image_front"></div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row mb-4" id="proof2">
+                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof  Back<span style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <div id="my_camera_back"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Back" onClick="take_snapshot_back()">
+                                                    <input type="hidden" class="form-control image-tagback" name="proofimage_two"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_image_back"></div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+
+
                                             <div class="row mb-4" id="proof_photo">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
-                                                    <input type="file" class="form-control" name="customer_photo"
-                                                            required>
+                                                    <div id="my_camera"></div><br/>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Photo" onClick="takesnapshot()">
+                                                    <input type="hidden" class="form-control image-tagcamera" name="customer_photo"required>
+                                                        <div class="col-sm-4">
+                                                            <div id="captured_cameraimage"></div>
+                                                        </div>
+                                                    
                                                 </div>
                                             </div>
+
+                                            
 
                                             <hr>
 
@@ -1019,36 +1054,36 @@
             }
         });
 
-        // Webcam.set({
-        //     width: 350,
-        //     height: 200,
-        //     image_format: 'jpeg',
-        //     jpeg_quality: 90,
-        //     facingMode: 'environment'
-        // });
+         Webcam.set({
+             width: 200,
+             height: 200,
+             image_format: 'jpeg',
+             jpeg_quality: 90,
+             facingMode: 'environment'
+         });
 
-        // Webcam.attach('#my_camera');
-        // function take_snapshot() {
-        //     Webcam.snap(function(data_uri) {
-        //         $(".image-tag").val(data_uri);
-        //         document.getElementById('captured_image').innerHTML = '<img src="' + data_uri + '"/>';
-        //     });
-        // }
+         Webcam.attach('#my_camera_front');
+         function take_snapshot_front() {
+             Webcam.snap(function(data_uri) {
+                 $(".image-tagfront").val(data_uri);
+                 document.getElementById('captured_image_front').innerHTML = '<img src="' + data_uri + '"/>';
+             });
+         }
 
-        // Webcam.attach('#my_camera_proof_front');
-        // function take_snapshot_proof_front() {
-        //     Webcam.snap(function(data_uri) {
-        //         $(".image-tag-proof-front").val(data_uri);
-        //         document.getElementById('captured_image_proof_front').innerHTML = '<img src="' + data_uri + '"/>';
-        //     });
-        // }
+         Webcam.attach('#my_camera_back');
+         function take_snapshot_back() {
+             Webcam.snap(function(data_uri) {
+                 $(".image-tagback").val(data_uri);
+                 document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri + '"/>';
+             });
+         }
 
-        // Webcam.attach('#my_camera_back');
-        // function take_snapshot_back() {
-        //     Webcam.snap(function(data_uri) {
-        //         $(".image-tag-back").val(data_uri);
-        //         document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri + '"/>';
-        //     });
-        // }
+         Webcam.attach('#my_camera');
+         function takesnapshot() {
+             Webcam.snap(function(data_uri) {
+                 $(".image-tagcamera").val(data_uri);
+                 document.getElementById('captured_cameraimage').innerHTML = '<img src="' + data_uri + '"/>';
+             });
+         }
     </script>
 @endsection
