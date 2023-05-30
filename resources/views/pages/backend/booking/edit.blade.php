@@ -190,7 +190,7 @@
 
 
                                                                                         @foreach ($room as $rooms)
-                                                                                            @if ($rooms['id'] == $BookingRoomss['room_id'])
+                                                                                            @if ($rooms->id == $BookingRoomss->room_id)
                                                                                                 <script>
                                                                                                     var booking_id = {{ $data->id }};
 
@@ -659,7 +659,7 @@
                                                 <div class="col-sm-9">
                                                     <div id="my_camera_front"></div><br/>
                                                     <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Front" onClick="take_snapshot_front()">
-                                                    <input type="hidden" class="form-control image-tagfront" name="proofimage_one"required>
+                                                    <input type="hidden" class="form-control image-tagfront" name="proofimage_one">
                                                         <div class="col-sm-4">
                                                             <div id="captured_image_front"></div>
                                                         </div>
@@ -673,7 +673,7 @@
                                                 <div class="col-sm-9">
                                                     <div id="my_camera_back"></div><br/>
                                                     <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Back" onClick="take_snapshot_back()">
-                                                    <input type="hidden" class="form-control image-tagback" name="proofimage_two"required>
+                                                    <input type="hidden" class="form-control image-tagback" name="proofimage_two">
                                                         <div class="col-sm-4">
                                                             <div id="captured_image_back"></div>
                                                         </div>
@@ -687,7 +687,7 @@
                                                 <div class="col-sm-9">
                                                     <div id="my_camera"></div><br/>
                                                     <input type=button class=" btn btn-sm btn-soft-primary"value="Photo" onClick="takesnapshot()">
-                                                    <input type="hidden" class="form-control image-tagcamera" name="customer_photo"required>
+                                                    <input type="hidden" class="form-control image-tagcamera" name="customer_photo">
                                                         <div class="col-sm-4">
                                                             <div id="captured_cameraimage"></div>
                                                         </div>
