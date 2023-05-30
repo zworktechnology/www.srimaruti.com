@@ -138,8 +138,8 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Branch <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control branch_id"
-                                                        name="branch_id" id="branch_id" required>
+                                                    <select class="form-control branch_id" name="branch_id"
+                                                        id="branch_id" required>
 
                                                         @foreach ($branch as $branchs)
                                                             <option value="{{ $branchs->id }}">{{ $branchs->name }}
@@ -176,21 +176,31 @@
                                                                                         <option value="" selected
                                                                                             hidden class="text-muted">
                                                                                             Select Room</option>
-                                                                                            @foreach ($roomsarr as $rooms_arr)
+                                                                                        @foreach ($roomsarr as $rooms_arr)
                                                                                             @if ($rooms_arr->booking_status != 1)
-                                                                                                <option value="{{ $rooms_arr->id }}">Room No {{ $rooms_arr->room_number }} - {{ $rooms_arr->room_floor }} Floor
+                                                                                                <option
+                                                                                                    value="{{ $rooms_arr->id }}">
+                                                                                                    Room No
+                                                                                                    {{ $rooms_arr->room_number }}
+                                                                                                    -
+                                                                                                    {{ $rooms_arr->room_floor }}
+                                                                                                    Floor
                                                                                                 </option>
                                                                                             @endif
-                                                                                            @endforeach
+                                                                                        @endforeach
                                                                                     </select>
                                                                                 </td>
                                                                                 <td class="col-12 col-md-3">
                                                                                     <select class="form-control room_type"
-                                                                                    name="room_type[]"
-                                                                                    required>
-                                                                                    <option value="" selected hidden class="text-muted">Select Room Type</option>
-                                                                                        <option value="A/C" class="text-muted">A/C</option>
-                                                                                        <option value="Non - A/C" class="text-muted">Non - A/C</option>
+                                                                                        name="room_type[]" required>
+                                                                                        <option value="" selected
+                                                                                            hidden class="text-muted">
+                                                                                            Select Room Type</option>
+                                                                                        <option value="A/C"
+                                                                                            class="text-muted">A/C</option>
+                                                                                        <option value="Non - A/C"
+                                                                                            class="text-muted">Non - A/C
+                                                                                        </option>
                                                                                     </select>
                                                                                 </td>
                                                                                 <td class="col-12 col-md-2"><input
@@ -396,14 +406,18 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row mb-4">
-                                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                                    Check In Staff <span style="color: red;">*</span> </label>
+                                                                <label for="horizontal-firstname-input"
+                                                                    class="col-sm-3 col-form-label">
+                                                                    Check In Staff <span style="color: red;">*</span>
+                                                                </label>
                                                                 <div class="col-sm-9">
-                                                                    <select class="form-control"
-                                                                        name="check_in_staff" required>
-                                                                        <option value="" disabled selected hiddden>Select One</option>
+                                                                    <select class="form-control" name="check_in_staff"
+                                                                        required>
+                                                                        <option value="" disabled selected hiddden>
+                                                                            Select One</option>
                                                                         @foreach ($staff as $staffs)
-                                                                            <option value="{{ $staffs->id }}">{{ $staffs->name }}
+                                                                            <option value="{{ $staffs->id }}">
+                                                                                {{ $staffs->name }}
                                                                             </option>
                                                                         @endforeach
                                                                     </select>
@@ -442,9 +456,9 @@
                                                     <label for="horizontal-firstname-input"
                                                         class="col-sm-3 col-form-label">
                                                         Proof <span style="color: red;">*</span> </label>
-                                                    <div class="col-sm-3">
-                                                        <select class="form-control prooftype_one"
-                                                            name="prooftype_one" style="width: 100%;" required>
+                                                    <div class="col-sm-9">
+                                                        <select class="form-control prooftype_one" name="prooftype_one"
+                                                            style="width: 100%;" required>
                                                             <option value="" disabled selected hidden
                                                                 class="text-muted">Select Type</option>
                                                             <option value="Aadhaar Card" class="text-muted">Aadhaar Card
@@ -472,48 +486,55 @@
                                             </div>
 
                                             <div class="row mb-4" id="proof1">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof Front<span style="color: red;">*</span> </label>
+                                                <label for="horizontal-firstname-input"
+                                                    class="col-sm-3 col-form-label">Proof Front<span
+                                                        style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
-                                                    <div id="my_camera_front"></div><br/>
-                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Front" onClick="take_snapshot_front()">
-                                                    <input type="hidden" class="form-control image-tagfront" name="proofimage_one"required>
-                                                        <div class="col-sm-4">
-                                                            <div id="captured_image_front"></div>
-                                                        </div>
-
+                                                    <div style="display: flex">
+                                                        <div id="my_camera_front"></div>
+                                                        <div id="captured_image_front"></div>
+                                                    </div>
+                                                    <input type=button
+                                                        class=" btn btn-sm btn-soft-primary"value="Take a Snap - Front Proof"
+                                                        onClick="take_snapshot_front()">
+                                                    <input type="hidden" class="form-control image-tagfront"
+                                                        name="proofimage_one"required>
                                                 </div>
                                             </div>
-
 
                                             <div class="row mb-4" id="proof2">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof  Back<span style="color: red;">*</span> </label>
+                                                <label for="horizontal-firstname-input"
+                                                    class="col-sm-3 col-form-label">Proof Back<span
+                                                        style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
-                                                    <div id="my_camera_back"></div><br/>
-                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Back" onClick="take_snapshot_back()">
-                                                    <input type="hidden" class="form-control image-tagback" name="proofimage_two"required>
-                                                        <div class="col-sm-4">
-                                                            <div id="captured_image_back"></div>
-                                                        </div>
-
+                                                    <div style="display: flex">
+                                                        <div id="my_camera_back"></div>
+                                                        <div id="captured_image_back"></div>
+                                                    </div>
+                                                    <input type=button
+                                                        class=" btn btn-sm btn-soft-primary"value="Take a Snap - Back Proof"
+                                                        onClick="take_snapshot_back()">
+                                                    <input type="hidden" class="form-control image-tagback"
+                                                        name="proofimage_two"required>
                                                 </div>
                                             </div>
-
 
                                             <div class="row mb-4" id="proof_photo">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
+                                                <label for="horizontal-firstname-input"
+                                                    class="col-sm-3 col-form-label">Photo <span
+                                                        style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
-                                                    <div id="my_camera"></div><br/>
-                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Photo" onClick="takesnapshot()">
-                                                    <input type="hidden" class="form-control image-tagcamera" name="customer_photo"required>
-                                                        <div class="col-sm-4">
-                                                            <div id="captured_cameraimage"></div>
-                                                        </div>
-
+                                                    <div style="display: flex">
+                                                        <div id="my_camera"></div>
+                                                        <div id="captured_cameraimage"></div>
+                                                    </div>
+                                                    <div id="my_camera"></div><br />
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Take a Snap - Photo"
+                                                        onClick="takesnapshot()">
+                                                    <input type="hidden" class="form-control image-tagcamera"
+                                                        name="customer_photo"required>
                                                 </div>
                                             </div>
-
-
-
                                         </div>
                                     </div>
 
@@ -759,7 +780,13 @@
             $("#addroomfields").click(function() {
                 ++i;
                 $("#roomfields").append(
-                    '<tr><td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' + i + '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-12 col-md-3" style="margin-left: 3px;"><select class="form-control room_type" name="room_type[]" required><option value="" selected hidden class="text-muted">Select Room Type</option><option value="A/C" class="text-muted">A/C</option><option value="Non - A/C" class="text-muted">Non - A/C</option></select></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control" id="room_price' + i + '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control room_cal_price" id="room_cal_price' + i + '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-12 col-md-1" style="margin-left: 4px;"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
+                    '<tr><td class="col-12 col-md-3 pr-2 py-1 text-left text-xs font-medium text-black-700 tracking-wider"><input type="hidden" id="room_auto_id" name="room_auto_id[]" /><select class="form-control js-example-basic-single room_id" name="room_id[]" id="room_id' +
+                    i +
+                    '" required><option value="" selected hidden class="text-muted">Select Room</option></select></td><td class="col-12 col-md-3" style="margin-left: 3px;"><select class="form-control room_type" name="room_type[]" required><option value="" selected hidden class="text-muted">Select Room Type</option><option value="A/C" class="text-muted">A/C</option><option value="Non - A/C" class="text-muted">Non - A/C</option></select></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control" id="room_price' +
+                    i +
+                    '" name="room_price[]" placeholder="Price Per Day" value="" required/></td><td class="col-12 col-md-2" style="margin-left: 3px;"><input type="text" class="form-control room_cal_price" id="room_cal_price' +
+                    i +
+                    '" name="room_cal_price[]" placeholder="Price" value="" required/></td><td class="col-12 col-md-1" style="margin-left: 4px;"><button style="width: 100px;" class="text-white font-medium rounded-lg text-sm  text-center btn btn-danger remove-tr" type="button" >Remove</button></td></tr>'
                 );
 
                 var branch_id = $('.branch_id').val();
@@ -809,40 +836,40 @@
 
             var totalAmount = 0;
             $("input[name='room_cal_price[]']").each(
-                                    function() {
-                                        //alert($(this).val());
-                                        totalAmount = Number(totalAmount) +
-                                            Number($(this).val());
-                                        $('.total_calc_price').val(
-                                            totalAmount);
-                                    });
+                function() {
+                    //alert($(this).val());
+                    totalAmount = Number(totalAmount) +
+                        Number($(this).val());
+                    $('.total_calc_price').val(
+                        totalAmount);
+                });
 
-                                var additional_charge = $(".additional_charge")
-                                    .val();
-                                var total_calc_price = $(".total_calc_price")
-                                    .val();
+            var additional_charge = $(".additional_charge")
+                .val();
+            var total_calc_price = $(".total_calc_price")
+                .val();
 
-                                var discount_percentage = $(
-                                    ".discount_percentage").val();
-                                var discount_in_amount = (discount_percentage /
-                                    100) * total_calc_price;
-                                $('.discount_amount').val(discount_in_amount
-                                    .toFixed(2));
+            var discount_percentage = $(
+                ".discount_percentage").val();
+            var discount_in_amount = (discount_percentage /
+                100) * total_calc_price;
+            $('.discount_amount').val(discount_in_amount
+                .toFixed(2));
 
-                                var gst_percentage = $(".gst_percentage").val();
-                                var gst_in_amount = (gst_percentage / 100) *
-                                    total_calc_price;
-                                $('.gst_amount').val(gst_in_amount.toFixed(2));
+            var gst_percentage = $(".gst_percentage").val();
+            var gst_in_amount = (gst_percentage / 100) *
+                total_calc_price;
+            $('.gst_amount').val(gst_in_amount.toFixed(2));
 
-                                var grand_total = (Number(total_calc_price) +
-                                    Number(gst_in_amount) + Number(
-                                        additional_charge)) - Number(
-                                    discount_in_amount);
-                                $('.grand_total').val(grand_total.toFixed(2));
-                                var payable_amount = $(".payable_amount").val();
-                                var balance = Number(grand_total.toFixed(2)) -
-                                    Number(payable_amount);
-                                $('.balance_amount').val(balance.toFixed(2));
+            var grand_total = (Number(total_calc_price) +
+                Number(gst_in_amount) + Number(
+                    additional_charge)) - Number(
+                discount_in_amount);
+            $('.grand_total').val(grand_total.toFixed(2));
+            var payable_amount = $(".payable_amount").val();
+            var balance = Number(grand_total.toFixed(2)) -
+                Number(payable_amount);
+            $('.balance_amount').val(balance.toFixed(2));
 
         });
 
@@ -1045,44 +1072,50 @@
 
         $(document).on("keyup", 'input.gst_percentage', function() {
             var gst_percentage = $(this).val();
-            if($.isNumeric(gst_percentage)){
+            if ($.isNumeric(gst_percentage)) {
                 console.log($.isNumeric(gst_percentage));
-            }else{
+            } else {
                 alert('Add the data in numbers only');
                 $(".gst_percentage").val('');
             }
         });
 
-         Webcam.set({
-             width: 200,
-             height: 200,
-             image_format: 'jpeg',
-             jpeg_quality: 90,
-             facingMode: 'environment'
-         });
+        Webcam.set({
+            width: 300,
+            height: 300,
+            image_format: 'jpeg',
+            jpeg_quality: 90,
+            facingMode: 'environment'
+        });
 
-         Webcam.attach('#my_camera_front');
-         function take_snapshot_front() {
-             Webcam.snap(function(data_uri) {
-                 $(".image-tagfront").val(data_uri);
-                 document.getElementById('captured_image_front').innerHTML = '<img src="' + data_uri + '"/>';
-             });
-         }
+        Webcam.attach('#my_camera_front');
 
-         Webcam.attach('#my_camera_back');
-         function take_snapshot_back() {
-             Webcam.snap(function(data_uri) {
-                 $(".image-tagback").val(data_uri);
-                 document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri + '"/>';
-             });
-         }
+        function take_snapshot_front() {
+            Webcam.snap(function(data_uri) {
+                $(".image-tagfront").val(data_uri);
+                document.getElementById('captured_image_front').innerHTML = '<img src="' + data_uri +
+                    '" style="height: 220px !important;width: 300px !important;margin-top: 40px;margin-left: 40px;"/>';
+            });
+        }
 
-         Webcam.attach('#my_camera');
-         function takesnapshot() {
-             Webcam.snap(function(data_uri) {
-                 $(".image-tagcamera").val(data_uri);
-                 document.getElementById('captured_cameraimage').innerHTML = '<img src="' + data_uri + '"/>';
-             });
-         }
+        Webcam.attach('#my_camera_back');
+
+        function take_snapshot_back() {
+            Webcam.snap(function(data_uri) {
+                $(".image-tagback").val(data_uri);
+                document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri +
+                    '" style="height: 220px !important;width: 300px !important;margin-top: 40px;margin-left: 40px;"/>';
+            });
+        }
+
+        Webcam.attach('#my_camera');
+
+        function takesnapshot() {
+            Webcam.snap(function(data_uri) {
+                $(".image-tagcamera").val(data_uri);
+                document.getElementById('captured_cameraimage').innerHTML = '<img src="' + data_uri +
+                    '" style="height: 220px !important;width: 300px !important;margin-top: 40px;margin-left: 40px;"/>';
+            });
+        }
     </script>
 @endsection
