@@ -225,11 +225,11 @@
 
                                             <hr>
 
-                                            
 
-                                            
 
-                                    
+
+
+
 
                                             <h4 class="card-title mb-4" style="color: #5b73e8">Pricing Calculation</h4>
 
@@ -480,7 +480,7 @@
                                                         <div class="col-sm-4">
                                                             <div id="captured_image_front"></div>
                                                         </div>
-                                                    
+
                                                 </div>
                                             </div>
 
@@ -494,7 +494,7 @@
                                                         <div class="col-sm-4">
                                                             <div id="captured_image_back"></div>
                                                         </div>
-                                                    
+
                                                 </div>
                                             </div>
 
@@ -508,7 +508,7 @@
                                                         <div class="col-sm-4">
                                                             <div id="captured_cameraimage"></div>
                                                         </div>
-                                                    
+
                                                 </div>
                                             </div>
 
