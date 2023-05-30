@@ -643,14 +643,14 @@
                                                     Proof View </label>
                                                 <div class="col-sm-4">
                                                     
-                                                    <a href="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_one) }}"
-                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_one) }}" alt="" width="100" height="100">
+                                                    <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}"
+                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}" alt="" width="100" height="100">
                                                         </a>
                                                 </div>
                                                 <div class="col-sm-1">|</div>
                                                 <div class="col-sm-4">
-                                                    <a href="{{ asset('assets/customer_details/proof/back/' . $data->proofimage_two) }}"
-                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/back/' . $data->proofimage_two) }}" alt="" width="100" height="100"></a>
+                                                    <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_two) }}"
+                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/' . $data->proofimage_two) }}" alt="" width="100" height="100"></a>
                                                 </div>
                                             </div>
 
@@ -703,8 +703,8 @@
                                         <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                             Proof View </label>
                                         <div class="col-sm-9">
-                                            <a href="{{ asset('assets/customer_details/proof/photo/' . $data->customer_photo) }}"
-                                                target="_blank"><img src="{{ asset('assets/customer_details/proof/photo/' . $data->customer_photo) }}" alt="" width="100" height="100"></a>
+                                            <a href="{{ asset('assets/customer_details/proof/' . $data->customer_photo) }}"
+                                                target="_blank"><img src="{{ asset('assets/customer_details/proof/' . $data->customer_photo) }}" alt="" width="100" height="100"></a>
                                         </div>
                                     </div>
 

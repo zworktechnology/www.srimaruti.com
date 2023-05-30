@@ -516,7 +516,7 @@ class BookingController extends Controller
 
             // Profile Image
              $customer_photo = $request->customer_photo;
-             $folderPath = "assets/customer_details/proof/photo";
+             $folderPath = "assets/customer_details/proof";
              $image_parts = explode(";base64,", $customer_photo);
              $image_type_aux = explode("image/", $image_parts[0]);
              $image_type = $image_type_aux[1];
@@ -529,7 +529,7 @@ class BookingController extends Controller
 
              // Proof Front
              $proofimage_one = $request->proofimage_one;
-             $front_folderPath = "assets/customer_details/proof/front";
+             $front_folderPath = "assets/customer_details/proof";
              $front_image_parts = explode(";base64,", $proofimage_one);
              $frontimage_type_aux = explode("image/", $front_image_parts[0]);
              $frontimage_type = $frontimage_type_aux[1];
@@ -542,7 +542,7 @@ class BookingController extends Controller
 
              // Proof Back
              $proofimage_two = $request->proofimage_two;
-             $back_folderPath = "assets/customer_details/proof/back";
+             $back_folderPath = "assets/customer_details/proof";
              $back_image_parts = explode(";base64,", $proofimage_two);
              $backimage_type_aux = explode("image/", $back_image_parts[0]);
              $backimage_type = $backimage_type_aux[1];
@@ -711,7 +711,7 @@ class BookingController extends Controller
         // Camera
          if ($request->customer_photo != "") {
          $customer_photo = $request->customer_photo;
-         $folderPath = "assets/customer_details/proof/photo";
+         $folderPath = "assets/customer_details/proof";
          $image_parts = explode(";base64,", $customer_photo);
          $image_type_aux = explode("image/", $image_parts[0]);
          $image_type = $image_type_aux[1];
@@ -730,7 +730,7 @@ class BookingController extends Controller
          // Proof Front
          if ($request->proofimage_one != "") {
             $proofimage_one = $request->proofimage_one;
-            $frontfolderPath = "assets/customer_details/proof/front";
+            $frontfolderPath = "assets/customer_details/proof";
             $front_image_parts = explode(";base64,", $proofimage_one);
             $frontimage_type_aux = explode("image/", $front_image_parts[0]);
             $frontimage_type = $frontimage_type_aux[1];
@@ -748,7 +748,7 @@ class BookingController extends Controller
             // Proof Back
          if ($request->proofimage_two != "") {
             $proofimage_two = $request->proofimage_two;
-            $backfolderPath = "assets/customer_details/proof/back";
+            $backfolderPath = "assets/customer_details/proof";
             $back_image_parts = explode(";base64,", $proofimage_two);
             $backimage_type_aux = explode("image/", $back_image_parts[0]);
             $backimage_type = $backimage_type_aux[1];
