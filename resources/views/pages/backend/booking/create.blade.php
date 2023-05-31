@@ -235,12 +235,6 @@
 
                                             <hr>
 
-
-
-
-
-
-
                                             <h4 class="card-title mb-4" style="color: #5b73e8">Pricing Calculation</h4>
 
                                             <div data-repeater-list="group-a">

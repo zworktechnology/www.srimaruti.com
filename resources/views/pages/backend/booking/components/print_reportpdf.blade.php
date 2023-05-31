@@ -84,8 +84,8 @@
                                                     <td>{{ ++$keydata }}</td>
                                                         <td>{{ $Reportdata_Arrays['customer_name'] }}</td>
                                                         <td>{{ $Reportdata_Arrays['whats_app_number'] }}</td>
-                                                        <td><a href="{{ asset('assets/customer_details/proof/photo/' . $Reportdata_Arrays['customer_photo']) }}"target="_blank"><span style="color: black;">
-                                                               <img src="{{ asset('assets/customer_details/proof/photo/' . $Reportdata_Arrays['customer_photo']) }}" alt="image description" style="width:50px; height:50px;">
+                                                        <td><a href="{{ asset($Reportdata_Arrays['proofimage_one']) }}"target="_blank"><span style="color: black;">
+                                                               <img src="{{ asset($Reportdata_Arrays['proofimage_one']) }}" alt="image description" style="width:70px; height:50px;">
                                                             </a>
                                                          </td>
                                                         <td>{{ date('d M,Y', strtotime($Reportdata_Arrays['check_in_date'])) }}
