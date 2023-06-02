@@ -251,7 +251,7 @@
                                                                 <div class="col-md-9 col-12">
                                                                     <input type="text"
                                                                         class="form-control total_calc_price"
-                                                                        style="background-color:#babcc5ad"
+                                                                        style="background-color:#babcc5ad" readonly
                                                                         name="total_calc_price" id="total_calc_price"
                                                                         placeholder="Enter here " required>
                                                                 </div>
@@ -329,7 +329,7 @@
                                                                 </div>
                                                                 <div class="col-md-9 col-12">
                                                                     <input type="text" class="form-control grand_total"
-                                                                        style="background-color:#babcc5ad"
+                                                                        style="background-color:#babcc5ad" readonly
                                                                         name="grand_total" placeholder="Enter here "
                                                                         required>
                                                                 </div>
@@ -394,7 +394,7 @@
                                                                 <div class="col-md-9 col-12">
                                                                     <input type="text"
                                                                         class="form-control balance_amount"
-                                                                        style="background-color:#c7c21dad" value="0"
+                                                                        style="background-color:#c7c21dad" value="0" readonly
                                                                         name="balance_amount" placeholder="Enter here "
                                                                         required>
                                                                 </div>

@@ -351,7 +351,7 @@
                                                         <div class="col-md-9 col-12">
                                                             <input type="text" class="form-control total_calc_price"
                                                                 style="background-color:#babcc5ad" name="total_calc_price"
-                                                                id="total_calc_price" value="{{ $data->total }}"
+                                                                id="total_calc_price" value="{{ $data->total }}" readonly
                                                                 placeholder="Enter here " required>
                                                         </div>
                                                     </div>
@@ -424,7 +424,7 @@
                                                         <div class="col-md-9 col-3">
                                                             <input type="text" class="form-control grand_total"
                                                                 style="background-color:#babcc5ad" name="grand_total"
-                                                                value="{{ $data->grand_total }}"
+                                                                value="{{ $data->grand_total }}" readonly
                                                                 placeholder="Enter here " required>
                                                         </div>
                                                     </div>
@@ -575,7 +575,7 @@
                                                         </div>
                                                         <div class="col-md-9 col-12">
                                                             <input type="text" class="form-control balance_amount"
-                                                                style="background-color:#e53737ad"
+                                                                style="background-color:#e53737ad" readonly
                                                                 value="{{ $data->balance_amount }}" name="balance_amount"
                                                                 placeholder="Enter here ">
                                                         </div>
