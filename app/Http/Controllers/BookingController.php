@@ -49,6 +49,7 @@ class BookingController extends Controller
                     'room_cal_price' => $rooms_booked->room_cal_price,
                     'id' => $rooms_booked->id,
                     'room_id' => $rooms_booked->room_id,
+                    'room_type' => $rooms_booked->room_type,
                 );
             }
             $payment_data = BookingPayment::where('booking_id', '=', $datas->id)->get();
@@ -62,6 +63,8 @@ class BookingController extends Controller
                     'payment_method' => $payment_datas->payment_method,
                 );
             }
+            $checkin_staffname = Staff::findOrFail($datas->check_in_staff);
+            $checkout_staffname = Staff::findOrFail($datas->check_out_staff);
             $bookingData[] = array(
                 'customer_name' => $datas->customer_name,
                 'branch' => $branch->name,
@@ -93,6 +96,12 @@ class BookingController extends Controller
                 'out_date' => $datas->out_date,
                 'out_time' => $datas->out_time,
                 'booking_invoiceno' => $datas->booking_invoiceno,
+                'couple' => $datas->couple,
+                'check_in_staff' => $checkin_staffname->name,
+                'check_out_staff' => $checkout_staffname->name,
+                'proofimage_one' => $datas->proofimage_one,
+                'proofimage_two' => $datas->proofimage_two,
+                'customer_photo' => $datas->customer_photo,
             );
         }
 
@@ -128,6 +137,7 @@ class BookingController extends Controller
                     'room_cal_price' => $rooms_booked->room_cal_price,
                     'id' => $rooms_booked->id,
                     'room_id' => $rooms_booked->room_id,
+                    'room_type' => $rooms_booked->room_type,
                 );
             }
             $payment_data = BookingPayment::where('booking_id', '=', $datas->id)->get();
@@ -140,6 +150,8 @@ class BookingController extends Controller
                     'payment_method' => $payment_datas->payment_method,
                 );
             }
+            $checkin_staffname = Staff::findOrFail($datas->check_in_staff);
+            $checkout_staffname = Staff::findOrFail($datas->check_out_staff);
             $bookingData[] = array(
                 'customer_name' => $datas->customer_name,
                 'branch' => $branch->name,
@@ -171,6 +183,12 @@ class BookingController extends Controller
                 'extended_date' => $datas->extended_date,
                 'extended_time' => $datas->extended_time,
                 'booking_invoiceno' => $datas->booking_invoiceno,
+                'couple' => $datas->couple,
+                'check_in_staff' => $checkin_staffname->name,
+                'check_out_staff' => $checkout_staffname->name,
+                'proofimage_one' => $datas->proofimage_one,
+                'proofimage_two' => $datas->proofimage_two,
+                'customer_photo' => $datas->customer_photo,
             );
         }
 
@@ -473,6 +491,7 @@ class BookingController extends Controller
             $data->male_count = $request->get('male_count');
             $data->female_count = $request->get('female_count');
             $data->child_count = $request->get('child_count');
+            $data->couple = $request->get('couple');
             $data->check_in_date = $request->get('check_in_date');
             $data->check_in_time = $request->get('check_in_time');
             $data->check_out_date = $request->get('check_out_date');
@@ -656,6 +675,7 @@ class BookingController extends Controller
         $BookingData->male_count = $request->get('male_count');
         $BookingData->female_count = $request->get('female_count');
         $BookingData->child_count = $request->get('child_count');
+        $BookingData->couple = $request->get('couple');
         $BookingData->check_in_date = $request->get('check_in_date');
         $BookingData->check_in_time = $request->get('check_in_time');
         $BookingData->check_out_date = $request->get('check_out_date');
@@ -1086,9 +1106,11 @@ class BookingController extends Controller
                         'payable_amount' => $payment_datas->payable_amount,
                         'id' => $payment_datas->id,
                         'payment_method' => $payment_datas->payment_method,
+                        'room_type' => $rooms_booked->room_type,
                     );
                 }
-
+                $checkin_staffname = Staff::findOrFail($check_in_dates->check_in_staff);
+                $checkout_staffname = Staff::findOrFail($check_in_dates->check_out_staff);
                 $checkin_Array[] = array(
                         'customer_name' => $check_in_dates->customer_name,
                         'room_list' => $room_list,
@@ -1118,6 +1140,12 @@ class BookingController extends Controller
                         'out_date' => $check_in_dates->out_date,
                         'out_time' => $check_in_dates->out_time,
                         'booking_invoiceno' => $check_in_dates->booking_invoiceno,
+                        'couple' => $check_in_dates->couple,
+                        'check_in_staff' => $checkin_staffname->name,
+                        'check_out_staff' => $checkout_staffname->name,
+                        'proofimage_one' => $check_in_dates->proofimage_one,
+                        'proofimage_two' => $check_in_dates->proofimage_two,
+                        'customer_photo' => $check_in_dates->customer_photo,
                 );
             }
 
@@ -1293,6 +1321,7 @@ class BookingController extends Controller
                         'case_income_gst' => $case_income_gst,
                         'online_income' => $online_income,
                         'online_income_gst' => $online_income_gst,
+                        'couple' => $checkin_Datas->couple,
                     );
         }
 
@@ -1398,18 +1427,12 @@ class BookingController extends Controller
         return view('pages.backend.booking.components.printexportpdf', compact('room_online_income_tax', 'income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income', 'room_cash_income_tax'));
     }
 
-
-
-
-
-
-    public function export_reportpdf() {
+    public function export_reportpdf()
+    {
         $branch = Branch::where('soft_delete', '!=', 1)->get();
 
         return view('pages.backend.booking.components.export_reportpdf', compact('branch'));
     }
-
-
 
     public function print_reportpdf(Request $request)
     {

@@ -115,9 +115,21 @@
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     No of Days - Stay <span style="color: red;">*</span> </label>
-                                                <div class="col-sm-9">
+                                                <div class="col-sm-4">
                                                     <input type="text" class="form-control days" id="days"
                                                         name="days" placeholder="Enter here " required>
+                                                </div>
+                                                <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">
+                                                    Couple Friendly <span style="color: red;">*</span> </label>
+                                                <div class="col-sm-1" style="margin-top: 10px;">
+                                                    <input type="radio" class="form-check-input"
+                                                            name="couple" value="1">
+                                                        <label class="form-check-label">Yes</label>
+                                                </div>
+                                                <div class="col-sm-2" style="margin-top: 10px;">
+                                                    <input type="radio" class="form-check-input"
+                                                            name="couple" checked value="0">
+                                                        <label class="form-check-label">No</label>
                                                 </div>
                                             </div>
                                             <div class="row mb-4">

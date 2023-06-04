@@ -84,6 +84,7 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($checkin_Array as $keydata => $checkin_Arrays)
+                                                    @if ($checkin_Arrays['couple'] == 0)
                                                     <tr>
                                                         <td>{{ $checkin_Arrays['booking_invoiceno'] }}</td>
                                                         <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_in_date'])) }}
@@ -107,6 +108,32 @@
                                                             <td></td>
                                                         @endif
                                                     </tr>
+                                                    @else
+                                                    <tr style="background-color: lightpink;">
+                                                        <td>{{ $checkin_Arrays['booking_invoiceno'] }}</td>
+                                                        <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_in_date'])) }}
+                                                        </td>
+                                                        <td>
+                                                            @foreach ($checkin_Arrays['room_list'] as $index => $room_lists)
+                                                                @if ($room_lists['booking_id'] == $checkin_Arrays['id'])
+                                                                    {{ $room_lists['roomno'] }} -
+                                                                    {{ $room_lists['roomtype'] }},
+                                                                @endif
+                                                            @endforeach
+                                                        </td>
+                                                        <td>{{ $checkin_Arrays['cash_income'] }}</td>
+                                                        <td>{{ $checkin_Arrays['case_income_gst'] }}</td>
+                                                        <td>{{ $checkin_Arrays['online_income'] }}</td>
+                                                        <td>{{ $checkin_Arrays['online_income_gst'] }}</td>
+                                                        @if ($checkin_Arrays['check_out_date'] != '')
+                                                            <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_out_date'])) }}
+                                                            </td>
+                                                        @else
+                                                            <td></td>
+                                                        @endif
+                                                    </tr>
+                                                    @endif
+
                                                 @endforeach
                                             </tbody>
                                             <thead>
@@ -253,7 +280,8 @@
                                                     <td>{{ $room_cash_income + $income_total + $room_online_income }}</td>
                                                     <td>{{ $expence_total }}</td>
                                                     <td>{{ $room_online_income }}</td>
-                                                    <td>{{ ($room_cash_income + $income_total + $room_online_income) - ($expence_total + $room_online_income) }}</td>
+                                                    <td>{{ $room_cash_income + $income_total + $room_online_income - ($expence_total + $room_online_income) }}
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>

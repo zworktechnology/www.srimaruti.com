@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('male_count');
             $table->string('female_count');
             $table->string('child_count')->nullable();
+            $table->boolean('couple')->nullable()->default(0);
             $table->string('check_in_date')->nullable();
             $table->string('check_in_time')->nullable();
             $table->string('check_out_date')->nullable();

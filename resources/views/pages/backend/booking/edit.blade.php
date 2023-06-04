@@ -270,7 +270,7 @@
                                                                                                     disabled
                                                                                                     name="customer_booked_room[]"
                                                                                                     placeholder=""
-                                                                                                    value="Room No{{ $rooms->room_number }} - Floor {{ $rooms->room_floor }} - {{ $rooms->room_type }}">
+                                                                                                    value="Room No {{ $rooms->room_number }} - {{ $rooms->room_floor }} Floor">
                                                                                                 <input type="hidden"
                                                                                                     id="room_id"
                                                                                                     name="room_id[]"
@@ -1051,8 +1051,7 @@
 
                                     var id = response['data'][i].id;
                                     var name = 'Room No ' + response['data'][i].room_number +
-                                        ' - ' + response['data'][i].room_floor + ' Floor - ' +
-                                        response['data'][i].room_type;
+                                        ' - ' + response['data'][i].room_floor + ' Floor';
                                     var option = "<option value='" + id + "'>" + name +
                                         "</option>";
                                     selectedValues.push(option);

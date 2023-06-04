@@ -61,4 +61,9 @@ class Booking extends Model
     {
         return $this->hasMany(Branch::class, 'branch_id');
     }
+
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class, 'check_in_staff');
+    }
 }
