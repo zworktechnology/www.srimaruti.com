@@ -11,7 +11,7 @@
                         <div class="page-title-right">
 
                             <ol class="breadcrumb m-0">
-                            <form autocomplete="off" method="POST" action="{{ route('expense.datefilter') }}" style="display: flex;">
+                            <form autocomplete="off" method="POST" action="{{ route('expense.datefilter', ['user_branch_id' => $user_branch_id]) }}" style="display: flex;">
                             @method('PUT')
                             @csrf
 
@@ -19,7 +19,7 @@
                                 <li style="margin-left: 10px;"><button type="submit" class="btn btn-primary home_search">Search</button></li>
                                 </form>
                                 <li style="margin-left: 10px;">
-                                    <a href="{{ route('expense.index') }}">
+                                    <a href="{{ route('expense.index', ['user_branch_id' => $user_branch_id]) }}">
                                         <button type="button" class="btn btn-primary waves-effect waves-light">
                                             Back
                                         </button>

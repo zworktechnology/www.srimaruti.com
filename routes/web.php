@@ -187,7 +187,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // INCOME CONTROLLER
     Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // INDEX
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/income', [IncomeController::class, 'index'])->name('income.index');
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/income/{user_branch_id}', [IncomeController::class, 'index'])->name('income.index');
         // CREATE
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/income/create', [IncomeController::class, 'create'])->name('income.create');
         // STORE
@@ -201,13 +201,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // DESTROY
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/income/destroy/{id}', [IncomeController::class, 'destroy'])->name('income.destroy');
         // DATE FILTER
-        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/income/datefilter', [IncomeController::class, 'datefilter'])->name('income.datefilter');
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/income/datefilter/{user_branch_id}', [IncomeController::class, 'datefilter'])->name('income.datefilter');
     });
 
     // EXPENSE CONTROLLER
     Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // INDEX
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/expense', [ExpenseController::class, 'index'])->name('expense.index');
+        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/expense/{user_branch_id}', [ExpenseController::class, 'index'])->name('expense.index');
         // CREATE
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/expense/create', [ExpenseController::class, 'create'])->name('expense.create');
         // STORE
@@ -221,7 +221,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // DESTROY
         Route::middleware(['auth:sanctum', 'verified'])->delete('/zwork-admin/expense/destroy/{id}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
         // DATE FILTER
-        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/expense/datefilter', [ExpenseController::class, 'datefilter'])->name('expense.datefilter');
+        Route::middleware(['auth:sanctum', 'verified'])->put('/zwork-admin/expense/datefilter/{user_branch_id}', [ExpenseController::class, 'datefilter'])->name('expense.datefilter');
     });
 
     // OPEN ACCOUNT CONTROLLER
