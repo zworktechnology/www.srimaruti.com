@@ -206,9 +206,6 @@
                                                         data-bs-target="#basic{{ $bookingDatas['id'] }}" class="pointer">
                                                         {{ $bookingDatas['customer_name'] }}</td>
 
-                                                    <td><span>{{ date('d M Y', strtotime($bookingDatas['chick_in_date'])) }}-({{ date('h:i A', strtotime($bookingDatas['chick_in_time'])) }})</span>
-                                                    </td>
-
                                                     <td>{{ $bookingDatas['check_in_staff'] }}</td>
 
                                                     <td><span>{{ date('d M Y', strtotime($bookingDatas['chick_in_date'])) }}-({{ date('h:i A', strtotime($bookingDatas['chick_in_time'])) }})</span>
@@ -219,6 +216,14 @@
                                                     @else
                                                         <td>{{ $bookingDatas['check_out_staff'] }}</td>
                                                     @endif
+
+                                                    <td>
+                                                        @if ($bookingDatas['out_date'] != '')
+                                                            <span>{{ date('d M Y', strtotime($bookingDatas['out_date'])) }}-({{ date('h:i A', strtotime($bookingDatas['out_time'])) }})</span>
+                                                        @else
+                                                            <span></span>
+                                                        @endif
+                                                    </td>
 
                                                     <td>
                                                         @foreach ($bookingDatas['room_list'] as $index => $room_lists)
