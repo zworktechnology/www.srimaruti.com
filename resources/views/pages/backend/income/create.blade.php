@@ -23,7 +23,7 @@
                             <option value="" disabled selected hidden class="text-muted">
                                 Select branch *</option>
                             @foreach ($branch as $branchs)
-                            <option value="{{ $branchs->id }}">{{ $branchs->name }}</option>
+                            <option value="{{ $branchs->id }}" @if ($branchs->id == $user_branch_id) selected='selected' @endif>{{ $branchs->name }}</option>
                             @endforeach
                         </select>
                     </div>

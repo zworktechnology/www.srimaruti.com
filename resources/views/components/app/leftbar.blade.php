@@ -55,17 +55,27 @@
                         <span>I/E Master</span>
                     </a>
                 </li>
-                <li class="{{ Route::is('income.index','income.create','income.edit') ? 'mm-active' : '' }}">
-                    <a href="{{ route('income.index') }}" class="waves-effect">
+                <li class="{{ Route::is('income.index','income.create','income.edit', 'income.datefilter') ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);" class="waves-effect {{ Route::is('income.index','income.create','income.edit') ? 'mm-active' : '' }}">
                         <i class="uil-money-withdraw"></i>
                         <span>{{ __('messages.otherincome_title') }}</span>
                     </a>
+                    <ul class="sub-menu {{ Route::is('income.create','income.edit', 'income.datefilter') ? 'mm-collapse' : '' }} {{ Route::is('income.index', 'income.datefilter') ? 'mm-show' : '' }}" aria-expanded="false">
+                        <li class="{{ Route::is('income.index', 'income.datefilter') && request()->route('user_branch_id') == 1 ? 'mm-active' : '' }}"><a href="{{ route('income.index', ['user_branch_id' => '1']) }}">{{ __('messages.sreerangam_title') }}</a></li>
+                        <li class="{{ Route::is('income.index', 'income.datefilter') && request()->route('user_branch_id') == 2 ? 'mm-active' : '' }}"><a href="{{ route('income.index', ['user_branch_id' => '2']) }}">{{ __('messages.samayapuram_title') }}</a></li>
+                        <li class="{{ Route::is('income.index', 'income.datefilter') && request()->route('user_branch_id') == 3 ? 'mm-active' : '' }}"><a href="{{ route('income.index', ['user_branch_id' => '3']) }}">{{ __('messages.gunaseelam_title') }}</a></li>
+                    </ul>
                 </li>
-                <li class="{{ Route::is('expense.index','expense.create','expense.edit') ? 'mm-active' : '' }}">
-                    <a href="{{ route('expense.index') }}" class="waves-effect">
-                        <i class="uil-money-insert"></i>
+                <li class="{{ Route::is('expense.index','expense.create','expense.edit','expense.datefilter') ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);" class="waves-effect {{ Route::is('expense.index','expense.create','expense.edit', 'expense.datefilter') ? 'mm-active' : '' }}">
+                        <i class="uil-money-withdraw"></i>
                         <span>{{ __('messages.expense_title') }}</span>
                     </a>
+                    <ul class="sub-menu {{ Route::is('expense.create','expense.edit', 'expense.datefilter') ? 'mm-collapse' : '' }} {{ Route::is('expense.index', 'expense.datefilter') ? 'mm-show' : '' }}" aria-expanded="false">
+                        <li class="{{ Route::is('expense.index', 'expense.datefilter') && request()->route('user_branch_id') == 1 ? 'mm-active' : '' }}"><a href="{{ route('expense.index', ['user_branch_id' => '1']) }}">{{ __('messages.sreerangam_title') }}</a></li>
+                        <li class="{{ Route::is('expense.index', 'expense.datefilter') && request()->route('user_branch_id') == 2 ? 'mm-active' : '' }}"><a href="{{ route('expense.index', ['user_branch_id' => '2']) }}">{{ __('messages.samayapuram_title') }}</a></li>
+                        <li class="{{ Route::is('expense.index', 'expense.datefilter') && request()->route('user_branch_id') == 3 ? 'mm-active' : '' }}"><a href="{{ route('expense.index', ['user_branch_id' => '3']) }}">{{ __('messages.gunaseelam_title') }}</a></li>
+                    </ul>
                 </li>
                 <li class="{{ Route::is('openaccount.index','openaccount.create','openaccount.edit') ? 'mm-active' : '' }}">
                     <a href="{{ route('openaccount.index') }}" class="waves-effect">

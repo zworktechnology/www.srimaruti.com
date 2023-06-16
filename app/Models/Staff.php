@@ -28,4 +28,9 @@ class Staff extends Model
     {
         return $this->hasMany(CloseAccount::class, 'closer_name');
     }
+
+    public function booking()
+    {
+        return $this->hasMany(Booking::class, 'check_in_staff');
+    }
 }

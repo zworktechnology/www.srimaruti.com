@@ -11,7 +11,7 @@
                         <div class="page-title-right">
 
                             <ol class="breadcrumb m-0">
-                            <form autocomplete="off" method="POST" action="{{ route('income.datefilter') }}" style="display: flex;">
+                            <form autocomplete="off" method="POST" action="{{ route('income.datefilter', ['user_branch_id' => $user_branch_id]) }}" style="display: flex;">
                             @method('PUT')
                             @csrf
 

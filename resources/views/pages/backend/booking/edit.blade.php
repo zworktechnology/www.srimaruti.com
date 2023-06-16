@@ -190,7 +190,7 @@
 
 
                                                                                         @foreach ($room as $rooms)
-                                                                                            @if ($rooms['id'] == $BookingRoomss['room_id'])
+                                                                                            @if ($rooms->id == $BookingRoomss->room_id)
                                                                                                 <script>
                                                                                                     var booking_id = {{ $data->id }};
 
@@ -270,7 +270,7 @@
                                                                                                     disabled
                                                                                                     name="customer_booked_room[]"
                                                                                                     placeholder=""
-                                                                                                    value="Room No{{ $rooms->room_number }} - Floor {{ $rooms->room_floor }} - {{ $rooms->room_type }}">
+                                                                                                    value="Room No {{ $rooms->room_number }} - {{ $rooms->room_floor }} Floor">
                                                                                                 <input type="hidden"
                                                                                                     id="room_id"
                                                                                                     name="room_id[]"
@@ -351,7 +351,7 @@
                                                         <div class="col-md-9 col-12">
                                                             <input type="text" class="form-control total_calc_price"
                                                                 style="background-color:#babcc5ad" name="total_calc_price"
-                                                                id="total_calc_price" value="{{ $data->total }}"
+                                                                id="total_calc_price" value="{{ $data->total }}" readonly
                                                                 placeholder="Enter here " required>
                                                         </div>
                                                     </div>
@@ -424,7 +424,7 @@
                                                         <div class="col-md-9 col-3">
                                                             <input type="text" class="form-control grand_total"
                                                                 style="background-color:#babcc5ad" name="grand_total"
-                                                                value="{{ $data->grand_total }}"
+                                                                value="{{ $data->grand_total }}" readonly
                                                                 placeholder="Enter here " required>
                                                         </div>
                                                     </div>
@@ -575,7 +575,7 @@
                                                         </div>
                                                         <div class="col-md-9 col-12">
                                                             <input type="text" class="form-control balance_amount"
-                                                                style="background-color:#e53737ad"
+                                                                style="background-color:#e53737ad" readonly
                                                                 value="{{ $data->balance_amount }}" name="balance_amount"
                                                                 placeholder="Enter here ">
                                                         </div>
@@ -608,7 +608,7 @@
                                                 <div class="col-sm-3">
                                                     <h4 class="card-title mb-4" style="color: #5b73e8">Proof</h4>
                                                 </div>
-                                                
+
                                             </div>
 
                                             <div id="singleproof">
@@ -616,7 +616,7 @@
                                                     <label for="horizontal-firstname-input"
                                                         class="col-sm-3 col-form-label">
                                                         Proof <span style="color: red;">*</span> </label>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-9">
                                                         <select class="form-control " name="prooftype_one"
                                                             style="width: 100%;">
                                                             <option value="" disabled selected hidden
@@ -635,35 +635,39 @@
                                                                 class="text-muted">Driving Licence</option>
                                                         </select>
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
-                                            <div class="row mb-4">
+                                            <div class="row mb-4" hidden>
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Proof View </label>
                                                 <div class="col-sm-4">
-                                                    
-                                                    <a href="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_one) }}"
-                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/front/' . $data->proofimage_one) }}" alt="" width="100" height="100">
+
+                                                    <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}"
+                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}" alt="" width="100" height="100">
                                                         </a>
                                                 </div>
                                                 <div class="col-sm-1">|</div>
                                                 <div class="col-sm-4">
-                                                    <a href="{{ asset('assets/customer_details/proof/back/' . $data->proofimage_two) }}"
-                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/back/' . $data->proofimage_two) }}" alt="" width="100" height="100"></a>
+                                                    <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_two) }}"
+                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/' . $data->proofimage_two) }}" alt="" width="100" height="100"></a>
                                                 </div>
                                             </div>
 
                                             <div class="row mb-4" id="proof1">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof Front<span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
-                                                    <div id="my_camera_front"></div><br/>
-                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Front" onClick="take_snapshot_front()">
-                                                    <input type="hidden" class="form-control image-tagfront" name="proofimage_one"required>
+                                                    <div style="display: flex">
+                                                        <div><img src="{{ asset($data->proofimage_one) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
+                                                        <div id="my_camera_front"></div>
+                                                        <div id="captured_image_front"></div>
+                                                    </div>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Take a Snap - Front Proof" onClick="take_snapshot_front()">
+                                                    <input type="hidden" class="form-control image-tagfront" name="proofimage_one">
                                                         <div class="col-sm-4">
                                                             <div id="captured_image_front"></div>
                                                         </div>
-                                                    
+
                                                 </div>
                                             </div>
 
@@ -671,13 +675,14 @@
                                             <div class="row mb-4" id="proof2">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof  Back<span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
-                                                    <div id="my_camera_back"></div><br/>
-                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Proof - Back" onClick="take_snapshot_back()">
-                                                    <input type="hidden" class="form-control image-tagback" name="proofimage_two"required>
-                                                        <div class="col-sm-4">
-                                                            <div id="captured_image_back"></div>
-                                                        </div>
-                                                    
+                                                    <div style="display: flex">
+                                                        <div><img src="{{ asset($data->proofimage_two) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
+                                                        <div id="my_camera_back"></div>
+                                                        <div id="captured_image_back"></div>
+                                                    </div>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Take a Snap - Back Proof" onClick="take_snapshot_back()">
+                                                    <input type="hidden" class="form-control image-tagback" name="proofimage_two">
+
                                                 </div>
                                             </div>
 
@@ -685,26 +690,26 @@
                                             <div class="row mb-4" id="proof_photo">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
-                                                    <div id="my_camera"></div><br/>
-                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Photo" onClick="takesnapshot()">
-                                                    <input type="hidden" class="form-control image-tagcamera" name="customer_photo"required>
-                                                        <div class="col-sm-4">
-                                                            <div id="captured_cameraimage"></div>
-                                                        </div>
-                                                    
+                                                    <div style="display: flex">
+                                                        <div><img src="{{ asset($data->customer_photo) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
+                                                        <div id="my_camera"></div>
+                                                        <div id="captured_cameraimage"></div>
+                                                    </div>
+                                                    <input type=button class=" btn btn-sm btn-soft-primary"value="Take a Snap - Photo" onClick="takesnapshot()">
+                                                    <input type="hidden" class="form-control image-tagcamera" name="customer_photo">
                                                 </div>
                                             </div>
-                                    
 
 
-                                    
 
-                                    <div class="row mb-4">
+
+
+                                    <div class="row mb-4" hidden>
                                         <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                             Proof View </label>
                                         <div class="col-sm-9">
-                                            <a href="{{ asset('assets/customer_details/proof/photo/' . $data->customer_photo) }}"
-                                                target="_blank"><img src="{{ asset('assets/customer_details/proof/photo/' . $data->customer_photo) }}" alt="" width="100" height="100"></a>
+                                            <a href="{{ asset('assets/customer_details/proof/' . $data->customer_photo) }}"
+                                                target="_blank"><img src="{{ asset('assets/customer_details/proof/' . $data->customer_photo) }}" alt="" width="100" height="100"></a>
                                         </div>
                                     </div>
 
@@ -1046,8 +1051,7 @@
 
                                     var id = response['data'][i].id;
                                     var name = 'Room No ' + response['data'][i].room_number +
-                                        ' - ' + response['data'][i].room_floor + ' Floor - ' +
-                                        response['data'][i].room_type;
+                                        ' - ' + response['data'][i].room_floor + ' Floor';
                                     var option = "<option value='" + id + "'>" + name +
                                         "</option>";
                                     selectedValues.push(option);
@@ -1337,7 +1341,7 @@
          function take_snapshot_front() {
              Webcam.snap(function(data_uri) {
                  $(".image-tagfront").val(data_uri);
-                 document.getElementById('captured_image_front').innerHTML = '<img src="' + data_uri + '"/>';
+                 document.getElementById('captured_image_front').innerHTML = '<img src="' + data_uri + '" style="width: 200px !important; height: 150px !important; margin-left: 40px !important; margin-top: 25px !important;"/>';
              });
          }
 
@@ -1345,7 +1349,7 @@
          function take_snapshot_back() {
              Webcam.snap(function(data_uri) {
                  $(".image-tagback").val(data_uri);
-                 document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri + '"/>';
+                 document.getElementById('captured_image_back').innerHTML = '<img src="' + data_uri + '" style="width: 200px !important; height: 150px !important; margin-left: 40px !important; margin-top: 25px !important;"/>';
              });
          }
 
@@ -1353,7 +1357,7 @@
          function takesnapshot() {
              Webcam.snap(function(data_uri) {
                  $(".image-tagcamera").val(data_uri);
-                 document.getElementById('captured_cameraimage').innerHTML = '<img src="' + data_uri + '"/>';
+                 document.getElementById('captured_cameraimage').innerHTML = '<img src="' + data_uri + '" style="width: 200px !important; height: 150px !important; margin-left: 40px !important; margin-top: 25px !important;"/>';
              });
          }
     </script>

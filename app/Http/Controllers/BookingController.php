@@ -49,6 +49,7 @@ class BookingController extends Controller
                     'room_cal_price' => $rooms_booked->room_cal_price,
                     'id' => $rooms_booked->id,
                     'room_id' => $rooms_booked->room_id,
+                    'room_type' => $rooms_booked->room_type,
                 );
             }
             $payment_data = BookingPayment::where('booking_id', '=', $datas->id)->get();
@@ -62,6 +63,8 @@ class BookingController extends Controller
                     'payment_method' => $payment_datas->payment_method,
                 );
             }
+            $checkin_staffname = Staff::findOrFail($datas->check_in_staff);
+            $checkout_staffname = Staff::findOrFail($datas->check_out_staff);
             $bookingData[] = array(
                 'customer_name' => $datas->customer_name,
                 'branch' => $branch->name,
@@ -93,6 +96,12 @@ class BookingController extends Controller
                 'out_date' => $datas->out_date,
                 'out_time' => $datas->out_time,
                 'booking_invoiceno' => $datas->booking_invoiceno,
+                'couple' => $datas->couple,
+                'check_in_staff' => $checkin_staffname->name,
+                'check_out_staff' => $checkout_staffname->name,
+                'proofimage_one' => $datas->proofimage_one,
+                'proofimage_two' => $datas->proofimage_two,
+                'customer_photo' => $datas->customer_photo,
             );
         }
 
@@ -128,6 +137,7 @@ class BookingController extends Controller
                     'room_cal_price' => $rooms_booked->room_cal_price,
                     'id' => $rooms_booked->id,
                     'room_id' => $rooms_booked->room_id,
+                    'room_type' => $rooms_booked->room_type,
                 );
             }
             $payment_data = BookingPayment::where('booking_id', '=', $datas->id)->get();
@@ -140,6 +150,8 @@ class BookingController extends Controller
                     'payment_method' => $payment_datas->payment_method,
                 );
             }
+            $checkin_staffname = Staff::findOrFail($datas->check_in_staff);
+            $checkout_staffname = Staff::findOrFail($datas->check_out_staff);
             $bookingData[] = array(
                 'customer_name' => $datas->customer_name,
                 'branch' => $branch->name,
@@ -171,6 +183,12 @@ class BookingController extends Controller
                 'extended_date' => $datas->extended_date,
                 'extended_time' => $datas->extended_time,
                 'booking_invoiceno' => $datas->booking_invoiceno,
+                'couple' => $datas->couple,
+                'check_in_staff' => $checkin_staffname->name,
+                'check_out_staff' => $checkout_staffname->name,
+                'proofimage_one' => $datas->proofimage_one,
+                'proofimage_two' => $datas->proofimage_two,
+                'customer_photo' => $datas->customer_photo,
             );
         }
 
@@ -473,6 +491,7 @@ class BookingController extends Controller
             $data->male_count = $request->get('male_count');
             $data->female_count = $request->get('female_count');
             $data->child_count = $request->get('child_count');
+            $data->couple = $request->get('couple');
             $data->check_in_date = $request->get('check_in_date');
             $data->check_in_time = $request->get('check_in_time');
             $data->check_out_date = $request->get('check_out_date');
@@ -515,58 +534,58 @@ class BookingController extends Controller
             // }
 
             // Profile Image
-             $customer_photo = $request->customer_photo;
-             $folderPath = "assets/customer_details/proof/photo";
-             $image_parts = explode(";base64,", $customer_photo);
-             $image_type_aux = explode("image/", $image_parts[0]);
-             $image_type = $image_type_aux[1];
-             $image_base64 = base64_decode($image_parts[1]);
-             $fileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-             $customerimgfile = $folderPath . $fileName;
-             file_put_contents($customerimgfile, $image_base64);
-             $data->customer_photo = $customerimgfile;
+            $customer_photo = $request->customer_photo;
+            $folderPath = "assets/customer_details/customer_photo";
+            $image_parts = explode(";base64,", $customer_photo);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $fileName = $data->customer_name . '_' . $random_no . '_' . 'customer image' . '.png';
+            $customerimgfile = $folderPath . $fileName;
+            file_put_contents($customerimgfile, $image_base64);
+            $data->customer_photo = $customerimgfile;
 
 
-             // Proof Front
-             $proofimage_one = $request->proofimage_one;
-             $front_folderPath = "assets/customer_details/proof/front";
-             $front_image_parts = explode(";base64,", $proofimage_one);
-             $frontimage_type_aux = explode("image/", $front_image_parts[0]);
-             $frontimage_type = $frontimage_type_aux[1];
-             $frontimage_base64 = base64_decode($front_image_parts[1]);
-             $frontfileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-             $frontimgfile = $front_folderPath . $frontfileName;
-             file_put_contents($frontimgfile, $frontimage_base64);
-             $data->proofimage_one = $frontimgfile;
+            // Proof Front
+            $proofimage_one = $request->proofimage_one;
+            $front_folderPath = "assets/customer_details/proofimage_one";
+            $front_image_parts = explode(";base64,", $proofimage_one);
+            $frontimage_type_aux = explode("image/", $front_image_parts[0]);
+            $frontimage_type = $frontimage_type_aux[1];
+            $frontimage_base64 = base64_decode($front_image_parts[1]);
+            $frontfileName = $data->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
+            $frontimgfile = $front_folderPath . $frontfileName;
+            file_put_contents($frontimgfile, $frontimage_base64);
+            $data->proofimage_one = $frontimgfile;
 
 
-             // Proof Back
-             $proofimage_two = $request->proofimage_two;
-             $back_folderPath = "assets/customer_details/proof/back";
-             $back_image_parts = explode(";base64,", $proofimage_two);
-             $backimage_type_aux = explode("image/", $back_image_parts[0]);
-             $backimage_type = $backimage_type_aux[1];
-             $backimage_base64 = base64_decode($back_image_parts[1]);
-             $backfileName = $data->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-             $backimgfile = $back_folderPath . $backfileName;
-             file_put_contents($backimgfile, $backimage_base64);
-             $data->proofimage_two = $backimgfile;
+            // Proof Back
+            $proofimage_two = $request->proofimage_two;
+            $back_folderPath = "assets/customer_details/proofimage_two";
+            $back_image_parts = explode(";base64,", $proofimage_two);
+            $backimage_type_aux = explode("image/", $back_image_parts[0]);
+            $backimage_type = $backimage_type_aux[1];
+            $backimage_base64 = base64_decode($back_image_parts[1]);
+            $backfileName = $data->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
+            $backimgfile = $back_folderPath . $backfileName;
+            file_put_contents($backimgfile, $backimage_base64);
+            $data->proofimage_two = $backimgfile;
 
 
-            //$proofimage_one = $request->proofimage_one;
-            //$filename_one = $data->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $data->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
-            //$request->proofimage_one->move('assets/customer_details/proof/front', $filename_one);
-            //$data->proofimage_one = $filename_one;
+            // $proofimage_one = $request->proofimage_one;
+            // $filename_one = $data->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $data->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
+            // $request->proofimage_one->move('assets/customer_details/proof/front', $filename_one);
+            // $data->proofimage_one = $filename_one;
 
-            //$proofimage_two = $request->proofimage_two;
-            //$filename_two = $data->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $data->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
-            //$request->proofimage_two->move('assets/customer_details/proof/back', $filename_two);
-            //$data->proofimage_two = $filename_two;
+            // $proofimage_two = $request->proofimage_two;
+            // $filename_two = $data->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $data->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
+            // $request->proofimage_two->move('assets/customer_details/proof/back', $filename_two);
+            // $data->proofimage_two = $filename_two;
 
-            //$customer_photo = $request->customer_photo;
-            //$filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
-            //$request->customer_photo->move('assets/customer_details/proof/photo', $filename_customer_photo);
-            //$data->customer_photo = $filename_customer_photo;
+            // $customer_photo = $request->customer_photo;
+            // $filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
+            // $request->customer_photo->move('assets/customer_details/proof/photo', $filename_customer_photo);
+            // $data->customer_photo = $filename_customer_photo;
 
             $data->total = $request->get('total_calc_price');
             $data->gst_per = $request->get('gst_percentage');
@@ -656,6 +675,7 @@ class BookingController extends Controller
         $BookingData->male_count = $request->get('male_count');
         $BookingData->female_count = $request->get('female_count');
         $BookingData->child_count = $request->get('child_count');
+        $BookingData->couple = $request->get('couple');
         $BookingData->check_in_date = $request->get('check_in_date');
         $BookingData->check_in_time = $request->get('check_in_time');
         $BookingData->check_out_date = $request->get('check_out_date');
@@ -710,16 +730,16 @@ class BookingController extends Controller
 
         // Camera
          if ($request->customer_photo != "") {
-         $customer_photo = $request->customer_photo;
-         $folderPath = "assets/customer_details/proof/photo";
-         $image_parts = explode(";base64,", $customer_photo);
-         $image_type_aux = explode("image/", $image_parts[0]);
-         $image_type = $image_type_aux[1];
-         $image_base64 = base64_decode($image_parts[1]);
-         $fileName = $BookingData->customer_name . '_' . $random_no . '_' . 'image' . '.png';
-         $customerimgfile = $folderPath . $random_no . $fileName;
-         file_put_contents($customerimgfile, $image_base64);
-         $BookingData->customer_photo = $customerimgfile;
+            $customer_photo = $request->customer_photo;
+            $folderPath = "assets/customer_details/customer_photo";
+            $image_parts = explode(";base64,", $customer_photo);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $fileName = $BookingData->customer_name . '_' . $random_no . '_' . 'customer image' . '.png';
+            $customerimgfile = $folderPath . $fileName;
+            file_put_contents($customerimgfile, $image_base64);
+            $BookingData->customer_photo = $customerimgfile;
          }else{
            $Insertedcustomer_photo = $BookingData->customer_photo;
            $BookingData->customer_photo = $Insertedcustomer_photo;
@@ -730,15 +750,15 @@ class BookingController extends Controller
          // Proof Front
          if ($request->proofimage_one != "") {
             $proofimage_one = $request->proofimage_one;
-            $frontfolderPath = "assets/customer_details/proof/front";
+            $front_folderPath = "assets/customer_details/proofimage_one";
             $front_image_parts = explode(";base64,", $proofimage_one);
             $frontimage_type_aux = explode("image/", $front_image_parts[0]);
             $frontimage_type = $frontimage_type_aux[1];
             $frontimage_base64 = base64_decode($front_image_parts[1]);
-            $frontfileName = $BookingData->proofimage_one . '_' . $random_no . '_' . 'image' . '.png';
-            $frontcustomerimgfile = $frontfolderPath . $random_no . $frontfileName;
-            file_put_contents($frontcustomerimgfile, $frontimage_base64);
-            $BookingData->proofimage_one = $frontcustomerimgfile;
+            $frontfileName = $BookingData->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
+            $frontimgfile = $front_folderPath . $frontfileName;
+            file_put_contents($frontimgfile, $frontimage_base64);
+            $BookingData->proofimage_one = $frontimgfile;
             }else{
               $Insertedproofimage_one = $BookingData->proofimage_one;
               $BookingData->proofimage_one = $Insertedproofimage_one;
@@ -748,15 +768,15 @@ class BookingController extends Controller
             // Proof Back
          if ($request->proofimage_two != "") {
             $proofimage_two = $request->proofimage_two;
-            $backfolderPath = "assets/customer_details/proof/back";
+            $back_folderPath = "assets/customer_details/proofimage_two";
             $back_image_parts = explode(";base64,", $proofimage_two);
             $backimage_type_aux = explode("image/", $back_image_parts[0]);
             $backimage_type = $backimage_type_aux[1];
             $backimage_base64 = base64_decode($back_image_parts[1]);
-            $backfileName = $BookingData->proofimage_two . '_' . $random_no . '_' . 'image' . '.png';
-            $backcustomerimgfile = $backfolderPath . $random_no . $backfileName;
-            file_put_contents($backcustomerimgfile, $backimage_base64);
-            $BookingData->proofimage_two = $backcustomerimgfile;
+            $backfileName = $BookingData->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
+            $backimgfile = $back_folderPath . $backfileName;
+            file_put_contents($backimgfile, $backimage_base64);
+            $BookingData->proofimage_two = $backimgfile;
             }else{
               $Insertedproofimage_two = $BookingData->proofimage_two;
               $BookingData->proofimage_two = $Insertedproofimage_two;
@@ -889,7 +909,7 @@ class BookingController extends Controller
             } else if ($room_auto_id == '') {
                 if ($request->room_id[$key] > 0) {
 
-                    $GetroomDetails = Room::findOrFail($room_id);
+                    $GetroomDetails = Room::findOrFail($request->room_id[$key]);
 
                     $new_room_id =  $request->room_id[$key];
                     $room_price =  $request->room_price[$key];
@@ -1086,9 +1106,11 @@ class BookingController extends Controller
                         'payable_amount' => $payment_datas->payable_amount,
                         'id' => $payment_datas->id,
                         'payment_method' => $payment_datas->payment_method,
+                        'room_type' => $rooms_booked->room_type,
                     );
                 }
-
+                $checkin_staffname = Staff::findOrFail($check_in_dates->check_in_staff);
+                $checkout_staffname = Staff::findOrFail($check_in_dates->check_out_staff);
                 $checkin_Array[] = array(
                         'customer_name' => $check_in_dates->customer_name,
                         'room_list' => $room_list,
@@ -1118,6 +1140,12 @@ class BookingController extends Controller
                         'out_date' => $check_in_dates->out_date,
                         'out_time' => $check_in_dates->out_time,
                         'booking_invoiceno' => $check_in_dates->booking_invoiceno,
+                        'couple' => $check_in_dates->couple,
+                        'check_in_staff' => $checkin_staffname->name,
+                        'check_out_staff' => $checkout_staffname->name,
+                        'proofimage_one' => $check_in_dates->proofimage_one,
+                        'proofimage_two' => $check_in_dates->proofimage_two,
+                        'customer_photo' => $check_in_dates->customer_photo,
                 );
             }
 
@@ -1293,6 +1321,7 @@ class BookingController extends Controller
                         'case_income_gst' => $case_income_gst,
                         'online_income' => $online_income,
                         'online_income_gst' => $online_income_gst,
+                        'couple' => $checkin_Datas->couple,
                     );
         }
 
@@ -1398,18 +1427,12 @@ class BookingController extends Controller
         return view('pages.backend.booking.components.printexportpdf', compact('room_online_income_tax', 'income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income', 'room_cash_income_tax'));
     }
 
-
-
-
-
-
-    public function export_reportpdf() {
+    public function export_reportpdf()
+    {
         $branch = Branch::where('soft_delete', '!=', 1)->get();
 
         return view('pages.backend.booking.components.export_reportpdf', compact('branch'));
     }
-
-
 
     public function print_reportpdf(Request $request)
     {
@@ -1451,7 +1474,7 @@ class BookingController extends Controller
                         'total_count' => $total_count,
                         'customer_name' => $Report_datas->customer_name,
                         'whats_app_number' => $Report_datas->whats_app_number,
-                        'customer_photo' => $Report_datas->customer_photo,
+                        'proofimage_one' => $Report_datas->proofimage_one,
                     );
 
 
