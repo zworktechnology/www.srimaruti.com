@@ -29,6 +29,8 @@ Auth::routes();
 
 // Starting Point
 Route::get('/', function () {return view('welcome');})->name('index');
+Route::get('/', function () {return view('welcome');})->name('index');
+
 
 Route::get('/about', function () {return view('pages.frontend.about');})->name('about');
 Route::get('/room/samyapuram', function () {return view('pages.frontend.room-samyapuram');})->name('room.samyapuram');
