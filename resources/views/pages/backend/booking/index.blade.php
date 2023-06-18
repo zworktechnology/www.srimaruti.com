@@ -55,375 +55,92 @@
                 <!-- end page title -->
 
                 <div class="row">
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
+                    <div class="card">
+                        <div class="card-body" style="display: flex">
+                            @foreach ($room_details as $room_detail)
+                            <div class="col-md-1" style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;">
                                 <div>
-                                    <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{ $totalrooms }}</span></h4>
-                                    <p class="text-muted mb-0">Total Rooms</p>
+                                    <h4 class="mb-1 mt-1">{{ $room_detail->room_number }}</h4>
+                                    <p class="text-muted mb-0">Floor. {{ $room_detail->room_floor }}</p>
                                 </div>
                             </div>
-                        </div>
-                    </div> <!-- end col-->
-
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div>
-                                    <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{ $checkins }}</span></h4>
-                                    <p class="text-muted mb-0">Checkins</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- end col-->
-
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div>
-                                    <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{ $checkouts }}</span></h4>
-                                    <p class="text-muted mb-0">Checkouts</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- end col-->
-
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div>
-                                    <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{ $availablerooms }}</span></h4>
-                                    <p class="text-muted mb-0">Available Rooms</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                </div> <!-- end row-->
+                </div>
 
-                @if (\Session::has('add'))
-                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                        <i class="uil uil-pen me-2"></i>
-                        {!! \Session::get('add') !!}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-                @if (\Session::has('update'))
-                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                        <i class="uil uil-pen me-2"></i>
-                        {!! \Session::get('update') !!}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-                @if (\Session::has('soft_destroy'))
-                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                        <i class="uil uil-pen me-2"></i>
-                        {!! \Session::get('soft_destroy') !!}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-                @if (\Session::has('destroy'))
-                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                        <i class="uil uil-pen me-2"></i>
-                        {!! \Session::get('destroy') !!}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-
-                @if (\Session::has('paybalance'))
-                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                        <i class="uil uil-pen me-2"></i>
-                        {!! \Session::get('paybalance') !!}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-
-                @if (\Session::has('extend'))
-                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                        <i class="uil uil-pen me-2"></i>
-                        {!! \Session::get('extend') !!}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-
-                <div class="row" style="display: flex">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <table id="booking_datatable" class="table table-bordered dt-responsive nowrap"
-                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <th>{{ __('messages.billno') }}</th>
-                                            <th>{{ __('messages.customer') }}</th>
-                                            <th>Check In Staff</th>
-                                            <th>Check Out Staff</th>
-                                            <th>Check Out Date & Time</th>
-                                            <th>{{ __('messages.room_title') }} Details</th>
-                                            <th>{{ __('messages.action_title') }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($bookingData as $keydata => $bookingDatas)
-                                            @if ($bookingDatas['couple'] == 1)
-                                                <tr style="background-color: lightpink">
-
-                                                    <td>{{ $bookingDatas['booking_invoiceno'] }}</td>
-
-                                                    <td href="#basic{{ $bookingDatas['id'] }}" data-bs-toggle="modal"
-                                                        data-bs-target="#basic{{ $bookingDatas['id'] }}" class="pointer">
-                                                        {{ $bookingDatas['customer_name'] }}</td>
-
-                                                    <td>{{ $bookingDatas['check_in_staff'] }}</td>
-
-                                                    @if ($bookingDatas['check_out_staff'] == 'Null')
-                                                    <td>-</td>
-                                                    @else
-                                                    <td>{{ $bookingDatas['check_out_staff'] }}</td>
-                                                    @endif
-
-
-                                                    <td>
-                                                        @if ($bookingDatas['status'] == 2)
-                                                            <span>{{ date('d M Y', strtotime($bookingDatas['out_date'])) }}
-                                                                -
-                                                                ({{ date('h:i A', strtotime($bookingDatas['out_time'])) }})
-                                                            </span>
-                                                        @elseif (($bookingDatas['chick_out_date'] < $today) & ($bookingDatas['status'] == 2))
-                                                            <span>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}
-                                                                -
-                                                                ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
-                                                        @else
-                                                            <span>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}
-                                                                -
-                                                                ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
-                                                        @endif
-                                                    </td>
-
-                                                    <td>
-                                                        @foreach ($bookingDatas['room_list'] as $index => $room_lists)
-                                                            @if ($room_lists['booking_id'] == $bookingDatas['id'])
-                                                            @if ($room_lists['room_type'] == 'A/C')
-                                                            <span style="color: red;">{{ $bookingDatas['branch'] }} -
-                                                            {{ $room_lists['room'] }}<br /></span>
-                                                            @else
-                                                            <span>{{ $bookingDatas['branch'] }} -
-                                                            {{ $room_lists['room'] }}<br /></span>
-                                                            @endif
-                                                            @endif
-                                                        @endforeach
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-unstyled hstack gap-1 mb-0">
-                                                            @if ($bookingDatas['balance_amount'] != 0)
-                                                                <li>
-                                                                    <a href="#paybalance{{ $bookingDatas['id'] }}"
-                                                                        data-bs-toggle="modal"
-                                                                        data-id="{{ $bookingDatas['id'] }}"
-                                                                        class="btn btn-sm btn-soft-warning paybalance{{ $bookingDatas['id'] }}"
-                                                                        data-bs-target="#paybalance{{ $bookingDatas['id'] }}">Pay
-                                                                        Balance</a>
-                                                                </li>
-                                                            @endif
-
-
-                                                            @if ($bookingDatas['balance_amount'] == 0)
-                                                                @if ($bookingDatas['status'] != 2)
-                                                                    @if ($bookingDatas['chick_out_date'] >= $today)
-                                                                        <li>
-                                                                            <a href="#checkout{{ $bookingDatas['id'] }}"
-                                                                                data-bs-toggle="modal"
-                                                                                data-id="{{ $bookingDatas['id'] }}"
-                                                                                class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
-                                                                                data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
-                                                                        </li>
-                                                                    @endif
-                                                                @endif
-                                                            @endif
-
-                                                            {{-- @if ($bookingDatas['chick_out_date'] >= $today)
-                                                            @if ($bookingDatas['status'] != 2)
-                                                                <li>
-                                                                    <a href="#extend{{ $bookingDatas['id'] }}"
-                                                                        data-bs-toggle="modal"
-                                                                        data-id="{{ $bookingDatas['id'] }}"
-                                                                        class="btn btn-sm btn-soft-primary extend{{ $bookingDatas['id'] }}"
-                                                                        data-bs-target="#extend{{ $bookingDatas['id'] }}">Extend</a>
-                                                                </li>
-                                                            @endif
-                                                        @endif --}}
-
-                                                            <li>
-                                                                <a href="{{ route('booking.view', ['id' => $bookingDatas['id']]) }}"
-                                                                    class="btn btn-sm btn-soft-secondary">View</a>
-                                                            </li>
-
-                                                            {{-- <li>
-                                                                <a href="#viewproof{{ $bookingDatas['id'] }}" data-bs-toggle="model"
-                                                                    data-bs-target="#viewproof{{ $bookingDatas['id'] }}" class="pointer btn btn-sm btn-soft-secondary">View Proof</a>
-                                                            </li> --}}
-
-                                                            @if ($bookingDatas['status'] != 2)
-                                                                <li>
-                                                                    <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}"
-                                                                        class="btn btn-sm btn-soft-info">Edit</a>
-                                                                </li>
-                                                            @endif
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                            @else
+                <div class="row">
+                    <div style="display: flex;">
+                        <div class="col-md-4" style="margin-right: 15px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4">Room Details</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-centered table-nowrap mb-0">
+                                            <tbody>
                                                 <tr>
-
-                                                    <td>{{ $bookingDatas['booking_invoiceno'] }}</td>
-
-                                                    <td href="#basic{{ $bookingDatas['id'] }}" data-bs-toggle="modal"
-                                                        data-bs-target="#basic{{ $bookingDatas['id'] }}" class="pointer">
-                                                        {{ $bookingDatas['customer_name'] }}</td>
-
-                                                    <td>{{ $bookingDatas['check_in_staff'] }}</td>
-
-                                                    @if ($bookingDatas['check_out_staff'] == 'Null')
-                                                    <td>-</td>
-                                                    @else
-                                                    <td>{{ $bookingDatas['check_out_staff'] }}</td>
-                                                    @endif
-
+                                                    <td>Total</td>
                                                     <td>
-                                                        @if ($bookingDatas['status'] == 2)
-                                                            <span>{{ date('d M Y', strtotime($bookingDatas['out_date'])) }}
-                                                                -
-                                                                ({{ date('h:i A', strtotime($bookingDatas['out_time'])) }})
-                                                            </span>
-                                                        @elseif (($bookingDatas['chick_out_date'] < $today) & ($bookingDatas['status'] == 2))
-                                                            <span>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}
-                                                                -
-                                                                ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
-                                                        @else
-                                                            <span>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}
-                                                                -
-                                                                ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
-                                                        @endif
-                                                    </td>
-
-                                                    <td>
-                                                        @foreach ($bookingDatas['room_list'] as $index => $room_lists)
-                                                            @if ($room_lists['booking_id'] == $bookingDatas['id'])
-                                                            @if ($room_lists['room_type'] == 'A/C')
-                                                            <span style="color: red;">{{ $bookingDatas['branch'] }} -
-                                                            {{ $room_lists['room'] }}<br /></span>
-                                                            @else
-                                                            <span>{{ $bookingDatas['branch'] }} -
-                                                            {{ $room_lists['room'] }}<br /></span>
-                                                            @endif
-                                                            @endif
-                                                        @endforeach
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-unstyled hstack gap-1 mb-0">
-                                                            @if ($bookingDatas['balance_amount'] != 0)
-                                                                <li>
-                                                                    <a href="#paybalance{{ $bookingDatas['id'] }}"
-                                                                        data-bs-toggle="modal"
-                                                                        data-id="{{ $bookingDatas['id'] }}"
-                                                                        class="btn btn-sm btn-soft-warning paybalance{{ $bookingDatas['id'] }}"
-                                                                        data-bs-target="#paybalance{{ $bookingDatas['id'] }}">Pay
-                                                                        Balance</a>
-                                                                </li>
-                                                            @endif
-
-
-                                                            @if ($bookingDatas['balance_amount'] == 0)
-                                                                @if ($bookingDatas['status'] != 2)
-                                                                    @if ($bookingDatas['chick_out_date'] >= $today)
-                                                                        <li>
-                                                                            <a href="#checkout{{ $bookingDatas['id'] }}"
-                                                                                data-bs-toggle="modal"
-                                                                                data-id="{{ $bookingDatas['id'] }}"
-                                                                                class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
-                                                                                data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
-                                                                        </li>
-                                                                    @endif
-                                                                @endif
-                                                            @endif
-
-                                                            {{-- @if ($bookingDatas['chick_out_date'] >= $today)
-                                                            @if ($bookingDatas['status'] != 2)
-                                                                <li>
-                                                                    <a href="#extend{{ $bookingDatas['id'] }}"
-                                                                        data-bs-toggle="modal"
-                                                                        data-id="{{ $bookingDatas['id'] }}"
-                                                                        class="btn btn-sm btn-soft-primary extend{{ $bookingDatas['id'] }}"
-                                                                        data-bs-target="#extend{{ $bookingDatas['id'] }}">Extend</a>
-                                                                </li>
-                                                            @endif
-                                                        @endif --}}
-
-                                                            <li>
-                                                                <a href="{{ route('booking.view', ['id' => $bookingDatas['id']]) }}"
-                                                                    class="btn btn-sm btn-soft-secondary">View</a>
-                                                            </li>
-
-                                                            {{-- <li>
-                                                                <p href="#viewproof{{ $bookingDatas['id'] }}" data-bs-toggle="model"
-                                                                    data-bs-target="#viewproof{{ $bookingDatas['id'] }}" class="pointer btn btn-sm btn-soft-secondary">View Proof</p>
-                                                            </li> --}}
-
-                                                            @if ($bookingDatas['status'] != 2)
-                                                                <li>
-                                                                    <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}"
-                                                                        class="btn btn-sm btn-soft-info">Edit</a>
-                                                                </li>
-                                                            @endif
-                                                        </ul>
+                                                        {{ $totalrooms }}
                                                     </td>
                                                 </tr>
-                                            @endif
-
-
-                                            @if ($bookingDatas['balance_amount'] != 0)
-                                                <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}"
-                                                    data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..."
-                                                    class="paybalance{{ $bookingDatas['id'] }}" tabindex="-1">
-                                                    @include('pages.backend.booking.components.paybalance')
-                                                </div>
-                                            @endif
-
-                                            @if ($bookingDatas['balance_amount'] == 0)
-                                                @if ($bookingDatas['status'] != 2)
-                                                    <div class="modal fade" id="checkout{{ $bookingDatas['id'] }}"
-                                                        data-bs-backdrop="static" aria-hidden="true"
-                                                        aria-labelledby="..." tabindex="-1">
-                                                        @include('pages.backend.booking.components.checkout')
-                                                    </div>
-                                                @endif
-                                            @endif
-
-                                            {{-- @if ($bookingDatas['chick_out_date'] >= $today)
-                                                @if ($bookingDatas['status'] != 2)
-                                                    <div class="modal fade" id="extend{{ $bookingDatas['id'] }}"
-                                                        data-bs-backdrop="static" aria-hidden="true"
-                                                        aria-labelledby="..." tabindex="-1">
-                                                        @include('pages.backend.booking.components.extend')
-                                                    </div>
-                                                @endif
-                                            @endif --}}
-
-                                            <div class="modal fade" id="basic{{ $bookingDatas['id'] }}"
-                                                aria-hidden="true" aria-labelledby="..." tabindex="-1">
-                                                @include('pages.backend.booking.components.basic')
-                                            </div>
-
-                                            <div class="modal fade" id="viewproof{{ $bookingDatas['id'] }}"
-                                                aria-hidden="true" aria-labelledby="..." tabindex="-1">
-                                                @include('pages.backend.booking.components.viewproof')
-                                            </div>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                                <tr>
+                                                    <td>Avaiable</td>
+                                                    <td>
+                                                        {{ $availablerooms }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Booked</td>
+                                                    <td>
+                                                        {{ $totalrooms - $availablerooms }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-centered table-nowrap mb-0">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Sl.No</th>
+                                                    <th>Room Deatails</th>
+                                                    <th>Customer</th>
+                                                    <th>Staff</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>01</td>
+                                                    <td>No. 01</td>
+                                                    <td>
+                                                        Customer 1
+                                                    </td>
+                                                    <td>
+                                                        Staff 1
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
+                                                            View Details
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

@@ -33,6 +33,8 @@ class BookingController extends Controller
 
         $staff = Staff::where('soft_delete', '!=', 1)->get();
 
+        $room_details = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->get();
+
         $bookingData = [];
         $room_list = [];
         $terms = [];
@@ -105,7 +107,7 @@ class BookingController extends Controller
             );
         }
 
-        return view('pages.backend.booking.index', compact('totalrooms', 'checkins', 'checkouts', 'availablerooms', 'staff', 'bookingData', 'today', 'timenow', 'user_branch_id'));
+        return view('pages.backend.booking.index', compact('room_details', 'totalrooms', 'checkins', 'checkouts', 'availablerooms', 'staff', 'bookingData', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function today($user_branch_id)
