@@ -57,264 +57,267 @@
                 <div class="row">
                     <div class="card">
                         <div class="card-body">
-                            @foreach ($rooms_arr as $bookingDatas)
-                                @if ($bookingDatas['status'] == 'Booked')
-                                <div class="row">
-                                    <div class="col-md-1"
-                                        style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;background: #d12424;">
+                            <div class="row">
+                                @foreach ($rooms_arr as $bookingDatas)
+                                    @if ($bookingDatas['status'] == 'Booked')
+                                        <div class="col-md-1"
+                                            style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;background: #d12424;">
 
-                                        <a href="#room_view{{ $bookingDatas['latest_booking_id'] }}" data-bs-toggle="modal"
-                                            data-id="{{ $bookingDatas['latest_booking_id'] }}"
-                                            class="room_view{{ $bookingDatas['latest_booking_id'] }}"
-                                            data-bs-target="#room_view{{ $bookingDatas['latest_booking_id'] }}">
+                                            <a href="#room_view{{ $bookingDatas['latest_booking_id'] }}"
+                                                data-bs-toggle="modal" data-id="{{ $bookingDatas['latest_booking_id'] }}"
+                                                class="room_view{{ $bookingDatas['latest_booking_id'] }}"
+                                                data-bs-target="#room_view{{ $bookingDatas['latest_booking_id'] }}">
 
-                                            <div>
-                                                <h4 class="mb-1 mt-1" style="color:white;">{{ $bookingDatas['room_no'] }}
-                                                </h4>
-                                                <p class=" mb-0" style="color:white;">Floor.
-                                                    {{ $bookingDatas['room_floor'] }}</p>
-                                            </div>
+                                                <div>
+                                                    <h4 class="mb-1 mt-1" style="color:white;">
+                                                        {{ $bookingDatas['room_no'] }}
+                                                    </h4>
+                                                    <p class=" mb-0" style="color:white;">Floor.
+                                                        {{ $bookingDatas['room_floor'] }}</p>
+                                                </div>
 
-                                        </a>
+                                            </a>
 
-                                    </div>
-                                </div>
-                                @elseif($bookingDatas['status'] == 'Couple')
-                                <div class="row">
-                                    <div class="col-md-1"
-                                        style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;background: #e560c1;">
-
-                                        <a href="#room_view{{ $bookingDatas['latest_booking_id'] }}" data-bs-toggle="modal"
-                                            data-id="{{ $bookingDatas['latest_booking_id'] }}"
-                                            class="room_view{{ $bookingDatas['latest_booking_id'] }}"
-                                            data-bs-target="#room_view{{ $bookingDatas['latest_booking_id'] }}">
-                                            <div>
-                                                <h4 class="mb-1 mt-1" style="color:white;">{{ $bookingDatas['room_no'] }}
-                                                </h4>
-                                                <p class=" mb-0" style="color:white;">Floor.
-                                                    {{ $bookingDatas['room_floor'] }}</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                @elseif($bookingDatas['status'] == 'Open')
-                                <div class="row">
-                                    <div class="col-md-1"
-                                        style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;">
-                                        <div>
-                                            <h4 class="mb-1 mt-1">{{ $bookingDatas['room_no'] }}</h4>
-                                            <p class="text-muted mb-0">Floor. {{ $bookingDatas['room_floor'] }}</p>
                                         </div>
-                                    </div>
-                                </div>
-                                @endif
-                                <div class="modal fade" id="room_view{{ $bookingDatas['latest_booking_id'] }}"
-                                    data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..."
-                                    class="room_view{{ $bookingDatas['latest_booking_id'] }}" tabindex="-1">
-                                    <div class="modal-dialog modal-xl">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Room View</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                                    @elseif($bookingDatas['status'] == 'Couple')
+                                        <div class="col-md-1"
+                                            style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;background: #e560c1;">
+
+                                            <a href="#room_view{{ $bookingDatas['latest_booking_id'] }}"
+                                                data-bs-toggle="modal" data-id="{{ $bookingDatas['latest_booking_id'] }}"
+                                                class="room_view{{ $bookingDatas['latest_booking_id'] }}"
+                                                data-bs-target="#room_view{{ $bookingDatas['latest_booking_id'] }}">
+                                                <div>
+                                                    <h4 class="mb-1 mt-1" style="color:white;">
+                                                        {{ $bookingDatas['room_no'] }}</h4>
+                                                    <p class=" mb-0" style="color:white;">Floor.
+                                                        {{ $bookingDatas['room_floor'] }}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @elseif($bookingDatas['status'] == 'Open')
+                                        <div class="col-md-1"
+                                            style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;">
+                                            <div>
+                                                <h4 class="mb-1 mt-1">{{ $bookingDatas['room_no'] }}</h4>
+                                                <p class="text-muted mb-0">Floor. {{ $bookingDatas['room_floor'] }}</p>
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">Customer Name </label>
-                                                    <div class="col-sm-3">
-                                                        <input type="text" class="form-control" readonly=""
-                                                            value="{{ $bookingDatas['customer_name'] }}">
-                                                    </div>
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-2 col-form-label">Contact Number </label>
-                                                    <div class="col-sm-4">
-                                                        <input type="text" class="form-control" readonly=""
-                                                            value="{{ $bookingDatas['whats_app_number'] }}">
-                                                    </div>
+                                        </div>
+                                    @endif
+                                    <div class="modal fade" id="room_view{{ $bookingDatas['latest_booking_id'] }}"
+                                        data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..."
+                                        class="room_view{{ $bookingDatas['latest_booking_id'] }}" tabindex="-1">
+                                        <div class="modal-dialog modal-xl">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Room View</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
                                                 </div>
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">Check-In Date</label>
-                                                    <div class="col-sm-3">
-                                                        <input type="text" class="form-control" readonly=""
-                                                            value="{{ $bookingDatas['checkindate'] }}">
-                                                    </div>
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-2 col-form-label">Check-Out Date</label>
-                                                    <div class="col-sm-4">
-                                                        <input type="text" class="form-control" readonly=""
-                                                            value="{{ $bookingDatas['chick_out_date'] }}">
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">No Of Days</label>
-                                                    <div class="col-sm-3">
-                                                        <input type="text" class="form-control" readonly=""
-                                                            value="{{ $bookingDatas['days'] }}">
-                                                    </div>
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-2 col-form-label">Count Head</label>
-                                                    <div class="col-sm-4">
-                                                        <input type="text" class="form-control" readonly=""
-                                                            value="{{ $bookingDatas['count_head'] }}">
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">Total Prize</label>
-                                                    <div class="col-sm-3">
-                                                        <input type="text" class="form-control" readonly=""
-                                                            value="{{ $bookingDatas['total'] }}">
-                                                    </div>
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-2 col-form-label">GST</label>
-                                                    <div class="col-sm-4">
-                                                        <input type="text" class="form-control" readonly=""
-                                                            value="{{ $bookingDatas['gst_amount'] }}">
-                                                    </div>
-                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row mb-4">
+                                                        <label for="horizontal-firstname-input"
+                                                            class="col-sm-3 col-form-label">Customer Name </label>
+                                                        <div class="col-sm-3">
+                                                            <input type="text" class="form-control" readonly=""
+                                                                value="{{ $bookingDatas['customer_name'] }}">
+                                                        </div>
+                                                        <label for="horizontal-firstname-input"
+                                                            class="col-sm-2 col-form-label">Contact Number </label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" class="form-control" readonly=""
+                                                                value="{{ $bookingDatas['whats_app_number'] }}">
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-sm-3 col-form-label">Check-In Date</label>
+                                                            <div class="col-sm-3">
+                                                                <input type="text" class="form-control" readonly=""
+                                                                    value="{{ $bookingDatas['checkindate'] }}">
+                                                            </div>
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-sm-2 col-form-label">Check-Out Date</label>
+                                                            <div class="col-sm-4">
+                                                                <input type="text" class="form-control" readonly=""
+                                                                    value="{{ $bookingDatas['chick_out_date'] }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-sm-3 col-form-label">No Of Days</label>
+                                                            <div class="col-sm-3">
+                                                                <input type="text" class="form-control" readonly=""
+                                                                    value="{{ $bookingDatas['days'] }}">
+                                                            </div>
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-sm-2 col-form-label">Count Head</label>
+                                                            <div class="col-sm-4">
+                                                                <input type="text" class="form-control" readonly=""
+                                                                    value="{{ $bookingDatas['count_head'] }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-sm-3 col-form-label">Total Prize</label>
+                                                            <div class="col-sm-3">
+                                                                <input type="text" class="form-control" readonly=""
+                                                                    value="{{ $bookingDatas['total'] }}">
+                                                            </div>
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-sm-2 col-form-label">GST</label>
+                                                            <div class="col-sm-4">
+                                                                <input type="text" class="form-control" readonly=""
+                                                                    value="{{ $bookingDatas['gst_amount'] }}">
+                                                            </div>
+                                                        </div>
 
 
-                                                <br />
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">Grand Total</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" readonly=""
-                                                            value="{{ $bookingDatas['grand_total'] }}">
-                                                    </div>
-                                                </div>
+                                                        <br />
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-sm-3 col-form-label">Grand Total</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" readonly=""
+                                                                    value="{{ $bookingDatas['grand_total'] }}">
+                                                            </div>
+                                                        </div>
 
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">Payment Paid</label>
-                                                    <div class="col-sm-9 row">
-                                                        @foreach ($bookingDatas['terms'] as $index => $term_arr)
-                                                            @if ($term_arr['booking_id'] == $bookingDatas['latest_booking_id'])
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-sm-3 col-form-label">Payment Paid</label>
+                                                            <div class="col-sm-9 row">
+                                                                @foreach ($bookingDatas['terms'] as $index => $term_arr)
+                                                                    @if ($term_arr['booking_id'] == $bookingDatas['latest_booking_id'])
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text"
+                                                                                style="background: #e0ddeb;"
+                                                                                readonly=""
+                                                                                class="form-control"id=""
+                                                                                value="{{ $term_arr['term'] }}">
+                                                                        </span>
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text"
+                                                                                style="background: #e0ddeb;"
+                                                                                readonly=""
+                                                                                class="form-control"id=""
+                                                                                value="{{ $term_arr['payable_amount'] }}">
+                                                                        </span>
+                                                                        <span class="col-sm-4">
+                                                                            <input type="text"
+                                                                                style="background: #e0ddeb;"
+                                                                                readonly=""
+                                                                                class="form-control"id=""
+                                                                                value="{{ $term_arr['payment_method'] }}">
+                                                                        </span>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-sm-3 col-form-label">Balance Amount</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" readonly=""
+                                                                    value="{{ $bookingDatas['balance_amount'] }}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-sm-3 col-form-label">Check In Staff</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" readonly=""
+                                                                    value="{{ $bookingDatas['checkin_staff'] }}">
+                                                            </div>
+                                                        </div>
+
+                                                        <br />
+
+
+                                                        <div class="row mb-4">
+                                                            <label for="horizontal-firstname-input"
+                                                                class="col-sm-3 col-form-label">Proof Image View</label>
+                                                            <div class="col-sm-9 row">
                                                                 <span class="col-sm-4">
-                                                                    <input type="text" style="background: #e0ddeb;"
-                                                                        readonly="" class="form-control"id=""
-                                                                        value="{{ $term_arr['term'] }}">
+                                                                    <img src="{{ asset($bookingDatas['proofimage_one']) }}"
+                                                                        alt="image description"
+                                                                        style="width:70px; height:50px;">
                                                                 </span>
                                                                 <span class="col-sm-4">
-                                                                    <input type="text" style="background: #e0ddeb;"
-                                                                        readonly="" class="form-control"id=""
-                                                                        value="{{ $term_arr['payable_amount'] }}">
+                                                                    <img src="{{ asset($bookingDatas['proofimage_two']) }}"
+                                                                        alt="image description"
+                                                                        style="width:70px; height:50px;">
                                                                 </span>
                                                                 <span class="col-sm-4">
-                                                                    <input type="text" style="background: #e0ddeb;"
-                                                                        readonly="" class="form-control"id=""
-                                                                        value="{{ $term_arr['payment_method'] }}">
+                                                                    <img src="{{ asset($bookingDatas['customer_photo']) }}"
+                                                                        alt="image description"
+                                                                        style="width:70px; height:50px;">
                                                                 </span>
-                                                            @endif
-                                                        @endforeach
-                                                    </div>
-                                                </div>
+                                                            </div>
+                                                        </div>
 
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">Balance Amount</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" readonly=""
-                                                            value="{{ $bookingDatas['balance_amount'] }}">
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">Check In Staff</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" readonly=""
-                                                            value="{{ $bookingDatas['checkin_staff'] }}">
-                                                    </div>
-                                                </div>
-
-                                                <br />
-
-
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">Proof Image View</label>
-                                                    <div class="col-sm-9 row">
-                                                        <span class="col-sm-4">
-                                                            <img src="{{ asset($bookingDatas['proofimage_one']) }}"
-                                                                alt="image description" style="width:70px; height:50px;">
-                                                        </span>
-                                                        <span class="col-sm-4">
-                                                            <img src="{{ asset($bookingDatas['proofimage_two']) }}"
-                                                                alt="image description" style="width:70px; height:50px;">
-                                                        </span>
-                                                        <span class="col-sm-4">
-                                                            <img src="{{ asset($bookingDatas['customer_photo']) }}"
-                                                                alt="image description" style="width:70px; height:50px;">
-                                                        </span>
-                                                    </div>
-                                                </div>
-
-                                                <br /><br />
-
-                                                <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input"
-                                                        class="col-sm-3 col-form-label">Action</label>
-                                                    <div class="col-sm-9 row">
-                                                        <span class="col-sm-1">
-                                                            @if ($bookingDatas['booking_status'] != 2)
-                                                                <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}"
-                                                                    class="btn btn-sm btn-soft-info">Edit</a>
-                                                            @endif
-                                                        </span>
-                                                        <span class="col-sm-1">
-                                                            <a href="{{ route('booking.view', ['id' => $bookingDatas['id']]) }}"
-                                                                class="btn btn-sm btn-soft-secondary">View</a>
-                                                        </span>
-                                                        <span class="col-sm-1">
-                                                            @if ($bookingDatas['balance_amount'] != 0)
-                                                                <a href="#paybalance{{ $bookingDatas['id'] }}"
-                                                                    data-bs-toggle="modal"
-                                                                    data-id="{{ $bookingDatas['id'] }}"
-                                                                    class="btn btn-sm btn-soft-warning paybalance{{ $bookingDatas['id'] }}"
-                                                                    data-bs-target="#paybalance{{ $bookingDatas['id'] }}">Pay
-                                                                    Balance</a>
-                                                            @endif
-                                                        </span>
-                                                        <span class="col-sm-1">
-                                                            @if ($bookingDatas['balance_amount'] == 0)
+                                                        {{-- <div class="row mb-4">
+                                                        <label for="horizontal-firstname-input"
+                                                            class="col-sm-3 col-form-label">Action</label>
+                                                        <div class="col-sm-9 row">
+                                                            <span class="col-sm-1">
                                                                 @if ($bookingDatas['booking_status'] != 2)
-                                                                    @if ($bookingDatas['chick_out_date'] >= $today)
-                                                                        <a href="#checkout{{ $bookingDatas['id'] }}"
-                                                                            data-bs-toggle="modal"
-                                                                            data-id="{{ $bookingDatas['id'] }}"
-                                                                            class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
-                                                                            data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
+                                                                    <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}"
+                                                                        class="btn btn-sm btn-soft-info">Edit</a>
+                                                                @endif
+                                                            </span>
+                                                            <span class="col-sm-1">
+                                                                <a href="{{ route('booking.view', ['id' => $bookingDatas['id']]) }}"
+                                                                    class="btn btn-sm btn-soft-secondary">View</a>
+                                                            </span>
+                                                            <span class="col-sm-1">
+                                                                @if ($bookingDatas['balance_amount'] != 0)
+                                                                    <a href="#paybalance{{ $bookingDatas['id'] }}"
+                                                                        data-bs-toggle="modal"
+                                                                        data-id="{{ $bookingDatas['id'] }}"
+                                                                        class="btn btn-sm btn-soft-warning paybalance{{ $bookingDatas['id'] }}"
+                                                                        data-bs-target="#paybalance{{ $bookingDatas['id'] }}">Pay
+                                                                        Balance</a>
+                                                                @endif
+                                                            </span>
+                                                            <span class="col-sm-1">
+                                                                @if ($bookingDatas['balance_amount'] == 0)
+                                                                    @if ($bookingDatas['booking_status'] != 2)
+                                                                        @if ($bookingDatas['chick_out_date'] >= $today)
+                                                                            <a href="#checkout{{ $bookingDatas['id'] }}"
+                                                                                data-bs-toggle="modal"
+                                                                                data-id="{{ $bookingDatas['id'] }}"
+                                                                                class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
+                                                                                data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
+                                                                        @endif
                                                                     @endif
                                                                 @endif
-                                                            @endif
-                                                        </span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}"
+                                                        data-bs-backdrop="static" aria-hidden="true"
+                                                        aria-labelledby="..." class="paybalance{{ $bookingDatas['id'] }}"
+                                                        tabindex="-1">
+                                                        @include('pages.backend.booking.components.paybalance')
+                                                    </div>
+
+                                                    <div class="modal fade" id="checkout{{ $bookingDatas['id'] }}"
+                                                        data-bs-backdrop="static" aria-hidden="true"
+                                                        aria-labelledby="..." tabindex="-1">
+                                                        @include('pages.backend.booking.components.checkout')
+                                                    </div> --}}
+
                                                     </div>
                                                 </div>
-
-
-                                                <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}"
-                                                    data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..."
-                                                    class="paybalance{{ $bookingDatas['id'] }}" tabindex="-1">
-                                                    @include('pages.backend.booking.components.paybalance')
-                                                </div>
-
-                                                <div class="modal fade" id="checkout{{ $bookingDatas['id'] }}"
-                                                    data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..."
-                                                    tabindex="-1">
-                                                    @include('pages.backend.booking.components.checkout')
-                                                </div>
-
-
-
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -401,7 +404,9 @@
             $('#booking_datatable').DataTable();
         });
 
-
+        $(".room_viewclose").click(function() {
+            window.location.reload();
+        });
 
 
 
