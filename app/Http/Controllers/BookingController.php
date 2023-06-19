@@ -46,9 +46,7 @@ class BookingController extends Controller
                 $latest_booking_id = '';
             }
 
-            $terms = [];
-            $room_list = [];
-            $rooms_arr = []; 
+            
 
             $booking_id = Booking::where('id', '=', $latest_booking_id)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->first();
             if($booking_id != ''){

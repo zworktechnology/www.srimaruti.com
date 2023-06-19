@@ -61,14 +61,6 @@
 
 
 
-
-                            
-
-
-
-
-
-
                             @if ($bookingDatas['status'] == 'Booked')
                                 
                                     <div class="col-md-1" style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;background: #d12424;">
@@ -115,7 +107,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title">Room View</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" class="btn-close room_viewclose" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row mb-4">
@@ -223,58 +215,6 @@
 
                                             <br/><br/>
 
-                                            <div class="row mb-4">
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Action</label>
-                                                <div class="col-sm-9 row">
-                                                    <span class="col-sm-1">
-                                                    @if ($bookingDatas['booking_status'] != 2)
-                                                        <a href="{{ route('booking.edit', ['id' => $bookingDatas['id']]) }}"
-                                                                        class="btn btn-sm btn-soft-info">Edit</a>
-                                                    @endif
-                                                    </span>
-                                                    <span class="col-sm-1">
-                                                         <a href="{{ route('booking.view', ['id' => $bookingDatas['id']]) }}"
-                                                                    class="btn btn-sm btn-soft-secondary">View</a>
-                                                    </span>
-                                                    <span class="col-sm-1">
-                                                    @if ($bookingDatas['balance_amount'] != 0)
-                                                    <a href="#paybalance{{ $bookingDatas['id'] }}"
-                                                                        data-bs-toggle="modal"
-                                                                        data-id="{{ $bookingDatas['id'] }}"
-                                                                        class="btn btn-sm btn-soft-warning paybalance{{ $bookingDatas['id'] }}"
-                                                                        data-bs-target="#paybalance{{ $bookingDatas['id'] }}">Pay
-                                                                        Balance</a>
-                                                    @endif
-                                                    </span>
-                                                    <span class="col-sm-1">
-                                                    @if ($bookingDatas['balance_amount'] == 0)
-                                                                @if ($bookingDatas['booking_status'] != 2)
-                                                                    @if ($bookingDatas['chick_out_date'] >= $today)
-                                                                    <a href="#checkout{{ $bookingDatas['id'] }}"
-                                                                                data-bs-toggle="modal"
-                                                                                data-id="{{ $bookingDatas['id'] }}"
-                                                                                class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
-                                                                                data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
-                                                                    @endif
-                                                                @endif
-                                                            @endif
-                                                    </span>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}"
-                                                    data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..."
-                                                    class="paybalance{{ $bookingDatas['id'] }}" tabindex="-1">
-                                                    @include('pages.backend.booking.components.paybalance')
-                                                </div>
-
-                                                <div class="modal fade" id="checkout{{ $bookingDatas['id'] }}"
-                                                        data-bs-backdrop="static" aria-hidden="true"
-                                                        aria-labelledby="..." tabindex="-1">
-                                                        @include('pages.backend.booking.components.checkout')
-                                                    </div>
-
                                             
 
                                         </div>
@@ -372,7 +312,9 @@
             $('#booking_datatable').DataTable();
         });
 
-
+        $(".room_viewclose").click(function() {
+        window.location.reload();
+    });
 
 
 
