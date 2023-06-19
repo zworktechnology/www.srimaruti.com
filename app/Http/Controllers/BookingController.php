@@ -24,7 +24,7 @@ class BookingController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        $data = Booking::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 1)->orderBy('created_at', 'desc')->get();
+        
 
         $checkins = Booking::where('check_in_date', '=', $today)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 1)->count();
         $checkouts = Booking::where('out_date', '=', $today)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 2)->count();
@@ -33,81 +33,171 @@ class BookingController extends Controller
 
         $staff = Staff::where('soft_delete', '!=', 1)->get();
 
+
+
+        $rooms_arr = [];
         $room_details = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->get();
+        foreach ($room_details as $key => $room_details_arr) {
+            $last_inserted_room_id = BookingRoom::where('room_id', '=', $room_details_arr->id)->latest('id')->first();
 
-        $bookingData = [];
-        $room_list = [];
-        $terms = [];
-
-        foreach ($data as $key => $datas) {
-            $branch = Branch::findOrFail($datas->branch_id);
-            $roomsbooked = BookingRoom::where('booking_id', '=', $datas->id)->get();
-            foreach ($roomsbooked as $key => $rooms_booked) {
-                $Rooms = Room::findOrFail($rooms_booked->room_id);
-                $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
-                    'booking_id' => $datas->id,
-                    'booking_room_price' => $rooms_booked->room_price,
-                    'room_cal_price' => $rooms_booked->room_cal_price,
-                    'id' => $rooms_booked->id,
-                    'room_id' => $rooms_booked->room_id,
-                    'room_type' => $rooms_booked->room_type,
-                );
+            if($last_inserted_room_id != ""){
+                $latest_booking_id = $last_inserted_room_id->booking_id;
+            }else {
+                $latest_booking_id = '';
             }
-            $payment_data = BookingPayment::where('booking_id', '=', $datas->id)->get();
-            foreach ($payment_data as $key => $payment_datas) {
+
+            $terms = [];
+            $room_list = [];
+            $rooms_arr = []; 
+
+            $booking_id = Booking::where('id', '=', $latest_booking_id)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->first();
+            if($booking_id != ''){
+                if($room_details_arr->booking_status == 1){
+
+                    if($booking_id->couple == 1){
+                        $status = 'Couple';
+                    }else {
+                        $status = 'Booked';
+                    }
+                    
+                }else {
+                    $status = 'Open';
+                }
+
+                $customer_name = $booking_id->customer_name;
+                $checkindate = date('d M Y', strtotime($booking_id->check_in_date));
+                $checkoutdate = date('d M Y', strtotime($booking_id->check_out_date));
+                $whats_app_number = $booking_id->whats_app_number;
+                $days = $booking_id->days;
+                $count_head = $booking_id->male_count + $booking_id->female_count + $booking_id->child_count;
+                $total = $booking_id->total;
+                $gst_amount = $booking_id->gst_amount;
+                $grand_total = $booking_id->grand_total;
+                $balance_amount = $booking_id->balance_amount;
+                
+
+
+
+                $payment_data = BookingPayment::where('booking_id', '=', $booking_id->id)->get();
+                foreach ($payment_data as $key => $payment_datas) {
+    
+                    $terms[] = array(
+                        'booking_id' => $booking_id->id,
+                        'term' => $payment_datas->term,
+                        'payable_amount' => $payment_datas->payable_amount,
+                        'id' => $payment_datas->id,
+                        'payment_method' => $payment_datas->payment_method,
+                    );
+                }
+
+
+                $roomsbooked = BookingRoom::where('booking_id', '=', $booking_id->id)->get();
+                foreach ($roomsbooked as $key => $rooms_booked) {
+                    $Rooms = Room::findOrFail($rooms_booked->room_id);
+                    $room_list[] = array(
+                        'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                        'booking_id' => $booking_id->id,
+                        'booking_room_price' => $rooms_booked->room_price,
+                        'room_cal_price' => $rooms_booked->room_cal_price,
+                        'id' => $rooms_booked->id,
+                        'room_id' => $rooms_booked->room_id,
+                        'room_type' => $rooms_booked->room_type,
+                    );
+                }
+
+                $checkin_staffname = Staff::findOrFail($booking_id->check_in_staff);
+                $checkin_staff = $checkin_staffname->name;
+                $proofimage_one = $booking_id->proofimage_one;
+                $proofimage_two = $booking_id->proofimage_two;
+                $customer_photo = $booking_id->customer_photo;
+                $booking_status = $booking_id->status;
+                $total_paid = $booking_id->total_paid;
+                $check_out_time = $booking_id->check_out_time;
+                $gst_per = $booking_id->gst_per;
+                $bookingauto_id = $booking_id->id;
+
+            }else {
+                $customer_name = '';
+                $checkindate = '';
+                $checkoutdate = '';
+                $whats_app_number = '';
+                $days = '';
+                $count_head = '';
+                $total = '';
+                $gst_amount = '';
+                $status = 'Open';
+                $grand_total = '';
+                $balance_amount = '';
+                $checkin_staff = '';
+                $proofimage_one = '';
+                $proofimage_two = '';
+                $customer_photo = '';
+                $bookingauto_id = '';
+                $booking_status = '';
+                $total_paid = '';
+                $check_out_time = '';
+                $gst_per = '';
+
 
                 $terms[] = array(
-                    'booking_id' => $datas->id,
-                    'term' => $payment_datas->term,
-                    'payable_amount' => $payment_datas->payable_amount,
-                    'id' => $payment_datas->id,
-                    'payment_method' => $payment_datas->payment_method,
+                    'booking_id' => '',
+                    'term' =>  '',
+                    'payable_amount' => '',
+                    'id' => '',
+                    'payment_method' => '',
+                );
+
+                $room_list[] = array(
+                    'room' => '' ,
+                    'booking_id' => '',
+                    'booking_room_price' => '',
+                    'room_cal_price' => '',
+                    'id' => '',
+                    'room_id' => '',
+                    'room_type' => '',
                 );
             }
-            $checkin_staffname = Staff::findOrFail($datas->check_in_staff);
-            $checkout_staffname = Staff::findOrFail($datas->check_out_staff);
-            $bookingData[] = array(
-                'customer_name' => $datas->customer_name,
-                'branch' => $branch->name,
-                'chick_in_date' => $datas->check_in_date,
-                'chick_in_time' => $datas->check_in_time,
-                'whats_app_number' => $datas->whats_app_number,
-                'id' => $datas->id,
-                'room_list' => $room_list,
-                'chick_out_date' => $datas->check_out_date,
-                'out_date' => $datas->out_date,
-                'chick_out_time' => $datas->check_out_time,
-                'phone_number' => $datas->phone_number,
-                'grand_total' => $datas->grand_total,
-                'branch_id' => $datas->branch_id,
-                'total_paid' => $datas->total_paid,
-                'balance_amount' => $datas->balance_amount,
-                'days' => $datas->days,
-                'gst_per' => $datas->gst_per,
-                'gst_amount' => $datas->gst_amount,
-                'disc_per' => $datas->disc_per,
-                'disc_amount' => $datas->disc_amount,
-                'additional_amount' => $datas->additional_amount,
-                'additional_notes' => $datas->additional_notes,
-                'total' => $datas->total,
+            
+
+            $rooms_arr[] = array(
+                'room_no' => $room_details_arr->room_number,
+                'room_floor' => $room_details_arr->room_floor,
+                'latest_booking_id' => $latest_booking_id,
+                'id' => $room_details_arr->id,
+                'status' => $status,
+                'customer_name' => $customer_name,
+                'whats_app_number' => $whats_app_number,
+                'checkindate' => $checkindate,
+                'chick_out_date' => $checkoutdate,
+                'days' => $days,
+                'count_head' => $count_head,
+                'total' => $total,
+                'gst_amount' => $gst_amount,
+                'grand_total' => $grand_total,
                 'terms' => $terms,
-                'status' => $datas->status,
-                'extended_date' => $datas->extended_date,
-                'extended_time' => $datas->extended_time,
-                'out_date' => $datas->out_date,
-                'out_time' => $datas->out_time,
-                'booking_invoiceno' => $datas->booking_invoiceno,
-                'couple' => $datas->couple,
-                'check_in_staff' => $checkin_staffname->name,
-                'check_out_staff' => $checkout_staffname->name,
-                'proofimage_one' => $datas->proofimage_one,
-                'proofimage_two' => $datas->proofimage_two,
-                'customer_photo' => $datas->customer_photo,
+                'balance_amount' => $balance_amount,
+                'checkin_staff' => $checkin_staff,
+                'proofimage_one' => $proofimage_one,
+                'proofimage_two' => $proofimage_two,
+                'customer_photo' => $customer_photo,
+                'id' => $bookingauto_id,
+                'booking_status' => $booking_status,
+                'total_paid' => $total_paid,
+                'chick_out_time' => $check_out_time,
+                'room_list' => $room_list,
+                'gst_per' => $gst_per,
             );
+
         }
 
-        return view('pages.backend.booking.index', compact('room_details', 'totalrooms', 'checkins', 'checkouts', 'availablerooms', 'staff', 'bookingData', 'today', 'timenow', 'user_branch_id'));
+
+
+
+
+
+        
+
+        return view('pages.backend.booking.index', compact('rooms_arr', 'totalrooms', 'checkins', 'checkouts', 'availablerooms', 'staff', 'today', 'timenow', 'user_branch_id'));
     }
 
     public function today($user_branch_id)
@@ -536,42 +626,44 @@ class BookingController extends Controller
             // }
 
             // Profile Image
-            $customer_photo = $request->customer_photo;
-            $folderPath = "assets/customer_details/customer_photo";
-            $image_parts = explode(";base64,", $customer_photo);
-            $image_type_aux = explode("image/", $image_parts[0]);
-            $image_type = $image_type_aux[1];
-            $image_base64 = base64_decode($image_parts[1]);
-            $fileName = $data->customer_name . '_' . $random_no . '_' . 'customer image' . '.png';
-            $customerimgfile = $folderPath . $fileName;
-            file_put_contents($customerimgfile, $image_base64);
-            $data->customer_photo = $customerimgfile;
+            //$customer_photo = $request->customer_photo;
+            //$folderPath = "assets/customer_details/customer_photo";
+            //$image_parts = explode(";base64,", $customer_photo);
+            //$image_type_aux = explode("image/", $image_parts[0]);
+            //$image_type = $image_type_aux[1];
+            //$image_base64 = base64_decode($image_parts[1]);
+            //$fileName = $data->customer_name . '_' . $random_no . '_' . 'customer image' . '.png';
+            //$customerimgfile = $folderPath . $fileName;
+            //file_put_contents($customerimgfile, $image_base64);
+            //$data->customer_photo = $customerimgfile;
 
 
             // Proof Front
-            $proofimage_one = $request->proofimage_one;
-            $front_folderPath = "assets/customer_details/proofimage_one";
-            $front_image_parts = explode(";base64,", $proofimage_one);
-            $frontimage_type_aux = explode("image/", $front_image_parts[0]);
-            $frontimage_type = $frontimage_type_aux[1];
-            $frontimage_base64 = base64_decode($front_image_parts[1]);
-            $frontfileName = $data->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
-            $frontimgfile = $front_folderPath . $frontfileName;
-            file_put_contents($frontimgfile, $frontimage_base64);
-            $data->proofimage_one = $frontimgfile;
+            //$proofimage_one = $request->proofimage_one;
+            //$front_folderPath = "assets/customer_details/proofimage_one";
+            //$front_image_parts = explode(";base64,", $proofimage_one);
+            //$frontimage_type_aux = explode("image/", $front_image_parts[0]);
+            //$frontimage_type = $frontimage_type_aux[1];
+            //$frontimage_base64 = base64_decode($front_image_parts[1]);
+            //$frontfileName = $data->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
+            //$frontimgfile = $front_folderPath . $frontfileName;
+            //file_put_contents($frontimgfile, $frontimage_base64);
+            //$data->proofimage_one = $frontimgfile;
 
 
             // Proof Back
-            $proofimage_two = $request->proofimage_two;
-            $back_folderPath = "assets/customer_details/proofimage_two";
-            $back_image_parts = explode(";base64,", $proofimage_two);
-            $backimage_type_aux = explode("image/", $back_image_parts[0]);
-            $backimage_type = $backimage_type_aux[1];
-            $backimage_base64 = base64_decode($back_image_parts[1]);
-            $backfileName = $data->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
-            $backimgfile = $back_folderPath . $backfileName;
-            file_put_contents($backimgfile, $backimage_base64);
-            $data->proofimage_two = $backimgfile;
+            //$proofimage_two = $request->proofimage_two;
+            //$back_folderPath = "assets/customer_details/proofimage_two";
+            //$back_image_parts = explode(";base64,", $proofimage_two);
+            //$backimage_type_aux = explode("image/", $back_image_parts[0]);
+            //$backimage_type = $backimage_type_aux[1];
+            //$backimage_base64 = base64_decode($back_image_parts[1]);
+            //$backfileName = $data->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
+            //$backimgfile = $back_folderPath . $backfileName;
+            //file_put_contents($backimgfile, $backimage_base64);
+            //$data->proofimage_two = $backimgfile;
+
+
 
 
             // $proofimage_one = $request->proofimage_one;

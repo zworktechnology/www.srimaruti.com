@@ -51,17 +51,7 @@
                     </div>
                 </div>
 
-                <div class="row mb-4" hidden>
-                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Check-in Date </label>
-                    <div class="col-sm-5">
-                        <input type="date" class="form-control" id="checkin_date" disabled name="checkin_date"
-                            placeholder="Enter here " value="{{ $bookingDatas['chick_in_date'] }}">
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="time" class="form-control" id="checkin_time" disabled name="checkin_time"
-                            placeholder="Enter here " value="{{ $bookingDatas['chick_in_time'] }}">
-                    </div>
-                </div>
+
                 <div class="row mb-4" hidden>
                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Check-out Date <span
                             style="color: red;">*</span></label>
@@ -370,35 +360,6 @@
                         <input type="text" disabled class="form-control gst_percentage"
                             id="gst_percentage{{ $bookingDatas['id'] }}" name="gst_percentage"
                             placeholder="Gst % - Enter here " value="{{ $bookingDatas['gst_per'] }}">
-                    </div>
-                </div>
-                <div class="row mb-4" hidden>
-                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Discount Amount </label>
-                    <div class="col-sm-4">
-                        <input type="text" disabled class="form-control discount_amount"
-                            id="discount_amount{{ $bookingDatas['id'] }}" name="discount_amount"
-                            placeholder="GST Amount - Enter here " value="{{ $bookingDatas['disc_amount'] }}">
-                    </div>
-                    <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">Discount % </label>
-                    <div class="col-sm-3">
-                        <input type="text" disabled class="form-control discount_percentage"
-                            id="discount_percentage{{ $bookingDatas['id'] }}" name="discount_percentage"
-                            placeholder="Discount % - Enter here " value="{{ $bookingDatas['disc_per'] }}">
-                    </div>
-                </div>
-                <div class="row mb-4" hidden>
-                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Additional Charge </label>
-                    <div class="col-sm-4">
-                        <input type="text" disabled class="form-control additional_charge"
-                            id="additional_charge{{ $bookingDatas['id'] }}" name="additional_charge"
-                            placeholder="Additional Amount - Enter here "
-                            value="{{ $bookingDatas['additional_amount'] }}">
-                    </div>
-                    <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">Note </label>
-                    <div class="col-sm-3">
-                        <input type="text" disabled class="form-control additional_charge_notes"
-                            id="additional_charge_notes{{ $bookingDatas['id'] }}" name="additional_charge_notes"
-                            placeholder="Note - Enter here " value="{{ $bookingDatas['additional_notes'] }}">
                     </div>
                 </div>
                 <div class="row mb-4" hidden>
