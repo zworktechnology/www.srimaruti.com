@@ -458,6 +458,36 @@
                                                         </ul>
                                                     </td>
                                                 </tr>
+
+
+                                                @if ($bookingDatas['balance_amount'] != 0)
+                                                <div class="modal fade" id="paybalance{{ $bookingDatas['id'] }}"
+                                                    data-bs-backdrop="static" aria-hidden="true" aria-labelledby="..."
+                                                    class="paybalance{{ $bookingDatas['id'] }}" tabindex="-1">
+                                                    @include('pages.backend.booking.components.paybalance')
+                                                </div>
+                                            @endif
+
+                                            @if ($bookingDatas['balance_amount'] == 0)
+                                                @if ($bookingDatas['status'] != 2)
+                                                    <div class="modal fade" id="checkout{{ $bookingDatas['id'] }}"
+                                                        data-bs-backdrop="static" aria-hidden="true"
+                                                        aria-labelledby="..." tabindex="-1">
+                                                        @include('pages.backend.booking.components.checkout')
+                                                    </div>
+                                                @endif
+                                            @endif
+
+                                            <div class="modal fade" id="basic{{ $bookingDatas['id'] }}"
+                                                aria-hidden="true" aria-labelledby="..." tabindex="-1">
+                                                @include('pages.backend.booking.components.basic')
+                                            </div>
+
+                                            <div class="modal fade" id="viewproof{{ $bookingDatas['id'] }}"
+                                                aria-hidden="true" aria-labelledby="..." tabindex="-1">
+                                                @include('pages.backend.booking.components.viewproof')
+                                            </div>
+                                            
                                                 @endforeach
                                             </tbody>
                                         </table>
