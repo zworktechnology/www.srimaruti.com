@@ -59,7 +59,7 @@
                         <div class="card-body">
                             <div class="row">
                                 @foreach ($rooms_arr as $bookingData)
-                                    @if ($bookingData['status'] == 'Booked')
+                                    @if ($bookingData['status'] == 'Booked Red')
                                         <div class="col-md-1"
                                             style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;background: #d12424;">
 
@@ -79,7 +79,45 @@
                                             </a>
 
                                         </div>
-                                    @elseif($bookingData['status'] == 'Couple')
+                                    @elseif($bookingData['status'] == 'Booked Green')
+                                    <div class="col-md-1"
+                                            style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;background:green;">
+
+                                            <a href="#room_view{{ $bookingData['latest_booking_id'] }}"
+                                                data-bs-toggle="modal" data-id="{{ $bookingData['latest_booking_id'] }}"
+                                                class="room_view{{ $bookingData['latest_booking_id'] }}"
+                                                data-bs-target="#room_view{{ $bookingData['latest_booking_id'] }}">
+
+                                                <div>
+                                                    <h4 class="mb-1 mt-1" style="color:white;">
+                                                        {{ $bookingData['room_no'] }}
+                                                    </h4>
+                                                    <p class=" mb-0" style="color:white;">Floor.
+                                                        {{ $bookingData['room_floor'] }}</p>
+                                                </div>
+
+                                            </a>
+
+                                        </div>
+                                    @elseif($bookingData['status'] == 'Couple Orange')
+                                        <div class="col-md-1"
+                                            style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;background: orange">
+
+                                            <a href="#room_view{{ $bookingData['latest_booking_id'] }}"
+                                                data-bs-toggle="modal" data-id="{{ $bookingData['latest_booking_id'] }}"
+                                                class="room_view{{ $bookingData['latest_booking_id'] }}"
+                                                data-bs-target="#room_view{{ $bookingData['latest_booking_id'] }}">
+                                                <div>
+                                                    <h4 class="mb-1 mt-1" style="color:white;">
+                                                        {{ $bookingData['room_no'] }}</h4>
+                                                    <p class=" mb-0" style="color:white;">Floor.
+                                                        {{ $bookingData['room_floor'] }}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+
+                                    @elseif($bookingData['status'] == 'Couple Pink')
                                         <div class="col-md-1"
                                             style="border: 2px solid; margin: 10px; padding: 10px; border-radius: 10px;background: #e560c1;">
 

@@ -54,9 +54,18 @@ class BookingController extends Controller
                 if($room_details_arr->booking_status == 1){
 
                     if($booking_id->couple == 1){
-                        $status = 'Couple';
+                        if($last_inserted_room_id->room_type == 'A/C'){
+                            $status = 'Couple Orange';
+                        }else if($last_inserted_room_id->room_type == 'Non - A/C'){
+                            $status = 'Couple Pink';
+                        }
+                        
                     }else {
-                        $status = 'Booked';
+                        if($last_inserted_room_id->room_type == 'A/C'){
+                            $status = 'Booked Red';
+                        }else if($last_inserted_room_id->room_type == 'Non - A/C'){
+                            $status = 'Booked Green';
+                        }
                     }
                     
                 }else {
