@@ -24,8 +24,6 @@ class BookingController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
 
-        
-
         $checkins = Booking::where('check_in_date', '=', $today)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 1)->count();
         $checkouts = Booking::where('out_date', '=', $today)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 2)->count();
         $availablerooms = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('booking_status', '!=', 1)->count();
@@ -33,9 +31,6 @@ class BookingController extends Controller
 
         $staff = Staff::where('soft_delete', '!=', 1)->get();
 
-
-
-        
         $room_details = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->get();
         $rooms_arr = [];
         foreach ($room_details as $key => $room_details_arr) {
@@ -47,8 +42,6 @@ class BookingController extends Controller
                 $latest_booking_id = '';
             }
 
-            
-
             $booking_id = Booking::where('id', '=', $latest_booking_id)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->first();
             if($booking_id != ''){
                 if($room_details_arr->booking_status == 1){
@@ -59,7 +52,7 @@ class BookingController extends Controller
                         }else if($last_inserted_room_id->room_type == 'Non - A/C'){
                             $status = 'Couple Pink';
                         }
-                        
+
                     }else {
                         if($last_inserted_room_id->room_type == 'A/C'){
                             $status = 'Booked Red';
@@ -67,7 +60,7 @@ class BookingController extends Controller
                             $status = 'Booked Green';
                         }
                     }
-                    
+
                 }else {
                     $status = 'Open';
                 }
@@ -82,13 +75,10 @@ class BookingController extends Controller
                 $gst_amount = $booking_id->gst_amount;
                 $grand_total = $booking_id->grand_total;
                 $balance_amount = $booking_id->balance_amount;
-                
-
-
 
                 $payment_data = BookingPayment::where('booking_id', '=', $booking_id->id)->get();
                 foreach ($payment_data as $key => $payment_datas) {
-    
+
                     $terms[] = array(
                         'booking_id' => $booking_id->id,
                         'term' => $payment_datas->term,
@@ -97,7 +87,6 @@ class BookingController extends Controller
                         'payment_method' => $payment_datas->payment_method,
                     );
                 }
-
 
                 $roomsbooked = BookingRoom::where('booking_id', '=', $booking_id->id)->get();
                 foreach ($roomsbooked as $key => $rooms_booked) {
@@ -123,8 +112,6 @@ class BookingController extends Controller
                 $check_out_time = $booking_id->check_out_time;
                 $gst_per = $booking_id->gst_per;
                 $bookingauto_id = $booking_id->id;
-                
-
             }else {
                 $customer_name = '';
                 $checkindate = '';
@@ -147,7 +134,6 @@ class BookingController extends Controller
                 $check_out_time = '';
                 $gst_per = '';
 
-
                 $terms[] = array(
                     'booking_id' => '',
                     'term' =>  '',
@@ -166,7 +152,6 @@ class BookingController extends Controller
                     'room_type' => '',
                 );
             }
-            
 
             $rooms_arr[] = array(
                 'room_no' => $room_details_arr->room_number,
@@ -196,16 +181,11 @@ class BookingController extends Controller
                 'room_list' => $room_list,
                 'gst_per' => $gst_per,
             );
-
         }
-
-
-
 
         $Daily_entry = Booking::where('soft_delete', '!=', 1)
                         ->where('check_in_date', '=', $today)
                         ->where('branch_id', '=', $user_branch_id)
-                        ->where('status', '=', 1)
                         ->orderBy('created_at', 'desc')->get();
 
         $dailyentryData = [];
@@ -237,8 +217,6 @@ class BookingController extends Controller
                 'booking_invoiceno' => $Daily_entries->booking_invoiceno,
             );
         }
-
-
 
         $data = Booking::where('soft_delete', '!=', 1)
         ->where('branch_id', '=', $user_branch_id)
@@ -276,7 +254,7 @@ class BookingController extends Controller
                 );
             }
             $checkin_staffname = Staff::findOrFail($datas->check_in_staff);
-            
+
             if($datas->check_out_staff != NULL){
                 $checkout_staffname = Staff::findOrFail($datas->check_out_staff);
                 $checkoutstaff = $checkout_staffname->name;
@@ -322,17 +300,6 @@ class BookingController extends Controller
                 'customer_photo' => $datas->customer_photo,
             );
         }
-
-
-
-
-
-
-
-
-
-
-
 
         return view('pages.backend.booking.index', compact('rooms_arr', 'totalrooms', 'checkins', 'checkouts', 'availablerooms', 'staff', 'today', 'timenow', 'user_branch_id', 'dailyentryData', 'bookingtable'));
     }
@@ -443,7 +410,7 @@ class BookingController extends Controller
                 $latest_booking_id = '';
             }
 
-            
+
 
             $booking_id = Booking::where('id', '=', $latest_booking_id)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->first();
             if($booking_id != ''){
@@ -455,7 +422,7 @@ class BookingController extends Controller
                         }else if($last_inserted_room_id->room_type == 'Non - A/C'){
                             $status = 'Couple Pink';
                         }
-                        
+
                     }else {
                         if($last_inserted_room_id->room_type == 'A/C'){
                             $status = 'Booked Red';
@@ -463,7 +430,7 @@ class BookingController extends Controller
                             $status = 'Booked Green';
                         }
                     }
-                    
+
                 }else {
                     $status = 'Open';
                 }
@@ -478,13 +445,13 @@ class BookingController extends Controller
                 $gst_amount = $booking_id->gst_amount;
                 $grand_total = $booking_id->grand_total;
                 $balance_amount = $booking_id->balance_amount;
-                
+
 
 
 
                 $payment_data = BookingPayment::where('booking_id', '=', $booking_id->id)->get();
                 foreach ($payment_data as $key => $payment_datas) {
-    
+
                     $terms[] = array(
                         'booking_id' => $booking_id->id,
                         'term' => $payment_datas->term,
@@ -519,7 +486,7 @@ class BookingController extends Controller
                 $check_out_time = $booking_id->check_out_time;
                 $gst_per = $booking_id->gst_per;
                 $bookingauto_id = $booking_id->id;
-                
+
 
             }else {
                 $customer_name = '';
@@ -562,7 +529,7 @@ class BookingController extends Controller
                     'room_type' => '',
                 );
             }
-            
+
 
             $rooms_arr[] = array(
                 'room_no' => $room_details_arr->room_number,
