@@ -355,6 +355,7 @@
                                         <table class="table table-centered table-nowrap mb-0" id="booking_datatable">
                                             <thead class="table-light">
                                                 <tr>
+                                                    <th>Sl.No</th>
                                                     <th>Bill.No</th>
                                                     <th>Room Deatails</th>
                                                     <th>Customer</th>
@@ -362,8 +363,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($dailyentryData as $dailyentryDatas)
+                                                @foreach ($dailyentryData as $keydata => $dailyentryDatas)
                                                     <tr>
+                                                        <td>{{ ++$keydata }}</td>
                                                         <td>{{ $dailyentryDatas['booking_invoiceno'] }}</td>
                                                         <td>
                                                             @foreach ($dailyentryDatas['room_lists'] as $index => $room_lists_arr)
