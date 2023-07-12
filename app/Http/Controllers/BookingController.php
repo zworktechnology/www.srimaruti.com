@@ -980,42 +980,42 @@ class BookingController extends Controller
             // }
 
             // Profile Image
-            $customer_photo = $request->customer_photo;
-            $folderPath = "assets/customer_details/customer_photo";
-            $image_parts = explode(";base64,", $customer_photo);
-            $image_type_aux = explode("image/", $image_parts[0]);
-            $image_type = $image_type_aux[1];
-            $image_base64 = base64_decode($image_parts[1]);
-            $fileName = $data->customer_name . '_' . $random_no . '_' . 'customer image' . '.png';
-            $customerimgfile = $folderPath . $fileName;
-            file_put_contents($customerimgfile, $image_base64);
-            $data->customer_photo = $customerimgfile;
+            //$customer_photo = $request->customer_photo;
+            //$folderPath = "assets/customer_details/customer_photo";
+           // $image_parts = explode(";base64,", $customer_photo);
+           // $image_type_aux = explode("image/", $image_parts[0]);
+           // $image_type = $image_type_aux[1];
+            //$image_base64 = base64_decode($image_parts[1]);
+            //$fileName = $data->customer_name . '_' . $random_no . '_' . 'customer image' . '.png';
+           // $customerimgfile = $folderPath . $fileName;
+           // file_put_contents($customerimgfile, $image_base64);
+            //$data->customer_photo = $customerimgfile;
 
 
             // Proof Front
-            $proofimage_one = $request->proofimage_one;
-            $front_folderPath = "assets/customer_details/proofimage_one";
-            $front_image_parts = explode(";base64,", $proofimage_one);
-            $frontimage_type_aux = explode("image/", $front_image_parts[0]);
-            $frontimage_type = $frontimage_type_aux[1];
-            $frontimage_base64 = base64_decode($front_image_parts[1]);
-            $frontfileName = $data->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
-            $frontimgfile = $front_folderPath . $frontfileName;
-            file_put_contents($frontimgfile, $frontimage_base64);
-            $data->proofimage_one = $frontimgfile;
+           // $proofimage_one = $request->proofimage_one;
+           // $front_folderPath = "assets/customer_details/proofimage_one";
+           // $front_image_parts = explode(";base64,", $proofimage_one);
+          //  $frontimage_type_aux = explode("image/", $front_image_parts[0]);
+           // $frontimage_type = $frontimage_type_aux[1];
+           // $frontimage_base64 = base64_decode($front_image_parts[1]);
+           // $frontfileName = $data->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
+           // $frontimgfile = $front_folderPath . $frontfileName;
+           // file_put_contents($frontimgfile, $frontimage_base64);
+           // $data->proofimage_one = $frontimgfile;
 
 
             // Proof Back
-            $proofimage_two = $request->proofimage_two;
-            $back_folderPath = "assets/customer_details/proofimage_two";
-            $back_image_parts = explode(";base64,", $proofimage_two);
-            $backimage_type_aux = explode("image/", $back_image_parts[0]);
-            $backimage_type = $backimage_type_aux[1];
-            $backimage_base64 = base64_decode($back_image_parts[1]);
-            $backfileName = $data->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
-            $backimgfile = $back_folderPath . $backfileName;
-            file_put_contents($backimgfile, $backimage_base64);
-            $data->proofimage_two = $backimgfile;
+          //  $proofimage_two = $request->proofimage_two;
+          //  $back_folderPath = "assets/customer_details/proofimage_two";
+           // $back_image_parts = explode(";base64,", $proofimage_two);
+           // $backimage_type_aux = explode("image/", $back_image_parts[0]);
+          //  $backimage_type = $backimage_type_aux[1];
+          //  $backimage_base64 = base64_decode($back_image_parts[1]);
+          //  $backfileName = $data->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
+          //  $backimgfile = $back_folderPath . $backfileName;
+           // file_put_contents($backimgfile, $backimage_base64);
+           // $data->proofimage_two = $backimgfile;
 
 
 
