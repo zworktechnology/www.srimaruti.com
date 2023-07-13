@@ -92,7 +92,7 @@ class BookingController extends Controller
                 foreach ($roomsbooked as $key => $rooms_booked) {
                     $Rooms = Room::findOrFail($rooms_booked->room_id);
                     $room_list[] = array(
-                        'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                        'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                         'booking_id' => $booking_id->id,
                         'booking_room_price' => $rooms_booked->room_price,
                         'room_cal_price' => $rooms_booked->room_cal_price,
@@ -183,9 +183,6 @@ class BookingController extends Controller
             );
         }
 
-
-
-
         $Daily_entry = Booking::where('soft_delete', '!=', 1)
                         ->where('check_in_date', '=', $today)
                         ->where('branch_id', '=', $user_branch_id)
@@ -195,38 +192,17 @@ class BookingController extends Controller
         $room_lists = [];
         foreach ($Daily_entry as $key => $Daily_entries) {
 
-
-            
-
             $roomsbookeds = BookingRoom::where('booking_id', '=', $Daily_entries->id)->get();
             foreach ($roomsbookeds as $key => $rooms_bookeds) {
                 $Rooms = Room::findOrFail($rooms_bookeds->room_id);
-
-                if($Daily_entries->couple == 1){
-                    if($rooms_bookeds->room_type == 'A/C'){
-                        $roomcolor_status = 'Couple Orange';
-                    }else if($rooms_bookeds->room_type == 'Non - A/C'){
-                        $roomcolor_status = 'Couple Pink';
-                    }
-
-                }else {
-                    if($rooms_bookeds->room_type == 'A/C'){
-                        $roomcolor_status = 'Booked Red';
-                    }else if($rooms_bookeds->room_type == 'Non - A/C'){
-                        $roomcolor_status = 'Booked Green';
-                    }
-                }
-
-
                 $room_lists[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_bookeds->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_bookeds->room_type ,
                     'booking_id' => $Daily_entries->id,
                     'booking_room_price' => $rooms_bookeds->room_price,
                     'room_cal_price' => $rooms_bookeds->room_cal_price,
                     'id' => $rooms_bookeds->id,
                     'room_id' => $rooms_bookeds->room_id,
                     'room_type' => $rooms_bookeds->room_type,
-                    'roomcolor_status' => $roomcolor_status,
                 );
             }
             $checkinstaff = Staff::findOrFail($Daily_entries->check_in_staff);
@@ -242,9 +218,6 @@ class BookingController extends Controller
             );
         }
 
-
-
-
         $data = Booking::where('soft_delete', '!=', 1)
         ->where('branch_id', '=', $user_branch_id)
         ->where('status', '=', 1)
@@ -259,32 +232,14 @@ class BookingController extends Controller
             $roomsbooked = BookingRoom::where('booking_id', '=', $datas->id)->get();
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
-
-                if($datas->couple == 1){
-                    if($rooms_booked->room_type == 'A/C'){
-                        $roomcolor_status = 'Couple Orange';
-                    }else if($rooms_booked->room_type == 'Non - A/C'){
-                        $roomcolor_status = 'Couple Pink';
-                    }
-
-                }else {
-                    if($rooms_booked->room_type == 'A/C'){
-                        $roomcolor_status = 'Booked Red';
-                    }else if($rooms_booked->room_type == 'Non - A/C'){
-                        $roomcolor_status = 'Booked Green';
-                    }
-                }
-
-
                 $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                     'booking_id' => $datas->id,
                     'booking_room_price' => $rooms_booked->room_price,
                     'room_cal_price' => $rooms_booked->room_cal_price,
                     'id' => $rooms_booked->id,
                     'room_id' => $rooms_booked->room_id,
                     'room_type' => $rooms_booked->room_type,
-                    'roomcolor_status' => $roomcolor_status,
                 );
             }
             $payment_data = BookingPayment::where('booking_id', '=', $datas->id)->get();
@@ -372,7 +327,7 @@ class BookingController extends Controller
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
                 $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                     'booking_id' => $datas->id,
                     'booking_room_price' => $rooms_booked->room_price,
                     'room_cal_price' => $rooms_booked->room_cal_price,
@@ -511,7 +466,7 @@ class BookingController extends Controller
                 foreach ($roomsbooked as $key => $rooms_booked) {
                     $Rooms = Room::findOrFail($rooms_booked->room_id);
                     $room_list[] = array(
-                        'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                        'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                         'booking_id' => $booking_id->id,
                         'booking_room_price' => $rooms_booked->room_price,
                         'room_cal_price' => $rooms_booked->room_cal_price,
@@ -623,32 +578,14 @@ class BookingController extends Controller
             $roomsbookeds = BookingRoom::where('booking_id', '=', $Daily_entries->id)->get();
             foreach ($roomsbookeds as $key => $rooms_bookeds) {
                 $Rooms = Room::findOrFail($rooms_bookeds->room_id);
-
-                if($Daily_entries->couple == 1){
-                    if($rooms_bookeds->room_type == 'A/C'){
-                        $roomcolor_status = 'Couple Orange';
-                    }else if($rooms_bookeds->room_type == 'Non - A/C'){
-                        $roomcolor_status = 'Couple Pink';
-                    }
-
-                }else {
-                    if($rooms_bookeds->room_type == 'A/C'){
-                        $roomcolor_status = 'Booked Red';
-                    }else if($rooms_bookeds->room_type == 'Non - A/C'){
-                        $roomcolor_status = 'Booked Green';
-                    }
-                }
-
-
                 $room_lists[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_bookeds->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_bookeds->room_type ,
                     'booking_id' => $Daily_entries->id,
                     'booking_room_price' => $rooms_bookeds->room_price,
                     'room_cal_price' => $rooms_bookeds->room_cal_price,
                     'id' => $rooms_bookeds->id,
                     'room_id' => $rooms_bookeds->room_id,
                     'room_type' => $rooms_bookeds->room_type,
-                    'roomcolor_status' => $roomcolor_status,
                 );
             }
             $checkinstaff = Staff::findOrFail($Daily_entries->check_in_staff);
@@ -688,31 +625,13 @@ class BookingController extends Controller
             $roomsbooked = BookingRoom::where('booking_id', '=', $datas->id)->get();
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
-
-                if($datas->couple == 1){
-                    if($rooms_booked->room_type == 'A/C'){
-                        $roomcolor_status = 'Couple Orange';
-                    }else if($rooms_booked->room_type == 'Non - A/C'){
-                        $roomcolor_status = 'Couple Pink';
-                    }
-
-                }else {
-                    if($rooms_booked->room_type == 'A/C'){
-                        $roomcolor_status = 'Booked Red';
-                    }else if($rooms_booked->room_type == 'Non - A/C'){
-                        $roomcolor_status = 'Booked Green';
-                    }
-                }
-
-
                 $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                     'booking_id' => $datas->id,
                     'booking_room_price' => $rooms_booked->room_price,
                     'room_cal_price' => $rooms_booked->room_cal_price,
                     'id' => $rooms_booked->id,
                     'room_id' => $rooms_booked->room_id,
-                    'roomcolor_status' => $roomcolor_status,
                 );
             }
             $payment_data = BookingPayment::where('booking_id', '=', $datas->id)->get();
@@ -779,31 +698,13 @@ class BookingController extends Controller
             $roomsbooked = BookingRoom::where('booking_id', '=', $datas->id)->get();
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
-
-                if($datas->couple == 1){
-                    if($rooms_booked->room_type == 'A/C'){
-                        $roomcolor_status = 'Couple Orange';
-                    }else if($rooms_booked->room_type == 'Non - A/C'){
-                        $roomcolor_status = 'Couple Pink';
-                    }
-
-                }else {
-                    if($rooms_booked->room_type == 'A/C'){
-                        $roomcolor_status = 'Booked Red';
-                    }else if($rooms_booked->room_type == 'Non - A/C'){
-                        $roomcolor_status = 'Booked Green';
-                    }
-                }
-
-
                 $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                     'booking_id' => $datas->id,
                     'booking_room_price' => $rooms_booked->room_price,
                     'room_cal_price' => $rooms_booked->room_cal_price,
                     'id' => $rooms_booked->id,
                     'room_id' => $rooms_booked->room_id,
-                    'roomcolor_status' => $roomcolor_status,
                 );
             }
             $payment_data = BookingPayment::where('booking_id', '=', $datas->id)->get();
@@ -880,24 +781,6 @@ class BookingController extends Controller
                 $roomsbooked = BookingRoom::where('booking_id', '=', $Array_data->id)->get();
                     foreach ($roomsbooked as $key => $rooms_booked) {
                         $Rooms = Room::findOrFail($rooms_booked->room_id);
-
-                        if($Array_data->couple == 1){
-                            if($rooms_booked->room_type == 'A/C'){
-                                $roomcolor_status = 'Couple Orange';
-                            }else if($rooms_booked->room_type == 'Non - A/C'){
-                                $roomcolor_status = 'Couple Pink';
-                            }
-        
-                        }else {
-                            if($rooms_booked->room_type == 'A/C'){
-                                $roomcolor_status = 'Booked Red';
-                            }else if($rooms_booked->room_type == 'Non - A/C'){
-                                $roomcolor_status = 'Booked Green';
-                            }
-                        }
-
-
-
                         $room_list[] = array(
                             'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor ' . ' - ' . $rooms_booked->room_type,
                             'booking_id' => $Array_data->id,
@@ -905,7 +788,6 @@ class BookingController extends Controller
                             'room_cal_price' => $rooms_booked->room_cal_price,
                             'id' => $rooms_booked->id,
                             'room_id' => $rooms_booked->room_id,
-                            'roomcolor_status' => $roomcolor_status,
                         );
                     }
                     $payment_data = BookingPayment::where('booking_id', '=', $Array_data->id)->get();
@@ -1065,82 +947,60 @@ class BookingController extends Controller
             // }
 
             // Profile Image
-            if ($request->customer_photo != "") {
-                $customer_photo = $request->customer_photo;
-                $folderPath = "assets/customer_details/customer_photo";
-                $image_parts = explode(";base64,", $customer_photo);
-                $image_type_aux = explode("image/", $image_parts[0]);
-                $image_type = $image_type_aux[1];
-                $image_base64 = base64_decode($image_parts[1]);
-                $fileName = $data->customer_name . '_' . $random_no . '_' . 'customer image' . '.png';
-                $customerimgfile = $folderPath . $fileName;
-                file_put_contents($customerimgfile, $image_base64);
-                $data->customer_photo = $customerimgfile;
-            }else {
-                $contactno = $request->get('phone_number');
-                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->first();
-                $old_customer_photo = $get_mobno_person->customer_photo;
-                $data->proofimage_one = $old_customer_photo;
-            }
-            
+            $customer_photo = $request->customer_photo;
+            $folderPath = "assets/customer_details/customer_photo";
+            $image_parts = explode(";base64,", $customer_photo);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $fileName = $data->customer_name . '_' . $random_no . '_' . 'customer image' . '.png';
+            $customerimgfile = $folderPath . $fileName;
+            file_put_contents($customerimgfile, $image_base64);
+            $data->customer_photo = $customerimgfile;
 
 
             // Proof Front
-            if ($request->proofimage_one != "") {
-                $proofimage_one = $request->proofimage_one;
-                $front_folderPath = "assets/customer_details/proofimage_one";
-                $front_image_parts = explode(";base64,", $proofimage_one);
-                $frontimage_type_aux = explode("image/", $front_image_parts[0]);
-                $frontimage_type = $frontimage_type_aux[1];
-                $frontimage_base64 = base64_decode($front_image_parts[1]);
-                $frontfileName = $data->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
-                $frontimgfile = $front_folderPath . $frontfileName;
-                file_put_contents($frontimgfile, $frontimage_base64);
-                $data->proofimage_one = $frontimgfile;
-            } else {
-                $contactno = $request->get('phone_number');
-                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->first();
-                $old_proofimage_one = $get_mobno_person->proofimage_one;
-                $data->proofimage_one = $old_proofimage_one;
-            }
+            $proofimage_one = $request->proofimage_one;
+            $front_folderPath = "assets/customer_details/proofimage_one";
+            $front_image_parts = explode(";base64,", $proofimage_one);
+            $frontimage_type_aux = explode("image/", $front_image_parts[0]);
+            $frontimage_type = $frontimage_type_aux[1];
+            $frontimage_base64 = base64_decode($front_image_parts[1]);
+            $frontfileName = $data->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
+            $frontimgfile = $front_folderPath . $frontfileName;
+            file_put_contents($frontimgfile, $frontimage_base64);
+            $data->proofimage_one = $frontimgfile;
 
 
             // Proof Back
-            if ($request->proofimage_two != "") {
-                $proofimage_two = $request->proofimage_two;
-                $back_folderPath = "assets/customer_details/proofimage_two";
-                $back_image_parts = explode(";base64,", $proofimage_two);
-                $backimage_type_aux = explode("image/", $back_image_parts[0]);
-                $backimage_type = $backimage_type_aux[1];
-                $backimage_base64 = base64_decode($back_image_parts[1]);
-                $backfileName = $data->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
-                $backimgfile = $back_folderPath . $backfileName;
-                file_put_contents($backimgfile, $backimage_base64);
-                $data->proofimage_two = $backimgfile;
-            }else {
-                $contactno = $request->get('phone_number');
-                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->first();
-               $old_proofimage_two = $get_mobno_person->proofimage_two;
-                $data->proofimage_two = $old_proofimage_two;
-            }
+            $proofimage_two = $request->proofimage_two;
+            $back_folderPath = "assets/customer_details/proofimage_two";
+            $back_image_parts = explode(";base64,", $proofimage_two);
+            $backimage_type_aux = explode("image/", $back_image_parts[0]);
+            $backimage_type = $backimage_type_aux[1];
+            $backimage_base64 = base64_decode($back_image_parts[1]);
+            $backfileName = $data->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
+            $backimgfile = $back_folderPath . $backfileName;
+            file_put_contents($backimgfile, $backimage_base64);
+            $data->proofimage_two = $backimgfile;
 
 
 
 
             // $proofimage_one = $request->proofimage_one;
-           //  $filename_one = $data->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $data->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
-           //  $request->proofimage_one->move('assets/customer_details/proofimage_one', $filename_one);
-           //  $data->proofimage_one = $filename_one;
+            // $filename_one = $data->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $data->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
+            // $request->proofimage_one->move('assets/customer_details/proof/front', $filename_one);
+            // $data->proofimage_one = $filename_one;
 
-           //  $proofimage_two = $request->proofimage_two;
-           //  $filename_two = $data->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $data->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
-           //  $request->proofimage_two->move('assets/customer_details/proofimage_two', $filename_two);
-           //  $data->proofimage_two = $filename_two;
+            // $proofimage_two = $request->proofimage_two;
+            // $filename_two = $data->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $data->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
+            // $request->proofimage_two->move('assets/customer_details/proof/back', $filename_two);
+            // $data->proofimage_two = $filename_two;
 
-           //  $customer_photo = $request->customer_photo;
-           //  $filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
-           //  $request->customer_photo->move('assets/customer_details/customer_photo', $filename_customer_photo);
-           //  $data->customer_photo = $filename_customer_photo;
+            // $customer_photo = $request->customer_photo;
+            // $filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
+            // $request->customer_photo->move('assets/customer_details/proof/photo', $filename_customer_photo);
+            // $data->customer_photo = $filename_customer_photo;
 
             $data->total = $request->get('total_calc_price');
             $data->gst_per = $request->get('gst_percentage');
@@ -1825,31 +1685,12 @@ class BookingController extends Controller
         foreach ($checkin_Data as $key => $checkin_Datas) {
             $roomsbooked = BookingRoom::where('booking_id', '=', $checkin_Datas->id)->get();
                     foreach ($roomsbooked as $key => $rooms_booked) {
-
-
-                        if($checkin_Datas->couple == 1){
-                            if($rooms_booked->room_type == 'A/C'){
-                                $roomcolorstatus = 'Couple Orange';
-                            }else if($rooms_booked->room_type == 'Non - A/C'){
-                                $roomcolorstatus = 'Couple Pink';
-                            }
-        
-                        }else {
-                            if($rooms_booked->room_type == 'A/C'){
-                                $roomcolorstatus = 'Booked Red';
-                            }else if($rooms_booked->room_type == 'Non - A/C'){
-                                $roomcolorstatus = 'Booked Green';
-                            }
-                        }
-
-
                         $Rooms = Room::findOrFail($rooms_booked->room_id);
                         $room_list[] = array(
                             'roomno' => 'No. '. $Rooms->room_number,
                             'roomtype' => $rooms_booked->room_type,
                             'booking_room_price' => $rooms_booked->room_price,
                             'booking_id' => $checkin_Datas->id,
-                            'roomcolorstatus' => $roomcolorstatus,
                         );
                     }
 
@@ -1859,8 +1700,7 @@ class BookingController extends Controller
 
                         $cash_paymentmethod = $payment_data_array->payment_method;
                         if($cash_paymentmethod == 'Cash'){
-                            
-                            $cash_income = $payment_data_array->payable_amount;
+                            $cash_income = $checkin_Datas->total;
                             $case_income_gst = $checkin_Datas->gst_amount;
                         }else{
                             $cash_income = '-';
@@ -1869,7 +1709,7 @@ class BookingController extends Controller
 
 
                         if($cash_paymentmethod == 'Online Payment'){
-                            $online_income = $payment_data_array->total;
+                            $online_income = $checkin_Datas->total;
                             $online_income_gst = $checkin_Datas->gst_amount;
                         }else{
                             $online_income = '-';
@@ -1964,18 +1804,17 @@ class BookingController extends Controller
                                 ->where('check_in_staff', '=', $manager_id)
                                 ->where('soft_delete', '!=', 1)
                                 ->get();
-        
+        $room_cash_income = 0;
         $room_cash_income_tax = 0;
         foreach ($Total_room_income as $key => $Total_room_income_arr) {
-
             $payment_data_arr = BookingPayment::where('booking_id', '=', $Total_room_income_arr->id)
                                             ->where('payment_method', '=', 'Cash')
                                             ->get();
-            $room_cash_income = 0;
+
             foreach ($payment_data_arr as $key => $payment_data_array) {
 
                 if($payment_data_array->booking_id == $Total_room_income_arr->id){
-                    $room_cash_income += $payment_data_array->payable_amount;
+                    $room_cash_income += $Total_room_income_arr->grand_total;
                     $room_cash_income_tax += $Total_room_income_arr->gst_amount;
                 }
             }
