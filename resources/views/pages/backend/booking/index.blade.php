@@ -372,18 +372,18 @@
                                                                 @if ($room_lists_arr['booking_id'] == $dailyentryDatas['id'])
 
                                                                     @if ($room_lists_arr['roomcolor_status'] == 'Couple Orange')
-                                                                        <span style="color: orange;">{{ $dailyentryDatas['branch'] }} - {{ $room_lists_arr['room'] }}<br /></span>
+                                                                        <span style="color: orange;">{{ $room_lists_arr['room'] }}<br /></span>
 
                                                                     @elseif($room_lists_arr['roomcolor_status'] == 'Couple Pink')
-                                                                        <span style="color: #e560c1;">{{ $dailyentryDatas['branch'] }} -
+                                                                        <span style="color: #e560c1;">
                                                                             {{ $room_lists_arr['room'] }}<br /></span>
 
                                                                     @elseif($room_lists_arr['roomcolor_status'] == 'Booked Red')
-                                                                        <span style="color: red;">{{ $dailyentryDatas['branch'] }} -
+                                                                        <span style="color: red;">
                                                                             {{ $room_lists_arr['room'] }}<br /></span>
 
                                                                     @elseif($room_lists_arr['roomcolor_status'] == 'Booked Green')
-                                                                        <span style="color: green;">{{ $dailyentryDatas['branch'] }} -
+                                                                        <span style="color: green;">
                                                                             {{ $room_lists_arr['room'] }}<br /></span>
                                                                     @endif
                                                                 @endif
@@ -485,7 +485,7 @@
 
                                                         @if ($bookingDatas['balance_amount'] == 0)
                                                             @if ($bookingDatas['status'] != 2)
-                                                                
+
                                                                     <li>
                                                                         <a href="#checkout{{ $bookingDatas['id'] }}"
                                                                             data-bs-toggle="modal"
@@ -493,7 +493,7 @@
                                                                             class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
                                                                             data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
                                                                     </li>
-                                                                    
+
                                                             @endif
                                                         @endif
 
