@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB;
 use App\Models\Booking;
 use App\Models\Branch;
@@ -196,7 +197,7 @@ class BookingController extends Controller
         foreach ($Daily_entry as $key => $Daily_entries) {
 
 
-            
+
 
             $roomsbookeds = BookingRoom::where('booking_id', '=', $Daily_entries->id)->get();
             foreach ($roomsbookeds as $key => $rooms_bookeds) {
@@ -887,7 +888,7 @@ class BookingController extends Controller
                             }else if($rooms_booked->room_type == 'Non - A/C'){
                                 $roomcolor_status = 'Couple Pink';
                             }
-        
+
                         }else {
                             if($rooms_booked->room_type == 'A/C'){
                                 $roomcolor_status = 'Booked Red';
@@ -1082,7 +1083,7 @@ class BookingController extends Controller
                 $old_customer_photo = $get_mobno_person->customer_photo;
                 $data->proofimage_one = $old_customer_photo;
             }
-            
+
 
 
             // Proof Front
@@ -1833,7 +1834,7 @@ class BookingController extends Controller
                             }else if($rooms_booked->room_type == 'Non - A/C'){
                                 $roomcolorstatus = 'Couple Pink';
                             }
-        
+
                         }else {
                             if($rooms_booked->room_type == 'A/C'){
                                 $roomcolorstatus = 'Booked Red';
@@ -1859,7 +1860,7 @@ class BookingController extends Controller
 
                         $cash_paymentmethod = $payment_data_array->payment_method;
                         if($cash_paymentmethod == 'Cash'){
-                            
+
                             $cash_income = $payment_data_array->payable_amount;
                             $case_income_gst = $checkin_Datas->gst_amount;
                         }else{
@@ -1964,7 +1965,7 @@ class BookingController extends Controller
                                 ->where('check_in_staff', '=', $manager_id)
                                 ->where('soft_delete', '!=', 1)
                                 ->get();
-        
+
         $room_cash_income_tax = 0;
         foreach ($Total_room_income as $key => $Total_room_income_arr) {
 
