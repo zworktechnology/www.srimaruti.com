@@ -372,19 +372,16 @@
                                                                 @if ($room_lists_arr['booking_id'] == $dailyentryDatas['id'])
 
                                                                     @if ($room_lists_arr['roomcolor_status'] == 'Couple Orange')
-                                                                        <span style="color: orange;">{{ $dailyentryDatas['branch'] }} - {{ $room_lists_arr['room'] }}<br /></span>
+                                                                        <span style="color: orange;">{{ $room_lists_arr['room'] }}<br /></span>
 
                                                                     @elseif($room_lists_arr['roomcolor_status'] == 'Couple Pink')
-                                                                        <span style="color: #e560c1;">{{ $dailyentryDatas['branch'] }} -
-                                                                            {{ $room_lists_arr['room'] }}<br /></span>
+                                                                        <span style="color: #e560c1;">{{ $room_lists_arr['room'] }}<br /></span>
 
                                                                     @elseif($room_lists_arr['roomcolor_status'] == 'Booked Red')
-                                                                        <span style="color: red;">{{ $dailyentryDatas['branch'] }} -
-                                                                            {{ $room_lists_arr['room'] }}<br /></span>
+                                                                        <span style="color: red;">{{ $room_lists_arr['room'] }}<br /></span>
 
                                                                     @elseif($room_lists_arr['roomcolor_status'] == 'Booked Green')
-                                                                        <span style="color: green;">{{ $dailyentryDatas['branch'] }} -
-                                                                            {{ $room_lists_arr['room'] }}<br /></span>
+                                                                        <span style="color: green;">{{ $room_lists_arr['room'] }}<br /></span>
                                                                     @endif
                                                                 @endif
                                                             @endforeach
