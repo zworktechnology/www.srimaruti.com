@@ -92,7 +92,7 @@ class BookingController extends Controller
                 foreach ($roomsbooked as $key => $rooms_booked) {
                     $Rooms = Room::findOrFail($rooms_booked->room_id);
                     $room_list[] = array(
-                        'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                        'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                         'booking_id' => $booking_id->id,
                         'booking_room_price' => $rooms_booked->room_price,
                         'room_cal_price' => $rooms_booked->room_cal_price,
@@ -196,7 +196,7 @@ class BookingController extends Controller
             foreach ($roomsbookeds as $key => $rooms_bookeds) {
                 $Rooms = Room::findOrFail($rooms_bookeds->room_id);
                 $room_lists[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_bookeds->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_bookeds->room_type ,
                     'booking_id' => $Daily_entries->id,
                     'booking_room_price' => $rooms_bookeds->room_price,
                     'room_cal_price' => $rooms_bookeds->room_cal_price,
@@ -233,7 +233,7 @@ class BookingController extends Controller
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
                 $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                     'booking_id' => $datas->id,
                     'booking_room_price' => $rooms_booked->room_price,
                     'room_cal_price' => $rooms_booked->room_cal_price,
@@ -327,7 +327,7 @@ class BookingController extends Controller
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
                 $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                     'booking_id' => $datas->id,
                     'booking_room_price' => $rooms_booked->room_price,
                     'room_cal_price' => $rooms_booked->room_cal_price,
@@ -466,7 +466,7 @@ class BookingController extends Controller
                 foreach ($roomsbooked as $key => $rooms_booked) {
                     $Rooms = Room::findOrFail($rooms_booked->room_id);
                     $room_list[] = array(
-                        'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                        'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                         'booking_id' => $booking_id->id,
                         'booking_room_price' => $rooms_booked->room_price,
                         'room_cal_price' => $rooms_booked->room_cal_price,
@@ -579,7 +579,7 @@ class BookingController extends Controller
             foreach ($roomsbookeds as $key => $rooms_bookeds) {
                 $Rooms = Room::findOrFail($rooms_bookeds->room_id);
                 $room_lists[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_bookeds->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_bookeds->room_type ,
                     'booking_id' => $Daily_entries->id,
                     'booking_room_price' => $rooms_bookeds->room_price,
                     'room_cal_price' => $rooms_bookeds->room_cal_price,
@@ -626,7 +626,7 @@ class BookingController extends Controller
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
                 $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                     'booking_id' => $datas->id,
                     'booking_room_price' => $rooms_booked->room_price,
                     'room_cal_price' => $rooms_booked->room_cal_price,
@@ -699,7 +699,7 @@ class BookingController extends Controller
             foreach ($roomsbooked as $key => $rooms_booked) {
                 $Rooms = Room::findOrFail($rooms_booked->room_id);
                 $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $rooms_booked->room_type ,
                     'booking_id' => $datas->id,
                     'booking_room_price' => $rooms_booked->room_price,
                     'room_cal_price' => $rooms_booked->room_cal_price,
