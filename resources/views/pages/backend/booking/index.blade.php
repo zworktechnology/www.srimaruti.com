@@ -370,13 +370,20 @@
                                                         <td>
                                                             @foreach ($dailyentryDatas['room_lists'] as $index => $room_lists_arr)
                                                                 @if ($room_lists_arr['booking_id'] == $dailyentryDatas['id'])
-                                                                    @if ($room_lists_arr['room_type'] == 'A/C')
-                                                                        <span
-                                                                            style="color: red;">{{ $dailyentryDatas['branch'] }}
-                                                                            -
+
+                                                                    @if ($room_lists_arr['roomcolor_status'] == 'Couple Orange')
+                                                                        <span style="color: orange;">{{ $dailyentryDatas['branch'] }} - {{ $room_lists_arr['room'] }}<br /></span>
+
+                                                                    @elseif($room_lists_arr['roomcolor_status'] == 'Couple Pink')
+                                                                        <span style="color: #e560c1;">{{ $dailyentryDatas['branch'] }} -
                                                                             {{ $room_lists_arr['room'] }}<br /></span>
-                                                                    @else
-                                                                        <span>{{ $dailyentryDatas['branch'] }} -
+
+                                                                    @elseif($room_lists_arr['roomcolor_status'] == 'Booked Red')
+                                                                        <span style="color: red;">{{ $dailyentryDatas['branch'] }} -
+                                                                            {{ $room_lists_arr['room'] }}<br /></span>
+
+                                                                    @elseif($room_lists_arr['roomcolor_status'] == 'Booked Green')
+                                                                        <span style="color: green;">{{ $dailyentryDatas['branch'] }} -
                                                                             {{ $room_lists_arr['room'] }}<br /></span>
                                                                     @endif
                                                                 @endif
@@ -423,7 +430,18 @@
                                                 <td>
                                                         @foreach ($bookingDatas['room_list'] as $index => $room_lists)
                                                             @if ($room_lists['booking_id'] == $bookingDatas['id'])
-                                                                {{ $room_lists['room'] }}<br />
+                                                                    @if ($room_lists['roomcolor_status'] == 'Couple Orange')
+                                                                        <span style="color: orange;">{{ $room_lists['room'] }}<br /></span>
+
+                                                                    @elseif($room_lists['roomcolor_status'] == 'Couple Pink')
+                                                                        <span style="color: #e560c1;">{{ $room_lists['room'] }}<br /></span>
+
+                                                                    @elseif($room_lists['roomcolor_status'] == 'Booked Red')
+                                                                        <span style="color: red;">{{ $room_lists['room'] }}<br /></span>
+
+                                                                    @elseif($room_lists['roomcolor_status'] == 'Booked Green')
+                                                                        <span style="color: green;">{{ $room_lists['room'] }}<br /></span>
+                                                                    @endif
                                                             @endif
                                                         @endforeach
                                                 </td>
@@ -467,7 +485,7 @@
 
                                                         @if ($bookingDatas['balance_amount'] == 0)
                                                             @if ($bookingDatas['status'] != 2)
-                                                                @if ($bookingDatas['chick_out_date'] >= $today)
+                                                                
                                                                     <li>
                                                                         <a href="#checkout{{ $bookingDatas['id'] }}"
                                                                             data-bs-toggle="modal"
@@ -475,7 +493,7 @@
                                                                             class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
                                                                             data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
                                                                     </li>
-                                                                @endif
+                                                                    
                                                             @endif
                                                         @endif
 

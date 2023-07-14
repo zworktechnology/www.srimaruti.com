@@ -83,8 +83,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @php
+                                                $totalcashincom = 0;
+                                                $totalcashgst = 0;
+                                                $totalonlinceincom = 0;
+                                                $totalonlinceincomgst = 0;
+                                                @endphp
                                                 @foreach ($checkin_Array as $keydata => $checkin_Arrays)
-                                                    @if ($checkin_Arrays['couple'] == 0)
+                                                   
                                                     <tr>
                                                         <td>{{ $checkin_Arrays['booking_invoiceno'] }}</td>
                                                         <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_in_date'])) }}
@@ -92,8 +98,18 @@
                                                         <td>
                                                             @foreach ($checkin_Arrays['room_list'] as $index => $room_lists)
                                                                 @if ($room_lists['booking_id'] == $checkin_Arrays['id'])
-                                                                    {{ $room_lists['roomno'] }} -
-                                                                    {{ $room_lists['roomtype'] }},
+                                                                    @if ($room_lists['roomcolorstatus'] == 'Couple Orange')
+                                                                        <span style="color: orange;">{{ $room_lists['roomno'] }} - {{ $room_lists['roomtype'] }},</span>
+
+                                                                    @elseif($room_lists['roomcolorstatus'] == 'Couple Pink')
+                                                                        <span style="color: #e560c1;">{{ $room_lists['roomno'] }} - {{ $room_lists['roomtype'] }},</span>
+
+                                                                    @elseif($room_lists['roomcolorstatus'] == 'Booked Red')
+                                                                        <span style="color: red;">{{ $room_lists['roomno'] }} - {{ $room_lists['roomtype'] }},</span>
+
+                                                                    @elseif($room_lists['roomcolorstatus'] == 'Booked Green')
+                                                                        <span style="color: green;">{{ $room_lists['roomno'] }} - {{ $room_lists['roomtype'] }},</span>
+                                                                    @endif
                                                                 @endif
                                                             @endforeach
                                                         </td>
@@ -108,44 +124,40 @@
                                                             <td></td>
                                                         @endif
                                                     </tr>
-                                                    @else
-                                                    <tr style="background-color: lightpink;">
-                                                        <td>{{ $checkin_Arrays['booking_invoiceno'] }}</td>
-                                                        <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_in_date'])) }}
-                                                        </td>
-                                                        <td>
-                                                            @foreach ($checkin_Arrays['room_list'] as $index => $room_lists)
-                                                                @if ($room_lists['booking_id'] == $checkin_Arrays['id'])
-                                                                    {{ $room_lists['roomno'] }} -
-                                                                    {{ $room_lists['roomtype'] }},
-                                                                @endif
-                                                            @endforeach
-                                                        </td>
-                                                        <td>{{ $checkin_Arrays['cash_income'] }}</td>
-                                                        <td>{{ $checkin_Arrays['case_income_gst'] }}</td>
-                                                        <td>{{ $checkin_Arrays['online_income'] }}</td>
-                                                        <td>{{ $checkin_Arrays['online_income_gst'] }}</td>
-                                                        @if ($checkin_Arrays['check_out_date'] != '')
-                                                            <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_out_date'])) }}
-                                                            </td>
-                                                        @else
-                                                            <td></td>
+                                                    
+                                                        @if ($checkin_Arrays['cash_income'] != '-')
+                                                        @php
+                                                        $totalcashincom += $checkin_Arrays['cash_income'];
+                                                        $totalcashgst += $checkin_Arrays['case_income_gst'];
+                                                        @endphp
                                                         @endif
-                                                    </tr>
-                                                    @endif
+
+
+                                                        @if ($checkin_Arrays['online_income'] != '-')
+                                                        @php
+                                                        $totalonlinceincom += $checkin_Arrays['online_income'];
+                                                        $totalonlinceincomgst += $checkin_Arrays['online_income_gst'];
+                                                        @endphp
+                                                        @endif
+
+                                                    
 
                                                 @endforeach
                                             </tbody>
+                                            
                                             <thead>
+                                            @php
+                                            $totl_filteramount = $totalcashincom + $totalonlinceincom;
+                                            @endphp
                                                 <tr style="color: darkorange">
                                                     <th>Total :</th>
                                                     <th></th>
                                                     <th></th>
-                                                    <th>{{ $room_cash_income - $room_cash_income_tax }}</th>
-                                                    <th>{{ $room_cash_income_tax }}</th>
-                                                    <th>{{ $room_online_income - $room_online_income_tax }}</th>
-                                                    <th>{{ $room_online_income_tax }}</th>
-                                                    <th>{{ $room_cash_income + $room_online_income }}</th>
+                                                    <th>{{ $totalcashincom }}</th>
+                                                    <th>{{ $totalcashgst }}</th>
+                                                    <th>{{ $totalonlinceincom }}</th>
+                                                    <th>{{ $totalonlinceincomgst }}</th>
+                                                    <th>{{ $totl_filteramount }}</th>
                                                 </tr>
                                             </thead>
                                         </table>

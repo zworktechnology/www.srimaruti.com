@@ -491,11 +491,48 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-4" id="proof1">
+
+
+
+
+
+
+                                            <div class="row mb-4" id="proof1" >
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Proof Front<span
                                                         style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
+                                                <input type="file" class="form-control"
+                                                        name="proofimage_one"required>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4" id="proof2" >
+                                                <label for="horizontal-firstname-input"
+                                                    class="col-sm-3 col-form-label">Proof Back<span
+                                                        style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                <input type="file" class="form-control"
+                                                        name="proofimage_two"required>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4" id="proof_photo" >
+                                                <label for="horizontal-firstname-input"
+                                                    class="col-sm-3 col-form-label">Photo<span
+                                                        style="color: red;">*</span> </label>
+                                                <div class="col-sm-9">
+                                                <input type="file" class="form-control"
+                                                        name="customer_photo"required>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="row mb-4" id="proof1" hidden>
+                                                <label for="horizontal-firstname-input"
+                                                    class="col-sm-3 col-form-label">Proof Front<span
+                                                        style="color: red;">*</span> </label>
+                                                <div class="col-sm-7">
                                                     <div style="display: flex">
                                                         <div id="my_camera_front"></div>
                                                         <div id="captured_image_front"></div>
@@ -504,15 +541,19 @@
                                                         class=" btn btn-sm btn-soft-primary"value="Take a Snap - Front Proof"
                                                         onClick="take_snapshot_front()">
                                                     <input type="hidden" class="form-control image-tagfront"
-                                                        name="proofimage_one"required>
+                                                        name="proofimage_one">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                <div id="prooffront"></div>
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-4" id="proof2">
+
+                                            <div class="row mb-4" id="proof2" hidden>
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Proof Back<span
                                                         style="color: red;">*</span> </label>
-                                                <div class="col-sm-9">
+                                                <div class="col-sm-7">
                                                     <div style="display: flex">
                                                         <div id="my_camera_back"></div>
                                                         <div id="captured_image_back"></div>
@@ -521,15 +562,18 @@
                                                         class=" btn btn-sm btn-soft-primary"value="Take a Snap - Back Proof"
                                                         onClick="take_snapshot_back()">
                                                     <input type="hidden" class="form-control image-tagback"
-                                                        name="proofimage_two"required>
+                                                        name="proofimage_two">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                <div id="proofback"></div>
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-4" id="proof_photo">
+                                            <div class="row mb-4" id="proof_photo" hidden>
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Photo <span
                                                         style="color: red;">*</span> </label>
-                                                <div class="col-sm-9">
+                                                <div class="col-sm-7">
                                                     <div style="display: flex">
                                                         <div id="my_camera"></div>
                                                         <div id="captured_cameraimage"></div>
@@ -538,10 +582,16 @@
                                                     <input type=button class=" btn btn-sm btn-soft-primary"value="Take a Snap - Photo"
                                                         onClick="takesnapshot()">
                                                     <input type="hidden" class="form-control image-tagcamera"
-                                                        name="customer_photo"required>
+                                                        name="customer_photo">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                <div id="proofcustomerphoto"></div>
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        
                                     </div>
 
                                     <div class="modal-footer">
@@ -622,8 +672,10 @@
                             $('.email_id').val(response['data'][i].email_id);
                             $('.address').val(response['data'][i].address);
                             $('.prooftype_one').val(response['data'][i].prooftype_one);
-                            $('.proofone').html(response['data'][i].proofimage_one);
-                            $('.prooftwo').html(response['data'][i].proofimage_two);
+                            $("#prooffront").append("<img src='https://srimaruti.com/assets/customer_details/proofimage_one" + response['data'][i].proofimage_one +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
+                            $("#proofback").append("<img src='https://srimaruti.com/assets/customer_details/proofimage_two" + response['data'][i].proofimage_two +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
+                            $("#proofcustomerphoto").append("<img src='https://srimaruti.com/assets/customer_details/customer_photo" + response['data'][i].customer_photo +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
+                            
                         }
                     }
                 });
