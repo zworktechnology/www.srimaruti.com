@@ -1065,7 +1065,7 @@ class BookingController extends Controller
             // }
 
             // Profile Image
-            if ($request->customer_photo != "") {
+           
                 $customer_photo = $request->customer_photo;
                 $folderPath = "assets/customer_details/customer_photo";
                 $image_parts = explode(";base64,", $customer_photo);
@@ -1076,17 +1076,12 @@ class BookingController extends Controller
                 $customerimgfile = $folderPath . $fileName;
                 file_put_contents($customerimgfile, $image_base64);
                 $data->customer_photo = $customerimgfile;
-            }else {
-                $contactno = $request->get('phone_number');
-                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->first();
-                $old_customer_photo = $get_mobno_person->customer_photo;
-                $data->proofimage_one = $old_customer_photo;
-            }
+          
 
 
 
             // Proof Front
-            if ($request->proofimage_one != "") {
+          
                 $proofimage_one = $request->proofimage_one;
                 $front_folderPath = "assets/customer_details/proofimage_one";
                 $front_image_parts = explode(";base64,", $proofimage_one);
@@ -1097,16 +1092,11 @@ class BookingController extends Controller
                 $frontimgfile = $front_folderPath . $frontfileName;
                 file_put_contents($frontimgfile, $frontimage_base64);
                 $data->proofimage_one = $frontimgfile;
-            } else {
-                $contactno = $request->get('phone_number');
-                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->first();
-                $old_proofimage_one = $get_mobno_person->proofimage_one;
-                $data->proofimage_one = $old_proofimage_one;
-            }
+            
 
 
             // Proof Back
-            if ($request->proofimage_two != "") {
+            
                 $proofimage_two = $request->proofimage_two;
                 $back_folderPath = "assets/customer_details/proofimage_two";
                 $back_image_parts = explode(";base64,", $proofimage_two);
@@ -1117,12 +1107,7 @@ class BookingController extends Controller
                 $backimgfile = $back_folderPath . $backfileName;
                 file_put_contents($backimgfile, $backimage_base64);
                 $data->proofimage_two = $backimgfile;
-           }else {
-                $contactno = $request->get('phone_number');
-                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->first();
-                $old_proofimage_two = $get_mobno_person->proofimage_two;
-               $data->proofimage_two = $old_proofimage_two;
-           }
+          
 
 
 
