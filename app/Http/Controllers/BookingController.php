@@ -1712,7 +1712,7 @@ class BookingController extends Controller
         {
             $query = $request->get('query');
             $data = Booking::select ("phone_number")
-                    ->where('phone_number', '=', $query)->latest('id')->first();
+                    ->where('phone_number', 'LIKE', "%{$query}%")->distinct()->get();
             $output = '<ul class="dropdown-menu form-control" style="display:block; position:relative; padding: 9px;background: #9ddbdb2e;">';
             foreach($data as $row)
             {
