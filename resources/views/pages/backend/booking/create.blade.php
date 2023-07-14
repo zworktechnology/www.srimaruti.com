@@ -503,7 +503,7 @@
                                                         style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
                                                 <input type="file" class="form-control"
-                                                        name="proofimage_one"required>
+                                                        name="proofimage_one">
                                                 </div>
                                             </div>
                                             <div class="row mb-4" id="proof2"hidden >
@@ -512,7 +512,7 @@
                                                         style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
                                                 <input type="file" class="form-control"
-                                                        name="proofimage_two"required>
+                                                        name="proofimage_two">
                                                 </div>
                                             </div>
                                             <div class="row mb-4" id="proof_photo"hidden >
@@ -521,7 +521,7 @@
                                                         style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
                                                 <input type="file" class="form-control"
-                                                        name="customer_photo"required>
+                                                        name="customer_photo">
                                                 </div>
                                             </div>
 
