@@ -673,8 +673,8 @@
                             $('.address').val(response['data'][i].address);
                             $('.prooftype_one').val(response['data'][i].prooftype_one);
                             $("#prooffront").append("<img src='https://srimaruti.com/" + response['data'][i].proofimage_one +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
-                            $("#proofback").append("<img src='https://srimaruti.com/assets/customer_details/proofimage_two" + response['data'][i].proofimage_two +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
-                            $("#proofcustomerphoto").append("<img src='https://srimaruti.com/assets/customer_details/customer_photo" + response['data'][i].customer_photo +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
+                            $("#proofback").append("<img src='https://srimaruti.com/" + response['data'][i].proofimage_two +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
+                            $("#proofcustomerphoto").append("<img src='https://srimaruti.com/" + response['data'][i].customer_photo +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
                             
                         }
                     }
