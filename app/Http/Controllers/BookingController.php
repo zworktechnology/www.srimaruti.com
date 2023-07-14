@@ -1078,7 +1078,7 @@ class BookingController extends Controller
                 $data->customer_photo = $customerimgfile;
             }else {
                 $contactno = $request->get('phone_number');
-                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->first();
+                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->latest('id')->first();
                 $old_customer_photo = $get_mobno_person->customer_photo;
                 $data->customer_photo = $old_customer_photo;
             }
@@ -1099,7 +1099,7 @@ class BookingController extends Controller
                 $data->proofimage_one = $frontimgfile;
             } else {
                 $contactno = $request->get('phone_number');
-                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->first();
+                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->latest('id')->first();
                 $old_proofimage_one = $get_mobno_person->proofimage_one;
                 $data->proofimage_one = $old_proofimage_one;
             }
@@ -1119,7 +1119,7 @@ class BookingController extends Controller
                 $data->proofimage_two = $backimgfile;
            }else {
                 $contactno = $request->get('phone_number');
-                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->first();
+                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->latest('id')->first();
                 $old_proofimage_two = $get_mobno_person->proofimage_two;
                $data->proofimage_two = $old_proofimage_two;
            }
