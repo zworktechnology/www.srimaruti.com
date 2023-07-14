@@ -648,6 +648,7 @@
                         },
 
                         success: function(data) {
+                            console.log(data);
                             $('.phonenumber_list').fadeIn();
                             $('.phonenumber_list').html(data);
                         }
@@ -664,19 +665,19 @@
                     dataType: 'json',
                     success: function(response) {
                         console.log(response['data']);
-                        var output = response['data'].length;
-                        for (var i = 0; i < output; i++) {
+                    
+                       
                             //console.log(response[i].customer_name);
-                            $('.booking_customer_name').val(response['data'][i].customer_name);
-                            $('.whats_app_number').val(response['data'][i].whats_app_number);
-                            $('.email_id').val(response['data'][i].email_id);
-                            $('.address').val(response['data'][i].address);
-                            $('.prooftype_one').val(response['data'][i].prooftype_one);
-                            $("#prooffront").append("<img src='https://srimaruti.com/" + response['data'][i].proofimage_one +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
-                            $("#proofback").append("<img src='https://srimaruti.com/" + response['data'][i].proofimage_two +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
-                            $("#proofcustomerphoto").append("<img src='https://srimaruti.com/" + response['data'][i].customer_photo +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
+                            $('.booking_customer_name').val(response['data'].customer_name);
+                            $('.whats_app_number').val(response['data'].whats_app_number);
+                            $('.email_id').val(response['data'].email_id);
+                            $('.address').val(response['data'].address);
+                            $('.prooftype_one').val(response['data'].prooftype_one);
+                            $("#prooffront").append("<img src='https://srimaruti.com/" + response['data'].proofimage_one +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
+                            $("#proofback").append("<img src='https://srimaruti.com/" + response['data'].proofimage_two +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
+                            $("#proofcustomerphoto").append("<img src='https://srimaruti.com/" + response['data'].customer_photo +"' style='width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;'>");
                             
-                        }
+                        
                     }
                 });
             });

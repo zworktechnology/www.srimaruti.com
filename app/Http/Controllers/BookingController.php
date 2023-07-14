@@ -1080,7 +1080,7 @@ class BookingController extends Controller
                 $contactno = $request->get('phone_number');
                 $get_mobno_person = Booking::where('phone_number', '=', $contactno)->first();
                 $old_customer_photo = $get_mobno_person->customer_photo;
-                $data->proofimage_one = $old_customer_photo;
+                $data->customer_photo = $old_customer_photo;
             }
 
 
@@ -1714,7 +1714,7 @@ class BookingController extends Controller
             $data = Booking::select ("phone_number")
                     ->where('phone_number', 'LIKE', "%{$query}%")->distinct()->get();
             $output = '<ul class="dropdown-menu form-control" style="display:block; position:relative; padding: 9px;background: #9ddbdb2e;">';
-            foreach($data as $row)
+            foreach(($data) as $row)
             {
                 $output .= '<li><a href="#" style="color:black;padding:5px;">'.$row->phone_number.'</a></li>';
             }
@@ -1725,7 +1725,7 @@ class BookingController extends Controller
 
     public function getoldCustomers($phone_no)
     {
-        $GetCustomer = Booking::select('*')->where('phone_number', $phone_no)->get();
+        $GetCustomer = Booking::select('*')->where('phone_number', $phone_no)->latest('id')->first();
         $userData['data'] = $GetCustomer;
         echo json_encode($userData);
     }
