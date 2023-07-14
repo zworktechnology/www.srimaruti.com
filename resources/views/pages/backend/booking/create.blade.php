@@ -497,7 +497,7 @@
 
 
 
-                                            <div class="row mb-4" id="proof1" >
+                                            <div class="row mb-4" id="proof1" hidden>
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Proof Front<span
                                                         style="color: red;">*</span> </label>
@@ -506,7 +506,7 @@
                                                         name="proofimage_one"required>
                                                 </div>
                                             </div>
-                                            <div class="row mb-4" id="proof2" >
+                                            <div class="row mb-4" id="proof2"hidden >
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Proof Back<span
                                                         style="color: red;">*</span> </label>
@@ -515,7 +515,7 @@
                                                         name="proofimage_two"required>
                                                 </div>
                                             </div>
-                                            <div class="row mb-4" id="proof_photo" >
+                                            <div class="row mb-4" id="proof_photo"hidden >
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Photo<span
                                                         style="color: red;">*</span> </label>
@@ -528,7 +528,7 @@
 
 
 
-                                            <div class="row mb-4" id="proof1" hidden>
+                                            <div class="row mb-4" id="proof1" >
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Proof Front<span
                                                         style="color: red;">*</span> </label>
@@ -549,7 +549,7 @@
                                             </div>
 
 
-                                            <div class="row mb-4" id="proof2" hidden>
+                                            <div class="row mb-4" id="proof2" >
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Proof Back<span
                                                         style="color: red;">*</span> </label>
@@ -569,7 +569,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-4" id="proof_photo" hidden>
+                                            <div class="row mb-4" id="proof_photo" >
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Photo <span
                                                         style="color: red;">*</span> </label>
