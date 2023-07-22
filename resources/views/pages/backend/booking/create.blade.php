@@ -595,7 +595,7 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <input type="submit" class="btn btn-primary" name="checkin" value="checkin"
+                                        <input type="submit" class="btn btn-primary" name="checkin" value="checkin" onclick="bookingubmitForm(this);"
                                             style="margin-right: 10%;" />
                                     </div>
                                 </form>
@@ -1176,5 +1176,13 @@
                     '" style="height: 220px !important;width: 300px !important;margin-top: 40px;margin-left: 40px;"/>';
             });
         }
+
+
+    function bookingubmitForm(btn) {
+        // disable the button
+        btn.disabled = true;
+        // submit the form
+        btn.form.submit();
+    }
     </script>
 @endsection

@@ -76,7 +76,6 @@
                                                     <th>Check In Date</th>
                                                     <th>Room Details</th>
                                                     <th>Cash Payment</th>
-                                                    <th>GST</th>
                                                     <th>Online Payment</th>
                                                     <th>GST</th>
                                                     <th>Check Out Date</th>
@@ -114,7 +113,6 @@
                                                             @endforeach
                                                         </td>
                                                         <td>{{ $checkin_Arrays['cash_income'] }}</td>
-                                                        <td>{{ $checkin_Arrays['case_income_gst'] }}</td>
                                                         <td>{{ $checkin_Arrays['online_income'] }}</td>
                                                         <td>{{ $checkin_Arrays['online_income_gst'] }}</td>
                                                         @if ($checkin_Arrays['check_out_date'] != '')
@@ -128,7 +126,6 @@
                                                         @if ($checkin_Arrays['cash_income'] != '-')
                                                         @php
                                                         $totalcashincom += $checkin_Arrays['cash_income'];
-                                                        $totalcashgst += $checkin_Arrays['case_income_gst'];
                                                         @endphp
                                                         @endif
 
@@ -154,7 +151,6 @@
                                                     <th></th>
                                                     <th></th>
                                                     <th>{{ $totalcashincom }}</th>
-                                                    <th>{{ $totalcashgst }}</th>
                                                     <th>{{ $totalonlinceincom }}</th>
                                                     <th>{{ $totalonlinceincomgst }}</th>
                                                     <th>{{ $totl_filteramount }}</th>
