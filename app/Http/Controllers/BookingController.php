@@ -1960,12 +1960,13 @@ class BookingController extends Controller
                                 ->get();
 
         $room_cash_income_tax = 0;
+        $room_cash_income = 0;
         foreach ($Total_room_income as $key => $Total_room_income_arr) {
 
             $payment_data_arr = BookingPayment::where('booking_id', '=', $Total_room_income_arr->id)
                                             ->where('payment_method', '=', 'Cash')
                                             ->get();
-            $room_cash_income = 0;
+            
             foreach ($payment_data_arr as $key => $payment_data_array) {
 
                 if($payment_data_array->booking_id == $Total_room_income_arr->id){
