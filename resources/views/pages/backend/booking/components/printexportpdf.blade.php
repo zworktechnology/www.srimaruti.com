@@ -76,6 +76,7 @@
                                                     <th>Check In Date</th>
                                                     <th>Room Details</th>
                                                     <th>Cash Payment</th>
+                                                    <th>GST</th>
                                                     <th>Online Payment</th>
                                                     <th>GST</th>
                                                     <th>Check Out Date</th>
@@ -89,7 +90,7 @@
                                                 $totalonlinceincomgst = 0;
                                                 @endphp
                                                 @foreach ($checkin_Array as $keydata => $checkin_Arrays)
-                                                   
+
                                                     <tr>
                                                         <td>{{ $checkin_Arrays['booking_invoiceno'] }}</td>
                                                         <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_in_date'])) }}
@@ -113,6 +114,7 @@
                                                             @endforeach
                                                         </td>
                                                         <td>{{ $checkin_Arrays['cash_income'] }}</td>
+                                                        <td>{{ $checkin_Arrays['case_income_gst'] }}</td>
                                                         <td>{{ $checkin_Arrays['online_income'] }}</td>
                                                         <td>{{ $checkin_Arrays['online_income_gst'] }}</td>
                                                         @if ($checkin_Arrays['check_out_date'] != '')
@@ -122,26 +124,9 @@
                                                             <td></td>
                                                         @endif
                                                     </tr>
-                                                    
-                                                        @if ($checkin_Arrays['cash_income'] != '-')
-                                                        @php
-                                                        $totalcashincom += $checkin_Arrays['cash_income'];
-                                                        @endphp
-                                                        @endif
-
-
-                                                        @if ($checkin_Arrays['online_income'] != '-')
-                                                        @php
-                                                        $totalonlinceincom += $checkin_Arrays['online_income'];
-                                                        $totalonlinceincomgst += $checkin_Arrays['online_income_gst'];
-                                                        @endphp
-                                                        @endif
-
-                                                    
-
                                                 @endforeach
                                             </tbody>
-                                            
+
                                             <thead>
                                             @php
                                             $totl_filteramount = $totalcashincom + $totalonlinceincom;
@@ -151,6 +136,7 @@
                                                     <th></th>
                                                     <th></th>
                                                     <th>{{ $totalcashincom }}</th>
+                                                    <th>{{ $totalonlinceincomgst }}</th>
                                                     <th>{{ $totalonlinceincom }}</th>
                                                     <th>{{ $totalonlinceincomgst }}</th>
                                                     <th>{{ $totl_filteramount }}</th>

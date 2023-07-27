@@ -482,7 +482,7 @@
 
                                                         @if ($bookingDatas['balance_amount'] == 0)
                                                             @if ($bookingDatas['status'] != 2)
-
+                                                                @if ($bookingDatas['chick_out_date'] >= $today)
                                                                     <li>
                                                                         <a href="#checkout{{ $bookingDatas['id'] }}"
                                                                             data-bs-toggle="modal"
@@ -490,7 +490,11 @@
                                                                             class="btn btn-sm btn-soft-success checkout{{ $bookingDatas['id'] }}"
                                                                             data-bs-target="#checkout{{ $bookingDatas['id'] }}">Checkout</a>
                                                                     </li>
-
+                                                                @else
+                                                                    <li>
+                                                                        <a href="#" class="btn btn-sm btn-soft-success">Over Date</a>
+                                                                    </li>
+                                                                @endif
                                                             @endif
                                                         @endif
 

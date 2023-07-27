@@ -1854,7 +1854,7 @@ class BookingController extends Controller
                     }
 
                     $payment_data_arr = BookingPayment::where('booking_id', '=', $checkin_Datas->id)->where('payment_method', '=', 'Cash')->get();
-                    
+
                     $cash_income = '-';
                     $case_income_gst = '-';
                     foreach ($payment_data_arr as $key => $payment_data_array) {
@@ -1887,6 +1887,7 @@ class BookingController extends Controller
                         'check_out_date' => $checkin_Datas->out_date,
                         'check_out_time' => $checkin_Datas->out_time,
                         'cash_income' => $cash_income,
+                        'case_income_gst' => $case_income_gst,
                         'online_income' => $online_income,
                         'online_income_gst' => $online_income_gst,
                         'couple' => $checkin_Datas->couple,
@@ -1966,7 +1967,7 @@ class BookingController extends Controller
             $payment_data_arr = BookingPayment::where('booking_id', '=', $Total_room_income_arr->id)
                                             ->where('payment_method', '=', 'Cash')
                                             ->get();
-            
+
             foreach ($payment_data_arr as $key => $payment_data_array) {
 
                 if($payment_data_array->booking_id == $Total_room_income_arr->id){
