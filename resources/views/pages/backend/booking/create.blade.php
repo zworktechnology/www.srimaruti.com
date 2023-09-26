@@ -15,8 +15,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form autocomplete="off" method="POST" action="{{ route('booking.store') }}"
-                                    enctype="multipart/form-data">
+                                <form autocomplete="off" method="POST" action="{{ route('booking.store') }}"enctype="multipart/form-data">
                                     @csrf
                                     <div class="modal-body">
                                         <div class="modal-body">
@@ -506,7 +505,7 @@
                                                         name="proofimage_one">
                                                 </div>
                                             </div>
-                                            <div class="row mb-4" id="proof2"hidden >
+                                            <div class="row mb-4" id="proof2" hidden>
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Proof Back<span
                                                         style="color: red;">*</span> </label>
@@ -515,7 +514,7 @@
                                                         name="proofimage_two">
                                                 </div>
                                             </div>
-                                            <div class="row mb-4" id="proof_photo"hidden >
+                                            <div class="row mb-4" id="proof_photo" hidden>
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Photo<span
                                                         style="color: red;">*</span> </label>
@@ -595,7 +594,7 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <input type="submit" class="btn btn-primary" name="checkin" value="checkin" onclick="bookingubmitForm(this);"
+                                        <input type="submit" class="btn btn-primary" name="checkin" value="checkin"
                                             style="margin-right: 10%;" />
                                     </div>
                                 </form>

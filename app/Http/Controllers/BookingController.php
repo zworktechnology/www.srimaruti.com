@@ -1078,7 +1078,7 @@ class BookingController extends Controller
                 $data->customer_photo = $customerimgfile;
             }else {
                 $contactno = $request->get('phone_number');
-                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->latest('id')->first();
+               $get_mobno_person = Booking::where('phone_number', '=', $contactno)->latest('id')->first();
                 $old_customer_photo = $get_mobno_person->customer_photo;
                 $data->customer_photo = $old_customer_photo;
             }
@@ -1105,7 +1105,7 @@ class BookingController extends Controller
             }
 
 
-            // Proof Back
+             //Proof Back
             if ($request->proofimage_two != "") {
                 $proofimage_two = $request->proofimage_two;
                 $back_folderPath = "assets/customer_details/proofimage_two";
@@ -1128,17 +1128,17 @@ class BookingController extends Controller
 
 
             // $proofimage_one = $request->proofimage_one;
-            // $filename_one = $data->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $data->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
-            // $request->proofimage_one->move('assets/customer_details/proofimage_one', $filename_one);
+          //   $filename_one = $data->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $data->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
+           //  $request->proofimage_one->move('assets/customer_details/proofimage_one', $filename_one);
            //  $data->proofimage_one = $filename_one;
 
            //  $proofimage_two = $request->proofimage_two;
            //  $filename_two = $data->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $data->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
-            // $request->proofimage_two->move('assets/customer_details/proofimage_two', $filename_two);
+           //  $request->proofimage_two->move('assets/customer_details/proofimage_two', $filename_two);
            //  $data->proofimage_two = $filename_two;
 
-            // $customer_photo = $request->customer_photo;
-            // $filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
+           //  $customer_photo = $request->customer_photo;
+           //  $filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
            //  $request->customer_photo->move('assets/customer_details/customer_photo', $filename_customer_photo);
            //  $data->customer_photo = $filename_customer_photo;
 
@@ -1186,6 +1186,7 @@ class BookingController extends Controller
 
                 DB::table('rooms')->where('id', $room_id)->update(['booking_status' => 1]);
             }
+
 
             return redirect()->route('booking.index', ['user_branch_id' => $data->branch_id])->with('add', 'New booking information has been added to your list.');
 
