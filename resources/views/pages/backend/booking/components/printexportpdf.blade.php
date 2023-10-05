@@ -88,9 +88,19 @@
                                                 $totalcashgst = 0;
                                                 $totalonlinceincom = 0;
                                                 $totalonlinceincomgst = 0;
+
+                                                $total_cashincome = 0;
+                                                $total_cashgst = 0;
+                                                $total_onlineincome = 0;
+                                                $total_onlinegst = 0;
                                                 @endphp
                                                 @foreach ($checkin_Array as $keydata => $checkin_Arrays)
-
+                                                    @php 
+                                                    $total_cashincome += $checkin_Arrays['cash_income'];
+                                                    $total_cashgst += $checkin_Arrays['case_income_gst'];
+                                                    $total_onlineincome += $checkin_Arrays['online_income'];
+                                                    $total_onlinegst += $checkin_Arrays['online_income_gst'];
+                                                    @endphp
                                                     <tr>
                                                         <td>{{ $checkin_Arrays['booking_invoiceno'] }}</td>
                                                         <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_in_date'])) }}
@@ -129,16 +139,16 @@
 
                                             <thead>
                                             @php
-                                            $totl_filteramount = $totalcashincom + $totalonlinceincom;
+                                            $totl_filteramount = $total_cashincome + $total_onlineincome;
                                             @endphp
                                                 <tr style="color: darkorange">
                                                     <th>Total :</th>
                                                     <th></th>
                                                     <th></th>
-                                                    <th>{{ $totalcashincom }}</th>
-                                                    <th>{{ $totalonlinceincomgst }}</th>
-                                                    <th>{{ $totalonlinceincom }}</th>
-                                                    <th>{{ $totalonlinceincomgst }}</th>
+                                                    <th>{{ $total_cashincome }}</th>
+                                                    <th>{{ $total_cashgst }}</th>
+                                                    <th>{{ $total_onlineincome }}</th>
+                                                    <th>{{ $total_onlinegst }}</th>
                                                     <th>{{ $totl_filteramount }}</th>
                                                 </tr>
                                             </thead>
@@ -146,8 +156,6 @@
                                     </div>
                                     <hr>
                                 </div>
-
-                                <br>
 
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-8 col-8">
@@ -194,8 +202,6 @@
                                     <hr>
                                 </div>
 
-                                <br>
-
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-8 col-8">
                                         <div class="text-muted">
@@ -241,8 +247,6 @@
                                     <hr>
                                 </div>
 
-                                <br>
-
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-8 col-8">
                                         <div class="text-muted">
@@ -282,8 +286,6 @@
                                     </div>
                                     <hr>
                                 </div>
-
-                                <br>
 
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-6 col-6">

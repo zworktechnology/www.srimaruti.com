@@ -353,96 +353,13 @@ class BookingController extends Controller
     {
         $today = Carbon::now()->format('Y-m-d');
         $timenow = Carbon::now()->format('H:i');
-        $staff = Staff::where('soft_delete', '!=', 1)->get();
-
-        $data = Booking::where('soft_delete', '!=', 1)->where('out_date', '=', $today)->where('status', '=', 2)->where('branch_id', '=', $user_branch_id)->orderBy('created_at', 'desc')->get();
 
         $checkins = Booking::where('check_in_date', '=', $today)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 1)->count();
         $checkouts = Booking::where('out_date', '=', $today)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('status', '=', 2)->count();
         $availablerooms = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->where('booking_status', '!=', 1)->count();
         $totalrooms = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->count();
 
-        $bookingtable = [];
-        $room_list = [];
-        $terms = [];
-
-        foreach ($data as $key => $datas) {
-            $branch = Branch::findOrFail($datas->branch_id);
-            $roomsbooked = BookingRoom::where('booking_id', '=', $datas->id)->get();
-            foreach ($roomsbooked as $key => $rooms_booked) {
-                $Rooms = Room::findOrFail($rooms_booked->room_id);
-                $room_list[] = array(
-                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
-                    'booking_id' => $datas->id,
-                    'booking_room_price' => $rooms_booked->room_price,
-                    'room_cal_price' => $rooms_booked->room_cal_price,
-                    'id' => $rooms_booked->id,
-                    'room_id' => $rooms_booked->room_id,
-                    'room_type' => $rooms_booked->room_type,
-                );
-            }
-            $payment_data = BookingPayment::where('booking_id', '=', $datas->id)->get();
-            foreach ($payment_data as $key => $payment_datas) {
-                $terms[] = array(
-                    'booking_id' => $datas->id,
-                    'term' => $payment_datas->term,
-                    'payable_amount' => $payment_datas->payable_amount,
-                    'id' => $payment_datas->id,
-                    'payment_method' => $payment_datas->payment_method,
-                );
-            }
-            $checkin_staffname = Staff::findOrFail($datas->check_in_staff);
-            if($datas->check_out_staff != NULL){
-                $checkout_staffname = Staff::findOrFail($datas->check_out_staff);
-                $checkoutstaff = $checkout_staffname->name;
-            }else {
-                $checkoutstaff = '';
-            }
-
-
-            $bookingtable[] = array(
-                'customer_name' => $datas->customer_name,
-                'branch' => $branch->name,
-                'chick_in_date' => $datas->check_in_date,
-                'chick_in_time' => $datas->check_in_time,
-                'whats_app_number' => $datas->whats_app_number,
-                'id' => $datas->id,
-                'room_list' => $room_list,
-                'chick_out_date' => $datas->check_out_date,
-                'out_date' => $datas->out_date,
-                'chick_out_time' => $datas->check_out_time,
-                'phone_number' => $datas->phone_number,
-                'grand_total' => $datas->grand_total,
-                'branch_id' => $datas->branch_id,
-                'total_paid' => $datas->total_paid,
-                'balance_amount' => $datas->balance_amount,
-                'days' => $datas->days,
-                'gst_per' => $datas->gst_per,
-                'gst_amount' => $datas->gst_amount,
-                'disc_per' => $datas->disc_per,
-                'disc_amount' => $datas->disc_amount,
-                'additional_amount' => $datas->additional_amount,
-                'additional_notes' => $datas->additional_notes,
-                'total' => $datas->total,
-                'terms' => $terms,
-                'status' => $datas->status,
-                'out_date' => $datas->out_date,
-                'out_time' => $datas->out_time,
-                'extended_date' => $datas->extended_date,
-                'extended_time' => $datas->extended_time,
-                'booking_invoiceno' => $datas->booking_invoiceno,
-                'couple' => $datas->couple,
-                'check_in_staff' => $checkin_staffname->name,
-                'checkoutstaff' => $checkoutstaff,
-                'proofimage_one' => $datas->proofimage_one,
-                'proofimage_two' => $datas->proofimage_two,
-                'customer_photo' => $datas->customer_photo,
-            );
-        }
-
-
-
-
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
 
         $room_details = Room::where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->get();
         $rooms_arr = [];
@@ -454,8 +371,6 @@ class BookingController extends Controller
             }else {
                 $latest_booking_id = '';
             }
-
-
 
             $booking_id = Booking::where('id', '=', $latest_booking_id)->where('soft_delete', '!=', 1)->where('branch_id', '=', $user_branch_id)->first();
             if($booking_id != ''){
@@ -491,9 +406,6 @@ class BookingController extends Controller
                 $grand_total = $booking_id->grand_total;
                 $balance_amount = $booking_id->balance_amount;
 
-
-
-
                 $payment_data = BookingPayment::where('booking_id', '=', $booking_id->id)->get();
                 foreach ($payment_data as $key => $payment_datas) {
 
@@ -505,7 +417,6 @@ class BookingController extends Controller
                         'payment_method' => $payment_datas->payment_method,
                     );
                 }
-
 
                 $roomsbooked = BookingRoom::where('booking_id', '=', $booking_id->id)->get();
                 foreach ($roomsbooked as $key => $rooms_booked) {
@@ -531,8 +442,6 @@ class BookingController extends Controller
                 $check_out_time = $booking_id->check_out_time;
                 $gst_per = $booking_id->gst_per;
                 $bookingauto_id = $booking_id->id;
-
-
             }else {
                 $customer_name = '';
                 $checkindate = '';
@@ -555,7 +464,6 @@ class BookingController extends Controller
                 $check_out_time = '';
                 $gst_per = '';
 
-
                 $terms[] = array(
                     'booking_id' => '',
                     'term' =>  '',
@@ -574,7 +482,6 @@ class BookingController extends Controller
                     'room_type' => '',
                 );
             }
-
 
             $rooms_arr[] = array(
                 'room_no' => $room_details_arr->room_number,
@@ -604,7 +511,6 @@ class BookingController extends Controller
                 'room_list' => $room_list,
                 'gst_per' => $gst_per,
             );
-
         }
 
 
@@ -613,12 +519,14 @@ class BookingController extends Controller
         $Daily_entry = Booking::where('soft_delete', '!=', 1)
                         ->where('check_in_date', '=', $today)
                         ->where('branch_id', '=', $user_branch_id)
-                        ->where('status', '=', 1)
                         ->orderBy('created_at', 'desc')->get();
 
         $dailyentryData = [];
         $room_lists = [];
         foreach ($Daily_entry as $key => $Daily_entries) {
+
+
+
 
             $roomsbookeds = BookingRoom::where('booking_id', '=', $Daily_entries->id)->get();
             foreach ($roomsbookeds as $key => $rooms_bookeds) {
@@ -667,8 +575,108 @@ class BookingController extends Controller
 
 
 
+        $data = Booking::where('soft_delete', '!=', 1)
+        ->where('branch_id', '=', $user_branch_id)
+        ->where('status', '=', 2)
+        ->orderBy('created_at', 'desc')->get();
 
-        return view('pages.backend.booking.index', compact('rooms_arr', 'dailyentryData', 'totalrooms', 'checkins', 'checkouts', 'availablerooms', 'staff', 'bookingtable', 'today', 'timenow', 'user_branch_id'));
+        $bookingtable = [];
+        $room_list = [];
+        $terms = [];
+
+        foreach ($data as $key => $datas) {
+            $branch = Branch::findOrFail($datas->branch_id);
+            $roomsbooked = BookingRoom::where('booking_id', '=', $datas->id)->get();
+            foreach ($roomsbooked as $key => $rooms_booked) {
+                $Rooms = Room::findOrFail($rooms_booked->room_id);
+
+                if($datas->couple == 1){
+                    if($rooms_booked->room_type == 'A/C'){
+                        $roomcolor_status = 'Couple Orange';
+                    }else if($rooms_booked->room_type == 'Non - A/C'){
+                        $roomcolor_status = 'Couple Pink';
+                    }
+
+                }else {
+                    if($rooms_booked->room_type == 'A/C'){
+                        $roomcolor_status = 'Booked Red';
+                    }else if($rooms_booked->room_type == 'Non - A/C'){
+                        $roomcolor_status = 'Booked Green';
+                    }
+                }
+
+
+                $room_list[] = array(
+                    'room' => 'No. '. $Rooms->room_number . ' - ' . $Rooms->room_floor . 'th'  .' Floor'. ' - ' . $rooms_booked->room_type ,
+                    'booking_id' => $datas->id,
+                    'booking_room_price' => $rooms_booked->room_price,
+                    'room_cal_price' => $rooms_booked->room_cal_price,
+                    'id' => $rooms_booked->id,
+                    'room_id' => $rooms_booked->room_id,
+                    'room_type' => $rooms_booked->room_type,
+                    'roomcolor_status' => $roomcolor_status,
+                );
+            }
+            $payment_data = BookingPayment::where('booking_id', '=', $datas->id)->get();
+            foreach ($payment_data as $key => $payment_datas) {
+
+                $terms[] = array(
+                    'booking_id' => $datas->id,
+                    'term' => $payment_datas->term,
+                    'payable_amount' => $payment_datas->payable_amount,
+                    'id' => $payment_datas->id,
+                    'payment_method' => $payment_datas->payment_method,
+                );
+            }
+            $checkin_staffname = Staff::findOrFail($datas->check_in_staff);
+
+            if($datas->check_out_staff != NULL){
+                $checkout_staffname = Staff::findOrFail($datas->check_out_staff);
+                $checkoutstaff = $checkout_staffname->name;
+            }else {
+                $checkoutstaff = '';
+            }
+            $bookingtable[] = array(
+                'customer_name' => $datas->customer_name,
+                'branch' => $branch->name,
+                'chick_in_date' => $datas->check_in_date,
+                'chick_in_time' => $datas->check_in_time,
+                'whats_app_number' => $datas->whats_app_number,
+                'id' => $datas->id,
+                'room_list' => $room_list,
+                'chick_out_date' => $datas->check_out_date,
+                'out_date' => $datas->out_date,
+                'chick_out_time' => $datas->check_out_time,
+                'phone_number' => $datas->phone_number,
+                'grand_total' => $datas->grand_total,
+                'branch_id' => $datas->branch_id,
+                'total_paid' => $datas->total_paid,
+                'balance_amount' => $datas->balance_amount,
+                'days' => $datas->days,
+                'gst_per' => $datas->gst_per,
+                'gst_amount' => $datas->gst_amount,
+                'disc_per' => $datas->disc_per,
+                'disc_amount' => $datas->disc_amount,
+                'additional_amount' => $datas->additional_amount,
+                'additional_notes' => $datas->additional_notes,
+                'total' => $datas->total,
+                'terms' => $terms,
+                'status' => $datas->status,
+                'extended_date' => $datas->extended_date,
+                'extended_time' => $datas->extended_time,
+                'out_date' => $datas->out_date,
+                'out_time' => $datas->out_time,
+                'booking_invoiceno' => $datas->booking_invoiceno,
+                'couple' => $datas->couple,
+                'check_in_staff' => $checkin_staffname->name,
+                'checkoutstaff' => $checkoutstaff,
+                'proofimage_one' => $datas->proofimage_one,
+                'proofimage_two' => $datas->proofimage_two,
+                'customer_photo' => $datas->customer_photo,
+            );
+        }
+
+        return view('pages.backend.booking.index', compact('rooms_arr', 'totalrooms', 'checkins', 'checkouts', 'availablerooms', 'staff', 'today', 'timenow', 'user_branch_id', 'dailyentryData', 'bookingtable'));
     }
 
     public function upcoming($user_branch_id)
@@ -1064,7 +1072,7 @@ class BookingController extends Controller
 
             // }
 
-            // Profile Image
+            //Profile Image
             if ($request->customer_photo != "") {
                 $customer_photo = $request->customer_photo;
                 $folderPath = "assets/customer_details/customer_photo";
@@ -1127,20 +1135,20 @@ class BookingController extends Controller
 
 
 
-            // $proofimage_one = $request->proofimage_one;
-          //   $filename_one = $data->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $data->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
-           //  $request->proofimage_one->move('assets/customer_details/proofimage_one', $filename_one);
-           //  $data->proofimage_one = $filename_one;
+            //   $proofimage_one = $request->proofimage_one;
+            //   $filename_one = $data->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $data->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
+            //   $request->proofimage_one->move('assets/customer_details/proofimage_one', $filename_one);
+            //   $data->proofimage_one = $filename_one;
 
-           //  $proofimage_two = $request->proofimage_two;
-           //  $filename_two = $data->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $data->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
-           //  $request->proofimage_two->move('assets/customer_details/proofimage_two', $filename_two);
-           //  $data->proofimage_two = $filename_two;
+            //   $proofimage_two = $request->proofimage_two;
+            //   $filename_two = $data->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $data->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
+            //   $request->proofimage_two->move('assets/customer_details/proofimage_two', $filename_two);
+            //   $data->proofimage_two = $filename_two;
 
-           //  $customer_photo = $request->customer_photo;
-           //  $filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
-           //  $request->customer_photo->move('assets/customer_details/customer_photo', $filename_customer_photo);
-           //  $data->customer_photo = $filename_customer_photo;
+            //  $customer_photo = $request->customer_photo;
+            //   $filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
+            //   $request->customer_photo->move('assets/customer_details/customer_photo', $filename_customer_photo);
+            //   $data->customer_photo = $filename_customer_photo;
 
             $data->total = $request->get('total_calc_price');
             $data->gst_per = $request->get('gst_percentage');
@@ -1856,8 +1864,8 @@ class BookingController extends Controller
 
                     $payment_data_arr = BookingPayment::where('booking_id', '=', $checkin_Datas->id)->where('payment_method', '=', 'Cash')->get();
 
-                    $cash_income = '-';
-                    $case_income_gst = '-';
+                    $cash_income = 0;
+                    $case_income_gst = 0;
                     foreach ($payment_data_arr as $key => $payment_data_array) {
 
                                 $cash_income = $payment_data_array->payable_amount;
@@ -1865,8 +1873,8 @@ class BookingController extends Controller
                     }
 
                     $online_paymentdataarr = BookingPayment::where('booking_id', '=', $checkin_Datas->id)->where('payment_method', '=', 'Online Payment')->get();
-                    $online_income = '-';
-                    $online_income_gst = '-';
+                    $online_income = 0;
+                    $online_income_gst = 0;
                     foreach ($online_paymentdataarr as $key => $online_paymentdataarray) {
 
                                 $online_income = $online_paymentdataarray->payable_amount;
