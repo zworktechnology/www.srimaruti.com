@@ -1094,56 +1094,70 @@ class BookingController extends Controller
 
 
             // Proof Front
-            if ($request->proofimage_one != "") {
-                $proofimage_one = $request->proofimage_one;
-                $front_folderPath = "assets/customer_details/proofimage_one";
-                $front_image_parts = explode(";base64,", $proofimage_one);
-                $frontimage_type_aux = explode("image/", $front_image_parts[0]);
-                $frontimage_type = $frontimage_type_aux[1];
-                $frontimage_base64 = base64_decode($front_image_parts[1]);
-                $frontfileName = $data->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
-                $frontimgfile = $front_folderPath . $frontfileName;
-                file_put_contents($frontimgfile, $frontimage_base64);
-                $data->proofimage_one = $frontimgfile;
-            } else {
-                $contactno = $request->get('phone_number');
-                $get_mobno_person = Booking::where('phone_number', '=', $contactno)->latest('id')->first();
-                $old_proofimage_one = $get_mobno_person->proofimage_one;
-                $data->proofimage_one = $old_proofimage_one;
-            }
+            // if ($request->proofimage_one != "") {
+            //     $proofimage_one = $request->proofimage_one;
+            //     $front_folderPath = "assets/customer_details/proofimage_one";
+            //     $front_image_parts = explode(";base64,", $proofimage_one);
+            //     $frontimage_type_aux = explode("image/", $front_image_parts[0]);
+            //     $frontimage_type = $frontimage_type_aux[1];
+            //     $frontimage_base64 = base64_decode($front_image_parts[1]);
+            //     $frontfileName = $data->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
+            //     $frontimgfile = $front_folderPath . $frontfileName;
+            //     file_put_contents($frontimgfile, $frontimage_base64);
+            //     $data->proofimage_one = $frontimgfile;
+            // } else {
+            //     $contactno = $request->get('phone_number');
+            //     $get_mobno_person = Booking::where('phone_number', '=', $contactno)->latest('id')->first();
+            //     $old_proofimage_one = $get_mobno_person->proofimage_one;
+            //     $data->proofimage_one = $old_proofimage_one;
+            // }
 
 
              //Proof Back
+        //     if ($request->proofimage_two != "") {
+        //         $proofimage_two = $request->proofimage_two;
+        //         $back_folderPath = "assets/customer_details/proofimage_two";
+        //         $back_image_parts = explode(";base64,", $proofimage_two);
+        //         $backimage_type_aux = explode("image/", $back_image_parts[0]);
+        //         $backimage_type = $backimage_type_aux[1];
+        //         $backimage_base64 = base64_decode($back_image_parts[1]);
+        //         $backfileName = $data->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
+        //         $backimgfile = $back_folderPath . $backfileName;
+        //         file_put_contents($backimgfile, $backimage_base64);
+        //         $data->proofimage_two = $backimgfile;
+        //    }else {
+        //         $contactno = $request->get('phone_number');
+        //         $get_mobno_person = Booking::where('phone_number', '=', $contactno)->latest('id')->first();
+        //         $old_proofimage_two = $get_mobno_person->proofimage_two;
+        //        $data->proofimage_two = $old_proofimage_two;
+        //    }
+
+
+
+            if ($request->proofimage_one != "") {
+                $proofimage_one = $request->proofimage_one;
+                $filename_one = $data->customer_name . '_' . $random_no . '_' . 'proof front image' . '.' . $proofimage_one->getClientOriginalExtension();
+                $request->proofimage_one->move('assets/customer_details/proofimage_one', $filename_one);
+                $data->proofimage_one = $filename_one;
+            }else {
+                $contactno = $request->get('phone_number');
+                 $get_mobno_person = Booking::where('phone_number', '=', $contactno)->latest('id')->first();
+                 $old_proofimage_one = $get_mobno_person->proofimage_one;
+                 $data->proofimage_one = $old_proofimage_one;
+            }
+              
             if ($request->proofimage_two != "") {
                 $proofimage_two = $request->proofimage_two;
-                $back_folderPath = "assets/customer_details/proofimage_two";
-                $back_image_parts = explode(";base64,", $proofimage_two);
-                $backimage_type_aux = explode("image/", $back_image_parts[0]);
-                $backimage_type = $backimage_type_aux[1];
-                $backimage_base64 = base64_decode($back_image_parts[1]);
-                $backfileName = $data->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
-                $backimgfile = $back_folderPath . $backfileName;
-                file_put_contents($backimgfile, $backimage_base64);
-                $data->proofimage_two = $backimgfile;
-           }else {
+                $filename_two = $data->customer_name . '_' . $random_no . '_' . 'proof back image' . '_' . '.' . $proofimage_two->getClientOriginalExtension();
+                $request->proofimage_two->move('assets/customer_details/proofimage_two', $filename_two);
+                $data->proofimage_two = $filename_two;
+            }else {
                 $contactno = $request->get('phone_number');
                 $get_mobno_person = Booking::where('phone_number', '=', $contactno)->latest('id')->first();
                 $old_proofimage_two = $get_mobno_person->proofimage_two;
-               $data->proofimage_two = $old_proofimage_two;
-           }
-
-
-
-
-            //   $proofimage_one = $request->proofimage_one;
-            //   $filename_one = $data->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $data->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
-            //   $request->proofimage_one->move('assets/customer_details/proofimage_one', $filename_one);
-            //   $data->proofimage_one = $filename_one;
-
-            //   $proofimage_two = $request->proofimage_two;
-            //   $filename_two = $data->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $data->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
-            //   $request->proofimage_two->move('assets/customer_details/proofimage_two', $filename_two);
-            //   $data->proofimage_two = $filename_two;
+                $data->proofimage_two = $old_proofimage_two;
+            }
+              
 
             //  $customer_photo = $request->customer_photo;
             //   $filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
@@ -1311,61 +1325,61 @@ class BookingController extends Controller
 
 
          // Proof Front
-         if ($request->proofimage_one != "") {
-            $proofimage_one = $request->proofimage_one;
-            $front_folderPath = "assets/customer_details/proofimage_one";
-            $front_image_parts = explode(";base64,", $proofimage_one);
-            $frontimage_type_aux = explode("image/", $front_image_parts[0]);
-            $frontimage_type = $frontimage_type_aux[1];
-            $frontimage_base64 = base64_decode($front_image_parts[1]);
-            $frontfileName = $BookingData->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
-            $frontimgfile = $front_folderPath . $frontfileName;
-            file_put_contents($frontimgfile, $frontimage_base64);
-            $BookingData->proofimage_one = $frontimgfile;
-            }else{
-              $Insertedproofimage_one = $BookingData->proofimage_one;
-              $BookingData->proofimage_one = $Insertedproofimage_one;
-            }
+        //  if ($request->proofimage_one != "") {
+        //     $proofimage_one = $request->proofimage_one;
+        //     $front_folderPath = "assets/customer_details/proofimage_one";
+        //     $front_image_parts = explode(";base64,", $proofimage_one);
+        //     $frontimage_type_aux = explode("image/", $front_image_parts[0]);
+        //     $frontimage_type = $frontimage_type_aux[1];
+        //     $frontimage_base64 = base64_decode($front_image_parts[1]);
+        //     $frontfileName = $BookingData->customer_name . '_' . $random_no . '_' . 'proof front image' . '.png';
+        //     $frontimgfile = $front_folderPath . $frontfileName;
+        //     file_put_contents($frontimgfile, $frontimage_base64);
+        //     $BookingData->proofimage_one = $frontimgfile;
+        //     }else{
+        //       $Insertedproofimage_one = $BookingData->proofimage_one;
+        //       $BookingData->proofimage_one = $Insertedproofimage_one;
+        //     }
 
 
             // Proof Back
-         if ($request->proofimage_two != "") {
-            $proofimage_two = $request->proofimage_two;
-            $back_folderPath = "assets/customer_details/proofimage_two";
-            $back_image_parts = explode(";base64,", $proofimage_two);
-            $backimage_type_aux = explode("image/", $back_image_parts[0]);
-            $backimage_type = $backimage_type_aux[1];
-            $backimage_base64 = base64_decode($back_image_parts[1]);
-            $backfileName = $BookingData->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
-            $backimgfile = $back_folderPath . $backfileName;
-            file_put_contents($backimgfile, $backimage_base64);
-            $BookingData->proofimage_two = $backimgfile;
-            }else{
-              $Insertedproofimage_two = $BookingData->proofimage_two;
-              $BookingData->proofimage_two = $Insertedproofimage_two;
-            }
+        //  if ($request->proofimage_two != "") {
+        //     $proofimage_two = $request->proofimage_two;
+        //     $back_folderPath = "assets/customer_details/proofimage_two";
+        //     $back_image_parts = explode(";base64,", $proofimage_two);
+        //     $backimage_type_aux = explode("image/", $back_image_parts[0]);
+        //     $backimage_type = $backimage_type_aux[1];
+        //     $backimage_base64 = base64_decode($back_image_parts[1]);
+        //     $backfileName = $BookingData->customer_name . '_' . $random_no . '_' . 'proof back image' . '.png';
+        //     $backimgfile = $back_folderPath . $backfileName;
+        //     file_put_contents($backimgfile, $backimage_base64);
+        //     $BookingData->proofimage_two = $backimgfile;
+        //     }else{
+        //       $Insertedproofimage_two = $BookingData->proofimage_two;
+        //       $BookingData->proofimage_two = $Insertedproofimage_two;
+        //     }
 
 
 
-        //if ($request->file('proofimage_one') != "") {
-         //   $proofimage_one = $request->proofimage_one;
-         //   $filename_one = $BookingData->customer_name . '_' . $random_no . '_' . 'Front Proof' . '_' . $BookingData->prooftype_one . '.' . $proofimage_one->getClientOriginalExtension();
-         //   $request->proofimage_one->move('assets/customer_details/proof/front', $filename_one);
-         //   $BookingData->proofimage_one = $filename_one;
-        //} else {
-         //   $Insertedproof_image_one = $BookingData->proofimage_one;
-         //   $BookingData->proofimage_one = $Insertedproof_image_one;
-        //}
+        if ($request->file('proofimage_one') != "") {
+           $proofimage_one = $request->proofimage_one;
+           $filename_one = $BookingData->customer_name . '_' . $random_no . '_' . 'proof front image' . '_' . '.' . $proofimage_one->getClientOriginalExtension();
+           $request->proofimage_one->move('assets/customer_details/proofimage_one', $filename_one);
+           $BookingData->proofimage_one = $filename_one;
+        } else {
+           $Insertedproof_image_one = $BookingData->proofimage_one;
+           $BookingData->proofimage_one = $Insertedproof_image_one;
+        }
 
-        //if ($request->file('proofimage_two') != "") {
-         //   $proofimage_two = $request->proofimage_two;
-         //   $filename_two = $BookingData->customer_name . '_' . $random_no . '_' . 'Back Proof' . '_' . $BookingData->prooftype_one . '.' . $proofimage_two->getClientOriginalExtension();
-        //    $request->proofimage_two->move('assets/customer_details/proof/back', $filename_two);
-         //   $BookingData->proofimage_two = $filename_two;
-        //} else {
-         //   $Insertedproof_image_two = $BookingData->proofimage_two;
-         //   $BookingData->proofimage_two = $Insertedproof_image_two;
-        //}
+        if ($request->file('proofimage_two') != "") {
+           $proofimage_two = $request->proofimage_two;
+           $filename_two = $BookingData->customer_name . '_' . $random_no . '_' . 'proof back image' . '_' . '.' . $proofimage_two->getClientOriginalExtension();
+           $request->proofimage_two->move('assets/customer_details/proofimage_two', $filename_two);
+           $BookingData->proofimage_two = $filename_two;
+        } else {
+           $Insertedproof_image_two = $BookingData->proofimage_two;
+           $BookingData->proofimage_two = $Insertedproof_image_two;
+        }
 
         //if ($request->file('customer_photo') != "") {
          //   $customer_photo = $request->customer_photo;

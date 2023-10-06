@@ -514,7 +514,7 @@
                                                         name="proofimage_two">
                                                 </div>
                                             </div>
-                                            <div class="row mb-4" id="proof_photo" >
+                                            <div class="row mb-4" id="proof_photo" hidden>
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Photo<span
                                                         style="color: red;">*</span> </label>
@@ -568,7 +568,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-4" id="proof_photo" hidden>
+                                            <div class="row mb-4" id="proof_photo">
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Photo <span
                                                         style="color: red;">*</span> </label>
