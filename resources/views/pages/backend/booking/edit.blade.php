@@ -638,38 +638,15 @@
 
                                                 </div>
                                             </div>
-                                            <div class="row mb-4" hidden>
-                                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                    Proof View </label>
-                                                <div class="col-sm-4">
-
-                                                    <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}"
-                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/' . $data->proofimage_one) }}" alt="" width="100" height="100">
-                                                        </a>
-                                                </div>
-                                                <div class="col-sm-1">|</div>
-                                                <div class="col-sm-4">
-                                                    <a href="{{ asset('assets/customer_details/proof/' . $data->proofimage_two) }}"
-                                                        target="_blank"><img src="{{ asset('assets/customer_details/proof/' . $data->proofimage_two) }}" alt="" width="100" height="100"></a>
-                                                </div>
-                                            </div>
 
                                             <div class="row mb-4" id="proof1">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof Front<span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
                                                     <div style="display: flex">
                                                         <div><img src="{{ asset('assets/customer_details/proofimage_one/' . $data->proofimage_one) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
-                                                        <div id="my_camera_front"></div>
-                                                        <div id="captured_image_front"></div>
+                                                        
                                                     </div>
-                                                    <div hidden>
-                                                        <input type=button class=" btn btn-sm btn-soft-primary"value="Take a Snap - Front Proof" onClick="take_snapshot_front()">
-                                                        <input type="hidden" class="form-control image-tagfront" name="proofimage_one">
-                                                            <div class="col-sm-4">
-                                                                <div id="captured_image_front"></div>
-                                                            </div>
-                                                    </div>
-                                                    <div class="row mb-4"  >
+                                                    <div class="row mb-4" >
                                                         <div class="col-sm-9">
                                                         <input type="file" class="form-control"
                                                                 name="proofimage_one">
@@ -686,12 +663,7 @@
                                                 <div class="col-sm-9">
                                                     <div style="display: flex">
                                                         <div><img src="{{ asset('assets/customer_details/proofimage_two/' . $data->proofimage_two) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
-                                                        <div id="my_camera_back"></div>
-                                                        <div id="captured_image_back"></div>
-                                                    </div>
-                                                    <div hidden>
-                                                        <input type=button class=" btn btn-sm btn-soft-primary"value="Take a Snap - Back Proof" onClick="take_snapshot_back()">
-                                                        <input type="hidden" class="form-control image-tagback" name="proofimage_two">
+                                                        
                                                     </div>
                                                     <div class="row mb-4"  >
                                                         <div class="col-sm-9">
@@ -721,15 +693,6 @@
 
 
 
-
-                                    <div class="row mb-4" hidden>
-                                        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                            Proof View </label>
-                                        <div class="col-sm-9">
-                                            <a href="{{ asset('assets/customer_details/proof/' . $data->customer_photo) }}"
-                                                target="_blank"><img src="{{ asset('assets/customer_details/proof/' . $data->customer_photo) }}" alt="" width="100" height="100"></a>
-                                        </div>
-                                    </div>
 
 
 
