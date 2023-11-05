@@ -33,6 +33,8 @@ return [
   'total_title' => 'Total',
   'name_title' => 'Name',
   'address_title' => 'Address',
+  'from_billno' => 'Bill From',
+  'to_billno' => 'Bill To',
   
 
 

@@ -114,6 +114,12 @@
                         <span>PDF Download</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('biltobillexportaspdf') ? 'mm-active' : '' }}">
+                    <a href="{{ route('biltobillexportaspdf') }}" class="waves-effect">
+                        <i class="uil-cloud-download"></i>
+                        <span>Bill to Bill PDF Download</span>
+                    </a>
+                </li>
                 <li class="{{ Route::is('export_reportpdf') ? 'mm-active' : '' }}">
                     <a href="{{ route('export_reportpdf') }}" class="waves-effect">
                         <i class="uil-cloud-download"></i>

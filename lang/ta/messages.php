@@ -33,6 +33,8 @@ return [
   'total_title' => 'மொத்த தொகை',
   'name_title' => 'பெயர்',
   'address_title' => 'முகவரி',
+  'from_billno' => 'ரசிது முதல்',
+  'to_billno' => 'ரசிது வரை',
 
 
 ];
