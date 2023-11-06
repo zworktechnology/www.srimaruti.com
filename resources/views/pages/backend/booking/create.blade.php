@@ -148,15 +148,11 @@
                                             <div class="row mb-4" hidden>
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Branch <span style="color: red;">*</span> </label>
+                                                    
                                                 <div class="col-sm-9">
-                                                    <select class="form-control branch_id" name="branch_id"
-                                                        id="branch_id">
-
-                                                        @foreach ($branch as $branchs)
-                                                            <option value="{{ $branchs->id }}">{{ $branchs->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                                    <input type="hidden" class="form-control" name="branch_id" id="branch_id"
+                                                        placeholder="Enter here " value="{{ $user_branch_id }}">
+                                                   
                                                 </div>
                                             </div>
 
