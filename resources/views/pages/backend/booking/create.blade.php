@@ -150,7 +150,7 @@
                                                     Branch <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control branch_id" name="branch_id"
-                                                        id="branch_id" required>
+                                                        id="branch_id">
 
                                                         @foreach ($branch as $branchs)
                                                             <option value="{{ $branchs->id }}">{{ $branchs->name }}
