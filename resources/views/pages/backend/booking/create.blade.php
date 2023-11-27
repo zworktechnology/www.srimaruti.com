@@ -150,9 +150,17 @@
                                                     Branch <span style="color: red;">*</span> </label>
                                                     
                                                 <div class="col-sm-9">
-                                                    <input type="hidden" class="form-control" name="branch_id" id="branch_id"
-                                                        placeholder="Enter here " value="{{ $user_branch_id }}">
-                                                   
+                                                        <select class="form-control js-example-basic-single branch_id"
+                                                        name="branch_id" id="branch_id" required>
+                                                        <option value="" disabled selected hidden
+                                                            class="text-muted">
+                                                            Select Branch</option>
+                                                        @foreach ($branch as $branchs)
+                                                            <option value="{{ $branchs->id }}"
+                                                                @if ($branchs->id === $user_branch_id) selected='selected' @endif>
+                                                                {{ $branchs->name }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
 
