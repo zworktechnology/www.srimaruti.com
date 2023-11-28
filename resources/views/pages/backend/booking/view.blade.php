@@ -14,7 +14,7 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Booking</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                     <li class="breadcrumb-item active">Invoice Detail</li>
                                 </ol>
                             </div>
@@ -36,6 +36,8 @@
                                             height="100" class="logo-light" />
                                     </div>
                                     <div class="col-10" style="text-align: center;">
+                                    <h5 class="office_copy" style="text-align: right;display:none;color:green;">OFFICE COPY</h5>
+                                    <h5 class="customer_copy" style="text-align: right;display:none;color:green;">CUSTOMER COPY</h5>
                                         <h1 style="color: #ea5c0b; font-family: 'Cinzel Decorative', cursive; font-weight: bold;">Sri Maruti Inn</h1>
                                         @if ($data->branch_id == 1)
                                             <p style="color: #1e2739; margin-bottom: 0rem;">No. 122, South Chitra Street,
@@ -53,6 +55,8 @@
                                             <p style="color: #1e2739">Ph: 0431-6275275 | Cell: 90253 43955 | GSTIN:
                                                 33AEFPR0922K1ZK</p>
                                         @endif
+
+                                       
                                     </div>
                                 </div>
 
@@ -176,8 +180,11 @@
                                     <div class="d-print-none mt-4">
                                         <div class="float-end">
                                             <a href="javascript:window.print()"
-                                                class="btn btn-primary w-md waves-effect waves-light"><i
-                                                    class="fa fa-print"></i>&nbsp;&nbsp; Print</a>
+                                                class="btn btn-primary w-md waves-effect waves-light officecopy"><i
+                                                    class="fa fa-print"></i>&nbsp;&nbsp; Print Office Copy</a>
+                                            <a href="javascript:window.print()"
+                                                class="btn btn-primary w-md waves-effect waves-light customercopy"><i
+                                                    class="fa fa-print"></i>&nbsp;&nbsp; Print Customer Copy</a>
                                         </div>
                                     </div>
                                 </div>
@@ -189,4 +196,15 @@
 
             </div> <!-- container-fluid -->
         </div>
+
+        <script>
+            $(document).on('click', '.officecopy', function() {
+                $(".office_copy").show();
+                $(".customer_copy").hide();
+            });
+            $(document).on('click', '.customercopy', function() {
+                $(".customer_copy").show();
+                $(".office_copy").hide();
+            });
+        </script>
     @endsection

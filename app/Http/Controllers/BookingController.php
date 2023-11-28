@@ -1210,7 +1210,7 @@ class BookingController extends Controller
             }
 
 
-            return redirect()->route('booking.index', ['user_branch_id' => $data->branch_id])->with('add', 'New booking information has been added to your list.');
+            return redirect()->route('booking.view', ['id' => $data->id])->with('add', 'New booking information has been added to your list.');
 
             //$message_key = 'Dear%20'.$customer_name.'%0a%0aWelcome%20to%20Sri%20Maruthi%20Inn!%20We%20are%20thrilled%20to%20have%20you%20stay%20with%20us.%20Our%20team%20is%20dedicated%20to%20ensuring%20you%20have%20a%20comfortable%20and%20memorable%20stay.%20If%20you%20need%20any%20assistance%20during%20your%20stay,%20please%20don%27t%20hesitate%20to%20contact%20our%20front%20desk.%0a%0aWe%20hope%20you%20have%20a%20wonderful%20time%20at%20our%20resort!%20If%20there%27s%20anything%20we%20can%20do%20to%20make%20your%20stay%20even%20more%20enjoyable,%20please%20let%20us%20know.%20We%27re%20here%20to%20help.%0a%0aThank%20you%20for%20choosing%20Sri%20Maruthi%20Inn%20for%20your%20stay%0a%0aFind%20your%20ebill%20here:%20https://srimaruti.com/booking/'.$data->id.'/invoice/detail';
             //$access_token_key = env('WHATSAPP_ACCESS_TOKEN');
