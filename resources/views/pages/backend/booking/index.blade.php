@@ -288,17 +288,17 @@
                                                             <span class="col-sm-4">
                                                                 <img src="{{ asset('assets/customer_details/proofimage_one/' . $bookingData['proofimage_one']) }}"
                                                                     alt="image description"
-                                                                    style="width:70px; height:50px;">
+                                                                    style="width:100px; height:100px;">
                                                             </span>
                                                             <span class="col-sm-4">
                                                                 <img src="{{ asset('assets/customer_details/proofimage_two/' . $bookingData['proofimage_two']) }}"
                                                                     alt="image description"
-                                                                    style="width:70px; height:50px;">
+                                                                    style="width:100px; height:100px;">
                                                             </span>
                                                             <span class="col-sm-4">
                                                                 <img src="{{ asset('assets/customer_details/customer_photo/' . $bookingData['customer_photo']) }}"
                                                                     alt="image description"
-                                                                    style="width:70px; height:50px;">
+                                                                    style="width:100px; height:100px;">
                                                             </span>
                                                         </div>
                                                     </div>

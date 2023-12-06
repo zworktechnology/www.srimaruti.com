@@ -298,5 +298,7 @@ Route::put('/dashboard_datefilter', [App\Http\Controllers\HomeController::class,
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 // FEEDBACK CONTROLLER // STORE
 Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
+
 // BOOKING // BILL VIEW TO MESSAGE
+Route::get('getbillarrayby_branchid/', [BookingController::class, 'getbillarrayby_branchid']);
 Route::get('/booking/{id}/invoice/detail', [BookingController::class, 'bookingbillview'])->name('booking.bookingbillview');

@@ -1831,9 +1831,21 @@ class BookingController extends Controller
     public function biltobillexportaspdf()
     {
         $Booking = Booking::where('soft_delete', '!=', 1)->get();
+        $branch = Branch::where('soft_delete', '!=', 1)->get();
 
-        return view('pages.backend.booking.components.biltobillexportaspdf', compact('Booking'));
+        return view('pages.backend.booking.components.biltobillexportaspdf', compact('Booking', 'branch'));
     }
+
+
+    public function getbillarrayby_branchid()
+    {
+        $billtobll_branchid = request()->get('billtobll_branchid');
+
+        $GetBills = Booking::orderBy('id', 'DESC')->where('branch_id', '=', $billtobll_branchid)->where('soft_delete', '!=', 1)->get();
+        $userData['data'] = $GetBills;
+        echo json_encode($userData);
+    }
+
 
     public function printexportpdf(Request $request)
     {
