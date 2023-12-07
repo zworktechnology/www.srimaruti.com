@@ -2050,7 +2050,7 @@ class BookingController extends Controller
         $from_billid = $request->get('from_billno');
         $to_billid = $request->get('to_billno');
 
-        $checkin_Data = Booking::where('id', '>=', $from_billid)->where('id', '<=', $to_billid)->where('soft_delete', '!=', 1)
+        $checkin_Data = Booking::where('id', '>=', $to_billid)->where('id', '<=', $from_billid)->where('soft_delete', '!=', 1)
                                 ->orderBy('check_in_date', 'asc')
                                 ->get();
         $checkin_Array = [];
@@ -2128,7 +2128,7 @@ class BookingController extends Controller
                     );
         }
 
-        $checkout_Data = Booking::where('id', '>=', $from_billid)->where('id', '<=', $to_billid)->where('soft_delete', '!=', 1)
+        $checkout_Data = Booking::where('id', '>=', $to_billid)->where('id', '<=', $from_billid)->where('soft_delete', '!=', 1)
                                 ->where('soft_delete', '!=', 1)
                                 ->orderBy('out_date', 'asc')
                                 ->get();
@@ -2165,7 +2165,7 @@ class BookingController extends Controller
      
 
 
-        $Total_room_income = Booking::where('id', '>=', $from_billid)->where('id', '<=', $to_billid)->where('soft_delete', '!=', 1)->get();
+        $Total_room_income = Booking::where('id', '>=', $to_billid)->where('id', '<=', $from_billid)->where('soft_delete', '!=', 1)->get();
 
         $room_cash_income_tax = 0;
         $room_cash_income = 0;
