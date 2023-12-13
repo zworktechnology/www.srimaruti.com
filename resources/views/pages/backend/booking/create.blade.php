@@ -150,7 +150,7 @@
                                                     Branch <span style="color: red;">*</span> </label>
                                                     
                                                 <div class="col-sm-9">
-                                                <input type="hidden" class="form-control" name="branch_id"
+                                                <input type="hidden" class="form-control branch_id" name="branch_id"
                                                         id="branch_id" value="{{ $user_branch_id }}">
                                                         
                                                 </div>

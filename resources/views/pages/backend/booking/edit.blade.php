@@ -662,7 +662,7 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof  Back<span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
                                                     <div style="display: flex">
-                                                        <div><img src="{{ asset('assets/customer_details/proofimage_two/' . $data->proofimage_two) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
+                                                        <div><img src="{{ asset($data->proofimage_two) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
                                                         
                                                     </div>
                                                     <div class="row mb-4"  >
@@ -679,7 +679,7 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof Back  <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
                                                     <div style="display: flex">
-                                                        <div><img src="{{ asset('assets/customer_details/proofimage_one/' . $data->proofimage_one) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
+                                                        <div><img src="{{ asset($data->proofimage_one) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
                                                         <div id="my_camera_front"></div>
                                                         <div id="captured_image_front"></div>
                                                     </div>
@@ -691,7 +691,7 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Proof Front <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
                                                     <div style="display: flex">
-                                                        <div><img src="{{ asset('assets/customer_details/proofimage_two/' . $data->proofimage_two) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
+                                                        <div><img src="{{ asset($data->proofimage_two) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
                                                         <div id="my_camera_back"></div>
                                                         <div id="captured_image_back"></div>
                                                     </div>
@@ -703,7 +703,7 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Photo <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-9">
                                                     <div style="display: flex">
-                                                        <div><img src="{{ asset('assets/customer_details/customer_photo/' . $data->customer_photo) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
+                                                        <div><img src="{{ asset($data->customer_photo) }}" alt="" style="width: 200px !important; height: 150px !important; margin-right: 40px !important; margin-top: 25px !important;"></div>
                                                         <div id="my_camera"></div>
                                                         <div id="captured_cameraimage"></div>
                                                     </div>
