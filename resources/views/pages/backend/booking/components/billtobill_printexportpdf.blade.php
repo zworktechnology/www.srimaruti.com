@@ -49,6 +49,7 @@
                                                     <th>Booking ID</th>
                                                     <th>Branch</th>
                                                     <th>Check In Date</th>
+                                                    <th>Paid Date</th>
                                                     <th>Room Details</th>
                                                     <th>Cash Payment</th>
                                                     <th>GST</th>
@@ -80,6 +81,7 @@
                                                         <td>{{ $checkin_Arrays['booking_invoiceno'] }}</td>
                                                         <td>{{ $checkin_Arrays['branch'] }}</td>
                                                         <td>{{ date('d M,Y', strtotime($checkin_Arrays['check_in_date'])) }}
+                                                        <td>{{ date('d-m-y', strtotime($checkin_Arrays['paid_Date'])) }}
                                                         </td>
                                                         <td>
                                                             @foreach ($checkin_Arrays['room_list'] as $index => $room_lists)

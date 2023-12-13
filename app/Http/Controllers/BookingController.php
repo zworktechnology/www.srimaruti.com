@@ -1901,9 +1901,11 @@ class BookingController extends Controller
 
                     $cash_income = 0;
                     $case_income_gst = 0;
+                    $paid_date = '';
                     foreach ($payment_data_arr as $key => $payment_data_array) {
 
                                 $cash_income = $payment_data_array->payable_amount;
+                                $paid_date = $payment_data_array->paid_date;
                                 $case_income_gst = $checkin_Datas->gst_amount;
                     }
 
@@ -1914,6 +1916,7 @@ class BookingController extends Controller
 
                                 $online_income = $online_paymentdataarray->payable_amount;
                                 $online_income_gst = $checkin_Datas->gst_amount;
+                                $paid_date = $online_paymentdataarray->paid_date;
                     }
 
 
@@ -1934,6 +1937,7 @@ class BookingController extends Controller
                         'case_income_gst' => $case_income_gst,
                         'online_income' => $online_income,
                         'online_income_gst' => $online_income_gst,
+                        'paid_date' => $paid_date,
                         'couple' => $checkin_Datas->couple,
                     );
         }
@@ -2090,10 +2094,12 @@ class BookingController extends Controller
 
                     $cash_income = 0;
                     $case_income_gst = 0;
+                    $paid_Date = '';
                     foreach ($payment_data_arr as $key => $payment_data_array) {
 
                                 $cash_income = $payment_data_array->payable_amount;
                                 $case_income_gst = $checkin_Datas->gst_amount;
+                                $paid_Date = $payment_data_array->paid_date;
                     }
 
                     $online_paymentdataarr = BookingPayment::where('booking_id', '=', $checkin_Datas->id)->where('payment_method', '=', 'Online Payment')->get();
@@ -2103,6 +2109,7 @@ class BookingController extends Controller
 
                                 $online_income = $online_paymentdataarray->payable_amount;
                                 $online_income_gst = $checkin_Datas->gst_amount;
+                                $paid_Date = $online_paymentdataarray->paid_date;
                     }
 
                     $branch = Branch::findOrFail($checkin_Datas->branch_id);
@@ -2124,6 +2131,7 @@ class BookingController extends Controller
                         'case_income_gst' => $case_income_gst,
                         'online_income' => $online_income,
                         'online_income_gst' => $online_income_gst,
+                        'paid_Date' => $paid_Date,
                         'couple' => $checkin_Datas->couple,
                     );
         }
