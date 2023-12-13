@@ -286,17 +286,17 @@
                                                             class="col-sm-3 col-form-label">Proof Image View</label>
                                                         <div class="col-sm-8 row">
                                                             <span class="col-sm-4">
-                                                                <img src="{{ asset('assets/customer_details/proofimage_one/' . $bookingData['proofimage_one']) }}"
+                                                                <img src="{{ asset($bookingData['proofimage_one']) }}"
                                                                     alt="image description"
                                                                     style="width:100px; height:100px;">
                                                             </span>
                                                             <span class="col-sm-4">
-                                                                <img src="{{ asset('assets/customer_details/proofimage_two/' . $bookingData['proofimage_two']) }}"
+                                                                <img src="{{ asset($bookingData['proofimage_two']) }}"
                                                                     alt="image description"
                                                                     style="width:100px; height:100px;">
                                                             </span>
                                                             <span class="col-sm-4">
-                                                                <img src="{{ asset('assets/customer_details/customer_photo/' . $bookingData['customer_photo']) }}"
+                                                                <img src="{{ asset($bookingData['customer_photo']) }}"
                                                                     alt="image description"
                                                                     style="width:100px; height:100px;">
                                                             </span>
