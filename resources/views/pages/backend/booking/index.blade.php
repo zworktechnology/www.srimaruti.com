@@ -150,7 +150,7 @@
                                                     <button type="button" class="btn-close room_viewclose"
                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body" style="max-height: calc(100vh - 210px);overflow-y: auto;">
                                                     <div class="row mb-4">
                                                         <label for="horizontal-firstname-input"
                                                             class="col-sm-3 col-form-label">Customer Name </label>
