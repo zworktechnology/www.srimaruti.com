@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('payable_amount')->nullable();
             $table->string('paid_date')->nullable();
             $table->string('payment_method')->nullable();
+            $table->string('check_in_staff')->nullable();
             $table->boolean('soft_delete')->default(0);
             $table->timestamps();
         });

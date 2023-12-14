@@ -1159,10 +1159,10 @@ class BookingController extends Controller
             // }
               
 
-             $customer_photo = $request->customer_photo;
-              $filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
-              $request->customer_photo->move('assets/customer_details/customer_photo', $filename_customer_photo);
-              $data->customer_photo = $filename_customer_photo;
+            //  $customer_photo = $request->customer_photo;
+            //   $filename_customer_photo = $data->customer_name . '_' . $random_no . '_' . 'Photo' . '.' . $customer_photo->getClientOriginalExtension();
+            //   $request->customer_photo->move('assets/customer_details/customer_photo', $filename_customer_photo);
+            //   $data->customer_photo = $filename_customer_photo;
 
             $data->total = $request->get('total_calc_price');
             $data->gst_per = $request->get('gst_percentage');
@@ -1189,6 +1189,7 @@ class BookingController extends Controller
             $BookingPayment->booking_id = $insertedId;
             $BookingPayment->term = $request->get('payment_term');
             $BookingPayment->payable_amount = $request->get('payable_amount');
+            $BookingPayment->check_in_staff = $request->get('check_in_staff');
             $BookingPayment->paid_date = $paid_date;
             $BookingPayment->payment_method = $request->get('payment_method');
             $BookingPayment->save();
@@ -1579,17 +1580,19 @@ class BookingController extends Controller
     public function pay_balance(Request $request, $id)
     {
         $paid_date = Carbon::now()->format('Y-m-d');
+        $data = Booking::findOrFail($id);
 
         $BookingPayment = new BookingPayment;
         $BookingPayment->booking_id = $id;
         $BookingPayment->term = $request->get('payment_term');
         $BookingPayment->payable_amount = $request->get('payable_amount');
+        $BookingPayment->check_in_staff = $data->check_in_staff;
         $BookingPayment->paid_date = $paid_date;
         $BookingPayment->payment_method = $request->get('payment_method');
         $BookingPayment->save();
 
         $payableAmount = $request->get('payable_amount');
-        $data = Booking::findOrFail($id);
+        
         $total_paid_amount = $data->total_paid + $payableAmount;
         $balance = $data->grand_total - $total_paid_amount;
         $data->total_paid = $total_paid_amount;
@@ -1861,7 +1864,7 @@ class BookingController extends Controller
 
 
         $paidDate_array = [];
-        $paiddate_arr = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])->orderBy('booking_id', 'asc')->get();
+        $paiddate_arr = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])->where('check_in_staff', '=', $manager_id)->orderBy('booking_id', 'asc')->get();
         foreach ($paiddate_arr as $key => $paiddate_array) {
             $paidDate_array[] = $paiddate_array;
         }
@@ -1880,7 +1883,7 @@ class BookingController extends Controller
                 $invoice_no = $checkin_Data->booking_invoiceno;
                 $check_in_date = date('d M,Y', strtotime($checkin_Data->check_in_date));
                 $booking_id = $checkin_Data->id;
-
+                $check_in_staff = $checkin_Data->check_in_staff;
 
                 $roomsbooked = BookingRoom::where('booking_id', '=', $checkin_Data->id)->get();
                 foreach ($roomsbooked as $key => $rooms_booked) {
@@ -1916,26 +1919,38 @@ class BookingController extends Controller
                 }else {
                     $check_out_date = '';
                 }
-            
+
+               
 
             }else {
+
+                
+
                 $invoice_no = '';
                 $check_in_date = '';
                 $room_list = [];
                 $booking_id = '';
                 $case_income_gst = '';
                 $check_out_date = '';
+                $check_in_staff = $manager_id;
+                $cash_income = '';
+                $online_income = '';
             }
 
-            $cash_income = '';
-            $online_income = '';
-
+            
             if($paidDate_arrays->payment_method == 'Cash'){
                 $cash_income = $paidDate_arrays->payable_amount;
+            }else {
+                $cash_income = '';
             }
             if($paidDate_arrays->payment_method == 'Online Payment'){
                 $online_income = $paidDate_arrays->payable_amount;
+            }else {
+                $online_income = '';
             }
+            
+            
+           
 
 
                 $checkin_Array[] = array(
@@ -1948,6 +1963,7 @@ class BookingController extends Controller
                     'case_income_gst' => $case_income_gst,
                     'online_income' => $online_income,
                     'check_out_date' => $check_out_date,
+                    'check_in_staff' => $check_in_staff,
                 );
         
                     

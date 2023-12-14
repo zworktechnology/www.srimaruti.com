@@ -90,7 +90,7 @@
                                                 $total_onlineincome = 0;
                                             @endphp
                                             @foreach ($checkin_Array as $keydata => $checkin_Arrays)
-                                                    
+                                                @if(($checkin_Arrays['check_in_staff']) == $manager->id)  
 
                                                     @if(($checkin_Arrays['cash_income']) != '')
                                                         @php 
@@ -141,6 +141,7 @@
                                                         <td>{{ $checkin_Arrays['case_income_gst'] }}</td>
                                                         <td>{{ $checkin_Arrays['check_out_date'] }}</td>
                                                     </tr>
+                                                    @endif
                                                 @endforeach
                                             </tbody>
                                             <thead>
