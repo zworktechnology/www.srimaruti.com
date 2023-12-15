@@ -2090,9 +2090,10 @@ class BookingController extends Controller
 
         $from_billid = $request->get('from_billno');
         $to_billid = $request->get('to_billno');
+        $billtobll_branchid = $request->get('billtobll_branchid');
 
         $bookingPaymentArray = [];
-        $bookingIDArr = BookingPayment::where('booking_id', '>=', $to_billid)->where('booking_id', '<=', $from_billid)->orderBy('booking_id', 'asc')->get();
+        $bookingIDArr = BookingPayment::where('booking_id', '>=', $to_billid)->where('booking_id', '<=', $from_billid)->where('branch_id', '=', $billtobll_branchid)->orderBy('booking_id', 'asc')->get();
         foreach ($bookingIDArr as $key => $bookingIDArray) {
             $bookingPaymentArray[] = $bookingIDArray;
         }
