@@ -1190,6 +1190,7 @@ class BookingController extends Controller
             $BookingPayment->term = $request->get('payment_term');
             $BookingPayment->payable_amount = $request->get('payable_amount');
             $BookingPayment->check_in_staff = $request->get('check_in_staff');
+            $BookingPayment->branch_id = $request->get('branch_id');
             $BookingPayment->paid_date = $paid_date;
             $BookingPayment->payment_method = $request->get('payment_method');
             $BookingPayment->save();
@@ -1418,10 +1419,12 @@ class BookingController extends Controller
                 $payment_term = $request->payment_term[$key];
                 $payable_amount = $request->payable_amount[$key];
                 $payment_method = $request->payment_method[$key];
+                $check_in_staff = $request->get('check_in_staff');
+                $branch_idvalue = $request->get('branch_id');
                 $total_paid += $payable_amount;
 
                 DB::table('booking_payments')->where('id', $ids)->update([
-                    'booking_id' => $bookingID,  'term' => $payment_term,  'payable_amount' => $payable_amount,  'payment_method' => $payment_method
+                    'booking_id' => $bookingID,  'term' => $payment_term,  'payable_amount' => $payable_amount,  'payment_method' => $payment_method,  'check_in_staff' => $check_in_staff,  'branch_id' => $branch_idvalue
                 ]);
 
 
@@ -1435,6 +1438,8 @@ class BookingController extends Controller
                     $payment_term = $request->payment_term[$key];
                     $payable_amount = $request->payable_amount[$key];
                     $payment_method = $request->payment_method[$key];
+                    $check_in_staff = $request->get('check_in_staff');
+                    $branch_idvalue = $request->get('branch_id');
                     $bookingID = $booking_id;
 
                     $BookingPayment = new BookingPayment;
@@ -1442,6 +1447,8 @@ class BookingController extends Controller
                     $BookingPayment->term = $payment_term;
                     $BookingPayment->payable_amount = $payable_amount;
                     $BookingPayment->payment_method = $payment_method;
+                    $BookingPayment->check_in_staff = $check_in_staff;
+                    $BookingPayment->branch_id = $branch_idvalue;
                     $BookingPayment->save();
 
                 }
@@ -1587,6 +1594,7 @@ class BookingController extends Controller
         $BookingPayment->term = $request->get('payment_term');
         $BookingPayment->payable_amount = $request->get('payable_amount');
         $BookingPayment->check_in_staff = $data->check_in_staff;
+        $BookingPayment->branch_id = $data->branch_id;
         $BookingPayment->paid_date = $paid_date;
         $BookingPayment->payment_method = $request->get('payment_method');
         $BookingPayment->save();
@@ -1864,7 +1872,7 @@ class BookingController extends Controller
 
 
         $paidDate_array = [];
-        $paiddate_arr = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])->where('check_in_staff', '=', $manager_id)->orderBy('booking_id', 'asc')->get();
+        $paiddate_arr = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])->where('check_in_staff', '=', $manager_id)->where('branch_id', '=', $branch_id)->orderBy('booking_id', 'asc')->get();
         foreach ($paiddate_arr as $key => $paiddate_array) {
             $paidDate_array[] = $paiddate_array;
         }

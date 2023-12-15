@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('paid_date')->nullable();
             $table->string('payment_method')->nullable();
             $table->string('check_in_staff')->nullable();
+            $table->unsignedBigInteger('branch_id');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->boolean('soft_delete')->default(0);
             $table->timestamps();
         });

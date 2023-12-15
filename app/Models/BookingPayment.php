@@ -14,6 +14,7 @@ class BookingPayment extends Model
         'term',
         'payable_amount',
         'check_in_staff',
+        'branch_id',
         'paid_date',
         'payment_method',
         'soft_delete'
