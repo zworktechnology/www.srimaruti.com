@@ -1871,31 +1871,18 @@ class BookingController extends Controller
 
 
 
-        $paidDate_array = [];
-        $paiddate_arr = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])->where('check_in_staff', '=', $manager_id)->where('branch_id', '=', $branch_id)->orderBy('booking_id', 'asc')->get();
-        foreach ($paiddate_arr as $key => $paiddate_array) {
-            $paidDate_array[] = $paiddate_array;
-        }
         $checkin_Array = [];
         $room_list = [];
-        foreach (($paidDate_array) as $key => $paidDate_arrays) {
-
-            $checkin_Data = Booking::where('check_in_date', '=', $paidDate_arrays->paid_date)
-                        ->where('id', '=', $paidDate_arrays->booking_id)
-                        ->where('branch_id', '=', $branch_id)
-                        ->where('check_in_staff', '=', $manager_id)
+        $checkin_Data = Booking::whereBetween('check_in_date', [$from_date, $to_date])
+                        ->where('check_in_staff', '=', $manager_id)->where('branch_id', '=', $branch_id)
+                        ->orderBy('id', 'asc')
                         ->where('soft_delete', '!=', 1)
-                        ->first();
-            
-            if($checkin_Data != ""){
-                $invoice_no = $checkin_Data->booking_invoiceno;
-                $check_in_date = date('d M,Y', strtotime($checkin_Data->check_in_date));
-                $booking_id = $checkin_Data->id;
-                $check_in_staff = $checkin_Data->check_in_staff;
+                        ->get();
 
-                $roomsbooked = BookingRoom::where('booking_id', '=', $checkin_Data->id)->get();
+        foreach (($checkin_Data) as $key => $checkin_Datas) {
+                $roomsbooked = BookingRoom::where('booking_id', '=', $checkin_Datas->id)->get();
                 foreach ($roomsbooked as $key => $rooms_booked) {
-
+                   
                     if($checkin_Data->couple == 1){
                         if($rooms_booked->room_type == 'A/C'){
                             $roomcolorstatus = 'Couple Orange';
@@ -1916,68 +1903,55 @@ class BookingController extends Controller
                             'roomno' => 'No. '. $Rooms->room_number,
                             'roomtype' => $rooms_booked->room_type,
                             'booking_room_price' => $rooms_booked->room_price,
-                            'booking_id' => $checkin_Data->id,
+                            'booking_id' => $rooms_booked->booking_id,
                             'roomcolorstatus' => $roomcolorstatus,
                         );
                 }
-                $case_income_gst = $checkin_Data->gst_amount;
 
-                if($checkin_Data->out_date != ""){
-                    $check_out_date = date('d M,Y', strtotime($checkin_Data->out_date));
-                }else {
-                    $check_out_date = '';
+
+                $BookingpaymentArr = BookingPayment::where('booking_id', '=', $checkin_Datas->id)
+                                        ->where('soft_delete', '!=', 1)
+                                        ->orderBy('booking_id', 'asc')
+                                        ->get();
+                foreach ($BookingpaymentArr as $key => $BookingpaymentArray) {
+
+                    $checkin_manager = Staff::findOrFail($checkin_Datas->check_in_staff);
+                    if($checkin_Datas->check_out_staff != ""){
+                        $out_date = date('M d Y', strtotime($checkin_Datas->out_date));
+                    }else {
+                        $out_date = '';
+                    }
+
+
+                    if($BookingpaymentArray->payment_method == 'Cash'){
+                        $cash_income = $BookingpaymentArray->payable_amount;
+                    }else {
+                        $cash_income = '';
+                    }
+                    if($BookingpaymentArray->payment_method == 'Online Payment'){
+                        $online_income = $BookingpaymentArray->payable_amount;
+                    }else {
+                        $online_income = '';
+                    }
+
+
+                    $checkin_Array[] = array(
+                        'booking_invoiceno' => $checkin_Datas->booking_invoiceno,
+                        'check_in_date' => date('M d Y', strtotime($checkin_Datas->check_in_date)),
+                        'paidDate_arrays' => $BookingpaymentArray->paid_date,
+                        'room_list' => $room_list,
+                        'id' => $checkin_Datas->id,
+                        'check_out_date' => $out_date,
+                        'check_in_staff' => $checkin_manager->name,
+                        'cash_income' => $cash_income,
+                        'term' => $BookingpaymentArray->term,
+                        'case_income_gst' => $checkin_Datas->gst_amount,
+                        'online_income' => $online_income,
+                    );
                 }
 
-               
-
-            }else {
-
-                
-
-                $invoice_no = '';
-                $check_in_date = '';
-                $room_list = [];
-                $booking_id = '';
-                $case_income_gst = '';
-                $check_out_date = '';
-                $check_in_staff = $manager_id;
-                $cash_income = '';
-                $online_income = '';
-            }
-
-            
-            if($paidDate_arrays->payment_method == 'Cash'){
-                $cash_income = $paidDate_arrays->payable_amount;
-            }else {
-                $cash_income = '';
-            }
-            if($paidDate_arrays->payment_method == 'Online Payment'){
-                $online_income = $paidDate_arrays->payable_amount;
-            }else {
-                $online_income = '';
-            }
-            
-            
-           
-
-
-                $checkin_Array[] = array(
-                    'booking_invoiceno' => $invoice_no,
-                    'check_in_date' => $check_in_date,
-                    'paidDate_arrays' => $paidDate_arrays->paid_date,
-                    'room_list' => $room_list,
-                    'id' => $booking_id,
-                    'cash_income' => $cash_income,
-                    'case_income_gst' => $case_income_gst,
-                    'online_income' => $online_income,
-                    'check_out_date' => $check_out_date,
-                    'check_in_staff' => $check_in_staff,
-                );
-        
-                    
-            
-                        
         }
+
 
         $checkout_Data = Booking::whereBetween('out_date', [$from_date, $to_date])
                                 ->where('branch_id', '=', $branch_id)
