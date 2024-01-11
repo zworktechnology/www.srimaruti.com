@@ -1878,12 +1878,12 @@ class BookingController extends Controller
                         ->orderBy('id', 'asc')
                         ->where('soft_delete', '!=', 1)
                         ->get();
-
+        
         foreach (($checkin_Data) as $key => $checkin_Datas) {
                 $roomsbooked = BookingRoom::where('booking_id', '=', $checkin_Datas->id)->get();
                 foreach ($roomsbooked as $key => $rooms_booked) {
                    
-                    if($checkin_Data->couple == 1){
+                    if($checkin_Datas->couple == 1){
                         if($rooms_booked->room_type == 'A/C'){
                             $roomcolorstatus = 'Couple Orange';
                         }else if($rooms_booked->room_type == 'Non - A/C'){
@@ -1951,6 +1951,11 @@ class BookingController extends Controller
                 }
 
         }
+
+        $total_gst = Booking::whereBetween('check_in_date', [$from_date, $to_date])
+                        ->where('check_in_staff', '=', $manager_id)->where('branch_id', '=', $branch_id)
+                        ->where('soft_delete', '!=', 1)
+                        ->sum('gst_amount');
 
 
         $checkout_Data = Booking::whereBetween('out_date', [$from_date, $to_date])
@@ -2054,7 +2059,7 @@ class BookingController extends Controller
 
 
 
-        return view('pages.backend.booking.components.printexportpdf', compact('room_online_income_tax', 'income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income', 'room_cash_income_tax'));
+        return view('pages.backend.booking.components.printexportpdf', compact('room_online_income_tax', 'income_total', 'expence_total', 'income', 'expence', 'branch', 'manager', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income', 'room_cash_income_tax', 'total_gst'));
     }
 
 

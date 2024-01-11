@@ -76,6 +76,7 @@
                                                     <th>Check In Date</th>
                                                     <th>Paid Date</th>
                                                     <th>Room Details</th>
+                                                    <th>Term</th>
                                                     <th>Cash Payment</th>
                                                     <th>Online Payment</th>
                                                     <th>GST</th>
@@ -90,34 +91,22 @@
                                                 $total_onlineincome = 0;
                                             @endphp
                                             @foreach ($checkin_Array as $keydata => $checkin_Arrays)
-                                                @if(($checkin_Arrays['check_in_staff']) == $manager->id)  
-
                                                     @if(($checkin_Arrays['cash_income']) != '')
                                                         @php 
                                                             $total_cashincome += $checkin_Arrays['cash_income'];
                                                         @endphp
                                                     @endif
-
-                                                    @if(($checkin_Arrays['case_income_gst']) != '')
-                                                        @php 
-                                                            $total_cashgst += $checkin_Arrays['case_income_gst'];
-                                                        @endphp
-                                                    @endif
-
                                                     @if(($checkin_Arrays['online_income']) != '')
                                                         @php 
                                                             $total_onlineincome += $checkin_Arrays['online_income'];
                                                         @endphp
                                                     @endif
-
-                                                    
                                                     <tr>
                                                         <td>{{ $checkin_Arrays['booking_invoiceno'] }}</td>
                                                         <td>{{ $checkin_Arrays['check_in_date'] }}</td>
                                                         <td>{{ date('d-m-Y', strtotime($checkin_Arrays['paidDate_arrays'])) }}</td>
                                                         
                                                         <td>
-                                                        @if (count($checkin_Arrays['room_list'])>0)
                                                             @foreach ($checkin_Arrays['room_list'] as $index => $room_lists)
                                                                 @if ($room_lists['booking_id'] == $checkin_Arrays['id'])
                                                                     @if ($room_lists['roomcolorstatus'] == 'Couple Orange')
@@ -134,14 +123,13 @@
                                                                     @endif
                                                                 @endif
                                                             @endforeach
-                                                        @endif
                                                         </td>
+                                                        <td>{{ $checkin_Arrays['term'] }}</td>
                                                         <td>{{ $checkin_Arrays['cash_income'] }}</td>
                                                         <td>{{ $checkin_Arrays['online_income'] }}</td>
                                                         <td>{{ $checkin_Arrays['case_income_gst'] }}</td>
                                                         <td>{{ $checkin_Arrays['check_out_date'] }}</td>
                                                     </tr>
-                                                    @endif
                                                 @endforeach
                                             </tbody>
                                             <thead>
@@ -150,10 +138,11 @@
                                                     <th></th>
                                                     <th></th>
                                                     <th></th>
+                                                    <th></th>
                                                     <th>Total :</th>
                                                     <th>{{ $total_cashincome }}</th>
                                                     <th>{{ $total_onlineincome }}</th>
-                                                    <th>{{ $total_cashgst }}</th>
+                                                    <th>{{ $total_gst }}</th>
                                                 </tr>
                                             </thead>
                                           
