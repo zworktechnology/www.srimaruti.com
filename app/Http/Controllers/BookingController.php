@@ -1929,6 +1929,13 @@ class BookingController extends Controller
 
             }
 
+            $total_onlinepayment = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])
+                                            ->where('branch_id', '=', $branch_id)
+                                            ->where('check_in_staff', '=', $manager_id)
+                                            ->where('soft_delete', '!=', 1)
+                                            ->where('payment_method', '=', 'Online Payment')
+                                            ->sum('payable_amount');
+
             $total_gst = Booking::whereBetween('check_in_date', [$from_date, $to_date])
                             ->where('check_in_staff', '=', $manager_id)->where('branch_id', '=', $branch_id)
                             ->where('soft_delete', '!=', 1)
@@ -2156,6 +2163,12 @@ class BookingController extends Controller
 
             }
 
+            $total_onlinepayment = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])
+                                            ->where('branch_id', '=', $branch_id)
+                                            ->where('soft_delete', '!=', 1)
+                                            ->where('payment_method', '=', 'Online Payment')
+                                            ->sum('payable_amount');
+
             $total_gst = Booking::whereBetween('check_in_date', [$from_date, $to_date])
                             ->where('branch_id', '=', $branch_id)
                             ->where('soft_delete', '!=', 1)
@@ -2287,7 +2300,7 @@ class BookingController extends Controller
 
         
 
-        return view('pages.backend.booking.components.printexportpdf', compact('room_online_income_tax', 'income_total', 'expence_total', 'income', 'expence', 'branch', 'managername', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income', 'room_cash_income_tax', 'total_gst'));
+        return view('pages.backend.booking.components.printexportpdf', compact('room_online_income_tax', 'total_onlinepayment', 'income_total', 'expence_total', 'income', 'expence', 'branch', 'managername', 'from_date', 'to_date', 'checkin_Array', 'checkout_Array', 'room_cash_income', 'room_online_income', 'room_cash_income_tax', 'total_gst'));
     }
 
 
