@@ -23,10 +23,10 @@
                                         <div class="modal-body">
                                             <div class="row mb-4">
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
-                                                {{ __('messages.manager_title') }} <span style="color: red;">*</span> </label>
+                                                {{ __('messages.manager_title') }} </label>
                                                 <div class="col-sm-4">
                                                     <select class="form-control branch_id"
-                                                        name="manager_id" id="manager_id" required>
+                                                        name="manager_id" id="manager_id" >
                                                         <option value="" selected hiddden>Select One</option>
                                                         @foreach ($staff as $staffs)
                                                             <option value="{{ $staffs->id }}">{{ $staffs->name }}

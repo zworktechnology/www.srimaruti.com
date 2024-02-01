@@ -24,11 +24,13 @@
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-8 col-8">
                                         <div class="text-muted">
+                                            @if($managername != '')
                                             <div>
                                                 <h5 class="font-size-16 mb-1">
-                                                    Manager : <span style="color: #acafb7;">{{ $manager->name }}</span>
+                                                    Manager : <span style="color: #acafb7;">{{ $managername }}</span>
                                                 </h5>
                                             </div>
+                                            @endif
                                             <div class="mt-4">
                                                 <h5 class="font-size-16 mb-1">
                                                     Branch : <span style="color: #acafb7;">{{ $branch->name }}</span>
@@ -72,6 +74,9 @@
                                         <table class="table table-nowrap table-centered mb-0">
                                             <thead>
                                                 <tr>
+                                                    @if($managername == '')
+                                                    <th>Manager</th>
+                                                    @endif
                                                     <th>Booking ID</th>
                                                     <th>Check In Date</th>
                                                     <th>Paid Date</th>
@@ -102,6 +107,9 @@
                                                         @endphp
                                                     @endif
                                                     <tr>
+                                                        @if($managername == '')
+                                                        <td>{{ $checkin_Arrays['check_in_staff'] }}</td>
+                                                        @endif
                                                         <td>{{ $checkin_Arrays['booking_invoiceno'] }}</td>
                                                         <td>{{ $checkin_Arrays['check_in_date'] }}</td>
                                                         <td>{{ date('d-m-Y', strtotime($checkin_Arrays['paidDate_arrays'])) }}</td>
@@ -138,6 +146,9 @@
                                                     <th></th>
                                                     <th></th>
                                                     <th></th>
+                                                    @if($managername == '')
+                                                    <th></th>
+                                                    @endif
                                                     <th></th>
                                                     <th>Total :</th>
                                                     <th>{{ $total_cashincome }}</th>
@@ -167,6 +178,9 @@
                                         <table class="table table-nowrap table-centered mb-0">
                                             <thead>
                                                 <tr>
+                                                    @if($managername == '')
+                                                    <th>Staff</th>
+                                                    @endif
                                                     <th>Date</th>
                                                     <th>Details</th>
                                                     <th>Note</th>
@@ -176,10 +190,13 @@
                                             <tbody>
                                                 @foreach ($income as $keydata => $incomes)
                                                     <tr>
-                                                        <td>{{ date('d M,Y', strtotime($incomes->date)) }}</td>
-                                                        <td>{{ $incomes->namelist->name }}</td>
-                                                        <td>{{ $incomes->note }}</td>
-                                                        <td>{{ $incomes->amount }}</td>
+                                                        @if($managername == '')
+                                                        <td>{{ $incomes['staff'] }}</td>
+                                                        @endif
+                                                        <td>{{ $incomes['date'] }}</td>
+                                                        <td>{{ $incomes['namelist'] }}</td>
+                                                        <td>{{ $incomes['note'] }}</td>
+                                                        <td>{{ $incomes['amount'] }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -187,6 +204,9 @@
                                                 <tr style="color: darkorange">
                                                     <th>Totel :</th>
                                                     <th></th>
+                                                    @if($managername == '')
+                                                    <th></th>
+                                                    @endif
                                                     <th></th>
                                                     <th>{{ $income_total }}</th>
                                                 </tr>
@@ -212,6 +232,9 @@
                                         <table class="table table-nowrap table-centered mb-0">
                                             <thead>
                                                 <tr>
+                                                     @if($managername == '')
+                                                    <th>Staff</th>
+                                                    @endif
                                                     <th>Date</th>
                                                     <th>Details</th>
                                                     <th>Note</th>
@@ -219,12 +242,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($expence as $keydata => $expences)
+                                                @foreach ($expence as $keydata => $expenses)
                                                     <tr>
-                                                        <td>{{ date('d M,Y', strtotime($expences->date)) }}</td>
-                                                        <td>{{ $expences->namelist->name }}</td>
-                                                        <td>{{ $expences->note }}</td>
-                                                        <td>{{ $expences->amount }}</td>
+                                                        @if($managername == '')
+                                                        <td>{{ $expenses['staff'] }}</td>
+                                                        @endif
+                                                        <td>{{ $expenses['date'] }}</td>
+                                                        <td>{{ $expenses['namelist'] }}</td>
+                                                        <td>{{ $expenses['note'] }}</td>
+                                                        <td>{{ $expenses['amount'] }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -232,6 +258,9 @@
                                                 <tr style="color: darkorange">
                                                     <th>Totel :</th>
                                                     <th></th>
+                                                    @if($managername == '')
+                                                    <th></th>
+                                                    @endif
                                                     <th></th>
                                                     <th>{{ $expence_total }}</th>
                                                 </tr>
