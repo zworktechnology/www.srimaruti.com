@@ -1903,12 +1903,12 @@ class BookingController extends Controller
                         if($BookingpaymentArray->payment_method == 'Cash'){
                             $cash_income = $BookingpaymentArray->payable_amount;
                         }else {
-                            $cash_income = '0';
+                            $cash_income = 0;
                         }
                         if($BookingpaymentArray->payment_method == 'Online Payment'){
                             $online_income = $BookingpaymentArray->payable_amount;
                         }else {
-                            $online_income = '0';
+                            $online_income = 0;
                         }
 
 
@@ -2130,12 +2130,12 @@ class BookingController extends Controller
                         if($BookingpaymentArray->payment_method == 'Cash'){
                             $cash_income = $BookingpaymentArray->payable_amount;
                         }else {
-                            $cash_income = '0';
+                            $cash_income = 0;
                         }
                         if($BookingpaymentArray->payment_method == 'Online Payment'){
                             $online_income = $BookingpaymentArray->payable_amount;
                         }else {
-                            $online_income = '0';
+                            $online_income = 0;
                         }
 
 
