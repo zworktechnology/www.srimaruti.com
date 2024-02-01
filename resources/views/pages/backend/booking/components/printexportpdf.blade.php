@@ -96,12 +96,7 @@
                                                 $total_onlineincome = 0;
                                             @endphp
                                             @foreach ($checkin_Array as $keydata => $checkin_Arrays)
-                                                        @php 
-                                                            $total_cashincome += $checkin_Arrays['cash_income'];
-                                                        @endphp
-                                                        @php 
-                                                            $total_onlineincome += $checkin_Arrays['online_income'];
-                                                        @endphp
+                                                        
                                                     <tr>
                                                         @if($managername == '')
                                                         <td>{{ $checkin_Arrays['check_in_staff'] }}</td>
@@ -147,8 +142,8 @@
                                                     @endif
                                                     <th></th>
                                                     <th>Total :</th>
-                                                    <th>{{ $total_cashincome }}</th>
-                                                    <th>{{ $total_onlineincome }}</th>
+                                                    <th></th>
+                                                    <th></th>
                                                     <th>{{ $total_gst }}</th>
                                                 </tr>
                                             </thead>
