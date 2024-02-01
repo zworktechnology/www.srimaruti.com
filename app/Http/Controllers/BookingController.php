@@ -1043,7 +1043,7 @@ class BookingController extends Controller
             $data->proofs = $request->get('proofs');
             $data->prooftype_one = $request->get('prooftype_one');
             $data->proofimage_two = $request->get('prooftype_one');
-            
+
 
             //Profile Image
             if ($request->customer_photo != "") {
@@ -1903,12 +1903,12 @@ class BookingController extends Controller
                         if($BookingpaymentArray->payment_method == 'Cash'){
                             $cash_income = $BookingpaymentArray->payable_amount;
                         }else {
-                            $cash_income = '';
+                            $cash_income = '0';
                         }
                         if($BookingpaymentArray->payment_method == 'Online Payment'){
                             $online_income = $BookingpaymentArray->payable_amount;
                         }else {
-                            $online_income = '';
+                            $online_income = '0';
                         }
 
 
@@ -2130,12 +2130,12 @@ class BookingController extends Controller
                         if($BookingpaymentArray->payment_method == 'Cash'){
                             $cash_income = $BookingpaymentArray->payable_amount;
                         }else {
-                            $cash_income = '';
+                            $cash_income = '0';
                         }
                         if($BookingpaymentArray->payment_method == 'Online Payment'){
                             $online_income = $BookingpaymentArray->payable_amount;
                         }else {
-                            $online_income = '';
+                            $online_income = '0';
                         }
 
 
