@@ -96,16 +96,7 @@
                                                 $total_onlineincome = 0;
                                             @endphp
                                             @foreach ($checkin_Array as $keydata => $checkin_Arrays)
-                                                    @if(($checkin_Arrays['cash_income']) != '')
-                                                        @php 
-                                                            $total_cashincome += $checkin_Arrays['cash_income'];
-                                                        @endphp
-                                                    @endif
-                                                    @if(($checkin_Arrays['online_income']) != '')
-                                                        @php 
-                                                            $total_onlineincome += $checkin_Arrays['online_income'];
-                                                        @endphp
-                                                    @endif
+                                                    
                                                     <tr>
                                                         @if($managername == '')
                                                         <td>{{ $checkin_Arrays['check_in_staff'] }}</td>
@@ -151,9 +142,9 @@
                                                     @endif
                                                     <th></th>
                                                     <th>Total :</th>
-                                                    <th>{{ $total_cashincome }}</th>
-                                                    <th>{{ $total_onlineincome }}</th>
-                                                    <th>{{ $total_gst }}</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                           
