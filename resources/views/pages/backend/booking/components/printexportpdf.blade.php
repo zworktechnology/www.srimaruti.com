@@ -152,7 +152,7 @@
                                                     <th></th>
                                                     <th>Total :</th>
                                                     <th>{{ $total_cashincome }}</th>
-                                                    <th>{{ $total_onlineincome }}</th>
+                                                    <th></th>
                                                     <th>{{ $total_gst }}</th>
                                                 </tr>
                                             </thead>
