@@ -142,7 +142,7 @@
                                                     @endif
                                                     <th></th>
                                                     <th>Total :</th>
-                                                    <th>{{$total_cashpayment}}</th>
+                                                    <th>{{ $total_cashpayment }}</th>
                                                     <th>{{$total_onlinepayment}}</th>
                                                     <th>{{ $total_gst }}</th>
                                                 </tr>
