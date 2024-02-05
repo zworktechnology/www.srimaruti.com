@@ -1989,45 +1989,51 @@ class BookingController extends Controller
                             'booking_invoiceno' => $checkout_Datas->booking_invoiceno,
                         );
             }
+            $incomearr = DB::table('incomes')
+            ->whereBetween('date', [$from_date, $to_date])
+            ->where('branch_id', '=', $branch_id)
+            ->where('staff_id', '=', $manager_id)
+            ->where('soft_delete', '!=', 1)
+            ->selectRaw('sum(amount) as sum, namelist_id')
+            ->groupBy('namelist_id')
+            ->get();
 
-            $incomearr = Income::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
-                                    ->where('staff_id', '=', $manager_id)
-                                    ->where('soft_delete', '!=', 1)
-                                    ->orderBy('date', 'asc')
-                                    ->get();
+        
 
             $income = [];
             foreach ($incomearr as $key => $incomes) {
 
                 $namelist = Namelist::findOrFail($incomes->namelist_id);
-                $Staff = Staff::findOrFail($incomes->staff_id);
                 $income[] = array(
-                    'date' => date('d M,Y', strtotime($incomes->date)),
+
                     'namelist' => $namelist->name,
-                    'note' => $incomes->note,
-                    'amount' => $incomes->amount,
-                    'amount' => $incomes->amount,
-                    'staff' => $Staff->name,
+                    'note' => '',
+                    'amount' => $incomes->sum,
+                    'staff' => ''
                 );
             }
 
-            $expencearr = Expense::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
-                                    ->where('staff_id', '=', $manager_id)
-                                    ->where('soft_delete', '!=', 1)
-                                    ->orderBy('date', 'asc')
-                                    ->get();
+
+            $expencearr = DB::table('expenses')
+            ->whereBetween('date', [$from_date, $to_date])
+            ->where('branch_id', '=', $branch_id)
+            ->where('staff_id', '=', $manager_id)
+            ->where('soft_delete', '!=', 1)
+            ->selectRaw('sum(amount) as sum, namelist_id')
+            ->groupBy('namelist_id')
+            ->get();
+
+           
             $expence = [];
             foreach ($expencearr as $key => $expences) {
 
                 $namelist = Namelist::findOrFail($expences->namelist_id);
-                $Staff = Staff::findOrFail($expences->staff_id);
+
                 $expence[] = array(
-                    'date' => date('d M,Y', strtotime($expences->date)),
+                   
                     'namelist' => $namelist->name,
-                    'note' => $expences->note,
-                    'amount' => $expences->amount,
-                    'amount' => $expences->amount,
-                    'staff' => $Staff->name,
+                    'amount' => $expences->sum,
+                    'staff' => '',
                 );
             }
 
@@ -2228,20 +2234,21 @@ class BookingController extends Controller
                         );
             }
 
-            $incomearr = Income::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
-                                    ->where('soft_delete', '!=', 1)
-                                    ->orderBy('date', 'asc')
-                                    ->get();
+            $incomearr = DB::table('incomes')
+            ->whereBetween('date', [$from_date, $to_date])
+            ->where('branch_id', '=', $branch_id)
+            ->where('soft_delete', '!=', 1)
+            ->get();
+
+          
             $income = [];
             foreach ($incomearr as $key => $incomes) {
 
                 $namelist = Namelist::findOrFail($incomes->namelist_id);
                 $Staff = Staff::findOrFail($incomes->staff_id);
+
                 $income[] = array(
-                    'date' => date('d M,Y', strtotime($incomes->date)),
                     'namelist' => $namelist->name,
-                    'note' => $incomes->note,
-                    'amount' => $incomes->amount,
                     'amount' => $incomes->amount,
                     'staff' => $Staff->name,
                 );
@@ -2555,5 +2562,103 @@ class BookingController extends Controller
         }
 
         return view('pages.backend.booking.components.print_reportpdf', compact('Reportdata_Array', 'branch','from_date', 'to_date'));
+    }
+
+
+    public function monthly_report()
+    {
+        $branch = Branch::where('soft_delete', '!=', 1)->get();
+        $staff = Staff::where('soft_delete', '!=', 1)->get();
+
+        return view('pages.backend.booking.components.monthly_report', compact('branch', 'staff'));
+    }
+
+    public function monthlyreport_pdf(Request $request)
+    {
+        $branch_id = $request->get('branch_id');
+        $from_date = $request->get('from_date');
+        $to_date = $request->get('to_date');
+        $managerid = $request->get('manager_id');
+
+        $branch = Branch::findOrFail($branch_id);
+        $branchname = $branch->name;
+        $staff = Staff::findOrFail($managerid);
+        $staffname = $staff->name;
+
+
+        $total_onlinepayment = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])
+                ->where('branch_id', '=', $branch_id)
+                ->where('check_in_staff', '=', $managerid)
+                ->where('soft_delete', '!=', 1)
+                ->where('payment_method', '=', 'Online Payment')
+                ->sum('payable_amount');
+
+        $total_cashpayment = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])
+                ->where('branch_id', '=', $branch_id)
+                ->where('check_in_staff', '=', $managerid)
+                ->where('soft_delete', '!=', 1)
+                ->where('payment_method', '=', 'Cash')
+                ->sum('payable_amount');
+
+        $total_gst = Booking::whereBetween('check_in_date', [$from_date, $to_date])
+                ->where('check_in_staff', '=', $managerid)
+                ->where('branch_id', '=', $branch_id)
+                ->where('soft_delete', '!=', 1)
+                ->sum('gst_amount');
+
+
+
+        $Total_room_income = Booking::whereBetween('check_in_date', [$from_date, $to_date])
+                                    ->where('branch_id', '=', $branch_id)
+                                    ->where('check_in_staff', '=', $managerid)
+                                    ->where('soft_delete', '!=', 1)
+                                    ->get();
+
+            $room_cash_income_tax = 0;
+            $room_cash_income = 0;
+            foreach ($Total_room_income as $key => $Total_room_income_arr) {
+
+                $payment_data_arr = BookingPayment::where('booking_id', '=', $Total_room_income_arr->id)
+                                                ->where('payment_method', '=', 'Cash')
+                                                ->get();
+
+                foreach ($payment_data_arr as $key => $payment_data_array) {
+
+                    if($payment_data_array->booking_id == $Total_room_income_arr->id){
+                        $room_cash_income += $payment_data_array->payable_amount;
+                        $room_cash_income_tax += $Total_room_income_arr->gst_amount;
+                    }
+                }
+            }
+
+            $room_online_income = 0;
+            $room_online_income_tax = 0;
+            foreach ($Total_room_income as $key => $Total_room_income_array) {
+                $payment_onlinedata_arr = BookingPayment::where('booking_id', '=', $Total_room_income_array->id)
+                                                ->where('payment_method', '=', 'Online Payment')
+                                                ->get();
+
+                foreach ($payment_onlinedata_arr as $key => $payment_onlinedata_array) {
+
+                    if($payment_onlinedata_array->booking_id == $Total_room_income_array->id){
+                        $room_online_income += $Total_room_income_array->grand_total;
+                        $room_online_income_tax += $Total_room_income_array->gst_amount;
+                    }
+                }
+            }
+
+
+            $income_total = Income::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)->where('staff_id', '=', $managerid)
+                                    ->where('soft_delete', '!=', 1)
+                                    ->sum('amount');
+
+            $expence_total = Expense::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)->where('staff_id', '=', $managerid)
+                                    ->where('soft_delete', '!=', 1)
+                                    ->sum('amount');
+
+
+
+        return view('pages.backend.booking.components.monthlyreport_pdf', compact('total_onlinepayment', 'total_cashpayment','total_gst', 'from_date',
+         'to_date', 'branchname', 'staffname', 'room_cash_income', 'room_online_income', 'income_total', 'expence_total'));
     }
 }

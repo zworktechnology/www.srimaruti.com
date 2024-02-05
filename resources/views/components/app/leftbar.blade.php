@@ -126,6 +126,12 @@
                         <span>Report</span>
                     </a>
                 </li>
+                <li class="{{ Route::is('monthly_report') ? 'mm-active' : '' }}">
+                    <a href="{{ route('monthly_report') }}" class="waves-effect">
+                        <i class="uil-cloud-download"></i>
+                        <span>Monthly Report</span>
+                    </a>
+                </li>
                 <li class="{{ Route::is('contact.index') ? 'mm-active' : '' }}">
                     <a href="{{ route('contact.index') }}" class="waves-effect">
                         <i class="uil-mailbox"></i>

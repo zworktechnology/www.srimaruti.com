@@ -172,9 +172,7 @@
                                                     @if($managername == '')
                                                     <th>Staff</th>
                                                     @endif
-                                                    <th>Date</th>
                                                     <th>Details</th>
-                                                    <th>Note</th>
                                                     <th>Amount</th>
                                                 </tr>
                                             </thead>
@@ -184,9 +182,7 @@
                                                         @if($managername == '')
                                                         <td>{{ $incomes['staff'] }}</td>
                                                         @endif
-                                                        <td>{{ $incomes['date'] }}</td>
                                                         <td>{{ $incomes['namelist'] }}</td>
-                                                        <td>{{ $incomes['note'] }}</td>
                                                         <td>{{ $incomes['amount'] }}</td>
                                                     </tr>
                                                 @endforeach
@@ -194,11 +190,9 @@
                                             <thead>
                                                 <tr style="color: darkorange">
                                                     <th>Totel :</th>
-                                                    <th></th>
                                                     @if($managername == '')
                                                     <th></th>
                                                     @endif
-                                                    <th></th>
                                                     <th>{{ $income_total }}</th>
                                                 </tr>
                                             </thead>
@@ -226,9 +220,7 @@
                                                      @if($managername == '')
                                                     <th>Staff</th>
                                                     @endif
-                                                    <th>Date</th>
                                                     <th>Details</th>
-                                                    <th>Note</th>
                                                     <th>Amount</th>
                                                 </tr>
                                             </thead>
@@ -238,9 +230,7 @@
                                                         @if($managername == '')
                                                         <td>{{ $expenses['staff'] }}</td>
                                                         @endif
-                                                        <td>{{ $expenses['date'] }}</td>
                                                         <td>{{ $expenses['namelist'] }}</td>
-                                                        <td>{{ $expenses['note'] }}</td>
                                                         <td>{{ $expenses['amount'] }}</td>
                                                     </tr>
                                                 @endforeach
@@ -248,11 +238,10 @@
                                             <thead>
                                                 <tr style="color: darkorange">
                                                     <th>Totel :</th>
-                                                    <th></th>
+                                                    
                                                     @if($managername == '')
                                                     <th></th>
                                                     @endif
-                                                    <th></th>
                                                     <th>{{ $expence_total }}</th>
                                                 </tr>
                                             </thead>
