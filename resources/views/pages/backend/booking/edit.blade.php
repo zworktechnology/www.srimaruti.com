@@ -111,14 +111,14 @@
                                                 <div class="col-sm-4">
                                                     <input type="date" class="form-control check_in_date"
                                                         name="check_in_date" placeholder="Enter here "
-                                                        value="{{ $data->check_in_date }}" required>
+                                                        value="{{ $data->check_in_date }}" readonly>
                                                 </div>
                                                 <label for="horizontal-firstname-input" class="col-sm-1 col-form-label">
                                                     Time <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-4">
                                                     <input type="time" class="form-control" name="check_in_time"
                                                         placeholder="Enter here " value="{{ $data->check_in_time }}"
-                                                        required>
+                                                        readonly>
                                                 </div>
                                             </div>
                                             <div class="row mb-4">

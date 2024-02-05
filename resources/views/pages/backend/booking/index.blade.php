@@ -412,7 +412,7 @@
                                     <thead>
                                         <tr>
                                             <th>{{ __('messages.billno') }}</th>
-                                            <th>Room Details</th>>
+                                            <th>Room Details</th>
                                             <th>{{ __('messages.customer') }}</th>
                                             <th>Manager Name</th>
                                             <th>Check In Date & Time</th>
@@ -479,10 +479,9 @@
                                                             </li>
                                                         @endif
 
-
                                                         @if ($bookingDatas['balance_amount'] == 0)
                                                             @if ($bookingDatas['status'] != 2)
-                                                                @if ($bookingDatas['chick_out_date'] >= $today)
+                                                                @if ($bookingDatas['current_dateandtime'] <= $bookingDatas['checkout_Dateandtime'])
                                                                     <li>
                                                                         <a href="#checkout{{ $bookingDatas['id'] }}"
                                                                             data-bs-toggle="modal"

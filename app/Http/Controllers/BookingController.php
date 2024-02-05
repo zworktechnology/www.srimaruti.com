@@ -307,6 +307,8 @@ class BookingController extends Controller
             }else {
                 $checkoutstaff = '';
             }
+
+            $current_dateandtime = date("Y-m-d H:i:s"); 
             $bookingtable[] = array(
                 'customer_name' => $datas->customer_name,
                 'branch' => $branch->name,
@@ -344,6 +346,9 @@ class BookingController extends Controller
                 'proofimage_one' => $datas->proofimage_one,
                 'proofimage_two' => $datas->proofimage_two,
                 'customer_photo' => $datas->customer_photo,
+                'checkout_Dateandtime' => $datas->check_out_date .' '.  $datas->check_out_time,
+                'current_dateandtime' => $current_dateandtime,
+
             );
         }
 
@@ -1989,6 +1994,7 @@ class BookingController extends Controller
                                     ->where('staff_id', '=', $manager_id)
                                     ->where('soft_delete', '!=', 1)
                                     ->orderBy('date', 'asc')
+                                    ->groupBy('namelist_id')
                                     ->get();
 
             $income = [];
@@ -1999,9 +2005,8 @@ class BookingController extends Controller
                 $income[] = array(
                     'date' => date('d M,Y', strtotime($incomes->date)),
                     'namelist' => $namelist->name,
-                    'note' => $incomes->note,
-                    'amount' => $incomes->amount,
-                    'amount' => $incomes->amount,
+                    'note' => '',
+                    'amount' => '',
                     'staff' => $Staff->name,
                 );
             }
