@@ -1993,7 +1993,7 @@ class BookingController extends Controller
             $incomearr = Income::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
                                     ->where('staff_id', '=', $manager_id)
                                     ->where('soft_delete', '!=', 1)
-                                    ->groupBy('namelist_id')
+                                    ->orderBy('date', 'asc')
                                     ->get();
 
             $income = [];
@@ -2004,8 +2004,9 @@ class BookingController extends Controller
                 $income[] = array(
                     'date' => date('d M,Y', strtotime($incomes->date)),
                     'namelist' => $namelist->name,
-                    'note' => '',
-                    'amount' => '',
+                    'note' => $incomes->note,
+                    'amount' => $incomes->amount,
+                    'amount' => $incomes->amount,
                     'staff' => $Staff->name,
                 );
             }
