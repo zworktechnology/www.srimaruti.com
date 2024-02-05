@@ -1993,7 +1993,6 @@ class BookingController extends Controller
             $incomearr = Income::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
                                     ->where('staff_id', '=', $manager_id)
                                     ->where('soft_delete', '!=', 1)
-                                    ->orderBy('date', 'asc')
                                     ->groupBy('namelist_id')
                                     ->get();
 
