@@ -2578,30 +2578,27 @@ class BookingController extends Controller
         $branch_id = $request->get('branch_id');
         $from_date = $request->get('from_date');
         $to_date = $request->get('to_date');
-        $managerid = $request->get('manager_id');
+        //$managerid = $request->get('manager_id');
 
         $branch = Branch::findOrFail($branch_id);
         $branchname = $branch->name;
-        $staff = Staff::findOrFail($managerid);
-        $staffname = $staff->name;
+        // $staff = Staff::findOrFail($managerid);
+        // $staffname = $staff->name;
 
 
         $total_onlinepayment = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])
                 ->where('branch_id', '=', $branch_id)
-                ->where('check_in_staff', '=', $managerid)
                 ->where('soft_delete', '!=', 1)
                 ->where('payment_method', '=', 'Online Payment')
                 ->sum('payable_amount');
 
         $total_cashpayment = BookingPayment::whereBetween('paid_date', [$from_date, $to_date])
                 ->where('branch_id', '=', $branch_id)
-                ->where('check_in_staff', '=', $managerid)
                 ->where('soft_delete', '!=', 1)
                 ->where('payment_method', '=', 'Cash')
                 ->sum('payable_amount');
 
         $total_gst = Booking::whereBetween('check_in_date', [$from_date, $to_date])
-                ->where('check_in_staff', '=', $managerid)
                 ->where('branch_id', '=', $branch_id)
                 ->where('soft_delete', '!=', 1)
                 ->sum('gst_amount');
@@ -2610,7 +2607,6 @@ class BookingController extends Controller
 
         $Total_room_income = Booking::whereBetween('check_in_date', [$from_date, $to_date])
                                     ->where('branch_id', '=', $branch_id)
-                                    ->where('check_in_staff', '=', $managerid)
                                     ->where('soft_delete', '!=', 1)
                                     ->get();
 
@@ -2648,17 +2644,17 @@ class BookingController extends Controller
             }
 
 
-            $income_total = Income::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)->where('staff_id', '=', $managerid)
+            $income_total = Income::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
                                     ->where('soft_delete', '!=', 1)
                                     ->sum('amount');
 
-            $expence_total = Expense::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)->where('staff_id', '=', $managerid)
+            $expence_total = Expense::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
                                     ->where('soft_delete', '!=', 1)
                                     ->sum('amount');
 
 
 
         return view('pages.backend.booking.components.monthlyreport_pdf', compact('total_onlinepayment', 'total_cashpayment','total_gst', 'from_date',
-         'to_date', 'branchname', 'staffname', 'room_cash_income', 'room_online_income', 'income_total', 'expence_total'));
+         'to_date', 'branchname', 'room_cash_income', 'room_online_income', 'income_total', 'expence_total'));
     }
 }

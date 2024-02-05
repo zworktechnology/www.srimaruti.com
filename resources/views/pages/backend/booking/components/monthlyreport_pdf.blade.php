@@ -25,11 +25,7 @@
                                     <div class="col-sm-8 col-8">
                                         <div class="text-muted">
                                           
-                                            <div>
-                                                <h5 class="font-size-16 mb-1">
-                                                    Manager : <span style="color: #acafb7;">{{ $staffname }}</span>
-                                                </h5>
-                                            </div>
+                                            
                                             <div class="mt-4">
                                                 <h5 class="font-size-16 mb-1">
                                                     Branch : <span style="color: #acafb7;">{{ $branchname }}</span>
