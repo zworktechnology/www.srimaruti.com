@@ -2651,10 +2651,51 @@ class BookingController extends Controller
             $expence_total = Expense::whereBetween('date', [$from_date, $to_date])->where('branch_id', '=', $branch_id)
                                     ->where('soft_delete', '!=', 1)
                                     ->sum('amount');
+            $incomearr = DB::table('incomes')
+                    ->whereBetween('date', [$from_date, $to_date])
+                    ->where('branch_id', '=', $branch_id)
+                    ->where('soft_delete', '!=', 1)
+                    ->selectRaw('sum(amount) as sum, namelist_id')
+                    ->groupBy('namelist_id')
+                    ->get();
 
+        
+
+            $income = [];
+            foreach ($incomearr as $key => $incomes) {
+
+                $namelist = Namelist::findOrFail($incomes->namelist_id);
+                $income[] = array(
+
+                    'namelist' => $namelist->name,
+                    'amount' => $incomes->sum,
+                );
+            }
+
+
+            $expencearr = DB::table('expenses')
+                        ->whereBetween('date', [$from_date, $to_date])
+                        ->where('branch_id', '=', $branch_id)
+                        ->where('soft_delete', '!=', 1)
+                        ->selectRaw('sum(amount) as sum, namelist_id')
+                        ->groupBy('namelist_id')
+                        ->get();
+
+           
+            $expence = [];
+            foreach ($expencearr as $key => $expences) {
+
+                $namelist = Namelist::findOrFail($expences->namelist_id);
+
+                $expence[] = array(
+                   
+                    'namelist' => $namelist->name,
+                    'amount' => $expences->sum,
+                );
+            }
 
 
         return view('pages.backend.booking.components.monthlyreport_pdf', compact('total_onlinepayment', 'total_cashpayment','total_gst', 'from_date',
-         'to_date', 'branchname', 'room_cash_income', 'room_online_income', 'income_total', 'expence_total'));
+         'to_date', 'branchname', 'room_cash_income', 'room_online_income', 'income_total', 'expence_total', 'income', 'expence'));
     }
 }

@@ -87,6 +87,86 @@
                                     <hr>
                                 </div>
 
+                                <div class="row" style="display: flex;">
+                                    <div class="col-sm-8 col-8">
+                                        <div class="text-muted">
+                                            <div>
+                                                <h5 class="font-size-16 mb-1" style="color: red;">
+                                                    Other Income
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="py-2">
+                                    <div class="table-responsive">
+                                        <table class="table table-nowrap table-centered mb-0">
+                                            <thead>
+                                                <tr>
+                                                   
+                                                    <th>Details</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($income as $keydata => $incomes)
+                                                    <tr>
+                                                        <td>{{ $incomes['namelist'] }}</td>
+                                                        <td>{{ $incomes['amount'] }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                            <thead>
+                                                <tr style="color: darkorange">
+                                                    <th>Totel :</th>
+                                                    <th>{{ $income_total }}</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                </div>
+
+                                <div class="row" style="display: flex;">
+                                    <div class="col-sm-8 col-8">
+                                        <div class="text-muted">
+                                            <div>
+                                                <h5 class="font-size-16 mb-1" style="color: red;">
+                                                    Other Expence
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="py-2">
+                                    <div class="table-responsive">
+                                        <table class="table table-nowrap table-centered mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Details</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($expence as $keydata => $expenses)
+                                                    <tr>
+                                                        <td>{{ $expenses['namelist'] }}</td>
+                                                        <td>{{ $expenses['amount'] }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                            <thead>
+                                                <tr style="color: darkorange">
+                                                    <th>Totel :</th>
+                                                    <th>{{ $expence_total }}</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                </div>
+
 
                                 <div class="row" style="display: flex;">
                                     <div class="col-sm-8 col-8">
