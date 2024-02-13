@@ -276,12 +276,12 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>{{ $room_cash_income + $room_online_income }}</td>
+                                                    <td>{{ $total_cashpayment + $total_onlinepayment }}</td>
                                                     <td>{{ $income_total }}</td>
-                                                    <td>{{ $room_cash_income + $income_total + $room_online_income }}</td>
+                                                    <td>{{ $total_cashpayment + $income_total + $total_onlinepayment }}</td>
                                                     <td>{{ $expence_total }}</td>
-                                                    <td>{{ $room_online_income }}</td>
-                                                    <td>{{ $room_cash_income + $income_total + $room_online_income - ($expence_total + $room_online_income) }}
+                                                    <td>{{ $total_onlinepayment }}</td>
+                                                    <td>{{ $total_cashpayment + $income_total + $total_onlinepayment - ($expence_total + $total_onlinepayment) }}
                                                     </td>
                                                 </tr>
                                             </tbody>

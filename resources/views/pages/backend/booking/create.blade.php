@@ -564,7 +564,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-4" id="proof_photo">
+                                            <div class="row mb-4" id="proof_photo" >
                                                 <label for="horizontal-firstname-input"
                                                     class="col-sm-3 col-form-label">Photo <span
                                                         style="color: red;">*</span> </label>
@@ -605,7 +605,7 @@
     <script language="JavaScript">
         ;
         (function($, window, document, undefined) {
-            $("#days").on("change", function() {
+            $("#days").on("keyup", function() {
                 var date = new Date($(".check_in_date").val()),
                     days = parseInt($("#days").val(), 10);
 
