@@ -357,7 +357,20 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-
+                                                            <div data-repeater-item class="inner mb-3 row">
+                                                                <div class="col-md-3 col-12">
+                                                                    <label for="horizontal-firstname-input"
+                                                                        class="col-form-label">
+                                                                        Paid Date <span style="color: red;">*</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-9 col-12">
+                                                                    <input type="date"
+                                                                        class="form-control paid_date" value="{{$today}}"
+                                                                        name="paid_date" placeholder="Enter here "
+                                                                        required>
+                                                                </div>
+                                                            </div>
                                                             <div data-repeater-item class="inner mb-3 row">
                                                                 <div class="col-md-3 col-12">
                                                                     <label for="horizontal-firstname-input"

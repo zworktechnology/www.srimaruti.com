@@ -1162,14 +1162,14 @@ class BookingController extends Controller
             $insertedId = $data->id;
 
             // Booking Payments
-            $paid_date = Carbon::now()->format('Y-m-d');
+            //$paid_date = Carbon::now()->format('Y-m-d');
             $BookingPayment = new BookingPayment;
             $BookingPayment->booking_id = $insertedId;
             $BookingPayment->term = $request->get('payment_term');
             $BookingPayment->payable_amount = $request->get('payable_amount');
             $BookingPayment->check_in_staff = $request->get('check_in_staff');
             $BookingPayment->branch_id = $request->get('branch_id');
-            $BookingPayment->paid_date = $paid_date;
+            $BookingPayment->paid_date = $request->get('paid_date');
             $BookingPayment->payment_method = $request->get('payment_method');
             $BookingPayment->save();
 
@@ -1564,7 +1564,7 @@ class BookingController extends Controller
 
     public function pay_balance(Request $request, $id)
     {
-        $paid_date = Carbon::now()->format('Y-m-d');
+       // $paid_date = Carbon::now()->format('Y-m-d');
         $data = Booking::findOrFail($id);
 
         $BookingPayment = new BookingPayment;
@@ -1573,7 +1573,7 @@ class BookingController extends Controller
         $BookingPayment->payable_amount = $request->get('payable_amount');
         $BookingPayment->check_in_staff = $data->check_in_staff;
         $BookingPayment->branch_id = $data->branch_id;
-        $BookingPayment->paid_date = $paid_date;
+        $BookingPayment->paid_date = $request->get('paid_date');
         $BookingPayment->payment_method = $request->get('payment_method');
         $BookingPayment->save();
 
