@@ -19,13 +19,6 @@
                         </div>
                     </div>
                     <div class="row mb-4">
-                        <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">Paid Date
-                        </label>
-                        <div class="col-sm-8">
-                        <input type="date" class="form-control paid_date"  id="paid_date" value="{{ $today }}" name="paid_date" required>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
                         <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">Days </label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control days" disabled style="color:green" name="days"
@@ -125,6 +118,13 @@
                                 <option value="Term II" class="text-muted">Term II</option>
                                 <option value="Term III" class="text-muted">Term III</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="horizontal-firstname-input" class="col-sm-4 col-form-label">Paid Date
+                        </label>
+                        <div class="col-sm-8">
+                        <input type="date" class="form-control paid_date"  id="paid_date" value="{{ $today }}" name="paid_date" required>
                         </div>
                     </div>
                     <div class="row mb-4">
