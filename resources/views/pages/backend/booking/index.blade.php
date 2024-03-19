@@ -28,26 +28,6 @@
                                         </form>
                                     </ol>
                                 </div>
-                                <div class="page-title-box d-flex align-items-center justify-content-between"
-                                    style="margin-left: 10px;">
-                                    <div class="page-title-right">
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary dropdown-toggle waves-effect waves-light"
-                                                type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="true">
-                                                Filter by Status <i class="mdi mdi-chevron-down"></i>
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                                                style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(0px, -41.3167px);"
-                                                data-popper-placement="top-start">
-                                                <a class="dropdown-item {{ Route::is('booking.index') ? 'mm-active' : '' }}"
-                                                    href="{{ route('booking.index', ['user_branch_id' => $user_branch_id]) }}">{{ __('messages.openedbooking_title') }}</a>
-                                                <a class="dropdown-item {{ Route::is('booking.today') ? 'mm-active' : '' }}"
-                                                    href="{{ route('booking.today', ['user_branch_id' => $user_branch_id]) }}">{{ __('messages.closedbooking_title') }}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -315,42 +295,12 @@
                     </div>
                 </div>
 
+                
                 <div class="row">
-                    <div style="display: flex;">
-                        <div class="col-md-4" style="margin-right: 15px;">
+                        <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title mb-4">Room Details</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-centered table-nowrap mb-0">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Total</td>
-                                                    <td>
-                                                        {{ $totalrooms }}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Avaiable</td>
-                                                    <td>
-                                                        {{ $availablerooms }}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Booked</td>
-                                                    <td>
-                                                        {{ $totalrooms - $availablerooms }}
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card">
-                                <div class="card-body">
+                                    <h4 class="card-title mb-4"  style="color:green;font-weight:800">TODAY CHECK - IN</h4>
                                     <div class="table-responsive">
                                         <table class="table table-centered table-nowrap mb-0" id="booking_datatable">
                                             <thead class="table-light">
@@ -400,12 +350,66 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4"  style="color:green;font-weight:800">TODAY CHECK - OUT</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-centered table-nowrap mb-0" id="bookingout_datatable">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Sl.No</th>
+                                                    <th>Bill.No</th>
+                                                    <th>Room Deatails</th>
+                                                    <th>Customer</th>
+                                                    <th>Staff</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($checkoutData as $keydata => $checkoutDatas)
+                                                    <tr>
+                                                        <td>{{ ++$keydata }}</td>
+                                                        <td>{{ $checkoutDatas['booking_invoiceno'] }}</td>
+                                                        <td>
+                                                            @foreach ($checkoutDatas['room_lists'] as $index => $room_lists_arr)
+                                                                @if ($room_lists_arr['booking_id'] == $checkoutDatas['id'])
+
+                                                                    @if ($room_lists_arr['roomcolor_status'] == 'Couple Orange')
+                                                                        <span style="color: orange;">{{ $room_lists_arr['room'] }}<br /></span>
+
+                                                                    @elseif($room_lists_arr['roomcolor_status'] == 'Couple Pink')
+                                                                        <span style="color: #e560c1;">{{ $room_lists_arr['room'] }}<br /></span>
+
+                                                                    @elseif($room_lists_arr['roomcolor_status'] == 'Booked Red')
+                                                                        <span style="color: red;">{{ $room_lists_arr['room'] }}<br /></span>
+
+                                                                    @elseif($room_lists_arr['roomcolor_status'] == 'Booked Green')
+                                                                        <span style="color: green;">{{ $room_lists_arr['room'] }}<br /></span>
+                                                                    @endif
+                                                                @endif
+                                                            @endforeach
+                                                        </td>
+                                                        <td>
+                                                            {{ $checkoutDatas['customer_name'] }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $checkoutDatas['checkoutstaff'] }}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
 
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
+                                    <h4 class="card-title mb-4"  style="color:green;font-weight:800">ROOM HISTORY</h4>
                             <div class="table-responsive">
                                 <table class="table table-bordered dt-responsive nowrap" id="bookings_datatable"
                                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -414,9 +418,9 @@
                                             <th>{{ __('messages.billno') }}</th>
                                             <th>Room Details</th>
                                             <th>{{ __('messages.customer') }}</th>
-                                            <th>Manager Name</th>
-                                            <th>Check In Date & Time</th>
-                                            <th>Check Out Date & Time</th>
+                                            <th>Total</th>
+                                            <th>Balance</th>
+                                            <th>Checkin - staff</th>
                                             <th>{{ __('messages.action_title') }}</th>
                                         </tr>
                                     </thead>
@@ -441,31 +445,46 @@
                                                                     @endif
                                                             @endif
                                                         @endforeach
+
+
+                                                        <span style="color:black;font-weight:600">Checkin </span>:
+                                                        <span>{{ date('d M Y', strtotime($bookingDatas['chick_in_date'])) }}
+                                                        
+                                                        ({{ date('h:i A', strtotime($bookingDatas['chick_in_time'])) }})
+                                                        </span><br/>
+                                                        
+                                                        <span style="color:black;font-weight:600">Checkout </span>:
+                                                            @if ($bookingDatas['status'] == 2)
+                                                            <span>{{ date('d M Y', strtotime($bookingDatas['out_date'])) }}<br/>
+                                                                    
+                                                                    ({{ date('h:i A', strtotime($bookingDatas['out_time'])) }})
+                                                                </span>
+                                                            @elseif (($bookingDatas['chick_out_date'] < $today) & ($bookingDatas['status'] == 2))
+                                                                <span>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}<br/>
+                                                                    
+                                                                    ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
+                                                            @else
+                                                                <span>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}<br/>
+                                                                    
+                                                                    ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
+                                                            @endif
                                                 </td>
+
                                                 <td href="#basic{{ $bookingDatas['id'] }}" data-bs-toggle="modal"
                                                     data-bs-target="#basic{{ $bookingDatas['id'] }}" class="pointer">
                                                     {{ $bookingDatas['customer_name'] }}</td>
-                                                <td>{{ $bookingDatas['check_in_staff'] }}</td>
-                                                <td><span>{{ date('d M Y', strtotime($bookingDatas['chick_in_date'])) }}
-                                                        -
-                                                        ({{ date('h:i A', strtotime($bookingDatas['chick_in_time'])) }})
-                                                    </span></td>
-                                                <td>
-                                                    @if ($bookingDatas['status'] == 2)
-                                                        <span>{{ date('d M Y', strtotime($bookingDatas['out_date'])) }}
-                                                            -
-                                                            ({{ date('h:i A', strtotime($bookingDatas['out_time'])) }})
-                                                        </span>
-                                                    @elseif (($bookingDatas['chick_out_date'] < $today) & ($bookingDatas['status'] == 2))
-                                                        <span>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}
-                                                            -
-                                                            ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
-                                                    @else
-                                                        <span>{{ date('d M Y', strtotime($bookingDatas['chick_out_date'])) }}
-                                                            -
-                                                            ({{ date('h:i A', strtotime($bookingDatas['chick_out_time'])) }})</span>
-                                                    @endif
+
+                                                <td>{{ $bookingDatas['grand_total'] }}</td>
+                                                @if($bookingDatas['balance_amount'] != 0)
+                                                <td style="color:red;">{{ $bookingDatas['balance_amount'] }}</td>
+                                                @else
+                                                <td>{{ $bookingDatas['balance_amount'] }}</td>
+                                                @endif
+                                            
+                                                <td>{{ $bookingDatas['check_in_staff'] }}  
                                                 </td>
+
+                                              
                                                 <td>
                                                     <ul class="list-unstyled hstack gap-1 mb-0">
                                                         @if ($bookingDatas['balance_amount'] != 0)
@@ -565,6 +584,75 @@
                     </div>
                 </div>
 
+
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                    <h4 class="card-title mb-4"  style="color:green;font-weight:800">TODAY PAYMENT HISTORY</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-centered table-nowrap mb-0" id="bookingpayment_datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>BillNo</th>
+                                                <th>Customer</th>
+                                                <th>Staff</th>
+                                                <th>Amount</th>
+                                                <th>Payment Method</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($todayPaymentData as $keydata => $todayPaymentDatas)
+                                                <tr>
+                                                    <td>{{ ++$keydata }}</td>
+                                                    <td>{{ $todayPaymentDatas['booking_invoiceno'] }}</td>
+                                                    <td>{{ $todayPaymentDatas['customer_name'] }}</td>
+                                                    <td>{{ $todayPaymentDatas['staffname'] }}</td>
+                                                    <td>{{ $todayPaymentDatas['payable_amount'] }}</td>
+                                                    <td>{{ $todayPaymentDatas['payment_method'] }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4"  style="color:green;font-weight:800">ROOM DETAILS</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-centered table-nowrap mb-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Total</td>
+                                                    <td>
+                                                        {{ $totalrooms }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Avaiable</td>
+                                                    <td>
+                                                        {{ $availablerooms }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Booked</td>
+                                                    <td>
+                                                        {{ $totalrooms - $availablerooms }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -576,6 +664,14 @@
 
         $(document).ready(function() {
             $('#bookings_datatable').DataTable();
+        });
+
+        $(document).ready(function() {
+            $('#bookingpayment_datatable').DataTable();
+        });
+
+        $(document).ready(function() {
+            $('#bookingout_datatable').DataTable();
         });
 
         $(".room_viewclose").click(function() {

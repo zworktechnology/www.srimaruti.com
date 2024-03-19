@@ -515,50 +515,7 @@
                                                                     </tr>
                                                                 @endforeach
 
-                                                                <tr>
-                                                                        <td class="col-sm-3">
-                                                                            <select class="form-control"
-                                                                                name="payment_term[]">
-                                                                                <option value="" selected
-                                                                                    class="text-muted">Select</option>
-                                                                                <option
-                                                                                    value="Term I"
-                                                                                    class="text-muted">Term I</option>
-                                                                                <option
-                                                                                    value="Term II"
-                                                                                    class="text-muted">Term II</option>
-                                                                                <option
-                                                                                    value="Term III"
-                                                                                    class="text-muted">Term III</option>
-                                                                            </select>
-                                                                        </td>
-                                                                        <td class="col-sm-3">
-                                                                            <input type="text"
-                                                                                class="form-control payable_amount"
-                                                                                id="payable_amount"
-                                                                                name="payable_amount[]"
-                                                                                placeholder="Enter here ">
-                                                                            <input type="hidden"
-                                                                                class="form-control booking_payment_id"
-                                                                                name="booking_payment_id[]"
-                                                                                placeholder="Enter here ">
-                                                                        </td>
-                                                                        <td class="col-sm-3">
-                                                                            <select class="form-control "
-                                                                                name="payment_method[]">
-                                                                                <option value="" selected hidden
-                                                                                    class="text-muted">Select Payment Via
-                                                                                </option>
-                                                                                <option
-                                                                                    value="Cash"
-                                                                                    class="text-muted">Cash</option>
-                                                                                <option
-                                                                                    value="Online Payment"
-                                                                                    class="text-muted">Online Payment
-                                                                                </option>
-                                                                            </select>
-                                                                        </td>
-                                                                    </tr>
+                                                                
 
                                                             </table>
                                                         </div>

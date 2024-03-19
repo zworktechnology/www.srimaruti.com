@@ -105,12 +105,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // INDEX ALL
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/{user_branch_id}', [BookingController::class, 'index'])->name('booking.index');
-        // INDEX TODAY
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/today/{user_branch_id}', [BookingController::class, 'today'])->name('booking.today');
-        // INDEX UPCOMING
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/upcoming/{user_branch_id}', [BookingController::class, 'upcoming'])->name('booking.upcoming');
-        // INDEX MISSING OUT
-        Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/missingout/{user_branch_id}', [BookingController::class, 'missingout'])->name('booking.missingout');
         // CREATE
         Route::middleware(['auth:sanctum', 'verified'])->get('/zwork-admin/booking/create/{user_branch_id}', [BookingController::class, 'create'])->name('booking.create');
         // STORE

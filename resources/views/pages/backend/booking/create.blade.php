@@ -84,16 +84,45 @@
                                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">
                                                     Count <span style="color: red;">*</span> </label>
                                                 <div class="col-sm-3">
-                                                    <input type="number" class="form-control" name="male_count"
-                                                        placeholder="Male Count - Enter here " required>
+                                                    <select class="form-control " name="male_count" required>
+                                                        <option value="" selected hidden class="text-muted">Select
+                                                            Male Count</option>
+                                                        <option value="0" class="text-muted">0</option>
+                                                        <option value="1" class="text-muted">1</option>
+                                                        <option value="2" class="text-muted">2</option>
+                                                        <option value="3" class="text-muted">3</option>
+                                                        <option value="4" class="text-muted">4</option>
+                                                        <option value="5" class="text-muted">5</option>
+                                                        <option value="6" class="text-muted">6</option>
+                                                        <option value="7" class="text-muted">7</option>
+                                                        <option value="8" class="text-muted">8</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <input type="number" class="form-control" name="female_count"
-                                                        placeholder="Female Count- Enter here " required>
+                                                    <select class="form-control " name="female_count" required>
+                                                        <option value="" selected hidden class="text-muted">Select
+                                                            Female Count</option>
+                                                        <option value="0" class="text-muted">0</option>
+                                                        <option value="1" class="text-muted">1</option>
+                                                        <option value="2" class="text-muted">2</option>
+                                                        <option value="3" class="text-muted">3</option>
+                                                        <option value="4" class="text-muted">4</option>
+                                                        <option value="5" class="text-muted">5</option>
+                                                        <option value="6" class="text-muted">6</option>
+                                                        <option value="7" class="text-muted">7</option>
+                                                        <option value="8" class="text-muted">8</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <input type="number" class="form-control" name="child_count"
-                                                        placeholder="Child Count - Enter here " required>
+                                                    <select class="form-control " name="child_count" required>
+                                                        <option value="" selected hidden class="text-muted">Select
+                                                            Child Count</option>
+                                                        <option value="0" class="text-muted">0</option>
+                                                        <option value="1" class="text-muted">1</option>
+                                                        <option value="2" class="text-muted">2</option>
+                                                        <option value="3" class="text-muted">3</option>
+                                                        <option value="4" class="text-muted">4</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
